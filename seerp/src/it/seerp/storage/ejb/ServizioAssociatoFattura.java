@@ -8,7 +8,7 @@ package it.seerp.storage.ejb;
  * classe che contiene le informazione sui servizi associati ad una fattura
  * @author Luisa
  */
-public class ServizioAssociatoFattua {
+public class ServizioAssociatoFattura {
 
     private Integer quantita;
     private Integer servizio;
