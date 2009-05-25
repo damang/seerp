@@ -1,14 +1,43 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package it.seerp.application.interfacce;
+
+import java.util.ArrayList;
 
 /**
  *
+ * @param <E>
  * @author matteo
  */
-public interface GestioneUtenti {
+public interface GestioneUtenti<E> {
+
+    /**
+     *
+     * @return
+     */
+    public ArrayList<E> elenca();
+
+    /**
+     *
+     * @param username
+     * @return
+     */
+    public E ricerca(String username);
+
+    /**
+     *
+     * @param username
+     */
+    public void elimina(String username);
+
+    /**
+     *
+     * @param username
+     */
+    public void eliminazioneLogica(String username);
+
+    /**
+     *
+     * @param utente
+     */
+    public void inserisci(E utente);
 
 }
