@@ -15,6 +15,10 @@ public class Agenda {
     ArrayList<Evento> agenda= new ArrayList<Evento>();
     Integer idAgenda;
 
+    public Agenda(Integer idAgenda) {
+        this.idAgenda = idAgenda;
+    }
+
     public ArrayList<Evento> getAgenda() {
         return agenda;
     }
