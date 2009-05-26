@@ -10,8 +10,8 @@ package it.seerp.application.Exception;
  * @author Luisa
  */
 public class InserimentoException extends RuntimeException {
-	public InserimentoException(String c){
-		super(c);
+	public InserimentoException(String string){
+		super(string);
 	}
 
 }
