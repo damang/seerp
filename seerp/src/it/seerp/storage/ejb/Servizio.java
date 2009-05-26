@@ -19,6 +19,8 @@ public class Servizio {
     private Integer iva;
     private String note;
 
+
+
     /**
      *  metodo che restituisce le note dell'evento
      * @return le note del servizio

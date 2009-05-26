@@ -19,6 +19,17 @@ public class Evento {
     private int idEvento;
     private Integer agenda;
 
+    public Evento(String luogo, String tema, String nome, String note, Date data, Time ora, int idEvento, Integer agenda) {
+        this.luogo = luogo;
+        this.tema = tema;
+        this.nome = nome;
+        this.note = note;
+        this.data = data;
+        this.ora = ora;
+        this.idEvento = idEvento;
+        this.agenda = agenda;
+    }
+
     /**
      * metodo che restituisce identificativo dell'agenda associata a quell'evento
      * @return identificativo dell'agenda associata a quell'evento
