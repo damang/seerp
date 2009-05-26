@@ -3,9 +3,9 @@
 
 package it.seerp.application.interfacce;
 
-import it.serp.application.Exception.InserimentoException;
-import it.serp.application.Exception.ModificaException;
-import it.serp.application.Exception.RicercaException;
+import it.seerp.application.Exception.InserimentoException;
+import it.seerp.application.Exception.ModificaException;
+import it.seerp.application.Exception.RicercaException;
 import java.sql.Date;
 import java.util.ArrayList;
 
