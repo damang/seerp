@@ -11,11 +11,15 @@
 
 package it.seerp.Home;
 
+import configurazioni.CommandInterface;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Andrea
  */
-public class Home extends javax.swing.JFrame {
+public class Home extends javax.swing.JFrame implements ActionListener {
 
     /** Creates new form NewApplication */
     public Home() {
@@ -142,5 +146,10 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JMenuItem saveAsMenuItem;
     private javax.swing.JMenuItem saveMenuItem;
     // End of variables declaration//GEN-END:variables
+
+    public void actionPerformed(ActionEvent e) {
+       CommandInterface cmd = (CommandInterface)e.getSource();
+       cmd.execute();
+    }
 
 }
