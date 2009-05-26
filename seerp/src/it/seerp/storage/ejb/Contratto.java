@@ -21,6 +21,17 @@ public class Contratto {
     private Integer dipendente;
     private Integer extraAzienda;
 
+
+    public Contratto(String st, Date da, Integer d,String t, Integer i, String n, Integer dip,Integer e)
+    {
+        this.stato=st;
+        this.data=da;
+        this.durata=d;
+        this.tipo=t;
+        this.idContratto=i;
+        this.note=n;
+        this.dipendente=dip;
+       this.extraAzienda=e;}
     /**
      *  metodo che restituisce l'id dipendente che ha stipulato il contratto
      * @return id dipendente che ha stipulato il contratto
