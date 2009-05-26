@@ -12,7 +12,7 @@ import javax.swing.JTextField;
  *
  * @author matteo
  */
-public class BeanGuiDipendente extends BeaGuiPersonale {
+public class BeanGuiDipendente extends BeanGuiPersonale {
 
      private JTextField idDipendenteTxt;
     

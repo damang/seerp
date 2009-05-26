@@ -9,7 +9,7 @@ import javax.swing.JTextField;
  *
  * @author matteo
  */
-public class BeaGuiPersonale extends BeanGuiUtente {
+public class BeanGuiPersonale extends BeanGuiUtente {
 
     private JTextField idPersonaleTxt;
     private JTextField txtCognome;

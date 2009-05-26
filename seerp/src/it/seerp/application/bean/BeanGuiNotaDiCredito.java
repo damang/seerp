@@ -12,7 +12,7 @@ import javax.swing.JTextField;
  *
  * @author Luisa
  */
-public class BeansGuiNotaDiCredito {
+public class BeanGuiNotaDiCredito {
     private JTextField motivazione;
     private  JTextField nFattura;
     private  JTextArea note;

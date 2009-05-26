@@ -12,7 +12,7 @@ import javax.swing.JTextField;
  *
  * @author Luisa
  */
-public class BeansGuiFattureRicevute {
+public class BeanGuiFattureRicevute {
   private JTextArea note;
     private JTextField idFatturaRicevuta;
     private JTextField numeroProgressivo;
