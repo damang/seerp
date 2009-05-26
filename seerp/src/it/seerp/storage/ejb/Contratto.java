@@ -22,9 +22,9 @@ public class Contratto {
     private Integer extraAzienda;
 
 
-    public Contratto(String st, Date da, Integer d,String t, Integer i, String n, Integer dip,Integer e)
+    public Contratto(String stt, Date da, Integer d,String t, Integer i, String n, Integer dip,Integer e)
     {
-        this.stato=st;
+        this.stato=stt;
         this.data=da;
         this.durata=d;
         this.tipo=t;
