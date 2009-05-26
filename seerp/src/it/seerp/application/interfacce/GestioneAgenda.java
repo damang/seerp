@@ -1,5 +1,9 @@
 package it.seerp.application.interfacce;
 
+import it.serp.application.Exception.EliminaException;
+import it.serp.application.Exception.InserimentoException;
+import it.serp.application.Exception.ModificaException;
+import it.serp.application.Exception.RicercaException;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
@@ -8,25 +12,21 @@ import java.util.ArrayList;
  *
  * @author Luisa
  */
-public interface GestioneAgenda<E> {
+public interface GestioneAgenda<E, G> {
 
-    public  ArrayList<E> visualizzaListaEventi(E evento);
+    public  ArrayList<E> visualizzaListaEventi()throws RicercaException;
 
-    public void visualizzaDettagliEvento(E evento);
+    public E visualizzaDettagli(E evento);
 
-    public void inserimentoEvento(E evento);
+    public void inserimento(G BeanGuiServizio) throws InserimentoException;
 
-    public void modificaEvento(E evento);
+    public void modifica(G BeanGuiServizio) throws ModificaException;
 
-    public ArrayList<E> RicercaEvento(String Nome, String Referente, Date data);
+    public ArrayList<E> ricerca(String Nome, String Referente, Date data)throws  RicercaException;
 
-    public ArrayList<E> ricercaPerNome(String Nome);
+    public ArrayList<E> ricercaPerNome(String Nome) throws  RicercaException;
 
-    public ArrayList<E> ricercaPerGiorno(Date giorno);
+    public ArrayList<E> ricercaPerGiorno(Date giorno)throws  RicercaException;
 
-    public E ricordaEvento(Date data, Time ora);
-
-    public E ricercaGiorno();
-
-    public void cancellaEvento();
+    public void cancellaEvento(G BeanGuiServizio) throws EliminaException ;
 }
