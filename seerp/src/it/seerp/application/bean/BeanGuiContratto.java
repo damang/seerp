@@ -23,6 +23,18 @@ public class BeanGuiContratto {
     private JTextField dipendente;
     private JTextField extraAzienda;
 
+    public BeanGuiContratto(JTextField stato, JTextField data, JTextField durata, JTextField tipo, JTextField idContratto, JTextArea note, JTextField dipendente, JTextField extraAzienda) {
+        this.stato = stato;
+        this.data = data;
+        this.durata = durata;
+        this.tipo = tipo;
+        this.idContratto = idContratto;
+        this.note = note;
+        this.dipendente = dipendente;
+        this.extraAzienda = extraAzienda;
+    }
+
+
 
     public JTextField getData() {
         return data;
