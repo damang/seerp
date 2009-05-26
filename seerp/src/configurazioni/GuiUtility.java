@@ -2,7 +2,6 @@
 package configurazioni;
 
 
-
 /**
  * Definisce le costanti associate alle gui di gestione, inserimento e update
  * @author Andrea
@@ -58,7 +57,9 @@ public class GuiUtility {
          * 
          */
         DIPENDENTE,
-        
+        /**
+         *
+         */
         BANCA
     };
     
