@@ -14,9 +14,9 @@ public interface GestioneAreaPersonale <E extends Utente,U extends BeanGuiUtente
     /**
      * è un metodo che permette di visualizzare tutti i dati
      * di un utente
-     * @param user: oggetto contente i dati dell'utente
+     * @param username:stringa di caratteri che rappresenta l'username dell'utente
      */
-    public void visualizzaDati(E user);
+    public void visualizzaDati(String username);
 
     /**
      * è un metodo che permette di modificare i dati personali di un utente
@@ -33,11 +33,11 @@ public interface GestioneAreaPersonale <E extends Utente,U extends BeanGuiUtente
     /**
      * è un metodo che permette di visualizzari tutti i contratti
      * di un utente
-     * @param user: oggetto contenete i dati dell'user
+     * @param username: stringa di caratteriche rappresenta l'username dell'utente
      * @return una lista con tutti i contratti dell'utente
      * passato come parametro
      */
-    public ArrayList<E> visualizzaContratti(E user);
+    public ArrayList<E> visualizzaContratti(String username);
 
 
 }
