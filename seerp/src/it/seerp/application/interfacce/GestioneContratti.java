@@ -1,18 +1,30 @@
 
 
+
 package it.seerp.application.interfacce;
 
+import it.serp.application.Exception.InserimentoException;
+import it.serp.application.Exception.ModificaException;
+import it.serp.application.Exception.RicercaException;
+import java.sql.Date;
 import java.util.ArrayList;
 
 /**
  *
+ *
  * @author Luisa
  */
-public interface GestioneContratti<E> {
-    public void visualizzaContratti();
-    public E ricercaContratto();
-    public void InserisciContratto(E Contratto);
+public interface GestioneContratti<E,G> {
 
+    public ArrayList<E> visualizza();
 
+     public E visualizzaContratto(G BeanGuiContatto);
 
+    public E ricerca(Integer id) throws RicercaException;
+
+    public ArrayList<E> ricercaPerDipendente(String nomeDipendente) throws RicercaException;
+
+    public void inserisci(G BeanGuiContatto) throws InserimentoException;
+
+    public void modifica(G BeanGuiContatto) throws ModificaException;
 }
