@@ -12,7 +12,7 @@ import javax.swing.JTextField;
  *
  * @author Luisa
  */
-public class BeansGuiServizioAssociato {
+public class BeanGuiServizioAssociato {
  private JTextField quantita;
     private JTextField prezzoUnitario;
     private JTextField contratto;

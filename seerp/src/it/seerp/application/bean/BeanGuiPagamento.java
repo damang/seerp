@@ -12,7 +12,7 @@ import javax.swing.JTextField;
  *
  * @author Luisa
  */
-public class BeansGuiPagamento {
+public class BeanGuiPagamento {
         private JTextArea note;
     private JTextField dataScadenza;
 
