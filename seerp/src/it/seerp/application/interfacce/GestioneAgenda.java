@@ -13,14 +13,16 @@ import java.util.ArrayList;
  * @author Luisa
  */
 public interface GestioneAgenda<E, G> {
-
+    //ci vuole l extends???
     public  ArrayList<E> visualizzaListaEventi()throws RicercaException;
 
     public E visualizzaDettagli(E evento);
 
-    public void inserimento(G BeanGuiServizio) throws InserimentoException;
+    public void noficaEventi (G BeanGuiEventi);
 
-    public void modifica(G BeanGuiServizio) throws ModificaException;
+    public void inserimento(G BeanGuiEventi) throws InserimentoException;
+
+    public void modifica(G BeanGuiEventi) throws ModificaException;
 
     public ArrayList<E> ricerca(String Nome, String Referente, Date data)throws  RicercaException;
 
@@ -28,5 +30,5 @@ public interface GestioneAgenda<E, G> {
 
     public ArrayList<E> ricercaPerGiorno(Date giorno)throws  RicercaException;
 
-    public void cancellaEvento(G BeanGuiServizio) throws EliminaException ;
+    public void cancellaEvento(G BeanGuiEventi) throws EliminaException ;
 }
