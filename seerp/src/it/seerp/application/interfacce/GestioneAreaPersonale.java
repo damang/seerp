@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public interface GestioneAreaPersonale <E extends Utente,U extends BeanGuiUtente> extends GestioneUtenti<E,U> {
 
     /**
-     *  è un metodo che permette di visualizzare tutti i dati
+     * è un metodo che permette di visualizzare tutti i dati
      * di un utente
      * @param user: oggetto contente i dati dell'utente
      */
