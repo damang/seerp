@@ -13,11 +13,12 @@ import java.util.ArrayList;
  */
 public interface OpEntity<E> {
 
-    public void inserimento (E Source) throws DatiErrati, DatiDuplicati;
+    public void inserimento (E Bean) throws DatiErrati, DatiDuplicati;
 
-    public void modifica (E source) throws DatiErrati;
+    public void modifica (E Bean) throws DatiErrati;
 
-    public void elimina (E source) throws CancellazioneFallita;
+    public E visualizza ();
 
-    public ArrayList<E> ricerca () throws RicercaFallita;
+    public void elimina () throws CancellazioneFallita;
+
 }
