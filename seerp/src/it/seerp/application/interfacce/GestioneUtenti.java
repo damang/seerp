@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 /**
  *
- * @param <E>
  * @author matteo
  */
 public interface GestioneUtenti<E> {
