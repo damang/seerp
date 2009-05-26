@@ -21,6 +21,19 @@ public class BeanGuiEvento {
     private JTextField  idEvento;
     private JTextField  agenda;
 
+    public BeanGuiEvento(JTextField luogo, JTextField tema, JTextField nome, JTextField note, JTextField data, JTextField ora, JTextField idEvento, JTextField agenda) {
+        this.luogo = luogo;
+        this.tema = tema;
+        this.nome = nome;
+        this.note = note;
+        this.data = data;
+        this.ora = ora;
+        this.idEvento = idEvento;
+        this.agenda = agenda;
+    }
+
+    
+
     public JTextField getAgenda() {
         return agenda;
     }
