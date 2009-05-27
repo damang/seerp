@@ -22,6 +22,17 @@ public class BeanGuiNotaDiCredito {
     private JTextField data;
     private  JTextField fattureEmesse;
 
+    public BeanGuiNotaDiCredito(JTextField motivazione, JTextField nFattura, JTextArea note, JTextField importo, JTextField idNotaDiCredito, JTextField iva, JTextField data, JTextField fattureEmesse) {
+        this.motivazione = motivazione;
+        this.nFattura = nFattura;
+        this.note = note;
+        this.importo = importo;
+        this.idNotaDiCredito = idNotaDiCredito;
+        this.iva = iva;
+        this.data = data;
+        this.fattureEmesse = fattureEmesse;
+    }
+
     /**
      *
      * @return

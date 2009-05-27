@@ -18,6 +18,13 @@ public class BeanGuiFattureRicevute {
     private JTextField numeroProgressivo;
     private JTextField ivaCredito;
 
+    public BeanGuiFattureRicevute(JTextArea note, JTextField idFatturaRicevuta, JTextField numeroProgressivo, JTextField ivaCredito) {
+        this.note = note;
+        this.idFatturaRicevuta = idFatturaRicevuta;
+        this.numeroProgressivo = numeroProgressivo;
+        this.ivaCredito = ivaCredito;
+    }
+
     /**
      * metodo che
      * @return

@@ -15,6 +15,27 @@ import javax.swing.JTextField;
 public class BeanGuiPagamento {
         private JTextArea note;
     private JTextField dataScadenza;
+      private JTextField descrizione;
+    private JTextField importo;
+    private JTextField modalitaPagamento;
+    private JTextField stato;
+    private JTextField altreInformazioni;
+    private JTextField idPagamento;
+    private JTextField contratto;
+    private JTextField banca;
+
+    public BeanGuiPagamento(JTextArea note, JTextField dataScadenza, JTextField descrizione, JTextField importo, JTextField modalitaPagamento, JTextField stato, JTextField altreInformazioni, JTextField idPagamento, JTextField contratto, JTextField banca) {
+        this.note = note;
+        this.dataScadenza = dataScadenza;
+        this.descrizione = descrizione;
+        this.importo = importo;
+        this.modalitaPagamento = modalitaPagamento;
+        this.stato = stato;
+        this.altreInformazioni = altreInformazioni;
+        this.idPagamento = idPagamento;
+        this.contratto = contratto;
+        this.banca = banca;
+    }
 
     /**
      * metodo che
@@ -175,14 +196,7 @@ public class BeanGuiPagamento {
     public void setStato(JTextField stato) {
         this.stato = stato;
     }
-    private JTextField descrizione;
-    private JTextField importo;
-    private JTextField modalitaPagamento;
-    private JTextField stato;
-    private JTextField altreInformazioni;
-    private JTextField idPagamento;
-    private JTextField contratto;
-    private JTextField banca;
+  
 
 
 }

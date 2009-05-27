@@ -19,6 +19,14 @@ public class BeanGuiServizioAssociato {
     private JTextField servizio;
     private JTextArea note;
 
+    public BeanGuiServizioAssociato(JTextField quantita, JTextField prezzoUnitario, JTextField contratto, JTextField servizio, JTextArea note) {
+        this.quantita = quantita;
+        this.prezzoUnitario = prezzoUnitario;
+        this.contratto = contratto;
+        this.servizio = servizio;
+        this.note = note;
+    }
+
     /**
      * metodo che restituisce
      * @return

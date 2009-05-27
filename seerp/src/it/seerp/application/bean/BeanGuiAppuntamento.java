@@ -18,6 +18,7 @@ class BeanGuiAppuntamento {
     private JTextField idAppuntamento;
     private JTextField note;
     private JTextField dipendente;
+
     private JTextField extraAzienda;
 
     public BeanGuiAppuntamento(JTextField data, JTextField ora, JTextField idAppuntamento, JTextField note, JTextField dipendente, JTextField extraAzienda) {
