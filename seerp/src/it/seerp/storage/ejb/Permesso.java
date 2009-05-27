@@ -5,6 +5,8 @@
 
 package it.seerp.storage.ejb;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author matteo
@@ -13,6 +15,33 @@ public class Permesso {
 
     private Integer idPermesso;
     private String Nome;
+     private ArrayList<Personale> listPersonale;
+     private ArrayList<Ruolo> listRuolo;
+
+    public ArrayList<Ruolo> getListPermessi() {
+        return listRuolo;
+    }
+
+    public void setListPermessi(ArrayList<Ruolo> listPermessi) {
+        this.listRuolo = listPermessi;
+    }
+
+    public ArrayList<Personale> getListPersonale() {
+        return listPersonale;
+    }
+
+    public void setListPersonale(ArrayList<Personale> listPersonale) {
+        this.listPersonale = listPersonale;
+    }
+
+    public Permesso(Integer idPermesso, String Nome, ArrayList<Personale> listPersonale, ArrayList<Ruolo> listPermessi) {
+        this.idPermesso = idPermesso;
+        this.Nome = Nome;
+        this.listPersonale = listPersonale;
+        this.listRuolo = listPermessi;
+    }
+
+
 
     /**
      *
@@ -45,7 +74,15 @@ public class Permesso {
     public void setIdPermesso(Integer idPermesso) {
         this.idPermesso = idPermesso;
     }
+       public void removePersonale(Personale c){
+     listPersonale.remove(c);}
+    public void addPersonale(Personale c){
+      listPersonale.add(c);}
 
+      public void removeRuolo(Ruolo c){
+     listRuolo.remove(c);}
+    public void addRuolo(Ruolo c){
+     listRuolo.add(c);}
 
 
 }

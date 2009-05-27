@@ -5,11 +5,19 @@
 
 package it.seerp.storage.ejb;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author matteo
  */
 public class Contatto extends ExtraAzienda {
+
+    public Contatto(Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva, String fax, String ruolo, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti, Integer idContatto, Integer feedback) {
+        super(idExtraAzienda, cognome, nome, ragioneSociale, pIva, fax, ruolo, listAppuntamenti, listContratti);
+        this.idContatto = idContatto;
+        this.feedback = feedback;
+    }
 
     private Integer idContatto;
     private Integer feedback;

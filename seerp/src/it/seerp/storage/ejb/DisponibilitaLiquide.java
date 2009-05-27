@@ -4,6 +4,8 @@
  */
 package it.seerp.storage.ejb;
 
+import java.util.ArrayList;
+
 /**
  * classe che gestisce le informazioni sulle disponibilità liquide
  * @author Luisa
@@ -15,6 +17,14 @@ public class DisponibilitaLiquide {
     private String note;
     private Integer idDisponibilitaLiquide;
     private Integer idPagamento;
+    private ArrayList<Pagamento> listPagamento;
+
+    public ArrayList<Pagamento> getListPagamento() {
+        return listPagamento;
+    }
+
+    public void setListPagamento(ArrayList<Pagamento> listPagamento) {
+        this.listPagamento = listPagamento;}
 
     /**
      *  metodo che restituisce l'identificativo del pagamento
@@ -96,4 +106,8 @@ public class DisponibilitaLiquide {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+  public void removePagamento(Pagamento p){
+     listPagamento.remove(p);}
+    public void addPagamento(Pagamento p){
+     listPagamento.add(p);}
 }

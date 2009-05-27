@@ -4,23 +4,30 @@
  */
 package it.seerp.storage.ejb;
 
+import java.sql.Date;
+import java.util.ArrayList;
+
 /**
  *la classe gestisce le informazioni sulle fatture ricevute
  * @author Luisa
  */
 public class FatturaRicevuta extends Fattura {
 
-    private String note;
     private Integer idFatturaRicevuta;
     private Integer numeroProgressivo;
     private Double ivaCredito;
 
+    public FatturaRicevuta(Date data, Integer idFattura, Double imponibile, Double importo, Double iva, String tipo, String note, ArrayList<NotaDiCredito> listNote, ArrayList<ServizioAssociato> listServizio, Integer idFatturaRicevuta, Integer numeroProgressivo, Double ivaCredito) {
+        super(data, idFattura, imponibile, importo, iva, tipo, note, listNote, listServizio);
+        this.idFatturaRicevuta = idFatturaRicevuta;
+        this.numeroProgressivo = numeroProgressivo;
+        this.ivaCredito = ivaCredito;
+    }
+
     /**
      * cotruttore della classe FatturaRicevuta
      */
-    public FatturaRicevuta() {
-        super();
-    }
+  
 
     /**
      * metodo che restituisce l'identificativo della fattura
@@ -70,19 +77,5 @@ public class FatturaRicevuta extends Fattura {
         this.numeroProgressivo = numeroProgressivo;
     }
 
-    /**
-     * metodo che restituisce le note dell'azienda
-     * @return le note dell'azienda
-     */
-    public String getNote() {
-        return note;
-    }
 
-    /**
-     * metodo che setta le note dell'azienda
-     * @param note le note dell'azienda
-     */
-    public void setNote(String note) {
-        this.note = note;
-    }
 }

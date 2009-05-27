@@ -5,6 +5,8 @@
 
 package it.seerp.storage.ejb;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author matteo
@@ -22,6 +24,15 @@ public class Banca {
     private String nazione;
     private Double importoInDare;
     private Double importoInAvere;
+    private ArrayList<Pagamento> listPagamento;
+
+    public ArrayList<Pagamento> getListPagamento() {
+        return listPagamento;
+    }
+
+    public void setListPagamento(ArrayList<Pagamento> listPagamento) {
+        this.listPagamento = listPagamento;
+    }
 
     /**
      *
@@ -199,6 +210,9 @@ public class Banca {
         this.provincia = provincia;
     }
 
-
+   public void removePagamento(Pagamento p){
+     listPagamento.remove(p);}
+    public void addPagamento(Pagamento p){
+     listPagamento.add(p);}
 
 }
