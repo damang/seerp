@@ -20,7 +20,20 @@ public class Servizio {
     private Integer idServizio;
     private Integer iva;
     private String note;
-   private ArrayList<Contratto> listContratti;
+    private ArrayList<Contratto> listContratti;
+
+    public Servizio(String descrizione, Boolean disponibilita, Integer quantita, String tipo, Double prezzo, Integer idServizio, Integer iva, String note, ArrayList<Contratto> listContratti) {
+        this.descrizione = descrizione;
+        this.disponibilita = disponibilita;
+        this.quantita = quantita;
+        this.tipo = tipo;
+        this.prezzo = prezzo;
+        this.idServizio = idServizio;
+        this.iva = iva;
+        this.note = note;
+        this.listContratti = listContratti;
+    }
+
 
 
     public ArrayList<Contratto> getListServizio() {
