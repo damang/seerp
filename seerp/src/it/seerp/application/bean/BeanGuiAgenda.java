@@ -13,10 +13,18 @@ import javax.swing.JTextField;
  * @author Luisa
  */
 public class BeanGuiAgenda {
+    
   private ArrayList<BeanGuiEvento> listEventi= new  ArrayList<BeanGuiEvento>();
   private JTextField idAgenda;
+
+    public BeanGuiAgenda(JTextField idAgenda) {
+        this.idAgenda = idAgenda;
+    }
+
+
     public void removeEvento(BeanGuiEvento c){
      listEventi.remove(c);}
+
     public void addEvento(BeanGuiEvento c){
      listEventi.add(c);}
 
