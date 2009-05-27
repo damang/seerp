@@ -145,10 +145,10 @@ public class Servizio {
     /**
      * metodo che restituisce la quantità del servizio
      * @return la quantità del servizio
+     */
     public Integer getQuantita() {
     return quantita;
     }
-
     /**
      *  metodo che setta la quantità del servizio
      * @param quantita la quantità del servizio
