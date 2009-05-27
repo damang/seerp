@@ -9,7 +9,8 @@ package it.seerp.application.Exception;
  *
  * @author Luisa
  */
-public class EliminaException extends RuntimeException {
-	public  EliminaException (String c){
-		super(c);
-	}}
+public class DatiDuplicati extends RuntimeException{
+	public DatiDuplicati(String  c){
+    super(c);
+    }
+}
