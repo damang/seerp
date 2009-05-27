@@ -9,8 +9,8 @@ package it.seerp.application.Exception;
  *
  * @author Luisa
  */
-public class ModificaException extends RuntimeException {
-	public ModificaException(String c){
-		super(c);
-	}
+public class CancellazioneFallita extends RuntimeException{
+	public CancellazioneFallita (String  c){
+    super(c);
+    }
 }

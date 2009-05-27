@@ -9,9 +9,7 @@ package it.seerp.application.Exception;
  *
  * @author Luisa
  */
-public class InserimentoException extends RuntimeException {
-	public InserimentoException(String string){
-		super(string);
-	}
-
-}
+public class RicercaFallita extends RuntimeException {
+	public RicercaFallita (String  c){
+    super(c);
+    }}
