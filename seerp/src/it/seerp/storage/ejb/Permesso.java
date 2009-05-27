@@ -15,8 +15,8 @@ public class Permesso {
 
     private Integer idPermesso;
     private String Nome;
-     private ArrayList<Personale> listPersonale;
-     private ArrayList<Ruolo> listRuolo;
+    private ArrayList<Personale> listPersonale;
+    private ArrayList<Ruolo> listRuolo;
 
     public ArrayList<Ruolo> getListPermessi() {
         return listRuolo;

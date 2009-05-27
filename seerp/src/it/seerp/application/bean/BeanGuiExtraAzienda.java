@@ -7,6 +7,7 @@ package it.seerp.application.bean;
 
 import java.util.ArrayList;
 import javax.swing.JComboBox;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -24,6 +25,21 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
     private JComboBox cmbRuolo;
     private ArrayList<BeanGuiAppuntamento> listAppuntamenti;
     private ArrayList<BeanGuiContratto> listContratti;
+
+    public BeanGuiExtraAzienda(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField idExtraAziendaTxt, JTextField txtCognome, JTextField txtNome, JTextField txtRagioneSociale, JTextField txtPIva, JTextField txtFax, JComboBox cmbRuolo, ArrayList<BeanGuiAppuntamento> listAppuntamenti, ArrayList<BeanGuiContratto> listContratti) {
+        super(idUtenteTxt, txtUsername, txtPassword, txtCittà, txtProvincia, txtTelefono, txtEmail, txtNote);
+        this.idExtraAziendaTxt = idExtraAziendaTxt;
+        this.txtCognome = txtCognome;
+        this.txtNome = txtNome;
+        this.txtRagioneSociale = txtRagioneSociale;
+        this.txtPIva = txtPIva;
+        this.txtFax = txtFax;
+        this.cmbRuolo = cmbRuolo;
+        this.listAppuntamenti = listAppuntamenti;
+        this.listContratti = listContratti;
+    }
+
+
 
     /**
      *
@@ -136,5 +152,17 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
     public JTextField getTxtRagioneSociale() {
         return txtRagioneSociale;
     }
+
+    public void removeAppuntamento(BeanGuiAppuntamento p){
+     listAppuntamenti.remove(p);}
+
+    public void addAppuntamento(BeanGuiAppuntamento p){
+     listAppuntamenti.add(p);}
+
+       public void removeContratto(BeanGuiContratto c){
+     listContratti.remove(c);}
+
+    public void addContratto(BeanGuiContratto c){
+     listContratti.add(c);}
 
 }

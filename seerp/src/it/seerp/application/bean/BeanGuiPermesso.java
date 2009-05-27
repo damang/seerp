@@ -5,6 +5,7 @@
 
 package it.seerp.application.bean;
 
+import java.util.ArrayList;
 import javax.swing.JTextField;
 
 /**
@@ -16,6 +17,17 @@ public class BeanGuiPermesso {
 
     private JTextField idPermesso;
     private JTextField Nome;
+    private ArrayList<BeanGuiPersonale> listPersonale;
+    private ArrayList<BeanGuiRuolo> listRuolo;
+
+    public BeanGuiPermesso(JTextField idPermesso, JTextField Nome, ArrayList<BeanGuiPersonale> listPersonale, ArrayList<BeanGuiRuolo> listRuolo) {
+        this.idPermesso = idPermesso;
+        this.Nome = Nome;
+        this.listPersonale = listPersonale;
+        this.listRuolo = listRuolo;
+    }
+
+
 
     /**
      *
@@ -48,5 +60,18 @@ public class BeanGuiPermesso {
     public void setIdPermesso(JTextField idPermesso) {
         this.idPermesso = idPermesso;
     }
+
+      public void removePersonale(BeanGuiPersonale c){
+     listPersonale.remove(c);}
+
+    public void addPersonale(BeanGuiPersonale c){
+      listPersonale.add(c);}
+
+
+      public void removeRuolo(BeanGuiRuolo c){
+     listRuolo.remove(c);}
+
+    public void addRuolo(BeanGuiRuolo c){
+     listRuolo.add(c);}
 
 }

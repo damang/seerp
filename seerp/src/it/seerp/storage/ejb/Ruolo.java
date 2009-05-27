@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Ruolo {
      private ArrayList<Personale> listPersonale;
      private ArrayList<Permesso> listPermessi;
-        private String nome;
+     private String nome;
      private Integer idRuolo;
 
     public Ruolo(ArrayList<Personale> listPersonale, ArrayList<Permesso> listPermessi, String nome, Integer idRuolo) {
