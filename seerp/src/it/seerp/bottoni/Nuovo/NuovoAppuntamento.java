@@ -14,6 +14,10 @@ import javax.swing.JButton;
  */
 public class NuovoAppuntamento extends JButton implements CommandInterface {
 
+    public NuovoAppuntamento() {
+        super();
+    }
+
     public void execute() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
