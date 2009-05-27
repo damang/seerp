@@ -4,6 +4,7 @@
  */
 
 package it.seerp.application.bean;
+import java.util.ArrayList;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -18,6 +19,15 @@ public class BeanGuiDDT {
     private JTextField idDDT;
     private JTextField numero;
     private JTextField fattureEmesse;
+        private ArrayList<BeanGuiServizioAssociatoFattura> listServizio;
+
+    public ArrayList<BeanGuiServizioAssociatoFattura> getListServizio() {
+        return listServizio;
+    }
+
+    public void setListServizio(ArrayList<BeanGuiServizioAssociatoFattura> listServizio) {
+        this.listServizio = listServizio;
+    }
 
     /**
      * metodo che
@@ -131,5 +141,10 @@ public class BeanGuiDDT {
         this.quantita = quantita;
     }
     private JTextArea note;
+       public void removeServzio(BeanGuiServizioAssociatoFattura s){
+     listServizio.remove(s);
+      }
+    public void addServizio(BeanGuiServizioAssociatoFattura s){
+     listServizio.add(s);}
 
 }
