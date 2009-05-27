@@ -25,6 +25,24 @@ public class BeanGuiBanca {
     private JTextField importoInDare;
     private JTextField importoInAvere;
 
+    public BeanGuiBanca(JTextField agenzia, JTextField abi, JTextField cab, JTextField città, JTextField provincia, JTextField indirizzo, JTextField cap, JTextField filiale, JTextField nazione, JTextField importoInDare, JTextField importoInAvere) {
+        this.agenzia = agenzia;
+        this.abi = abi;
+        this.cab = cab;
+        this.città = città;
+        this.provincia = provincia;
+        this.indirizzo = indirizzo;
+        this.cap = cap;
+        this.filiale = filiale;
+        this.nazione = nazione;
+        this.importoInDare = importoInDare;
+        this.importoInAvere = importoInAvere;
+    }
+
+   
+
+
+
     /**
      *
      * @return
