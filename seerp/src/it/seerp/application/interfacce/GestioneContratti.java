@@ -7,23 +7,32 @@ import it.seerp.application.Exception.InserimentoException;
 import it.seerp.application.Exception.ModificaException;
 import it.seerp.application.Exception.RicercaException;
 import java.util.ArrayList;
+import javax.swing.JTextField;
 
 /**
  *
  *
  * @author Luisa
  */
-public interface GestioneContratti<E,G > {
+
+public interface GestioneContratti<E> {
+
+
+
 
     public ArrayList<E> visualizza();
 
-    public E visualizzaContratto(G BeanGuiContatto);
 
-    public E ricerca(Integer id) throws RicercaException;
+     public E visualizzaContratto(JTextField nome);
 
-    public ArrayList<E> ricercaPerDipendente(String nomeDipendente) throws RicercaException;
+    public E visualizzaContratto(E BeanGuiContatto);
 
-    public void inserisci(G BeanGuiContatto) throws InserimentoException;
 
-    public void modifica(G BeanGuiContatto) throws ModificaException;
+    public E ricerca(JTextField id) throws RicercaException;
+
+    public ArrayList<E> ricercaPerDipendente(JTextField nomeDipendente) throws RicercaException;
+
+    public void inserisci(E BeanGuiContratto) throws InserimentoException;
+
+    public E modifica(E BeanGuiContratto) throws ModificaException;
 }
