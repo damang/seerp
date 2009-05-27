@@ -5,9 +5,6 @@
 
 package it.seerp.storage.db;
 
-import it.seerp.storage.Exception.DatiDuplicati;
-import it.seerp.storage.Exception.DatiErrati;
-import it.seerp.storage.Exception.RicercaFallita;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -18,13 +15,13 @@ import java.util.ArrayList;
 
     public interface OpeEntity<E> {
 
-    public void inserimento (E Bean) throws SQLException, DatiErrati, DatiDuplicati;
+    public void inserimento (E Bean) throws SQLException;
 
-    public  E modifica (E Bean) throws SQLException,DatiErrati;
+    public  E modifica (E Bean) throws SQLException;
 
     public E visualizza (String nome) throws SQLException;
 
-    public ArrayList<E> visualizzaElenco() throws SQLException,RicercaFallita;
+    public ArrayList<E> visualizzaElenco() throws SQLException;
 
 
 }
