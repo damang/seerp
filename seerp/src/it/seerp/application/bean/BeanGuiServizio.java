@@ -24,6 +24,8 @@ public class BeanGuiServizio {
     private JTextArea note;
     private ArrayList<BeanGuiContratto> listContratti;
 
+    public BeanGuiServizio() {    }
+
     public BeanGuiServizio(JTextField descrizione, JTextField disponibilita, JTextField quantita, JTextField tipo, JTextField prezzo, JTextField idServizio, JTextField iva, JTextArea note) {
         this.descrizione = descrizione;
         this.disponibilita = disponibilita;
