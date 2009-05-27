@@ -12,19 +12,27 @@ import java.util.ArrayList;
  * @author Luisa
  */
 public class Agenda {
-    ArrayList<Evento> agenda= new ArrayList<Evento>();
+    ArrayList<Evento> listEventi= new ArrayList<Evento>();
     Integer idAgenda;
+
+    public Agenda(Integer idAgenda, ArrayList<Evento> listEventi) {
+        this.idAgenda = idAgenda;
+        this.listEventi=listEventi;
+    }
+
+    
 
     public Agenda(Integer idAgenda) {
         this.idAgenda = idAgenda;
     }
 
+
     public ArrayList<Evento> getAgenda() {
-        return agenda;
+        return listEventi;
     }
 
     public void setAgenda(ArrayList<Evento> agenda) {
-        this.agenda = agenda;
+        this.listEventi = agenda;
     }
 
     public Integer getIdAgenda() {
@@ -34,5 +42,9 @@ public class Agenda {
     public void setIdAgenda(Integer idAgenda) {
         this.idAgenda = idAgenda;
     }
+      public void removeServizio(Evento c){
+     listEventi.remove(c);}
+    public void addServizio(Evento c){
+     listEventi.add(c);}
 
 }
