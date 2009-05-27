@@ -22,6 +22,8 @@ public class BinGuiServizio {
     private JTextField iva;
     private JTextArea note;
 
+    public BinGuiServizio() {}
+
     public JTextField getDescrizione() {
         return descrizione;
     }
