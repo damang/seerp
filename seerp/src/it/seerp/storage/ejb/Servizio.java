@@ -4,6 +4,8 @@
  */
 package it.seerp.storage.ejb;
 
+import java.util.ArrayList;
+
 /**
  * classe che si occupa di gestire le informazioni sui servizi
  * @author Luisa
@@ -18,6 +20,16 @@ public class Servizio {
     private Integer idServizio;
     private Integer iva;
     private String note;
+   private ArrayList<Contratto> listContratti;
+
+
+    public ArrayList<Contratto> getListServizio() {
+        return  listContratti;
+    }
+
+    public void setListServizio(ArrayList<Contratto> listServizio) {
+        this. listContratti = listServizio;
+    }
 
 
 
@@ -147,4 +159,8 @@ public class Servizio {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+     public void removeContratto(Contratto c){
+     listContratti.remove(c);}
+    public void addContratto(Contratto c){
+     listContratti.add(c);}
 }
