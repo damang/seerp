@@ -47,6 +47,7 @@ public class BeanGuiBanca {
      */
     public JTextField getCab() {
         return cab;
+
     }
 
     /**
