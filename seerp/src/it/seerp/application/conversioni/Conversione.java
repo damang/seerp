@@ -47,7 +47,6 @@ public class Conversione {
         return gui;
     }
 
-
     public Evento conversioneEvento(BeanGuiEvento pGui){
         Evento evento = new Evento(pGui.getLuogo().getText(), pGui.getTema().getText(), pGui.getNome().getText(), pGui.getNote().getText(),
                 Date.valueOf(pGui.getData().getText()), Time.valueOf(pGui.getOra().getText()),
@@ -106,5 +105,4 @@ public class Conversione {
         gui.setNote(b);
         return gui;
     }
-
 }
