@@ -18,15 +18,15 @@ import java.util.ArrayList;
  *
  * @author Luisa
  */
-public interface OpeEntity<E, BG> {
+public interface OpeEntity<E> {
 
     public void inserimento (E Bean) throws SQLException, DatiErrati, DatiDuplicati;
 
-    public  BG modifica (E Bean) throws SQLException,DatiErrati;
+    public  E modifica (E Bean) throws SQLException,DatiErrati;
 
-    public BG visualizza (E Bean) throws SQLException;
+    public E visualizza (String nome) throws SQLException;
 
-    public ArrayList<BG> ricerca() throws SQLException,RicercaFallita;
+    public ArrayList<E> visualizzaElenco() throws SQLException,RicercaFallita;
 
-    public void elimina (E Bean) throws SQLException, CancellazioneFallita;
+    public E elimina (E Bean) throws SQLException, CancellazioneFallita;
 }
