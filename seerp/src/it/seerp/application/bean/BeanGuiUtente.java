@@ -24,6 +24,10 @@ public class BeanGuiUtente {
     private JTextArea txtNote;
     private JTextField txtNotifica;
 
+    public BeanGuiUtente() {
+       
+    }
+
 
 
     public BeanGuiUtente(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote,JTextField txtNotifica) {

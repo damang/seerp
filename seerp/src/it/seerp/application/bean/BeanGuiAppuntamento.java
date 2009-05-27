@@ -11,7 +11,7 @@ import javax.swing.JTextField;
  *
  * @author matteo
  */
-class BeanGuiAppuntamento {
+public class BeanGuiAppuntamento {
 
     private JTextField data;
     private JTextField ora;
