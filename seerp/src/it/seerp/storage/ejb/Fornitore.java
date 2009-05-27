@@ -5,11 +5,18 @@
 
 package it.seerp.storage.ejb;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author matteo
  */
 public class Fornitore extends ExtraAzienda {
+
+    public Fornitore(Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva, String fax, String ruolo, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti, Integer idFornitore) {
+        super(idExtraAzienda, cognome, nome, ragioneSociale, pIva, fax, ruolo, listAppuntamenti, listContratti);
+        this.idFornitore = idFornitore;
+    }
 
     private Integer idFornitore;
 

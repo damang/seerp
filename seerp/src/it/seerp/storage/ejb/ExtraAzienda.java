@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package it.seerp.storage.ejb;
+
+import java.util.ArrayList;
 
 /**
  *
@@ -18,7 +19,37 @@ public class ExtraAzienda extends Utente {
     private String pIva;
     private String fax;
     private String ruolo;
-  
+    private ArrayList<Appuntamento> listAppuntamenti;
+    private ArrayList<Contratto> listContratti;
+
+    public ArrayList<Contratto> getListContratti() {
+        return listContratti;
+    }
+
+    public ExtraAzienda(Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva, String fax, String ruolo, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti) {
+        this.idExtraAzienda = idExtraAzienda;
+        this.cognome = cognome;
+        this.nome = nome;
+        this.ragioneSociale = ragioneSociale;
+        this.pIva = pIva;
+        this.fax = fax;
+        this.ruolo = ruolo;
+        this.listAppuntamenti = listAppuntamenti;
+        this.listContratti = listContratti;
+    }
+
+    public void setListContratti(ArrayList<Contratto> listContratti) {
+        this.listContratti = listContratti;
+    }
+
+    public ArrayList<Appuntamento> getListAppuntamenti() {
+        return listAppuntamenti;
+    }
+
+    public void setListAppuntamenti(ArrayList<Appuntamento> listAppuntamenti) {
+        this.listAppuntamenti = listAppuntamenti;
+    }
+
     /**
      * restituisce il cognome dell'ExtraAzienda
      * @return una strinfa contenente il cognome
@@ -130,5 +161,13 @@ public class ExtraAzienda extends Utente {
     public void setRuolo(String ruolo) {
         this.ruolo = ruolo;
     }
+     public void removeAppuntamento(Appuntamento p){
+     listAppuntamenti.remove(p);}
+    public void addAppuntamento(Appuntamento p){
+     listAppuntamenti.add(p);}
+       public void removeContratto(Contratto c){
+     listContratti.remove(c);}
+    public void addContratto(Contratto c){
+     listContratti.add(c);}
 
 }

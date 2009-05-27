@@ -4,6 +4,8 @@
  */
 package it.seerp.storage.ejb;
 
+import java.util.ArrayList;
+
 /**
  * classe che contiene le informazione sui servizi associati ad una fattura
  * @author Luisa
@@ -14,9 +16,25 @@ public class ServizioAssociatoFattura {
     private Integer servizio;
     private Integer fattura;
     private Integer contratto;
-        private String note;
+    private String note;
+    private ArrayList<DDT> listDDT;
 
+    public ServizioAssociatoFattura(Integer quantita, Integer servizio, Integer fattura, Integer contratto, String note, ArrayList<DDT> listDDT) {
+        this.quantita = quantita;
+        this.servizio = servizio;
+        this.fattura = fattura;
+        this.contratto = contratto;
+        this.note = note;
+        this.listDDT = listDDT;
+    }
 
+    public ArrayList<DDT> getListDDT() {
+        return listDDT;
+    }
+
+    public void setListDDT(ArrayList<DDT> listDDT) {
+        this.listDDT = listDDT;
+    }
 
     /**
      * metodo che restutisce l'id del contratto a cui sono associati dei servizi di una determinata fattura
@@ -33,7 +51,7 @@ public class ServizioAssociatoFattura {
     public void setContratto(Integer contratto) {
         this.contratto = contratto;
     }
-  
+
     /**
      *  metodo che restituisce l'id della fattura alla quale sono associati determinati servizi di un contratto
      * @return  l'id della fattura alla quale sono associati determinati servizi di un contratto
@@ -98,4 +116,9 @@ public class ServizioAssociatoFattura {
     public void setQuantita(Integer quantita) {
         this.quantita = quantita;
     }
+
+      public void removeDDT(DDT c){
+     listDDT.remove(c);}
+    public void addDDT(DDT c){
+     listDDT.add(c);}
 }

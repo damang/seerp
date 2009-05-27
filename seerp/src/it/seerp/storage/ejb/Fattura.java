@@ -5,6 +5,7 @@
 package it.seerp.storage.ejb;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 /**
  * classe gstisce le informazioni sulle fatture
@@ -19,6 +20,36 @@ public class Fattura {
     private Double iva;
     private String tipo;
     private String note;
+    private ArrayList<NotaDiCredito> listNotaDiCredito;
+    private ArrayList<ServizioAssociato> listServizio;
+
+    public Fattura(Date data, Integer idFattura, Double imponibile, Double importo, Double iva, String tipo, String note, ArrayList<NotaDiCredito> listNoteDiCredito, ArrayList<ServizioAssociato> listServizio) {
+        this.data = data;
+        this.idFattura = idFattura;
+        this.imponibile = imponibile;
+        this.importo = importo;
+        this.iva = iva;
+        this.tipo = tipo;
+        this.note = note;
+        this.listNotaDiCredito = listNoteDiCredito;
+        this.listServizio = listServizio;
+    }
+
+    public ArrayList<NotaDiCredito> getListNote() {
+        return listNotaDiCredito;
+    }
+
+    public void setListNote(ArrayList<NotaDiCredito> listNote) {
+        this.listNotaDiCredito = listNote;
+    }
+
+    public ArrayList<ServizioAssociato> getListServizio() {
+        return listServizio;
+    }
+
+    public void setListServizio(ArrayList<ServizioAssociato> listServizio) {
+        this.listServizio = listServizio;
+    }
 
     /**
      * metodo che restituisce le note della fattura
@@ -131,4 +162,12 @@ public class Fattura {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+     public void removeNotaDiCredito(NotaDiCredito c){
+     listNotaDiCredito.remove(c);}
+    public void addNotaDiCredito(NotaDiCredito c){
+     listNotaDiCredito.add(c);}
+     public void removeServizio(ServizioAssociato c){
+     listServizio.remove(c);}
+    public void addServizio(ServizioAssociato c){
+     listServizio.add(c);}
 }

@@ -5,6 +5,7 @@
 package it.seerp.storage.ejb;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 /**
  * la classe gestisce le informazioni sui documenti di trasporto
@@ -19,6 +20,26 @@ public class DDT {
     private Integer numero;
     private String note;
     private Integer fattureEmesse;
+    private ArrayList<ServizioAssociatoFattura> listServizio;
+
+    public DDT(String merce, Integer quantita, Date data, Integer idDDT, Integer numero, String note, Integer fattureEmesse, ArrayList<ServizioAssociatoFattura> listServizio) {
+        this.merce = merce;
+        this.quantita = quantita;
+        this.data = data;
+        this.idDDT = idDDT;
+        this.numero = numero;
+        this.note = note;
+        this.fattureEmesse = fattureEmesse;
+        this.listServizio = listServizio;
+    }
+
+    public ArrayList<ServizioAssociatoFattura> getListServizio() {
+        return listServizio;
+    }
+
+    public void setListServizio(ArrayList<ServizioAssociatoFattura> listServizio) {
+        this.listServizio = listServizio;
+    }
 
     /**
      * metodo che restituisce l'identificativo della fattura a cui il DDT è associato
@@ -131,4 +152,9 @@ public class DDT {
     public void setNote(String note) {
         this.note = note;
     }
+
+      public void removeServzio(ServizioAssociatoFattura s){
+     listServizio.remove(s);}
+    public void addServizio(ServizioAssociatoFattura s){
+     listServizio.add(s);}
 }

@@ -4,25 +4,41 @@
  */
 package it.seerp.storage.ejb;
 
+import java.sql.Date;
+import java.util.ArrayList;
+
 /**
  * classe che gestisce le informazioni su una fattura emessa
  * @author Luisa
  */
 public class FatturaEmessa extends Fattura {
 
-    private String note;
     private Integer idFatturaEmessa;
     private Integer numeroProgressivo;
     private Double ivaDebito;
-    private String tipo;
+    private String tipoFatt;
+    private ArrayList<DDT> listDDT;
+
+    public FatturaEmessa(Date data, Integer idFattura, Double imponibile, Double importo, Double iva, String tipoFat, String note, ArrayList<NotaDiCredito> listNote, ArrayList<ServizioAssociato> listServizio, Integer idFatturaEmessa, Integer numeroProgressivo, Double ivaDebito, String tipo, ArrayList<DDT> listDDT) {
+        super(data, idFattura, imponibile, importo, iva, tipo, note, listNote, listServizio);
+        this.idFatturaEmessa = idFatturaEmessa;
+        this.numeroProgressivo = numeroProgressivo;
+        this.ivaDebito = ivaDebito;
+        this.tipoFatt = tipoFat;
+        this.listDDT = listDDT;
+    }
+
+    public ArrayList<DDT> getListDDT() {
+        return listDDT;
+    }
+
+    public void setListDDT(ArrayList<DDT> listDDT) {
+        this.listDDT = listDDT;
+    }
 
     /**
      * cotruttore della classe FatturaEmessa
      */
-    public FatturaEmessa() {
-        super();
-    }
-
     /**
      * metodo che restituisce l'identificativo della fattura
      * @return l'identificativo della fattura
@@ -44,7 +60,7 @@ public class FatturaEmessa extends Fattura {
      * @return il tipo della fattura
      */
     public String getTipo() {
-        return tipo;
+        return tipoFatt;
     }
 
     /**
@@ -52,7 +68,7 @@ public class FatturaEmessa extends Fattura {
      * @param tipo il tipo della fattura
      */
     public void setTipo(String tipo) {
-        this.tipo = tipo;
+        this.tipoFatt = tipo;
     }
 
     /**
@@ -86,22 +102,9 @@ public class FatturaEmessa extends Fattura {
     public void setNumeroProgressivo(Integer numeroProgressivo) {
         this.numeroProgressivo = numeroProgressivo;
     }
+      public void removeDDT(DDT c){
+     listDDT.remove(c);}
+    public void addDDT(DDT c){
+     listDDT.add(c);}
 
-    /**
-
-    /**
-     *  metodo che restituisce le note dell'azienda
-     * @return le note dell'azienda
-     */
-    public String getNote() {
-        return note;
-    }
-
-    /**
-     * metodo che setta le note dell'azienda
-     * @param note le note dell'azienda
-     */
-    public void setNote(String note) {
-        this.note = note;
-    }
 }

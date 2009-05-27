@@ -5,6 +5,8 @@
 
 package it.seerp.storage.ejb;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author matteo
@@ -16,6 +18,42 @@ public class Personale extends Utente {
     private String nome;
     private String codiceFiscale;
     private String tipo;
+    private ArrayList<Permesso> listPermessi;
+     private ArrayList<Ruolo> listRuoli;
+
+    public ArrayList<Permesso> getListaPermessi() {
+        return listPermessi;
+    }
+
+    public void setListaPermessi(ArrayList<Permesso> listaPermessi) {
+        this.listPermessi = listaPermessi;
+    }
+
+    public ArrayList<Ruolo> getListaRuoli() {
+        return listRuoli;
+    }
+
+    public void setListaRuoli(ArrayList<Ruolo> listaRuoli) {
+        this.listRuoli = listaRuoli;
+    }
+
+    public ArrayList<Permesso> getListIncarichi() {
+        return  listPermessi;
+    }
+
+    public void setListIncarichi(ArrayList<Permesso> listIncarichi) {
+        this. listPermessi = listIncarichi;
+    }
+
+    public Personale(Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo, ArrayList<Permesso> listp,  ArrayList<Ruolo> listr) {
+        this.idPersonale = idPersonale;
+        this.cognome = cognome;
+        this.nome = nome;
+        this.codiceFiscale = codiceFiscale;
+        this.tipo = tipo;
+        this. listPermessi = listp;
+        this.listRuoli=listr;
+    }
 
     /**
      * setta il codice fiscale del personale
@@ -96,5 +134,12 @@ public class Personale extends Utente {
      public Integer getIdPersonale() {
         return idPersonale;
     }
-
+       public void removeRuolo(Ruolo c){
+     listRuoli.remove(c);}
+    public void addRuolo(Ruolo c){
+     listRuoli.add(c);}
+   public void removePermesso(Permesso c){
+     listPermessi.remove(c);}
+    public void addPermesso(Permesso c){
+     listPermessi.add(c);}
 }
