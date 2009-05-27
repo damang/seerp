@@ -1,5 +1,6 @@
 package it.seerp.application.bean;
 
+import java.util.ArrayList;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -18,6 +19,15 @@ private JTextArea note;
     private JTextField numeroProgressivo;
     private JTextField ivaDebito;
     private JTextField tipo;
+     private ArrayList<BeanGuiDDT> listDDT;
+
+    public ArrayList<BeanGuiDDT> getListDDT() {
+        return listDDT;
+    }
+
+    public void setListDDT(ArrayList<BeanGuiDDT> listDDT) {
+        this.listDDT = listDDT;
+    }
 
     /**
      * metodo che
@@ -98,4 +108,8 @@ private JTextArea note;
     public void setTipo(JTextField tipo) {
         this.tipo = tipo;
     }
+        public void removeDDT(BeanGuiDDT c){
+     listDDT.remove(c);}
+    public void addDDT(BeanGuiDDT c){
+     listDDT.add(c);}
 }

@@ -4,6 +4,7 @@
  */
 package it.seerp.application.bean;
 
+import java.util.ArrayList;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -18,7 +19,24 @@ public class BeanGuiServizioAssociatoFattura {
     private JTextField fattura;
     private JTextField contratto;
     private JTextArea note;
+    private ArrayList<BeanGuiDDT> listDDT;
 
+    public BeanGuiServizioAssociatoFattura(JTextField quantita, JTextField servizio, JTextField fattura, JTextField contratto, JTextArea note, ArrayList<BeanGuiDDT> listDDT) {
+        this.quantita = quantita;
+        this.servizio = servizio;
+        this.fattura = fattura;
+        this.contratto = contratto;
+        this.note = note;
+        this.listDDT = listDDT;
+    }
+
+    public ArrayList<BeanGuiDDT> getListDDT() {
+        return listDDT;
+    }
+
+    public void setListDDT(ArrayList<BeanGuiDDT> listDDT) {
+        this.listDDT = listDDT;
+    }
     /**
      * metodo che restituisce l'identificativo del contratto dal campo associato
      * @return identificativo del contratto

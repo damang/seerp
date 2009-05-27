@@ -5,6 +5,7 @@
 
 package it.seerp.application.bean;
 
+import java.util.ArrayList;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -20,6 +21,20 @@ public class BeanGuiFattura {
     private JTextField iva;
     private JTextField tipo;
     private JTextArea note;
+      private ArrayList<BeanGuiNotaDiCredito> listNotaDiCredito;
+
+    public BeanGuiFattura(JTextField data, JTextField idFattura, JTextField imponibile, JTextField importo, JTextField iva, JTextField tipo, JTextArea note, ArrayList<BeanGuiNotaDiCredito> listNotaDiCredito, ArrayList<BeanGuiServizioAssociato> listServizio) {
+        this.data = data;
+        this.idFattura = idFattura;
+        this.imponibile = imponibile;
+        this.importo = importo;
+        this.iva = iva;
+        this.tipo = tipo;
+        this.note = note;
+        this.listNotaDiCredito = listNotaDiCredito;
+        this.listServizio = listServizio;
+    }
+    private ArrayList<BeanGuiServizioAssociato> listServizio;
 
     /**
      * metodo che
@@ -132,5 +147,8 @@ public class BeanGuiFattura {
     public void setTipo(JTextField tipo) {
         this.tipo = tipo;
     }
-
+  public void removeServizio(BeanGuiServizioAssociato c){
+     listServizio.remove(c);}
+    public void addServizio(BeanGuiServizioAssociato c){
+     listServizio.add(c);}
 }

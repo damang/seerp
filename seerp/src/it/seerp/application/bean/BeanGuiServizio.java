@@ -5,6 +5,7 @@
 
 package it.seerp.application.bean;
 
+import java.util.ArrayList;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -21,6 +22,20 @@ public class BeanGuiServizio {
     private JTextField idServizio;
     private JTextField iva;
     private JTextArea note;
+    private ArrayList<BeanGuiContratto> listContratti;
+
+
+    public ArrayList<BeanGuiContratto> getListContratti() {
+        return listContratti;
+    }
+
+    public void setListContratti(ArrayList<BeanGuiContratto> listContratti) {
+        this.listContratti = listContratti;
+    }
+      public void removeContratto(BeanGuiContratto c){
+     listContratti.remove(c);}
+    public void addContratto(BeanGuiContratto c){
+     listContratti.add(c);}
 
     public BeanGuiServizio(JTextField descrizione, JTextField disponibilita, JTextField quantita, JTextField tipo, JTextField prezzo, JTextField idServizio, JTextField iva, JTextArea note) {
         this.descrizione = descrizione;
@@ -32,6 +47,7 @@ public class BeanGuiServizio {
         this.iva = iva;
         this.note = note;
     }
+
 
     public JTextField getDescrizione() {
         return descrizione;
