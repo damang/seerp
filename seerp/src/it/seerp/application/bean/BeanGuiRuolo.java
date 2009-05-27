@@ -12,7 +12,7 @@ import javax.swing.JTextField;
  *
  * @author matteo
  */
-class BeanGuiRuolo {
+public class BeanGuiRuolo {
 
     private ArrayList<BeanGuiPersonale> listPersonale;
     private ArrayList<BeanGuiPermesso> listPermessi;

@@ -33,6 +33,18 @@ public class Utente {
         this.visible=v;
     }
 
+    public void setVisible(Boolean visible) {
+        this.visible = visible;
+    }
+    
+    
+
+    public Boolean getVisible() {
+        return visible;
+    }
+
+
+
     /**
      * ritorne le note inserite
      * @return una string contentente le note

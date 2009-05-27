@@ -39,6 +39,24 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
         this.listContratti = listContratti;
     }
 
+    public ArrayList<BeanGuiAppuntamento> getListAppuntamenti() {
+        return listAppuntamenti;
+    }
+
+    public ArrayList<BeanGuiContratto> getListContratti() {
+        return listContratti;
+    }
+
+    public void setListAppuntamenti(ArrayList<BeanGuiAppuntamento> listAppuntamenti) {
+        this.listAppuntamenti = listAppuntamenti;
+    }
+
+    public void setListContratti(ArrayList<BeanGuiContratto> listContratti) {
+        this.listContratti = listContratti;
+    }
+
+    
+
     /**
      *
      * @param cmbRuolo

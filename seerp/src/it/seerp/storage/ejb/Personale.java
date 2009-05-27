@@ -50,15 +50,7 @@ public class Personale extends Utente {
         this.listRuoli = listaRuoli;
     }
 
-    public ArrayList<Permesso> getListIncarichi() {
-        return  listPermessi;
-    }
-
-    public void setListIncarichi(ArrayList<Permesso> listIncarichi) {
-        this. listPermessi = listIncarichi;
-    }
-
-     /**
+   /**
      * setta il codice fiscale del personale
      * @param codiceFiscale di tipo stringa
      */

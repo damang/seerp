@@ -2,12 +2,20 @@ package it.seerp.application.conversioni;
 
 import it.seerp.application.bean.BeanGuiContratto;
 import it.seerp.application.bean.BeanGuiEvento;
+import it.seerp.application.bean.BeanGuiPermesso;
+import it.seerp.application.bean.BeanGuiPersonale;
 import it.seerp.application.bean.BeanGuiServizio;
+import it.seerp.application.bean.BeanGuiUtente;
 import it.seerp.storage.ejb.Contratto;
 import it.seerp.storage.ejb.Evento;
+import it.seerp.storage.ejb.Permesso;
+import it.seerp.storage.ejb.Personale;
+import it.seerp.storage.ejb.Ruolo;
 import it.seerp.storage.ejb.Servizio;
+import it.seerp.storage.ejb.Utente;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -106,4 +114,5 @@ public class Conversione {
         gui.setNote(b);
         return gui;
     }
+
 }
