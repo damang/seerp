@@ -16,19 +16,14 @@ public interface GestioneAreaPersonale <E extends Utente,U extends BeanGuiUtente
      * di un utente
      * @param username:stringa di caratteri che rappresenta l'username dell'utente
      */
-    public void visualizzaDati(String username);
+    public BeanGuiUtente visualizzaDati(Utente user);
 
     /**
      * è un metodo che permette di modificare i dati personali di un utente
      * @param user: oggetto contenente i dati dell'utente
      */
-    public void modifica(BeanGuiUtente user);
-
-    /**
-     * è un metodo che permette di modificare la password dell'utente
-     * @param user:oggetto contenente i dati dell'utente
-     */
-    public void modificaPassword(BeanGuiUtente user);
+   
+    public BeanGuiUtente modificaPassword(BeanGuiUtente user);
 
     /**
      * è un metodo che permette di visualizzari tutti i contratti

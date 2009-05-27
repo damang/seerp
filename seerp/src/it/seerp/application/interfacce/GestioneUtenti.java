@@ -45,4 +45,12 @@ public interface GestioneUtenti<E extends Utente,U extends BeanGuiUtente> {
      */
     public void inserisci(BeanGuiUtente user);
 
+     /**
+     * è un metodo che permette di modificare la password dell'utente
+     * @param user:oggetto contenente i dati dell'utente
+     */
+    public BeanGuiUtente modifica(BeanGuiUtente user);
+
+
+
 }
