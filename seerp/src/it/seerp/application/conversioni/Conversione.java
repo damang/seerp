@@ -57,6 +57,7 @@ public class Conversione {
     public BeanGuiEvento conversioneEvento(Evento e){
         BeanGuiEvento gui = new BeanGuiEvento();
         JTextField a = new JTextField();
+        JTextArea b = new JTextArea();
         a.setText(e.getLuogo());
         gui.setLuogo(a);
         a.setText(e.getTema());
@@ -64,7 +65,7 @@ public class Conversione {
         a.setText(e.getNome());
         gui.setNome(a);
         a.setText(e.getNote());
-        gui.setNote(a);
+        gui.setNote(b);
         a.setText(e.getData().toString());
         gui.setData(a);
         a.setText(e.getOra().toString());
