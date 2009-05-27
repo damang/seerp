@@ -32,6 +32,8 @@ public class BeanGuiEvento {
         this.agenda = agenda;
     }
 
+    public BeanGuiEvento() {}
+
     
 
     public JTextField getAgenda() {
