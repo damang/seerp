@@ -5,6 +5,7 @@
 
 package it.seerp.application.bean;
 
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -12,6 +13,13 @@ import javax.swing.JTextField;
  * @author matteo
  */
 public class BeanGuiResponsabile extends BeanGuiUtente {
+
+    public BeanGuiResponsabile(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField idResponsabileTxt) {
+        super(idUtenteTxt, txtUsername, txtPassword, txtCittà, txtProvincia, txtTelefono, txtEmail, txtNote);
+        this.idResponsabileTxt = idResponsabileTxt;
+    }
+
+    
 
     private JTextField idResponsabileTxt;
 

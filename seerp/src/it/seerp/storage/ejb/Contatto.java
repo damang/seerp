@@ -13,8 +13,8 @@ import java.util.ArrayList;
  */
 public class Contatto extends ExtraAzienda {
 
-    public Contatto(Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva, String fax, String ruolo, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti, Integer idContatto, Integer feedback) {
-        super(idExtraAzienda, cognome, nome, ragioneSociale, pIva, fax, ruolo, listAppuntamenti, listContratti);
+    public Contatto(Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String note, Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva, String fax, String ruolo, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti, Integer idContatto, Integer feedback) {
+        super(idUtente, username, password, città, provincia, telefono, email, note, idExtraAzienda, cognome, nome, ragioneSociale, pIva, fax, ruolo, listAppuntamenti, listContratti);
         this.idContatto = idContatto;
         this.feedback = feedback;
     }

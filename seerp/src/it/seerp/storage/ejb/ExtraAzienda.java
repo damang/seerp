@@ -22,11 +22,8 @@ public class ExtraAzienda extends Utente {
     private ArrayList<Appuntamento> listAppuntamenti;
     private ArrayList<Contratto> listContratti;
 
-    public ArrayList<Contratto> getListContratti() {
-        return listContratti;
-    }
-
-    public ExtraAzienda(Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva, String fax, String ruolo, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti) {
+    public ExtraAzienda(Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String note, Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva, String fax, String ruolo, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti) {
+        super(idUtente, username, password, città, provincia, telefono, email, note);
         this.idExtraAzienda = idExtraAzienda;
         this.cognome = cognome;
         this.nome = nome;
@@ -36,6 +33,12 @@ public class ExtraAzienda extends Utente {
         this.ruolo = ruolo;
         this.listAppuntamenti = listAppuntamenti;
         this.listContratti = listContratti;
+    }
+
+    
+
+    public ArrayList<Contratto> getListContratti() {
+        return listContratti;
     }
 
     public void setListContratti(ArrayList<Contratto> listContratti) {

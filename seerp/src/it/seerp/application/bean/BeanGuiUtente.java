@@ -23,6 +23,17 @@ public class BeanGuiUtente {
     private JTextField txtEmail;
     private JTextArea txtNote;
 
+    public BeanGuiUtente(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote) {
+        this.idUtenteTxt = idUtenteTxt;
+        this.txtUsername = txtUsername;
+        this.txtPassword = txtPassword;
+        this.txtCittà = txtCittà;
+        this.txtProvincia = txtProvincia;
+        this.txtTelefono = txtTelefono;
+        this.txtEmail = txtEmail;
+        this.txtNote = txtNote;
+    }
+
     /**
      *
      * @param idUtenteTxt

@@ -19,8 +19,21 @@ public class Personale extends Utente {
     private String codiceFiscale;
     private String tipo;
     private ArrayList<Permesso> listPermessi;
-     private ArrayList<Ruolo> listRuoli;
+    private ArrayList<Ruolo> listRuoli;
 
+    public Personale(Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String note, Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo, ArrayList<Permesso> listPermessi, ArrayList<Ruolo> listRuoli) {
+        super(idUtente, username, password, città, provincia, telefono, email, note);
+        this.idPersonale = idPersonale;
+        this.cognome = cognome;
+        this.nome = nome;
+        this.codiceFiscale = codiceFiscale;
+        this.tipo = tipo;
+        this.listPermessi = listPermessi;
+        this.listRuoli = listRuoli;
+    }
+
+    
+     
     public ArrayList<Permesso> getListaPermessi() {
         return listPermessi;
     }
@@ -45,17 +58,7 @@ public class Personale extends Utente {
         this. listPermessi = listIncarichi;
     }
 
-    public Personale(Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo, ArrayList<Permesso> listp,  ArrayList<Ruolo> listr) {
-        this.idPersonale = idPersonale;
-        this.cognome = cognome;
-        this.nome = nome;
-        this.codiceFiscale = codiceFiscale;
-        this.tipo = tipo;
-        this. listPermessi = listp;
-        this.listRuoli=listr;
-    }
-
-    /**
+     /**
      * setta il codice fiscale del personale
      * @param codiceFiscale di tipo stringa
      */
