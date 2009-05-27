@@ -13,10 +13,12 @@ import java.util.ArrayList;
  */
 public class Cliente extends ExtraAzienda {
 
-    public Cliente(Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva, String fax, String ruolo, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti, Integer idCliente) {
-        super(idExtraAzienda, cognome, nome, ragioneSociale, pIva, fax, ruolo, listAppuntamenti, listContratti);
+    public Cliente(Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String note, Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva, String fax, String ruolo, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti, Integer idCliente) {
+        super(idUtente, username, password, città, provincia, telefono, email, note, idExtraAzienda, cognome, nome, ragioneSociale, pIva, fax, ruolo, listAppuntamenti, listContratti);
         this.idCliente = idCliente;
     }
+
+  
 
     private Integer idCliente;
    

@@ -13,15 +13,12 @@ import java.util.ArrayList;
  */
 public class Responsabile extends Personale {
 
-    public Responsabile(Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo, ArrayList<Permesso> listp, ArrayList<Ruolo> listr, Integer idResponsabile) {
-        super(idPersonale, cognome, nome, codiceFiscale, tipo, listp, listr);
+    public Responsabile(Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String note, Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo, ArrayList<Permesso> listPermessi, ArrayList<Ruolo> listRuoli, Integer idResponsabile) {
+        super(idUtente, username, password, città, provincia, telefono, email, note, idPersonale, cognome, nome, codiceFiscale, tipo, listPermessi, listRuoli);
         this.idResponsabile = idResponsabile;
     }
 
- 
-    
-
-    private Integer idResponsabile;
+   private Integer idResponsabile;
 
     /**
      * restituisce l'idetificatore del Responsabile

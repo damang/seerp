@@ -34,6 +34,23 @@ public class Banca {
         this.listPagamento = listPagamento;
     }
 
+    public Banca(String agenzia, String abi, String cab, String città, String provincia, String indirizzo, String cap, String filiale, String nazione, Double importoInDare, Double importoInAvere, ArrayList<Pagamento> listPagamento) {
+        this.agenzia = agenzia;
+        this.abi = abi;
+        this.cab = cab;
+        this.città = città;
+        this.provincia = provincia;
+        this.indirizzo = indirizzo;
+        this.cap = cap;
+        this.filiale = filiale;
+        this.nazione = nazione;
+        this.importoInDare = importoInDare;
+        this.importoInAvere = importoInAvere;
+        this.listPagamento = listPagamento;
+    }
+
+    
+
     /**
      *
      * @return

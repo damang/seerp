@@ -20,6 +20,17 @@ public class Utente {
     private String email;
     private String note;
 
+    public Utente(Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String note) {
+        this.idUtente = idUtente;
+        this.username = username;
+        this.password = password;
+        this.città = città;
+        this.provincia = provincia;
+        this.telefono = telefono;
+        this.email = email;
+        this.note = note;
+    }
+
     /**
      * ritorne le note inserite
      * @return una string contentente le note

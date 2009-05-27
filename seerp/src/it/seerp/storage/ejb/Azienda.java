@@ -21,6 +21,20 @@ public class Azienda {
     private int idAzienda;
     private String note;
 
+    public Azienda(String città, String email, String fax, String inidirizzo, String nazione, String pIVA, String ragioneSociale, String telefono, int idAzienda) {
+        this.città = città;
+        this.email = email;
+        this.fax = fax;
+        this.inidirizzo = inidirizzo;
+        this.nazione = nazione;
+        this.pIVA = pIVA;
+        this.ragioneSociale = ragioneSociale;
+        this.telefono = telefono;
+        this.idAzienda = idAzienda;
+    }
+
+    
+
     /**
      * il metodo che  restituisce  note dell'azienda
      * @return note di tipo string

@@ -1,8 +1,9 @@
 
 package it.seerp.application.bean;
 
+import java.util.ArrayList;
 import javax.swing.JComboBox;
-import javax.swing.JList;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -16,7 +17,21 @@ public class BeanGuiPersonale extends BeanGuiUtente {
     private JTextField txtNome;
     private JTextField txtCodiceFiscale;
     private JComboBox cmbTipo;
+    private ArrayList<BeanGuiPermesso> listPermessi;
+    private ArrayList<BeanGuiRuolo> listRuoli;
 
+    public BeanGuiPersonale(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField idPersonaleTxt, JTextField txtCognome, JTextField txtNome, JTextField txtCodiceFiscale, JComboBox cmbTipo, ArrayList<BeanGuiPermesso> listPermessi, ArrayList<BeanGuiRuolo> listRuoli) {
+        super(idUtenteTxt, txtUsername, txtPassword, txtCittà, txtProvincia, txtTelefono, txtEmail, txtNote);
+        this.idPersonaleTxt = idPersonaleTxt;
+        this.txtCognome = txtCognome;
+        this.txtNome = txtNome;
+        this.txtCodiceFiscale = txtCodiceFiscale;
+        this.cmbTipo = cmbTipo;
+        this.listPermessi = listPermessi;
+        this.listRuoli = listRuoli;
+    }
+
+    
     /**
      *
      * @return

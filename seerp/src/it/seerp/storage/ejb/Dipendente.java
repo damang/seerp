@@ -15,18 +15,16 @@ public class Dipendente extends Personale{
 
      private Integer idDipendente;
      private ArrayList<Appuntamento> listAppuntamenti;
-         private ArrayList<Contratto> listContratti;
+     private ArrayList<Contratto> listContratti;
 
-    public Dipendente(Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo, ArrayList<Permesso> listp, ArrayList<Ruolo> listr, Integer idDipendente, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti) {
-        super(idPersonale, cognome, nome, codiceFiscale, tipo, listp, listr);
+    public Dipendente(Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String note, Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo, ArrayList<Permesso> listPermessi, ArrayList<Ruolo> listRuoli, Integer idDipendente, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti) {
+        super(idUtente, username, password, città, provincia, telefono, email, note, idPersonale, cognome, nome, codiceFiscale, tipo, listPermessi, listRuoli);
         this.idDipendente = idDipendente;
         this.listAppuntamenti = listAppuntamenti;
         this.listContratti = listContratti;
     }
 
-
-
-    public void setListContratti(ArrayList<Contratto> listContratti) {
+     public void setListContratti(ArrayList<Contratto> listContratti) {
         this.listContratti = listContratti;
     }
 

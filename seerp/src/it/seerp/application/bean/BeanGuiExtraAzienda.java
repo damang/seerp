@@ -5,6 +5,7 @@
 
 package it.seerp.application.bean;
 
+import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
@@ -21,6 +22,8 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
     private JTextField txtPIva;
     private JTextField txtFax;
     private JComboBox cmbRuolo;
+    private ArrayList<BeanGuiAppuntamento> listAppuntamenti;
+    private ArrayList<BeanGuiContratto> listContratti;
 
     /**
      *
