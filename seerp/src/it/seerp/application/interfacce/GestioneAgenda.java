@@ -7,28 +7,29 @@ import it.seerp.application.Exception.RicercaException;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
+import javax.swing.JTextField;
 
 /**
  *
  * @author Luisa
  */
-public interface GestioneAgenda<E, G> {
+public interface GestioneAgenda<G> {
     //ci vuole l extends???
-    public  ArrayList<E> visualizzaListaEventi()throws RicercaException;
+    public  ArrayList<G> visualizzaListaEventi()throws RicercaException;
 
-    public E visualizzaDettagli(E evento);
+    public G visualizzaDettagli(JTextField nome);
 
-    public void noficaEventi (G BeanGuiEventi);
+    public void notificaEventi (G beanGuiEventi);
 
-    public void inserimento(G BeanGuiEventi) throws InserimentoException;
+    public void inserimento(G beanGuiEventi) throws InserimentoException;
 
-    public void modifica(G BeanGuiEventi) throws ModificaException;
+    public G modifica(G beanGuiEventi) throws ModificaException;
 
-    public ArrayList<E> ricerca(String Nome, String Referente, Date data)throws  RicercaException;
+    public ArrayList<G> ricerca(JTextField Nome, JTextField Referente, JTextField data)throws  RicercaException;
 
-    public ArrayList<E> ricercaPerNome(String Nome) throws  RicercaException;
+    public ArrayList<G> ricercaPerNome(JTextField Nome) throws  RicercaException;
 
-    public ArrayList<E> ricercaPerGiorno(Date giorno)throws  RicercaException;
-
-    public void cancellaEvento(G BeanGuiEventi) throws EliminaException ;
+    public ArrayList<G> ricercaPerGiorno(JTextField giorno)throws  RicercaException;
+//vedre cm e mappata
+    public G cancellaEvento(G beanGuiEventi) throws EliminaException ;
 }
