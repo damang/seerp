@@ -21,8 +21,8 @@ public class Personale extends Utente {
     private ArrayList<Permesso> listPermessi;
     private ArrayList<Ruolo> listRuoli;
 
-    public Personale(Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String note, Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo, ArrayList<Permesso> listPermessi, ArrayList<Ruolo> listRuoli) {
-        super(idUtente, username, password, città, provincia, telefono, email, note);
+    public Personale(Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String note, Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo, ArrayList<Permesso> listPermessi, ArrayList<Ruolo> listRuoli, Boolean v) {
+        super(idUtente, username, password, città, provincia, telefono, email, note,v );
         this.idPersonale = idPersonale;
         this.cognome = cognome;
         this.nome = nome;

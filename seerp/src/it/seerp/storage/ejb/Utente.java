@@ -19,8 +19,9 @@ public class Utente {
     private String telefono;
     private String email;
     private String note;
+    private Boolean visible;
 
-    public Utente(Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String note) {
+    public Utente(Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String note,Boolean v) {
         this.idUtente = idUtente;
         this.username = username;
         this.password = password;
@@ -29,6 +30,7 @@ public class Utente {
         this.telefono = telefono;
         this.email = email;
         this.note = note;
+        this.visible=v;
     }
 
     /**

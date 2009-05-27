@@ -21,6 +21,17 @@ public class NotaDiCredito {
     private Date data;
     private Integer fattureEmesse;
 
+    public NotaDiCredito(String motivazione, Integer nFattura, String note, Double importo, Integer idNotaDiCredito, Double iva, Date data, Integer fattureEmesse) {
+        this.motivazione = motivazione;
+        this.nFattura = nFattura;
+        this.note = note;
+        this.importo = importo;
+        this.idNotaDiCredito = idNotaDiCredito;
+        this.iva = iva;
+        this.data = data;
+        this.fattureEmesse = fattureEmesse;
+    }
+
     /**
      * metodo che restituisce l'identificativo della fattura a cui la nota di credito è associato
      * @return identificativo della fattura a cui la nota di credito è associato

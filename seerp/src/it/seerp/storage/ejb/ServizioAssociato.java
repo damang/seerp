@@ -16,6 +16,14 @@ public class ServizioAssociato {
     private Integer servizio;
     private String note;
 
+    public ServizioAssociato(Integer quantita, Double prezzoUnitario, Integer contratto, Integer servizio, String note) {
+        this.quantita = quantita;
+        this.prezzoUnitario = prezzoUnitario;
+        this.contratto = contratto;
+        this.servizio = servizio;
+        this.note = note;
+    }
+
     /**
      *  metodo che restituisce le note del servizio associato
      * @return note le note del servizio associato

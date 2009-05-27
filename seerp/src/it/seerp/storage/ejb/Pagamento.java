@@ -23,6 +23,19 @@ public class Pagamento {
     private Integer contratto;
     private Integer banca;
 
+    public Pagamento(String note, Date dataScadenza, String descrizione, Double importo, String modalitaPagamento, String stato, String altreInformazioni, Integer idPagamento, Integer contratto, Integer banca) {
+        this.note = note;
+        this.dataScadenza = dataScadenza;
+        this.descrizione = descrizione;
+        this.importo = importo;
+        this.modalitaPagamento = modalitaPagamento;
+        this.stato = stato;
+        this.altreInformazioni = altreInformazioni;
+        this.idPagamento = idPagamento;
+        this.contratto = contratto;
+        this.banca = banca;
+    }
+
     /**
      * metodo che restituisce l'identificativo della banca a cui quel pagamento è asosciato
      * @return l'identificativo della banca a cui quel pagamento è asosciato
