@@ -18,6 +18,13 @@ public class Permesso {
     private ArrayList<Personale> listPersonale;
     private ArrayList<Ruolo> listRuolo;
 
+    public Permesso(Integer idPermesso, String Nome, ArrayList<Personale> listPersonale, ArrayList<Ruolo> listRuolo) {
+        this.idPermesso = idPermesso;
+        this.Nome = Nome;
+        this.listPersonale = listPersonale;
+        this.listRuolo = listRuolo;
+    }
+
     public ArrayList<Ruolo> getListPermessi() {
         return listRuolo;
     }
@@ -34,12 +41,6 @@ public class Permesso {
         this.listPersonale = listPersonale;
     }
 
-    public Permesso(Integer idPermesso, String Nome, ArrayList<Personale> listPersonale, ArrayList<Ruolo> listPermessi) {
-        this.idPermesso = idPermesso;
-        this.Nome = Nome;
-        this.listPersonale = listPersonale;
-        this.listRuolo = listPermessi;
-    }
 
 
 

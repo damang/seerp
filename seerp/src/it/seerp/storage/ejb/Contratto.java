@@ -24,6 +24,19 @@ public class Contratto {
      private ArrayList<Pagamento> listPagamento;
        private ArrayList<Servizio> listServizio;
 
+    public Contratto(String stato, Date data, Integer durata, String tipo, Integer idContratto, String note, Integer dipendente, Integer extraAzienda, ArrayList<Pagamento> listPagamento, ArrayList<Servizio> listServizio) {
+        this.stato = stato;
+        this.data = data;
+        this.durata = durata;
+        this.tipo = tipo;
+        this.idContratto = idContratto;
+        this.note = note;
+        this.dipendente = dipendente;
+        this.extraAzienda = extraAzienda;
+        this.listPagamento = listPagamento;
+        this.listServizio = listServizio;
+    }
+
     public ArrayList<Servizio> getListServizio() {
         return listServizio;
     }

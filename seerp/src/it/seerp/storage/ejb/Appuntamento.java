@@ -19,7 +19,27 @@ public class Appuntamento {
     private String note;
     private Integer dipendente;
     private Integer extraAzienda;
+    private Boolean notifica;
 
+    public Appuntamento(Date data, Time ora, int idAppuntamento, String note, Integer dipendente, Integer extraAzienda, Boolean notifica) {
+        this.data = data;
+        this.ora = ora;
+        this.idAppuntamento = idAppuntamento;
+        this.note = note;
+        this.dipendente = dipendente;
+        this.extraAzienda = extraAzienda;
+        this.notifica = notifica;
+   }
+
+    public Boolean getNotifica() {
+        return notifica;
+    }
+
+    public void setNotifica(Boolean notifica) {
+        this.notifica = notifica;
+    }
+
+ 
     /**
      * metodo che restituisce il dipendente con il quale si deve effettuare l'appuntamento
      * @return: dipendente con il quale si deve effettuare l'appuntamento

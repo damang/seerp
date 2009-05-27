@@ -19,6 +19,15 @@ public class DisponibilitaLiquide {
     private Integer idPagamento;
     private ArrayList<Pagamento> listPagamento;
 
+    public DisponibilitaLiquide(Double importo, String tipo, String note, Integer idDisponibilitaLiquide, Integer idPagamento, ArrayList<Pagamento> listPagamento) {
+        this.importo = importo;
+        this.tipo = tipo;
+        this.note = note;
+        this.idDisponibilitaLiquide = idDisponibilitaLiquide;
+        this.idPagamento = idPagamento;
+        this.listPagamento = listPagamento;
+    }
+
     public ArrayList<Pagamento> getListPagamento() {
         return listPagamento;
     }

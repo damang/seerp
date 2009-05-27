@@ -18,9 +18,19 @@ public class Evento {
     private Time ora;
     private int idEvento;
     private Integer agenda;
+    private Boolean notifica;
 
-    public Evento(String luogo, String tema, String nome, String note, Date data, Time ora, int idEvento, Integer agenda) {
+    public Boolean getNotifica() {
+        return notifica;
+    }
+
+    public void setNotifica(Boolean notifica) {
+        this.notifica = notifica;
+    }
+
+    public Evento(String luogo, String tema, String nome, String note, Date data, Time ora, int idEvento, Integer agenda, Boolean not) {
         this.luogo = luogo;
+        this.notifica=not;
         this.tema = tema;
         this.nome = nome;
         this.note = note;

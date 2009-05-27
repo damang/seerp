@@ -26,15 +26,8 @@ public class Banca {
     private Double importoInAvere;
     private ArrayList<Pagamento> listPagamento;
 
-    public ArrayList<Pagamento> getListPagamento() {
-        return listPagamento;
-    }
 
-    public void setListPagamento(ArrayList<Pagamento> listPagamento) {
-        this.listPagamento = listPagamento;
-    }
-
-    public Banca(String agenzia, String abi, String cab, String città, String provincia, String indirizzo, String cap, String filiale, String nazione, Double importoInDare, Double importoInAvere, ArrayList<Pagamento> listPagamento) {
+      public Banca(String agenzia, String abi, String cab, String città, String provincia, String indirizzo, String cap, String filiale, String nazione, Double importoInDare, Double importoInAvere, ArrayList<Pagamento> listPagamento) {
         this.agenzia = agenzia;
         this.abi = abi;
         this.cab = cab;
@@ -48,6 +41,16 @@ public class Banca {
         this.importoInAvere = importoInAvere;
         this.listPagamento = listPagamento;
     }
+
+    public ArrayList<Pagamento> getListPagamento() {
+        return listPagamento;
+    }
+
+    public void setListPagamento(ArrayList<Pagamento> listPagamento) {
+        this.listPagamento = listPagamento;
+    }
+
+  
 
     
 
