@@ -2,9 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package it.seerp.application.bean;
 
+import java.util.ArrayList;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -14,16 +14,35 @@ import javax.swing.JTextField;
  */
 public class BeanGuiContratto {
 
-     private JTextField stato;
+    private JTextField stato;
     private JTextField data;
     private JTextField durata;
-      private JTextField tipo;
+    private JTextField tipo;
+     private JTextArea note;
     private JTextField idContratto;
-    private JTextArea note;
     private JTextField dipendente;
     private JTextField extraAzienda;
+    private ArrayList<BeanGuiPagamento> listPagamento;
+    private ArrayList<BeanGuiServizio> listServizio;
+
+    public ArrayList<BeanGuiPagamento> getListPagamento() {
+        return listPagamento;
+    }
 
     public BeanGuiContratto() {}
+
+
+    public void setListPagamento(ArrayList<BeanGuiPagamento> listPagamento) {
+        this.listPagamento = listPagamento;
+    }
+
+    public ArrayList<BeanGuiServizio> getListServizio() {
+        return listServizio;
+    }
+
+    public void setListServizio(ArrayList<BeanGuiServizio> listServizio) {
+        this.listServizio = listServizio;
+    }
 
     public BeanGuiContratto(JTextField stato, JTextField data, JTextField durata, JTextField tipo, JTextField idContratto, JTextArea note, JTextField dipendente, JTextField extraAzienda) {
         this.stato = stato;
@@ -102,4 +121,19 @@ public class BeanGuiContratto {
         this.tipo = tipo;
     }
 
+    public void removePagamento(BeanGuiPagamento p) {
+        listPagamento.remove(p);
+    }
+
+    public void addPagamento(BeanGuiPagamento p) {
+        listPagamento.add(p);
+    }
+
+    public void removeServzio(BeanGuiServizio s) {
+        listServizio.remove(s);
+    }
+
+    public void addPagamento(BeanGuiServizio s) {
+        listServizio.add(s);
+    }
 }
