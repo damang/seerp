@@ -22,8 +22,11 @@ public class BeanGuiUtente {
     private JTextField txtTelefono;
     private JTextField txtEmail;
     private JTextArea txtNote;
+    private JTextField txtNotifica;
 
-    public BeanGuiUtente(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote) {
+
+
+    public BeanGuiUtente(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote,JTextField txtNotifica) {
         this.idUtenteTxt = idUtenteTxt;
         this.txtUsername = txtUsername;
         this.txtPassword = txtPassword;
@@ -32,6 +35,15 @@ public class BeanGuiUtente {
         this.txtTelefono = txtTelefono;
         this.txtEmail = txtEmail;
         this.txtNote = txtNote;
+        this.txtNotifica=txtNotifica;
+    }
+
+    public JTextField getTxtNotifica() {
+        return txtNotifica;
+    }
+
+    public void setTxtnotifica(JTextField txtnotifica) {
+        this.txtNotifica = txtnotifica;
     }
 
     /**

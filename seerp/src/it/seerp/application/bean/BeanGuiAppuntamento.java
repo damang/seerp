@@ -20,15 +20,28 @@ class BeanGuiAppuntamento {
     private JTextField dipendente;
 
     private JTextField extraAzienda;
+     private JTextField notifica;
 
-    public BeanGuiAppuntamento(JTextField data, JTextField ora, JTextField idAppuntamento, JTextField note, JTextField dipendente, JTextField extraAzienda) {
+ 
+
+    public BeanGuiAppuntamento(JTextField data, JTextField ora, JTextField idAppuntamento, JTextField note, JTextField dipendente, JTextField extraAzienda,JTextField notifica) {
         this.data = data;
         this.ora = ora;
         this.idAppuntamento = idAppuntamento;
         this.note = note;
         this.dipendente = dipendente;
         this.extraAzienda = extraAzienda;
+        this.notifica=notifica;
     }
+
+       public JTextField getNotifica() {
+        return notifica;
+    }
+
+    public void setNotifica(JTextField notifica) {
+        this.notifica = notifica;
+    }
+
 
     public JTextField getData() {
         return data;

@@ -19,7 +19,15 @@ public class BeanGuiDisponibilitaLiquide {
     private JTextField idDisponibilitaLiquide;
     private JTextField idPagamento;
 
-    /**
+    public BeanGuiDisponibilitaLiquide(JTextField importo, JTextField tipo, JTextArea note, JTextField idDisponibilitaLiquide, JTextField idPagamento) {
+        this.importo = importo;
+        this.tipo = tipo;
+        this.note = note;
+        this.idDisponibilitaLiquide = idDisponibilitaLiquide;
+        this.idPagamento = idPagamento;
+    }
+
+     /**
      * metodo che restituisce l'identificativo delle disponibilita liquide dal campo associato
      * @return l'identificativo delle disponibilita liquide
      */

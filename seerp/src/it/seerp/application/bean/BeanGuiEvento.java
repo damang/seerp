@@ -23,6 +23,20 @@ public class BeanGuiEvento {
     private JTextField  agenda;
     private JTextField  notifica;
 
+    public BeanGuiEvento(JTextField luogo, JTextField tema, JTextField nome, JTextArea note, JTextField data, JTextField ora, JTextField idEvento, JTextField agenda, JTextField notifica) {
+        this.luogo = luogo;
+        this.tema = tema;
+        this.nome = nome;
+        this.note = note;
+        this.data = data;
+        this.ora = ora;
+        this.idEvento = idEvento;
+        this.agenda = agenda;
+        this.notifica = notifica;
+    }
+
+    
+
 
     public JTextField getNotifica() {
         return notifica;

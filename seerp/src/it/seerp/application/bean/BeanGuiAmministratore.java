@@ -17,10 +17,12 @@ import javax.swing.JTextField;
  */
 public class BeanGuiAmministratore extends BeanGuiUtente {
 
-    public BeanGuiAmministratore(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField idAmministratoreTxt) {
-        super(idUtenteTxt, txtUsername, txtPassword, txtCittà, txtProvincia, txtTelefono, txtEmail, txtNote);
+    public BeanGuiAmministratore(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField txtNotifica, JTextField idAmministratoreTxt) {
+        super(idUtenteTxt, txtUsername, txtPassword, txtCittà, txtProvincia, txtTelefono, txtEmail, txtNote, txtNotifica);
         this.idAmministratoreTxt = idAmministratoreTxt;
     }
+
+    
 
   
 
