@@ -33,6 +33,8 @@ public class BeanGuiFornitore extends BeanGuiExtraAzienda {
         return idFornitoreTxt;
     }
 
+   
+
     /**
      *
      * @param idFornitoreTxt

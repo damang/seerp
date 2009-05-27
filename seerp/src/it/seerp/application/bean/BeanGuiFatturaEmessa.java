@@ -21,6 +21,15 @@ private JTextArea note;
     private JTextField tipo;
      private ArrayList<BeanGuiDDT> listDDT;
 
+    public BeanGuiFatturaEmessa(JTextArea note, JTextField idFatturaEmessa, JTextField numeroProgressivo, JTextField ivaDebito, JTextField tipo, ArrayList<BeanGuiDDT> listDDT) {
+        this.note = note;
+        this.idFatturaEmessa = idFatturaEmessa;
+        this.numeroProgressivo = numeroProgressivo;
+        this.ivaDebito = ivaDebito;
+        this.tipo = tipo;
+        this.listDDT = listDDT;
+    }
+
     public ArrayList<BeanGuiDDT> getListDDT() {
         return listDDT;
     }

@@ -24,6 +24,17 @@ public class BeanGuiServizio {
     private JTextArea note;
     private ArrayList<BeanGuiContratto> listContratti;
 
+    public BeanGuiServizio(JTextField descrizione, JTextField disponibilita, JTextField quantita, JTextField tipo, JTextField prezzo, JTextField idServizio, JTextField iva, JTextArea note) {
+        this.descrizione = descrizione;
+        this.disponibilita = disponibilita;
+        this.quantita = quantita;
+        this.tipo = tipo;
+        this.prezzo = prezzo;
+        this.idServizio = idServizio;
+        this.iva = iva;
+        this.note = note;
+    }
+
 
     public ArrayList<BeanGuiContratto> getListContratti() {
         return listContratti;
@@ -36,17 +47,6 @@ public class BeanGuiServizio {
      listContratti.remove(c);}
     public void addContratto(BeanGuiContratto c){
      listContratti.add(c);}
-
-    public BeanGuiServizio(JTextField descrizione, JTextField disponibilita, JTextField quantita, JTextField tipo, JTextField prezzo, JTextField idServizio, JTextField iva, JTextArea note) {
-        this.descrizione = descrizione;
-        this.disponibilita = disponibilita;
-        this.quantita = quantita;
-        this.tipo = tipo;
-        this.prezzo = prezzo;
-        this.idServizio = idServizio;
-        this.iva = iva;
-        this.note = note;
-    }
 
 
     public JTextField getDescrizione() {
