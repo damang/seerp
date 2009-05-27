@@ -42,9 +42,9 @@ public class Agenda {
     public void setIdAgenda(Integer idAgenda) {
         this.idAgenda = idAgenda;
     }
-      public void removeServizio(Evento c){
+      public void removeEvento(Evento c){
      listEventi.remove(c);}
-    public void addServizio(Evento c){
+    public void addEvento(Evento c){
      listEventi.add(c);}
 
 }
