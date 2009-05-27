@@ -25,6 +25,17 @@ public class BeanGuiContratto {
     private ArrayList<BeanGuiPagamento> listPagamento;
     private ArrayList<BeanGuiServizio> listServizio;
 
+     public BeanGuiContratto(JTextField stato, JTextField data, JTextField durata, JTextField tipo, JTextField idContratto, JTextArea note, JTextField dipendente, JTextField extraAzienda) {
+        this.stato = stato;
+        this.data = data;
+        this.durata = durata;
+        this.tipo = tipo;
+        this.idContratto = idContratto;
+        this.note = note;
+        this.dipendente = dipendente;
+        this.extraAzienda = extraAzienda;
+    }
+
     public ArrayList<BeanGuiPagamento> getListPagamento() {
         return listPagamento;
     }
@@ -44,16 +55,7 @@ public class BeanGuiContratto {
         this.listServizio = listServizio;
     }
 
-    public BeanGuiContratto(JTextField stato, JTextField data, JTextField durata, JTextField tipo, JTextField idContratto, JTextArea note, JTextField dipendente, JTextField extraAzienda) {
-        this.stato = stato;
-        this.data = data;
-        this.durata = durata;
-        this.tipo = tipo;
-        this.idContratto = idContratto;
-        this.note = note;
-        this.dipendente = dipendente;
-        this.extraAzienda = extraAzienda;
-    }
+   
 
 
 

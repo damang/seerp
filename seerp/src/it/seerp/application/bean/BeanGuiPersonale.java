@@ -20,8 +20,8 @@ public class BeanGuiPersonale extends BeanGuiUtente {
     private ArrayList<BeanGuiPermesso> listPermessi;
     private ArrayList<BeanGuiRuolo> listRuoli;
 
-    public BeanGuiPersonale(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField idPersonaleTxt, JTextField txtCognome, JTextField txtNome, JTextField txtCodiceFiscale, JComboBox cmbTipo, ArrayList<BeanGuiPermesso> listPermessi, ArrayList<BeanGuiRuolo> listRuoli) {
-        super(idUtenteTxt, txtUsername, txtPassword, txtCittà, txtProvincia, txtTelefono, txtEmail, txtNote);
+    public BeanGuiPersonale(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField txtNotifica, JTextField idPersonaleTxt, JTextField txtCognome, JTextField txtNome, JTextField txtCodiceFiscale, JComboBox cmbTipo, ArrayList<BeanGuiPermesso> listPermessi, ArrayList<BeanGuiRuolo> listRuoli) {
+        super(idUtenteTxt, txtUsername, txtPassword, txtCittà, txtProvincia, txtTelefono, txtEmail, txtNote, txtNotifica);
         this.idPersonaleTxt = idPersonaleTxt;
         this.txtCognome = txtCognome;
         this.txtNome = txtNome;
@@ -30,6 +30,8 @@ public class BeanGuiPersonale extends BeanGuiUtente {
         this.listPermessi = listPermessi;
         this.listRuoli = listRuoli;
     }
+
+    
 
     
     /**

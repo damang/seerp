@@ -19,7 +19,20 @@ public class BeanGuiDDT {
     private JTextField idDDT;
     private JTextField numero;
     private JTextField fattureEmesse;
-        private ArrayList<BeanGuiServizioAssociatoFattura> listServizio;
+    private ArrayList<BeanGuiServizioAssociatoFattura> listServizio;
+
+    public BeanGuiDDT(JTextField merce, JTextField quantita, JTextField data, JTextField idDDT, JTextField numero, JTextField fattureEmesse, ArrayList<BeanGuiServizioAssociatoFattura> listServizio, JTextArea note) {
+        this.merce = merce;
+        this.quantita = quantita;
+        this.data = data;
+        this.idDDT = idDDT;
+        this.numero = numero;
+        this.fattureEmesse = fattureEmesse;
+        this.listServizio = listServizio;
+        this.note = note;
+    }
+
+        
 
     public ArrayList<BeanGuiServizioAssociatoFattura> getListServizio() {
         return listServizio;
