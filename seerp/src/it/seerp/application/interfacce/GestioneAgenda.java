@@ -1,11 +1,9 @@
 package it.seerp.application.interfacce;
 
-import it.seerp.application.Exception.EliminaException;
-import it.seerp.application.Exception.InserimentoException;
-import it.seerp.application.Exception.ModificaException;
-import it.seerp.application.Exception.RicercaException;
-import java.sql.Date;
-import java.sql.Time;
+
+import it.seerp.application.Exception.DatiDuplicati;
+import it.seerp.application.Exception.DatiErrati;
+import it.seerp.application.Exception.RicercaFallita;
 import java.util.ArrayList;
 import javax.swing.JTextField;
 
@@ -15,21 +13,24 @@ import javax.swing.JTextField;
  */
 public interface GestioneAgenda<G> {
     //ci vuole l extends???
-    public  ArrayList<G> visualizzaListaEventi()throws RicercaException;
+    public  ArrayList<G> visualizzaListaEventi()throws DatiErrati;
 
     public G visualizzaDettagli(JTextField nome);
 
+
     public void notificaEventi (G beanGuiEventi);
 
-    public void inserimento(G beanGuiEventi) throws InserimentoException;
 
-    public G modifica(G beanGuiEventi) throws ModificaException;
+    public void inserimento(G beanGuiEventi) throws DatiErrati,DatiDuplicati;
 
-    public ArrayList<G> ricerca(JTextField Nome, JTextField Referente, JTextField data)throws  RicercaException;
 
-    public ArrayList<G> ricercaPerNome(JTextField Nome) throws  RicercaException;
+    public G modifica(G beanGuiEventi) throws DatiErrati;
+   
+    public ArrayList<G> ricerca(JTextField Nome, JTextField Referente, JTextField data)throws  DatiErrati;
 
-    public ArrayList<G> ricercaPerGiorno(JTextField giorno)throws  RicercaException;
+    public ArrayList<G> ricercaPerNome(JTextField Nome) throws  DatiErrati;
+
+    public ArrayList<G> ricercaPerGiorno(JTextField giorno)throws  DatiErrati;
 //vedre cm e mappata
-    public G cancellaEvento(G beanGuiEventi) throws EliminaException ;
+    public void cancellaEvento(G beanGuiEventi) throws RicercaFallita ;
 }
