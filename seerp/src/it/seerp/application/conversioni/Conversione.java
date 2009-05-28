@@ -1,5 +1,6 @@
 package it.seerp.application.conversioni;
 
+import it.seerp.application.bean.BeanGuiAmministratore;
 import it.seerp.application.bean.BeanGuiAppuntamento;
 import it.seerp.application.bean.BeanGuiCliente;
 import it.seerp.application.bean.BeanGuiContatto;
@@ -15,6 +16,7 @@ import it.seerp.application.bean.BeanGuiResponsabile;
 import it.seerp.application.bean.BeanGuiRuolo;
 import it.seerp.application.bean.BeanGuiServizio;
 import it.seerp.application.bean.BeanGuiUtente;
+import it.seerp.storage.ejb.Amministratore;
 import it.seerp.storage.ejb.Appuntamento;
 import it.seerp.storage.ejb.Cliente;
 import it.seerp.storage.ejb.Contatto;
@@ -319,23 +321,32 @@ public class Conversione
 
 
     /**
-     * Metodo che converte un Bean Gui in un normale Bean
+     * Metodo che converte un Bean Gui Utente in un normale Bean Utente
      * @param bUtente
-     * @return
+     * Il Bean Gui da convertire
+     * @return il Bean convertito
      */
     public Utente conversioneUtente(BeanGuiUtente bUtente)
     {
-        Utente utente = new Utente(Integer.parseInt(bUtente.getIdUtenteTxt().getText()),bUtente.getTxtUsername().getText(),bUtente.getTxtPassword().getText(),
-                bUtente.getTxtCittà().getText(),bUtente.getTxtProvincia().getText(),bUtente.getTxtTelefono().getText(),
-                bUtente.getTxtEmail().getText(),bUtente.getTxtNote().getText(),Boolean.parseBoolean(bUtente.getTxtNotifica().getText()));
-
+        Integer id =Integer.parseInt(bUtente.getIdUtenteTxt().getText());
+        String username=bUtente.getTxtUsername().getText();
+        String password=bUtente.getTxtPassword().getText();
+        String città= bUtente.getTxtCittà().getText();
+        String prov = bUtente.getTxtProvincia().getText();
+        String telefono = bUtente.getTxtTelefono().getText();
+        String email = bUtente.getTxtEmail().getText();
+        String note = bUtente.getTxtNote().getText();
+        String ruolo =bUtente.getRuolo().getText();
+        Boolean notifica = Boolean.parseBoolean(bUtente.getTxtNotifica().getText()); 
+        Utente utente = new Utente(id,username,password,città,prov,telefono,email,ruolo,note,notifica);
         return utente;
     }
 
     /**
-     * Metodo che converte un Bean in un Bean Gui
+     * Metodo che converte un Bean Utente in un Bean Gui Utente
      * @param user
-     * @return
+     * Il Bean da convertire
+     * @return il Bean Gui convertito
      */
     public BeanGuiUtente conversioneUtente(Utente user){
         BeanGuiUtente utente= new BeanGuiUtente();
@@ -356,13 +367,16 @@ public class Conversione
         utente.setTxtUsername(field);
         field.setText(user.getVisible().toString());
         utente.setTxtnotifica(field);
+        field.setText(user.getRuolo());
+        utente.setRuolo(field);
         return utente;
         }
 
     /**
-     * Metodo che converte un Bean Gui in un normale Bean
+     * Metodo che converte un Bean Gui Personale in un normale Bean Personale
      * @param bp
-     * @return
+     * Il Bean Gui da convertire
+     * @return il Bean convertito
      */
     public Personale conversionePersonale(BeanGuiPersonale bp)
     {
@@ -379,17 +393,30 @@ public class Conversione
             a1.add(b1);
            }
 
-        Personale p = new Personale(Integer.parseInt(bp.getIdUtenteTxt().getText()),bp.getTxtUsername().getText(),bp.getTxtPassword().getText(),
-                bp.getTxtCittà().getText(),bp.getTxtProvincia().getText(),bp.getTxtTelefono().getText(),
-                bp.getTxtEmail().getText(),bp.getTxtNote().getText(),Integer.parseInt(bp.getIdPersonale().getText()),bp.getCognome().getText(),bp.getNome().getText(),
-                bp.getCodiceFiscale().getText(),bp.getTipo().getToolTipText(),a,a1,Boolean.parseBoolean(bp.getTxtNotifica().getText()));
+         Integer id = Integer.parseInt(bp.getIdUtenteTxt().getText());
+         String username= bp.getTxtUsername().getText();
+         String password = bp.getTxtPassword().getText();
+         String città = bp.getTxtCittà().getText();
+         String prov=  bp.getTxtProvincia().getText();
+         String telefono= bp.getTxtTelefono().getText();
+         String email = bp.getTxtEmail().getText();
+         String note= bp.getTxtNote().getText();
+         Integer idp=Integer.parseInt(bp.getIdPersonale().getText());
+         String cognome= bp.getCognome().getText();
+         String nome=bp.getNome().getText();
+         String codiceFiscale = bp.getCodiceFiscale().getText();
+         String tipo= bp.getTipo().getToolTipText();
+         String ruolo= bp.getRuolo().getText();
+         Boolean notifica = Boolean.parseBoolean(bp.getTxtNotifica().getText());
+        Personale p = new Personale(id,username,password,città,prov,telefono,email,note,ruolo,idp,cognome,nome,codiceFiscale,tipo, a,a1,notifica);
         return p;
     }
 
     /**
-     * Metodo che converte un Bean in un Bean Gui
+     * Metodo che converte un Bean Personale in un Bean Gui Personale
      * @param p
-     * @return
+     * Il Bean da convertire
+     * @return il Bean Gui convertito
      */
     public BeanGuiPersonale conversionePersonale(Personale p)
     {
@@ -438,13 +465,16 @@ public class Conversione
         bp.setListRuoli(a1);
         c.setText(p.getVisible().toString());
         bp.setTxtnotifica(c);
+        c.setText(p.getRuolo());
+        bp.setRuolo(c);
         return bp;
     }
 
     /**
-     * Metodo che converte un Bean Gui in un normale Bean
-     * @param e 
-     * @return
+     * Metodo che converte un Bean Gui ExtraAzienda in un normale Bean ExtraAzienda
+     * @param e
+     * Il Bean Gui da convertire
+     * @return il Bean convertito
      */
     public ExtraAzienda conversioneExtraAzienda(BeanGuiExtraAzienda e){
 
@@ -461,20 +491,33 @@ public class Conversione
             Contratto b1 = conversioneContratto(b);
             a1.add(b1);
            }
-
-
-        ExtraAzienda extra = new ExtraAzienda(Integer.parseInt(e.getIdUtenteTxt().getText()),e.getTxtUsername().getText(),e.getTxtPassword().getText(),
-                e.getTxtCittà().getText(),e.getTxtProvincia().getText(),e.getTxtTelefono().getText(),
-                e.getTxtEmail().getText(),e.getTxtNote().getText(),Integer.parseInt(e.getIdExtraAziendaTxt().getText()),e.getTxtCognome().getText(),
-                e.getTxtNome().getText(),e.getTxtRagioneSociale().getText(),e.getTxtPIva().getText(),e.getTxtFax().getText(),
-                e.getCmbRuolo().getToolTipText(),a,a1,Boolean.parseBoolean(e.getTxtNotifica().getText()));
+         
+         Integer id = Integer.parseInt(e.getIdUtenteTxt().getText());
+         String username= e.getTxtUsername().getText();
+         String password = e.getTxtPassword().getText();
+         String città = e.getTxtCittà().getText();
+         String prov=  e.getTxtProvincia().getText();
+         String telefono= e.getTxtTelefono().getText();
+         String email = e.getTxtEmail().getText();
+         String note= e.getTxtNote().getText();
+         Integer ide = Integer.parseInt(e.getIdExtraAziendaTxt().getText());
+         String cognome= e.getTxtCognome().getText();
+         String nome=e.getTxtNome().getText();
+         String ragSoc=e.getTxtRagioneSociale().getText();
+         String pIva=e.getTxtPIva().getText();
+         String fax=e.getTxtFax().getText();
+         String ruolo= e.getCmbRuolo().getToolTipText();
+         Boolean notifica= Boolean.parseBoolean(e.getTxtNotifica().getText());
+         
+         ExtraAzienda extra = new ExtraAzienda(id,username,password,città,prov,telefono,email,note,ide,cognome,nome,ragSoc,pIva,fax,ruolo,a,a1,notifica);
         return extra;
     }
 
     /**
-     * Metodo che converte un Bean in un Bean Gui
+     * Metodo che converte un Bean ExtraAzienda in un Bean Gui ExtraAzienda
      * @param e
-     * @return
+     * il Bean da convertire
+     * @return il Bean Gui convertito
      */
     public BeanGuiExtraAzienda conversazioneExtraAzienda(ExtraAzienda e){
         BeanGuiExtraAzienda extra = new BeanGuiExtraAzienda();
@@ -530,9 +573,10 @@ public class Conversione
     }
 
     /**
-     * Metodo che converte un Bean Gui in un normale Bean
+     * Metodo che converte un Bean Gui Responsabile in un normale Bean Responsabile
      * @param r
-     * @return
+     * Il Bean Gui da convertire
+     * @return il Bean convertito
      */
     public Responsabile conversioneResponsabile(BeanGuiResponsabile r){
 
@@ -548,17 +592,33 @@ public class Conversione
             Ruolo b1 = conversioneRuolo(b);
             a1.add(b1);
            }
+         
+         Integer id = Integer.parseInt(r.getIdUtenteTxt().getText());
+         String username= r.getTxtUsername().getText();
+         String password = r.getTxtPassword().getText();
+         String città = r.getTxtCittà().getText();
+         String prov=  r.getTxtProvincia().getText();
+         String telefono= r.getTxtTelefono().getText();
+         String email = r.getTxtEmail().getText();
+         String note= r.getTxtNote().getText();
+         Integer idp=Integer.parseInt(r.getIdPersonale().getText());
+         String cognome= r.getCognome().getText();
+         String nome=r.getNome().getText();
+         String codiceFiscale = r.getCodiceFiscale().getText();
+         String tipo= r.getTipo().getToolTipText();
+         Boolean notifica = Boolean.parseBoolean(r.getTxtNotifica().getText());
+         Integer idr=Integer.parseInt(r.getIdResponsabileTxt().getText());
+         String ruolo = r.getRuolo().getText();
 
-        Responsabile  res = new Responsabile(Integer.parseInt(r.getIdUtenteTxt().getText()),r.getTxtUsername().getText(),r.getTxtPassword().getText(),r.getTxtCittà().getText(),r.getTxtProvincia().getText(),r.getTxtTelefono().getText(),
-                r.getTxtEmail().getText(),r.getTxtNote().getText(),Integer.parseInt(r.getIdPersonale().getText()),r.getCognome().getText(),r.getNome().getText(),
-                r.getCodiceFiscale().getText(),r.getTipo().getToolTipText(),a,a1,Boolean.parseBoolean(r.getTxtNotifica().getText()),Integer.parseInt(r.getIdResponsabileTxt().getText()));
+        Responsabile  res = new Responsabile(id,username,password,città,prov,telefono,email,note,ruolo,idp,cognome,nome,codiceFiscale,tipo,a,a1,notifica,idr);
         return res;
     }
 
     /**
-     * Metodo che converte un Bean in un Bean Gui
+     * Metodo che converte un Bean Responsabile in un Bean Gui Responsabile
      * @param e
-     * @return
+     * Il Bean da convertire
+     * @return il Bean Gui convertito
      */
     public BeanGuiResponsabile conversioneResponsabile(Responsabile e){
 
@@ -613,9 +673,10 @@ public class Conversione
     }
 
     /**
-     * Metodo che converte un Bean Gui in un normale Bean
+     * Metodo che converte un Bean Gui Dipendente in un normale Bean Dipendente
      * @param r
-     * @return
+     * Il Bean Gui da convertire
+     * @return il Bean convertito
      */
     public Dipendente conversioneDipendente(BeanGuiDipendente r){
 
@@ -644,17 +705,34 @@ public class Conversione
             Ruolo b1 = conversioneRuolo(b);
             a1.add(b1);
            }
+         
+         Integer id = Integer.parseInt(r.getIdUtenteTxt().getText());
+         String username= r.getTxtUsername().getText();
+         String password = r.getTxtPassword().getText();
+         String città = r.getTxtCittà().getText();
+         String prov=  r.getTxtProvincia().getText();
+         String telefono= r.getTxtTelefono().getText();
+         String email = r.getTxtEmail().getText();
+         String note= r.getTxtNote().getText();
+         Integer idp=Integer.parseInt(r.getIdPersonale().getText());
+         String cognome= r.getCognome().getText();
+         String nome=r.getNome().getText();
+         String codiceFiscale = r.getCodiceFiscale().getText();
+         String tipo= r.getTipo().getToolTipText();
+         Boolean notifica = Boolean.parseBoolean(r.getTxtNotifica().getText());
+         Integer idd=Integer.parseInt(r.getIdDipendenteTxt().getText());
 
-        Dipendente  dip = new Dipendente(Integer.parseInt(r.getIdUtenteTxt().getText()),r.getTxtUsername().getText(),r.getTxtPassword().getText(),r.getTxtCittà().getText(),r.getTxtProvincia().getText(),r.getTxtTelefono().getText(),
-                r.getTxtEmail().getText(),r.getTxtNote().getText(),Integer.parseInt(r.getIdPersonale().getText()),r.getCognome().getText(),r.getNome().getText(),
-                r.getCodiceFiscale().getText(),r.getTipo().getToolTipText(),a,a1,Boolean.parseBoolean(r.getTxtNotifica().getText()),Integer.parseInt(r.getIdDipendenteTxt().getText()),a2,a3);
+
+
+        Dipendente  dip = new Dipendente(id,username,password,città,prov,telefono,email,note,idp,cognome,nome,codiceFiscale,tipo,a,a1,notifica,idd,a2,a3);
         return dip;
     }
 
      /**
-      * Metodo che converte un Bean in un Bean Gui
+      * Metodo che converte un Bean Responsabile in un Bean Gui Responsabile
       * @param e
-      * @return
+      * Il Bean da convertire
+      * @return il Bean Gui convertito
       */
      public BeanGuiDipendente conversioneResponsabile(Dipendente e){
 
@@ -726,10 +804,113 @@ public class Conversione
         return br;
     }
 
-     /**
-      * Metodo che converte un Bean Gui in un normale Bean
+      /**
+      * Metodo che converte un Bean Amministratore in un Bean Gui Amministratore
       * @param e
-      * @return
+      * Il Bean da convertire
+      * @return il Bean Gui convertito
+      */
+
+     public BeanGuiAmministratore conversioneAmministratore(Amministratore e){
+
+        BeanGuiAmministratore br = new BeanGuiAmministratore();
+
+         ArrayList<BeanGuiPermesso> a = new ArrayList<BeanGuiPermesso>();
+        ArrayList<BeanGuiRuolo> a1 = new ArrayList<BeanGuiRuolo>();
+
+        for( Permesso b : e.getListaPermessi() ){
+            BeanGuiPermesso b1 = conversionePermesso(b);
+            a.add(b1);
+           }
+
+         for( Ruolo b : e.getListaRuoli() ){
+            BeanGuiRuolo b1 = conversioneRuolo(b);
+            a1.add(b1);
+           }
+
+        JTextField c = new JTextField();
+        JComboBox d = new JComboBox();
+        c.setText(e.getIdAmministratore().toString());
+        br.setIdAmministratoreTxt(c);
+        c.setText(e.getIdUtente().toString());
+        br.setIdUtenteText(c);
+        c.setText(e.getPassword());
+        br.setTxtPassword(c);
+        c.setText(e.getCittà());
+        br.setTxtCittà(c);
+        c.setText(e.getEmail());
+        br.setTxtEmail(c);
+        c.setText(e.getProvincia());
+        br.setTxtProvincia(c);
+        c.setText(e.getTelefono());
+        br.setTxtTelefono(c);
+        c.setText(e.getNote().toString());
+        br.setTxtUsername(c);
+        c.setText(e.getIdPersonale().toString());
+        br.setIdPersonale(c);
+        c.setText(e.getCognome());
+        br.setCognome(c);
+        c.setText(e.getNome());
+        br.setNome(c);
+        c.setText(e.getCodiceFiscale());
+        br.setCodiceFiscale(c);
+        d.setToolTipText(e.getTipo());
+        br.setTipo(d);
+        br.setListPermessi(a);
+        br.setListRuoli(a1);
+        c.setText(e.getVisible().toString());
+        br.setTxtnotifica(c);
+       
+        return br;
+    }
+
+      /**
+      * Metodo che converte un Bean Gui Responsabile in un normale Bean Responsabile
+      * @param e
+      * Il Bean Gui da convertire
+      * @return il Bean convertito
+      */
+
+    public Amministratore conversioneAmministratore(BeanGuiAmministratore r){
+
+        ArrayList<Permesso> a = new ArrayList<Permesso>();
+        ArrayList<Ruolo> a1 = new ArrayList<Ruolo>();
+
+        for( BeanGuiPermesso b : r.getListPermessi() ){
+            Permesso b1 = conversionePermesso(b);
+            a.add(b1);
+           }
+
+         for( BeanGuiRuolo b : r.getListRuoli() ){
+            Ruolo b1 = conversioneRuolo(b);
+            a1.add(b1);
+           }
+
+         Integer id = Integer.parseInt(r.getIdUtenteTxt().getText());
+         String username= r.getTxtUsername().getText();
+         String password = r.getTxtPassword().getText();
+         String città = r.getTxtCittà().getText();
+         String prov=  r.getTxtProvincia().getText();
+         String telefono= r.getTxtTelefono().getText();
+         String email = r.getTxtEmail().getText();
+         String note= r.getTxtNote().getText();
+         Integer idp=Integer.parseInt(r.getIdPersonale().getText());
+         String cognome= r.getCognome().getText();
+         String nome=r.getNome().getText();
+         String codiceFiscale = r.getCodiceFiscale().getText();
+         String tipo= r.getTipo().getToolTipText();
+         Boolean notifica = Boolean.parseBoolean(r.getTxtNotifica().getText());
+         Integer ida= Integer.parseInt(r.getIdAmministratoreTxt().getText());
+        Amministratore amm= new Amministratore(id,username,password,città,prov,telefono,email,note,tipo,idp,cognome,nome,codiceFiscale,tipo,a,a1,notifica,ida);
+        return amm;
+    }
+     
+
+     /**
+      * Metodo che converte un Bean Gui Contatto in un normale Bean Contatto
+      * @param e
+      * Il Bean Gui da convertire
+      * @return il Bean convertito
       */
      public Contatto conversioneContatto(BeanGuiContatto e){
 
@@ -746,19 +927,35 @@ public class Conversione
             a1.add(b1);
            }
 
+         Integer id = Integer.parseInt(e.getIdUtenteTxt().getText());
+         String username= e.getTxtUsername().getText();
+         String password = e.getTxtPassword().getText();
+         String città = e.getTxtCittà().getText();
+         String prov=  e.getTxtProvincia().getText();
+         String telefono= e.getTxtTelefono().getText();
+         String email = e.getTxtEmail().getText();
+         String note= e.getTxtNote().getText();
+         Integer ide = Integer.parseInt(e.getIdExtraAziendaTxt().getText());
+         String cognome= e.getTxtCognome().getText();
+         String nome=e.getTxtNome().getText();
+         String ragSoc=e.getTxtRagioneSociale().getText();
+         String pIva=e.getTxtPIva().getText();
+         String fax=e.getTxtFax().getText();
+         String ruolo= e.getCmbRuolo().getToolTipText();
+         Boolean notifica= Boolean.parseBoolean(e.getTxtNotifica().getText());
+         Integer idc=Integer.parseInt(e.getIdContattoTxt().getText());
+         Integer feedback=Integer.parseInt(e.getTxtFeedback().getText());
 
-        Contatto cont = new Contatto (Integer.parseInt(e.getIdUtenteTxt().getText()),e.getTxtUsername().getText(),e.getTxtPassword().getText(),
-                e.getTxtCittà().getText(),e.getTxtProvincia().getText(),e.getTxtTelefono().getText(),
-                e.getTxtEmail().getText(),e.getTxtNote().getText(),Integer.parseInt(e.getIdExtraAziendaTxt().getText()),e.getTxtCognome().getText(),
-                e.getTxtNome().getText(),e.getTxtRagioneSociale().getText(),e.getTxtPIva().getText(),e.getTxtFax().getText(),
-                e.getCmbRuolo().getToolTipText(),a,a1,Boolean.parseBoolean(e.getTxtNotifica().getText()),Integer.parseInt(e.getIdContattoTxt().getText()),Integer.parseInt(e.getTxtFeedback().getText()));
+
+        Contatto cont = new Contatto (id,username,password,città,prov,telefono,email,note,ide,cognome,nome,ragSoc,pIva,fax,ruolo,a,a1,notifica,idc,feedback);
         return cont;
     }
 
      /**
-      * Metodo che converte un Bean in un Bean Gui
+      * Metodo che converte un Bean Contatto in un Bean Gui Contatto
       * @param e
-      * @return
+      * Il Bean da convertire
+      * @return il Bean Gui convertito
       */
      public BeanGuiContatto conversioneContatto(Contatto e){
         BeanGuiContatto cont = new BeanGuiContatto();
@@ -819,9 +1016,10 @@ public class Conversione
     }
 
     /**
-     * Metodo che converte un Bean Gui in un normale Bean
+     * Metodo che converte un Bean Gui Cliente in un normale Bean Cliente
      * @param e
-     * @return
+     * Il Bean Gui da convertire
+     * @return il Bean convertito
      */
     public Cliente conversioneCliente(BeanGuiCliente e)
     {
@@ -840,19 +1038,35 @@ public class Conversione
             a1.add(b1);
            }
 
-        Cliente cl= new Cliente(Integer.parseInt(e.getIdUtenteTxt().getText()),e.getTxtUsername().getText(),e.getTxtPassword().getText(),
-                e.getTxtCittà().getText(),e.getTxtProvincia().getText(),e.getTxtTelefono().getText(),
-                e.getTxtEmail().getText(),e.getTxtNote().getText(),Integer.parseInt(e.getIdExtraAziendaTxt().getText()),e.getTxtCognome().getText(),
-                e.getTxtNome().getText(),e.getTxtRagioneSociale().getText(),e.getTxtPIva().getText(),e.getTxtFax().getText(),
-                e.getCmbRuolo().getToolTipText(),a,a1,Integer.parseInt(e.getIdClienteTxt().getText()),Boolean.parseBoolean(e.getTxtNotifica().getText()));
+
+         Integer id = Integer.parseInt(e.getIdUtenteTxt().getText());
+         String username= e.getTxtUsername().getText();
+         String password = e.getTxtPassword().getText();
+         String città = e.getTxtCittà().getText();
+         String prov=  e.getTxtProvincia().getText();
+         String telefono= e.getTxtTelefono().getText();
+         String email = e.getTxtEmail().getText();
+         String note= e.getTxtNote().getText();
+         Integer ide = Integer.parseInt(e.getIdExtraAziendaTxt().getText());
+         String cognome= e.getTxtCognome().getText();
+         String nome=e.getTxtNome().getText();
+         String ragSoc=e.getTxtRagioneSociale().getText();
+         String pIva=e.getTxtPIva().getText();
+         String fax=e.getTxtFax().getText();
+         String ruolo= e.getCmbRuolo().getToolTipText();
+         Boolean notifica= Boolean.parseBoolean(e.getTxtNotifica().getText());
+         Integer idc=Integer.parseInt(e.getIdClienteTxt().getText());
+
+         Cliente cl= new Cliente(id,username,password,città,prov,telefono,email,note,ide,cognome,nome,ragSoc,pIva,fax,ruolo,a,a1,idc,notifica);
 
         return cl;
     }
 
     /**
-     * Metodo che converte un Bean in un Bean Gui
+     * Metodo che converte un Bean Cliente in un Bean Gui Cliente
      * @param e
-     * @return
+     * Il Bean da convertire
+     * @return il Bean Gui convertito
      */
     public BeanGuiCliente conversioneCliente(Cliente e)
     {
@@ -915,9 +1129,10 @@ public class Conversione
     }
 
     /**
-     * Metodo che converte un Bean Gui in un normale Bean
+     * Metodo che converte un Bean Gui Fornitore in un normale Bean Fornitore
      * @param e
-     * @return
+     * Il Bean Gui da convertire
+     * @return il Bean convertito
      */
     public Fornitore conversioneFornitore(BeanGuiFornitore e)
     {
@@ -935,21 +1150,37 @@ public class Conversione
             Contratto b1 = conversioneContratto(b);
             a1.add(b1);
         }
+
+         Integer id = Integer.parseInt(e.getIdUtenteTxt().getText());
+         String username= e.getTxtUsername().getText();
+         String password = e.getTxtPassword().getText();
+         String città = e.getTxtCittà().getText();
+         String prov=  e.getTxtProvincia().getText();
+         String telefono= e.getTxtTelefono().getText();
+         String email = e.getTxtEmail().getText();
+         String note= e.getTxtNote().getText();
+         Integer ide = Integer.parseInt(e.getIdExtraAziendaTxt().getText());
+         String cognome= e.getTxtCognome().getText();
+         String nome=e.getTxtNome().getText();
+         String ragSoc=e.getTxtRagioneSociale().getText();
+         String pIva=e.getTxtPIva().getText();
+         String fax=e.getTxtFax().getText();
+         String ruolo= e.getCmbRuolo().getToolTipText();
+         Boolean notifica= Boolean.parseBoolean(e.getTxtNotifica().getText());
+         Integer idf=Integer.parseInt(e.getIdFornitoreTxt().getText());
+
          
-        Fornitore cl= new Fornitore(Integer.parseInt(e.getIdUtenteTxt().getText()),e.getTxtUsername().getText(),e.getTxtPassword().getText(),
-                e.getTxtCittà().getText(),e.getTxtProvincia().getText(),e.getTxtTelefono().getText(),
-                e.getTxtEmail().getText(),e.getTxtNote().getText(),Integer.parseInt(e.getIdExtraAziendaTxt().getText()),e.getTxtCognome().getText(),
-                e.getTxtNome().getText(),e.getTxtRagioneSociale().getText(),e.getTxtPIva().getText(),e.getTxtFax().getText(),
-                e.getCmbRuolo().getToolTipText(),a,a1,Integer.parseInt(e.getIdFornitoreTxt().getText()),Boolean.parseBoolean(e.getTxtNotifica().getText()));
+        Fornitore cl= new Fornitore(id,username,password,città,prov,telefono,email,note,ide,cognome,nome,ragSoc,pIva,fax,ruolo,a,a1,idf,notifica);
  
         return cl;
     }
 
 
     /**
-     * Metodo che converte un Bean in un Bean Gui
+     * Metodo che converte un Bean Fornitore in un Bean Gui Fornitore
      * @param e
-     * @return
+     * Il Bean da convertire
+     * @return il Bean Gui convertito
      */
     public BeanGuiFornitore conversioneFornitore(Fornitore e)
     {
@@ -1012,9 +1243,10 @@ public class Conversione
     }
 
     /**
-     * Metodo che converte un Bean in un Bean Gui
+     * Metodo che converte un Bean Appuntamento in un Bean Gui Appuntamento
      * @param b
-     * @return
+     * Il Bean da convertire
+     * @return il Bean Gui convertito
      */
     public BeanGuiAppuntamento conversioneAppuntamento(Appuntamento b) 
     {
@@ -1041,25 +1273,31 @@ public class Conversione
     }
 
     /**
-     * Metodo che converte un Bean Gui in un normale Bean
+     * Metodo che converte un Bean Gui Appuntamento in un normale Bean Appuntamento
      * @param b
-     * @return
+     * Il Bean Gui da convertire
+     * @return il Bean convertito
      */
     public Appuntamento conversioneAppuntamento(BeanGuiAppuntamento b)
     {
         Date a = new Date(Long.parseLong(b.getData().getText()));
         Time c = new Time(Long.parseLong(b.getOra().getText()));
+        Integer id = Integer.parseInt(b.getIdAppuntamento().getText());
+        Integer idd = Integer.parseInt(b.getDipendente().getText());
+        Integer ide = Integer.parseInt(b.getExtraAzienda().getText());
+        Boolean notifica = Boolean.parseBoolean(b.getNotifica().getText());
+        String note = b.getNote().getText();
 
-        Appuntamento app = new Appuntamento(a,c,Integer.parseInt(b.getIdAppuntamento().getText()),b.getNote().getText(),Integer.parseInt(b.getDipendente().getText()),
-                Integer.parseInt(b.getExtraAzienda().getText()),Boolean.parseBoolean(b.getNotifica().getText()));
+        Appuntamento app = new Appuntamento(a,c,id,note,idd,ide, notifica);
 
         return app;
     }
 
     /**
-     * Metodo che converte un Bean Gui in un normale Bean
+     * Metodo che converte un Bean Gui Permesso in un normale Bean Permesso
      * @param b
-     * @return
+     * Il Bean Gui da convertire
+     * @return il Bean convertito
      */
     public Permesso conversionePermesso(BeanGuiPermesso b)
     {
@@ -1076,15 +1314,20 @@ public class Conversione
             c.add(d1);
         }
 
-        Permesso p= new Permesso (Integer.parseInt(b.getIdPermesso().getText()),b.getNome().getText(),a,c);
+        Integer id =  Integer.parseInt(b.getIdPermesso().getText());
+        String nome = b.getNome().getText();
+
+
+        Permesso p= new Permesso (id,nome,a,c);
 
         return p;
     }
 
     /**
-     * Metodo che converte un Bean in un Bean Gui
+     * Metodo che converte un Bean Permesso in un Bean Gui Permesso
      * @param b
-     * @return
+     * Il Bean da convertire
+     * @return il Bean Gui convertito
      */
     public BeanGuiPermesso conversionePermesso(Permesso b)
     {
@@ -1119,9 +1362,10 @@ public class Conversione
     }
 
     /**
-     * Metodo che converte un Bean Gui in un normale Bean
+     * Metodo che converte un Bean Gui Ruolo in un normale Bean Ruolo
      * @param b
-     * @return
+     * Il Bean Gui da convertire
+     * @return il Bean convertito
      */
     public Ruolo conversioneRuolo(BeanGuiRuolo b) 
     {
@@ -1140,15 +1384,19 @@ public class Conversione
             c.add(d1);
         }
 
-        Ruolo r= new Ruolo (Integer.parseInt(b.getIdRuolo().getText()),b.getNome().getText(),a,c);
+        Integer id = Integer.parseInt(b.getIdRuolo().getText());
+        String nome=b.getNome().getText();
+
+        Ruolo r= new Ruolo (id,nome,a,c);
 
         return r;
     }
 
     /**
-     * Metodo che converte un Bean in un Bean Gui
+     * Metodo che converte un Bean Ruolo in un Bean Gui Ruolo
      * @param b
-     * @return
+     * Il Bean da convertire
+     * @return il Bean Gui convertito
      */
     public BeanGuiRuolo conversioneRuolo(Ruolo b)
     {
@@ -1179,4 +1427,6 @@ public class Conversione
         p.setListPermessi(c);
         return p;
     }
+
+    
 }
