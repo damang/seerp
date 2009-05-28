@@ -18,7 +18,7 @@ import javax.swing.JTextField;
  *
  * @author matteo
  */
-public class AppGestionePersonale extends AppGestioneUtente {
+public class AppGestionePersonale  {
 
    
     /**
@@ -27,13 +27,12 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * @return
      * @throws it.seerp.application.Exception.DatiErrati
      */
-    @Override
+    
     public BeanGuiPersonale ricerca(JTextField username) throws DatiErrati {
-        String s=username.getText();
-       if (s==null||s.length()>0) throw new DatiErrati("nessun carattere inserito");
 
-        return null;
-    }
+        BeanGuiPersonale a= new BeanGuiPersonale();
+        return a;
+        }
 
     public void elimina(BeanGuiPersonale user) {
        
@@ -44,7 +43,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
     }
 
     public void inserisci(BeanGuiPersonale user, BeanGuiUtente ut) throws DatiErrati, DatiDuplicati {
-        super.inserisci(ut);
+       
 
 
 
