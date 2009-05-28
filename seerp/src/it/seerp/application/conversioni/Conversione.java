@@ -1,5 +1,4 @@
 package it.seerp.application.conversioni;
-
 import it.seerp.application.bean.BeanGuiAppuntamento;
 import it.seerp.application.bean.BeanGuiCliente;
 import it.seerp.application.bean.BeanGuiContatto;
@@ -39,7 +38,7 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author Tommaso Cattolico
+ * @author Tommaso Cattolico - Matteo D'Auria
  */
 public class Conversione
 {
