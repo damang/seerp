@@ -23,7 +23,7 @@ public interface GestioneUtenti<E extends Utente,U extends BeanGuiUtente> {
     public void elimina(U user);
 
     
-    public void eliminazioneLogica(U user);
+    public void eliminazioneLogica(U user);//??
 
    
     public void inserisci(U user)throws DatiErrati,DatiDuplicati;
