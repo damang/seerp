@@ -19,9 +19,10 @@ public class Utente {
     private String telefono;
     private String email;
     private String note;
+    private String ruolo;
     private Boolean visible;
 
-    public Utente(Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String note,Boolean v) {
+    public Utente(Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String ruolo, String note,Boolean v) {
         this.idUtente = idUtente;
         this.username = username;
         this.password = password;
@@ -30,6 +31,7 @@ public class Utente {
         this.telefono = telefono;
         this.email = email;
         this.note = note;
+        this.ruolo = ruolo;
         this.visible=v;
     }
 
@@ -116,6 +118,14 @@ public class Utente {
      */
     public String getUsername() {
         return username;
+    }
+
+     /**
+     * setta il ruolo dell'utente
+     * @param ruolo di tipo stringa
+     */
+    public void setRuolo(String ruolo) {
+        this.ruolo = ruolo;
     }
 
     /**
