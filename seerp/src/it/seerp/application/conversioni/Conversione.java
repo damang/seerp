@@ -28,6 +28,7 @@ import it.seerp.storage.ejb.Permesso;
 import it.seerp.storage.ejb.Personale;
 import it.seerp.storage.ejb.Responsabile;
 import it.seerp.storage.ejb.Ruolo;
+
 import it.seerp.storage.ejb.Servizio;
 import it.seerp.storage.ejb.Utente;
 import java.sql.Date;
