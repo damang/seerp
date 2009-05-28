@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
+/*
 package it.seerp.storage.Operazioni;
 
 import it.seerp.storage.ejb.Dipendente;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 /**
  *
  * @author LuNy
- */
+ 
 public class OpInserimentoDipendente {
 
      public void insert (Dipendente dipendente) throws SQLException
@@ -71,3 +71,4 @@ public class OpInserimentoDipendente {
 
 }
 }
+*/

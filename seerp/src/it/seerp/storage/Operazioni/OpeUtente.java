@@ -119,11 +119,11 @@ public class OpeUtente implements OpeEntity<Utente,Integer> {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-      public ArrayList<Utente> ricerca(String nome, String ruolo) throws SQLException {
+    public ArrayList<Utente> ricerca(String nome, String ruolo) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-     public Utente  eliminaLogica(Utente ut) throws SQLException{
+    public Utente  eliminaLogica(Utente ut) throws SQLException{
     throw new UnsupportedOperationException("Not supported yet.");}
 
     public void  elimina(Utente ut) throws SQLException{

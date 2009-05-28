@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
+/*
 package it.seerp.storage.Operazioni;
 
 
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 /**
  *
  * @author LuNy
- */
+ 
 public class OpInserimentoResponsabile  {
 
     public void insert (Responsabile responsabile) throws SQLException
@@ -62,3 +62,4 @@ public class OpInserimentoResponsabile  {
         }
 }
 }
+*/

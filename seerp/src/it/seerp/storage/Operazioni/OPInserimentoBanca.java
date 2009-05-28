@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
+/*
 package it.seerp.storage.Operazioni;
 
 import it.seerp.storage.ejb.Banca;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 /**
  *
  * @author LuNy
- */
+ 
 public class OPInserimentoBanca {
 
     public void insert (Banca banca) throws SQLException
@@ -69,3 +69,4 @@ public class OPInserimentoBanca {
 
 
 }
+*/

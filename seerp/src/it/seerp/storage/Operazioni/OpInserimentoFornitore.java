@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
+/*
 package it.seerp.storage.Operazioni;
 
 import it.seerp.storage.ejb.Fornitore;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 /**
  *
  * @author LuNy
- */
+ 
 public class OpInserimentoFornitore {
 
      public void insert (Fornitore fornitore) throws SQLException
@@ -72,3 +72,4 @@ public class OpInserimentoFornitore {
 
 
 }
+*/

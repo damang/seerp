@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package it.seerp.storage.Operazioni;
+/*package it.seerp.storage.Operazioni;
 
 import it.seerp.storage.ejb.Cliente;
 import java.sql.Connection;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 /**
  *
  * @author LuNy
- */
+
 public class OpInserimentoCliente {
 
     public void insert (Cliente cliente) throws SQLException
@@ -72,3 +72,4 @@ public class OpInserimentoCliente {
 
 }
 }
+*/
