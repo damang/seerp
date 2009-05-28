@@ -33,7 +33,7 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio>
      * @throws it.seerp.application.Exception.RicercaFallita
      * nel caso in cui la ricerca non produce risultati
      */
-    public ArrayList<BeanGuiServizio> ricerca(JTextField nome) throws DatiErrati, RicercaFallita {
+    public ArrayList<BeanGuiServizio> ricerca(JTextField nome) throws DatiErrati {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -43,8 +43,6 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio>
      * Bean Gui del servizio da inserire
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si immettano dati errati
-     * @throws it.seerp.application.Exception.DatiDuplicati
-     * nel caso in cui si inserisca un servizio già presente
      */
     public void inserisci(BeanGuiServizio BeansGuiServizio) throws DatiErrati, DatiDuplicati {
         throw new UnsupportedOperationException("Not supported yet.");
@@ -56,7 +54,7 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio>
      * nome del servizio
      * @return Bean Gui del servizio da visualizzare
      */
-    public BeanGuiServizio visualizzaServizio(JTextField nome) {
+    public BeanGuiServizio visualizza(JTextField nome) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -68,8 +66,7 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio>
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si immettano dati errati durante la modifica
      */
-    public BeanGuiServizio modificaServizio(BeanGuiServizio BeansGuiServizio) throws DatiErrati {
+    public BeanGuiServizio modifica(BeanGuiServizio BeansGuiServizio) throws DatiErrati {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-
 }

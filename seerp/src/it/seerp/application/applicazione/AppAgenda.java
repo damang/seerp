@@ -24,9 +24,11 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento>
      */
     public ArrayList<BeanGuiEvento> visualizzaListaEventi() throws DatiErrati
     {
-        ArrayList<BeanGuiEvento> list = new ArrayList<BeanGuiEvento>();
+        throw new DatiErrati("Dati errati.");
+        
+        //ArrayList<BeanGuiEvento> list = new ArrayList<BeanGuiEvento>();
 
-        return list;
+        //return list;
     }
 
     /**
@@ -106,9 +108,10 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento>
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si inseriscano dati errati
      */
-    public ArrayList<BeanGuiEvento> ricercaPerNome(JTextField Nome) throws DatiErrati
+    public ArrayList<BeanGuiEvento> ricercaPerNome(JTextField Nome) throws DatiErrati, RicercaFallita
     {
         throw new DatiErrati("Dati errati.");
+        //throw new RicercaFallita("Ricerca fallita.");
     }
 
     /**
@@ -118,10 +121,13 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento>
      * @return lista degli eventi che corrispondono al giorno inserito
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si inseriscano dati errati
+     * @throws it.seerp.application.Exception.RicercaFallita
+     * nel caso in cui la ricerca non produca risultati
      */
-    public ArrayList<BeanGuiEvento> ricercaPerGiorno(JTextField giorno) throws DatiErrati
+    public ArrayList<BeanGuiEvento> ricercaPerGiorno(JTextField giorno) throws DatiErrati, RicercaFallita
     {
         throw new DatiErrati("Dati errati.");
+        //throw new RicercaFallita("Ricerca fallita.");
     }
 
     /**
@@ -130,6 +136,8 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento>
      * Bean Gui dell'evento da eliminare
      * @throws it.seerp.application.Exception.CancellazioneFallita
      * nel caso in cui il sistema fallisca nell'eliminazione dell'evento
+     * @throws it.seerp.application.Exception.RicercaFallita
+     * nel caso in cui la ricerca non produca risultati
      */
     public void cancellaEvento(BeanGuiEvento beanGuiEventi) throws CancellazioneFallita
     {
