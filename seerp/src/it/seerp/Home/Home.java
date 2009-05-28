@@ -52,10 +52,11 @@ public class Home extends javax.swing.JFrame implements ActionListener {
         BottoneBanche = new javax.swing.JButton();
         jXTaskPane3 = new org.jdesktop.swingx.JXTaskPane();
         jXPanel3 = new org.jdesktop.swingx.JXPanel();
+        AreaPersonale = new javax.swing.JButton();
         jXMonthView1 = new org.jdesktop.swingx.JXMonthView();
         jXPanel5 = new org.jdesktop.swingx.JXPanel();
         gestioneUtentiPanel1 = new it.seerp.Menu.GestioneUtentiPanel();
-        utilità1 = new it.seerp.Menu.Utilità();
+        utilitàPanel1 = new it.seerp.Menu.UtilitàPanel();
         jXPanel6 = new org.jdesktop.swingx.JXPanel();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
@@ -237,16 +238,36 @@ public class Home extends javax.swing.JFrame implements ActionListener {
 
         jXTaskPaneContainer1.add(jXTaskPane2);
 
+        jXTaskPane3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/16x16/lock.png"))); // NOI18N
+        jXTaskPane3.setTitle("Area Personale");
+
+        AreaPersonale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/HP-Control-32x32.png"))); // NOI18N
+        AreaPersonale.setText("Area Personale");
+        AreaPersonale.setBorder(null);
+        AreaPersonale.setContentAreaFilled(false);
+        AreaPersonale.setHideActionText(true);
+        AreaPersonale.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        AreaPersonale.setRequestFocusEnabled(false);
+        AreaPersonale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AreaPersonaleActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jXPanel3Layout = new javax.swing.GroupLayout(jXPanel3);
         jXPanel3.setLayout(jXPanel3Layout);
         jXPanel3Layout.setHorizontalGroup(
             jXPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 169, Short.MAX_VALUE)
+            .addComponent(AreaPersonale, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
         );
         jXPanel3Layout.setVerticalGroup(
             jXPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(jXPanel3Layout.createSequentialGroup()
+                .addComponent(AreaPersonale)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        BottoneFatture.addActionListener(this);
 
         jXTaskPane3.getContentPane().add(jXPanel3);
 
@@ -264,15 +285,15 @@ public class Home extends javax.swing.JFrame implements ActionListener {
             .addGroup(jXPanel5Layout.createSequentialGroup()
                 .addComponent(gestioneUtentiPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(utilità1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addComponent(utilitàPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(482, Short.MAX_VALUE))
         );
         jXPanel5Layout.setVerticalGroup(
             jXPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jXPanel5Layout.createSequentialGroup()
                 .addGroup(jXPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(utilità1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(gestioneUtentiPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(gestioneUtentiPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(utilitàPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -283,11 +304,11 @@ public class Home extends javax.swing.JFrame implements ActionListener {
         jXPanel6.setLayout(jXPanel6Layout);
         jXPanel6Layout.setHorizontalGroup(
             jXPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 462, Short.MAX_VALUE)
+            .addGap(0, 788, Short.MAX_VALUE)
         );
         jXPanel6Layout.setVerticalGroup(
             jXPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 565, Short.MAX_VALUE)
+            .addGap(0, 568, Short.MAX_VALUE)
         );
 
         fileMenu.setText("File");
@@ -346,9 +367,9 @@ public class Home extends javax.swing.JFrame implements ActionListener {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jXPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jXPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jXPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -357,7 +378,7 @@ public class Home extends javax.swing.JFrame implements ActionListener {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jXPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.PREFERRED_SIZE, 673, Short.MAX_VALUE)
+            .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.PREFERRED_SIZE, 676, Short.MAX_VALUE)
         );
 
         pack();
@@ -375,6 +396,10 @@ public class Home extends javax.swing.JFrame implements ActionListener {
         // TODO add your handling code here:
 }//GEN-LAST:event_BottoneBancheActionPerformed
 
+    private void AreaPersonaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AreaPersonaleActionPerformed
+        // TODO add your handling code here:
+}//GEN-LAST:event_AreaPersonaleActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -387,6 +412,7 @@ public class Home extends javax.swing.JFrame implements ActionListener {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AreaPersonale;
     private javax.swing.JButton BottoneBanche;
     private javax.swing.JButton BottoneClienti;
     private javax.swing.JButton BottoneContratti;
@@ -422,7 +448,7 @@ public class Home extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JMenuItem pasteMenuItem;
     private javax.swing.JMenuItem saveAsMenuItem;
     private javax.swing.JMenuItem saveMenuItem;
-    private it.seerp.Menu.Utilità utilità1;
+    private it.seerp.Menu.UtilitàPanel utilitàPanel1;
     // End of variables declaration//GEN-END:variables
 
     public void actionPerformed(ActionEvent e) {
