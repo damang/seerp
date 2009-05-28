@@ -1,5 +1,7 @@
 package it.seerp.application.interfacce;
 
+import it.seerp.application.Exception.DatiDuplicati;
+import it.seerp.application.Exception.DatiErrati;
 import it.seerp.application.bean.BeanGuiUtente;
 import it.seerp.storage.ejb.Utente;
 import java.util.ArrayList;
@@ -15,7 +17,7 @@ public interface GestioneUtenti<E extends Utente,U extends BeanGuiUtente> {
     public ArrayList<E> elenca();
 
   
-    public U ricerca(JTextField username);
+    public U ricerca(JTextField username)throws DatiErrati;
 
     
     public void elimina(BeanGuiUtente user);
@@ -24,10 +26,10 @@ public interface GestioneUtenti<E extends Utente,U extends BeanGuiUtente> {
     public void eliminazioneLogica(BeanGuiUtente user);
 
    
-    public void inserisci(BeanGuiUtente user);
+    public void inserisci(BeanGuiUtente user)throws DatiErrati,DatiDuplicati;
 
    
-    public BeanGuiUtente modifica(BeanGuiUtente user);
+    public BeanGuiUtente modifica(BeanGuiUtente user)throws DatiDuplicati;
 
 
 
