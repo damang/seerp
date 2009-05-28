@@ -21,16 +21,15 @@ public interface GestioneContratti<E> {
 
     public ArrayList<E> visualizza();
 
-
      public E visualizzaContratto(JTextField nome);
 
-    public E visualizzaContratto(E BeanGuiContatto);
+    public E visualizzaContratto(E beanGuiContratto) throws DatiErrati;
 
     public E ricerca(JTextField id) throws DatiErrati;
 
     public ArrayList<E> ricercaPerDipendente(JTextField nomeDipendente) throws DatiErrati;
 
-    public void inserisci(E BeanGuiContratto) throws DatiErrati;
+    public void inserisci(E beanGuiContratto) throws DatiErrati,DatiDuplicati;
 
-    public E modifica(E BeanGuiContratto) throws DatiErrati,DatiDuplicati;
+    public E modifica(E beanGuiContratto) throws DatiErrati;
 }
