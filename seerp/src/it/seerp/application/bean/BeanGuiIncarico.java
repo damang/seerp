@@ -17,7 +17,13 @@ public class BeanGuiIncarico {
  private JTextField txtPermesso;
  private  JTextField txtRuolo;
 
-    public BeanGuiIncarico(JTextField txtPersonale, JTextField txtPermesso, JTextField txtRuolo) {
+ /**
+  * 
+  * @param txtPersonale
+  * @param txtPermesso
+  * @param txtRuolo
+  */
+ public BeanGuiIncarico(JTextField txtPersonale, JTextField txtPermesso, JTextField txtRuolo) {
         this.txtPersonale = txtPersonale;
         this.txtPermesso = txtPermesso;
         this.txtRuolo = txtRuolo;
@@ -25,26 +31,50 @@ public class BeanGuiIncarico {
 
  
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtPermesso() {
         return txtPermesso;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtPersonale() {
         return txtPersonale;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtRuolo() {
         return txtRuolo;
     }
 
+    /**
+     *
+     * @param txtPermesso
+     */
     public void setTxtPermesso(JTextField txtPermesso) {
         this.txtPermesso = txtPermesso;
     }
 
+    /**
+     *
+     * @param txtPersonale
+     */
     public void setTxtPersonale(JTextField txtPersonale) {
         this.txtPersonale = txtPersonale;
     }
 
+    /**
+     *
+     * @param txtRuolo
+     */
     public void setTxtRuolo(JTextField txtRuolo) {
         this.txtRuolo = txtRuolo;
     }

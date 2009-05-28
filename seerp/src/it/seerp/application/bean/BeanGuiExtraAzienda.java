@@ -26,10 +26,25 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
     private ArrayList<BeanGuiAppuntamento> listAppuntamenti;
     private ArrayList<BeanGuiContratto> listContratti;
 
+    /**
+     * 
+     */
     public BeanGuiExtraAzienda() {
         
     }
 
+    /**
+     *
+     * @param idExtraAziendaTxt
+     * @param txtCognome
+     * @param txtNome
+     * @param txtRagioneSociale
+     * @param txtPIva
+     * @param txtFax
+     * @param cmbRuolo
+     * @param listAppuntamenti
+     * @param listContratti
+     */
     public BeanGuiExtraAzienda(JTextField idExtraAziendaTxt, JTextField txtCognome, JTextField txtNome, JTextField txtRagioneSociale, JTextField txtPIva, JTextField txtFax, JComboBox cmbRuolo, ArrayList<BeanGuiAppuntamento> listAppuntamenti, ArrayList<BeanGuiContratto> listContratti) {
         this.idExtraAziendaTxt = idExtraAziendaTxt;
         this.txtCognome = txtCognome;
@@ -44,18 +59,34 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
 
    
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<BeanGuiAppuntamento> getListAppuntamenti() {
         return listAppuntamenti;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<BeanGuiContratto> getListContratti() {
         return listContratti;
     }
 
+    /**
+     *
+     * @param listAppuntamenti
+     */
     public void setListAppuntamenti(ArrayList<BeanGuiAppuntamento> listAppuntamenti) {
         this.listAppuntamenti = listAppuntamenti;
     }
 
+    /**
+     *
+     * @param listContratti
+     */
     public void setListContratti(ArrayList<BeanGuiContratto> listContratti) {
         this.listContratti = listContratti;
     }
@@ -174,16 +205,32 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
         return txtRagioneSociale;
     }
 
+    /**
+     *
+     * @param p
+     */
     public void removeAppuntamento(BeanGuiAppuntamento p){
      listAppuntamenti.remove(p);}
 
+    /**
+     *
+     * @param p
+     */
     public void addAppuntamento(BeanGuiAppuntamento p){
      listAppuntamenti.add(p);}
 
-       public void removeContratto(BeanGuiContratto c){
+    /**
+     *
+     * @param c
+     */
+    public void removeContratto(BeanGuiContratto c){
      listContratti.remove(c);}
 
-    public void addContratto(BeanGuiContratto c){
+       /**
+        *
+        * @param c
+        */
+       public void addContratto(BeanGuiContratto c){
      listContratti.add(c);}
 
 }

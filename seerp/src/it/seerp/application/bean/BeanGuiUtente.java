@@ -25,18 +25,61 @@ public class BeanGuiUtente {
     private JTextField txtNotifica;
     private JTextField Ruolo;
 
+    /**
+     *
+     */
     public BeanGuiUtente() {
        
     }
 
+    /**
+     *
+     * @param idUtenteTxt
+     * @param txtUsername
+     * @param txtPassword
+     * @param txtCittà
+     * @param txtProvincia
+     * @param txtTelefono
+     * @param txtEmail
+     * @param txtNote
+     * @param txtNotifica
+     * @param Ruolo
+     */
+    public BeanGuiUtente(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField txtNotifica, JTextField Ruolo) {
+        this.idUtenteTxt = idUtenteTxt;
+        this.txtUsername = txtUsername;
+        this.txtPassword = txtPassword;
+        this.txtCittà = txtCittà;
+        this.txtProvincia = txtProvincia;
+        this.txtTelefono = txtTelefono;
+        this.txtEmail = txtEmail;
+        this.txtNote = txtNote;
+        this.txtNotifica = txtNotifica;
+        this.Ruolo = Ruolo;
+    }
+
+    
+
+    /**
+     *
+     * @return
+     */
     public JTextField getRuolo() {
         return Ruolo;
     }
 
+    /**
+     *
+     * @param Ruolo
+     */
     public void setRuolo(JTextField Ruolo) {
         this.Ruolo = Ruolo;
     }
 
+    /**
+     *
+     * @param txtNotifica
+     */
     public void setTxtNotifica(JTextField txtNotifica) {
         this.txtNotifica = txtNotifica;
     }
@@ -44,10 +87,18 @@ public class BeanGuiUtente {
 
 
 
+    /**
+     * 
+     * @return
+     */
     public JTextField getTxtNotifica() {
         return txtNotifica;
     }
 
+    /**
+     *
+     * @param txtnotifica
+     */
     public void setTxtnotifica(JTextField txtnotifica) {
         this.txtNotifica = txtnotifica;
     }

@@ -22,18 +22,20 @@ public class BeanGuiDipendente extends BeanGuiPersonale {
 
     }
 
+    public BeanGuiDipendente(JTextField idPersonaleTxt, JTextField txtCognome, JTextField txtNome, JTextField txtCodiceFiscale, JComboBox cmbTipo, ArrayList<BeanGuiPermesso> listPermessi, ArrayList<BeanGuiRuolo> listRuoli, ArrayList<BeanGuiAppuntamento> listAppuntamenti, ArrayList<BeanGuiContratto> listContratti, JTextField idDipendenteTxt) {
+        super(idPersonaleTxt, txtCognome, txtNome, txtCodiceFiscale, cmbTipo, listPermessi, listRuoli);
+        this.listAppuntamenti = listAppuntamenti;
+        this.listContratti = listContratti;
+        this.idDipendenteTxt = idDipendenteTxt;
+    }
+
    
 
      
 
      private ArrayList<BeanGuiAppuntamento> listAppuntamenti;
 
-    public BeanGuiDipendente(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField txtNotifica, JTextField idPersonaleTxt, JTextField txtCognome, JTextField txtNome, JTextField txtCodiceFiscale, JComboBox cmbTipo, ArrayList<BeanGuiPermesso> listPermessi, ArrayList<BeanGuiRuolo> listRuoli, ArrayList<BeanGuiAppuntamento> listAppuntamenti, ArrayList<BeanGuiContratto> listContratti, JTextField idDipendenteTxt) {
-        super(idUtenteTxt, txtUsername, txtPassword, txtCittà, txtProvincia, txtTelefono, txtEmail, txtNote, txtNotifica, idPersonaleTxt, txtCognome, txtNome, txtCodiceFiscale, cmbTipo, listPermessi, listRuoli);
-        this.listAppuntamenti = listAppuntamenti;
-        this.listContratti = listContratti;
-        this.idDipendenteTxt = idDipendenteTxt;
-    }
+    
      private ArrayList<BeanGuiContratto> listContratti;
 
     public ArrayList<BeanGuiAppuntamento> getListAppuntamenti() {
