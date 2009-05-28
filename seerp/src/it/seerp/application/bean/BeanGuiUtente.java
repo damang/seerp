@@ -23,24 +23,26 @@ public class BeanGuiUtente {
     private JTextField txtEmail;
     private JTextArea txtNote;
     private JTextField txtNotifica;
+    private JTextField Ruolo;
 
     public BeanGuiUtente() {
        
     }
 
-
-
-    public BeanGuiUtente(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote,JTextField txtNotifica) {
-        this.idUtenteTxt = idUtenteTxt;
-        this.txtUsername = txtUsername;
-        this.txtPassword = txtPassword;
-        this.txtCittà = txtCittà;
-        this.txtProvincia = txtProvincia;
-        this.txtTelefono = txtTelefono;
-        this.txtEmail = txtEmail;
-        this.txtNote = txtNote;
-        this.txtNotifica=txtNotifica;
+    public JTextField getRuolo() {
+        return Ruolo;
     }
+
+    public void setRuolo(JTextField Ruolo) {
+        this.Ruolo = Ruolo;
+    }
+
+    public void setTxtNotifica(JTextField txtNotifica) {
+        this.txtNotifica = txtNotifica;
+    }
+
+
+
 
     public JTextField getTxtNotifica() {
         return txtNotifica;
