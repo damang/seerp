@@ -17,11 +17,27 @@ public class Ruolo {
      private String nome;
      private Integer idRuolo;
 
-    public Ruolo(ArrayList<Personale> listPersonale, ArrayList<Permesso> listPermessi, String nome, Integer idRuolo) {
+    public Ruolo( Integer idRuolo,String nome,ArrayList<Personale> listPersonale, ArrayList<Permesso> listPermess) {
         this.listPersonale = listPersonale;
         this.listPermessi = listPermessi;
         this.nome = nome;
         this.idRuolo = idRuolo;
+    }
+
+    public ArrayList<Permesso> getListPermessi() {
+        return listPermessi;
+    }
+
+    public ArrayList<Personale> getListPersonale() {
+        return listPersonale;
+    }
+
+    public void setListPermessi(ArrayList<Permesso> listPermessi) {
+        this.listPermessi = listPermessi;
+    }
+
+    public void setListPersonale(ArrayList<Personale> listPersonale) {
+        this.listPersonale = listPersonale;
     }
 
   

@@ -15,13 +15,13 @@ public class Appuntamento {
 
     private Date data;
     private Time ora;
-    private int idAppuntamento;
+    private Integer idAppuntamento;
     private String note;
     private Integer dipendente;
     private Integer extraAzienda;
     private Boolean notifica;
 
-    public Appuntamento(Date data, Time ora, int idAppuntamento, String note, Integer dipendente, Integer extraAzienda, Boolean notifica) {
+    public Appuntamento(Date data, Time ora, Integer idAppuntamento, String note, Integer dipendente, Integer extraAzienda, Boolean notifica) {
         this.data = data;
         this.ora = ora;
         this.idAppuntamento = idAppuntamento;
@@ -108,7 +108,7 @@ public class Appuntamento {
      *  il metodo che rsetuisce l'identificativo univoco dell'appuntamento
      * @return identificativo dell'appuntamento
      */
-    public int getIdAppuntamento() {
+    public Integer getIdAppuntamento() {
         return idAppuntamento;
     }
 

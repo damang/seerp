@@ -19,12 +19,34 @@ public class BeanGuiRuolo {
     private JTextField nome;
     private JTextField idRuolo;
 
-    public BeanGuiRuolo(ArrayList<BeanGuiPersonale> listPersonale, ArrayList<BeanGuiPermesso> listPermessi, JTextField nome, JTextField idRuolo) {
+    public BeanGuiRuolo() {
+        
+    }
+
+    public BeanGuiRuolo(JTextField idRuolo, JTextField nome,ArrayList<BeanGuiPersonale> listPersonale, ArrayList<BeanGuiPermesso> listPermessi) {
         this.listPersonale = listPersonale;
         this.listPermessi = listPermessi;
         this.nome = nome;
         this.idRuolo = idRuolo;
     }
+
+    public ArrayList<BeanGuiPermesso> getListPermessi() {
+        return listPermessi;
+    }
+
+    public ArrayList<BeanGuiPersonale> getListPersonale() {
+        return listPersonale;
+    }
+
+    public void setListPermessi(ArrayList<BeanGuiPermesso> listPermessi) {
+        this.listPermessi = listPermessi;
+    }
+
+    public void setListPersonale(ArrayList<BeanGuiPersonale> listPersonale) {
+        this.listPersonale = listPersonale;
+    }
+
+    
 
     public JTextField getIdRuolo() {
         return idRuolo;
