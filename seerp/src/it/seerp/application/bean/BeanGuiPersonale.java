@@ -24,10 +24,7 @@ public class BeanGuiPersonale extends BeanGuiUtente {
         
     }
 
-
-
-    public BeanGuiPersonale(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField txtNotifica, JTextField idPersonaleTxt, JTextField txtCognome, JTextField txtNome, JTextField txtCodiceFiscale, JComboBox cmbTipo, ArrayList<BeanGuiPermesso> listPermessi, ArrayList<BeanGuiRuolo> listRuoli) {
-        super(idUtenteTxt, txtUsername, txtPassword, txtCittà, txtProvincia, txtTelefono, txtEmail, txtNote, txtNotifica);
+    public BeanGuiPersonale(JTextField idPersonaleTxt, JTextField txtCognome, JTextField txtNome, JTextField txtCodiceFiscale, JComboBox cmbTipo, ArrayList<BeanGuiPermesso> listPermessi, ArrayList<BeanGuiRuolo> listRuoli) {
         this.idPersonaleTxt = idPersonaleTxt;
         this.txtCognome = txtCognome;
         this.txtNome = txtNome;
@@ -36,6 +33,9 @@ public class BeanGuiPersonale extends BeanGuiUtente {
         this.listPermessi = listPermessi;
         this.listRuoli = listRuoli;
     }
+
+
+
 
     public ArrayList<BeanGuiPermesso> getListPermessi() {
         return listPermessi;
