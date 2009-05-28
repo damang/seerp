@@ -35,6 +35,10 @@ public class Utente {
         this.visible=v;
     }
 
+    public String getRuolo() {
+        return ruolo;
+    }
+
     public void setVisible(Boolean visible) {
         this.visible = visible;
     }
