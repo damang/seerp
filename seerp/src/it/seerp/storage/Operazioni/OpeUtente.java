@@ -7,7 +7,8 @@ package it.seerp.storage.Operazioni;
 
 import it.seerp.application.bean.BeanGuiUtente;
 import it.seerp.storage.db.ConnectionPool;
-import it.seerp.storage.db.OpUtente;
+
+import it.seerp.storage.db.OpeEntity;
 import it.seerp.storage.ejb.Utente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,9 +21,9 @@ import java.util.ArrayList;
  *
  * @author LuNy
  */
-public class OpeUtente implements OpUtente<Utente,BeanGuiUtente> {
+public class OpeUtente implements OpeEntity<Utente,Integer> {
 
-public ArrayList<BeanGuiUtente> visualizzaElenco() throws SQLException {
+/*public ArrayList<BeanGuiUtente> visualizzaElenco() throws SQLException {
         ArrayList<BeanGuiUtente> list = new ArrayList<BeanGuiUtente>();
         Connection conn = null;
         Statement stmt = null;
@@ -100,7 +101,39 @@ public ArrayList<BeanGuiUtente> visualizzaElenco() throws SQLException {
             }
         }
 
+    }*/
+
+    public void inserimento(Utente Bean) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
+
+    public Utente modifica(Utente Bean) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public Utente visualizza(Integer id) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public ArrayList<Utente> elenca() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+      public ArrayList<Utente> ricerca(String nome, String ruolo) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+     public Utente  eliminaLogica(Utente ut) throws SQLException{
+    throw new UnsupportedOperationException("Not supported yet.");}
+
+    public void  elimina(Utente ut) throws SQLException{
+    throw new UnsupportedOperationException("Not supported yet.");}
+
+    public ArrayList<Utente> visualizzaElenco() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+}
 
 
 
