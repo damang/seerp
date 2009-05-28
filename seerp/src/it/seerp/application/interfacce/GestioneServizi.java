@@ -20,7 +20,7 @@ public interface GestioneServizi <E>{
 
     public void inserisci (E BeansGuiServizio)throws DatiErrati, DatiDuplicati;
 
-    public E visualizzaServizio(JTextField nome);
+    public E visualizza(JTextField nome);
 
-    public E modificaServizio (E BeansGuiServizio) throws DatiDuplicati;
+    public E modifica (E BeansGuiServizio) throws DatiDuplicati;
 }
