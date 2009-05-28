@@ -1,8 +1,8 @@
 package it.seerp.application.interfacce;
 
-import it.seerp.application.Exception.InserimentoException;
-import it.seerp.application.Exception.ModificaException;
-import it.seerp.application.Exception.RicercaException;
+
+import it.seerp.application.Exception.DatiDuplicati;
+import it.seerp.application.Exception.DatiErrati;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
@@ -16,11 +16,11 @@ public interface GestioneServizi <E>{
 
     public ArrayList<E> elenca ();
 
-    public ArrayList<E> ricerca (JTextField nome)throws RicercaException;
+    public ArrayList<E> ricerca (JTextField nome)throws DatiErrati;
 
-    public void inserisci (E BeansGuiServizio)throws InserimentoException;
+    public void inserisci (E BeansGuiServizio)throws DatiErrati, DatiDuplicati;
 
     public E visualizzaServizio(JTextField nome);
 
-    public E modificaServizio (E BeansGuiServizio) throws ModificaException;
+    public E modificaServizio (E BeansGuiServizio) throws DatiDuplicati;
 }
