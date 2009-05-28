@@ -207,48 +207,78 @@ public class Conversione
         return gui;
     }
 
-    public BeanGuiPagamento conversionePagamento(Pagamento p)
-    {
-
-    }
-
     public Pagamento conversionePagamento(BeanGuiPagamento p)
     {
+        Pagamento pagamento = new Pagamento(p.getNote().getText(), Date.valueOf(p.getDataScadenza().getText()),
+                p.getDescrizione().getText(), Double.parseDouble(p.getImporto().getText()), p.getModalitaPagamento().getText(),
+                p.getStato().getText(), p.getAltreInformazioni().getText(), Integer.parseInt(p.getIdPagamento().getText()),
+                Integer.parseInt(p.getContratto().getText()), Integer.parseInt(p.getBanca().getText()));
 
+        return pagamento;
     }
 
-        public Utente conversioneUtente(BeanGuiUtente bUtente){
+    public BeanGuiPagamento conversionePagamento(Pagamento p)
+    {
+        BeanGuiPagamento pagamento = new BeanGuiPagamento();
+        JTextField field = new JTextField();
+        JTextArea area = new JTextArea();
+        area.setText(p.getNote());
+        pagamento.setNote(area);
+        field.setText(p.getDataScadenza().toString());
+        pagamento.setDataScadenza(field);
+        field.setText(p.getDescrizione());
+        pagamento.setDescrizione(field);
+        field.setText(p.getImporto().toString());
+        pagamento.setImporto(field);
+        field.setText(p.getModalitaPagamento());
+        pagamento.setModalitaPagamento(field);
+        field.setText(p.getStato());
+        pagamento.setStato(field);
+        field.setText(p.getAltreInformazioni());
+        pagamento.setAltreInformazioni(field);
+        field.setText(p.getIdPagamento().toString());
+        pagamento.setIdPagamento(field);
+        field.setText(p.getContratto().toString());
+        pagamento.setContratto(field);
+        field.setText(p.getBanca().toString());
+        pagamento.setBanca(field);
+        return pagamento;
+    }
 
+
+    public Utente conversioneUtente(BeanGuiUtente bUtente)
+    {
         Utente utente = new Utente(Integer.parseInt(bUtente.getIdUtenteTxt().getText()),bUtente.getTxtUsername().getText(),bUtente.getTxtPassword().getText(),
                 bUtente.getTxtCittà().getText(),bUtente.getTxtProvincia().getText(),bUtente.getTxtTelefono().getText(),
                 bUtente.getTxtEmail().getText(),bUtente.getTxtNote().getText(),Boolean.parseBoolean(bUtente.getTxtNotifica().getText()));
+
         return utente;
     }
 
     public BeanGuiUtente conversioneUtente(Utente user){
         BeanGuiUtente utente= new BeanGuiUtente();
-        JTextField a = new JTextField();
-        a.setText(user.getIdUtente().toString());
-        utente.setIdUtenteText(a);
-        a.setText(user.getPassword());
-        utente.setTxtPassword(a);
-        a.setText(user.getCittà());
-        utente.setTxtCittà(a);
-        a.setText(user.getEmail());
-        utente.setTxtEmail(a);
-        a.setText(user.getProvincia());
-        utente.setTxtProvincia(a);
-        a.setText(user.getTelefono());
-        utente.setTxtTelefono(a);
-        a.setText(user.getNote().toString());
-        utente.setTxtUsername(a);
-        a.setText(user.getVisible().toString());
-        utente.setTxtnotifica(a);
+        JTextField field = new JTextField();
+        field.setText(user.getIdUtente().toString());
+        utente.setIdUtenteText(field);
+        field.setText(user.getPassword());
+        utente.setTxtPassword(field);
+        field.setText(user.getCittà());
+        utente.setTxtCittà(field);
+        field.setText(user.getEmail());
+        utente.setTxtEmail(field);
+        field.setText(user.getProvincia());
+        utente.setTxtProvincia(field);
+        field.setText(user.getTelefono());
+        utente.setTxtTelefono(field);
+        field.setText(user.getNote().toString());
+        utente.setTxtUsername(field);
+        field.setText(user.getVisible().toString());
+        utente.setTxtnotifica(field);
         return utente;
         }
 
-    public Personale conversionePersonale(BeanGuiPersonale bp){
-
+    public Personale conversionePersonale(BeanGuiPersonale bp)
+    {
         ArrayList<Permesso> a = new ArrayList<Permesso>();
         ArrayList<Ruolo> a1 = new ArrayList<Ruolo>();
 
@@ -269,10 +299,11 @@ public class Conversione
         return p;
     }
 
-    public BeanGuiPersonale conversionePersonale(Personale p){
+    public BeanGuiPersonale conversionePersonale(Personale p)
+    {
         BeanGuiPersonale bp = new BeanGuiPersonale();
 
-         ArrayList<BeanGuiPermesso> a = new ArrayList<BeanGuiPermesso>();
+        ArrayList<BeanGuiPermesso> a = new ArrayList<BeanGuiPermesso>();
         ArrayList<BeanGuiRuolo> a1 = new ArrayList<BeanGuiRuolo>();
 
         for( Permesso b : p.getListaPermessi() ){
