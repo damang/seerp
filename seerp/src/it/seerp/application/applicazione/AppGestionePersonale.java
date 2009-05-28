@@ -21,10 +21,18 @@ import javax.swing.JTextField;
 public class AppGestionePersonale extends AppGestioneUtente {
 
    
+    /**
+     *
+     * @param username
+     * @return
+     * @throws it.seerp.application.Exception.DatiErrati
+     */
+    @Override
     public BeanGuiPersonale ricerca(JTextField username) throws DatiErrati {
         String s=username.getText();
-       if (s==null||s.length()>) throw new DatiErrati("nessun carattere inserito");
+       if (s==null||s.length()>0) throw new DatiErrati("nessun carattere inserito");
 
+        return null;
     }
 
     public void elimina(BeanGuiPersonale user) {

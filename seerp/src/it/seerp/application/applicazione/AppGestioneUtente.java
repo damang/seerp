@@ -7,6 +7,7 @@ package it.seerp.application.applicazione;
 
 import it.seerp.application.Exception.DatiDuplicati;
 import it.seerp.application.Exception.DatiErrati;
+import it.seerp.application.Exception.RicercaFallita;
 import it.seerp.application.bean.BeanGuiUtente;
 import it.seerp.application.interfacce.GestioneUtenti;
 import it.seerp.storage.ejb.Utente;
@@ -44,6 +45,14 @@ public class AppGestioneUtente implements GestioneUtenti<Utente,BeanGuiUtente> {
     }
 
     public BeanGuiUtente modifica(BeanGuiUtente user) throws DatiDuplicati {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public ArrayList<Utente> ricerca(JTextField cognome, JTextField ruolo) throws DatiErrati, RicercaFallita {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public BeanGuiUtente visualizzaDati(JTextField user) throws DatiErrati {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
