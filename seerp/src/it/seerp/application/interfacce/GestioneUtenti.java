@@ -20,16 +20,16 @@ public interface GestioneUtenti<E extends Utente,U extends BeanGuiUtente> {
     public U ricerca(JTextField username)throws DatiErrati;
 
     
-    public void elimina(BeanGuiUtente user);
+    public void elimina(U user);
 
     
-    public void eliminazioneLogica(BeanGuiUtente user);
+    public void eliminazioneLogica(U user);
 
    
-    public void inserisci(BeanGuiUtente user)throws DatiErrati,DatiDuplicati;
+    public void inserisci(U user)throws DatiErrati,DatiDuplicati;
 
    
-    public BeanGuiUtente modifica(BeanGuiUtente user)throws DatiDuplicati;
+    public U modifica(U user)throws DatiDuplicati;
 
 
 
