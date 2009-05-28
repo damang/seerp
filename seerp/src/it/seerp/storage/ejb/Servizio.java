@@ -36,7 +36,7 @@ public class Servizio {
 
 
 
-    public ArrayList<Contratto> getListServizio() {
+    public ArrayList<Contratto> getListContratti() {
         return  listContratti;
     }
 
