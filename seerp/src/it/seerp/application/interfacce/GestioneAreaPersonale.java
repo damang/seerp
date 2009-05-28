@@ -9,7 +9,7 @@ import javax.swing.JTextField;
  *
  * @author matteo
  */
-public interface GestioneAreaPersonale <E extends Utente,U extends BeanGuiUtente> extends GestioneUtenti<E,U> {
+public interface GestioneAreaPersonale <E extends Utente,U extends BeanGuiUtente>{
 
     public BeanGuiUtente visualizzaDati(JTextField user);
 
