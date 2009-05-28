@@ -11,6 +11,7 @@ import javax.swing.JTextField;
  *
  * @author Luisa
  */
+
 public interface GestioneAgenda<G> {
     //ci vuole l extends???
     public  ArrayList<G> visualizzaListaEventi()throws DatiErrati;
