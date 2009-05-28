@@ -17,12 +17,14 @@ public class Dipendente extends Personale{
      private ArrayList<Appuntamento> listAppuntamenti;
      private ArrayList<Contratto> listContratti;
 
-    public Dipendente(Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String note, Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo, ArrayList<Permesso> listPermessi, ArrayList<Ruolo> listRuoli, Boolean v, Integer idDipendente, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti) {
-        super(idUtente, username, password, città, provincia, telefono, email, note, idPersonale, cognome, nome, codiceFiscale, tipo, listPermessi, listRuoli, v);
+    public Dipendente(Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String note, String ruolo, Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo, ArrayList<Permesso> listPermessi, ArrayList<Ruolo> listRuoli, Boolean v, Integer idDipendente, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti) {
+        super(idUtente, username, password, città, provincia, telefono, email, note, ruolo, idPersonale, cognome, nome, codiceFiscale, tipo, listPermessi, listRuoli, v);
         this.idDipendente = idDipendente;
         this.listAppuntamenti = listAppuntamenti;
         this.listContratti = listContratti;
     }
+
+   
 
   
 
