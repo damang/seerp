@@ -5,10 +5,9 @@
 
 package it.seerp.storage.db;
 
+import it.seerp.application.Exception.CancellazioneFallita;
 import it.seerp.storage.Exception.DatiDuplicati;
 import it.seerp.storage.Exception.DatiErrati;
-import it.seerp.storage.Exception.RicercaFallita;
-import java.sql.SQLException;
 import java.util.ArrayList;
 /**
  *
