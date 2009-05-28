@@ -4,62 +4,72 @@ import it.seerp.application.Exception.DatiDuplicati;
 import it.seerp.application.Exception.DatiErrati;
 import it.seerp.application.Exception.RicercaFallita;
 import it.seerp.application.bean.BeanGuiServizio;
-import it.seerp.application.interfacce.GestioneAgenda;
+import it.seerp.application.interfacce.GestioneServizi;
 import java.util.ArrayList;
 import javax.swing.JTextField;
 
 /**
- *
+ * Classe del livello application riguardante la Gestione dei Servizi
  * @author Tommaso Cattolico
  */
-public class AppServizi implements GestioneAgenda<BeanGuiServizio>
+public class AppServizi implements GestioneServizi<BeanGuiServizio>
 {
 
-    public ArrayList<BeanGuiServizio> visualizzaListaEventi() throws DatiErrati
-    {
-        throw new DatiErrati("Dati errati.");
+    /**
+     * Metodo che permette di visualizzare l'elenco dei servizi
+     * @return ArrayList contenente i servizi
+     */
+    public ArrayList<BeanGuiServizio> elenca() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public BeanGuiServizio visualizzaDettagli(JTextField nome)
-    {
-        BeanGuiServizio bgser = new BeanGuiServizio();
-
-        return bgser;
+    /**
+     * Metodo che permette la ricerca di un servizio
+     * @param nome
+     * nome del servizio
+     * @return ArrayList con i servizi che corrispondono al nome inserito
+     * @throws it.seerp.application.Exception.DatiErrati
+     * nel caso in cui si immettano dati errati
+     * @throws it.seerp.application.Exception.RicercaFallita
+     * nel caso in cui la ricerca non produce risultati
+     */
+    public ArrayList<BeanGuiServizio> ricerca(JTextField nome) throws DatiErrati, RicercaFallita {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void notificaEventi(BeanGuiServizio beanGuiEventi)
-    {
-
+    /**
+     * Metodo che permette l'inserimento di un nuovo servizio
+     * @param BeansGuiServizio
+     * Bean Gui del servizio da inserire
+     * @throws it.seerp.application.Exception.DatiErrati
+     * nel caso in cui si immettano dati errati
+     * @throws it.seerp.application.Exception.DatiDuplicati
+     * nel caso in cui si inserisca un servizio già presente
+     */
+    public void inserisci(BeanGuiServizio BeansGuiServizio) throws DatiErrati, DatiDuplicati {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void inserimento(BeanGuiServizio beanGuiEventi) throws DatiErrati, DatiDuplicati
-    {
-        throw new DatiErrati("Dati errati.");
-        //throw new DatiDuplicati("Dati duplicati.");
+    /**
+     * Metodo che permette la visualizzazione di un servizio
+     * @param nome
+     * nome del servizio
+     * @return Bean Gui del servizio da visualizzare
+     */
+    public BeanGuiServizio visualizzaServizio(JTextField nome) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public BeanGuiServizio modifica(BeanGuiServizio beanGuiEventi) throws DatiErrati
-    {
-        throw new DatiErrati("Dati errati.");
+    /**
+     * Metodo che permette la modifica di un servizio
+     * @param BeansGuiServizio
+     * Bean Gui del Servizio da mofidicare
+     * @return Bean Gui del servizio modificato
+     * @throws it.seerp.application.Exception.DatiErrati
+     * nel caso in cui si immettano dati errati durante la modifica
+     */
+    public BeanGuiServizio modificaServizio(BeanGuiServizio BeansGuiServizio) throws DatiErrati {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public ArrayList<BeanGuiServizio> ricerca(JTextField Nome, JTextField Referente, JTextField data) throws DatiErrati
-    {
-        throw new DatiErrati("Dati errati.");
-    }
-
-    public ArrayList<BeanGuiServizio> ricercaPerNome(JTextField Nome) throws DatiErrati
-    {
-        throw new DatiErrati("Dati errati.");
-    }
-
-    public ArrayList<BeanGuiServizio> ricercaPerGiorno(JTextField giorno) throws DatiErrati
-    {
-        throw new DatiErrati("Dati errati.");
-    }
-
-    public void cancellaEvento(BeanGuiServizio beanGuiEventi) throws RicercaFallita
-    {
-        throw new RicercaFallita("Ricerca Fallita.");
-    }
 }
