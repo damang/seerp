@@ -22,15 +22,13 @@ public class AppGestionePersonale extends AppGestioneUtente {
 
    
     public BeanGuiPersonale ricerca(JTextField username) throws DatiErrati {
-        BeanGuiPersonale el= new BeanGuiPersonale();
-        BeanGuiPersonale el1= new BeanGuiPersonale();
-        el = (BeanGuiPersonale) super.ricerca(username);
+        String s=username.getText();
+       if (s==null||s.length()>) throw new DatiErrati("nessun carattere inserito");
 
-       return el;
     }
 
     public void elimina(BeanGuiPersonale user) {
-        super.elimina(user);
+       
     }
 
     public void eliminazioneLogica(BeanGuiPersonale user) {
@@ -38,6 +36,8 @@ public class AppGestionePersonale extends AppGestioneUtente {
     }
 
     public void inserisci(BeanGuiPersonale user, BeanGuiUtente ut) throws DatiErrati, DatiDuplicati {
+        super.inserisci(ut);
+
 
 
     }
