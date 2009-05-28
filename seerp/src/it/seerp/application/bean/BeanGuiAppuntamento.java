@@ -5,6 +5,7 @@
 
 package it.seerp.application.bean;
 
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -16,15 +17,19 @@ public class BeanGuiAppuntamento {
     private JTextField data;
     private JTextField ora;
     private JTextField idAppuntamento;
-    private JTextField note;
+    private JTextArea note;
     private JTextField dipendente;
 
     private JTextField extraAzienda;
      private JTextField notifica;
 
+    public BeanGuiAppuntamento() {
+        
+    }
+
  
 
-    public BeanGuiAppuntamento(JTextField data, JTextField ora, JTextField idAppuntamento, JTextField note, JTextField dipendente, JTextField extraAzienda,JTextField notifica) {
+    public BeanGuiAppuntamento(JTextField data, JTextField ora, JTextField idAppuntamento, JTextArea note, JTextField dipendente, JTextField extraAzienda,JTextField notifica) {
         this.data = data;
         this.ora = ora;
         this.idAppuntamento = idAppuntamento;
@@ -59,7 +64,7 @@ public class BeanGuiAppuntamento {
         return idAppuntamento;
     }
 
-    public JTextField getNote() {
+    public JTextArea getNote() {
         return note;
     }
 
@@ -83,7 +88,7 @@ public class BeanGuiAppuntamento {
         this.idAppuntamento = idAppuntamento;
     }
 
-    public void setNote(JTextField note) {
+    public void setNote(JTextArea note) {
         this.note = note;
     }
 

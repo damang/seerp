@@ -20,10 +20,29 @@ public class BeanGuiPermesso {
     private ArrayList<BeanGuiPersonale> listPersonale;
     private ArrayList<BeanGuiRuolo> listRuolo;
 
+    public BeanGuiPermesso() {
+        }
+
     public BeanGuiPermesso(JTextField idPermesso, JTextField Nome, ArrayList<BeanGuiPersonale> listPersonale, ArrayList<BeanGuiRuolo> listRuolo) {
         this.idPermesso = idPermesso;
         this.Nome = Nome;
         this.listPersonale = listPersonale;
+        this.listRuolo = listRuolo;
+    }
+
+    public ArrayList<BeanGuiPersonale> getListPersonale() {
+        return listPersonale;
+    }
+
+    public ArrayList<BeanGuiRuolo> getListRuolo() {
+        return listRuolo;
+    }
+
+    public void setListPersonale(ArrayList<BeanGuiPersonale> listPersonale) {
+        this.listPersonale = listPersonale;
+    }
+
+    public void setListRuolo(ArrayList<BeanGuiRuolo> listRuolo) {
         this.listRuolo = listRuolo;
     }
 

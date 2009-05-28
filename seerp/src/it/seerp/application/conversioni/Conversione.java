@@ -24,7 +24,7 @@ import javax.swing.JTextField;
  * @author Tommaso Cattolico
  */
 public class Conversione {
-    public Contratto conversioneContratto(BeanGuiContratto pGui){
+    public static Contratto conversioneContratto(BeanGuiContratto pGui){
         Contratto contratto = new Contratto(pGui.getStato().getText(), Date.valueOf(pGui.getData().getText()),
                 Integer.parseInt(pGui.getDurata().getText()), pGui.getTipo().getText(),
                 Integer.parseInt(pGui.getIdContratto().getText()), pGui.getNote().getText(),
@@ -32,7 +32,7 @@ public class Conversione {
         return contratto;
     }
 
-    public BeanGuiContratto conversioneContratto(Contratto c){
+    public static BeanGuiContratto conversioneContratto(Contratto c){
         BeanGuiContratto gui = new BeanGuiContratto();
         JTextField a = new JTextField();
         JTextArea b = new JTextArea();
