@@ -3,9 +3,8 @@
 
 package it.seerp.application.interfacce;
 
-import it.seerp.application.Exception.InserimentoException;
-import it.seerp.application.Exception.ModificaException;
-import it.seerp.application.Exception.RicercaException;
+import it.seerp.application.Exception.DatiDuplicati;
+import it.seerp.application.Exception.DatiErrati;
 import java.util.ArrayList;
 import javax.swing.JTextField;
 
@@ -27,12 +26,11 @@ public interface GestioneContratti<E> {
 
     public E visualizzaContratto(E BeanGuiContatto);
 
+    public E ricerca(JTextField id) throws DatiErrati;
 
-    public E ricerca(JTextField id) throws RicercaException;
+    public ArrayList<E> ricercaPerDipendente(JTextField nomeDipendente) throws DatiErrati;
 
-    public ArrayList<E> ricercaPerDipendente(JTextField nomeDipendente) throws RicercaException;
+    public void inserisci(E BeanGuiContratto) throws DatiErrati;
 
-    public void inserisci(E BeanGuiContratto) throws InserimentoException;
-
-    public E modifica(E BeanGuiContratto) throws ModificaException;
+    public E modifica(E BeanGuiContratto) throws DatiErrati,DatiDuplicati;
 }
