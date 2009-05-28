@@ -22,5 +22,5 @@ public interface GestioneServizi <E>{
 
     public E visualizza(JTextField nome);
 
-    public E modifica (E BeansGuiServizio) throws DatiDuplicati;
+    public E modifica (E BeansGuiServizio) throws DatiErrati;
 }
