@@ -18,10 +18,10 @@ import java.awt.event.ActionListener;
  *
  * @author Andrea
  */
-public class Utilità extends javax.swing.JPanel implements ActionListener {
+public class UtilitàPanel extends javax.swing.JPanel implements ActionListener {
 
     /** Creates new form Utilità */
-    public Utilità() {
+    public UtilitàPanel() {
         initComponents();
     }
 
