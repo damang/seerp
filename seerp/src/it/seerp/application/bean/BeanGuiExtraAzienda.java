@@ -30,8 +30,7 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
         
     }
 
-    public BeanGuiExtraAzienda(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField txtNotifica, JTextField idExtraAziendaTxt, JTextField txtCognome, JTextField txtNome, JTextField txtRagioneSociale, JTextField txtPIva, JTextField txtFax, JComboBox cmbRuolo, ArrayList<BeanGuiAppuntamento> listAppuntamenti, ArrayList<BeanGuiContratto> listContratti) {
-        super(idUtenteTxt, txtUsername, txtPassword, txtCittà, txtProvincia, txtTelefono, txtEmail, txtNote, txtNotifica);
+    public BeanGuiExtraAzienda(JTextField idExtraAziendaTxt, JTextField txtCognome, JTextField txtNome, JTextField txtRagioneSociale, JTextField txtPIva, JTextField txtFax, JComboBox cmbRuolo, ArrayList<BeanGuiAppuntamento> listAppuntamenti, ArrayList<BeanGuiContratto> listContratti) {
         this.idExtraAziendaTxt = idExtraAziendaTxt;
         this.txtCognome = txtCognome;
         this.txtNome = txtNome;
@@ -42,6 +41,8 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
         this.listAppuntamenti = listAppuntamenti;
         this.listContratti = listContratti;
     }
+
+   
 
     public ArrayList<BeanGuiAppuntamento> getListAppuntamenti() {
         return listAppuntamenti;
