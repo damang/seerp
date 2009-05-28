@@ -5,8 +5,6 @@
 
 package it.seerp.storage.Operazioni;
 
-
-import it.seerp.storage.ejb.Personale;
 import it.seerp.storage.ejb.Responsabile;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -15,80 +13,66 @@ import java.util.ArrayList;
  *
  * @author LuNy
  */
-public class OpResponsabile extends OpeUtente {
+public class OpResponsabile extends OpPersonale {
 
-    public OpResponsabile(){
-    super();}
-
-  /*  public void insert (Responsabile responsabile) throws SQLException
-    {
-        Connection conn=null;
-        PreparedStatement stmt = null;
-    	try {
-            // Obtain a db connection
-            conn = ConnectionPool.getConnection();
-
-            // Create a statement
-
-            String query = "INSERT INTO Responsabile VALUE (?,?,?,?,?,?,?,?)";
-            stmt = conn.prepareStatement(query);
-
-            stmt.setInt(1, responsabile.getIdPersonale());
-            stmt.setString(2, responsabile.getCognome());
-            stmt.setString(3, responsabile.getNome());
-            stmt.setString(4, responsabile.getCodiceFiscale());
-            stmt.setString(5, responsabile.getTipo());
-            stmt.setArrayList(6, responsabile.getListp());
-            stmt.setArrayList(7, responsabile.getListr());
-            stmt.setInt(8, responsabile.getIdResponsabile());
-
-            stmt.executeUpdate();
-
-            conn.commit();
+     public OpResponsabile(){
+    super();
     }
 
-            catch(SQLException e){
-                e.getMessage();
-
-
-       }
-
-
-        finally{
-            if (stmt != null)
-            	stmt.close();
-        	if (conn != null)
-        	ConnectionPool.releaseConnection(conn);
-
-        }
-}*/
-
-
-
-
-    
-     public ArrayList<Responsabile> elencaResponsabile()throws SQLException{
-     throw new UnsupportedOperationException("Not supported yet.");}
-
-
-    public  ArrayList<Responsabile> ricercaResponsabile(String cognome, String ruolo)throws SQLException{
+     /** Metodo che permette la visualizzazione della lista dei Responsabili
+     * @return ArrayList contenente la lista dei responsabili
+     * @throws java.sql.SQLException
+     */
+    public ArrayList<Responsabile> elencaResponsabile()throws SQLException{
         throw new UnsupportedOperationException("Not supported yet.");}
 
 
-    public void elimina(Responsabile user)throws SQLException{
+     /** Metodo che permette la ricerca di un Responsabile
+      * @param cognome
+      * cognome del Responsabile da ricercare
+      * @param ruolo
+      * ruolo che il Responsabile ricopre all'interno dell'azienda
+      * @return la lista dei Responsabili che corrispondono ai criteri di ricerca
+      * @throws java.sql.SQLException
+      */
+     public  ArrayList<Responsabile> ricercaResponsabile(String cognome, String ruolo)throws SQLException{
         throw new UnsupportedOperationException("Not supported yet.");}
 
 
-    public void eliminazioneLogica(Responsabile user)throws SQLException{ 
+     /** Metodo che permette di eliminare un Responsabile già esistente
+      * @param user
+      * user del Responsabile da eliminare
+      * @throws java.sql.SQLException
+      */
+     public void elimina(Responsabile user)throws SQLException{
         throw new UnsupportedOperationException("Not supported yet.");}
 
 
+    /** Metodo per inserire un nuovo Responsabile
+     * @param user
+     * user del Responsabile da inserire
+     * @throws java.sql.SQLException
+     */
     public void inserisci(Responsabile user)throws SQLException{
         throw new UnsupportedOperationException("Not supported yet.");}
 
 
+    /** Metodo che permette la modifica di un Responsabile presente nel sistema
+     * @param user
+     * user del Responsabile da modificare
+     * @return lo stesso oggetto modificato
+     * @throws java.sql.SQLException
+     */
     public Responsabile modifica(Responsabile user)throws SQLException{
         throw new UnsupportedOperationException("Not supported yet.");}
 
-public Responsabile visualizzaDati(Integer id) throws SQLException{
-        throw new UnsupportedOperationException("Not supported yet.");}}
+    /** Metodo che permette la visualizzazione dei dettagli di un Responsabile
+     * @param id
+     * id del Responsabile
+     * @return il bean con i dettagli del Responsabile
+     * @throws java.sql.SQLException
+     */
+    public Responsabile visualizzaDati(Integer id) throws SQLException{
+        throw new UnsupportedOperationException("Not supported yet.");}
+}
+
