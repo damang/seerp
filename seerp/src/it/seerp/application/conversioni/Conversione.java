@@ -38,7 +38,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
- *
+ * Classe che permette la conversione tra diversi tipi di Bean e Bean Gui
  * @author Tommaso Cattolico - Matteo D'Auria
  */
 public class Conversione
