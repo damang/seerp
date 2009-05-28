@@ -21,9 +21,7 @@ public interface GestioneContratti<E> {
 
     public ArrayList<E> visualizza();
 
-     public E visualizzaContratto(JTextField nome);
-
-    public E visualizzaContratto(E beanGuiContratto) throws DatiErrati;
+     public E visualizzaContratto(JTextField nome) throws DatiErrati;
 
     public E ricerca(JTextField id) throws DatiErrati;
 
