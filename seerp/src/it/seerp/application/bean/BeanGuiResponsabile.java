@@ -16,14 +16,30 @@ import javax.swing.JTextField;
  */
 public class BeanGuiResponsabile extends BeanGuiPersonale {
 
+    /**
+     * 
+     */
     public BeanGuiResponsabile() {
         
     }
 
-    public BeanGuiResponsabile(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField txtNotifica, JTextField idPersonaleTxt, JTextField txtCognome, JTextField txtNome, JTextField txtCodiceFiscale, JComboBox cmbTipo, ArrayList<BeanGuiPermesso> listPermessi, ArrayList<BeanGuiRuolo> listRuoli, JTextField idResponsabileTxt) {
-        super(idUtenteTxt, txtUsername, txtPassword, txtCittà, txtProvincia, txtTelefono, txtEmail, txtNote, txtNotifica, idPersonaleTxt, txtCognome, txtNome, txtCodiceFiscale, cmbTipo, listPermessi, listRuoli);
+    /**
+     *
+     * @param idPersonaleTxt
+     * @param txtCognome
+     * @param txtNome
+     * @param txtCodiceFiscale
+     * @param cmbTipo
+     * @param listPermessi
+     * @param listRuoli
+     * @param idResponsabileTxt
+     */
+    public BeanGuiResponsabile(JTextField idPersonaleTxt, JTextField txtCognome, JTextField txtNome, JTextField txtCodiceFiscale, JComboBox cmbTipo, ArrayList<BeanGuiPermesso> listPermessi, ArrayList<BeanGuiRuolo> listRuoli, JTextField idResponsabileTxt) {
+        super(idPersonaleTxt, txtCognome, txtNome, txtCodiceFiscale, cmbTipo, listPermessi, listRuoli);
         this.idResponsabileTxt = idResponsabileTxt;
     }
+
+   
 
    
 

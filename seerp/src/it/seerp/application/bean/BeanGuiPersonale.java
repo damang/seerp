@@ -20,10 +20,23 @@ public class BeanGuiPersonale extends BeanGuiUtente {
     private ArrayList<BeanGuiPermesso> listPermessi;
     private ArrayList<BeanGuiRuolo> listRuoli;
 
+    /**
+     * 
+     */
     public BeanGuiPersonale() {
         
     }
 
+    /**
+     *
+     * @param idPersonaleTxt
+     * @param txtCognome
+     * @param txtNome
+     * @param txtCodiceFiscale
+     * @param cmbTipo
+     * @param listPermessi
+     * @param listRuoli
+     */
     public BeanGuiPersonale(JTextField idPersonaleTxt, JTextField txtCognome, JTextField txtNome, JTextField txtCodiceFiscale, JComboBox cmbTipo, ArrayList<BeanGuiPermesso> listPermessi, ArrayList<BeanGuiRuolo> listRuoli) {
         this.idPersonaleTxt = idPersonaleTxt;
         this.txtCognome = txtCognome;
@@ -37,18 +50,34 @@ public class BeanGuiPersonale extends BeanGuiUtente {
 
 
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<BeanGuiPermesso> getListPermessi() {
         return listPermessi;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<BeanGuiRuolo> getListRuoli() {
         return listRuoli;
     }
 
+    /**
+     *
+     * @param listPermessi
+     */
     public void setListPermessi(ArrayList<BeanGuiPermesso> listPermessi) {
         this.listPermessi = listPermessi;
     }
 
+    /**
+     *
+     * @param listRuoli
+     */
     public void setListRuoli(ArrayList<BeanGuiRuolo> listRuoli) {
         this.listRuoli = listRuoli;
     }

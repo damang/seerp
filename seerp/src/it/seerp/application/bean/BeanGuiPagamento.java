@@ -24,8 +24,24 @@ public class BeanGuiPagamento {
     private JTextField contratto;
     private JTextField banca;
 
+    /**
+     * 
+     */
     public BeanGuiPagamento() {}
 
+    /**
+     *
+     * @param note
+     * @param dataScadenza
+     * @param descrizione
+     * @param importo
+     * @param modalitaPagamento
+     * @param stato
+     * @param altreInformazioni
+     * @param idPagamento
+     * @param contratto
+     * @param banca
+     */
     public BeanGuiPagamento(JTextArea note, JTextField dataScadenza, JTextField descrizione, JTextField importo, JTextField modalitaPagamento, JTextField stato, JTextField altreInformazioni, JTextField idPagamento, JTextField contratto, JTextField banca) {
         this.note = note;
         this.dataScadenza = dataScadenza;
