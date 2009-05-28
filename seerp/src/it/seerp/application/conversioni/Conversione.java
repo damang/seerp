@@ -1,4 +1,5 @@
 package it.seerp.application.conversioni;
+
 import it.seerp.application.bean.BeanGuiAppuntamento;
 import it.seerp.application.bean.BeanGuiCliente;
 import it.seerp.application.bean.BeanGuiContatto;
@@ -42,10 +43,12 @@ import javax.swing.JTextField;
  */
 public class Conversione
 {
-
-    public Conversione() {}
-
-
+    /**
+     * Metodo che converte un Bean Gui Contratto in un normale Bean Contratto
+     * @param pGui
+     * Il Bean Gui Contratto da convertire
+     * @return Il Bean Contratto convertito
+     */
     public Contratto conversioneContratto(BeanGuiContratto pGui)
     {
         ArrayList<Pagamento> listPag= new ArrayList<Pagamento>();
@@ -63,17 +66,28 @@ public class Conversione
             listSer.add(s1);
         }
 
-        Contratto contratto = new Contratto(pGui.getStato().getText(), Date.valueOf(pGui.getData().getText()),
-                Integer.parseInt(pGui.getDurata().getText()), pGui.getTipo().getText(),
-                Integer.parseInt(pGui.getIdContratto().getText()), pGui.getNote().getText(),
-                Integer.parseInt(pGui.getDipendente().getText()), Integer.parseInt(pGui.getExtraAzienda().getText()), 
-                listPag, listSer);
+        String stato =  pGui.getStato().getText();
+        Date data = Date.valueOf(pGui.getData().getText());
+        int durata = Integer.parseInt(pGui.getDurata().getText());
+        String tipo = pGui.getTipo().getText();
+        int idContratto = Integer.parseInt(pGui.getIdContratto().getText());
+        String note = pGui.getNote().getText();
+        int dipendente = Integer.parseInt(pGui.getDipendente().getText());
+        int extraAzienda = Integer.parseInt(pGui.getExtraAzienda().getText());
+
+        Contratto contratto = new Contratto(stato, data, durata, tipo, idContratto, note, dipendente, extraAzienda, listPag, listSer);
         
         return contratto;
     }
 
 
 
+    /**
+     * Metodo che converte un Bean Contratto in un Bean Gui Contratto
+     * @param c
+     * Il Bean Contratto da convertire
+     * @return Il Bean Gui Contratto convertito
+     */
     public BeanGuiContratto conversioneContratto(Contratto c)
     {
         BeanGuiContratto gui = new BeanGuiContratto();
@@ -117,42 +131,68 @@ public class Conversione
         return gui;
     }
 
+    /**
+     * Metodo che converte un Bean Gui Evento in un normale Bean Evento
+     * @param pGui
+     * Il Bean Gui Evento da convertire
+     * @return Il Bean Evento convertito
+     */
     public Evento conversioneEvento(BeanGuiEvento pGui)
     {
-        Evento evento = new Evento(pGui.getLuogo().getText(), pGui.getTema().getText(), pGui.getNome().getText(), 
-                pGui.getNote().getText(), Date.valueOf(pGui.getData().getText()), Time.valueOf(pGui.getOra().getText()),
-                Integer.parseInt(pGui.getIdEvento().getText()), Integer.parseInt(pGui.getAgenda().getText()),
-                Boolean.parseBoolean(pGui.getNotifica().getText()));
+        String luogo = pGui.getLuogo().getText();
+        String tema = pGui.getTema().getText();
+        String nome = pGui.getNome().getText();
+        String note = pGui.getNote().getText();
+        Date data = Date.valueOf(pGui.getData().getText());
+        Time ora = Time.valueOf(pGui.getOra().getText());
+        int idEvento = Integer.parseInt(pGui.getIdEvento().getText());
+        int agenda = Integer.parseInt(pGui.getAgenda().getText());
+        boolean notifica = Boolean.parseBoolean(pGui.getNotifica().getText());
+
+        Evento evento = new Evento(luogo, tema, nome, note, data, ora, idEvento, agenda, notifica);
 
         return evento;
     }
 
+    /**
+     * Metodo che converte un Bean Evento  in un Bean Gui Evento
+     * @param e
+     * Il Bean Evento da convertire
+     * @return Il Bean Gui Evento convertito
+     */
     public BeanGuiEvento conversioneEvento(Evento e)
     {
         BeanGuiEvento gui = new BeanGuiEvento();
-        JTextField a = new JTextField();
-        JTextArea b = new JTextArea();
+        
+        JTextField field = new JTextField();
+        JTextArea area = new JTextArea();
 
-        a.setText(e.getLuogo());
-        gui.setLuogo(a);
-        a.setText(e.getTema());
-        gui.setTema(a);
-        a.setText(e.getNome());
-        gui.setNome(a);
-        a.setText(e.getNote());
-        gui.setNote(b);
-        a.setText(e.getData().toString());
-        gui.setData(a);
-        a.setText(e.getOra().toString());
-        gui.setOra(a);
-        a.setText(Integer.toString(e.getIdEvento()));
-        gui.setIdEvento(a);
-        a.setText(e.getAgenda().toString());
-        gui.setAgenda(a);
+        field.setText(e.getLuogo());
+        gui.setLuogo(field);
+        field.setText(e.getTema());
+        gui.setTema(field);
+        field.setText(e.getNome());
+        gui.setNome(field);
+        field.setText(e.getNote());
+        gui.setNote(area);
+        field.setText(e.getData().toString());
+        gui.setData(field);
+        field.setText(e.getOra().toString());
+        gui.setOra(field);
+        field.setText(Integer.toString(e.getIdEvento()));
+        gui.setIdEvento(field);
+        field.setText(e.getAgenda().toString());
+        gui.setAgenda(field);
 
         return gui;
     }
 
+    /**
+     * Metodo che converte un Bean Gui Servizio in un normale Bean Servizio
+     * @param pGui
+     * Il Bean Gui Servizio da convertire
+     * @return Il Bean Servizio convertito
+     */
     public Servizio conversioneServizio(BeanGuiServizio pGui)
     {
         ArrayList<Contratto> list= new ArrayList<Contratto>();
@@ -162,15 +202,27 @@ public class Conversione
             Contratto c1 = conversioneContratto(c);
             list.add(c1);
         }
-
-        Servizio servizio = new Servizio(pGui.getDescrizione().getText(), Boolean.parseBoolean(pGui.getDisponibilita().getText()),
-                Integer.parseInt(pGui.getQuantita().getText()), pGui.getNote().getText(),
-                Double.parseDouble(pGui.getPrezzo().getText()), Integer.parseInt(pGui.getIdServizio().getText()),
-                Integer.parseInt(pGui.getIva().getText()), pGui.getNote().getText(), list);
+        
+        String descrizione = pGui.getDescrizione().getText();
+        boolean disponibilita = Boolean.parseBoolean(pGui.getDisponibilita().getText());
+        int quantita = Integer.parseInt(pGui.getQuantita().getText());
+        String tipo = pGui.getTipo().getText();
+        double prezzo = Double.parseDouble(pGui.getPrezzo().getText());
+        int idServizio = Integer.parseInt(pGui.getIdServizio().getText());
+        int iva = Integer.parseInt(pGui.getIva().getText());
+        String note = pGui.getNote().getText();
+        
+        Servizio servizio = new Servizio(descrizione, disponibilita, quantita, tipo, prezzo, idServizio, iva, note, list);
 
         return servizio;
     }
 
+    /**
+     * Metodo che converte un Bean Servizio in un Bean Gui Servizio
+     * @param s
+     * Il Bean Servizio da convertire
+     * @return Il Bean Gui Servizio convertito
+     */
     public BeanGuiServizio conversioneServizio(Servizio s)
     {
         BeanGuiServizio gui = new BeanGuiServizio();
@@ -206,16 +258,36 @@ public class Conversione
         return gui;
     }
 
+    /**
+     * Metodo che converte un Bean Gui Pagamento in un normale Bean Pagamento
+     * @param p
+     * Il Bean Gui Pagamento da convertire
+     * @return Il Bean Pagamento convertito
+     */
     public Pagamento conversionePagamento(BeanGuiPagamento p)
     {
-        Pagamento pagamento = new Pagamento(p.getNote().getText(), Date.valueOf(p.getDataScadenza().getText()),
-                p.getDescrizione().getText(), Double.parseDouble(p.getImporto().getText()), p.getModalitaPagamento().getText(),
-                p.getStato().getText(), p.getAltreInformazioni().getText(), Integer.parseInt(p.getIdPagamento().getText()),
-                Integer.parseInt(p.getContratto().getText()), Integer.parseInt(p.getBanca().getText()));
+        String note = p.getNote().getText();
+        Date dataScadenza = Date.valueOf(p.getDataScadenza().getText());
+        String descrizione = p.getDescrizione().getText();
+        double importo = Double.parseDouble(p.getImporto().getText());
+        String modalitaPagamento = p.getModalitaPagamento().getText();
+        String stato = p.getStato().getText();
+        String altreInformazioni = p.getAltreInformazioni().getText();
+        int idPagamento = Integer.parseInt(p.getIdPagamento().getText());
+        int contratto = Integer.parseInt(p.getContratto().getText());
+        int banca = Integer.parseInt(p.getBanca().getText());
+        
+        Pagamento pagamento = new Pagamento(note, dataScadenza, descrizione, importo, modalitaPagamento, stato, altreInformazioni, idPagamento, contratto, banca);
 
         return pagamento;
     }
 
+    /**
+     * Metodo che converte un Bean Pagamento in un Bean Gui Pagamento
+     * @param p
+     * Il Bean Pagamento da convertire
+     * @return Il Bean Gui Pagamento convertito
+     */
     public BeanGuiPagamento conversionePagamento(Pagamento p)
     {
         BeanGuiPagamento pagamento = new BeanGuiPagamento();
@@ -245,6 +317,11 @@ public class Conversione
     }
 
 
+    /**
+     * Metodo che converte un Bean Gui in un normale Bean
+     * @param bUtente
+     * @return
+     */
     public Utente conversioneUtente(BeanGuiUtente bUtente)
     {
         Utente utente = new Utente(Integer.parseInt(bUtente.getIdUtenteTxt().getText()),bUtente.getTxtUsername().getText(),bUtente.getTxtPassword().getText(),
@@ -254,6 +331,11 @@ public class Conversione
         return utente;
     }
 
+    /**
+     * Metodo che converte un Bean in un Bean Gui
+     * @param user
+     * @return
+     */
     public BeanGuiUtente conversioneUtente(Utente user){
         BeanGuiUtente utente= new BeanGuiUtente();
         JTextField field = new JTextField();
@@ -276,6 +358,11 @@ public class Conversione
         return utente;
         }
 
+    /**
+     * Metodo che converte un Bean Gui in un normale Bean
+     * @param bp
+     * @return
+     */
     public Personale conversionePersonale(BeanGuiPersonale bp)
     {
         ArrayList<Permesso> a = new ArrayList<Permesso>();
@@ -298,6 +385,11 @@ public class Conversione
         return p;
     }
 
+    /**
+     * Metodo che converte un Bean in un Bean Gui
+     * @param p
+     * @return
+     */
     public BeanGuiPersonale conversionePersonale(Personale p)
     {
         BeanGuiPersonale bp = new BeanGuiPersonale();
@@ -348,6 +440,11 @@ public class Conversione
         return bp;
     }
 
+    /**
+     * Metodo che converte un Bean Gui in un normale Bean
+     * @param e 
+     * @return
+     */
     public ExtraAzienda conversioneExtraAzienda(BeanGuiExtraAzienda e){
 
 
@@ -373,6 +470,11 @@ public class Conversione
         return extra;
     }
 
+    /**
+     * Metodo che converte un Bean in un Bean Gui
+     * @param e
+     * @return
+     */
     public BeanGuiExtraAzienda conversazioneExtraAzienda(ExtraAzienda e){
         BeanGuiExtraAzienda extra = new BeanGuiExtraAzienda();
 
@@ -426,6 +528,11 @@ public class Conversione
         return extra;
     }
 
+    /**
+     * Metodo che converte un Bean Gui in un normale Bean
+     * @param r
+     * @return
+     */
     public Responsabile conversioneResponsabile(BeanGuiResponsabile r){
 
         ArrayList<Permesso> a = new ArrayList<Permesso>();
@@ -447,6 +554,11 @@ public class Conversione
         return res;
     }
 
+    /**
+     * Metodo che converte un Bean in un Bean Gui
+     * @param e
+     * @return
+     */
     public BeanGuiResponsabile conversioneResponsabile(Responsabile e){
 
         BeanGuiResponsabile br = new BeanGuiResponsabile();
@@ -499,7 +611,12 @@ public class Conversione
         return br;
     }
 
-     public Dipendente conversioneDipendente(BeanGuiDipendente r){
+    /**
+     * Metodo che converte un Bean Gui in un normale Bean
+     * @param r
+     * @return
+     */
+    public Dipendente conversioneDipendente(BeanGuiDipendente r){
 
         ArrayList<Permesso> a = new ArrayList<Permesso>();
         ArrayList<Ruolo> a1 = new ArrayList<Ruolo>();
@@ -533,7 +650,12 @@ public class Conversione
         return dip;
     }
 
-public BeanGuiDipendente conversioneResponsabile(Dipendente e){
+     /**
+      * Metodo che converte un Bean in un Bean Gui
+      * @param e
+      * @return
+      */
+     public BeanGuiDipendente conversioneResponsabile(Dipendente e){
 
         BeanGuiDipendente br = new BeanGuiDipendente();
 
@@ -603,7 +725,12 @@ public BeanGuiDipendente conversioneResponsabile(Dipendente e){
         return br;
     }
 
-    public Contatto conversioneContatto(BeanGuiContatto e){
+     /**
+      * Metodo che converte un Bean Gui in un normale Bean
+      * @param e
+      * @return
+      */
+     public Contatto conversioneContatto(BeanGuiContatto e){
 
         ArrayList<Appuntamento> a = new ArrayList<Appuntamento>();
         ArrayList<Contratto> a1 = new ArrayList<Contratto>();
@@ -627,7 +754,12 @@ public BeanGuiDipendente conversioneResponsabile(Dipendente e){
         return cont;
     }
 
-    public BeanGuiContatto conversioneContatto(Contatto e){
+     /**
+      * Metodo che converte un Bean in un Bean Gui
+      * @param e
+      * @return
+      */
+     public BeanGuiContatto conversioneContatto(Contatto e){
         BeanGuiContatto cont = new BeanGuiContatto();
 
          ArrayList<BeanGuiAppuntamento> a = new ArrayList<BeanGuiAppuntamento>();
@@ -681,49 +813,68 @@ public BeanGuiDipendente conversioneResponsabile(Dipendente e){
         cont.setIdContattoTxt(c);
         c.setText(e.getFeedback().toString());
         cont.setTxtFeedback(c);
+
         return cont;
     }
 
-    public Cliente conversioneCliente(BeanGuiCliente e){
-
+    /**
+     * Metodo che converte un Bean Gui in un normale Bean
+     * @param e
+     * @return
+     */
+    public Cliente conversioneCliente(BeanGuiCliente e)
+    {
         ArrayList<Appuntamento> a = new ArrayList<Appuntamento>();
         ArrayList<Contratto> a1 = new ArrayList<Contratto>();
 
-        for( BeanGuiAppuntamento b : e.getListAppuntamenti() ){
+        for( BeanGuiAppuntamento b : e.getListAppuntamenti() )
+        {
             Appuntamento b1 = conversioneAppuntamento(b);
             a.add(b1);
            }
 
-         for( BeanGuiContratto b : e.getListContratti() ){
+         for( BeanGuiContratto b : e.getListContratti() )
+         {
             Contratto b1 = conversioneContratto(b);
             a1.add(b1);
            }
+
         Cliente cl= new Cliente(Integer.parseInt(e.getIdUtenteTxt().getText()),e.getTxtUsername().getText(),e.getTxtPassword().getText(),
                 e.getTxtCittà().getText(),e.getTxtProvincia().getText(),e.getTxtTelefono().getText(),
                 e.getTxtEmail().getText(),e.getTxtNote().getText(),Integer.parseInt(e.getIdExtraAziendaTxt().getText()),e.getTxtCognome().getText(),
                 e.getTxtNome().getText(),e.getTxtRagioneSociale().getText(),e.getTxtPIva().getText(),e.getTxtFax().getText(),
                 e.getCmbRuolo().getToolTipText(),a,a1,Integer.parseInt(e.getIdClienteTxt().getText()),Boolean.parseBoolean(e.getTxtNotifica().getText()));
+
         return cl;
     }
 
-    public BeanGuiCliente conversioneCliente(Cliente e){
+    /**
+     * Metodo che converte un Bean in un Bean Gui
+     * @param e
+     * @return
+     */
+    public BeanGuiCliente conversioneCliente(Cliente e)
+    {
+        BeanGuiCliente cl = new BeanGuiCliente();
 
-         BeanGuiCliente cl = new BeanGuiCliente();
-
-         ArrayList<BeanGuiAppuntamento> a = new ArrayList<BeanGuiAppuntamento>();
+        ArrayList<BeanGuiAppuntamento> a = new ArrayList<BeanGuiAppuntamento>();
         ArrayList<BeanGuiContratto> a1 = new ArrayList<BeanGuiContratto>();
 
-        for( Appuntamento b : e.getListAppuntamenti() ){
+        for( Appuntamento b : e.getListAppuntamenti() )
+        {
             BeanGuiAppuntamento b1 = conversioneAppuntamento(b);
             a.add(b1);
-           }
+        }
 
-         for( Contratto b : e.getListContratti() ){
+        for( Contratto b : e.getListContratti() )
+        {
             BeanGuiContratto b1 = conversioneContratto(b);
             a1.add(b1);
-           }
+        }
 
         JTextField c = new JTextField();
+        JComboBox d = new JComboBox();
+
         c.setText(e.getIdUtente().toString());
         cl.setIdUtenteText(c);
         c.setText(e.getPassword());
@@ -752,59 +903,74 @@ public BeanGuiDipendente conversioneResponsabile(Dipendente e){
         cl.setTxtPIva(c);
         c.setText(e.getFax().toString());
         cl.getTxtFax();
-        JComboBox d = new JComboBox();
         d.setToolTipText(e.getRuolo());
         cl.setCmbRuolo(d);
         cl.setListAppuntamenti(a);
         cl.setListContratti(a1);
         c.setText(e.getIdCliente().toString());
         cl.setIdClienteTxt(c);
+        
         return cl;
-
     }
 
-    public Fornitore conversioneFornitore(BeanGuiFornitore e){
-
-
+    /**
+     * Metodo che converte un Bean Gui in un normale Bean
+     * @param e
+     * @return
+     */
+    public Fornitore conversioneFornitore(BeanGuiFornitore e)
+    {
         ArrayList<Appuntamento> a = new ArrayList<Appuntamento>();
         ArrayList<Contratto> a1 = new ArrayList<Contratto>();
 
-        for( BeanGuiAppuntamento b : e.getListAppuntamenti() ){
+        for( BeanGuiAppuntamento b : e.getListAppuntamenti() )
+        {
             Appuntamento b1 = conversioneAppuntamento(b);
             a.add(b1);
-           }
+        }
 
-         for( BeanGuiContratto b : e.getListContratti() ){
+        for( BeanGuiContratto b : e.getListContratti() )
+        {
             Contratto b1 = conversioneContratto(b);
             a1.add(b1);
-           }
+        }
+         
         Fornitore cl= new Fornitore(Integer.parseInt(e.getIdUtenteTxt().getText()),e.getTxtUsername().getText(),e.getTxtPassword().getText(),
                 e.getTxtCittà().getText(),e.getTxtProvincia().getText(),e.getTxtTelefono().getText(),
                 e.getTxtEmail().getText(),e.getTxtNote().getText(),Integer.parseInt(e.getIdExtraAziendaTxt().getText()),e.getTxtCognome().getText(),
                 e.getTxtNome().getText(),e.getTxtRagioneSociale().getText(),e.getTxtPIva().getText(),e.getTxtFax().getText(),
                 e.getCmbRuolo().getToolTipText(),a,a1,Integer.parseInt(e.getIdFornitoreTxt().getText()),Boolean.parseBoolean(e.getTxtNotifica().getText()));
+ 
         return cl;
-
     }
 
 
-    public BeanGuiFornitore conversioneFornitore(Fornitore e){
+    /**
+     * Metodo che converte un Bean in un Bean Gui
+     * @param e
+     * @return
+     */
+    public BeanGuiFornitore conversioneFornitore(Fornitore e)
+    {
         BeanGuiFornitore fo = new BeanGuiFornitore();
 
-         ArrayList<BeanGuiAppuntamento> a = new ArrayList<BeanGuiAppuntamento>();
+        ArrayList<BeanGuiAppuntamento> a = new ArrayList<BeanGuiAppuntamento>();
         ArrayList<BeanGuiContratto> a1 = new ArrayList<BeanGuiContratto>();
 
-        for( Appuntamento b : e.getListAppuntamenti() ){
+        for( Appuntamento b : e.getListAppuntamenti() )
+        {
             BeanGuiAppuntamento b1 = conversioneAppuntamento(b);
             a.add(b1);
            }
 
-         for( Contratto b : e.getListContratti() ){
+         for( Contratto b : e.getListContratti() )
+         {
             BeanGuiContratto b1 = conversioneContratto(b);
             a1.add(b1);
            }
 
         JTextField c = new JTextField();
+        
         c.setText(e.getIdUtente().toString());
         fo.setIdUtenteText(c);
         c.setText(e.getPassword());
@@ -840,11 +1006,17 @@ public BeanGuiDipendente conversioneResponsabile(Dipendente e){
         fo.setListContratti(a1);
         c.setText(e.getIdFornitore().toString());
         fo.setIdFornitoreTxt(c);
+        
         return fo;
     }
 
-    public BeanGuiAppuntamento conversioneAppuntamento(Appuntamento b) {
-
+    /**
+     * Metodo che converte un Bean in un Bean Gui
+     * @param b
+     * @return
+     */
+    public BeanGuiAppuntamento conversioneAppuntamento(Appuntamento b) 
+    {
         BeanGuiAppuntamento app = new BeanGuiAppuntamento();
 
         JTextField c = new JTextField();
@@ -865,21 +1037,31 @@ public BeanGuiDipendente conversioneResponsabile(Dipendente e){
         app.setNote(d);
 
         return app;
-
     }
 
-    public Appuntamento conversioneAppuntamento(BeanGuiAppuntamento b) {
-
+    /**
+     * Metodo che converte un Bean Gui in un normale Bean
+     * @param b
+     * @return
+     */
+    public Appuntamento conversioneAppuntamento(BeanGuiAppuntamento b)
+    {
         Date a = new Date(Long.parseLong(b.getData().getText()));
         Time c = new Time(Long.parseLong(b.getOra().getText()));
 
         Appuntamento app = new Appuntamento(a,c,Integer.parseInt(b.getIdAppuntamento().getText()),b.getNote().getText(),Integer.parseInt(b.getDipendente().getText()),
                 Integer.parseInt(b.getExtraAzienda().getText()),Boolean.parseBoolean(b.getNotifica().getText()));
+
         return app;
     }
 
-    public Permesso conversionePermesso(BeanGuiPermesso b) {
-
+    /**
+     * Metodo che converte un Bean Gui in un normale Bean
+     * @param b
+     * @return
+     */
+    public Permesso conversionePermesso(BeanGuiPermesso b)
+    {
         ArrayList<Personale> a = new ArrayList<Personale>();
         ArrayList<Ruolo> c = new ArrayList<Ruolo>();
 
@@ -896,20 +1078,26 @@ public BeanGuiDipendente conversioneResponsabile(Dipendente e){
         Permesso p= new Permesso (Integer.parseInt(b.getIdPermesso().getText()),b.getNome().getText(),a,c);
 
         return p;
-
     }
 
-    public BeanGuiPermesso conversionePermesso(Permesso b) {
-
+    /**
+     * Metodo che converte un Bean in un Bean Gui
+     * @param b
+     * @return
+     */
+    public BeanGuiPermesso conversionePermesso(Permesso b)
+    {
         ArrayList<BeanGuiPersonale> a = new ArrayList<BeanGuiPersonale>();
         ArrayList<BeanGuiRuolo> c = new ArrayList<BeanGuiRuolo>();
 
-        for(Personale d: b.getListPersonale()){
+        for(Personale d: b.getListPersonale())
+        {
             BeanGuiPersonale d1 = conversionePersonale(d);
             a.add(d1);
         }
 
-        for(Ruolo d : b.getListPermessi()){
+        for(Ruolo d : b.getListPermessi())
+        {
             BeanGuiRuolo d1= conversioneRuolo(d);
             c.add(d1);
         }
@@ -929,18 +1117,24 @@ public BeanGuiDipendente conversioneResponsabile(Dipendente e){
 
     }
 
-    public Ruolo conversioneRuolo(BeanGuiRuolo b) {
-
-
+    /**
+     * Metodo che converte un Bean Gui in un normale Bean
+     * @param b
+     * @return
+     */
+    public Ruolo conversioneRuolo(BeanGuiRuolo b) 
+    {
         ArrayList<Personale> a = new ArrayList<Personale>();
         ArrayList<Permesso> c = new ArrayList<Permesso>();
 
-        for(BeanGuiPersonale d: b.getListPersonale()){
+        for(BeanGuiPersonale d: b.getListPersonale())
+        {
             Personale d1 = conversionePersonale(d);
             a.add(d1);
         }
 
-        for(BeanGuiPermesso d:b.getListPermessi()){
+        for(BeanGuiPermesso d:b.getListPermessi())
+        {
             Permesso d1= conversionePermesso(d);
             c.add(d1);
         }
@@ -948,21 +1142,26 @@ public BeanGuiDipendente conversioneResponsabile(Dipendente e){
         Ruolo r= new Ruolo (Integer.parseInt(b.getIdRuolo().getText()),b.getNome().getText(),a,c);
 
         return r;
-
     }
 
-    public BeanGuiRuolo conversioneRuolo(Ruolo b) {
-
-
+    /**
+     * Metodo che converte un Bean in un Bean Gui
+     * @param b
+     * @return
+     */
+    public BeanGuiRuolo conversioneRuolo(Ruolo b)
+    {
         ArrayList<BeanGuiPersonale> a = new ArrayList<BeanGuiPersonale>();
         ArrayList<BeanGuiPermesso> c = new ArrayList<BeanGuiPermesso>();
 
-        for(Personale d: b.getListPersonale()){
+        for(Personale d: b.getListPersonale())
+        {
             BeanGuiPersonale d1 = conversionePersonale(d);
             a.add(d1);
         }
 
-        for(Permesso d : b.getListPermessi()){
+        for(Permesso d : b.getListPermessi())
+        {
             BeanGuiPermesso d1= conversionePermesso(d);
             c.add(d1);
         }
@@ -978,7 +1177,5 @@ public BeanGuiDipendente conversioneResponsabile(Dipendente e){
         p.setListPersonale(a);
         p.setListPermessi(c);
         return p;
-
     }
-
 }
