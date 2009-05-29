@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package it.seerp.application.bean;
 
 import java.util.ArrayList;
@@ -27,14 +22,14 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
     private ArrayList<BeanGuiContratto> listContratti;
 
     /**
-     * 
+     * Costruttore vuoto per la classe Bean Gui ExtraAzienda
      */
     public BeanGuiExtraAzienda() {
         
     }
 
     /**
-     *
+     *Costruttore per la classe Bean Gui ExtraAzienda
      * @param idExtraAziendaTxt
      * @param txtCognome
      * @param txtNome
@@ -60,175 +55,173 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
    
 
     /**
-     *
-     * @return
+     * metodo che restituisce la lista degli appuntamenti di un ExtraAzienda
+     * @return la lista degli appuntamenti
      */
     public ArrayList<BeanGuiAppuntamento> getListAppuntamenti() {
         return listAppuntamenti;
     }
 
     /**
-     *
-     * @return
+     * metodo che restituisce la lista dei contratti a cui un ExtraAzienda è associato
+     * @return la lista dei contratti
      */
     public ArrayList<BeanGuiContratto> getListContratti() {
         return listContratti;
     }
 
     /**
-     *
-     * @param listAppuntamenti
+     * metodo che setta la lista degli appuntamenti di un ExtraAzienda
+     * @param listAppuntamenti la lista degli appuntamenti da ineserire
      */
     public void setListAppuntamenti(ArrayList<BeanGuiAppuntamento> listAppuntamenti) {
         this.listAppuntamenti = listAppuntamenti;
     }
 
     /**
-     *
-     * @param listContratti
+     * metodo che setta la lista degli contratti di un ExtraAzienda
+     * @param listContratti la lista dei contratto da inserire
      */
     public void setListContratti(ArrayList<BeanGuiContratto> listContratti) {
         this.listContratti = listContratti;
     }
 
-    
-
     /**
-     *
-     * @param cmbRuolo
+     * metodo che setta il campo contenente il ruolo dell'ExtraAzienda
+     * @param cmbRuolo rappresenta il campo ruolo da inserire
      */
     public void setCmbRuolo(JComboBox cmbRuolo) {
         this.cmbRuolo = cmbRuolo;
     }
 
     /**
-     *
-     * @param idExtraAziendaTxt
+     * metodo che setta il campo contenente l'id dell'ExtraAzienda
+     * @param idExtraAziendaTxt rappresenta il campo id da inserire
      */
     public void setIdExtraAziendaTxt(JTextField idExtraAziendaTxt) {
         this.idExtraAziendaTxt = idExtraAziendaTxt;
     }
 
     /**
-     *
-     * @param txtCognome
+     *metodo che setta il campo contenente il cognome dell'ExtraAzienda
+     * @param txtCognome rappresenta il campo cognome da inserire
      */
     public void setTxtCognome(JTextField txtCognome) {
         this.txtCognome = txtCognome;
     }
 
     /**
-     * 
-     * @param txtNome
+     * metodo che setta il campo contenente il nome dell'ExtraAzienda
+     * @param txtNome rappresenta il campo nome da inserire
      */
     public void setTxtNome(JTextField txtNome) {
         this.txtNome = txtNome;
     }
 
     /**
-     *
-     * @param txtFax
+     *metodo che setta il campo contenente il fax dell'ExtraAzienda
+     * @param txtFax rappresenta il campo fax da inserire
      */
     public void setTxtFax(JTextField txtFax) {
         this.txtFax = txtFax;
     }
 
     /**
-     *
-     * @param txtPIva
+     *metodo che setta il campo contenente la partita iva dell'ExtraAzienda
+     * @param txtPIva rappresenta il campo partita iva da inserire
      */
     public void setTxtPIva(JTextField txtPIva) {
         this.txtPIva = txtPIva;
     }
 
     /**
-     *
-     * @param txtRagioneSociale
+     * metodo che setta il campo contenente la ragione sociale dell'ExtraAzienda
+     * @param txtRagioneSociale rappresenta il campo ragione sociale da inserire
      */
     public void setTxtRagioneSociale(JTextField txtRagioneSociale) {
         this.txtRagioneSociale = txtRagioneSociale;
     }
 
     /**
-     *
-     * @return
+     * metodo che restituisce il campo contenente il ruolo dell'ExtraAzienda
+     * @return il campo ruolo dell'ExtraAzienda
      */
     public JComboBox getCmbRuolo() {
         return cmbRuolo;
     }
 
     /**
-     *
-     * @return
+     * metodo che restituisce il campo contenente l'id  dell'ExtraAzienda
+     * @return il campo id dell'ExtraAzienda
      */
     public JTextField getIdExtraAziendaTxt() {
         return idExtraAziendaTxt;
     }
 
     /**
-     *
-     * @return
+     * metodo che restituisce il campo contenente il cognome dell'ExtraAzienda
+     * @return il campo cognome dell'ExtraAzienda
      */
     public JTextField getTxtCognome() {
         return txtCognome;
     }
 
     /**
-     *
-     * @return
+     * metodo che restituisce il campo contenente il nome dell'ExtraAzienda
+     * @return il campo nome dell'ExtraAzieda
      */
     public JTextField getTxtNome() {
         return txtNome;
     }
 
     /**
-     *
-     * @return
+     * metodo che restituisce il campo contenente il fax dell'ExtraAzienda
+     * @return il campo fax dell'extraAzienda
      */
     public JTextField getTxtFax() {
         return txtFax;
     }
 
     /**
-     *
-     * @return
+     * metodo che restituisce il campo contenente la partita iva dell'ExtraAzienda
+     * @return il campo partita iva dell'extraAzienda
      */
     public JTextField getTxtPIva() {
         return txtPIva;
     }
 
     /**
-     *
-     * @return
+     * metodo che restituisce il campo contenente la ragione sociale dell'ExtraAzienda
+     * @return il campo ragione sociale dell'extraAzienda
      */
     public JTextField getTxtRagioneSociale() {
         return txtRagioneSociale;
     }
 
     /**
-     *
-     * @param p
+     * metodo che rimuove un appuntamento dalla lista degli appuntamenti
+     * @param p rappresenta l'asspuntamento da rimuovere
      */
     public void removeAppuntamento(BeanGuiAppuntamento p){
      listAppuntamenti.remove(p);}
 
     /**
-     *
-     * @param p
+     * metodo che aggiunge un appuntamento nella lista degli appuntamenti
+     * @param p rappresenta l'appuntamento che si vuole inserire
      */
     public void addAppuntamento(BeanGuiAppuntamento p){
      listAppuntamenti.add(p);}
 
     /**
-     *
-     * @param c
+     * metodo che rimuove un contratto dalla lista dei contratti
+     * @param c rappresenta il contratto che si vuole eliminare
      */
     public void removeContratto(BeanGuiContratto c){
      listContratti.remove(c);}
 
        /**
-        *
-        * @param c
+        * metodo che aggiunge un contratto alla lista dei contratti
+        * @param c rappresenta il contratto che si vuole inserire
         */
        public void addContratto(BeanGuiContratto c){
      listContratti.add(c);}
