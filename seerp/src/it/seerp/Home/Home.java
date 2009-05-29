@@ -12,6 +12,7 @@
 package it.seerp.Home;
 
 import configurazioni.CommandInterface;
+import it.seerp.Gui.Gestione.Utenti.GestioneUtenti;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -106,6 +107,11 @@ public class Home extends javax.swing.JFrame implements ActionListener {
         BottoneResponsabili.setHideActionText(true);
         BottoneResponsabili.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BottoneResponsabili.setRequestFocusEnabled(false);
+        BottoneResponsabili.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BottoneResponsabiliActionPerformed(evt);
+            }
+        });
 
         BottoneDipendenti.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/user.png"))); // NOI18N
         BottoneDipendenti.setText("Dipendenti");
@@ -211,10 +217,13 @@ public class Home extends javax.swing.JFrame implements ActionListener {
         jXPanel2.setLayout(jXPanel2Layout);
         jXPanel2Layout.setHorizontalGroup(
             jXPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BottoneContratti, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-            .addComponent(BottoneFatture, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-            .addComponent(BottonePreventivi, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-            .addComponent(BottoneEconomia, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+            .addComponent(BottoneFatture, javax.swing.GroupLayout.DEFAULT_SIZE, 1244, Short.MAX_VALUE)
+            .addGroup(jXPanel2Layout.createSequentialGroup()
+                .addGroup(jXPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BottoneContratti, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
+                    .addComponent(BottonePreventivi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BottoneEconomia, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE))
+                .addGap(1159, 1159, 1159))
         );
         jXPanel2Layout.setVerticalGroup(
             jXPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,7 +235,7 @@ public class Home extends javax.swing.JFrame implements ActionListener {
                 .addComponent(BottonePreventivi)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BottoneEconomia)
-                .addContainerGap())
+                .addGap(585, 585, 585))
         );
 
         BottoneFatture.addActionListener(this);
@@ -282,7 +291,7 @@ public class Home extends javax.swing.JFrame implements ActionListener {
         jXPanel5.setLayout(jXPanel5Layout);
         jXPanel5Layout.setHorizontalGroup(
             jXPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 786, Short.MAX_VALUE)
+            .addGap(0, 1161, Short.MAX_VALUE)
         );
         jXPanel5Layout.setVerticalGroup(
             jXPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,11 +305,11 @@ public class Home extends javax.swing.JFrame implements ActionListener {
         jXPanel6.setLayout(jXPanel6Layout);
         jXPanel6Layout.setHorizontalGroup(
             jXPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 788, Short.MAX_VALUE)
+            .addGap(0, 1163, Short.MAX_VALUE)
         );
         jXPanel6Layout.setVerticalGroup(
             jXPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 568, Short.MAX_VALUE)
+            .addGap(0, 1204, Short.MAX_VALUE)
         );
 
         fileMenu.setText("File");
@@ -370,7 +379,7 @@ public class Home extends javax.swing.JFrame implements ActionListener {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jXPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.PREFERRED_SIZE, 676, Short.MAX_VALUE)
+            .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -391,6 +400,11 @@ public class Home extends javax.swing.JFrame implements ActionListener {
     private void AreaPersonaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AreaPersonaleActionPerformed
 jXPanel6.setBackground(blue);        // TODO add your handling code here:
 }//GEN-LAST:event_AreaPersonaleActionPerformed
+
+    private void BottoneResponsabiliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BottoneResponsabiliActionPerformed
+       GestioneUtenti fin=new GestioneUtenti();
+       jXPanel6.add(fin);
+    }//GEN-LAST:event_BottoneResponsabiliActionPerformed
 
     /**
     * @param args the command line arguments
