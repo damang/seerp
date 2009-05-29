@@ -116,7 +116,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jXPanel5" min="-2" pref="87" max="-2" attributes="0"/>
+              <Component id="jXPanel5" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jXPanel6" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -285,7 +285,7 @@
                       <Component id="BottoneContratti" alignment="0" pref="169" max="32767" attributes="0"/>
                       <Component id="BottoneFatture" alignment="0" pref="169" max="32767" attributes="0"/>
                       <Component id="BottonePreventivi" alignment="0" pref="169" max="32767" attributes="0"/>
-                      <Component id="BottoneBanche" alignment="0" pref="169" max="32767" attributes="0"/>
+                      <Component id="BottoneEconomia" alignment="0" pref="169" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -297,7 +297,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="BottonePreventivi" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="BottoneBanche" min="-2" max="-2" attributes="0"/>
+                          <Component id="BottoneEconomia" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -361,12 +361,12 @@
                     <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="BottoneResponsabili.addActionListener(this);"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JButton" name="BottoneBanche">
+                <Component class="javax.swing.JButton" name="BottoneEconomia">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/it/seerp/icone/32x32/commercial-building-32x32.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Banche"/>
+                    <Property name="text" type="java.lang.String" value="Economia"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -376,7 +376,7 @@
                     <Property name="requestFocusEnabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BottoneBancheActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BottoneEconomiaActionPerformed"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="BottoneResponsabili.addActionListener(this);"/>
@@ -456,32 +456,15 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="gestioneUtentiPanel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="utilitàPanel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="482" max="32767" attributes="0"/>
-              </Group>
+              <EmptySpace min="0" pref="786" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="gestioneUtentiPanel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="utilitàPanel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
+              <EmptySpace min="0" pref="81" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
-      <SubComponents>
-        <Component class="it.seerp.Menu.GestioneUtentiPanel" name="gestioneUtentiPanel1">
-        </Component>
-        <Component class="it.seerp.Menu.Utilit&#xe0;Panel" name="utilit&#xe0;Panel1">
-        </Component>
-      </SubComponents>
     </Container>
     <Container class="org.jdesktop.swingx.JXPanel" name="jXPanel6">
       <Properties>
