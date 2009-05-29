@@ -21,8 +21,8 @@ public class Contratto {
     private String note;
     private Integer dipendente;
     private Integer extraAzienda;
-     private ArrayList<Pagamento> listPagamento;
-       private ArrayList<Servizio> listServizio;
+    private ArrayList<Pagamento> listPagamento;
+    private ArrayList<Servizio> listServizio;
 
     public Contratto(String stato, Date data, Integer durata, String tipo, Integer idContratto, String note, Integer dipendente, Integer extraAzienda, ArrayList<Pagamento> listPagamento, ArrayList<Servizio> listServizio) {
         this.stato = stato;
