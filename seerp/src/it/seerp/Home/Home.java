@@ -12,6 +12,7 @@
 package it.seerp.Home;
 
 import configurazioni.CommandInterface;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -20,6 +21,7 @@ import java.awt.event.ActionListener;
  * @author Andrea
  */
 public class Home extends javax.swing.JFrame implements ActionListener {
+    private Color blue;
 
     /** Creates new form NewApplication */
     public Home() {
@@ -49,14 +51,12 @@ public class Home extends javax.swing.JFrame implements ActionListener {
         BottoneFatture = new javax.swing.JButton();
         BottoneContratti = new javax.swing.JButton();
         BottonePreventivi = new javax.swing.JButton();
-        BottoneBanche = new javax.swing.JButton();
+        BottoneEconomia = new javax.swing.JButton();
         jXTaskPane3 = new org.jdesktop.swingx.JXTaskPane();
         jXPanel3 = new org.jdesktop.swingx.JXPanel();
         AreaPersonale = new javax.swing.JButton();
         jXMonthView1 = new org.jdesktop.swingx.JXMonthView();
         jXPanel5 = new org.jdesktop.swingx.JXPanel();
-        gestioneUtentiPanel1 = new it.seerp.Menu.GestioneUtentiPanel();
-        utilitàPanel1 = new it.seerp.Menu.UtilitàPanel();
         jXPanel6 = new org.jdesktop.swingx.JXPanel();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
@@ -194,16 +194,16 @@ public class Home extends javax.swing.JFrame implements ActionListener {
         BottonePreventivi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BottonePreventivi.setRequestFocusEnabled(false);
 
-        BottoneBanche.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/commercial-building-32x32.png"))); // NOI18N
-        BottoneBanche.setText("Banche");
-        BottoneBanche.setBorder(null);
-        BottoneBanche.setContentAreaFilled(false);
-        BottoneBanche.setHideActionText(true);
-        BottoneBanche.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BottoneBanche.setRequestFocusEnabled(false);
-        BottoneBanche.addActionListener(new java.awt.event.ActionListener() {
+        BottoneEconomia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/commercial-building-32x32.png"))); // NOI18N
+        BottoneEconomia.setText("Economia");
+        BottoneEconomia.setBorder(null);
+        BottoneEconomia.setContentAreaFilled(false);
+        BottoneEconomia.setHideActionText(true);
+        BottoneEconomia.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BottoneEconomia.setRequestFocusEnabled(false);
+        BottoneEconomia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BottoneBancheActionPerformed(evt);
+                BottoneEconomiaActionPerformed(evt);
             }
         });
 
@@ -214,7 +214,7 @@ public class Home extends javax.swing.JFrame implements ActionListener {
             .addComponent(BottoneContratti, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
             .addComponent(BottoneFatture, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
             .addComponent(BottonePreventivi, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-            .addComponent(BottoneBanche, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+            .addComponent(BottoneEconomia, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
         );
         jXPanel2Layout.setVerticalGroup(
             jXPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,7 +225,7 @@ public class Home extends javax.swing.JFrame implements ActionListener {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BottonePreventivi)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BottoneBanche)
+                .addComponent(BottoneEconomia)
                 .addContainerGap())
         );
 
@@ -282,19 +282,11 @@ public class Home extends javax.swing.JFrame implements ActionListener {
         jXPanel5.setLayout(jXPanel5Layout);
         jXPanel5Layout.setHorizontalGroup(
             jXPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jXPanel5Layout.createSequentialGroup()
-                .addComponent(gestioneUtentiPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(utilitàPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(482, Short.MAX_VALUE))
+            .addGap(0, 786, Short.MAX_VALUE)
         );
         jXPanel5Layout.setVerticalGroup(
             jXPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jXPanel5Layout.createSequentialGroup()
-                .addGroup(jXPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(gestioneUtentiPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(utilitàPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+            .addGap(0, 81, Short.MAX_VALUE)
         );
 
         jXPanel6.setBackground(new java.awt.Color(255, 255, 255));
@@ -374,7 +366,7 @@ public class Home extends javax.swing.JFrame implements ActionListener {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jXPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jXPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jXPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -392,12 +384,12 @@ public class Home extends javax.swing.JFrame implements ActionListener {
         // TODO add your handling code here:
 }//GEN-LAST:event_BottoneFattureActionPerformed
 
-    private void BottoneBancheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BottoneBancheActionPerformed
+    private void BottoneEconomiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BottoneEconomiaActionPerformed
         // TODO add your handling code here:
-}//GEN-LAST:event_BottoneBancheActionPerformed
+}//GEN-LAST:event_BottoneEconomiaActionPerformed
 
     private void AreaPersonaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AreaPersonaleActionPerformed
-        // TODO add your handling code here:
+jXPanel6.setBackground(blue);        // TODO add your handling code here:
 }//GEN-LAST:event_AreaPersonaleActionPerformed
 
     /**
@@ -413,10 +405,10 @@ public class Home extends javax.swing.JFrame implements ActionListener {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AreaPersonale;
-    private javax.swing.JButton BottoneBanche;
     private javax.swing.JButton BottoneClienti;
     private javax.swing.JButton BottoneContratti;
     private javax.swing.JButton BottoneDipendenti;
+    private javax.swing.JButton BottoneEconomia;
     private javax.swing.JButton BottoneFatture;
     private javax.swing.JButton BottoneFornitori;
     private javax.swing.JButton BottonePreventivi;
@@ -429,7 +421,6 @@ public class Home extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
-    private it.seerp.Menu.GestioneUtentiPanel gestioneUtentiPanel1;
     private javax.swing.JMenu helpMenu;
     private org.jdesktop.swingx.JXLabel jXLabel1;
     private org.jdesktop.swingx.JXMonthView jXMonthView1;
@@ -448,7 +439,6 @@ public class Home extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JMenuItem pasteMenuItem;
     private javax.swing.JMenuItem saveAsMenuItem;
     private javax.swing.JMenuItem saveMenuItem;
-    private it.seerp.Menu.UtilitàPanel utilitàPanel1;
     // End of variables declaration//GEN-END:variables
 
     public void actionPerformed(ActionEvent e) {
