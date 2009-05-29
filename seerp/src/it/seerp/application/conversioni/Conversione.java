@@ -509,7 +509,7 @@ public class Conversione
          String ruolo= e.getCmbRuolo().getToolTipText();
          Boolean notifica= Boolean.parseBoolean(e.getTxtNotifica().getText());
          
-         ExtraAzienda extra = new ExtraAzienda(id,username,password,città,prov,telefono,email,note,ide,cognome,nome,ragSoc,pIva,fax,ruolo,a,a1,notifica);
+         ExtraAzienda extra = new ExtraAzienda(id,username,password,città,prov,telefono,email,ruolo,note,notifica,ide,cognome,nome,ragSoc,pIva,fax,a,a1);
         return extra;
     }
 
@@ -717,6 +717,7 @@ public class Conversione
          Integer idp=Integer.parseInt(r.getIdPersonale().getText());
          String cognome= r.getCognome().getText();
          String nome=r.getNome().getText();
+         String ruolo=r.getRuolo().getText();
          String codiceFiscale = r.getCodiceFiscale().getText();
          String tipo= r.getTipo().getToolTipText();
          Boolean notifica = Boolean.parseBoolean(r.getTxtNotifica().getText());
@@ -724,7 +725,7 @@ public class Conversione
 
 
 
-        Dipendente  dip = new Dipendente(id,username,password,città,prov,telefono,email,note,idp,cognome,nome,codiceFiscale,tipo,a,a1,notifica,idd,a2,a3);
+        Dipendente  dip = new Dipendente(id,username,password,città,prov,telefono,email,note,ruolo,idp,cognome,nome,codiceFiscale,tipo,a,a1,notifica,idd,a2,a3);
         return dip;
     }
 
