@@ -5,16 +5,10 @@
 
 package it.seerp.storage.Operazioni;
 
-import it.seerp.application.bean.BeanGuiUtente;
-import it.seerp.storage.db.ConnectionPool;
 
 import it.seerp.storage.db.OpeEntity;
 import it.seerp.storage.ejb.Utente;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -132,9 +126,10 @@ public class OpeUtente implements OpeEntity<Utente,Integer> {
     public ArrayList<Utente> visualizzaElenco() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-
+    public Integer getId(String u, String pw)throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet.");
 }
-
+}
 
 
 
