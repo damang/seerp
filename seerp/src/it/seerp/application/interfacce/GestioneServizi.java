@@ -14,13 +14,13 @@ import javax.swing.JTextField;
  */
 public interface GestioneServizi <E>{
 
-    public ArrayList<E> elenca ();
+    public ArrayList<E> elenca (ArrayList<E> list);
 
-    public ArrayList<E> ricerca (JTextField nome)throws DatiErrati;
+    public ArrayList<E> ricerca (JTextField nome,ArrayList<E> list)throws DatiErrati;
 
     public void inserisci (E BeansGuiServizio)throws DatiErrati, DatiDuplicati;
 
-    public E visualizza(JTextField nome);
+    public E visualizza(JTextField nome,ArrayList<E> list);
 
     public E modifica (E BeansGuiServizio) throws DatiErrati;
 }
