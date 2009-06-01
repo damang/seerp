@@ -21,6 +21,45 @@ public class Contratto {
     private ArrayList<Pagamento> listPagamento;
     private ArrayList<Servizio> listServizio;
 
+    /**
+     *
+     */
+    public Contratto() {
+    }
+
+    /**
+     *
+     * @param stato
+     * @param data
+     * @param durata
+     * @param tipo
+     * @param note
+     * @param dipendente
+     * @param extraAzienda
+     */
+    public Contratto(String stato, Date data, Integer durata, String tipo, String note, Integer dipendente, Integer extraAzienda) {
+        this.stato = stato;
+        this.data = data;
+        this.durata = durata;
+        this.tipo = tipo;
+        this.note = note;
+        this.dipendente = dipendente;
+        this.extraAzienda = extraAzienda;
+    }
+
+    /**
+     * costruttore
+     * @param stato
+     * @param data
+     * @param durata
+     * @param tipo
+     * @param idContratto
+     * @param note
+     * @param dipendente
+     * @param extraAzienda
+     * @param listPagamento
+     * @param listServizio
+     */
     public Contratto(String stato, Date data, Integer durata, String tipo, Integer idContratto, String note, Integer dipendente, Integer extraAzienda, ArrayList<Pagamento> listPagamento, ArrayList<Servizio> listServizio) {
         this.stato = stato;
         this.data = data;
@@ -34,14 +73,18 @@ public class Contratto {
         this.listServizio = listServizio;
     }
 
-    public ArrayList<Servizio> getListServizio() {
-        return listServizio;
-    }
-
-    public void setListServizio(ArrayList<Servizio> listServizio) {
-        this.listServizio = listServizio;
-    }
-
+    /**
+     *
+     * @param stt
+     * @param da
+     * @param d
+     * @param t
+     * @param i
+     * @param n
+     * @param dip
+     * @param e
+     * @param listS
+     */
     public Contratto(String stt, Date da, Integer d, String t, Integer i, String n, Integer dip, Integer e, ArrayList<Servizio> listS) {
         this.listServizio = listS;
         this.stato = stt;
@@ -55,6 +98,27 @@ public class Contratto {
     }
 
     /**
+     *  metodo che restituisce la lista di servizi associati al contratto
+     * @return la lista di servizi associati al contratto
+     */
+    public ArrayList<Servizio> getListServizio() {
+        return listServizio;
+    }
+
+    /**
+     *metodo che setta la lista di servizi associati al contratto
+     * @param listServizio la lista di servizi associati al contratto
+     */
+    public void setListServizio(ArrayList<Servizio> listServizio) {
+        this.listServizio = listServizio;
+    }
+
+
+
+
+
+
+    /**
      *  metodo che restituisce l'id dipendente che ha stipulato il contratto
      * @return id dipendente che ha stipulato il contratto
      */
@@ -62,10 +126,22 @@ public class Contratto {
         return dipendente;
     }
 
+    /**
+     * metodo che restituisce la lista di pagamenti asociatia al contratto
+     * @return la lista di pagamenti asociatia al contratto
+     */
+    
+
+
     public ArrayList<Pagamento> getListPagamento() {
+
         return listPagamento;
     }
 
+    /**
+     *metodo che setta la lista di pagamenti asociatia al contratto
+     * @param listPagamento
+     */
     public void setListPagamento(ArrayList<Pagamento> listPagamento) {
         this.listPagamento = listPagamento;
     }
@@ -190,19 +266,37 @@ public class Contratto {
         this.tipo = tipo;
     }
 
+    /**
+     * metodo che rimuovi un pagamento dalla lista dei pagamenti
+     * @param p pagamento da rimuovere dalla lista
+     */
     public void removePagamento(Pagamento p) {
         listPagamento.remove(p);
     }
 
+    /**
+     * metodo che aggiunge un  pagamento nella lista
+     * @param p pagamento da inserire nella lista
+     */
     public void addPagamento(Pagamento p) {
         listPagamento.add(p);
     }
 
+    /**
+     * metodo che rimuove un servizio alla lista dei servizi
+     * @param s servizio da rimuovere lista dei servizi
+     */
     public void removeServzio(Servizio s) {
         listServizio.remove(s);
     }
 
-    public void addPagamento(Servizio s) {
+    /**
+     * metodo che aggiunge un servizio alla lista dei servizi
+     * @param s servizio da aggiungere lista dei servizi
+     */
+    public void addServizio(Servizio s) {
         listServizio.add(s);
     }
+
+
 }
