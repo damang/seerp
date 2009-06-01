@@ -16,42 +16,38 @@ import javax.swing.JTextField;
 public class AppAgenda implements GestioneAgenda<BeanGuiEvento>
 {
 
-    /**
+      /**
      * Metodo che permette la visualizzazione della lista degli eventi
      * @return  Array List contenente la lista degli eventi
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui vi siano dati errati
      */
-    public ArrayList<BeanGuiEvento> visualizzaListaEventi() throws DatiErrati
-    {
-        throw new DatiErrati("Dati errati.");
-        
-        //ArrayList<BeanGuiEvento> list = new ArrayList<BeanGuiEvento>();
 
-        //return list;
+    public ArrayList<BeanGuiEvento> visualizzaListaEventi() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
      * Metodo che permette la visualizzazione dei dettagli di un singolo evento
      * @param nome
      * nome dell'evento
+     * @param list
+     * lista di tutti gli eventi
      * @return Bean Gui dell'evento
      */
-    public BeanGuiEvento visualizzaDettagli(JTextField nome)
-    {
-        BeanGuiEvento bgev = new BeanGuiEvento();
 
-        return bgev;
+    public BeanGuiEvento visualizzaDettagli(JTextField id, ArrayList<BeanGuiEvento> list) throws DatiErrati {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    /**
+     /**
      * Metodo che permette la gestione delle notifiche
      * @param beanGuiEventi
      * Bean Gui dell'evento da visualizzare
      */
-    public void notificaEventi(BeanGuiEvento beanGuiEventi)
-    {
 
+    public void notificaEventi(BeanGuiEvento beanGuiEventi) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
@@ -63,13 +59,13 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento>
      * @throws it.seerp.application.Exception.DatiDuplicati
      * nel caso in cui esista l'evento che si tenta di inserire
      */
-    public void inserimento(BeanGuiEvento beanGuiEventi) throws DatiErrati, DatiDuplicati
-    {
-        throw new DatiErrati("Dati errati.");
-        //throw new DatiDuplicati("Dati duplicati.");
+
+    public void inserimento(BeanGuiEvento beanGuiEventi) throws DatiErrati, DatiDuplicati {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    /**
+
+      /**
      * Metodo che permette la modifica di un evento
      * @param beanGuiEventi
      * Bean Gui dell'evento da modificare
@@ -78,12 +74,12 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento>
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si inseriscano dati errati
      */
-    public BeanGuiEvento modifica(BeanGuiEvento beanGuiEventi) throws DatiErrati
-    {
-        throw new DatiErrati("Dati errati.");
+
+    public BeanGuiEvento modifica(BeanGuiEvento beanGuiEventi) throws DatiErrati {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    /**
+     /**
      * Metodo che permette la ricerca di un evento
      * @param Nome
      * nome dell'evento da ricercare
@@ -91,44 +87,53 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento>
      * nome del referente
      * @param data
      * data dell'evento da ricercare
+     * @para list
+      * lista di tutti gli eventi
      * @return la lista degli eventi che corrispondono ai criteri di ricerca
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si inseriscano dati errati
      */
-    public ArrayList<BeanGuiEvento> ricerca(JTextField Nome, JTextField Referente, JTextField data) throws DatiErrati
-    {
-        throw new DatiErrati("Dati errati.");
+
+
+    public ArrayList<BeanGuiEvento> ricerca(JTextField Nome, JTextField Referente, JTextField data, ArrayList<BeanGuiEvento> list) throws DatiErrati {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
-     * Metodo che permette la ricerca per nome
-     * @param Nome
+     * Metodo che permette la ricerca per nome di un evento
+     * @param nome
      * nome dell'evento da ricercare
-     * @return la lista degli eventi che corrispondono al nome inserito
-     * @throws it.seerp.application.Exception.DatiErrati
-     * nel caso in cui si inseriscano dati errati
-     */
-    public ArrayList<BeanGuiEvento> ricercaPerNome(JTextField Nome) throws DatiErrati, RicercaFallita
-    {
-        throw new DatiErrati("Dati errati.");
-        //throw new RicercaFallita("Ricerca fallita.");
-    }
-
-    /**
-     * Metodo che permette la ricerca per giorno di un evento
-     * @param giorno
-     * giorno dell'evento da ricercare
+     * @param list
+     * lista di tutti gli eventi
      * @return lista degli eventi che corrispondono al giorno inserito
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si inseriscano dati errati
      * @throws it.seerp.application.Exception.RicercaFallita
      * nel caso in cui la ricerca non produca risultati
      */
-    public ArrayList<BeanGuiEvento> ricercaPerGiorno(JTextField giorno) throws DatiErrati, RicercaFallita
-    {
-        throw new DatiErrati("Dati errati.");
-        //throw new RicercaFallita("Ricerca fallita.");
+
+    public ArrayList<BeanGuiEvento> ricercaPerNome(JTextField Nome, ArrayList<BeanGuiEvento> list) throws DatiErrati, RicercaFallita {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
+
+
+    /**
+     * Metodo che permette la ricerca per giorno di un evento
+     * @param giorno
+     * giorno dell'evento da ricercare
+     * @param list
+     * lista di tutti gli eventi
+     * @return lista degli eventi che corrispondono al giorno inserito
+     * @throws it.seerp.application.Exception.DatiErrati
+     * nel caso in cui si inseriscano dati errati
+     * @throws it.seerp.application.Exception.RicercaFallita
+     * nel caso in cui la ricerca non produca risultati
+     */
+
+    public ArrayList<BeanGuiEvento> ricercaPerGiorno(JTextField giorno, ArrayList<BeanGuiEvento> list) throws DatiErrati, RicercaFallita {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
 
     /**
      * Metodo che permette la cancellazione di un evento già esistente
@@ -139,8 +144,8 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento>
      * @throws it.seerp.application.Exception.RicercaFallita
      * nel caso in cui la ricerca non produca risultati
      */
-    public void cancellaEvento(BeanGuiEvento beanGuiEventi) throws CancellazioneFallita
-    {
-        throw new RicercaFallita("Cancellazione Fallita.");
+
+    public void cancellaEvento(BeanGuiEvento beanGuiEventi) throws CancellazioneFallita {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

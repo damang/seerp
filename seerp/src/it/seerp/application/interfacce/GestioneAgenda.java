@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 
 public interface GestioneAgenda<G> {
     
-    public  ArrayList<G> visualizzaListaEventi(ArrayList<G> list);
+    public  ArrayList<G> visualizzaListaEventi();
 
     public G visualizzaDettagli(JTextField id,ArrayList<G> list)throws DatiErrati;
 
