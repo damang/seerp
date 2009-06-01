@@ -14,16 +14,16 @@ import javax.swing.JTextField;
  */
 public class AppServizi implements GestioneServizi<BeanGuiServizio>
 {
-
     /**
      * Metodo che permette di visualizzare l'elenco dei servizi
      * @return ArrayList contenente i servizi
      */
+
     public ArrayList<BeanGuiServizio> elenca() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    /**
+     /**
      * Metodo che permette la ricerca di un servizio
      * @param nome
      * nome del servizio
@@ -33,7 +33,8 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio>
      * @throws it.seerp.application.Exception.RicercaFallita
      * nel caso in cui la ricerca non produce risultati
      */
-    public ArrayList<BeanGuiServizio> ricerca(JTextField nome) throws DatiErrati {
+
+    public ArrayList<BeanGuiServizio> ricerca(JTextField nome, ArrayList<BeanGuiServizio> list) throws DatiErrati {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -44,6 +45,7 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio>
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si immettano dati errati
      */
+
     public void inserisci(BeanGuiServizio BeansGuiServizio) throws DatiErrati, DatiDuplicati {
         throw new UnsupportedOperationException("Not supported yet.");
     }
@@ -54,9 +56,11 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio>
      * nome del servizio
      * @return Bean Gui del servizio da visualizzare
      */
-    public BeanGuiServizio visualizza(JTextField nome) {
+
+    public BeanGuiServizio visualizza(JTextField nome, ArrayList<BeanGuiServizio> list) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
 
     /**
      * Metodo che permette la modifica di un servizio
@@ -66,6 +70,7 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio>
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si immettano dati errati durante la modifica
      */
+
     public BeanGuiServizio modifica(BeanGuiServizio BeansGuiServizio) throws DatiErrati {
         throw new UnsupportedOperationException("Not supported yet.");
     }
