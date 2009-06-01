@@ -15,9 +15,9 @@ import javax.swing.JTextField;
 
 public interface GestioneAgenda<G> {
     
-    public  ArrayList<G> visualizzaListaEventi();
+    public  ArrayList<G> visualizzaListaEventi(ArrayList<G> list);
 
-    public G visualizzaDettagli(JTextField nome)throws DatiErrati;
+    public G visualizzaDettagli(JTextField id,ArrayList<G> list)throws DatiErrati;
 
 
     public void notificaEventi (G beanGuiEventi);
@@ -28,11 +28,11 @@ public interface GestioneAgenda<G> {
 
     public G modifica(G beanGuiEventi) throws DatiErrati;
    
-    public ArrayList<G> ricerca(JTextField Nome, JTextField Referente, JTextField data)throws  DatiErrati;
+    public ArrayList<G> ricerca(JTextField Nome, JTextField Referente, JTextField data,ArrayList<G> list)throws  DatiErrati;
 
-    public ArrayList<G> ricercaPerNome(JTextField Nome) throws  DatiErrati, RicercaFallita;
+    public ArrayList<G> ricercaPerNome(JTextField Nome,ArrayList<G> list) throws  DatiErrati, RicercaFallita;
 
-    public ArrayList<G> ricercaPerGiorno(JTextField giorno)throws  DatiErrati, RicercaFallita;
+    public ArrayList<G> ricercaPerGiorno(JTextField giorno,ArrayList<G> list)throws  DatiErrati, RicercaFallita;
     
     public void cancellaEvento(G beanGuiEventi) throws CancellazioneFallita ;
 }

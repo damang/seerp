@@ -12,7 +12,7 @@ import javax.swing.JTextField;
  */
 public interface GestioneAreaPersonale <E extends Utente,U extends BeanGuiUtente>{
 
-    public U visualizzaDati(U utente);
+    public U visualizzaDati(U utente,ArrayList<U> list);
 
     public U modificaPassword(U utente) throws DatiErrati;
 
