@@ -23,6 +23,20 @@ public class Pagamento {
     private Integer contratto;
     private Integer banca;
 
+    /**
+     * costruttore
+     * 
+     * @param note
+     * @param dataScadenza
+     * @param descrizione
+     * @param importo
+     * @param modalitaPagamento
+     * @param stato
+     * @param altreInformazioni
+     * @param idPagamento
+     * @param contratto
+     * @param banca
+     */
     public Pagamento(String note, Date dataScadenza, String descrizione, Double importo, String modalitaPagamento, String stato, String altreInformazioni, Integer idPagamento, Integer contratto, Integer banca) {
         this.note = note;
         this.dataScadenza = dataScadenza;

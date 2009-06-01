@@ -21,6 +21,18 @@ public class NotaDiCredito {
     private Date data;
     private Integer fattureEmesse;
 
+    /**
+     * costruttore
+     * 
+     * @param motivazione
+     * @param nFattura
+     * @param note
+     * @param importo
+     * @param idNotaDiCredito
+     * @param iva
+     * @param data
+     * @param fattureEmesse
+     */
     public NotaDiCredito(String motivazione, Integer nFattura, String note, Double importo, Integer idNotaDiCredito, Double iva, Date data, Integer fattureEmesse) {
         this.motivazione = motivazione;
         this.nFattura = nFattura;

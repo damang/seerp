@@ -8,6 +8,7 @@ import java.sql.Date;
 import java.sql.Time;
 
 /**
+ * costruttore
  * classe che gestisce gli appuntamenti
  * @author Luisa
  */
@@ -21,6 +22,16 @@ public class Appuntamento {
     private Integer extraAzienda;
     private Boolean notifica;
 
+    /**
+     *  costruttore
+     * @param data
+     * @param ora
+     * @param idAppuntamento
+     * @param note
+     * @param dipendente
+     * @param extraAzienda
+     * @param notifica
+     */
     public Appuntamento(Date data, Time ora, Integer idAppuntamento, String note, Integer dipendente, Integer extraAzienda, Boolean notifica) {
         this.data = data;
         this.ora = ora;
@@ -31,10 +42,18 @@ public class Appuntamento {
         this.notifica = notifica;
    }
 
+    /**
+     * metodo che restituisce una notifica dell'appuntamento
+     * @return notifica dell'appuntamento
+     */
     public Boolean getNotifica() {
         return notifica;
     }
 
+    /**
+     * metodo che setta una notifica dell'appuntamento
+     * @param notifica dell'appuntamento
+     */
     public void setNotifica(Boolean notifica) {
         this.notifica = notifica;
     }

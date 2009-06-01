@@ -23,6 +23,18 @@ public class Fattura {
     private ArrayList<NotaDiCredito> listNotaDiCredito;
     private ArrayList<ServizioAssociato> listServizio;
 
+    /**
+     *
+     * @param data
+     * @param idFattura
+     * @param imponibile
+     * @param importo
+     * @param iva
+     * @param tipo
+     * @param note
+     * @param listNoteDiCredito
+     * @param listServizio
+     */
     public Fattura(Date data, Integer idFattura, Double imponibile, Double importo, Double iva, String tipo, String note, ArrayList<NotaDiCredito> listNoteDiCredito, ArrayList<ServizioAssociato> listServizio) {
         this.data = data;
         this.idFattura = idFattura;
@@ -35,18 +47,34 @@ public class Fattura {
         this.listServizio = listServizio;
     }
 
+    /**
+     * metodo che restituisce la lista delle note di credito
+     * @return la lista delle note di credito
+     */
     public ArrayList<NotaDiCredito> getListNote() {
         return listNotaDiCredito;
     }
 
+    /**
+     * metodo che setta la lista delle note di credito
+     * @param listNote la lista delle note di credito
+     */
     public void setListNote(ArrayList<NotaDiCredito> listNote) {
         this.listNotaDiCredito = listNote;
     }
 
+    /**
+     * metodo che setta la lista del servizio associati alla fattura
+     * @return restituisce la lista di servizi associati alla fattura
+     */
     public ArrayList<ServizioAssociato> getListServizio() {
         return listServizio;
     }
 
+    /**
+     * metodo che setta la lista del servizio associati alla fattura
+     * @param listServizio la lista dei servizi associati alla fattura
+     */
     public void setListServizio(ArrayList<ServizioAssociato> listServizio) {
         this.listServizio = listServizio;
     }
@@ -162,12 +190,32 @@ public class Fattura {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-     public void removeNotaDiCredito(NotaDiCredito c){
+    /**
+     *
+     *  metodo che rimuove alla lista la nota di credito
+     * @param c nota di credito da rimuovere alla lista
+     */
+    public void removeNotaDiCredito(NotaDiCredito c){
      listNotaDiCredito.remove(c);}
+    /**
+     *  metodo che aggiunge alla lista la nota di credito
+     * @param c nota di credito da aggiungere alla lista
+     */
     public void addNotaDiCredito(NotaDiCredito c){
      listNotaDiCredito.add(c);}
-     public void removeServizio(ServizioAssociato c){
-     listServizio.remove(c);}
-    public void addServizio(ServizioAssociato c){
-     listServizio.add(c);}
+         /**
+     * metodo che rimuove un servizio alla lista dei servizi
+     * @param s servizio da rimuovere lista dei servizi
+     */
+    public void removeServzio(ServizioAssociato s) {
+        listServizio.remove(s);
+    }
+
+    /**
+     * metodo che aggiunge un servizio alla lista dei servizi
+     * @param s servizio da aggiungere lista dei servizi
+     */
+    public void addServizio(ServizioAssociato s) {
+        listServizio.add(s);
+    }
 }

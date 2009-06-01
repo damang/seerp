@@ -19,6 +19,23 @@ public class FatturaEmessa extends Fattura {
     private String tipoFatt;
     private ArrayList<DDT> listDDT;
 
+    /**
+     *
+     * @param data
+     * @param idFattura
+     * @param imponibile
+     * @param importo
+     * @param iva
+     * @param tipoFat
+     * @param note
+     * @param listNote
+     * @param listServizio
+     * @param idFatturaEmessa
+     * @param numeroProgressivo
+     * @param ivaDebito
+     * @param tipo
+     * @param listDDT
+     */
     public FatturaEmessa(Date data, Integer idFattura, Double imponibile, Double importo, Double iva, String tipoFat, String note, ArrayList<NotaDiCredito> listNote, ArrayList<ServizioAssociato> listServizio, Integer idFatturaEmessa, Integer numeroProgressivo, Double ivaDebito, String tipo, ArrayList<DDT> listDDT) {
         super(data, idFattura, imponibile, importo, iva, tipo, note, listNote, listServizio);
         this.idFatturaEmessa = idFatturaEmessa;
@@ -28,17 +45,23 @@ public class FatturaEmessa extends Fattura {
         this.listDDT = listDDT;
     }
 
+    /**
+     * restituisce la lista dei DDT associati alla fattura
+     * @return la lista dei DDT associati alla fattura
+     */
     public ArrayList<DDT> getListDDT() {
         return listDDT;
     }
 
+    /**
+      * restituisce la lista dei DDT associati alla fattura
+     * @param listDDT DDT associati alla fattura
+     */
     public void setListDDT(ArrayList<DDT> listDDT) {
         this.listDDT = listDDT;
     }
 
-    /**
-     * cotruttore della classe FatturaEmessa
-     */
+    
     /**
      * metodo che restituisce l'identificativo della fattura
      * @return l'identificativo della fattura
@@ -102,9 +125,21 @@ public class FatturaEmessa extends Fattura {
     public void setNumeroProgressivo(Integer numeroProgressivo) {
         this.numeroProgressivo = numeroProgressivo;
     }
-      public void removeDDT(DDT c){
-     listDDT.remove(c);}
-    public void addDDT(DDT c){
-     listDDT.add(c);}
 
+    /**
+     *  metodo che rimuove un DDT alla lista
+     * @param c DDT da  rimuovere dall lista
+     */
+    public void removeDDT(DDT c) {
+        listDDT.remove(c);
+    }
+
+    /**
+     *  metodo che aggiunge un DDT alla lista
+     * @param c DDT da aggiungere dall lista
+     */
+    public void addDDT(DDT c) {
+
+        listDDT.add(c);
+    }
 }
