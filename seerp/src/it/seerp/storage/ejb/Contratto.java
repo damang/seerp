@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package it.seerp.storage.ejb;
 
 import java.sql.Date;
@@ -45,19 +42,18 @@ public class Contratto {
         this.listServizio = listServizio;
     }
 
-   
+    public Contratto(String stt, Date da, Integer d, String t, Integer i, String n, Integer dip, Integer e, ArrayList<Servizio> listS) {
+        this.listServizio = listS;
+        this.stato = stt;
+        this.data = da;
+        this.durata = d;
+        this.tipo = t;
+        this.idContratto = i;
+        this.note = n;
+        this.dipendente = dip;
+        this.extraAzienda = e;
+    }
 
-
-    public Contratto(String stt, Date da, Integer d,String t, Integer i, String n, Integer dip,Integer e,ArrayList<Servizio> listS)
-    {   this.listServizio=listS;
-        this.stato=stt;
-        this.data=da;
-        this.durata=d;
-        this.tipo=t;
-        this.idContratto=i;
-        this.note=n;
-        this.dipendente=dip;
-       this.extraAzienda=e;}
     /**
      *  metodo che restituisce l'id dipendente che ha stipulato il contratto
      * @return id dipendente che ha stipulato il contratto
@@ -65,12 +61,15 @@ public class Contratto {
     public Integer getDipendente() {
         return dipendente;
     }
-  public ArrayList<Pagamento> getListPagamento() {
+
+    public ArrayList<Pagamento> getListPagamento() {
         return listPagamento;
     }
 
     public void setListPagamento(ArrayList<Pagamento> listPagamento) {
-        this.listPagamento = listPagamento;}
+        this.listPagamento = listPagamento;
+    }
+
     /**
      *  metodo che setta id dipendente che ha stipulato il contratto
      * @param dipendente id dipendente che ha stipulato il contratto
@@ -190,12 +189,20 @@ public class Contratto {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-      public void removePagamento(Pagamento p){
-     listPagamento.remove(p);}
-    public void addPagamento(Pagamento p){
-     listPagamento.add(p);}
-       public void removeServzio(Servizio s){
-     listServizio.remove(s);}
-    public void addPagamento(Servizio s){
-     listServizio.add(s);}
+
+    public void removePagamento(Pagamento p) {
+        listPagamento.remove(p);
+    }
+
+    public void addPagamento(Pagamento p) {
+        listPagamento.add(p);
+    }
+
+    public void removeServzio(Servizio s) {
+        listServizio.remove(s);
+    }
+
+    public void addPagamento(Servizio s) {
+        listServizio.add(s);
+    }
 }
