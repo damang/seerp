@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package it.seerp.storage.ejb;
 
 import java.sql.Date;
@@ -17,16 +14,27 @@ public class FatturaRicevuta extends Fattura {
     private Integer numeroProgressivo;
     private Double ivaCredito;
 
+    /**
+     *
+     * @param data
+     * @param idFattura
+     * @param imponibile
+     * @param importo
+     * @param iva
+     * @param tipo
+     * @param note
+     * @param listNote
+     * @param listServizio
+     * @param idFatturaRicevuta
+     * @param numeroProgressivo
+     * @param ivaCredito
+     */
     public FatturaRicevuta(Date data, Integer idFattura, Double imponibile, Double importo, Double iva, String tipo, String note, ArrayList<NotaDiCredito> listNote, ArrayList<ServizioAssociato> listServizio, Integer idFatturaRicevuta, Integer numeroProgressivo, Double ivaCredito) {
         super(data, idFattura, imponibile, importo, iva, tipo, note, listNote, listServizio);
         this.idFatturaRicevuta = idFatturaRicevuta;
         this.numeroProgressivo = numeroProgressivo;
         this.ivaCredito = ivaCredito;
     }
-
-    /**
-     * cotruttore della classe FatturaRicevuta
-     */
   
 
     /**
