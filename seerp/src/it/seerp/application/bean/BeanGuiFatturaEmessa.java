@@ -21,7 +21,16 @@ private JTextArea note;
     private JTextField tipo;
      private ArrayList<BeanGuiDDT> listDDT;
 
-    public BeanGuiFatturaEmessa(JTextArea note, JTextField idFatturaEmessa, JTextField numeroProgressivo, JTextField ivaDebito, JTextField tipo, ArrayList<BeanGuiDDT> listDDT) {
+     /**
+      * Costruttore della classe Bean Gui Fattura Emessa 
+      * @param note
+      * @param idFatturaEmessa
+      * @param numeroProgressivo
+      * @param ivaDebito
+      * @param tipo
+      * @param listDDT
+      */
+     public BeanGuiFatturaEmessa(JTextArea note, JTextField idFatturaEmessa, JTextField numeroProgressivo, JTextField ivaDebito, JTextField tipo, ArrayList<BeanGuiDDT> listDDT) {
         this.note = note;
         this.idFatturaEmessa = idFatturaEmessa;
         this.numeroProgressivo = numeroProgressivo;
@@ -30,10 +39,18 @@ private JTextArea note;
         this.listDDT = listDDT;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<BeanGuiDDT> getListDDT() {
         return listDDT;
     }
 
+    /**
+     *
+     * @param listDDT
+     */
     public void setListDDT(ArrayList<BeanGuiDDT> listDDT) {
         this.listDDT = listDDT;
     }
@@ -117,8 +134,16 @@ private JTextArea note;
     public void setTipo(JTextField tipo) {
         this.tipo = tipo;
     }
-        public void removeDDT(BeanGuiDDT c){
+    /**
+     *
+     * @param c
+     */
+    public void removeDDT(BeanGuiDDT c){
      listDDT.remove(c);}
-    public void addDDT(BeanGuiDDT c){
+        /**
+         *
+         * @param c
+         */
+        public void addDDT(BeanGuiDDT c){
      listDDT.add(c);}
 }
