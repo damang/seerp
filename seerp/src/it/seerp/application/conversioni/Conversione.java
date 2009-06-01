@@ -468,7 +468,7 @@ public class Conversione
          String ruolo= e.getCmbRuolo().getToolTipText();
          Boolean notifica= Boolean.parseBoolean(e.getTxtNotifica().getText());
          
-         ExtraAzienda extra = new ExtraAzienda(id,username,password,città,prov,telefono,email,ruolo,note,notifica,ide,cognome,nome,ragSoc,pIva,fax,a,a1);
+         ExtraAzienda extra = new ExtraAzienda(id,username,password,città,ruolo,prov, telefono,email, ruolo,note,notifica,ide,cognome,nome,ragSoc,pIva,fax, a,a1);
         return extra;
     }
 
@@ -833,7 +833,7 @@ public class Conversione
          Integer feedback=Integer.parseInt(e.getTxtFeedback().getText());
 
 
-        Contatto cont = new Contatto (id,username,password,città,prov,telefono,email,note,ide,cognome,nome,ragSoc,pIva,fax,ruolo,a,a1,notifica,idc,feedback);
+        Contatto cont = new Contatto (id,username,password,città,ruolo,prov,telefono,email,ruolo,note,notifica,ide,cognome,nome,ragSoc,pIva,fax,a,a1,idc,feedback);
         return cont;
     }
 
@@ -930,7 +930,7 @@ public class Conversione
          Boolean notifica= Boolean.parseBoolean(e.getTxtNotifica().getText());
          Integer idc=Integer.parseInt(e.getIdClienteTxt().getText());
 
-         Cliente cl= new Cliente(id,username,password,città,prov,telefono,email,note,ide,cognome,nome,ragSoc,pIva,fax,ruolo,a,a1,idc,notifica);
+         Cliente cl= new Cliente(id,username,password,città,ruolo,prov,telefono,email,ruolo,note,notifica,ide,cognome,nome,ragSoc,pIva,fax,a,a1,idc);
 
         return cl;
     }
@@ -1027,7 +1027,7 @@ public class Conversione
          Integer idf=Integer.parseInt(e.getIdFornitoreTxt().getText());
 
          
-        Fornitore cl= new Fornitore(id,username,password,città,prov,telefono,email,note,ide,cognome,nome,ragSoc,pIva,fax,ruolo,a,a1,idf,notifica);
+        Fornitore cl= new Fornitore(id,username,password,città,ruolo,prov,telefono,email,ruolo,note,notifica,ide,cognome,nome,ragSoc,pIva,fax,a,a1,idf);
  
         return cl;
     }
