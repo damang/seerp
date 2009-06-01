@@ -12,13 +12,13 @@ import javax.swing.JTextField;
  */
 public interface GestioneAreaPersonale <E extends Utente,U extends BeanGuiUtente>{
 
-    public U visualizzaDati(JTextField user);
+    public U visualizzaDati(U utente);
 
    
    
-    public U modificaPassword(JTextField user) throws DatiErrati;
+    public U modificaPassword(U utente) throws DatiErrati;
 
-    public ArrayList<U> visualizzaContratti(JTextField  username);
+    public ArrayList<U> visualizzaContratti(U utente);
 
 
 }
