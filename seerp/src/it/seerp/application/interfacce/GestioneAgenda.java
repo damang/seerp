@@ -33,6 +33,6 @@ public interface GestioneAgenda<G> {
     public ArrayList<G> ricercaPerNome(JTextField Nome) throws  DatiErrati, RicercaFallita;
 
     public ArrayList<G> ricercaPerGiorno(JTextField giorno)throws  DatiErrati, RicercaFallita;
-//vedre cm e mappata
+    
     public void cancellaEvento(G beanGuiEventi) throws CancellazioneFallita ;
 }
