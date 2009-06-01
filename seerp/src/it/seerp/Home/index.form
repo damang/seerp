@@ -106,7 +106,10 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jXTaskPaneContainer1" min="-2" pref="196" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jXPanel2" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jTabbedPane1" pref="437" max="32767" attributes="0"/>
+                  <Component id="jXPanel2" alignment="0" max="32767" attributes="0"/>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -115,7 +118,8 @@
           <Component id="jXTaskPaneContainer1" alignment="0" pref="356" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <Component id="jXPanel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="309" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jTabbedPane1" pref="298" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -187,6 +191,13 @@
           </Group>
         </DimensionLayout>
       </Layout>
+    </Container>
+    <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="jTabbedPane1" noResource="true"/>
+      </Properties>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
     </Container>
   </SubComponents>
 </Form>

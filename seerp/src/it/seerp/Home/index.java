@@ -40,6 +40,7 @@ public class index extends javax.swing.JFrame implements ActionListener  {
         jXPanel1 = new org.jdesktop.swingx.JXPanel();
         helpme1 = new it.seerp.bottoni.Nuovo.helpme();
         jXPanel2 = new org.jdesktop.swingx.JXPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
@@ -100,6 +101,8 @@ public class index extends javax.swing.JFrame implements ActionListener  {
             .addGap(0, 47, Short.MAX_VALUE)
         );
 
+        jTabbedPane1.setName("jTabbedPane1"); // NOI18N
+
         fileMenu.setText("File");
 
         openMenuItem.setText("Open");
@@ -156,14 +159,17 @@ public class index extends javax.swing.JFrame implements ActionListener  {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jXPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
+                    .addComponent(jXPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jXPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(309, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE))
         );
 
         pack();
@@ -195,6 +201,7 @@ public class index extends javax.swing.JFrame implements ActionListener  {
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
     private it.seerp.bottoni.Nuovo.helpme helpme1;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private org.jdesktop.swingx.JXPanel jXPanel1;
     private org.jdesktop.swingx.JXPanel jXPanel2;
     private org.jdesktop.swingx.JXTaskPane jXTaskPane1;
