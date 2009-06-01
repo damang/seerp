@@ -88,26 +88,11 @@ public class Conversione
     /**
      * Metodo che converte un Bean Contratto in un Bean Gui Contratto
      * @param c il Bean Contratto da convertire
-     * @param gui il Bean Grafico che
+     * @param gui il Bean Grafico che deve essere modificato
      * @return Il Bean Gui Contratto convertito
      */
     public BeanGuiContratto conversioneContratto(Contratto c,BeanGuiContratto gui)
     {
-        ArrayList<BeanGuiPagamento> listPag= new ArrayList<BeanGuiPagamento>();
-        ArrayList<BeanGuiServizio> listSer= new ArrayList<BeanGuiServizio>();
-
-        for(Pagamento p : c.getListPagamento())
-        {
-            BeanGuiPagamento p1= conversionePagamento(p);
-            listPag.add(p1);
-        }
-
-        for(Servizio s : c.getListServizio())
-        {
-            BeanGuiServizio s1 = conversioneServizio(s);
-            listSer.add(s1);
-        }
-
         JTextField field = new JTextField();
         JTextArea area = new JTextArea();
 
@@ -127,8 +112,8 @@ public class Conversione
         gui.setDipendente(field);
         field.setText(c.getExtraAzienda().toString());
         gui.setExtraAzienda(field);
-        gui.setListPagamento(listPag);
-        gui.setListServizio(listSer);
+        gui.setListPagamento(gui.getListPagamento());
+        gui.setListServizio(gui.getListServizio());
 
         return gui;
     }
@@ -158,8 +143,8 @@ public class Conversione
 
     /**
      * Metodo che converte un Bean Evento  in un Bean Gui Evento
-     * @param e
-     * Il Bean Evento da convertire
+     * @param e il Bean Evento da convertire
+     * @param gui il Bean Grafico che deve essere modificato
      * @return Il Bean Gui Evento convertito
      */
     public BeanGuiEvento conversioneEvento(Evento e,BeanGuiEvento gui)
@@ -220,8 +205,8 @@ public class Conversione
 
     /**
      * Metodo che converte un Bean Servizio in un Bean Gui Servizio
-     * @param s
-     * Il Bean Servizio da convertire
+     * @param s il Bean Servizio da convertire
+     * @param gui il Bean Grafico che deve essere modificato
      * @return Il Bean Gui Servizio convertito
      */
     public BeanGuiServizio conversioneServizio(Servizio s,BeanGuiServizio gui)
@@ -229,14 +214,6 @@ public class Conversione
         
         JTextField field = new JTextField();
         JTextArea area = new JTextArea();
-
-        ArrayList<BeanGuiContratto> list = new ArrayList<BeanGuiContratto>();
-
-        for(Contratto c : s.getListContratti())
-        {
-            BeanGuiContratto c1 = conversioneContratto(c);
-            list.add(c1);
-        }
 
         field.setText(s.getDescrizione());
         gui.setDescrizione(field);
@@ -254,7 +231,7 @@ public class Conversione
         gui.setIva(field);
         area.setText(s.getNote());
         gui.setNote(area);
-        gui.setListContratti(list);
+        gui.setListContratti(gui.getListContratti());
 
         return gui;
     }
@@ -285,8 +262,8 @@ public class Conversione
 
     /**
      * Metodo che converte un Bean Pagamento in un Bean Gui Pagamento
-     * @param p
-     * Il Bean Pagamento da convertire
+     * @param p il Bean Pagamento da convertire
+     * @param pagamento il Bean Grafico che deve essere modificato
      * @return Il Bean Gui Pagamento convertito
      */
     public BeanGuiPagamento conversionePagamento(Pagamento p,BeanGuiPagamento pagamento)
@@ -341,8 +318,8 @@ public class Conversione
 
     /**
      * Metodo che converte un Bean Utente in un Bean Gui Utente
-     * @param user
-     * Il Bean da convertire
+     * @param user il Bean da convertire
+     * @param utente il Bean Grafico che deve essere modificato
      * @return il Bean Gui convertito
      */
     public BeanGuiUtente conversioneUtente(Utente user,BeanGuiUtente utente){
@@ -410,25 +387,13 @@ public class Conversione
 
     /**
      * Metodo che converte un Bean Personale in un Bean Gui Personale
-     * @param p
-     * Il Bean da convertire
+     * @param p il Bean da convertire
+     * @param bp il Bean Grafico che deve essere modificato
      * @return il Bean Gui convertito
      */
     public BeanGuiPersonale conversionePersonale(Personale p,BeanGuiPersonale bp)
     {
-        ArrayList<BeanGuiPermesso> a = new ArrayList<BeanGuiPermesso>();
-        ArrayList<BeanGuiRuolo> a1 = new ArrayList<BeanGuiRuolo>();
-
-        for( Permesso b : p.getListaPermessi() ){
-            BeanGuiPermesso b1 = conversionePermesso(b);
-            a.add(b1);
-           }
-
-         for( Ruolo b : p.getListaRuoli() ){
-            BeanGuiRuolo b1 = conversioneRuolo(b);
-            a1.add(b1);
-           }
-
+        
         JTextField c = new JTextField();
         JComboBox d = new JComboBox();
         c.setText(p.getIdUtente().toString());
@@ -455,8 +420,8 @@ public class Conversione
         bp.setCodiceFiscale(c);
         d.setToolTipText(p.getTipo());
         bp.setTipo(d);
-        bp.setListPermessi(a);
-        bp.setListRuoli(a1);
+        bp.setListPermessi(bp.getListPermessi());
+        bp.setListRuoli(bp.getListRuoli());
         c.setText(p.getVisible().toString());
         bp.setTxtnotifica(c);
         c.setText(p.getRuolo());
@@ -509,24 +474,11 @@ public class Conversione
 
     /**
      * Metodo che converte un Bean ExtraAzienda in un Bean Gui ExtraAzienda
-     * @param e
-     * il Bean da convertire
+     * @param e il Bean da convertire
+     * @param extra il Bean Grafico che deve essere modificato
      * @return il Bean Gui convertito
      */
     public BeanGuiExtraAzienda conversazioneExtraAzienda(ExtraAzienda e,BeanGuiExtraAzienda extra){
-
-        ArrayList<BeanGuiAppuntamento> a = new ArrayList<BeanGuiAppuntamento>();
-        ArrayList<BeanGuiContratto> a1 = new ArrayList<BeanGuiContratto>();
-
-        for( Appuntamento b : e.getListAppuntamenti() ){
-            BeanGuiAppuntamento b1 = conversioneAppuntamento(b);
-            a.add(b1);
-           }
-
-         for( Contratto b : e.getListContratti() ){
-            BeanGuiContratto b1 = conversioneContratto(b);
-            a1.add(b1);
-           }
 
         JTextField c = new JTextField();
         c.setText(e.getIdUtente().toString());
@@ -560,8 +512,8 @@ public class Conversione
         JComboBox d = new JComboBox();
         d.setToolTipText(e.getRuolo());
         extra.setCmbRuolo(d);
-        extra.setListAppuntamenti(a);
-        extra.setListContratti(a1);
+        extra.setListAppuntamenti(extra.getListAppuntamenti());
+        extra.setListContratti(extra.getListContratti());
         return extra;
     }
 
@@ -609,24 +561,11 @@ public class Conversione
 
     /**
      * Metodo che converte un Bean Responsabile in un Bean Gui Responsabile
-     * @param e
-     * Il Bean da convertire
+     * @param e il Bean da convertire
+     * @param br il Bean Grafico che deve essere modificato
      * @return il Bean Gui convertito
      */
     public BeanGuiResponsabile conversioneResponsabile(Responsabile e,BeanGuiResponsabile br){
-
-        ArrayList<BeanGuiPermesso> a = new ArrayList<BeanGuiPermesso>();
-        ArrayList<BeanGuiRuolo> a1 = new ArrayList<BeanGuiRuolo>();
-
-        for( Permesso b : e.getListaPermessi() ){
-            BeanGuiPermesso b1 = conversionePermesso(b);
-            a.add(b1);
-           }
-
-         for( Ruolo b : e.getListaRuoli() ){
-            BeanGuiRuolo b1 = conversioneRuolo(b);
-            a1.add(b1);
-           }
 
         JTextField c = new JTextField();
         JComboBox d = new JComboBox();
@@ -654,8 +593,8 @@ public class Conversione
         br.setCodiceFiscale(c);
         d.setToolTipText(e.getTipo());
         br.setTipo(d);
-        br.setListPermessi(a);
-        br.setListRuoli(a1);
+        br.setListPermessi(br.getListPermessi());
+        br.setListRuoli(br.getListRuoli());
         c.setText(e.getVisible().toString());
         br.setTxtnotifica(c);
         c.setText(e.getIdResponsabile().toString());
@@ -722,42 +661,12 @@ public class Conversione
 
      /**
       * Metodo che converte un Bean Responsabile in un Bean Gui Responsabile
-      * @param e
-      * Il Bean da convertire
+      * @param e il Bean da convertire
+      * @param bd il Bean Grafico che deve essere modificato
       * @return il Bean Gui convertito
       */
      public BeanGuiDipendente conversioneResponsabile(Dipendente e,BeanGuiDipendente bd){
 
-        
-
-        ArrayList<BeanGuiPermesso> a = new ArrayList<BeanGuiPermesso>();
-        ArrayList<BeanGuiRuolo> a1 = new ArrayList<BeanGuiRuolo>();
-
-
-         ArrayList<BeanGuiAppuntamento> a2 = new ArrayList<BeanGuiAppuntamento>();
-        ArrayList<BeanGuiContratto> a3 = new ArrayList<BeanGuiContratto>();
-
-        for( Appuntamento b : e.getListAppuntamenti() ){
-            BeanGuiAppuntamento b1 = conversioneAppuntamento(b);
-            a2.add(b1);
-           }
-
-         for( Contratto b : e.getListContratti() ){
-            BeanGuiContratto b1 = conversioneContratto(b);
-            a3.add(b1);
-           }
-
-
-
-        for( Permesso b : e.getListaPermessi() ){
-            BeanGuiPermesso b1 = conversionePermesso(b);
-            a.add(b1);
-           }
-
-         for( Ruolo b : e.getListaRuoli() ){
-            BeanGuiRuolo b1 = conversioneRuolo(b);
-            a1.add(b1);
-           }
 
         JTextField c = new JTextField();
         JComboBox d = new JComboBox();
@@ -785,40 +694,27 @@ public class Conversione
         bd.setCodiceFiscale(c);
         d.setToolTipText(e.getTipo());
         bd.setTipo(d);
-        bd.setListPermessi(a);
-        bd.setListRuoli(a1);
+        bd.setListPermessi(bd.getListPermessi());
+        bd.setListRuoli(bd.getListRuoli());
         c.setText(e.getVisible().toString());
         bd.setTxtnotifica(c);
         c.setText(e.getIdDipendente().toString());
         bd.setIdDipendenteTxt(c);
-        bd.setListAppuntamenti(a2);
-        bd.setListContratti(a3);
+        bd.setListAppuntamenti(bd.getListAppuntamenti());
+        bd.setListContratti(bd.getListContratti());
         return bd;
     }
 
       /**
       * Metodo che converte un Bean Amministratore in un Bean Gui Amministratore
-      * @param e
-      * Il Bean da convertire
+      * @param e il Bean da convertire
+      * @param br il Bean Grafico che deve essere modificato
       * @return il Bean Gui convertito
       */
 
      public BeanGuiAmministratore conversioneAmministratore(Amministratore e,BeanGuiAmministratore br){
 
-        ArrayList<BeanGuiPermesso> a = new ArrayList<BeanGuiPermesso>();
-        ArrayList<BeanGuiRuolo> a1 = new ArrayList<BeanGuiRuolo>();
-
-        for( Permesso b : e.getListaPermessi() ){
-            BeanGuiPermesso b1 = conversionePermesso(b);
-            a.add(b1);
-           }
-
-         for( Ruolo b : e.getListaRuoli() ){
-            BeanGuiRuolo b1 = conversioneRuolo(b);
-            a1.add(b1);
-           }
-
-        JTextField c = new JTextField();
+         JTextField c = new JTextField();
         JComboBox d = new JComboBox();
         c.setText(e.getIdAmministratore().toString());
         br.setIdAmministratoreTxt(c);
@@ -846,8 +742,8 @@ public class Conversione
         br.setCodiceFiscale(c);
         d.setToolTipText(e.getTipo());
         br.setTipo(d);
-        br.setListPermessi(a);
-        br.setListRuoli(a1);
+        br.setListPermessi(br.getListPermessi());
+        br.setListRuoli(br.getListRuoli());
         c.setText(e.getVisible().toString());
         br.setTxtnotifica(c);
        
@@ -943,25 +839,13 @@ public class Conversione
 
      /**
       * Metodo che converte un Bean Contatto in un Bean Gui Contatto
-      * @param e
-      * Il Bean da convertire
+      * @param e il Bean da convertire
+      * @param cont il Bean Grafico che deve essere modificato
       * @return il Bean Gui convertito
       */
      public BeanGuiContatto conversioneContatto(Contatto e,BeanGuiContatto cont){
         
-        ArrayList<BeanGuiAppuntamento> a = new ArrayList<BeanGuiAppuntamento>();
-        ArrayList<BeanGuiContratto> a1 = new ArrayList<BeanGuiContratto>();
-
-        for( Appuntamento b : e.getListAppuntamenti() ){
-            BeanGuiAppuntamento b1 = conversioneAppuntamento(b);
-            a.add(b1);
-           }
-
-         for( Contratto b : e.getListContratti() ){
-            BeanGuiContratto b1 = conversioneContratto(b);
-            a1.add(b1);
-           }
-
+      
         JTextField c = new JTextField();
         c.setText(e.getIdUtente().toString());
         cont.setIdUtenteText(c);
@@ -994,8 +878,8 @@ public class Conversione
         JComboBox d = new JComboBox();
         d.setToolTipText(e.getRuolo());
         cont.setCmbRuolo(d);
-        cont.setListAppuntamenti(a);
-        cont.setListContratti(a1);
+        cont.setListAppuntamenti(cont.getListAppuntamenti());
+        cont.setListContratti(cont.getListContratti());
         c.setText(e.getIdContatto().toString());
         cont.setIdContattoTxt(c);
         c.setText(e.getFeedback().toString());
@@ -1053,27 +937,13 @@ public class Conversione
 
     /**
      * Metodo che converte un Bean Cliente in un Bean Gui Cliente
-     * @param e
-     * Il Bean da convertire
+     * @param e il Bean da convertire
+     * @param cl il Bean Grafico che deve essere modificato
      * @return il Bean Gui convertito
      */
     public BeanGuiCliente conversioneCliente(Cliente e,BeanGuiCliente cl)
     {
-        ArrayList<BeanGuiAppuntamento> a = new ArrayList<BeanGuiAppuntamento>();
-        ArrayList<BeanGuiContratto> a1 = new ArrayList<BeanGuiContratto>();
-
-        for( Appuntamento b : e.getListAppuntamenti() )
-        {
-            BeanGuiAppuntamento b1 = conversioneAppuntamento(b);
-            a.add(b1);
-        }
-
-        for( Contratto b : e.getListContratti() )
-        {
-            BeanGuiContratto b1 = conversioneContratto(b);
-            a1.add(b1);
-        }
-
+      
         JTextField c = new JTextField();
         JComboBox d = new JComboBox();
 
@@ -1107,8 +977,8 @@ public class Conversione
         cl.getTxtFax();
         d.setToolTipText(e.getRuolo());
         cl.setCmbRuolo(d);
-        cl.setListAppuntamenti(a);
-        cl.setListContratti(a1);
+        cl.setListAppuntamenti(cl.getListAppuntamenti());
+        cl.setListContratti(cl.getListContratti());
         c.setText(e.getIdCliente().toString());
         cl.setIdClienteTxt(c);
         
@@ -1165,27 +1035,13 @@ public class Conversione
 
     /**
      * Metodo che converte un Bean Fornitore in un Bean Gui Fornitore
-     * @param e
-     * Il Bean da convertire
+     * @param e il Bean da convertire
+     * @param fo il Bean Grafico che deve essere modificato
      * @return il Bean Gui convertito
      */
     public BeanGuiFornitore conversioneFornitore(Fornitore e,BeanGuiFornitore fo)
     {
-        ArrayList<BeanGuiAppuntamento> a = new ArrayList<BeanGuiAppuntamento>();
-        ArrayList<BeanGuiContratto> a1 = new ArrayList<BeanGuiContratto>();
-
-        for( Appuntamento b : e.getListAppuntamenti() )
-        {
-            BeanGuiAppuntamento b1 = conversioneAppuntamento(b);
-            a.add(b1);
-           }
-
-         for( Contratto b : e.getListContratti() )
-         {
-            BeanGuiContratto b1 = conversioneContratto(b);
-            a1.add(b1);
-           }
-
+       
         JTextField c = new JTextField();
         
         c.setText(e.getIdUtente().toString());
@@ -1219,8 +1075,8 @@ public class Conversione
         JComboBox d = new JComboBox();
         d.setToolTipText(e.getRuolo());
         fo.setCmbRuolo(d);
-        fo.setListAppuntamenti(a);
-        fo.setListContratti(a1);
+        fo.setListAppuntamenti(fo.getListAppuntamenti());
+        fo.setListContratti(fo.getListContratti());
         c.setText(e.getIdFornitore().toString());
         fo.setIdFornitoreTxt(c);
         
@@ -1229,8 +1085,8 @@ public class Conversione
 
     /**
      * Metodo che converte un Bean Appuntamento in un Bean Gui Appuntamento
-     * @param b
-     * Il Bean da convertire
+     * @param b il Bean da convertire
+     * @param app il Bean Grafico che deve essere modificato
      * @return il Bean Gui convertito
      */
     public BeanGuiAppuntamento conversioneAppuntamento(Appuntamento b,BeanGuiAppuntamento app)
@@ -1310,35 +1166,21 @@ public class Conversione
 
     /**
      * Metodo che converte un Bean Permesso in un Bean Gui Permesso
-     * @param b
-     * Il Bean da convertire
+     * @param b il Bean da convertire
+     * @param p il Bean Grafico che deve essere modificato
      * @return il Bean Gui convertito
      */
     public BeanGuiPermesso conversionePermesso(Permesso b,BeanGuiPermesso p)
     {
-        ArrayList<BeanGuiPersonale> a = new ArrayList<BeanGuiPersonale>();
-        ArrayList<BeanGuiRuolo> c = new ArrayList<BeanGuiRuolo>();
-
-        for(Personale d: b.getListPersonale())
-        {
-            BeanGuiPersonale d1 = conversionePersonale(d);
-            a.add(d1);
-        }
-
-        for(Ruolo d : b.getListPermessi())
-        {
-            BeanGuiRuolo d1= conversioneRuolo(d);
-            c.add(d1);
-        }
-
+       
         JTextField d = new JTextField();
 
         d.setText(b.getIdPermesso().toString());
         p.setIdPermesso(d);
         d.setText(b.getNome());
         p.setNome(d);
-        p.setListPersonale(a);
-        p.setListRuolo(c);
+        p.setListPersonale(p.getListPersonale());
+        p.setListRuolo(p.getListRuolo());
 
         return p;
 
@@ -1377,39 +1219,22 @@ public class Conversione
 
     /**
      * Metodo che converte un Bean Ruolo in un Bean Gui Ruolo
-     * @param b
-     * Il Bean da convertire
+     * @param b il Bean da convertire
+     * @para r il Bean Grafico che deve essere modificato
      * @return il Bean Gui convertito
      */
     public BeanGuiRuolo conversioneRuolo(Ruolo b,BeanGuiRuolo r)
     {
-        ArrayList<BeanGuiPersonale> a = new ArrayList<BeanGuiPersonale>();
-        ArrayList<BeanGuiPermesso> c = new ArrayList<BeanGuiPermesso>();
-
-        for(Personale d: b.getListPersonale())
-        {
-            BeanGuiPersonale d1 = conversionePersonale(d);
-            a.add(d1);
-        }
-
-        for(Permesso d : b.getListPermessi())
-        {
-            BeanGuiPermesso d1= conversionePermesso(d);
-            c.add(d1);
-        }
-
         
-
         JTextField d = new JTextField();
 
         d.setText(b.getIdRuolo().toString());
         r.setIdRuolo(d);
         d.setText(b.getNome());
         r.setNome(d);
-        r.setListPersonale(a);
-        r.setListPermessi(c);
+        r.setListPersonale(r.getListPersonale());
+        r.setListPermessi(r.getListPermessi());
         return r;
     }
 
-    
 }
