@@ -14,7 +14,7 @@ import javax.swing.JTextField;
  */
 public interface GestioneServizi <E>{
 
-    public ArrayList<E> elenca (ArrayList<E> list);
+    public ArrayList<E> elenca ();
 
     public ArrayList<E> ricerca (JTextField nome,ArrayList<E> list)throws DatiErrati;
 
