@@ -14,7 +14,7 @@ import javax.swing.JTextField;
  */
 
 public interface GestioneAgenda<G> {
-    //ci vuole l extends???
+    
     public  ArrayList<G> visualizzaListaEventi();
 
     public G visualizzaDettagli(JTextField nome)throws DatiErrati;
