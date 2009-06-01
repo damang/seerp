@@ -19,6 +19,15 @@ public class DisponibilitaLiquide {
     private Integer idPagamento;
     private ArrayList<Pagamento> listPagamento;
 
+    /**
+     * cotruttore
+     * @param importo
+     * @param tipo
+     * @param note
+     * @param idDisponibilitaLiquide
+     * @param idPagamento
+     * @param listPagamento
+     */
     public DisponibilitaLiquide(Double importo, String tipo, String note, Integer idDisponibilitaLiquide, Integer idPagamento, ArrayList<Pagamento> listPagamento) {
         this.importo = importo;
         this.tipo = tipo;
@@ -28,10 +37,18 @@ public class DisponibilitaLiquide {
         this.listPagamento = listPagamento;
     }
 
+    /**
+     * metodo che restituisce la lista dei pagamenti associai alle diposnibilita liquide
+     * @return la lista di pagameni
+     */
     public ArrayList<Pagamento> getListPagamento() {
         return listPagamento;
     }
 
+    /**
+     * metodo che setta la lista dei pagamenti associai alle diposnibilita liquide
+     * @param listPagamento la lista dei pagamenti associai alle diposnibilita liquide
+     */
     public void setListPagamento(ArrayList<Pagamento> listPagamento) {
         this.listPagamento = listPagamento;}
 
@@ -61,7 +78,7 @@ public class DisponibilitaLiquide {
 
     /**
      *  metodo che setta le note delle disponibilita liquide
-     * @param  le note del contratti
+     * @param note
      */
     public void setNote(String note) {
         this.note = note;
@@ -77,7 +94,7 @@ public class DisponibilitaLiquide {
 
     /**
      * metodo che setta l'identificativo delle disponibilità liquide
-     * @param l'identificativo delle disponibilità liquide
+     * @param idDisponibilitaLiquide
      */
     public void setIdDisponibilitaLiquide(Integer idDisponibilitaLiquide) {
         this.idDisponibilitaLiquide = idDisponibilitaLiquide;
@@ -115,8 +132,16 @@ public class DisponibilitaLiquide {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-  public void removePagamento(Pagamento p){
+   /**
+     * metodo che rimuove un pagamento alla lista dei pagamenti
+    * @param p pagamento da aggiungere
+     */
+    public void removePagamento(Pagamento p){
      listPagamento.remove(p);}
-    public void addPagamento(Pagamento p){
+   /**
+    * metodo che aggiunge un pagamento alla lista dei pagamenti
+    * @param p pagamento da aggiungere
+    */
+   public void addPagamento(Pagamento p){
      listPagamento.add(p);}
 }

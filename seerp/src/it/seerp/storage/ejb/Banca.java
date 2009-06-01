@@ -8,7 +8,7 @@ package it.seerp.storage.ejb;
 import java.util.ArrayList;
 
 /**
- *
+ * classe che gestisce le informazione sulla banca
  * @author matteo
  */
 public class Banca {
@@ -27,7 +27,22 @@ public class Banca {
     private ArrayList<Pagamento> listPagamento;
 
 
-      public Banca(String agenzia, String abi, String cab, String città, String provincia, String indirizzo, String cap, String filiale, String nazione, Double importoInDare, Double importoInAvere, ArrayList<Pagamento> listPagamento) {
+    /**
+     * metodo cotruttore
+     * @param agenzia
+     * @param abi
+     * @param cab
+     * @param città
+     * @param provincia
+     * @param indirizzo
+     * @param cap
+     * @param filiale
+     * @param nazione
+     * @param importoInDare
+     * @param importoInAvere
+     * @param listPagamento
+     */
+    public Banca(String agenzia, String abi, String cab, String città, String provincia, String indirizzo, String cap, String filiale, String nazione, Double importoInDare, Double importoInAvere, ArrayList<Pagamento> listPagamento) {
         this.agenzia = agenzia;
         this.abi = abi;
         this.cab = cab;
@@ -42,10 +57,18 @@ public class Banca {
         this.listPagamento = listPagamento;
     }
 
-    public ArrayList<Pagamento> getListPagamento() {
+      /**
+       * restituisce una lista di pagamenti associati ad una banca
+       * @return una lista di pagamenti di una banca
+       */
+      public ArrayList<Pagamento> getListPagamento() {
         return listPagamento;
     }
 
+    /**
+     * setta la lista di pagamenti asociati ad una banca 
+     * @param listPagamento lista di pagamenti di una banca
+     */
     public void setListPagamento(ArrayList<Pagamento> listPagamento) {
         this.listPagamento = listPagamento;
     }
@@ -55,184 +78,192 @@ public class Banca {
     
 
     /**
-     *
-     * @return
+     * metodo che restituisce il codice Abi della  banca
+     * @return il codice Abi della  banca
      */
     public String getAbi() {
         return abi;
     }
 
     /**
-     *
-     * @return
+     * metodo che setta l'agenzia a cui e associata la banca
+     * @return l'agenzia della banca
      */
     public String getAgenzia() {
         return agenzia;
     }
 
     /**
-     *
-     * @return
+     * metodo che restituisce Cab della banca
+     * @return Cab della banca
      */
     public String getCab() {
         return cab;
     }
 
     /**
-     *
-     * @return
+     * metodo che restituisce Cap della banca
+     * @return Cap della banca
      */
     public String getCap() {
         return cap;
     }
 
     /**
-     *
-     * @return
+     * metodo che restutisce la citta della banca
+     * @return citta della banca
      */
     public String getCittà() {
         return città;
     }
 
     /**
-     *
-     * @return
+     * metodo che restituisce la filiale della banca
+     * @return filiale della banca
      */
     public String getFiliale() {
         return filiale;
     }
 
     /**
-     *
-     * @return
+     * metodo che restituisce l'importo in avere di una banca
+     * @return l'importo in avere di una banca
      */
     public Double getImportoInAvere() {
         return importoInAvere;
     }
 
     /**
-     *
-     * @return
+     * metodo che restituisce in dare di una banca
+     * @return l'importo in dare di una banca
      */
     public Double getImportoInDare() {
         return importoInDare;
     }
 
     /**
-     * 
-     * @return
+     * metodo che restituisce l'indirizzo della banca
+     * @return l'indirizzo della banca
      */
     public String getIndirizzo() {
         return indirizzo;
     }
 
     /**
-     *
-     * @return
+     * metodo che restituisce la nazione della banca
+     * @return la nazione della banca
      */
     public String getNazione() {
         return nazione;
     }
 
     /**
-     *
-     * @return
+     * metodo che restituisce la ptrovincia della banca
+     * @return la ptrovincia della banca
      */
     public String getProvincia() {
         return provincia;
     }
 
     /**
-     *
-     * @param abi
+     * metodo che setta l'abi della banca
+     * @param abi l'abi della banca
      */
     public void setAbi(String abi) {
         this.abi = abi;
     }
 
     /**
-     *
-     * @param agenzia
+     * metodo che setta l'agenzia della banca
+     * @param agenzia l'agenzia della banca
      */
     public void setAgenzia(String agenzia) {
         this.agenzia = agenzia;
     }
 
     /**
-     *
-     * @param cab
+     * metodo che setta il cab della banca
+     * @param cab il cab della banca
      */
     public void setCab(String cab) {
         this.cab = cab;
     }
 
     /**
-     *
-     * @param cap
+     * metodo che setta il Cap della banca
+     * @param cap il Cap della banca
      */
     public void setCap(String cap) {
         this.cap = cap;
     }
 
     /**
-     *
-     * @param città
+     * metodo che setta la citta della banca
+     * @param città la ditta della banca
      */
     public void setCittà(String città) {
         this.città = città;
     }
 
     /**
-     *
-     * @param filiale
+     * metodo che setta la filiale della banca
+     * @param filiale la filiale della banca
      */
     public void setFiliale(String filiale) {
         this.filiale = filiale;
     }
 
     /**
-     *
-     * @param importoInAvere
+     * metodo che setta l'importo in avere della banca
+     * @param importoInAvere l'importo in avere della banca
      */
     public void setImportoInAvere(Double importoInAvere) {
         this.importoInAvere = importoInAvere;
     }
 
     /**
-     *
-     * @param importoInDare
+     *  metodo che setta l'importo in dare della banca
+     * @param importoInDare l'importo  in dare della banca
      */
     public void setImportoInDare(Double importoInDare) {
         this.importoInDare = importoInDare;
     }
 
     /**
-     *
-     * @param indirizzo
+     *  metodo che setta  l'indirizzo della banca
+     * @param indirizzo l'indirizzo della banca
      */
     public void setIndirizzo(String indirizzo) {
         this.indirizzo = indirizzo;
     }
 
     /**
-     *
-     * @param nazione
+     * metodo che setta la nazione di una banca
+     * @param nazione di una banca
      */
     public void setNazione(String nazione) {
         this.nazione = nazione;
     }
 
     /**
-     *
-     * @param provincia
+     * metodo che setta la provincia di una banca
+     * @param provincia della banca
      */
     public void setProvincia(String provincia) {
         this.provincia = provincia;
     }
 
-   public void removePagamento(Pagamento p){
+    /**
+     * metodo che rimuove un pagamento alla lista dei pagamenti
+    * @param p pagamento da aggiungere
+     */
+    public void removePagamento(Pagamento p){
      listPagamento.remove(p);}
-    public void addPagamento(Pagamento p){
+   /**
+    * metodo che aggiunge un pagamento alla lista dei pagamenti
+    * @param p pagamento da aggiungere
+    */
+   public void addPagamento(Pagamento p){
      listPagamento.add(p);}
 
 }

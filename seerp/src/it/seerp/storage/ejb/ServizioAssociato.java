@@ -16,6 +16,14 @@ public class ServizioAssociato {
     private Integer servizio;
     private String note;
 
+    /**
+     * costruttore
+     * @param quantita
+     * @param prezzoUnitario
+     * @param contratto
+     * @param servizio
+     * @param note
+     */
     public ServizioAssociato(Integer quantita, Double prezzoUnitario, Integer contratto, Integer servizio, String note) {
         this.quantita = quantita;
         this.prezzoUnitario = prezzoUnitario;

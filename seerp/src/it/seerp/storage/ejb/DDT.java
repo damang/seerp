@@ -22,6 +22,17 @@ public class DDT {
     private Integer fattureEmesse;
     private ArrayList<ServizioAssociatoFattura> listServizio;
 
+    /**
+     * costruttore
+     * @param merce
+     * @param quantita
+     * @param data
+     * @param idDDT
+     * @param numero
+     * @param note
+     * @param fattureEmesse
+     * @param listServizio
+     */
     public DDT(String merce, Integer quantita, Date data, Integer idDDT, Integer numero, String note, Integer fattureEmesse, ArrayList<ServizioAssociatoFattura> listServizio) {
         this.merce = merce;
         this.quantita = quantita;
@@ -33,10 +44,18 @@ public class DDT {
         this.listServizio = listServizio;
     }
 
+    /**
+     * metodo che  restituisce la lista dei servizi associati ad un DDT
+     * @return  la lista dei servizi associati ad un DDT
+     */
     public ArrayList<ServizioAssociatoFattura> getListServizio() {
         return listServizio;
     }
 
+    /**
+     * metodo che  setta la lista dei servizi associati ad un DDT
+         * @param listServizio  la lista dei servizi associati ad un DDT
+     */
     public void setListServizio(ArrayList<ServizioAssociatoFattura> listServizio) {
         this.listServizio = listServizio;
     }
@@ -153,8 +172,16 @@ public class DDT {
         this.note = note;
     }
 
-      public void removeServzio(ServizioAssociatoFattura s){
+    /**
+     * metodo che rimuove un servizio dalla lista di servizi
+     * @param s servizio da aggiungere alla lista
+     */
+    public void removeServzio(ServizioAssociatoFattura s){
      listServizio.remove(s);}
-    public void addServizio(ServizioAssociatoFattura s){
+      /**
+       * metodo che aggiunge un servizio alla lista di servizi
+       * @param s servizio da aggiungere alla lista
+       */
+      public void addServizio(ServizioAssociatoFattura s){
      listServizio.add(s);}
 }

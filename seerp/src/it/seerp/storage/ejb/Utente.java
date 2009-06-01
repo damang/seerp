@@ -22,6 +22,19 @@ public class Utente {
     private String ruolo;
     private Boolean visible;
 
+    /**
+     * costruttore
+     * @param idUtente
+     * @param username
+     * @param password
+     * @param città
+     * @param provincia
+     * @param telefono
+     * @param email
+     * @param ruolo
+     * @param note
+     * @param v
+     */
     public Utente(Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String ruolo, String note,Boolean v) {
         this.idUtente = idUtente;
         this.username = username;
@@ -35,16 +48,28 @@ public class Utente {
         this.visible=v;
     }
 
+    /**
+        * metodo che restituisce la visibilita dell utente
+     * @return la visibilita dell'utente
+     */
     public String getRuolo() {
         return ruolo;
     }
 
+    /**
+        * metodo che setta la visibilita dell utente
+     * @param visibile la visibilita dell'utente
+     */
     public void setVisible(Boolean visible) {
         this.visible = visible;
     }
     
     
 
+    /**
+     * metodo che restituisce la visibilita dell utente
+     * @return la visibilita dell'utente
+     */
     public Boolean getVisible() {
         return visible;
     }

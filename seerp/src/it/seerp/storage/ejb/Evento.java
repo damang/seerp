@@ -1,4 +1,3 @@
-
 package it.seerp.storage.ejb;
 
 import java.sql.Date;
@@ -20,17 +19,21 @@ public class Evento {
     private Integer agenda;
     private Boolean notifica;
 
-    public Boolean getNotifica() {
-        return notifica;
-    }
-
-    public void setNotifica(Boolean notifica) {
-        this.notifica = notifica;
-    }
-
+    /**
+     * cotruttore
+     * @param luogo
+     * @param tema
+     * @param nome
+     * @param note
+     * @param data
+     * @param ora
+     * @param idEvento
+     * @param agenda
+     * @param not
+     */
     public Evento(String luogo, String tema, String nome, String note, Date data, Time ora, int idEvento, Integer agenda, Boolean not) {
         this.luogo = luogo;
-        this.notifica=not;
+        this.notifica = not;
         this.tema = tema;
         this.nome = nome;
         this.note = note;
@@ -38,6 +41,22 @@ public class Evento {
         this.ora = ora;
         this.idEvento = idEvento;
         this.agenda = agenda;
+    }
+
+    /**
+     * metodo che restituisce notificazione dell'evento
+     * @return notificazione dell'evento
+     */
+    public Boolean getNotifica() {
+        return notifica;
+    }
+
+    /**
+     * metodo che setta la notificazione dell'evento
+     * @param notifica notificazione dell'evento
+     */
+    public void setNotifica(Boolean notifica) {
+        this.notifica = notifica;
     }
 
     /**
@@ -154,6 +173,7 @@ public class Evento {
 
     /**
      * metodo che  restituisce il tema dell'evento
+     * @return
      * @retur tema dell'evento
      */
     public String getTema() {

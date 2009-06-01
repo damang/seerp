@@ -22,6 +22,19 @@ public class Servizio {
     private String note;
     private ArrayList<Contratto> listContratti;
 
+    public Servizio(String descrizione, Boolean disponibilita, Integer quantita, String tipo, Double prezzo, Integer idServizio, Integer iva, String note) {
+        this.descrizione = descrizione;
+        this.disponibilita = disponibilita;
+        this.quantita = quantita;
+        this.tipo = tipo;
+        this.prezzo = prezzo;
+        this.idServizio = idServizio;
+        this.iva = iva;
+        this.note = note;
+    }
+
+
+
     public Servizio(String descrizione, Boolean disponibilita, Integer quantita, String tipo, Double prezzo, Integer idServizio, Integer iva, String note, ArrayList<Contratto> listContratti) {
         this.descrizione = descrizione;
         this.disponibilita = disponibilita;

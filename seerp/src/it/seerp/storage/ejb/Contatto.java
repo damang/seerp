@@ -12,12 +12,41 @@ import java.util.ArrayList;
  * @author matteo
  */
 public class Contatto extends ExtraAzienda {
+        /**
+     * costruttore
+     * @param idUtente
+     * @param username
+     * @param password
+     * @param città
+     * @param provincia
+     * @param telefono
+     * @param email
+     * @param ruol
+     * @param note
+     * @param v
+     * @param idExtraAzienda
+     * @param cognome
+     * @param nome
+     * @param ragioneSociale
+     * @param pIva
+     * @param fax
+     * @param ruolo
+     * @param listAppuntamenti
+     * @param listContratti
+     * @param idContatto
+     * @param feedback
+     */
 
-    public Contatto(Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String note, Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva, String fax, String ruolo, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti, Boolean v, Integer idContatto, Integer feedback) {
-        super(idUtente, username, password, città, provincia, telefono, email, note, idExtraAzienda, cognome, nome, ragioneSociale, pIva, fax, ruolo, listAppuntamenti, listContratti, v);
+    public Contatto(Integer idUtente, String username, String password, String città, String ruol, String provincia, String telefono, String email, String ruolo, String note, Boolean v, Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva, String fax, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti, Integer idContatto, Integer feedback) {
+        super(idUtente, username, password, città, ruol, provincia, telefono, email, ruolo, note, v, idExtraAzienda, cognome, nome, ragioneSociale, pIva, fax, listAppuntamenti, listContratti);
         this.idContatto = idContatto;
         this.feedback = feedback;
     }
+
+
+
+
+
 
 
 
