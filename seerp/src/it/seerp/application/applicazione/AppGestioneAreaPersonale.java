@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package it.seerp.application.applicazione;
 
 import it.seerp.application.Exception.DatiDuplicati;
@@ -17,14 +12,31 @@ import java.util.ArrayList;
  */
 public class AppGestioneAreaPersonale implements GestioneAreaPersonale  {
 
+    /**
+     * 
+     * @param utente
+     * @param list
+     * @return
+     */
     public BeanGuiUtente visualizzaDati(BeanGuiUtente utente, ArrayList list) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     *
+     * @param utente
+     * @return
+     * @throws it.seerp.application.Exception.DatiErrati
+     */
     public BeanGuiUtente modificaPassword(BeanGuiUtente utente) throws DatiErrati {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     *
+     * @param utente
+     * @return
+     */
     public ArrayList visualizzaContratti(BeanGuiUtente utente) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
