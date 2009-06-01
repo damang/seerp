@@ -27,13 +27,15 @@ public class OpeContratto implements OpeEntity<Contratto,Integer> {
             // Obtain a db connection
             con = ConnectionPool.getConnection();
 
-            stmt = con.prepareStatement("INSERT INTO Contratto VALUES (?, ?, ?, ?, ?, ? )" + "where idContratto=" + contratto.getIdContratto());
-            stmt.setInt(1, contratto.getDurata());
-            stmt.setDate(2, contratto.getData());
-            stmt.setString(3, contratto.getTipo());
-            stmt.setString(4, contratto.getNote());
-            stmt.setInt(5, contratto.getDipendente());
-            stmt.setInt(6, contratto.getExtraAzienda());
+            stmt = con.prepareStatement("INSERT INTO Contratto VALUES (?, ?, ?, ?, ?, ?, ? )" + "where idContratto=" + contratto.getIdContratto());
+            stmt.setString(1, contratto.getStato());
+            stmt.setInt(2, contratto.getDurata());
+            stmt.setDate(3, contratto.getData());
+            stmt.setString(4, contratto.getTipo());
+            stmt.setString(5, contratto.getNote());
+            stmt.setInt(6, contratto.getDipendente());
+            stmt.setInt(7, contratto.getExtraAzienda());
+
 
             stmt.execute();
 
