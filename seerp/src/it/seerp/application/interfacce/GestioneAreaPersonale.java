@@ -14,8 +14,6 @@ public interface GestioneAreaPersonale <E extends Utente,U extends BeanGuiUtente
 
     public U visualizzaDati(U utente);
 
-   
-   
     public U modificaPassword(U utente) throws DatiErrati;
 
     public ArrayList<U> visualizzaContratti(U utente);
