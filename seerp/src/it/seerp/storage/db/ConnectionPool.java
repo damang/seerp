@@ -109,7 +109,7 @@ public class ConnectionPool {
      * @throws IOException
      */
     private static void loadDbProperties() throws IOException {
-        InputStream fileProperties = new FileInputStream("C:\\Documents and Settings\\Luisa\\Documenti\\NetBeansProjects\\Prova\\src\\prova\\d.properties");
+        InputStream fileProperties = new FileInputStream("it\\seerp\\storage\\db\\database.properties");
         ConnectionPool.dbProperties = new Properties();
         ConnectionPool.dbProperties.load(fileProperties);
 
