@@ -11,6 +11,7 @@
 
 package it.seerp.Gui.AreaPersonale;
 
+import it.seerp.Gui.frame.ObservervableJTabbedPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -25,6 +26,8 @@ public class AreaPersonalePanel extends javax.swing.JPanel implements ActionList
         initComponents();
     }
 
+
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -34,7 +37,6 @@ public class AreaPersonalePanel extends javax.swing.JPanel implements ActionList
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jXLabel1 = new org.jdesktop.swingx.JXLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -64,12 +66,6 @@ public class AreaPersonalePanel extends javax.swing.JPanel implements ActionList
         jXLabel2 = new org.jdesktop.swingx.JXLabel();
 
         setBackground(new java.awt.Color(0, 51, 102));
-
-        jXLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jXLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/128x128/HP-Control-128x128.png"))); // NOI18N
-        jXLabel1.setText("Area Personale");
-        jXLabel1.setFont(new java.awt.Font("Tahoma", 1, 24));
-        jXLabel1.setName("jXLabel1"); // NOI18N
 
         jTabbedPane1.setName("jTabbedPane1"); // NOI18N
 
@@ -349,7 +345,7 @@ public class AreaPersonalePanel extends javax.swing.JPanel implements ActionList
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        BottoneSalva.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BottoneSalva.setFont(new java.awt.Font("Tahoma", 1, 12));
         BottoneSalva.setForeground(new java.awt.Color(0, 153, 0));
         BottoneSalva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/accept.png"))); // NOI18N
         BottoneSalva.setText("Salva");
@@ -360,7 +356,7 @@ public class AreaPersonalePanel extends javax.swing.JPanel implements ActionList
         BottoneSalva.setName("BottoneSalva"); // NOI18N
         BottoneSalva.setRequestFocusEnabled(false);
 
-        BottoneAnnulla.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BottoneAnnulla.setFont(new java.awt.Font("Tahoma", 1, 12));
         BottoneAnnulla.setForeground(new java.awt.Color(204, 0, 0));
         BottoneAnnulla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/remove.png"))); // NOI18N
         BottoneAnnulla.setText("Annulla");
@@ -418,12 +414,9 @@ public class AreaPersonalePanel extends javax.swing.JPanel implements ActionList
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jXLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jXLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(400, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jXLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(522, Short.MAX_VALUE))
             .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
@@ -433,8 +426,7 @@ public class AreaPersonalePanel extends javax.swing.JPanel implements ActionList
                 .addComponent(jXLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jXLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(139, 139, 139))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -466,7 +458,6 @@ public class AreaPersonalePanel extends javax.swing.JPanel implements ActionList
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
-    private org.jdesktop.swingx.JXLabel jXLabel1;
     private org.jdesktop.swingx.JXLabel jXLabel2;
     // End of variables declaration//GEN-END:variables
 
