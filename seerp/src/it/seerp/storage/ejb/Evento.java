@@ -31,7 +31,10 @@ public class Evento {
      * @param agenda
      * @param not
      */
-    public Evento(String luogo, String tema, String nome, String note, Date data, Time ora, int idEvento, Integer agenda, Boolean not) {
+    public Evento()
+    {}
+
+    public Evento(String luogo, String tema, String nome, String note, Date data, Time ora, int idEvento, int agenda, Boolean not) {
         this.luogo = luogo;
         this.notifica = not;
         this.tema = tema;
