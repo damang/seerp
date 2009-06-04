@@ -18,10 +18,10 @@ import java.awt.event.ActionListener;
  *
  * @author Andrea
  */
-public class AreaPersonalePanel extends javax.swing.JPanel implements ActionListener {
+public class MenuAreaPersonale extends javax.swing.JPanel implements ActionListener {
 
     /** Creates new form AreaPersonalePanel */
-    public AreaPersonalePanel() {
+    public MenuAreaPersonale() {
         initComponents();
     }
 
@@ -52,9 +52,9 @@ public class AreaPersonalePanel extends javax.swing.JPanel implements ActionList
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(28, 28, 28)
                 .addComponent(BottoneModificaUtenti)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -69,8 +69,6 @@ public class AreaPersonalePanel extends javax.swing.JPanel implements ActionList
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BottoneCerca;
-    private javax.swing.JButton BottoneCerca1;
     private javax.swing.JButton BottoneModificaUtenti;
     // End of variables declaration//GEN-END:variables
 

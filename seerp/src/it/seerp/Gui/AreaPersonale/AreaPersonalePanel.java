@@ -11,7 +11,6 @@
 
 package it.seerp.Gui.AreaPersonale;
 
-import it.seerp.Gui.frame.ObservervableJTabbedPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -60,7 +59,7 @@ public class AreaPersonalePanel extends javax.swing.JPanel implements ActionList
         jPanel11 = new javax.swing.JPanel();
         jTextField8 = new javax.swing.JTextField();
         jPanel12 = new javax.swing.JPanel();
-        jTextField9 = new javax.swing.JTextField();
+        jPasswordField1 = new javax.swing.JPasswordField();
         BottoneSalva = new javax.swing.JButton();
         BottoneAnnulla = new javax.swing.JButton();
         jXLabel2 = new org.jdesktop.swingx.JXLabel();
@@ -326,8 +325,8 @@ public class AreaPersonalePanel extends javax.swing.JPanel implements ActionList
         jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder("Password"));
         jPanel12.setName("jPanel12"); // NOI18N
 
-        jTextField9.setText("Password");
-        jTextField9.setName("jTextField9"); // NOI18N
+        jPasswordField1.setText("jPasswordField1");
+        jPasswordField1.setName("jPasswordField1"); // NOI18N
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -335,13 +334,13 @@ public class AreaPersonalePanel extends javax.swing.JPanel implements ActionList
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -356,7 +355,7 @@ public class AreaPersonalePanel extends javax.swing.JPanel implements ActionList
         BottoneSalva.setName("BottoneSalva"); // NOI18N
         BottoneSalva.setRequestFocusEnabled(false);
 
-        BottoneAnnulla.setFont(new java.awt.Font("Tahoma", 1, 12));
+        BottoneAnnulla.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         BottoneAnnulla.setForeground(new java.awt.Color(204, 0, 0));
         BottoneAnnulla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/remove.png"))); // NOI18N
         BottoneAnnulla.setText("Annulla");
@@ -380,7 +379,7 @@ public class AreaPersonalePanel extends javax.swing.JPanel implements ActionList
                 .addComponent(BottoneSalva)
                 .addGap(18, 18, 18)
                 .addComponent(BottoneAnnulla)
-                .addGap(171, 171, 171))
+                .addContainerGap(171, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -446,6 +445,7 @@ public class AreaPersonalePanel extends javax.swing.JPanel implements ActionList
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
@@ -457,7 +457,6 @@ public class AreaPersonalePanel extends javax.swing.JPanel implements ActionList
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private org.jdesktop.swingx.JXLabel jXLabel2;
     // End of variables declaration//GEN-END:variables
 

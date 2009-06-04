@@ -12,6 +12,8 @@ package it.seerp.Gui.frame;
 
 import configurazioni.pattern.observer.Observable;
 import configurazioni.pattern.observer.Observer;
+import javax.swing.Icon;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
@@ -37,6 +39,7 @@ public class ObservervableJTabbedPanel extends JPanel implements Observable {
 
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        jXPanel2 = new org.jdesktop.swingx.JXPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
 
         jPanel1.setName("jPanel1"); // NOI18N
@@ -75,6 +78,21 @@ public class ObservervableJTabbedPanel extends JPanel implements Observable {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
+        jXPanel2.setName("jXPanel2"); // NOI18N
+
+        javax.swing.GroupLayout jXPanel2Layout = new javax.swing.GroupLayout(jXPanel2);
+        jXPanel2.setLayout(jXPanel2Layout);
+        jXPanel2Layout.setHorizontalGroup(
+            jXPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jXPanel2Layout.setVerticalGroup(
+            jXPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        jTabbedPane2.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        jTabbedPane2.setFocusable(false);
         jTabbedPane2.setName("jTabbedPane2"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -83,19 +101,13 @@ public class ObservervableJTabbedPanel extends JPanel implements Observable {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 591, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(19, 19, 19)
-                    .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 428, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -119,15 +131,18 @@ public class ObservervableJTabbedPanel extends JPanel implements Observable {
     public void unRegister(Observer o) {
         //obs.removeElement(o);
     }
+    
 
     public void addTab(String messaggio,JPanel pan){
        // System.out.println(this.jTabbedPane2);
-        this.jTabbedPane2.addTab(messaggio, pan);
+       this.jTabbedPane2.addTab(messaggio, pan);
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private org.jdesktop.swingx.JXPanel jXPanel2;
     // End of variables declaration//GEN-END:variables
 }
