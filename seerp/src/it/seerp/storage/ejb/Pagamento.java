@@ -37,6 +37,9 @@ public class Pagamento {
      * @param contratto
      * @param banca
      */
+
+    public Pagamento()
+    {}
     public Pagamento(String note, Date dataScadenza, String descrizione, Double importo, String modalitaPagamento, String stato, String altreInformazioni, Integer idPagamento, Integer contratto, Integer banca) {
         this.note = note;
         this.dataScadenza = dataScadenza;
