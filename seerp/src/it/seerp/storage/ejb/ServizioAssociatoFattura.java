@@ -28,7 +28,7 @@ public class ServizioAssociatoFattura {
         this.listDDT = listDDT;
     }
 
-     /**
+    /**
      * restituisce la lista dei DDT associati alla fattura
      * @return la lista dei DDT associati alla fattura
      */
@@ -37,12 +37,13 @@ public class ServizioAssociatoFattura {
     }
 
     /**
-      * restituisce la lista dei DDT associati alla fattura
+     * restituisce la lista dei DDT associati alla fattura
      * @param listDDT DDT associati alla fattura
      */
     public void setListDDT(ArrayList<DDT> listDDT) {
         this.listDDT = listDDT;
     }
+
     /**
      * metodo che restutisce l'id del contratto a cui sono associati dei servizi di una determinata fattura
      * @return l'id del contratto a cui sono associati dei servizi di una determinata fattura
@@ -124,8 +125,11 @@ public class ServizioAssociatoFattura {
         this.quantita = quantita;
     }
 
-      public void removeDDT(DDT c){
-     listDDT.remove(c);}
-    public void addDDT(DDT c){
-     listDDT.add(c);}
+    public void removeDDT(DDT c) {
+        listDDT.remove(c);
+    }
+
+    public void addDDT(DDT c) {
+        listDDT.add(c);
+    }
 }
