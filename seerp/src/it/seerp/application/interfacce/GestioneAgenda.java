@@ -24,9 +24,9 @@ public interface GestioneAgenda<E>
 
     public E modifica(E beanGuiEventi) throws DatiErrati;
    
-    public ArrayList<E> ricerca(JTextField Nome, JTextField Referente, JTextField data, ArrayList<E> list)throws  DatiErrati;
+    public ArrayList<E> ricercaPerTema(JTextField tema, ArrayList<E> list)throws  DatiErrati;
 
-    public ArrayList<E> ricercaPerNome(JTextField Nome,ArrayList<E> list) throws  DatiErrati, RicercaFallita;
+    public ArrayList<E> ricercaPerNome(JTextField nome,ArrayList<E> list) throws  DatiErrati, RicercaFallita;
 
     public ArrayList<E> ricercaPerGiorno(JTextField giorno,ArrayList<E> list)throws  DatiErrati, RicercaFallita;
     
