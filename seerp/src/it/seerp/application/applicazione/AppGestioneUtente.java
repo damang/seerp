@@ -3,9 +3,13 @@ package it.seerp.application.applicazione;
 import it.seerp.application.Exception.DatiDuplicati;
 import it.seerp.application.Exception.DatiErrati;
 import it.seerp.application.Exception.RicercaFallita;
+import it.seerp.application.bean.BeanGuiResponsabile;
 import it.seerp.application.bean.BeanGuiUtente;
 import it.seerp.application.interfacce.GestioneUtenti;
+import it.seerp.storage.Operazioni.OpResponsabile;
+import it.seerp.storage.ejb.Responsabile;
 import it.seerp.storage.ejb.Utente;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JTextField;
 
@@ -16,6 +20,7 @@ import javax.swing.JTextField;
  */
 public class AppGestioneUtente implements GestioneUtenti<Utente,BeanGuiUtente> {
 
+        
     /**
      * Metodo che permette di visualizzare la lista degli utenti
      * @return la lista di tutti gli utenti
@@ -101,4 +106,5 @@ public class AppGestioneUtente implements GestioneUtenti<Utente,BeanGuiUtente> {
     public BeanGuiUtente visualizzaDati(JTextField user, ArrayList<BeanGuiUtente> list) throws DatiErrati {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
 }
