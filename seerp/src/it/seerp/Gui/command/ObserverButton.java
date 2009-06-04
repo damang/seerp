@@ -23,5 +23,4 @@ public class ObserverButton extends JButton implements Observer {
         isPresente = false;
     }
 
-
 }

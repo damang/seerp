@@ -1,18 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/*
- * Index.java
- *
- * Created on 2-giu-2009, 23.09.56
- */
 package it.seerp.Gui.Home;
 
 import configurazioni.CommandInterface;
 import it.seerp.Gui.frame.ObservervableJTabbedPanel;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -28,8 +18,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
     public Index() {
         areaPersonaleFrame = new ObservervableJTabbedPanel();
         initComponents();
-
-     
+        areaPersonaleFrame.register(areaPersonaleButton1);
     }
 
     /** This method is called from within the constructor to
