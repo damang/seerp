@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package it.seerp.storage.ejb;
 
 import java.util.ArrayList;
@@ -22,7 +19,7 @@ public class Servizio {
     private String note;
     private ArrayList<Contratto> listContratti;
 
-    public Servizio(String descrizione, Boolean disponibilita, Integer quantita, String tipo, Double prezzo, Integer idServizio, Integer iva, String note) {
+public Servizio(String descrizione, Boolean disponibilita, Integer quantita, String tipo, Double prezzo, Integer idServizio, Integer iva, String note) {
         this.descrizione = descrizione;
         this.disponibilita = disponibilita;
         this.quantita = quantita;
@@ -31,7 +28,9 @@ public class Servizio {
         this.idServizio = idServizio;
         this.iva = iva;
         this.note = note;
-    }
+}
+   public Servizio()
+   {}
 
     public Servizio(String descrizione, Boolean disponibilita, Integer quantita, String tipo, Double prezzo, Integer idServizio, Integer iva, String note, ArrayList<Contratto> listContratti) {
         this.descrizione = descrizione;
