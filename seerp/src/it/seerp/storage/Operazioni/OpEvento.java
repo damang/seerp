@@ -85,9 +85,7 @@ public class OpEvento {
          * @throws SQLException
          * @throws Dati Errati
          */
-
-        throw new UnsupportedOperationException("Not supported yet.");
-           Connection con = null;
+        Connection con = null;
         PreparedStatement stmt = null;
          Evento evento=new Evento();
 
@@ -148,9 +146,6 @@ public class OpEvento {
          * @throws SQLException
          */
 
-        throw new UnsupportedOperationException("Not supported yet.");
-
-
         Connection con = null;
         Statement stmt = null;
         ResultSet rs = null;
@@ -205,8 +200,7 @@ public class OpEvento {
     }
 
     public ArrayList<Evento> visualizzaElenco() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet.");
-
+        
          /**
 	 * Crea la query per visualizzare tutti gli eventi
      * corrispondenti ad un id Agenda
@@ -230,7 +224,7 @@ public class OpEvento {
 
 
             while (rs.next()) {
-                Evento e = new Evento (rs.getDate(1), rs.getTime(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7));
+                Evento e = new Evento(rs.getDate(1), rs.getTime(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7));
                   //(1Date data, 2Time ora, 3String luogo, 4String nome, 5String tema, 6String note, 7Int idAgenda)
 
                 lista.add(e);
