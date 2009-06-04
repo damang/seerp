@@ -26,5 +26,5 @@ public interface GestioneUtenti<E extends Utente,U extends BeanGuiUtente>
    
     public U modifica(U user)throws DatiErrati;
 
-    public U visualizzaDati(JTextField user, ArrayList<U> list) throws DatiErrati;
+    public U visualizzaDati(JTextField user,U beanGui) throws DatiErrati;
 }
