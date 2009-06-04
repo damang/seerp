@@ -72,8 +72,9 @@ public class ButtonTabComponent extends JPanel  {
 
         public void actionPerformed(ActionEvent e) {
            // pane.getTabbedPane().remove(pane.getTabbedPane().getTabCount()-1);
-            int i = pane.getTabbedPane().getSelectedIndex();
-            i=i-1;
+            int i =  pane.getTabbedPane().indexOfTabComponent(ButtonTabComponent.this);
+
+           // i=i-1;
             System.out.println("andrea"+i);
             if (i != -1) {
                  System.out.println("luisa"+i);
