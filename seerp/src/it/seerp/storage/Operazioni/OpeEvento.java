@@ -12,8 +12,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import it.seerp.storage.db.ConnectionPool;
 import it.seerp.storage.db.OpeEntity;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.GregorianCalendar;
 
 /**
  *
@@ -416,7 +418,8 @@ public class OpeEvento {
             // Obtain a db connection
             conn = ConnectionPool.getConnection();
 
-            String query = "UPDATE FROM evento WHERE idEvento='" + e.getIdEvento() + "'";
+            String query = "UPDATE Evento(notifica) SET (?) WHERE idEvento='" + e.getIdEvento() + "'";
+            stmt.setBoolean(1, e.getNotifica());
             stmt = conn.prepareStatement(query);
             stmt.executeUpdate();
             conn.commit();
@@ -429,9 +432,45 @@ public class OpeEvento {
             }
         }
 
-
-
-
-
     }
+
+    public ArrayList<Evento> eventiNotificati(Date data) throws SQLException, ClassNotFoundException {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ArrayList<Evento> evNotificati;
+        try {
+            // Obtain a db connection
+            conn = ConnectionPool.getConnection();
+            GregorianCalendar gc=new GregorianCalendar();
+            Date a= new Date(gc.getTimeInMillis());
+            String query = "SELECT nome,tema,data FROM Evento WHERE notifica=true and data<='"+a.toString()+ "'";
+            ResultSet rs = stmt.executeQuery(query);
+            evNotificati = new ArrayList<Evento>();
+            while (rs.next()) {
+                Evento e = new Evento();
+
+                e.setData(rs.getDate("data"));
+                e.setNome(rs.getString("Nome"));
+                e.setTema(rs.getString("Tema"));
+
+                evNotificati.add(e);
+            stmt = conn.prepareStatement(query);
+            stmt.executeUpdate();
+            conn.commit();
+        }
+        }finally {
+            if (stmt != null) {
+                stmt.close();
+            }
+            if (conn != null) {
+                ConnectionPool.releaseConnection(conn);
+            }
+        }
+     return evNotificati;
+    
+    }
+
+
+
+
 }
