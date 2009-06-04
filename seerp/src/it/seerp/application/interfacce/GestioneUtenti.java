@@ -12,29 +12,19 @@ import javax.swing.JTextField;
  *
  * @author matteo
  */
-public interface GestioneUtenti<E extends Utente,U extends BeanGuiUtente> {
-
-    
+public interface GestioneUtenti<E extends Utente,U extends BeanGuiUtente>
+{
     public ArrayList<U> elenca();
-
   
     public U ricerca(JTextField cognome, JTextField ruolo,ArrayList<U> list)throws DatiErrati,RicercaFallita;
     
     public void elimina(U user);
     
     public void eliminazioneLogica(U user);
-
    
     public U inserisci(U user)throws DatiErrati,DatiDuplicati;
-
    
     public U modifica(U user)throws DatiErrati;
 
     public U visualizzaDati(JTextField user, ArrayList<U> list) throws DatiErrati;
-
-    
-
-
-
-
 }
