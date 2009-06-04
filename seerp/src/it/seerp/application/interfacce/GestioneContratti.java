@@ -19,11 +19,11 @@ public interface GestioneContratti<E> {
 
 
 
-    public ArrayList<E> visualizza(ArrayList<E> list);
+    public ArrayList<E> visualizza(ArrayList<E> listGui);
 
     public E visualizzaContratto(JTextField id,E beanGuiContratto) throws DatiErrati;
 
-    public ArrayList<E> ricercaPerDipendente(JTextField nomeDipendente,ArrayList<E> list) throws DatiErrati;
+    public ArrayList<E> ricercaPerDipendente(JTextField dipendente,ArrayList<E> listGui) throws DatiErrati;
 
     public void inserisci(E beanGuiContratto) throws DatiErrati,DatiDuplicati;
 
