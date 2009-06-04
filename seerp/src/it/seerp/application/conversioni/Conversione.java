@@ -658,6 +658,53 @@ public class Conversione
         Dipendente  dip = new Dipendente(id,username,password,città,prov,telefono,email,note,ruolo,idp,cognome,nome,codiceFiscale,tipo,a,a1,notifica,idd,a2,a3);
         return dip;
     }
+    
+     /**
+      * Metodo che converte un Bean Responsabile in un Bean Gui Responsabile
+      * @param e il Bean da convertire
+      * @param bd il Bean Grafico che deve essere modificato
+      * @return il Bean Gui convertito
+      */
+     public static BeanGuiDipendente conversioneDipendente(Dipendente e,BeanGuiDipendente bd){
+
+
+        JTextField c = new JTextField();
+        JComboBox d = new JComboBox();
+        c.setText(e.getIdUtente().toString());
+        bd.setIdUtenteText(c);
+        c.setText(e.getPassword());
+        bd.setTxtPassword(c);
+        c.setText(e.getCittà());
+        bd.setTxtCittà(c);
+        c.setText(e.getEmail());
+        bd.setTxtEmail(c);
+        c.setText(e.getProvincia());
+        bd.setTxtProvincia(c);
+        c.setText(e.getTelefono());
+        bd.setTxtTelefono(c);
+        c.setText(e.getNote().toString());
+        bd.setTxtUsername(c);
+        c.setText(e.getIdPersonale().toString());
+        bd.setIdPersonale(c);
+        c.setText(e.getCognome());
+        bd.setCognome(c);
+        c.setText(e.getNome());
+        bd.setNome(c);
+        c.setText(e.getCodiceFiscale());
+        bd.setCodiceFiscale(c);
+        d.setToolTipText(e.getTipo());
+        bd.setTipo(d);
+        bd.setListPermessi(bd.getListPermessi());
+        bd.setListRuoli(bd.getListRuoli());
+        c.setText(e.getVisible().toString());
+        bd.setTxtnotifica(c);
+        c.setText(e.getIdDipendente().toString());
+        bd.setIdDipendenteTxt(c);
+        bd.setListAppuntamenti(bd.getListAppuntamenti());
+        bd.setListContratti(bd.getListContratti());
+        return bd;
+    }
+
 
      /**
       * Metodo che converte un Bean Responsabile in un Bean Gui Responsabile
