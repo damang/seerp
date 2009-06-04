@@ -42,7 +42,14 @@ public class AppGestionePersonale extends AppGestioneUtente{
         try {
             a.inserisci(dip);
         } catch (SQLException ex) {
-            ex.printStackTrace();
+             System.out.println("SQL Exception:");
+            while (ex != null)
+            {
+                System.out.println("State  : " + ex.getSQLState());
+                System.out.println("Message: " + ex.getMessage());
+                System.out.println("Error  : " + ex.getErrorCode());
+                ex = ex.getNextException();
+            }
         }
     }
 
@@ -57,7 +64,14 @@ public class AppGestionePersonale extends AppGestioneUtente{
         try {
             a.inserisci(amm);
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.out.println("SQL Exception:");
+            while (ex != null)
+            {
+                System.out.println("State  : " + ex.getSQLState());
+                System.out.println("Message: " + ex.getMessage());
+                System.out.println("Error  : " + ex.getErrorCode());
+                ex = ex.getNextException();
+            }
         }
     }
 
@@ -72,7 +86,14 @@ public class AppGestionePersonale extends AppGestioneUtente{
         try {
             a.inserisci(dip);
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.out.println("SQL Exception:");
+            while (ex != null)
+            {
+                System.out.println("State  : " + ex.getSQLState());
+                System.out.println("Message: " + ex.getMessage());
+                System.out.println("Error  : " + ex.getErrorCode());
+                ex = ex.getNextException();
+            }
         }
     }
 
@@ -89,7 +110,14 @@ public class AppGestionePersonale extends AppGestioneUtente{
             dip = a.modifica(dip);
             
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.out.println("SQL Exception:");
+            while (ex != null)
+            {
+                System.out.println("State  : " + ex.getSQLState());
+                System.out.println("Message: " + ex.getMessage());
+                System.out.println("Error  : " + ex.getErrorCode());
+                ex = ex.getNextException();
+            }
         }
           return it.seerp.application.conversioni.Conversione.conversioneDipendente(dip, user);
       }
@@ -107,7 +135,14 @@ public class AppGestionePersonale extends AppGestioneUtente{
         try {
             amm = (Amministratore) a.modifica(amm);
             } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.out.println("SQL Exception:");
+            while (ex != null)
+            {
+                System.out.println("State  : " + ex.getSQLState());
+                System.out.println("Message: " + ex.getMessage());
+                System.out.println("Error  : " + ex.getErrorCode());
+                ex = ex.getNextException();
+            }
         }
           return it.seerp.application.conversioni.Conversione.conversioneAmministratore(amm, user);
       }
@@ -125,7 +160,14 @@ public class AppGestionePersonale extends AppGestioneUtente{
             res = a.modifica(res);
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.out.println("SQL Exception:");
+            while (ex != null)
+            {
+                System.out.println("State  : " + ex.getSQLState());
+                System.out.println("Message: " + ex.getMessage());
+                System.out.println("Error  : " + ex.getErrorCode());
+                ex = ex.getNextException();
+            }
         }
           return it.seerp.application.conversioni.Conversione.conversioneResponsabile(res, user);
       }
