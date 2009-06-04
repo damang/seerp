@@ -1,5 +1,5 @@
 package it.seerp.application.applicazione;
-
+ 
 import it.seerp.application.Exception.DatiErrati;
 import it.seerp.application.Exception.RicercaFallita;
 import it.seerp.application.bean.BeanGuiAmministratore;
