@@ -96,15 +96,12 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto>
         OpeeContratto ope = new OpeeContratto();
         try
         {
-            ArrayList<Contratto> list = ope.visualizzaElenco();
+            ArrayList<Contratto> list = ope.ricercaPerDipendente(Integer.parseInt(dipendente.getText()));
             int i = 0;
             for (Contratto cont : list)
             {
-                if (cont.getDipendente()== Integer.parseInt(dipendente.getText()))
-                {
-                    listGui.add(it.seerp.application.conversioni.Conversione.conversioneContratto(cont, listGui.get(i)));
-                    i++;
-                }
+                 listGui.add(it.seerp.application.conversioni.Conversione.conversioneContratto(cont, listGui.get(i)));
+                 i++;
             }
         }
         catch (SQLException se)

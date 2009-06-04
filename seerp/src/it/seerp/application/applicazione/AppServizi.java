@@ -5,6 +5,9 @@ import it.seerp.application.Exception.DatiErrati;
 import it.seerp.application.Exception.RicercaFallita;
 import it.seerp.application.bean.BeanGuiServizio;
 import it.seerp.application.interfacce.GestioneServizi;
+import it.seerp.storage.Operazioni.OpeServizio;
+import it.seerp.storage.ejb.Servizio;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JTextField;
 
@@ -19,8 +22,31 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio>
      * @return ArrayList contenente i servizi
      */
 
-    public ArrayList<BeanGuiServizio> elenca() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public ArrayList<BeanGuiServizio> elenca(ArrayList<BeanGuiServizio> listGui)
+    {
+        OpeServizio ope = new OpeServizio();
+        try
+        {
+            ArrayList<Servizio> list = ope.visualizzaElenco();
+            int i = 0;
+            for (Servizio serv : list)
+            {
+                    listGui.add(it.seerp.application.conversioni.Conversione.conversioneServizio(serv, listGui.get(i)));
+                    i++;
+            }
+        }
+        catch (SQLException se)
+        {
+            System.out.println("SQL Exception:");
+            while (se != null)
+            {
+                System.out.println("State  : " + se.getSQLState());
+                System.out.println("Message: " + se.getMessage());
+                System.out.println("Error  : " + se.getErrorCode());
+                se = se.getNextException();
+            }
+        }
+        return listGui;
     }
 
      /**
@@ -34,8 +60,31 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio>
      * nel caso in cui la ricerca non produce risultati
      */
 
-    public ArrayList<BeanGuiServizio> ricerca(JTextField nome, ArrayList<BeanGuiServizio> list) throws DatiErrati {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public ArrayList<BeanGuiServizio> ricerca(JTextField nome, ArrayList<BeanGuiServizio> listGui) throws DatiErrati
+    {
+        OpeServizio ope = new OpeServizio();
+        try
+        {
+            ArrayList<Servizio> list = ope.ricercaPerNome(nome.getText());
+            int i = 0;
+            for (Servizio serv : list)
+            {
+                    listGui.add(it.seerp.application.conversioni.Conversione.conversioneServizio(serv, listGui.get(i)));
+                    i++;
+            }
+        }
+        catch (SQLException se)
+        {
+            System.out.println("SQL Exception:");
+            while (se != null)
+            {
+                System.out.println("State  : " + se.getSQLState());
+                System.out.println("Message: " + se.getMessage());
+                System.out.println("Error  : " + se.getErrorCode());
+                se = se.getNextException();
+            }
+        }
+        return listGui;
     }
 
     /**
@@ -46,8 +95,25 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio>
      * nel caso in cui si immettano dati errati
      */
 
-    public void inserisci(BeanGuiServizio BeansGuiServizio) throws DatiErrati, DatiDuplicati {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void inserisci(BeanGuiServizio beanGui) throws DatiErrati, DatiDuplicati
+    {
+        OpeServizio a = new OpeServizio();
+        Servizio serv = it.seerp.application.conversioni.Conversione.conversioneServizio(beanGui);
+        try
+        {
+            a.inserimento(serv);
+        }
+        catch (SQLException se)
+        {
+            System.out.println("SQL Exception:");
+            while (se != null)
+            {
+                System.out.println("State  : " + se.getSQLState());
+                System.out.println("Message: " + se.getMessage());
+                System.out.println("Error  : " + se.getErrorCode());
+                se = se.getNextException();
+            }
+        }
     }
 
     /**
@@ -57,8 +123,26 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio>
      * @return Bean Gui del servizio da visualizzare
      */
 
-    public BeanGuiServizio visualizza(JTextField nome, ArrayList<BeanGuiServizio> list) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public BeanGuiServizio visualizza(JTextField nome, BeanGuiServizio beanGui)
+    {
+        OpeServizio ope = new OpeServizio();
+        try
+        {
+            Servizio serv = ope.visualizza(Integer.parseInt(nome.getText()));
+            beanGui = it.seerp.application.conversioni.Conversione.conversioneServizio(serv, beanGui);
+        }
+        catch (SQLException se)
+        {
+            System.out.println("SQL Exception:");
+            while (se != null)
+            {
+                System.out.println("State  : " + se.getSQLState());
+                System.out.println("Message: " + se.getMessage());
+                System.out.println("Error  : " + se.getErrorCode());
+                se = se.getNextException();
+            }
+        }
+        return beanGui;
     }
 
 
@@ -71,7 +155,26 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio>
      * nel caso in cui si immettano dati errati durante la modifica
      */
 
-    public BeanGuiServizio modifica(BeanGuiServizio BeansGuiServizio) throws DatiErrati {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public BeanGuiServizio modifica(BeanGuiServizio beanGui) throws DatiErrati
+    {
+        OpeServizio ope = new OpeServizio();
+        Servizio serv = it.seerp.application.conversioni.Conversione.conversioneServizio(beanGui);
+        try
+        {
+            serv = ope.modifica(serv);
+            beanGui = it.seerp.application.conversioni.Conversione.conversioneServizio(serv, beanGui);
+        }
+        catch (SQLException se)
+        {
+            System.out.println("SQL Exception:");
+            while (se != null)
+            {
+                System.out.println("State  : " + se.getSQLState());
+                System.out.println("Message: " + se.getMessage());
+                System.out.println("Error  : " + se.getErrorCode());
+                se = se.getNextException();
+            }
+        }
+        return beanGui;
     }
 }
