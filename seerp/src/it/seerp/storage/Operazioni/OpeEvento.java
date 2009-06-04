@@ -19,7 +19,7 @@ import java.util.GregorianCalendar;
  */
 public class OpeEvento {
 
-    public void inserimento(Evento e) throws SQLException, DatiErrati, DatiDuplicati {
+    public void inserimento(Evento e) throws SQLException {
         //   throw new UnsupportedOperationException("Not supported yet.");
         /** crea la query per inserire l'evento e nel database
          * @param e l'evento da inserire
@@ -69,7 +69,7 @@ public class OpeEvento {
         }
     }
 
-    public Evento modifica(Evento e) throws SQLException, DatiErrati {
+    public Evento modifica(Evento e) throws SQLException {
         /* crea la query per modificare un evento nel database
          * @return
          * @param e l'evento da modificare
@@ -246,7 +246,7 @@ public class OpeEvento {
         return lista;
     }
 
-    public ArrayList<Evento> ricercaEvento(String nome) throws SQLException, ClassNotFoundException {
+    public ArrayList<Evento> ricercaEvento(String nome) throws SQLException {
         /**
          * Crea la query per ricercare gli eventi conformi al parametro 'nome'
          * e restituisce la lista degli eventi risultante.
@@ -289,7 +289,7 @@ public class OpeEvento {
         return listaEventi;
     }
 
-    public ArrayList<Evento> ricercaPerTema(String tema) throws SQLException, ClassNotFoundException {
+    public ArrayList<Evento> ricercaPerTema(String tema) throws SQLException {
         /**
          * Crea la query per ricercare gli eventi conformi al parametro 'tema'
          * e restituisce la lista degli eventi risultante.
@@ -332,7 +332,7 @@ public class OpeEvento {
         return listaEventi;
     }
 
-    public ArrayList<Evento> ricercaPerGiorno(String data) throws SQLException, ClassNotFoundException {
+    public ArrayList<Evento> ricercaPerGiorno(String data) throws SQLException {
         /**
          * Crea la query per ricercare gli eventi conformi al parametro 'giorno'
          * e restituisce la lista degli eventi risultante.
@@ -377,7 +377,7 @@ public class OpeEvento {
 
     }
 
-    public void cancella(Evento e) throws SQLException, ClassNotFoundException {
+    public void cancella(Evento e) throws SQLException {
         /**
          * Crea la query per cancellare l'evento e dal database
          * @param e l'evento da cancellare
@@ -405,7 +405,7 @@ public class OpeEvento {
         }
     }
 
-    public void notificaEvento(Evento e) throws SQLException, ClassNotFoundException {
+    public void notificaEvento(Evento e) throws SQLException {
     /*crea la query per settare il campo notifica a true*/
     Connection conn = null;
         PreparedStatement stmt = null;
@@ -430,7 +430,7 @@ public class OpeEvento {
 
     }
 
-    public ArrayList<Evento> eventiNotificati(Date data) throws SQLException, ClassNotFoundException {
+    public ArrayList<Evento> eventiNotificati(Date data) throws SQLException {
         Connection conn = null;
         PreparedStatement stmt = null;
         ArrayList<Evento> evNotificati;
