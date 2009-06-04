@@ -1,6 +1,3 @@
-
-
-
 package it.seerp.application.interfacce;
 
 import it.seerp.application.Exception.DatiDuplicati;
@@ -11,19 +8,16 @@ import javax.swing.JTextField;
 /**
  *
  *
- * @author Luisa
+ * @author Luisa - Tommaso Cattolico
  */
 
-public interface GestioneContratti<E> {
-
-
-
-
+public interface GestioneContratti<E>
+{
     public ArrayList<E> visualizza(ArrayList<E> listGui);
 
     public E visualizzaContratto(JTextField id,E beanGuiContratto) throws DatiErrati;
 
-    public ArrayList<E> ricercaPerDipendente(JTextField dipendente,ArrayList<E> listGui) throws DatiErrati;
+    public ArrayList<E> ricercaPerDipendente(JTextField dipendente, ArrayList<E> listGui) throws DatiErrati;
 
     public void inserisci(E beanGuiContratto) throws DatiErrati,DatiDuplicati;
 
