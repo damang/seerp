@@ -192,8 +192,8 @@ public class OpeeContratto implements OpeEntity<Contratto,Integer> {
     public Contratto modifica(Contratto contratto) throws SQLException {
         Connection con = null;
         PreparedStatement stmt = null;
-         Contratto contra=new Contratto();
-
+        Contratto contra= contratto;
+        ArrayList<Pagamento> listPag= contra.getListPagamento();
         try {
             // Obtain a db connection
             con = ConnectionPool.getConnection();
@@ -201,20 +201,22 @@ public class OpeeContratto implements OpeEntity<Contratto,Integer> {
             con = ConnectionPool.getConnection();
 
             // Create a statement
-            stmt = con.prepareStatement("UPDATE Contratto SET (?, ?, ?, ?, ?, ? )"
-                                        +"where idContratto="+ contratto.getIdContratto() );
-            stmt.setInt(1, contratto.getDurata());
-            stmt.setDate(2, contratto.getData());
-            stmt.setString(3, contratto.getTipo());
-            stmt.setString(4, contratto.getNote());
-            stmt.setInt(5, contratto.getDipendente());
-            stmt.setInt(6, contratto.getExtraAzienda());
 
-            stmt.execute();
-                        // Force the commit
+  //contratto.setListPagamento(this.getPagamentiContratto(rs.getInt(8)));
+            stmt = con.prepareStatement("UPDATE Pagamento, Contratto (modalitàPagamento)SET (?)"
+                                        +"where Pagamento.contratto=Contratto.idContratto and Contratto.idContratto='"+contratto.getIdContratto()+"'");
+            
+    for(Pagamento p : listPag){
+            stmt.setString(1, p.getModalitaPagamento());
+                stmt.execute();
+              listPag.add(p);
+    }
+            
+          // Force the commit
             con.commit();
-            contra= this.visualizza(contratto.getIdContratto());
-        } // Force the commit
+        }
+
+        // Force the commit
         catch (SQLException se) {
             System.out.println("SQL Exception:");
 
