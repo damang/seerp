@@ -1,4 +1,3 @@
-
 package it.seerp.storage.Operazioni;
 
 import it.seerp.storage.db.ConnectionPool;
