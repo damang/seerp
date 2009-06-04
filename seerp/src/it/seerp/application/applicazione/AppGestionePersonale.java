@@ -53,27 +53,7 @@ public class AppGestionePersonale extends AppGestioneUtente{
         }
     }
 
-    /**
-     * Metodo che permette di inserire un nuovo Amministratore
-     * @param user
-     */
-    public void inserisciAmministratore(BeanGuiAmministratore user){
-      super.inserisci(user);
-      OpAmministratore a = new OpAmministratore();
-      Amministratore amm= it.seerp.application.conversioni.Conversione.conversioneAmministratore(user);
-        try {
-            a.inserisci(amm);
-        } catch (SQLException ex) {
-            System.out.println("SQL Exception:");
-            while (ex != null)
-            {
-                System.out.println("State  : " + ex.getSQLState());
-                System.out.println("Message: " + ex.getMessage());
-                System.out.println("Error  : " + ex.getErrorCode());
-                ex = ex.getNextException();
-            }
-        }
-    }
+    
 
      /**
       * Metodo che permette di inserire un nuovo Responsabile
