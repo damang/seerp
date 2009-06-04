@@ -18,8 +18,7 @@ import javax.swing.JTextField;
  */
 public class AppAgenda implements GestioneAgenda<BeanGuiEvento>
 {
-
-      /**
+    /**
      * Metodo che permette la visualizzazione della lista degli eventi
      * @return  Array List contenente la lista degli eventi
      * @throws it.seerp.application.Exception.DatiErrati
@@ -142,7 +141,6 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento>
         }
     }
 
-
       /**
      * Metodo che permette la modifica di un evento
      * @param beanGuiEventi
@@ -192,7 +190,6 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento>
      * nel caso in cui si inseriscano dati errati
      */
 
-
     public ArrayList<BeanGuiEvento> ricerca(JTextField Nome, JTextField Referente, JTextField data, ArrayList<BeanGuiEvento> listGui) throws DatiErrati
     {
         throw new UnsupportedOperationException("Not supported yet.");
@@ -214,7 +211,6 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento>
     public ArrayList<BeanGuiEvento> ricercaPerNome(JTextField Nome, ArrayList<BeanGuiEvento> list) throws DatiErrati, RicercaFallita {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-
 
     /**
      * Metodo che permette la ricerca per giorno di un evento
@@ -255,7 +251,6 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento>
         }
         return listGui;
     }
-
 
     /**
      * Metodo che permette la cancellazione di un evento già esistente
