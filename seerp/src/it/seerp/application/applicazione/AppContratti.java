@@ -28,11 +28,11 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto>
         try
         {
             ArrayList<Contratto> list = ope.visualizzaElenco();
-            int i = 0;
             for (Contratto cont : list)
             {
-                    listGui.add(it.seerp.application.conversioni.Conversione.conversioneContratto(cont, listGui.get(i)));
-                    i++;
+                BeanGuiContratto contGui = new BeanGuiContratto();
+                contGui = it.seerp.application.conversioni.Conversione.conversioneContratto(cont, contGui);
+                listGui.add(contGui);
             }
         }
         catch (SQLException se)
@@ -97,11 +97,11 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto>
         try
         {
             ArrayList<Contratto> list = ope.ricercaPerDipendente(Integer.parseInt(dipendente.getText()));
-            int i = 0;
             for (Contratto cont : list)
             {
-                 listGui.add(it.seerp.application.conversioni.Conversione.conversioneContratto(cont, listGui.get(i)));
-                 i++;
+                BeanGuiContratto contGui = new BeanGuiContratto();
+                contGui = it.seerp.application.conversioni.Conversione.conversioneContratto(cont, contGui);
+                listGui.add(contGui);
             }
         }
         catch (SQLException se)
