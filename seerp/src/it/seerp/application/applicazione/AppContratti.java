@@ -4,7 +4,12 @@ import it.seerp.application.Exception.DatiDuplicati;
 import it.seerp.application.Exception.DatiErrati;
 import it.seerp.application.bean.BeanGuiContratto;
 import it.seerp.application.interfacce.GestioneContratti;
+import it.seerp.storage.Operazioni.OpeeContratto;
+import it.seerp.storage.ejb.Contratto;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTextField;
 
 
@@ -48,7 +53,8 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto>
      */
 
     public BeanGuiContratto ricerca(JTextField id, ArrayList<BeanGuiContratto> list) throws DatiErrati {
-        throw new UnsupportedOperationException("Not supported yet.");
+    throw new UnsupportedOperationException("Not supported yet.");
+   
     }
 
       /**
@@ -77,7 +83,13 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto>
      */
 
     public void inserisci(BeanGuiContratto beanGuiContratto) throws DatiErrati, DatiDuplicati {
-        throw new UnsupportedOperationException("Not supported yet.");
+        OpeeContratto a= new OpeeContratto();
+        Contratto contratto = it.seerp.application.conversioni.Conversione.conversioneContratto(beanGuiContratto);
+        try {
+            a.inserimento(contratto);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
@@ -90,7 +102,19 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto>
      */
     
     public BeanGuiContratto modifica(BeanGuiContratto beanGuiContratto) throws DatiErrati {
-        throw new UnsupportedOperationException("Not supported yet.");
+
+        OpeeContratto a= new OpeeContratto();
+        Contratto contratto = it.seerp.application.conversioni.Conversione.conversioneContratto(beanGuiContratto);
+        try {
+            Contratto b = a.modifica(contratto);
+
+            beanGuiContratto = it.seerp.application.conversioni.Conversione.conversioneContratto(b, beanGuiContratto);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return beanGuiContratto;
+
     }
     
 
