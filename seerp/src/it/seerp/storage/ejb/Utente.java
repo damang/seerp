@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package it.seerp.storage.ejb;
 
@@ -22,6 +18,9 @@ public class Utente {
     private String ruolo;
     private Boolean visible;
 
+    public Utente()
+    {}
+
     /**
      * costruttore
      * @param idUtente
@@ -35,6 +34,7 @@ public class Utente {
      * @param note
      * @param v
      */
+
     public Utente(Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String ruolo, String note,Boolean v) {
         this.idUtente = idUtente;
         this.username = username;
