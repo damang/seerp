@@ -28,11 +28,11 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio>
         try
         {
             ArrayList<Servizio> list = ope.visualizzaElenco();
-            int i = 0;
             for (Servizio serv : list)
             {
-                    listGui.add(it.seerp.application.conversioni.Conversione.conversioneServizio(serv, listGui.get(i)));
-                    i++;
+                BeanGuiServizio servGui = new BeanGuiServizio();
+                servGui = it.seerp.application.conversioni.Conversione.conversioneServizio(serv, servGui);
+                listGui.add(servGui);
             }
         }
         catch (SQLException se)
@@ -66,11 +66,11 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio>
         try
         {
             ArrayList<Servizio> list = ope.ricercaPerNome(nome.getText());
-            int i = 0;
             for (Servizio serv : list)
             {
-                    listGui.add(it.seerp.application.conversioni.Conversione.conversioneServizio(serv, listGui.get(i)));
-                    i++;
+                BeanGuiServizio servGui = new BeanGuiServizio();
+                servGui = it.seerp.application.conversioni.Conversione.conversioneServizio(serv, servGui);
+                listGui.add(servGui);
             }
         }
         catch (SQLException se)
