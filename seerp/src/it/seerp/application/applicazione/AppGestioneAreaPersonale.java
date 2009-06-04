@@ -22,7 +22,7 @@ public class AppGestioneAreaPersonale implements GestioneAreaPersonale  {
      */
     public BeanGuiUtente visualizzaDati(BeanGuiUtente utente, ArrayList list)
     {
-        
+        return null;
     }
 
     /**
