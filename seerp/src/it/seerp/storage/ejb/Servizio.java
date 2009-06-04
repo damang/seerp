@@ -33,8 +33,6 @@ public class Servizio {
         this.note = note;
     }
 
-
-
     public Servizio(String descrizione, Boolean disponibilita, Integer quantita, String tipo, Double prezzo, Integer idServizio, Integer iva, String note, ArrayList<Contratto> listContratti) {
         this.descrizione = descrizione;
         this.disponibilita = disponibilita;
@@ -47,17 +45,13 @@ public class Servizio {
         this.listContratti = listContratti;
     }
 
-
-
     public ArrayList<Contratto> getListContratti() {
-        return  listContratti;
+        return listContratti;
     }
 
     public void setListServizio(ArrayList<Contratto> listServizio) {
-        this. listContratti = listServizio;
+        this.listContratti = listServizio;
     }
-
-
 
     /**
      *  metodo che restituisce le note dell'evento
@@ -160,8 +154,9 @@ public class Servizio {
      * @return la quantità del servizio
      */
     public Integer getQuantita() {
-    return quantita;
+        return quantita;
     }
+
     /**
      *  metodo che setta la quantità del servizio
      * @param quantita la quantità del servizio
@@ -185,8 +180,12 @@ public class Servizio {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-     public void removeContratto(Contratto c){
-     listContratti.remove(c);}
-    public void addContratto(Contratto c){
-     listContratti.add(c);}
+
+    public void removeContratto(Contratto c) {
+        listContratti.remove(c);
+    }
+
+    public void addContratto(Contratto c) {
+        listContratti.add(c);
+    }
 }
