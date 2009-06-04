@@ -1,10 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
+/** To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 
 package it.seerp.bottoni.Nuovo;
 
+import it.seerp.Gui.command.ObserverButton;
+import it.seerp.Gui.frame.ObservervableJTabbedPanel;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicButtonUI;
 import java.awt.*;
@@ -15,10 +16,10 @@ import java.awt.event.*;
  * Contains a JLabel to show the text and
  * a JButton to close the tab it belongs to
  */
-public class ButtonTabComponent extends JPanel {
-    private final JTabbedPane pane;
+public class ButtonTabComponent extends JPanel  {
+    private final ObservervableJTabbedPanel pane;
 
-    public ButtonTabComponent(final JTabbedPane pane) {
+    public ButtonTabComponent(final ObservervableJTabbedPanel pane) {
         //unset default FlowLayout' gaps
         super(new FlowLayout(FlowLayout.LEFT, 0, 0));
         if (pane == null) {
@@ -26,13 +27,13 @@ public class ButtonTabComponent extends JPanel {
         }
         this.pane = pane;
         setOpaque(false);
-
         //make JLabel read titles from JTabbedPane
         JLabel label = new JLabel() {
+            @Override
             public String getText() {
-                int i = pane.indexOfTabComponent(ButtonTabComponent.this);
+                int i = pane.getTabbedPane().indexOfTabComponent(ButtonTabComponent.this);
                 if (i != -1) {
-                    return pane.getTitleAt(i);
+                    return pane.getTabbedPane().getTitleAt(i);
                 }
                 return null;
             }
@@ -48,7 +49,7 @@ public class ButtonTabComponent extends JPanel {
         setBorder(BorderFactory.createEmptyBorder(2, 0, 0, 0));
     }
 
-    private class TabButton extends JButton implements ActionListener {
+     class TabButton extends JButton implements ActionListener {
         public TabButton() {
             int size = 17;
             setPreferredSize(new Dimension(size, size));
@@ -70,9 +71,19 @@ public class ButtonTabComponent extends JPanel {
         }
 
         public void actionPerformed(ActionEvent e) {
-            int i = pane.indexOfTabComponent(ButtonTabComponent.this);
+           // pane.getTabbedPane().remove(pane.getTabbedPane().getTabCount()-1);
+            int i = pane.getTabbedPane().getSelectedIndex();
+            i=i-1;
+            System.out.println("andrea"+i);
             if (i != -1) {
+                 System.out.println("luisa"+i);
                 pane.remove(i);
+                pane.repaint();
+                 //pane.getTabbedPane().repaint();
+              
+             ((ObservervableJTabbedPanel)pane).notifyObservers();
+
+              
             }
         }
 
@@ -81,9 +92,10 @@ public class ButtonTabComponent extends JPanel {
         }
 
         //paint the cross
-        protected void paintComponent(Graphics g) {
+       protected void paintComponent(Graphics g) {
             super.paintComponent(g);
-            Graphics2D g2 = (Graphics2D) g.create();
+            super.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/16x16/remove.png")));
+           /* Graphics2D g2 = (Graphics2D) g.create();
             //shift the image for pressed buttons
             if (getModel().isPressed()) {
                 g2.translate(1, 1);
@@ -96,7 +108,7 @@ public class ButtonTabComponent extends JPanel {
             int delta = 6;
             g2.drawLine(delta, delta, getWidth() - delta - 1, getHeight() - delta - 1);
             g2.drawLine(getWidth() - delta - 1, delta, delta, getHeight() - delta - 1);
-            g2.dispose();
+            g2.dispose();*/
         }
     }
 
@@ -109,6 +121,7 @@ public class ButtonTabComponent extends JPanel {
             }
         }
 
+        @Override
         public void mouseExited(MouseEvent e) {
             Component component = e.getComponent();
             if (component instanceof AbstractButton) {

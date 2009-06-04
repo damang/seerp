@@ -12,15 +12,19 @@ package it.seerp.Gui.frame;
 
 import configurazioni.pattern.observer.Observable;
 import configurazioni.pattern.observer.Observer;
-import javax.swing.Icon;
-import javax.swing.JButton;
+import it.seerp.bottoni.Nuovo.ButtonTabComponent;
+import java.util.Iterator;
+import java.util.Vector;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 
 /**
  *
  * @author Andrea
  */
 public class ObservervableJTabbedPanel extends JPanel implements Observable {
+
+    private Vector obs = new Vector();
 
     /** Creates new form ObserverJTabbedPanel */
     public ObservervableJTabbedPanel() {
@@ -37,59 +41,7 @@ public class ObservervableJTabbedPanel extends JPanel implements Observable {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jXPanel2 = new org.jdesktop.swingx.JXPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
-
-        jPanel1.setName("jPanel1"); // NOI18N
-
-        jTabbedPane1.setName("jTabbedPane1"); // NOI18N
-
-        javax.swing.GroupLayout jTabbedPane1Layout = new javax.swing.GroupLayout(jTabbedPane1);
-        jTabbedPane1.setLayout(jTabbedPane1Layout);
-        jTabbedPane1Layout.setHorizontalGroup(
-            jTabbedPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jTabbedPane1Layout.setVerticalGroup(
-            jTabbedPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        jXPanel2.setName("jXPanel2"); // NOI18N
-
-        javax.swing.GroupLayout jXPanel2Layout = new javax.swing.GroupLayout(jXPanel2);
-        jXPanel2.setLayout(jXPanel2Layout);
-        jXPanel2Layout.setHorizontalGroup(
-            jXPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jXPanel2Layout.setVerticalGroup(
-            jXPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
 
         jTabbedPane2.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         jTabbedPane2.setFocusable(false);
@@ -112,37 +64,45 @@ public class ObservervableJTabbedPanel extends JPanel implements Observable {
     }// </editor-fold>//GEN-END:initComponents
 
     public void notifyObservers() {
-        /* Iterator<Observer> it = obs.iterator();
-        while(it.hasNext()){
-        Observer u = it.next();
-        u.refreshData(this);
-        }*/
+        Iterator<Observer> it = obs.iterator();
+        
+        
+        while (it.hasNext()) {
+            Observer u = it.next();
+
+            u.refreshData(this);
+        }
     }
 
     public void register(Observer o) {
-       /* if (o == null) {
+        if (o == null) {
             throw new NullPointerException();
         }
         if (!obs.contains(o)) {
             obs.addElement(o);
-        }*/
+        }
     }
 
     public void unRegister(Observer o) {
-        //obs.removeElement(o);
+        obs.removeElement(o);
     }
-    
 
-    public void addTab(String messaggio,JPanel pan){
-       // System.out.println(this.jTabbedPane2);
-       this.jTabbedPane2.addTab(messaggio, pan);
+    public void addTab(String messaggio, JPanel pan) {
+        // System.out.println(this.jTabbedPane2);
+        this.jTabbedPane2.addTab(messaggio, pan);
+        this.jTabbedPane2.setTabComponentAt(this.jTabbedPane2.getTabCount() - 1,
+               new ButtonTabComponent(this));
 
+    }
+
+   
+
+
+    public JTabbedPane getTabbedPane(){
+        return this.jTabbedPane2;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private org.jdesktop.swingx.JXPanel jXPanel2;
     // End of variables declaration//GEN-END:variables
 }

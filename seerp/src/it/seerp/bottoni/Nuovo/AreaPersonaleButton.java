@@ -8,12 +8,9 @@ import configurazioni.CommandInterface;
 import it.seerp.Gui.AreaPersonale.AreaPersonalePanel;
 import it.seerp.Gui.command.ObserverButton;
 import it.seerp.Gui.frame.ObservervableJTabbedPanel;
-import it.seerp.Menu.MenuAreaPersonale;
-import java.awt.Color;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
 
 /**
  *
@@ -41,19 +38,24 @@ public class AreaPersonaleButton extends ObserverButton implements CommandInterf
 
     public void execute() {
 
+        JOptionPane.showMessageDialog(null, isPresente);
+
         if (!isPresente) {
-            AreaPersonalePanel panel = new AreaPersonalePanel();
-            this.tabbedPane.addTab("Area Personale", panel);
-        
+
             isPresente = true;
 
-            menu.setVisible(true);
-            menu.repaint();
-
+            AreaPersonalePanel panel = new AreaPersonalePanel();
+            this.tabbedPane.addTab("Area Personale", panel);
+            tabbedPane.register(this);
+            panel.setVisible(true);
+            panel.repaint();
+            
         }
-        tabbedPane.setFocusable(true);
+
+         JOptionPane.showMessageDialog(null, this.tabbedPane.getTabbedPane().getSelectedIndex());
 
 
+        this.tabbedPane.repaint();
 
     }
 }
