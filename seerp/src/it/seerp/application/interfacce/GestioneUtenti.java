@@ -14,9 +14,9 @@ import javax.swing.JTextField;
  */
 public interface GestioneUtenti<E extends Utente,U extends BeanGuiUtente>
 {
-    public ArrayList<U> elenca();
+    public ArrayList<U> elenca(ArrayList<U> listGui);
   
-    public U ricerca(JTextField cognome, JTextField ruolo,ArrayList<U> list)throws DatiErrati,RicercaFallita;
+    public ArrayList<U> ricerca(JTextField cognome, JTextField ruolo,ArrayList<U> list)throws DatiErrati,RicercaFallita;
     
     public void elimina(U user);
     
