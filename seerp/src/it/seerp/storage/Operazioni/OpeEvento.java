@@ -1,7 +1,5 @@
 package it.seerp.storage.operazioni;
 
-import it.seerp.storage.Exception.DatiDuplicati;
-import it.seerp.storage.Exception.DatiErrati;
 import it.seerp.storage.ejb.Evento;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -362,8 +360,7 @@ public class OpeEvento {
                 e.setNote(rs.getString("Note"));
 
                 listaEventi.add(e);
-            }
-            
+            }      
         } finally {
             if (stmt != null) {
                 stmt.close();
@@ -371,10 +368,8 @@ public class OpeEvento {
             if (conn != null) {
                 ConnectionPool.releaseConnection(conn);
             }
-
         }
         return listaEventi;
-
     }
 
     public void cancella(Evento e) throws SQLException {
@@ -427,7 +422,6 @@ public class OpeEvento {
                 ConnectionPool.releaseConnection(conn);
             }
         }
-
     }
 
     public ArrayList<Evento> eventiNotificati(Date data) throws SQLException {
@@ -462,11 +456,6 @@ public class OpeEvento {
                 ConnectionPool.releaseConnection(conn);
             }
         }
-     return evNotificati;
-    
+     return evNotificati; 
     }
-
-
-
-
 }
