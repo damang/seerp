@@ -177,12 +177,8 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento>
 
      /**
      * Metodo che permette la ricerca di un evento
-     * @param Nome
-     * nome dell'evento da ricercare
-     * @param Referente
-     * nome del referente
-     * @param data
-     * data dell'evento da ricercare
+     * @param tema
+     * tema dell'evento da ricercare
      * @para list
       * lista di tutti gli eventi
      * @return la lista degli eventi che corrispondono ai criteri di ricerca
@@ -190,9 +186,31 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento>
      * nel caso in cui si inseriscano dati errati
      */
 
-    public ArrayList<BeanGuiEvento> ricerca(JTextField Nome, JTextField Referente, JTextField data, ArrayList<BeanGuiEvento> listGui) throws DatiErrati
+    public ArrayList<BeanGuiEvento> ricercaPerTema(JTextField tema, ArrayList<BeanGuiEvento> listGui) throws DatiErrati
     {
-        throw new UnsupportedOperationException("Not supported yet.");
+        OpeEvento ope = new OpeEvento();
+        try
+        {
+            ArrayList<Evento> list = ope.ricercaPerTema(tema.getText());
+            for (Evento eve : list)
+            {
+                BeanGuiEvento eveGui = new BeanGuiEvento();
+                eveGui = it.seerp.application.conversioni.Conversione.conversioneEvento(eve, eveGui);
+                listGui.add(eveGui);
+            }
+        }
+        catch (SQLException se)
+        {
+            System.out.println("SQL Exception:");
+            while (se != null)
+            {
+                System.out.println("State  : " + se.getSQLState());
+                System.out.println("Message: " + se.getMessage());
+                System.out.println("Error  : " + se.getErrorCode());
+                se = se.getNextException();
+            }
+        }
+        return listGui;
     }
 
     /**
@@ -208,8 +226,31 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento>
      * nel caso in cui la ricerca non produca risultati
      */
 
-    public ArrayList<BeanGuiEvento> ricercaPerNome(JTextField Nome, ArrayList<BeanGuiEvento> list) throws DatiErrati, RicercaFallita {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public ArrayList<BeanGuiEvento> ricercaPerNome(JTextField nome, ArrayList<BeanGuiEvento> listGui) throws DatiErrati, RicercaFallita
+    {
+        OpeEvento ope = new OpeEvento();
+        try
+        {
+            ArrayList<Evento> list = ope.ricercaEvento(nome.getText());
+            for (Evento eve : list)
+            {
+                BeanGuiEvento eveGui = new BeanGuiEvento();
+                eveGui = it.seerp.application.conversioni.Conversione.conversioneEvento(eve, eveGui);
+                listGui.add(eveGui);
+            }
+        }
+        catch (SQLException se)
+        {
+            System.out.println("SQL Exception:");
+            while (se != null)
+            {
+                System.out.println("State  : " + se.getSQLState());
+                System.out.println("Message: " + se.getMessage());
+                System.out.println("Error  : " + se.getErrorCode());
+                se = se.getNextException();
+            }
+        }
+        return listGui;
     }
 
     /**
