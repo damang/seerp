@@ -18,13 +18,13 @@ import java.util.logging.Logger;
 import javax.swing.JTextField;
 
 /**
- *
+ * Classe che permette di effettuare delle operazioni sul Personale
  * @author matteo
  */
 public class AppGestionePersonale extends AppGestioneUtente{
 
     /**
-     *
+     *Costruttore vuoto per la classe AppGestionePersonale
      */
     public AppGestionePersonale(){
     super();
@@ -32,8 +32,8 @@ public class AppGestionePersonale extends AppGestioneUtente{
 
 
     /**
-     *
-     * @param user
+     * Metodo che peremette di inserire un nuovo Dipendente
+     * @param user il dipendente da inserire
      */
     public void inserisciDipendente(BeanGuiDipendente user){
       super.inserisci(user);
@@ -47,7 +47,7 @@ public class AppGestionePersonale extends AppGestioneUtente{
     }
 
     /**
-     *
+     * Metodo che permette di inserire un nuovo Amministratore
      * @param user
      */
     public void inserisciAmministratore(BeanGuiAmministratore user){
@@ -62,7 +62,7 @@ public class AppGestionePersonale extends AppGestioneUtente{
     }
 
      /**
-      *
+      * Metodo che permette di inserire un nuovo Responsabile
       * @param user
       */
      public void inserisciResponsabile(BeanGuiResponsabile user){
@@ -77,9 +77,9 @@ public class AppGestionePersonale extends AppGestioneUtente{
     }
 
      /**
-      * 
-      * @param user
-      * @return
+      * Metodo che permette di modificare i dati di un Dipendente
+      * @param user rappresenta il Dipendente da modificare
+      * @return il Dipendente modificato
       */
      public BeanGuiDipendente modificaDipendente(BeanGuiDipendente user){
       super.modifica(user);
@@ -96,9 +96,9 @@ public class AppGestionePersonale extends AppGestioneUtente{
 
 
       /**
-       *
-       * @param user
-       * @return
+       * Metodo che permette di modificare i dati di un Amministratore
+       * @param user rappresenta l'Amministratore da modificare
+       * @return l'Amministratore modificato
        */
       public BeanGuiAmministratore modificaAmministratore(BeanGuiAmministratore user){
       super.modifica(user);
@@ -113,9 +113,9 @@ public class AppGestionePersonale extends AppGestioneUtente{
       }
 
       /**
-       *
-       * @param user
-       * @return
+       * Metodo che permette di modificare i dati di un Responsabile
+       * @param user il Responsabile da modificare
+       * @return il Responsabile modificato
        */
       public BeanGuiResponsabile modificaResponsabile(BeanGuiResponsabile user){
       super.modifica(user);
