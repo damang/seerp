@@ -1,6 +1,5 @@
 package it.seerp.application.interfacce;
 
-
 import it.seerp.application.Exception.CancellazioneFallita;
 import it.seerp.application.Exception.DatiDuplicati;
 import it.seerp.application.Exception.DatiErrati;
@@ -10,29 +9,26 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author Luisa
+ * @author Luisa - Tommaso Cattolico
  */
 
-public interface GestioneAgenda<G> {
-    
-    public  ArrayList<G> visualizzaListaEventi();
+public interface GestioneAgenda<E>
+{
+    public  ArrayList<E> visualizzaListaEventi(ArrayList<E> listGui);
 
-    public G visualizzaDettagli(JTextField id,ArrayList<G> list)throws DatiErrati;
+    public E visualizzaDettagli(JTextField id, E gui)throws DatiErrati;
 
+    public void notificaEventi (E beanGuiEventi);
 
-    public void notificaEventi (G beanGuiEventi);
+    public void inserimento(E beanGuiEventi) throws DatiErrati,DatiDuplicati;
 
-
-    public void inserimento(G beanGuiEventi) throws DatiErrati,DatiDuplicati;
-
-
-    public G modifica(G beanGuiEventi) throws DatiErrati;
+    public E modifica(E beanGuiEventi) throws DatiErrati;
    
-    public ArrayList<G> ricerca(JTextField Nome, JTextField Referente, JTextField data,ArrayList<G> list)throws  DatiErrati;
+    public ArrayList<E> ricerca(JTextField Nome, JTextField Referente, JTextField data, ArrayList<E> list)throws  DatiErrati;
 
-    public ArrayList<G> ricercaPerNome(JTextField Nome,ArrayList<G> list) throws  DatiErrati, RicercaFallita;
+    public ArrayList<E> ricercaPerNome(JTextField Nome,ArrayList<E> list) throws  DatiErrati, RicercaFallita;
 
-    public ArrayList<G> ricercaPerGiorno(JTextField giorno,ArrayList<G> list)throws  DatiErrati, RicercaFallita;
+    public ArrayList<E> ricercaPerGiorno(JTextField giorno,ArrayList<E> list)throws  DatiErrati, RicercaFallita;
     
-    public void cancellaEvento(G beanGuiEventi) throws CancellazioneFallita ;
+    public void cancellaEvento(E beanGuiEventi) throws CancellazioneFallita ;
 }
