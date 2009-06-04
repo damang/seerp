@@ -19,7 +19,7 @@ public interface GestioneContratti<E> {
 
 
 
-    public ArrayList<E> visualizza();
+    public ArrayList<E> visualizza(ArrayList<E>);
 
      public E visualizzaContratto(JTextField id,ArrayList<E> list) throws DatiErrati;
 
