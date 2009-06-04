@@ -1,17 +1,13 @@
 package it.seerp.storage.operazioni;
 
-import it.seerp.application.bean.BeanGuiEvento;
-import it.seerp.storage.Exception.CancellazioneFallita;
 import it.seerp.storage.Exception.DatiDuplicati;
 import it.seerp.storage.Exception.DatiErrati;
-import it.seerp.storage.Exception.RicercaFallita;
 import it.seerp.storage.ejb.Evento;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import it.seerp.storage.db.ConnectionPool;
-import it.seerp.storage.db.OpeEntity;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Statement;
