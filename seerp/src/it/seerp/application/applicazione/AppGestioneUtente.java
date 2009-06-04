@@ -25,7 +25,7 @@ public class AppGestioneUtente implements GestioneUtenti<Utente,BeanGuiUtente> {
      * Metodo che permette di visualizzare la lista degli utenti
      * @return la lista di tutti gli utenti
      */
-    public ArrayList<BeanGuiUtente> elenca() {
+    public ArrayList<BeanGuiUtente> elenca(ArrayList<BeanGuiUtente> listGui) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
