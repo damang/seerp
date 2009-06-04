@@ -21,7 +21,6 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto>
      * Metodo che permette la visualizzazione della lista dei contratti
      * @return ArrayList dei contratti presenti nel sistema
      */
-
     public ArrayList<BeanGuiContratto> visualizza(ArrayList<BeanGuiContratto> listGui)
     {
         OpeeContratto ope = new OpeeContratto();
@@ -57,7 +56,6 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto>
      * lista di tutti i contratti
      * @return Bean Gui del contratto che è stato selezionato
      */
-
     public BeanGuiContratto visualizzaContratto(JTextField id, BeanGuiContratto gui) throws DatiErrati
     {
         OpeeContratto ope = new OpeeContratto();
@@ -90,7 +88,6 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto>
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si inseriscano dati errati
      */
-
     public ArrayList<BeanGuiContratto> ricercaPerDipendente(JTextField dipendente, ArrayList<BeanGuiContratto> listGui) throws DatiErrati
     {
         OpeeContratto ope = new OpeeContratto();
@@ -127,7 +124,6 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto>
      * @throws it.seerp.application.Exception.DatiDuplicati
      * nel caso in cui il contratto da inserire esista già
      */
-
     public void inserisci(BeanGuiContratto beanGuiContratto) throws DatiErrati, DatiDuplicati
     {
         OpeeContratto a = new OpeeContratto();
@@ -157,7 +153,6 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto>
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si immettano dati errati
      */
-    
     public BeanGuiContratto modifica(BeanGuiContratto beanGuiContratto) throws DatiErrati
     {
         OpeeContratto a = new OpeeContratto();

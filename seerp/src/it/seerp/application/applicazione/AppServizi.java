@@ -21,7 +21,6 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio>
      * Metodo che permette di visualizzare l'elenco dei servizi
      * @return ArrayList contenente i servizi
      */
-
     public ArrayList<BeanGuiServizio> elenca(ArrayList<BeanGuiServizio> listGui)
     {
         OpeServizio ope = new OpeServizio();
@@ -59,7 +58,6 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio>
      * @throws it.seerp.application.Exception.RicercaFallita
      * nel caso in cui la ricerca non produce risultati
      */
-
     public ArrayList<BeanGuiServizio> ricerca(JTextField nome, ArrayList<BeanGuiServizio> listGui) throws DatiErrati
     {
         OpeServizio ope = new OpeServizio();
@@ -94,7 +92,6 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio>
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si immettano dati errati
      */
-
     public void inserisci(BeanGuiServizio beanGui) throws DatiErrati, DatiDuplicati
     {
         OpeServizio a = new OpeServizio();
@@ -122,7 +119,6 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio>
      * nome del servizio
      * @return Bean Gui del servizio da visualizzare
      */
-
     public BeanGuiServizio visualizza(JTextField nome, BeanGuiServizio beanGui)
     {
         OpeServizio ope = new OpeServizio();
@@ -154,7 +150,6 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio>
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si immettano dati errati durante la modifica
      */
-
     public BeanGuiServizio modifica(BeanGuiServizio beanGui) throws DatiErrati
     {
         OpeServizio ope = new OpeServizio();
