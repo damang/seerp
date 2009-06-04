@@ -37,7 +37,8 @@ public class Contratto {
      * @param dipendente
      * @param extraAzienda
      */
-    public Contratto(String stato, Date data, Integer durata, String tipo, String note, Integer dipendente, Integer extraAzienda) {
+    public Contratto(String stato, Date data, Integer durata, String tipo,
+            String note, Integer dipendente, Integer extraAzienda) {
         this.stato = stato;
         this.data = data;
         this.durata = durata;
@@ -60,7 +61,10 @@ public class Contratto {
      * @param listPagamento
      * @param listServizio
      */
-    public Contratto(String stato, Date data, Integer durata, String tipo, Integer idContratto, String note, Integer dipendente, Integer extraAzienda, ArrayList<Pagamento> listPagamento, ArrayList<Servizio> listServizio) {
+    public Contratto(String stato, Date data, Integer durata, String tipo,
+            Integer idContratto, String note, Integer dipendente,
+            Integer extraAzienda, ArrayList<Pagamento> listPagamento,
+            ArrayList<Servizio> listServizio) {
         this.stato = stato;
         this.data = data;
         this.durata = durata;
@@ -85,7 +89,8 @@ public class Contratto {
      * @param e
      * @param listS
      */
-    public Contratto(String stt, Date da, Integer d, String t, Integer i, String n, Integer dip, Integer e, ArrayList<Servizio> listS) {
+    public Contratto(String stt, Date da, Integer d, String t, Integer i,
+            String n, Integer dip, Integer e, ArrayList<Servizio> listS) {
         this.listServizio = listS;
         this.stato = stt;
         this.data = da;
