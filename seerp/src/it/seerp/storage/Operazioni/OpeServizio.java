@@ -69,7 +69,7 @@ public class OpeServizio implements OpeEntity<Servizio, Integer> {
 
     }
 
-    public ArrayList<Servizio> ricercaPerNome(Integer id) throws SQLException {
+    public ArrayList<Servizio> ricercaPerNome(String nome) throws SQLException {
 
         /**
          * metodo che si occupa di ricercare un servizio in base all'id
@@ -85,7 +85,7 @@ public class OpeServizio implements OpeEntity<Servizio, Integer> {
         try {
             // Obtain a db connection
             conn = ConnectionPool.getConnection();
-            String query = "SELECT * FROM Servizio WHERE idServizio='" + id + "'";
+            String query = "SELECT * FROM Servizio WHERE nome='" + nome + "'";
             stmt = conn.prepareStatement(query);
             ResultSet rs = stmt.executeQuery(query);
 
