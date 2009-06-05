@@ -120,7 +120,7 @@ public class OpeEvento {
         return evento;
     }
 
-    public Evento visualizza(Integer nome) throws SQLException {
+    public Evento visualizza(Integer id) throws SQLException {
 
         /* crea la query per visualizzare i dettagli
         di un evento presente nel database
