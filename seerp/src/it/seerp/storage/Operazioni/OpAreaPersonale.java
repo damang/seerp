@@ -15,9 +15,8 @@ import java.sql.SQLException;
  *
  * @author Ila
  */
-public class OpAreaPersonale extends OpPersonale{
-
-
+public class OpAreaPersonale extends OpPersonale
+{
     @Override
     public Personale visualizzaDati(Integer id) throws SQLException {
 
