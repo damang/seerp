@@ -13,17 +13,35 @@ import java.util.ArrayList;
  * alla gestionde dellì'Area Personale
  * @author matteo - Tommaso Cattolico
  */
-public class AppGestioneAreaPersonale implements GestioneAreaPersonale  {
-
+public class AppGestioneAreaPersonale implements GestioneAreaPersonale<Utente, BeanGuiUtente>
+{
     /**
      * Metodo che permette di visualizzare tutti i dati relativi ad un utente
      * @param utente rappresenta il Bean grafico dell'utente che si vuole visualizzare
-     * @param list rappresenta la lista di tutti gli utenti
      * @return il Bean Grafico contenente i dati dell'utente
      */
-    public BeanGuiUtente visualizzaDati(BeanGuiUtente utente, ArrayList list)
+    public BeanGuiUtente visualizzaDati(BeanGuiUtente beanGui)
     {
-        return null;
+        OpAreaPersonale ope = new OpAreaPersonale();
+        Utente user = it.seerp.application.conversioni.Conversione.conversioneUtente(beanGui);
+
+        try
+        {
+            user = ope.visualizzaDati(user.getIdUtente());
+            beanGui = it.seerp.application.conversioni.Conversione.conversioneUtente(user, beanGui);
+        }
+        catch (SQLException se)
+        {
+            System.out.println("SQL Exception:");
+            while (se != null)
+            {
+                System.out.println("State  : " + se.getSQLState());
+                System.out.println("Message: " + se.getMessage());
+                System.out.println("Error  : " + se.getErrorCode());
+                se = se.getNextException();
+            }
+        }
+        return beanGui;
     }
 
     /**
@@ -55,15 +73,5 @@ public class AppGestioneAreaPersonale implements GestioneAreaPersonale  {
             }
         }
         return beanGui;
-    }
-
-    /**
-     * Metodo che permette di visualizzare la lista dei contratti di un utente
-     * @param utente rappresenta il Bean grafico dell'utente
-     * @return la lista dei contratti dell'utente
-     */
-    public ArrayList<BeanGuiUtente> visualizzaContratti(BeanGuiUtente beanGui)
-    {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
