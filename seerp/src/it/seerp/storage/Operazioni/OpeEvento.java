@@ -1,5 +1,6 @@
 package it.seerp.storage.operazioni;
 
+
 import it.seerp.storage.ejb.Evento;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

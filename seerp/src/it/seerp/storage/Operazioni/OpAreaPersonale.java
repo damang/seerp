@@ -1,5 +1,3 @@
-
-
 package it.seerp.storage.operazioni;
 
 import it.seerp.storage.Exception.DatiErrati;
