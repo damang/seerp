@@ -9,16 +9,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- *
+ * Classe che permette di effetture le principali operazioni relative
+ * alla gestionde dellì'Area Personale
  * @author matteo - Tommaso Cattolico
  */
 public class AppGestioneAreaPersonale implements GestioneAreaPersonale  {
 
     /**
-     * 
-     * @param utente
-     * @param list
-     * @return
+     * Metodo che permette di visualizzare tutti i dati relativi ad un utente
+     * @param utente rappresenta il Bean grafico dell'utente che si vuole visualizzare
+     * @param list rappresenta la lista di tutti gli utenti
+     * @return il Bean Grafico contenente i dati dell'utente
      */
     public BeanGuiUtente visualizzaDati(BeanGuiUtente utente, ArrayList list)
     {
@@ -26,10 +27,11 @@ public class AppGestioneAreaPersonale implements GestioneAreaPersonale  {
     }
 
     /**
-     *
-     * @param utente
-     * @return
+     * Metodo che permette di modificare la password di un utente
+     * @param utente rappresenta il Bean grafico dell'utente interessato
+     * @return il Bean grafico modificato
      * @throws it.seerp.application.Exception.DatiErrati
+     * nel caso in cui i dati inseriti sono errati
      */
     public BeanGuiUtente modificaPassword(BeanGuiUtente beanGui) throws DatiErrati
     {
@@ -56,9 +58,9 @@ public class AppGestioneAreaPersonale implements GestioneAreaPersonale  {
     }
 
     /**
-     *
-     * @param utente
-     * @return
+     * Metodo che permette di visualizzare la lista dei contratti di un utente
+     * @param utente rappresenta il Bean grafico dell'utente
+     * @return la lista dei contratti dell'utente
      */
     public ArrayList<BeanGuiUtente> visualizzaContratti(BeanGuiUtente beanGui)
     {
