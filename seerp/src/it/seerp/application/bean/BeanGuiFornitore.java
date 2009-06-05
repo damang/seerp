@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package it.seerp.application.bean;
 
 import java.util.ArrayList;
@@ -17,14 +12,14 @@ import javax.swing.JTextField;
 public class BeanGuiFornitore extends BeanGuiExtraAzienda {
 
     /**
-     *
+     * Costruttore per vuoto per la classe BeanGuiFornitore
      */
     public BeanGuiFornitore() {
         
     }
 
     /**
-     * 
+     *  Costruttore per la classe BenaGuiFornitore
      * @param idExtraAziendaTxt
      * @param txtCognome
      * @param txtNome
@@ -41,16 +36,11 @@ public class BeanGuiFornitore extends BeanGuiExtraAzienda {
         this.idFornitoreTxt = idFornitoreTxt;
     }
 
-  
-  
-
-    
-
     private JTextField idFornitoreTxt;
 
     /**
-     * 
-     * @return
+     * Metodo che permette di restituire il campo id di un Fornitore
+     * @return il campo id del Fornitore
      */
     public JTextField getIdFornitoreTxt() {
         return idFornitoreTxt;
@@ -59,8 +49,8 @@ public class BeanGuiFornitore extends BeanGuiExtraAzienda {
    
 
     /**
-     *
-     * @param idFornitoreTxt
+     * Metodo che permette di settare il campo id del Fornitore
+     * @param idFornitoreTxt rappresenta l'id da inserire
      */
     public void setIdFornitoreTxt(JTextField idFornitoreTxt) {
         this.idFornitoreTxt = idFornitoreTxt;
