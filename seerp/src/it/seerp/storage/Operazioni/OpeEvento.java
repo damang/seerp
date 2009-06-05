@@ -15,9 +15,10 @@ import java.util.GregorianCalendar;
  *
  * @author Ila
  */
-public class OpeEvento {
-
-    public void inserimento(Evento e) throws SQLException {
+public class OpeEvento
+{
+    public void inserimento(Evento e) throws SQLException
+    {
         //   throw new UnsupportedOperationException("Not supported yet.");
         /** crea la query per inserire l'evento e nel database
          * @param e l'evento da inserire
