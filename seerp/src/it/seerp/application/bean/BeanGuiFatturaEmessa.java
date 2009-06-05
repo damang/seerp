@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
@@ -40,108 +36,112 @@ private JTextArea note;
     }
 
     /**
-     *
-     * @return
+     * Metodo che restituisce la lista dei DDT associati ad una fattura
+     * @return la lista dei DDT
      */
     public ArrayList<BeanGuiDDT> getListDDT() {
         return listDDT;
     }
 
     /**
-     *
-     * @param listDDT
+     * Metodo che permette di settare la dei DDT
+     * @param listDDT rappesenta la lista che vuole inserire
      */
     public void setListDDT(ArrayList<BeanGuiDDT> listDDT) {
         this.listDDT = listDDT;
     }
 
     /**
-     * metodo che
-     * @return
+     * metodo che permette di restituire il codice identificativo di un Fattura Emessa
+     * @return l'id dell Fattura
      */
     public JTextField getIdFatturaEmessa() {
         return idFatturaEmessa;
     }
 
     /**
-     * metodo che
-     * @param idFatturaEmessa
+     * metodo che permette di settare il codice identificativo di un Fattura Emessa
+     * @param idFatturaEmessa rappresenta l'id che si vuole settare
      */
     public void setIdFatturaEmessa(JTextField idFatturaEmessa) {
         this.idFatturaEmessa = idFatturaEmessa;
     }
 
     /**
-     * metodo che
-     * @return
+     * metodo che permette di restituire l'iva a debito di una Fattura Emessa
+     * @return l'iva a debito della Fattura
      */
     public JTextField getIvaDebito() {
         return ivaDebito;
     }
 
     /**
-     * metodo che
-     * @param ivaDebito
+     * metodo che permette di settare l'iva a debito di una Fattura Emessa
+     * @param ivaDebito rappresenta l'iva a debito che si vuole settare
      */
     public void setIvaDebito(JTextField ivaDebito) {
         this.ivaDebito = ivaDebito;
     }
 
     /**
-     * metodo che
-     * @return
+     * metodo che  permette di restituire le note relative ad un Fattura Emessa
+     * @return le note di una Fattura
      */
     public JTextArea getNote() {
         return note;
     }
 
     /**
-     * metodo che
-     * @param note
+     * metodo che permette di settare le note di una Fattura
+     * @param note rappresenta le note che si voglio inserire
      */
     public void setNote(JTextArea note) {
         this.note = note;
     }
 
     /**
-     * metodo che
-     * @return
+     * metodo che permette di restituire il numero progressivo della Fattura Emessa
+     * @return il numero della Fattura
      */
     public JTextField getNumeroProgressivo() {
         return numeroProgressivo;
     }
 
     /**
-     * metodo che
-     * @param numeroProgressivo
+     * metodo che permette di settare il numero progressivo della Fattura
+     * @param numeroProgressivo rappresenta il numero da inserire
      */
     public void setNumeroProgressivo(JTextField numeroProgressivo) {
         this.numeroProgressivo = numeroProgressivo;
     }
 
     /**
-     * metodo che
-     * @return
+     * metodo che permette di restituire il tipo di Fattura Emessa
+     * @return il tipo di Fattura
      */
     public JTextField getTipo() {
         return tipo;
     }
 
     /**
-     * metodo che
-     * @param tipo
+     * metodo che permette di settare il tipo di Fattura Emessa
+     * @param tipo rappresenta il tipo da inserire
      */
     public void setTipo(JTextField tipo) {
         this.tipo = tipo;
     }
     /**
-     *
-     * @param c
+     * metodo che permette di rimuovere un DDT dalla lista dei DDT
+     * di una Fattura Emessa
+     * @param c rappresenta il DDT da rimuovere
      */
     public void removeDDT(BeanGuiDDT c){
      listDDT.remove(c);}
+
+
         /**
-         *
+         * metodo che permette di inserire un DDT nella lista dei DDT
+         * di una Fattura Emessa
          * @param c
          */
         public void addDDT(BeanGuiDDT c){
