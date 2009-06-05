@@ -162,7 +162,7 @@ public class OpEvento {
 
             // Define the resource list
             while (rs.next()) {
- //modificato peppe      ev = new Evento(rs.getDate(1), rs.getTime(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7));
+      ev = new Evento(rs.getDate(1), rs.getTime(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7));
                 //(1Date data, 2Time ora, 3String luogo, 4String nome, 5String tema, 6String note, 7Integer agenda)
 
 
@@ -224,10 +224,10 @@ public class OpEvento {
 
 
             while (rs.next()) {
-  //modificato peppe              Evento e = new Evento(rs.getDate(1), rs.getTime(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7));
+                Evento e = new Evento(rs.getDate(1), rs.getTime(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7));
                   //(1Date data, 2Time ora, 3String luogo, 4String nome, 5String tema, 6String note, 7Int idAgenda)
 
- //modificato peppe               lista.add(e);
+               lista.add(e);
             }
         }
         catch (SQLException se) {
