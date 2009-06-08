@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package it.seerp.application.bean;
 
 import javax.swing.JTextArea;
@@ -12,8 +7,8 @@ import javax.swing.JTextField;
  *
  * @author matteo
  */
-public class BeanGuiUtente {
-   
+public class BeanGuiUtente
+{
     private JTextField idUtenteTxt;
     private JTextField txtUsername;
     private JTextField txtPassword;
@@ -28,9 +23,7 @@ public class BeanGuiUtente {
     /**
      *
      */
-    public BeanGuiUtente() {
-       
-    }
+    public BeanGuiUtente() {}
 
     /**
      *
@@ -238,5 +231,4 @@ public class BeanGuiUtente {
     public void setTxtUsername(JTextField txtUsername) {
         this.txtUsername = txtUsername;
     }
-
 }
