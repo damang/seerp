@@ -1,8 +1,8 @@
 
 package it.seerp.storage.ejb;
 
-import java.sql.Date;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 /**
  * classe che gestisce le informazioni sui contratti
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Contratto {
 
     private String stato;
-    private Date data;
+    private GregorianCalendar data;
     private Integer durata;
     private String tipo;
     private Integer idContratto;
@@ -37,7 +37,7 @@ public class Contratto {
      * @param dipendente
      * @param extraAzienda
      */
-    public Contratto(String stato, Date data, Integer durata, String tipo,
+    public Contratto(String stato, GregorianCalendar data, Integer durata, String tipo,
             String note, Integer dipendente, Integer extraAzienda) {
         this.stato = stato;
         this.data = data;
@@ -61,7 +61,7 @@ public class Contratto {
      * @param listPagamento
      * @param listServizio
      */
-    public Contratto(String stato, Date data, Integer durata, String tipo,
+    public Contratto(String stato, GregorianCalendar data, Integer durata, String tipo,
             Integer idContratto, String note, Integer dipendente,
             Integer extraAzienda, ArrayList<Pagamento> listPagamento,
             ArrayList<Servizio> listServizio) {
@@ -89,7 +89,7 @@ public class Contratto {
      * @param e
      * @param listS
      */
-    public Contratto(String stt, Date da, Integer d, String t, Integer i,
+    public Contratto(String stt, GregorianCalendar da, Integer d, String t, Integer i,
             String n, Integer dip, Integer e, ArrayList<Servizio> listS) {
         this.listServizio = listS;
         this.stato = stt;
@@ -117,11 +117,6 @@ public class Contratto {
     public void setListServizio(ArrayList<Servizio> listServizio) {
         this.listServizio = listServizio;
     }
-
-
-
-
-
 
     /**
      *  metodo che restituisce l'id dipendente che ha stipulato il contratto
@@ -195,7 +190,7 @@ public class Contratto {
      *  metodo che restituisce la data di stipula del contratto
      * @return : la data di stipula del contratto
      */
-    public Date getData() {
+    public GregorianCalendar getData() {
         return data;
     }
 
@@ -203,7 +198,7 @@ public class Contratto {
      * metodo che setta la data di stipula del contratto
      * @param data la data di stipula del contratto
      */
-    public void setData(Date data) {
+    public void setData(GregorianCalendar data) {
         this.data = data;
     }
 
@@ -302,6 +297,4 @@ public class Contratto {
     public void addServizio(Servizio s) {
         listServizio.add(s);
     }
-
-
 }
