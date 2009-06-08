@@ -44,14 +44,6 @@ public Servizio(String descrizione, Boolean disponibilita, Integer quantita, Str
         this.listContratti = listContratti;
     }
 
-    public ArrayList<Contratto> getListContratti() {
-        return listContratti;
-    }
-
-    public void setListServizio(ArrayList<Contratto> listServizio) {
-        this.listContratti = listServizio;
-    }
-
     /**
      *  metodo che restituisce le note dell'evento
      * @return le note del servizio
@@ -178,6 +170,22 @@ public Servizio(String descrizione, Boolean disponibilita, Integer quantita, Str
      */
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    /**
+     *  metodo che restituisce la lista dei contratti
+     * @return la lista dei contratti
+     */
+    public ArrayList<Contratto> getListContratti() {
+        return listContratti;
+    }
+
+    /**
+     *  metodo che setta la lista dei contratti
+     * @param listContratti la lista dei contratti
+     */
+    public void setListContratti(ArrayList<Contratto> listContratti) {
+        this.listContratti = listContratti;
     }
 
     public void removeContratto(Contratto c) {
