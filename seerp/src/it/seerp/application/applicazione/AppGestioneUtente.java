@@ -1,20 +1,15 @@
 package it.seerp.application.applicazione;
 
-
 import it.seerp.application.Exception.DatiDuplicati;
 import it.seerp.application.Exception.DatiErrati;
 import it.seerp.application.Exception.RicercaFallita;
-import it.seerp.application.bean.BeanGuiResponsabile;
 import it.seerp.application.bean.BeanGuiUtente;
+import it.seerp.application.conversioni.Conversione;
 import it.seerp.application.interfacce.GestioneUtenti;
-import it.seerp.storage.Operazioni.OpResponsabile;
 import it.seerp.storage.Operazioni.OpeUtente;
-import it.seerp.storage.ejb.Responsabile;
 import it.seerp.storage.ejb.Utente;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JTextField;
 
 /**
@@ -22,30 +17,24 @@ import javax.swing.JTextField;
  * degli Utenti
  * @author matteo
  */
-public class AppGestioneUtente implements GestioneUtenti<Utente,BeanGuiUtente> {
+public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> {
 
-        
     /**
      * Metodo che permette di visualizzare la lista degli utenti
      * @return la lista di tutti gli utenti
      */
     public ArrayList<BeanGuiUtente> elenca(ArrayList<BeanGuiUtente> listGui) {
         OpeUtente ope = new OpeUtente();
-        try
-        {
+        try {
             ArrayList<Utente> list = ope.visualizzaElenco();
             int i = 0;
-            for (Utente user : list)
-            {
-                    listGui.add(it.seerp.application.conversioni.Conversione.conversioneUtente(user, listGui.get(i)));
-                    i++;
+            for (Utente user : list) {
+                listGui.add(Conversione.conversioneUtente(user, listGui.get(i)));
+                i++;
             }
-        }
-        catch (SQLException se)
-        {
+        } catch (SQLException se) {
             System.out.println("SQL Exception:");
-            while (se != null)
-            {
+            while (se != null) {
                 System.out.println("State  : " + se.getSQLState());
                 System.out.println("Message: " + se.getMessage());
                 System.out.println("Error  : " + se.getErrorCode());
@@ -72,21 +61,16 @@ public class AppGestioneUtente implements GestioneUtenti<Utente,BeanGuiUtente> {
     public ArrayList<BeanGuiUtente> ricerca(JTextField cognome, JTextField ruolo, ArrayList<BeanGuiUtente> list) throws DatiErrati, RicercaFallita {
 
         OpeUtente ope = new OpeUtente();
-        try
-        {
+        try {
             ArrayList<Utente> listGui = ope.ricerca(cognome.getText(), ruolo.getText());
             int i = 0;
-            for (Utente user : listGui)
-            {
-                    list.add(it.seerp.application.conversioni.Conversione.conversioneUtente(user, list.get(i)));
-                    i++;
+            for (Utente user : listGui) {
+                list.add(it.seerp.application.conversioni.Conversione.conversioneUtente(user, list.get(i)));
+                i++;
             }
-        }
-        catch (SQLException se)
-        {
+        } catch (SQLException se) {
             System.out.println("SQL Exception:");
-            while (se != null)
-            {
+            while (se != null) {
                 System.out.println("State  : " + se.getSQLState());
                 System.out.println("Message: " + se.getMessage());
                 System.out.println("Error  : " + se.getErrorCode());
@@ -103,13 +87,12 @@ public class AppGestioneUtente implements GestioneUtenti<Utente,BeanGuiUtente> {
      */
     public void elimina(BeanGuiUtente user) {
         OpeUtente ope = new OpeUtente();
-        Utente ut= it.seerp.application.conversioni.Conversione.conversioneUtente(user);
+        Utente ut = it.seerp.application.conversioni.Conversione.conversioneUtente(user);
         try {
             ope.elimina(ut);
         } catch (SQLException ex) {
-           System.out.println("SQL Exception:");
-              while (ex != null)
-            {
+            System.out.println("SQL Exception:");
+            while (ex != null) {
                 System.out.println("State  : " + ex.getSQLState());
                 System.out.println("Message: " + ex.getMessage());
                 System.out.println("Error  : " + ex.getErrorCode());
@@ -124,14 +107,13 @@ public class AppGestioneUtente implements GestioneUtenti<Utente,BeanGuiUtente> {
      * l'utente che si vuole eliminare logicamente
      */
     public void eliminazioneLogica(BeanGuiUtente user) {
-         OpeUtente ope = new OpeUtente();
-        Utente ut= it.seerp.application.conversioni.Conversione.conversioneUtente(user);
+        OpeUtente ope = new OpeUtente();
+        Utente ut = it.seerp.application.conversioni.Conversione.conversioneUtente(user);
         try {
             ope.eliminaLogica(ut);
         } catch (SQLException ex) {
-           System.out.println("SQL Exception:");
-              while (ex != null)
-            {
+            System.out.println("SQL Exception:");
+            while (ex != null) {
                 System.out.println("State  : " + ex.getSQLState());
                 System.out.println("Message: " + ex.getMessage());
                 System.out.println("Error  : " + ex.getErrorCode());
@@ -154,16 +136,12 @@ public class AppGestioneUtente implements GestioneUtenti<Utente,BeanGuiUtente> {
     public BeanGuiUtente inserisci(BeanGuiUtente user) throws DatiErrati, DatiDuplicati {
         OpeUtente a = new OpeUtente();
         Utente serv = it.seerp.application.conversioni.Conversione.conversioneUtente(user);
-        try
-        {
+        try {
             a.inserimento(serv);
-            user=it.seerp.application.conversioni.Conversione.conversioneUtente(serv, user);
-        }
-        catch (SQLException se)
-        {
+            user = it.seerp.application.conversioni.Conversione.conversioneUtente(serv, user);
+        } catch (SQLException se) {
             System.out.println("SQL Exception:");
-            while (se != null)
-            {
+            while (se != null) {
                 System.out.println("State  : " + se.getSQLState());
                 System.out.println("Message: " + se.getMessage());
                 System.out.println("Error  : " + se.getErrorCode());
@@ -185,16 +163,12 @@ public class AppGestioneUtente implements GestioneUtenti<Utente,BeanGuiUtente> {
     public BeanGuiUtente modifica(BeanGuiUtente user) throws DatiErrati {
         OpeUtente ope = new OpeUtente();
         Utente utente = it.seerp.application.conversioni.Conversione.conversioneUtente(user);
-        try
-        {
+        try {
             utente = ope.modifica(utente);
             user = it.seerp.application.conversioni.Conversione.conversioneUtente(utente, user);
-        }
-        catch (SQLException se)
-        {
+        } catch (SQLException se) {
             System.out.println("SQL Exception:");
-            while (se != null)
-            {
+            while (se != null) {
                 System.out.println("State  : " + se.getSQLState());
                 System.out.println("Message: " + se.getMessage());
                 System.out.println("Error  : " + se.getErrorCode());
@@ -203,7 +177,6 @@ public class AppGestioneUtente implements GestioneUtenti<Utente,BeanGuiUtente> {
         }
         return user;
     }
-    
 
     /**
      * Metodo che permette di visualizzare i dati di un utente
@@ -215,18 +188,14 @@ public class AppGestioneUtente implements GestioneUtenti<Utente,BeanGuiUtente> {
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui i dati inseriti sono errati
      */
-    public BeanGuiUtente visualizzaDati(JTextField user,BeanGuiUtente beanGui) throws DatiErrati {
+    public BeanGuiUtente visualizzaDati(JTextField user, BeanGuiUtente beanGui) throws DatiErrati {
         OpeUtente ope = new OpeUtente();
-        try
-        {
+        try {
             Utente utente = ope.visualizza(Integer.parseInt(user.getText()));
-            beanGui = it.seerp.application.conversioni.Conversione.conversioneUtente(utente,beanGui);
-        }
-        catch (SQLException se)
-        {
+            beanGui = it.seerp.application.conversioni.Conversione.conversioneUtente(utente, beanGui);
+        } catch (SQLException se) {
             System.out.println("SQL Exception:");
-            while (se != null)
-            {
+            while (se != null) {
                 System.out.println("State  : " + se.getSQLState());
                 System.out.println("Message: " + se.getMessage());
                 System.out.println("Error  : " + se.getErrorCode());
@@ -235,5 +204,4 @@ public class AppGestioneUtente implements GestioneUtenti<Utente,BeanGuiUtente> {
         }
         return beanGui;
     }
-
 }
