@@ -1,7 +1,6 @@
 package it.seerp.storage.ejb;
 
-import java.sql.Date;
-import java.sql.Time;
+import java.util.GregorianCalendar;
 
 /**
  *classe utilizzata per gestire un evento
@@ -13,8 +12,8 @@ public class Evento {
     private String tema;
     private String nome;
     private String note;
-    private Date data;
-    private Time ora;
+    private GregorianCalendar data;
+    private GregorianCalendar ora;
     private int idEvento;
     private Integer agenda;
     private Boolean notifica;
@@ -34,7 +33,7 @@ public class Evento {
     public Evento()
     {}
 
-    public Evento(String luogo, String tema, String nome, String note, Date data, Time ora, int idEvento, int agenda, Boolean not) {
+    public Evento(String luogo, String tema, String nome, String note, GregorianCalendar data, GregorianCalendar ora, int idEvento, int agenda, Boolean not) {
         this.luogo = luogo;
         this.notifica = not;
         this.tema = tema;
@@ -114,7 +113,7 @@ public class Evento {
      * metodo che restituisce la data dell'evento
      * @return data la data dell'evento
      */
-    public Date getData() {
+    public GregorianCalendar getData() {
         return data;
     }
 
@@ -122,7 +121,7 @@ public class Evento {
      * metodo che setta la data dell'evento
      * @param data la data dell'evento
      */
-    public void setData(Date data) {
+    public void setData(GregorianCalendar data) {
         this.data = data;
     }
 
@@ -162,7 +161,7 @@ public class Evento {
      * metodo che restituisce l'ora dell'evento
      * @return ora dell'evento
      */
-    public Time getOra() {
+    public GregorianCalendar getOra() {
         return ora;
     }
 
@@ -170,7 +169,7 @@ public class Evento {
      * metodo che setta l'ora dell'evento
      * @param ora l'ora dell'evento
      */
-    public void setOra(Time ora) {
+    public void setOra(GregorianCalendar ora) {
         this.ora = ora;
     }
 
