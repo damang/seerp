@@ -1,4 +1,3 @@
-
 package it.seerp.storage.ejb;
 
 /**
@@ -18,8 +17,8 @@ public class Utente {
     private String ruolo;
     private Boolean visible;
 
-    public Utente()
-    {}
+    public Utente() {
+    }
 
     /**
      * costruttore
@@ -34,8 +33,7 @@ public class Utente {
      * @param note
      * @param v
      */
-
-    public Utente(Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String ruolo, String note,Boolean v) {
+    public Utente(Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String ruolo, String note, Boolean v) {
         this.idUtente = idUtente;
         this.username = username;
         this.password = password;
@@ -45,11 +43,11 @@ public class Utente {
         this.email = email;
         this.note = note;
         this.ruolo = ruolo;
-        this.visible=v;
+        this.visible = v;
     }
 
     /**
-        * metodo che restituisce la visibilita dell utente
+     * metodo che restituisce la visibilita dell utente
      * @return la visibilita dell'utente
      */
     public String getRuolo() {
@@ -57,14 +55,12 @@ public class Utente {
     }
 
     /**
-        * metodo che setta la visibilita dell utente
+     * metodo che setta la visibilita dell utente
      * @param visibile la visibilita dell'utente
      */
     public void setVisible(Boolean visible) {
         this.visible = visible;
     }
-    
-    
 
     /**
      * metodo che restituisce la visibilita dell utente
@@ -73,8 +69,6 @@ public class Utente {
     public Boolean getVisible() {
         return visible;
     }
-
-
 
     /**
      * ritorne le note inserite
@@ -91,7 +85,6 @@ public class Utente {
     public void setNote(String note) {
         this.note = note;
     }
-
 
     /**
      * restituisce la città dove l'utente risiede
@@ -149,7 +142,7 @@ public class Utente {
         return username;
     }
 
-     /**
+    /**
      * setta il ruolo dell'utente
      * @param ruolo di tipo stringa
      */
@@ -212,6 +205,4 @@ public class Utente {
     public void setUsername(String username) {
         this.username = username;
     }
-
-
 }

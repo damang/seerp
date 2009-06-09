@@ -68,8 +68,7 @@ public class OpeeContratto implements OpeEntity<Contratto,Integer> {
      * metodo che ricerca i contratti associati a quel dipendente con identificativo uguale a id
      * @param id identificativo del dipendente
      * @return una lista dei contratti ricercati in base all'identificati vo del dipendente
-     * @throws java.sql.SQLException
-     * 
+     * @throws java.sql.SQLException     
      */
     public ArrayList<Contratto> ricercaPerDipendente(Integer id) throws SQLException {
         ArrayList<Contratto> list = new ArrayList<Contratto>();

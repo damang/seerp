@@ -13,48 +13,43 @@ import java.sql.SQLException;
  *
  * @author Ila
  */
-public class OpAreaPersonale extends OpPersonale
-{
+public class OpAreaPersonale extends OpPersonale {
+
     @Override
     public Personale visualizzaDati(Integer id) throws SQLException {
 
         /** Metodo che permette la visualizzazione dei dettagli
- * di un membro del personale nella propria area personale
-     * @param id
-     * id del membro del personale
-     * @return il bean con i dettagli del membro del personale
-     * @throws java.sql.SQLException
-     */
-
+         * di un membro del personale nella propria area personale
+         * @param id
+         * id del membro del personale
+         * @return il bean con i dettagli del membro del personale
+         * @throws java.sql.SQLException
+         */
         return super.visualizzaDati(id);
     }
 
-   public Utente modificaPassword (Utente u) throws SQLException, DatiErrati {
+    public Utente modificaPassword(Utente u) throws SQLException, DatiErrati {
 
 
-      // throw new UnsupportedOperationException("Not supported yet.");
-           Connection con = null;
+        // throw new UnsupportedOperationException("Not supported yet.");
+        Connection con = null;
         PreparedStatement stmt = null;
-         Utente ute=new Utente();
+        Utente ute = new Utente();
 
         try {
             // Obtain a db connection
             con = ConnectionPool.getConnection();
-            // Obtain a db connection
-            con = ConnectionPool.getConnection();
 
             // Create a statement
-            stmt = con.prepareStatement("UPDATE Utente SET (?)"
-                                        +"where idUtente="+ ute.getIdUtente() );
-            stmt.setString(1,ute.getPassword());
+            stmt = con.prepareStatement("UPDATE Utente SET (?)" + "where idUtente=" + ute.getIdUtente());
+            stmt.setString(1, ute.getPassword());
 
 
             stmt.execute();
-                        // Force the commit
+            // Force the commit
             con.commit();
-            ute= this.visualizza(ute.getIdUtente());
-        }
-        // Force the commit
+            ute = this.visualizza(ute.getIdUtente());
+        } // Force the commit
         catch (SQLException se) {
             System.out.println("SQL Exception:");
 
@@ -75,8 +70,6 @@ public class OpAreaPersonale extends OpPersonale
                 ConnectionPool.releaseConnection(con);
             }
         }
-      return ute;
-   }
-
-
+        return ute;
+    }
 }
