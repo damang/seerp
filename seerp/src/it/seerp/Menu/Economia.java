@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * Economia.java
  *
  * Created on 29-mag-2009, 3.42.04
