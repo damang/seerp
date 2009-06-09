@@ -11,6 +11,7 @@ import it.seerp.Gui.frame.ObservervableJTabbedPanel;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 
 /**
  *
@@ -18,18 +19,22 @@ import javax.swing.JPanel;
  */
 public class AreaPersonaleButton extends ObserverButton implements CommandInterface {
 
-    protected ObservervableJTabbedPanel tabbedPane;
+    protected JTabbedPane tabbedPane;
     private JPanel menu;
+    AreaPersonalePanel panel;
 
     /**
      *
      * @param gruppoFinestreUpdate
      * @param aThis
      */
-    public AreaPersonaleButton(ObservervableJTabbedPanel pan, JPanel menu, ActionListener act) {
+    public AreaPersonaleButton(JTabbedPane pan, JPanel menu, ActionListener act) {
         this.tabbedPane = pan;
         this.menu = menu;
+
+        this.panel=new AreaPersonalePanel();
         this.addActionListener(act);
+        panel.register(this);
     }
 
     public AreaPersonaleButton() {
@@ -45,20 +50,20 @@ public class AreaPersonaleButton extends ObserverButton implements CommandInterf
             isPresente = true;
         
 
-            AreaPersonalePanel panel = new AreaPersonalePanel();
+          
             panel.repaint();
             this.tabbedPane.addTab("Area Personale", panel);
-            tabbedPane.register(this);
+            System.out.println(this.tabbedPane.getTabCount()-1);
+            ButtonTabComponent button=new ButtonTabComponent(this.tabbedPane,this.panel,this.menu);
+            this.tabbedPane.setTabComponentAt(this.tabbedPane.getTabCount()-1,button  );
             panel.setVisible(true);
             panel.repaint();
 
             
         }
 
-         JOptionPane.showMessageDialog(null, this.tabbedPane.getTabbedPane().getSelectedIndex());
+         
 
-
-        this.tabbedPane.repaint();
 
     }
 }
