@@ -451,7 +451,6 @@ public class OpPersonale extends OpeUtente {
 
         return personale;
 
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     public ArrayList<Permesso> getPermessiPersonale(Integer id) throws SQLException {
@@ -467,8 +466,7 @@ public class OpPersonale extends OpeUtente {
             // Create a statement
             stmt = con.createStatement();
             // Execute the query
-            rs = stmt.executeQuery("select *" +
-                    "  from personale, permessoAssociato, permesso" + " where idPersonale=personale + "and permesso=idPermesso;" + "and idPersonale=" + id);
+            rs = stmt.executeQuery("select *" + "  from personale, permessoAssociato, permesso" + " where idPersonale=personale + "and permesso=idPermesso;" + "and idPersonale=" + id");
 
             while (rs.next()) {
                 Permesso permesso = new Permesso(rs.getInt(1), rs.getString(2));
