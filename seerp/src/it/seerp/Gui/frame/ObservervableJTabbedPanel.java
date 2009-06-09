@@ -90,8 +90,7 @@ public class ObservervableJTabbedPanel extends JPanel implements Observable {
     public void addTab(String messaggio, JPanel pan) {
         // System.out.println(this.jTabbedPane2);
         this.jTabbedPane2.addTab(messaggio, pan);
-        this.jTabbedPane2.setTabComponentAt(this.jTabbedPane2.getTabCount() - 1,
-               new ButtonTabComponent(this));
+       
 
     }
 
