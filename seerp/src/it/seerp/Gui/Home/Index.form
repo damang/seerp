@@ -107,12 +107,10 @@
               <Component id="jXTaskPaneContainer1" min="-2" pref="214" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="observervableJTabbedPanel1" pref="1253" max="32767" attributes="0"/>
+                  <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTabbedPanePrincipale" min="-2" pref="490" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace min="-2" pref="580" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -120,15 +118,22 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="observervableJTabbedPanel1" pref="749" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jTabbedPanePrincipale" min="-2" pref="588" max="-2" attributes="0"/>
+              <EmptySpace pref="167" max="32767" attributes="0"/>
           </Group>
-          <Component id="jXTaskPaneContainer1" alignment="0" pref="848" max="32767" attributes="0"/>
+          <Component id="jXTaskPaneContainer1" alignment="0" pref="851" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
+    <Container class="javax.swing.JTabbedPane" name="jTabbedPanePrincipale">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="jTabbedPanePrincipale" noResource="true"/>
+      </Properties>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+    </Container>
     <Container class="javax.swing.JPanel" name="jPanel2">
       <Properties>
         <Property name="name" type="java.lang.String" value="jPanel2" noResource="true"/>
@@ -160,11 +165,6 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="it.seerp.Gui.frame.ObservervableJTabbedPanel" name="observervableJTabbedPanel1">
-      <Properties>
-        <Property name="name" type="java.lang.String" value="observervableJTabbedPanel1" noResource="true"/>
-      </Properties>
-    </Component>
     <Container class="org.jdesktop.swingx.JXTaskPaneContainer" name="jXTaskPaneContainer1">
       <Properties>
         <Property name="name" type="java.lang.String" value="jXTaskPaneContainer1" noResource="true"/>
@@ -221,15 +221,34 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="172" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="areaUtenteButton1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="37" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="areaUtenteButton1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="42" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
+              <SubComponents>
+                <Component class="it.seerp.bottoni.Nuovo.AreaUtenteButton" name="areaUtenteButton1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="areaUtenteButton1"/>
+                    <Property name="name" type="java.lang.String" value="areaUtenteButton1" noResource="true"/>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale, this.jPanel1,this)"/>
+                  </AuxValues>
+                </Component>
+              </SubComponents>
             </Container>
           </SubComponents>
         </Container>
@@ -323,7 +342,7 @@
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="areaPersonaleButton1.addActionListener(this);"/>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.AreaPersonaleButton(this.observervableJTabbedPanel1, this.menuAreaPersonale1, this)"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.AreaPersonaleButton(this.jTabbedPanePrincipale, this.menuAreaPersonale1, this)"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
