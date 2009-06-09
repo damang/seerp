@@ -30,19 +30,20 @@ public class Index extends javax.swing.JFrame implements ActionListener {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPanePrincipale = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         menuAreaPersonale1 = new it.seerp.Menu.MenuAreaPersonale();
-        observervableJTabbedPanel1 = new it.seerp.Gui.frame.ObservervableJTabbedPanel();
         jXTaskPaneContainer1 = new org.jdesktop.swingx.JXTaskPaneContainer();
         jXPanel1 = new org.jdesktop.swingx.JXPanel();
         jXLabel1 = new org.jdesktop.swingx.JXLabel();
         jXTaskPane1 = new org.jdesktop.swingx.JXTaskPane();
         jPanel1 = new javax.swing.JPanel();
+        areaUtenteButton1 = new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale, this.jPanel1,this);
         jXTaskPane2 = new org.jdesktop.swingx.JXTaskPane();
         jXPanel2 = new org.jdesktop.swingx.JXPanel();
         jXTaskPane3 = new org.jdesktop.swingx.JXTaskPane();
         jXPanel3 = new org.jdesktop.swingx.JXPanel();
-        areaPersonaleButton1 = new it.seerp.bottoni.Nuovo.AreaPersonaleButton(this.observervableJTabbedPanel1, this.menuAreaPersonale1, this);
+        areaPersonaleButton1 = new it.seerp.bottoni.Nuovo.AreaPersonaleButton(this.jTabbedPanePrincipale, this.menuAreaPersonale1, this);
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
@@ -59,6 +60,8 @@ public class Index extends javax.swing.JFrame implements ActionListener {
         aboutMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTabbedPanePrincipale.setName("jTabbedPanePrincipale"); // NOI18N
 
         jPanel2.setName("jPanel2"); // NOI18N
 
@@ -78,8 +81,6 @@ public class Index extends javax.swing.JFrame implements ActionListener {
         );
 
         menuAreaPersonale1.setVisible(false);
-
-        observervableJTabbedPanel1.setName("observervableJTabbedPanel1"); // NOI18N
 
         jXTaskPaneContainer1.setName("jXTaskPaneContainer1"); // NOI18N
 
@@ -113,15 +114,24 @@ public class Index extends javax.swing.JFrame implements ActionListener {
 
         jPanel1.setName("jPanel1"); // NOI18N
 
+        areaUtenteButton1.setText("areaUtenteButton1");
+        areaUtenteButton1.setName("areaUtenteButton1"); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 172, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(areaUtenteButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(areaUtenteButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         jXTaskPane1.getContentPane().add(jPanel1);
@@ -155,14 +165,14 @@ public class Index extends javax.swing.JFrame implements ActionListener {
 
         jXPanel3.setName("jXPanel3"); // NOI18N
 
-        areaPersonaleButton1.setBorder(null);
         areaPersonaleButton1.setForeground(new java.awt.Color(0, 0, 255));
         areaPersonaleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/HP-Control-32x32.png"))); // NOI18N
         areaPersonaleButton1.setText("Area Personale");
+        areaPersonaleButton1.setBorder(null);
         areaPersonaleButton1.setBorderPainted(false);
         areaPersonaleButton1.setContentAreaFilled(false);
         areaPersonaleButton1.setFocusPainted(false);
-        areaPersonaleButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        areaPersonaleButton1.setFont(new java.awt.Font("Tahoma", 1, 11));
         areaPersonaleButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         areaPersonaleButton1.setName("areaPersonaleButton1"); // NOI18N
         areaPersonaleButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -251,19 +261,18 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                 .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addComponent(observervableJTabbedPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1253, Short.MAX_VALUE)))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(580, 580, 580))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(observervableJTabbedPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE)
-                .addContainerGap())
-            .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, 848, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(167, Short.MAX_VALUE))
+            .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, 851, Short.MAX_VALUE)
         );
 
         pack();
@@ -296,6 +305,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
     private it.seerp.bottoni.Nuovo.AreaPersonaleButton areaPersonaleButton1;
+    private it.seerp.bottoni.Nuovo.AreaUtenteButton areaUtenteButton1;
     private javax.swing.JMenuItem contentsMenuItem;
     private javax.swing.JMenuItem copyMenuItem;
     private javax.swing.JMenuItem cutMenuItem;
@@ -306,6 +316,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JMenu helpMenu;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTabbedPane jTabbedPanePrincipale;
     private org.jdesktop.swingx.JXLabel jXLabel1;
     private org.jdesktop.swingx.JXPanel jXPanel1;
     private org.jdesktop.swingx.JXPanel jXPanel2;
@@ -316,7 +327,6 @@ public class Index extends javax.swing.JFrame implements ActionListener {
     private org.jdesktop.swingx.JXTaskPaneContainer jXTaskPaneContainer1;
     private it.seerp.Menu.MenuAreaPersonale menuAreaPersonale1;
     private javax.swing.JMenuBar menuBar;
-    private it.seerp.Gui.frame.ObservervableJTabbedPanel observervableJTabbedPanel1;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem pasteMenuItem;
     private javax.swing.JMenuItem saveAsMenuItem;
