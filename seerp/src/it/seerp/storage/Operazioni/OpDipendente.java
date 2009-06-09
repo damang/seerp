@@ -425,8 +425,7 @@ public class OpDipendente extends OpPersonale {
             // Create a statement
             stmt = con.createStatement();
             // Execute the query
-            rs = stmt.executeQuery("SELECT * FROM Dipendente+
-                    "where idUtente=" + id);
+            rs = stmt.executeQuery("SELECT * FROM Dipendente where idUtente=" + id);
 
             // Define the resource list
             while (rs.next()) {
