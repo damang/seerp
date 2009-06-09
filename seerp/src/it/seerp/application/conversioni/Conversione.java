@@ -1137,9 +1137,7 @@ public class Conversione
      * @return il Bean Gui convertito
      */
     public static BeanGuiAppuntamento conversioneAppuntamento(Appuntamento b,BeanGuiAppuntamento app)
-    {
-        
-
+    {       
         JTextField c = new JTextField();
         c.setText(b.getData().toString());
         app.setData(c);
