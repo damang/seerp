@@ -49,7 +49,6 @@ public class AreaPersonaleButton extends ObserverButton implements CommandInterf
 
             isPresente = true;
         
-
           
             panel.repaint();
             this.tabbedPane.addTab("Area Personale", panel);
@@ -59,8 +58,6 @@ public class AreaPersonaleButton extends ObserverButton implements CommandInterf
                System.out.println(tabbedPane);
             panel.setVisible(true);
             panel.repaint();
-
-            
         }
 
          
