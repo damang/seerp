@@ -61,6 +61,7 @@ public class AreaUtenteButton extends ObserverButton   implements CommandInterfa
             this.tabbedPane.setTabComponentAt(this.tabbedPane.getTabCount()-1,button );
                System.out.println(tabbedPane);
             panel.setVisible(true);
+            menu.setVisible(true);
             panel.repaint();
 
 
