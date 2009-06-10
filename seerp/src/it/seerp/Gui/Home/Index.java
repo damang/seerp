@@ -48,7 +48,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
         jXPanel2 = new org.jdesktop.swingx.JXPanel();
         jXTaskPane3 = new org.jdesktop.swingx.JXTaskPane();
         jXPanel3 = new org.jdesktop.swingx.JXPanel();
-        areaPersonaleButton1 = new it.seerp.bottoni.Nuovo.AreaPersonaleButton()/*(this.jTabbedPanePrincipale, this.menuAreaPersonale1, this)*/;
+        areaPersonaleButton1 = new it.seerp.bottoni.Nuovo.AreaPersonaleButton(this.jTabbedPanePrincipale, this.menuAreaPersonale1, this);
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
