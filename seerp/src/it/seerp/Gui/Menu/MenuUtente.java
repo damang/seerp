@@ -35,15 +35,41 @@ public class MenuUtente extends javax.swing.JPanel implements ActionListener {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        aggiungiButton1 = new it.seerp.Gui.Menu.AggiungiButton(this);
+        eliminaButton1 = new it.seerp.Gui.Menu.EliminaButton(this);
+        modificaButton1 = new it.seerp.Gui.Menu.ModificaButton(this);
+
+        aggiungiButton1.setText("aggiungiButton1");
+        aggiungiButton1.setName("aggiungiButton1"); // NOI18N
+
+        eliminaButton1.setText("eliminaButton1");
+        eliminaButton1.setName("eliminaButton1"); // NOI18N
+
+        modificaButton1.setText("modificaButton1");
+        modificaButton1.setName("modificaButton1"); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(aggiungiButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(eliminaButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(modificaButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(aggiungiButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(eliminaButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(modificaButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -54,6 +80,9 @@ public class MenuUtente extends javax.swing.JPanel implements ActionListener {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private it.seerp.Gui.Menu.AggiungiButton aggiungiButton1;
+    private it.seerp.Gui.Menu.EliminaButton eliminaButton1;
+    private it.seerp.Gui.Menu.ModificaButton modificaButton1;
     // End of variables declaration//GEN-END:variables
 
 }
