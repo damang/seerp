@@ -34,13 +34,13 @@ public class Index extends javax.swing.JFrame implements ActionListener {
         jTabbedPanePrincipale = new javax.swing.JTabbedPane();
         menu = new javax.swing.JPanel();
         menuAreaPersonale1 = new it.seerp.Menu.MenuAreaPersonale();
-        menuUtente1 = new MenuUtente();
+        menuUtente1 = new it.seerp.Gui.Menu.MenuUtente();
         jXTaskPaneContainer1 = new org.jdesktop.swingx.JXTaskPaneContainer();
         jXPanel1 = new org.jdesktop.swingx.JXPanel();
         jXLabel1 = new org.jdesktop.swingx.JXLabel();
         jXTaskPane1 = new org.jdesktop.swingx.JXTaskPane();
         jPanel1 = new javax.swing.JPanel();
-        areaUtenteButton1 = new AreaUtenteButton(this.jTabbedPanePrincipale, this.menuUtente1,this);
+        areaUtenteButton1 = new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this);
         jXTaskPane2 = new org.jdesktop.swingx.JXTaskPane();
         jXPanel2 = new org.jdesktop.swingx.JXPanel();
         jXTaskPane3 = new org.jdesktop.swingx.JXTaskPane();
@@ -78,23 +78,22 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             .addGroup(menuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(menuAreaPersonale1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(menuUtente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(244, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(menuUtente1, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
+                .addContainerGap())
         );
         menuLayout.setVerticalGroup(
             menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
-                .addComponent(menuAreaPersonale1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+            .addGroup(menuLayout.createSequentialGroup()
+                .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(menuAreaPersonale1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+                    .addGroup(menuLayout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(menuUtente1, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
-                .addComponent(menuUtente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
         );
 
         menuAreaPersonale1.setVisible(false);
-        menuUtente1.setVisible(false);
 
         jXTaskPaneContainer1.setName("jXTaskPaneContainer1"); // NOI18N
 
@@ -135,17 +134,17 @@ public class Index extends javax.swing.JFrame implements ActionListener {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(27, Short.MAX_VALUE)
                 .addComponent(areaUtenteButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addContainerGap()
                 .addComponent(areaUtenteButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         jXTaskPane1.getContentPane().add(jPanel1);
@@ -283,9 +282,9 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(35, 35, 35)
                 .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addContainerGap(104, Short.MAX_VALUE))
             .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, 851, Short.MAX_VALUE)
         );
 
