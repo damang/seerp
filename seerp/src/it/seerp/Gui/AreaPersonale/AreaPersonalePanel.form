@@ -26,7 +26,11 @@
               <Component id="jXLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="538" max="32767" attributes="0"/>
           </Group>
-          <Component id="jTabbedPane1" alignment="0" max="32767" attributes="0"/>
+          <Component id="jTabbedPane1" alignment="0" pref="726" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jXLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -35,8 +39,10 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jXLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTabbedPane1" max="32767" attributes="0"/>
-              <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
+              <Component id="jTabbedPane1" pref="502" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jXLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -88,7 +94,7 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jPanel6" min="-2" max="-2" attributes="2"/>
-                              <EmptySpace pref="38" max="32767" attributes="0"/>
+                              <EmptySpace pref="54" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -400,7 +406,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" pref="675" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="679" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -408,7 +414,7 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jScrollPane1" pref="219" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="274" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -444,8 +450,8 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Dati LogIn">
-                <Property name="tabTitle" type="java.lang.String" value="Dati LogIn"/>
+              <JTabbedPaneConstraints tabName="Modifica Password">
+                <Property name="tabTitle" type="java.lang.String" value="Modifica Password"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -453,39 +459,39 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel11" min="-2" max="-2" attributes="2"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel12" min="-2" max="-2" attributes="1"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="jPanel13" alignment="0" max="32767" attributes="1"/>
+                          <Component id="jPanel12" alignment="0" max="32767" attributes="1"/>
+                      </Group>
+                      <EmptySpace pref="154" max="32767" attributes="0"/>
                       <Component id="BottoneSalva" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="BottoneAnnulla" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="179" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jPanel11" alignment="0" min="-2" max="-2" attributes="1"/>
-                                  <Component id="jPanel12" alignment="0" min="-2" max="-2" attributes="1"/>
-                              </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                              <Component id="BottoneSalva" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="BottoneAnnulla" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="BottoneSalva" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="BottoneAnnulla" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jPanel12" alignment="0" max="32767" attributes="1"/>
+                              <Component id="jPanel11" alignment="0" max="32767" attributes="1"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="356" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jPanel13" min="-2" max="-2" attributes="1"/>
+                      <EmptySpace pref="341" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -545,7 +551,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPasswordField1" pref="133" max="32767" attributes="0"/>
+                          <Component id="jPasswordField1" pref="165" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -618,6 +624,44 @@
                 <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="BottoneSalva.addActionListener(this);"/>
               </AuxValues>
             </Component>
+            <Container class="javax.swing.JPanel" name="jPanel13">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="Conferma Password"/>
+                  </Border>
+                </Property>
+                <Property name="name" type="java.lang.String" value="jPanel13" noResource="true"/>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jPasswordField2" pref="165" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jPasswordField2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JPasswordField" name="jPasswordField2">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="jPasswordField1"/>
+                    <Property name="name" type="java.lang.String" value="jPasswordField2" noResource="true"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
       </SubComponents>
@@ -632,6 +676,21 @@
           <Font name="Tahoma" size="24" style="1"/>
         </Property>
         <Property name="name" type="java.lang.String" value="jXLabel2" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="org.jdesktop.swingx.JXLabel" name="jXLabel1">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" noResource="true" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/it/seerp/icone/128x128/HP-Control-128x128.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Area Personale"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="24" style="1"/>
+        </Property>
+        <Property name="name" type="java.lang.String" value="jXLabel1" noResource="true"/>
       </Properties>
     </Component>
   </SubComponents>

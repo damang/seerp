@@ -94,9 +94,6 @@ public class ObservervableJTabbedPanel extends JPanel implements Observable {
 
     }
 
-   
-
-
     public JTabbedPane getTabbedPane(){
         return this.jTabbedPane2;
     }
