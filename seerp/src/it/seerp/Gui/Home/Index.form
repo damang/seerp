@@ -414,7 +414,7 @@
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="areaPersonaleButton1.addActionListener(this);"/>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.AreaPersonaleButton()/*(this.jTabbedPanePrincipale, this.menuAreaPersonale1, this)*/"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.AreaPersonaleButton(this.jTabbedPanePrincipale, this.menuAreaPersonale1, this)"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
