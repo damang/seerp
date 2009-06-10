@@ -27,7 +27,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
     /**
      * Metodo che peremette di inserire un nuovo Dipendente
      * @param user il dipendente da inserire
-     */
+
     public void inserisciDipendente(BeanGuiDipendente user) {
         super.inserisci(user);
         OpDipendente a = new OpDipendente();
@@ -48,7 +48,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
     /**
      * Metodo che permette di inserire un nuovo Responsabile
      * @param user
-     */
+     
     public void inserisciResponsabile(BeanGuiResponsabile user) {
         super.inserisci(user);
         OpResponsabile a = new OpResponsabile();
@@ -70,13 +70,13 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * Metodo che permette di modificare i dati di un Dipendente
      * @param user rappresenta il Dipendente da modificare
      * @return il Dipendente modificato
-     */
+     
     public BeanGuiDipendente modificaDipendente(BeanGuiDipendente user) {
         super.modifica(user);
         OpDipendente a = new OpDipendente();
         Dipendente dip = it.seerp.application.conversioni.Conversione.conversioneDipendente(user);
         try {
-            dip = a.modifica(dip);
+            //dip = a.modifica(dip);
 
         } catch (SQLException ex) {
             System.out.println("SQL Exception:");
@@ -117,7 +117,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * Metodo che permette di modificare i dati di un Responsabile
      * @param user il Responsabile da modificare
      * @return il Responsabile modificato
-     */
+  
     public BeanGuiResponsabile modificaResponsabile(BeanGuiResponsabile user) {
         super.modifica(user);
         OpResponsabile a = new OpResponsabile();
@@ -135,5 +135,5 @@ public class AppGestionePersonale extends AppGestioneUtente {
             }
         }
         return it.seerp.application.conversioni.Conversione.conversioneResponsabile(res, user);
-    }
+    }*/
 }

@@ -20,7 +20,7 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
     /**
      * Metodo che permette di inserire un nuovo Contatto
      * @param cont il Contatto che si vuole inserire
-     */
+     
     public void inserisciContatto(BeanGuiContatto cont){
       super.inserisci(cont);
       OpContatto a = new OpContatto();
@@ -43,7 +43,7 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
     /**
      * Metodo che permette di inserire un nuovo Cliente
      * @param clien il Cliente che si vuole inserire
-     */
+     
     public void inserisciCliente(BeanGuiCliente clien){
       super.inserisci(clien);
       OpCliente a = new OpCliente();
@@ -65,7 +65,7 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
     /**
      * Metodo che permette di inserire un nuovo Fornitore
      * @param forn il Fornitore che si vuole inserire
-     */
+     
     public void inserisciFornitore(BeanGuiFornitore forn){
       super.inserisci(forn);
       OpFornitore a = new OpFornitore();
@@ -88,7 +88,7 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
      * Metodo che permette di modificare i dati di un Contatto
      * @param cont il Contatto che si deve modificare
      * @return il Contatto modificato
-     */
+     
     public BeanGuiContatto modificaContatto(BeanGuiContatto cont){
       super.modifica(cont);
       OpContatto a = new OpContatto();
@@ -113,7 +113,7 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
       * Metodo che permette di modificare i dati di un Cliente
       * @param clien il cliente che si deve modificare
       * @return il cliente modificato
-      */
+      
      public BeanGuiCliente modificaCliente(BeanGuiCliente clien){
       super.modifica(clien);
       OpCliente a = new OpCliente();
@@ -138,7 +138,7 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
       * Metodo che permette di modificare i dati di un Fornitore
       * @param forn il Fornitore che si vuole modificare
       * @return il Fornitore modificato
-      */
+      
      public BeanGuiFornitore modificaFornitore(BeanGuiFornitore forn){
       super.modifica(forn);
       OpFornitore a = new OpFornitore();
@@ -157,5 +157,5 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
             }
         }
           return it.seerp.application.conversioni.Conversione.conversioneFornitore(fo, forn);
-      }
+      }*/
 }
