@@ -78,7 +78,7 @@ public class Conversione
         int dipendente = Integer.parseInt(pGui.getDipendente().getText());
         int extraAzienda = Integer.parseInt(pGui.getExtraAzienda().getText());
 
-        Contratto contratto = new Contratto(stato, data, durata, tipo, idContratto, note, dipendente, extraAzienda, listPag, listSer);
+        Contratto contratto = new Contratto()/*(stato, data, durata, tipo, idContratto, note, dipendente, extraAzienda, listPag, listSer)*/;
         
         return contratto;
     }
@@ -136,7 +136,7 @@ public class Conversione
         int agenda = Integer.parseInt(pGui.getAgenda().getText());
         boolean notifica = Boolean.parseBoolean(pGui.getNotifica().getText());
 
-        Evento evento = new Evento(luogo, tema, nome, note, data, ora, idEvento, agenda, notifica);
+        Evento evento = new Evento()/*(luogo, tema, nome, note, data, ora, idEvento, agenda, notifica)*/;
 
         return evento;
     }

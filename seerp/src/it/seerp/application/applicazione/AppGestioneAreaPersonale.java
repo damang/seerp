@@ -13,13 +13,13 @@ import java.util.ArrayList;
  * alla gestionde dellì'Area Personale
  * @author matteo - Tommaso Cattolico
  */
-public class AppGestioneAreaPersonale implements GestioneAreaPersonale<Utente, BeanGuiUtente>
+public class AppGestioneAreaPersonale /*implements GestioneAreaPersonale<Utente, BeanGuiUtente>*/
 {
     /**
      * Metodo che permette di visualizzare tutti i dati relativi ad un utente
      * @param utente rappresenta il Bean grafico dell'utente che si vuole visualizzare
      * @return il Bean Grafico contenente i dati dell'utente
-     */
+     
     public BeanGuiUtente visualizzaDati(BeanGuiUtente beanGui)
     {
         OpAreaPersonale ope = new OpAreaPersonale();
@@ -50,7 +50,7 @@ public class AppGestioneAreaPersonale implements GestioneAreaPersonale<Utente, B
      * @return il Bean grafico modificato
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui i dati inseriti sono errati
-     */
+     
     public BeanGuiUtente modificaPassword(BeanGuiUtente beanGui) throws DatiErrati
     {
         OpAreaPersonale ope = new OpAreaPersonale();
@@ -73,5 +73,5 @@ public class AppGestioneAreaPersonale implements GestioneAreaPersonale<Utente, B
             }
         }
         return beanGui;
-    }
+    }*/
 }
