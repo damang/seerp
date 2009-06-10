@@ -4,7 +4,6 @@
 
 package it.seerp.bottoni.Nuovo;
 
-import it.seerp.Gui.command.ObserverButton;
 import it.seerp.Gui.frame.ObservableJPanel;
 import it.seerp.Gui.frame.ObservervableJTabbedPanel;
 import javax.swing.*;
@@ -61,6 +60,7 @@ public class ButtonTabComponent extends JPanel  {
  
 
  /*   private final static MouseListener buttonMouseListener = new MouseAdapter() {
+        @Override
         public void mouseEntered(MouseEvent e) {
             Component component = e.getComponent();
             if (component instanceof AbstractButton) {
