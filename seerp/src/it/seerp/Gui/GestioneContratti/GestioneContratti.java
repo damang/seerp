@@ -206,7 +206,7 @@ public class GestioneContratti extends javax.swing.JPanel implements ActionListe
 
         jTextField6.setBackground(new java.awt.Color(255, 51, 0));
         jTextField6.setEditable(false);
-        jTextField6.setFont(new java.awt.Font("Tahoma", 1, 11));
+        jTextField6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jTextField6.setForeground(new java.awt.Color(255, 255, 255));
         jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField6.setText("INSOLUTO");
@@ -699,6 +699,7 @@ public class GestioneContratti extends javax.swing.JPanel implements ActionListe
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -711,10 +712,12 @@ public class GestioneContratti extends javax.swing.JPanel implements ActionListe
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
