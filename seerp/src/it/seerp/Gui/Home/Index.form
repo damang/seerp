@@ -107,10 +107,12 @@
               <Component id="jXTaskPaneContainer1" min="-2" pref="214" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="menu" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTabbedPanePrincipale" alignment="0" min="-2" pref="490" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="jTabbedPanePrincipale" pref="664" max="32767" attributes="2"/>
+                      <EmptySpace min="10" pref="10" max="10" attributes="0"/>
+                  </Group>
+                  <Component id="menu" alignment="0" max="32767" attributes="2"/>
               </Group>
-              <EmptySpace min="-2" pref="576" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -118,11 +120,11 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Component id="menu" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-              <Component id="jTabbedPanePrincipale" min="-2" pref="588" max="-2" attributes="0"/>
-              <EmptySpace pref="104" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jTabbedPanePrincipale" min="-2" pref="777" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
-          <Component id="jXTaskPaneContainer1" alignment="0" pref="851" max="32767" attributes="0"/>
+          <Component id="jXTaskPaneContainer1" alignment="0" pref="895" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -144,36 +146,30 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="menuAreaPersonale1" min="-2" pref="117" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="menuUtente1" pref="371" max="32767" attributes="0"/>
+                  <Component id="menuUtente1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
+                  <Component id="menuAreaPersonale1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="301" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="menuAreaPersonale1" alignment="1" pref="113" max="32767" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="11" pref="11" max="11" attributes="0"/>
-                          <Component id="menuUtente1" pref="102" max="32767" attributes="0"/>
-                      </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="menuUtente1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="menuAreaPersonale1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="it.seerp.Menu.MenuAreaPersonale" name="menuAreaPersonale1">
+        <Component class="it.seerp.Gui.Menu.MenuAreaPersonale" name="menuAreaPersonale1">
           <Properties>
             <Property name="name" type="java.lang.String" value="menuAreaPersonale1" noResource="true"/>
           </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="menuAreaPersonale1.setVisible(false);"/>
-          </AuxValues>
         </Component>
         <Component class="it.seerp.Gui.Menu.MenuUtente" name="menuUtente1">
           <Properties>
@@ -238,10 +234,15 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="27" max="32767" attributes="0"/>
-                          <Component id="areaUtenteButton1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="areaUtenteButton1" alignment="0" pref="152" max="32767" attributes="0"/>
+                              <Component id="areaUtenteButton2" alignment="0" pref="152" max="32767" attributes="0"/>
+                              <Component id="areaUtenteButton3" alignment="0" pref="152" max="32767" attributes="0"/>
+                              <Component id="areaUtenteButton4" alignment="0" pref="152" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -250,7 +251,13 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="areaUtenteButton1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="59" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="areaUtenteButton2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="areaUtenteButton3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="areaUtenteButton4" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -258,8 +265,56 @@
               <SubComponents>
                 <Component class="it.seerp.bottoni.Nuovo.AreaUtenteButton" name="areaUtenteButton1">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="areaUtenteButton1"/>
+                    <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/it/seerp/icone/32x32/User-32x32.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Responsabili"/>
+                    <Property name="contentAreaFilled" type="boolean" value="false"/>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="name" type="java.lang.String" value="areaUtenteButton1" noResource="true"/>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this)"/>
+                  </AuxValues>
+                </Component>
+                <Component class="it.seerp.bottoni.Nuovo.AreaUtenteButton" name="areaUtenteButton2">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/it/seerp/icone/32x32/users.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Dipendenti"/>
+                    <Property name="contentAreaFilled" type="boolean" value="false"/>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
+                    <Property name="name" type="java.lang.String" value="areaUtenteButton2" noResource="true"/>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this)"/>
+                  </AuxValues>
+                </Component>
+                <Component class="it.seerp.bottoni.Nuovo.AreaUtenteButton" name="areaUtenteButton3">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/it/seerp/icone/32x32/TruckYellow-32x32.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Fornitori"/>
+                    <Property name="contentAreaFilled" type="boolean" value="false"/>
+                    <Property name="focusable" type="boolean" value="false"/>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
+                    <Property name="name" type="java.lang.String" value="areaUtenteButton3" noResource="true"/>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this)"/>
+                  </AuxValues>
+                </Component>
+                <Component class="it.seerp.bottoni.Nuovo.AreaUtenteButton" name="areaUtenteButton4">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/it/seerp/icone/32x32/community_users.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Clienti"/>
+                    <Property name="contentAreaFilled" type="boolean" value="false"/>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
+                    <Property name="name" type="java.lang.String" value="areaUtenteButton4" noResource="true"/>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this)"/>
@@ -359,7 +414,7 @@
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="areaPersonaleButton1.addActionListener(this);"/>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.AreaPersonaleButton(this.jTabbedPanePrincipale, this.menuAreaPersonale1, this)"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.AreaPersonaleButton()/*(this.jTabbedPanePrincipale, this.menuAreaPersonale1, this)*/"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
