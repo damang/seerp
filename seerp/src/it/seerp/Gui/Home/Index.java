@@ -3,6 +3,7 @@ package it.seerp.Gui.Home;
 
 import configurazioni.CommandInterface;
 import it.seerp.Gui.frame.ObservervableJTabbedPanel;
+import it.seerp.bottoni.Nuovo.AreaUtenteButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
