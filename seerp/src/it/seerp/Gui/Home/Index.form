@@ -108,7 +108,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jTabbedPanePrincipale" pref="664" max="32767" attributes="2"/>
+                      <Component id="jTabbedPanePrincipale" pref="1436" max="32767" attributes="2"/>
                       <EmptySpace min="10" pref="10" max="10" attributes="0"/>
                   </Group>
                   <Component id="menu" alignment="0" max="32767" attributes="2"/>
@@ -121,10 +121,10 @@
           <Group type="102" attributes="0">
               <Component id="menu" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTabbedPanePrincipale" min="-2" pref="777" max="-2" attributes="0"/>
+              <Component id="jTabbedPanePrincipale" min="-2" pref="792" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
-          <Component id="jXTaskPaneContainer1" alignment="0" pref="895" max="32767" attributes="0"/>
+          <Component id="jXTaskPaneContainer1" alignment="0" pref="913" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -147,9 +147,17 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="menuUtente1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                  <Component id="menuUtente2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="menuUtente3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="menuUtente4" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="menuContratti1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="menuAreaPersonale1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="301" max="32767" attributes="0"/>
+                  <EmptySpace pref="178" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -158,9 +166,13 @@
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="menuUtente1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="menuUtente2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="menuUtente3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="menuUtente4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="menuContratti1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="menuAreaPersonale1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="14" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -174,6 +186,26 @@
         <Component class="it.seerp.Gui.Menu.MenuUtente" name="menuUtente1">
           <Properties>
             <Property name="name" type="java.lang.String" value="menuUtente1" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="it.seerp.Gui.Menu.MenuUtente" name="menuUtente2">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="menuUtente2" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="it.seerp.Gui.Menu.MenuUtente" name="menuUtente3">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="menuUtente3" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="it.seerp.Gui.Menu.MenuUtente" name="menuUtente4">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="menuUtente4" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="it.seerp.Gui.Menu.MenuContratti" name="menuContratti1">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="menuContratti1" noResource="true"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -288,7 +320,7 @@
                     <Property name="name" type="java.lang.String" value="areaUtenteButton2" noResource="true"/>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this)"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente2,this)"/>
                   </AuxValues>
                 </Component>
                 <Component class="it.seerp.bottoni.Nuovo.AreaUtenteButton" name="areaUtenteButton3">
@@ -303,7 +335,7 @@
                     <Property name="name" type="java.lang.String" value="areaUtenteButton3" noResource="true"/>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this)"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente3,this)"/>
                   </AuxValues>
                 </Component>
                 <Component class="it.seerp.bottoni.Nuovo.AreaUtenteButton" name="areaUtenteButton4">
@@ -317,7 +349,7 @@
                     <Property name="name" type="java.lang.String" value="areaUtenteButton4" noResource="true"/>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this)"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente4,this)"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
@@ -409,7 +441,7 @@
                     <Property name="name" type="java.lang.String" value="buttonContratti1" noResource="true"/>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.ButtonContratti(this.jTabbedPanePrincipale,this.menuUtente1,this)"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.ButtonContratti(this.jTabbedPanePrincipale,this.menuContratti1,this)"/>
                   </AuxValues>
                 </Component>
                 <Component class="it.seerp.bottoni.Nuovo.ButtonServizi" name="buttonServizi1">
