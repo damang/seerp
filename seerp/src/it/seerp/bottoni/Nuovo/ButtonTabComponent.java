@@ -5,11 +5,8 @@
 package it.seerp.bottoni.Nuovo;
 
 import it.seerp.Gui.frame.ObservableJPanel;
-import it.seerp.Gui.frame.ObservervableJTabbedPanel;
 import javax.swing.*;
-import javax.swing.plaf.basic.BasicButtonUI;
 import java.awt.*;
-import java.awt.event.*;
 
 /**
  * Component to be used as tabComponent;
@@ -50,13 +47,14 @@ public class ButtonTabComponent extends JPanel  {
         //add more space between the label and the button
         label.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 5));
         //tab button
-        JButton button = new TabButton(this.pane,this.panel,this.menu, pane.indexOfComponent(panel));
+        JButton button = new TabButton(this.pane,this.panel,this.menu, pane.indexOfComponent(this.panel));
       
         add(button);
         //add more space to the top of the component
         setBorder(BorderFactory.createEmptyBorder(2, 0, 0, 0));
     }
 
+  
  
 
  /*   private final static MouseListener buttonMouseListener = new MouseAdapter() {
