@@ -11,17 +11,17 @@
 
 package it.seerp.Gui.GestioneServizi;
 
-import it.seerp.Gui.GestioneContratti.*;
+import configurazioni.CommandInterface;
+import it.seerp.Gui.frame.ObservableJPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import org.jdesktop.swingx.decorator.Highlighter;
 
 
 /**
  *
  * @author Andrea
  */
-public class GestioneServizi extends javax.swing.JPanel implements ActionListener {
+public class GestioneServizi extends ObservableJPanel implements ActionListener {
 
     
 
@@ -29,6 +29,8 @@ public class GestioneServizi extends javax.swing.JPanel implements ActionListene
     public GestioneServizi() {
         initComponents();
     }
+
+
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -665,10 +667,7 @@ public class GestioneServizi extends javax.swing.JPanel implements ActionListene
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -719,4 +718,9 @@ public class GestioneServizi extends javax.swing.JPanel implements ActionListene
     private org.jdesktop.swingx.JXTable jXTable3;
     // End of variables declaration//GEN-END:variables
 
+     public void actionPerformed(ActionEvent e) {
+       CommandInterface cmd=(CommandInterface) e.getSource();
+       cmd.execute();
+
+    }
 }
