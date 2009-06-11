@@ -49,7 +49,7 @@
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jTabbedPane1" alignment="1" pref="567" max="32767" attributes="2"/>
-                  <Component id="jXPanel1" alignment="0" min="-2" pref="567" max="-2" attributes="2"/>
+                  <Component id="jXPanel1" alignment="0" min="-2" max="-2" attributes="2"/>
               </Group>
               <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
               <Component id="jXLabel1" min="-2" max="-2" attributes="0"/>
