@@ -25,6 +25,10 @@ public class AggiungiButton extends JButton implements CommandInterface {
         this.addActionListener(l);
     }
 
+    AggiungiButton(MenuServizi aThis) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
     public void execute() {
        JOptionPane.showMessageDialog(null, s);
     }
