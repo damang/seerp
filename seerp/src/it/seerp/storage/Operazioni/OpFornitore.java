@@ -30,7 +30,7 @@ public class OpFornitore extends OpExtraAzienda {
     /** Metodo che permette la visualizzazione della lista dei Fornitori
      * @return ArrayList contenente la lista dei  Fornitori
      * @throws java.sql.SQLException
-     */
+    
     public ArrayList<Fornitore> elencaFornitore()throws SQLException{
 
          ArrayList<Fornitore> list = new ArrayList<Fornitore>();
@@ -89,7 +89,7 @@ public class OpFornitore extends OpExtraAzienda {
       * ruolo che il Fornitore ricopre all'interno dell'azienda
       * @return la lista dei Fornitori che corrispondono ai criteri di ricerca
       * @throws java.sql.SQLException
-      */
+ 
      public  ArrayList<Fornitore> ricercaFornitore(String cognome, String ruolo)throws SQLException{
 
          ArrayList<Fornitore> list = new ArrayList<Fornitore>();
@@ -147,7 +147,7 @@ public class OpFornitore extends OpExtraAzienda {
       * @param user
       * user del Fornitore da eliminare
       * @throws java.sql.SQLException
-      */
+ 
      public void elimina(Fornitore user)throws SQLException{
 
            ArrayList<Fornitore> list = new ArrayList<Fornitore>();
@@ -206,7 +206,7 @@ public class OpFornitore extends OpExtraAzienda {
       * @param user
       * user del Fornitore da eliminare
       * @throws java.sql.SQLException
-      */
+
      public void eliminazioneLogica(Fornitore user)throws SQLException{
           ArrayList<Fornitore> list = new ArrayList<Fornitore>();
              Connection con = null;
@@ -262,7 +262,7 @@ public class OpFornitore extends OpExtraAzienda {
      * @param user
      * user del Fornitore da inserire
      * @throws java.sql.SQLException
-     */
+
     public void inserisci(Fornitore user)throws SQLException{
 
         Connection con = null;
@@ -328,7 +328,7 @@ public class OpFornitore extends OpExtraAzienda {
      * user del Fornitore da modificare
      * @return lo stesso oggetto modificato
      * @throws java.sql.SQLException
-     */
+
     public Fornitore modifica(Fornitore user)throws SQLException{
 
         ArrayList<BeanGuiFornitore> list = new ArrayList<BeanGuiFornitore>();
@@ -400,7 +400,7 @@ public class OpFornitore extends OpExtraAzienda {
      * id del Fornitore
      * @return il bean con i dettagli del Fornitore
      * @throws java.sql.SQLException
-     */
+
     public Fornitore visualizzaDati(Integer id) throws SQLException{
 
         Connection con = null;
@@ -460,7 +460,7 @@ public class OpFornitore extends OpExtraAzienda {
      * @param id identificativo del cliente
      * @return lista degli appuntamenti associati al cliente
      * @throws java.sql.SQLException
-     */
+
     public ArrayList<Appuntamento> getAppuntamentiFornitore(Integer id) throws SQLException {
 
         ArrayList<Appuntamento> list = new ArrayList<Appuntamento>();
@@ -514,7 +514,7 @@ public class OpFornitore extends OpExtraAzienda {
      * @param id identificativo del cliente
      * @return lista dei contratti associati al cliente
      * @throws java.sql.SQLException
-     */
+
     public ArrayList<Contratto> getContrattiFornitore(Integer id) throws SQLException {
 
         ArrayList<Contratto> list = new ArrayList<Contratto>();
@@ -565,6 +565,6 @@ public class OpFornitore extends OpExtraAzienda {
         return list;
     }
 
-
+*/
 
 }

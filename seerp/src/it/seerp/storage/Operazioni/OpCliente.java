@@ -27,7 +27,7 @@ public class OpCliente extends OpExtraAzienda {
     /** Metodo che permette la visualizzazione della lista dei Clienti
      * @return ArrayList contenente la lista dei Clienti
      * @throws java.sql.SQLException
-     */
+
     public ArrayList<Cliente> elencaCliente()throws SQLException{
         ArrayList<Cliente> list = new ArrayList<Cliente>();
         Connection con = null;
@@ -86,7 +86,7 @@ public class OpCliente extends OpExtraAzienda {
       * ruolo che il Cliente ricopre all'interno dell'azienda
       * @return la lista dei Clienti che corrispondono ai criteri di ricerca
       * @throws java.sql.SQLException
-      */
+  
      public  ArrayList<Cliente> ricercaCliente(String cognome, String nome)throws SQLException{
          
              ArrayList<Cliente> list = new ArrayList<Cliente>();
@@ -145,7 +145,7 @@ public class OpCliente extends OpExtraAzienda {
       * @param user
       * user del Cliente da eliminare
       * @throws java.sql.SQLException
-      */
+   
 
      public void elimina(String user)throws SQLException{
 
@@ -206,7 +206,7 @@ public class OpCliente extends OpExtraAzienda {
       * @param user
       * user del Cliente da eliminare
       * @throws java.sql.SQLException
-      */
+ 
      public void eliminazioneLogica(Cliente user)throws SQLException{
 
          ArrayList<Cliente> list = new ArrayList<Cliente>();
@@ -264,7 +264,7 @@ public class OpCliente extends OpExtraAzienda {
      * @param user
      * user del Cliente da inserire
      * @throws java.sql.SQLException
-     */
+ 
     public void inserisci(Cliente user)throws SQLException{
 
         Connection con = null;
@@ -328,7 +328,7 @@ public class OpCliente extends OpExtraAzienda {
      * user del Cliente da modificare
      * @return lo stesso oggetto modificato
      * @throws java.sql.SQLException
-     */
+  
     public Cliente modifica(Cliente user)throws SQLException{
 
         ArrayList<BeanGuiCliente> list = new ArrayList<BeanGuiCliente>();
@@ -399,7 +399,7 @@ public class OpCliente extends OpExtraAzienda {
      * id del Cliente
      * @return il bean con i dettagli del Cliente
      * @throws java.sql.SQLException
-     */
+   
     public Cliente visualizzaDati(Integer id) throws SQLException{
 
         Connection con = null;
@@ -459,7 +459,7 @@ public class OpCliente extends OpExtraAzienda {
      * @param id identificativo del cliente
      * @return lista degli appuntamenti associati al cliente
      * @throws java.sql.SQLException
-     */
+ 
     public ArrayList<Appuntamento> getAppuntamentiCliente(Integer id) throws SQLException {
 
         ArrayList<Appuntamento> list = new ArrayList<Appuntamento>();
@@ -513,7 +513,7 @@ public class OpCliente extends OpExtraAzienda {
      * @param id identificativo del cliente
      * @return lista dei contratti associati al cliente
      * @throws java.sql.SQLException
-     */
+
     public ArrayList<Contratto> getContrattiCliente(Integer id) throws SQLException {
 
         ArrayList<Contratto> list = new ArrayList<Contratto>();
@@ -563,5 +563,5 @@ public class OpCliente extends OpExtraAzienda {
         }
         return list;
     }
-
+*/
 }

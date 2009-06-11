@@ -81,7 +81,6 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         jScrollPane6 = new javax.swing.JScrollPane();
         jXTable3 = new org.jdesktop.swingx.JXTable();
         jXLabel2 = new org.jdesktop.swingx.JXLabel();
-        jXLabel1 = new org.jdesktop.swingx.JXLabel();
         jXPanel1 = new org.jdesktop.swingx.JXPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -583,12 +582,6 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         jXLabel2.setFont(new java.awt.Font("Tahoma", 1, 24));
         jXLabel2.setName("jXLabel2"); // NOI18N
 
-        jXLabel1.setForeground(new java.awt.Color(0, 204, 0));
-        jXLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/128x128/note_edit.png"))); // NOI18N
-        jXLabel1.setText("Gestione Servizi");
-        jXLabel1.setFont(new java.awt.Font("Tahoma", 1, 24));
-        jXLabel1.setName("jXLabel1"); // NOI18N
-
         jXPanel1.setName("jXPanel1"); // NOI18N
 
         jLabel1.setText("Elenco ");
@@ -648,8 +641,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 619, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jXLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jXLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jXLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
@@ -661,8 +653,6 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE)
                     .addComponent(jXPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jXLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -710,7 +700,6 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField9;
-    private org.jdesktop.swingx.JXLabel jXLabel1;
     private org.jdesktop.swingx.JXLabel jXLabel2;
     private org.jdesktop.swingx.JXPanel jXPanel1;
     private org.jdesktop.swingx.JXSearchPanel jXSearchPanel1;

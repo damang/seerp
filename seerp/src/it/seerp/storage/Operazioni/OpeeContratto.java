@@ -30,7 +30,7 @@ public class OpeeContratto implements OpeEntity<Contratto,Integer> {
             stmt = con.prepareStatement("INSERT INTO Contratto VALUES (?, ?, ?, ?, ?, ?, ? )" + "where idContratto=" + contratto.getIdContratto());
             stmt.setString(1, contratto.getStato());
             stmt.setInt(2, contratto.getDurata());
-            stmt.setDate(3, contratto.getData());
+          //  stmt.setDate(3, contratto.getData());
             stmt.setString(4, contratto.getTipo());
             stmt.setString(5, contratto.getNote());
             stmt.setInt(6, contratto.getDipendente());
@@ -69,7 +69,7 @@ public class OpeeContratto implements OpeEntity<Contratto,Integer> {
      * @param id identificativo del dipendente
      * @return una lista dei contratti ricercati in base all'identificati vo del dipendente
      * @throws java.sql.SQLException     
-     */
+     
     public ArrayList<Contratto> ricercaPerDipendente(Integer id) throws SQLException {
         ArrayList<Contratto> list = new ArrayList<Contratto>();
         Connection con = null;
@@ -129,7 +129,7 @@ public class OpeeContratto implements OpeEntity<Contratto,Integer> {
      * @return una lista dei contratti ricercati  in base all'identificati vo del dipendente
      * @throws java.sql.SQLException
      *
-     */
+     
 
     public ArrayList<Contratto> visualizzaElenco() throws SQLException {
         ArrayList<Contratto> list = new ArrayList<Contratto>();
@@ -244,7 +244,7 @@ public class OpeeContratto implements OpeEntity<Contratto,Integer> {
      * @return un contratto con identificativo uguale al paramtero nome
      * @throws java.sql.SQLException
      *
-     */
+     
 
     public Contratto visualizza(Integer nome) throws SQLException {
         Connection con = null;
@@ -409,5 +409,13 @@ public class OpeeContratto implements OpeEntity<Contratto,Integer> {
             }
         }
         return list;
+    }
+
+    public Contratto visualizza(Integer nome) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public ArrayList<Contratto> visualizzaElenco() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

@@ -15,8 +15,8 @@ import java.sql.SQLException;
  */
 public class OpAreaPersonale extends OpPersonale {
 
-    @Override
-    public Personale visualizzaDati(Integer id) throws SQLException {
+  
+  //  public Personale visualizzaDati(Integer id) throws SQLException {
 
         /** Metodo che permette la visualizzazione dei dettagli
          * di un membro del personale nella propria area personale
@@ -24,8 +24,8 @@ public class OpAreaPersonale extends OpPersonale {
          * id del membro del personale
          * @return il bean con i dettagli del membro del personale
          * @throws java.sql.SQLException
-         */
-        return super.visualizzaDati(id);
+         
+       return super.visualizzaDati(id);
     }
 
     public Utente modificaPassword(Utente u) throws SQLException, DatiErrati {
@@ -71,5 +71,5 @@ public class OpAreaPersonale extends OpPersonale {
             }
         }
         return ute;
-    }
+ */   
 }

@@ -26,7 +26,7 @@ public class OpeEvento
          * @throws SQLException
          * @throws DatiErrati
          * @throws DatiDuplicati
-         */
+         
         Connection conn = null;
         PreparedStatement stmt = null;
         try {
@@ -38,8 +38,8 @@ public class OpeEvento
             String query = "INSERT INTO evento(data, ora, luogo, nome, tema, note) VALUE (?,?,?,?,?,?)";
             stmt = conn.prepareStatement(query);
 
-            stmt.setDate(1, e.getData());
-            stmt.setTime(2, e.getOra());
+           // stmt.setDate(1, e.getData());
+          //  stmt.setTime(2, e.getOra());
             stmt.setString(3, e.getLuogo());
             stmt.setString(4, e.getNome());
             stmt.setString(5, e.getTema());
@@ -75,7 +75,7 @@ public class OpeEvento
          * @param e l'evento da modificare
          * @throws SQLException
          * @throws Dati Errati
-         */
+
 
         Connection con = null;
         PreparedStatement stmt = null;
@@ -129,7 +129,7 @@ public class OpeEvento
          * @return i dettagli dell'evento
          * @param nome è il nome dell'evento da visualizzare
          * @throws SQLException
-         */
+  
 
         //  throw new UnsupportedOperationException("Not supported yet.");
 
@@ -198,7 +198,7 @@ public class OpeEvento
          * @return	La lista degli eventi
          * @throws SQLException
          * @throws ClassNotFoundException
-         */
+
         Connection conn = null;
         Statement stmt = null;
         ResultSet rs = null;
@@ -254,7 +254,7 @@ public class OpeEvento
          * @return	La lista degli eventi ricercata
          * @throws SQLException
          * @throws ClassNotFoundException
-         */
+
         Connection conn = null;
         Statement stmt = null;
         ArrayList<Evento> listaEventi;
@@ -297,7 +297,7 @@ public class OpeEvento
          * @return	La lista degli eventi ricercata
          * @throws SQLException
          * @throws ClassNotFoundException
-         */
+
         Connection conn = null;
         PreparedStatement stmt = null;
         ArrayList<Evento> listaEventi;
@@ -339,8 +339,7 @@ public class OpeEvento
          * @param data	La data dell'evento da ricercare
          * @return	La lista degli eventi ricercata
          * @throws SQLException
-         * @throws ClassNotFoundException
-         */
+ 
         Connection conn = null;
         PreparedStatement stmt = null;
         ArrayList<Evento> listaEventi;
@@ -380,7 +379,7 @@ public class OpeEvento
          * @param e l'evento da cancellare
          * @throws ClassNotFoundException
          * @throws SQLException
-         */
+  
         Connection conn = null;
         PreparedStatement stmt = null;
 
@@ -403,7 +402,7 @@ public class OpeEvento
     }
 
     public void notificaEvento(Evento e) throws SQLException {
-    /*crea la query per settare il campo notifica a true*/
+    /*crea la query per settare il campo notifica a true
     Connection conn = null;
         PreparedStatement stmt = null;
 
@@ -459,5 +458,5 @@ public class OpeEvento
             }
         }
      return evNotificati; 
-    }
-}
+    }*/
+    }}

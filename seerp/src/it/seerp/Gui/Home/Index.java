@@ -214,11 +214,22 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             }
         });
 
-        buttonContratti1.setText("buttonContratti1");
+        buttonContratti1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/page.png"))); // NOI18N
+        buttonContratti1.setText("Contratti");
+        buttonContratti1.setContentAreaFilled(false);
+        buttonContratti1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         buttonContratti1.setName("buttonContratti1"); // NOI18N
 
-        buttonServizi1.setText("buttonServizi1");
+        buttonServizi1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/shopping_cart.png"))); // NOI18N
+        buttonServizi1.setText("Servizi");
+        buttonServizi1.setContentAreaFilled(false);
+        buttonServizi1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         buttonServizi1.setName("buttonServizi1"); // NOI18N
+        buttonServizi1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonServizi1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jXPanel2Layout = new javax.swing.GroupLayout(jXPanel2);
         jXPanel2.setLayout(jXPanel2Layout);
@@ -227,10 +238,10 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             .addGroup(jXPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jXPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonContratti1, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
-                    .addComponent(buttonContratti1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonServizi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonServizi1, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jXPanel2Layout.setVerticalGroup(
@@ -244,7 +255,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                 .addComponent(buttonContratti1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonServizi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70))
+                .addContainerGap())
         );
 
         jXTaskPane2.getContentPane().add(jXPanel2);
@@ -257,21 +268,10 @@ public class Index extends javax.swing.JFrame implements ActionListener {
 
         jXPanel3.setName("jXPanel3"); // NOI18N
 
-        areaPersonaleButton1.setForeground(new java.awt.Color(0, 0, 255));
         areaPersonaleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/HP-Control-32x32.png"))); // NOI18N
-        areaPersonaleButton1.setText("Area Personale");
-        areaPersonaleButton1.setBorder(null);
-        areaPersonaleButton1.setBorderPainted(false);
+        areaPersonaleButton1.setText("areaPersonaleButton1");
         areaPersonaleButton1.setContentAreaFilled(false);
-        areaPersonaleButton1.setFocusPainted(false);
-        areaPersonaleButton1.setFont(new java.awt.Font("Tahoma", 1, 11));
-        areaPersonaleButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         areaPersonaleButton1.setName("areaPersonaleButton1"); // NOI18N
-        areaPersonaleButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                areaPersonaleButton1ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jXPanel3Layout = new javax.swing.GroupLayout(jXPanel3);
         jXPanel3.setLayout(jXPanel3Layout);
@@ -279,18 +279,16 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             jXPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jXPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(areaPersonaleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(areaPersonaleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jXPanel3Layout.setVerticalGroup(
             jXPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jXPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(areaPersonaleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        areaPersonaleButton1.addActionListener(this);
 
         jXTaskPane3.getContentPane().add(jXPanel3);
 
@@ -379,10 +377,6 @@ public class Index extends javax.swing.JFrame implements ActionListener {
         // TODO add your handling code here:
 }//GEN-LAST:event_areaPersonaleButtomActionPerformed
 
-    private void areaPersonaleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areaPersonaleButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_areaPersonaleButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -390,6 +384,10 @@ public class Index extends javax.swing.JFrame implements ActionListener {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void buttonServizi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonServizi1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonServizi1ActionPerformed
 
     /**
      * @param args the command line arguments

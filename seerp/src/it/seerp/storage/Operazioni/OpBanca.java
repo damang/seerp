@@ -30,7 +30,7 @@ public class OpBanca {
      /** Metodo che permette la visualizzazione della lista delle banche
      * @return ArrayList contenente la lista delle banche
      * @throws java.sql.SQLException
-     */
+
     public ArrayList<Banca> elencaBanca()throws SQLException{
         ArrayList<Banca> list = new ArrayList<Banca>();
         Connection con = null;
@@ -89,7 +89,7 @@ public class OpBanca {
       * ruolo che il Cliente ricopre all'interno dell'azienda
       * @return la lista dei Clienti che corrispondono ai criteri di ricerca
       * @throws java.sql.SQLException
-      */
+ 
      public  ArrayList<Banca> ricercaBanca(String agenzia, String città)throws SQLException{
 
          ArrayList<Banca> list = new ArrayList<Banca>();
@@ -147,7 +147,7 @@ public class OpBanca {
       * @param agenzia
       * user della Banca da eliminare
       * @throws java.sql.SQLException
-      */
+
      public void elimina(Banca id)throws SQLException{
 
           ArrayList<Banca> list = new ArrayList<Banca>();
@@ -207,7 +207,7 @@ public class OpBanca {
      * @param agenzia
      * user del Cliente da inserire
      * @throws java.sql.SQLException
-     */
+
     public void inserisci(Banca agenzia)throws SQLException{
 
 
@@ -268,7 +268,7 @@ public class OpBanca {
      * identificativo della banca da modificare
      * @return lo stesso oggetto modificato
      * @throws java.sql.SQLException
-     */
+  
     public Banca modifica(Banca id)throws SQLException{
 
         ArrayList<BeanGuiBanca> list = new ArrayList<BeanGuiBanca>();
@@ -307,7 +307,7 @@ public class OpBanca {
      * id della Banca
      * @return il bean con i dettagli della  Banca
      * @throws java.sql.SQLException
-     */
+ 
     public Banca visualizzaDati(Integer id) throws SQLException{
 
         Connection con = null;
@@ -371,7 +371,7 @@ public class OpBanca {
      * @param id identificativo della banca
      * @return lista dei appuntamenti associati al cliente
      * @throws java.sql.SQLException
-     */
+
     public ArrayList<Pagamento> getPagamentoBanca(Integer id) throws SQLException {
 
         ArrayList<Pagamento> list = new ArrayList<Pagamento>();
@@ -420,5 +420,5 @@ public class OpBanca {
         return list;
 
 
-}
+}*/
     }
