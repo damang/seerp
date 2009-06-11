@@ -26,7 +26,7 @@ public class OpContatto extends OpExtraAzienda{
       /** Metodo che permette la visualizzazione della lista dei Contatti
      * @return ArrayList contenente la lista dei Contatti
      * @throws java.sql.SQLException
-     */
+
     public ArrayList<Contatto> elencaContatto()throws SQLException{
 
         ArrayList<Contatto> list = new ArrayList<Contatto>();
@@ -87,7 +87,7 @@ public class OpContatto extends OpExtraAzienda{
       * ruolo che il Contatto ricopre all'interno dell'azienda
       * @return la lista dei Contatti che corrispondono ai criteri di ricerca
       * @throws java.sql.SQLException
-      */
+  
      public  ArrayList<Contatto> ricercaContatto(Integer id, String user)throws SQLException{
 
          ArrayList<Contatto> list = new ArrayList<Contatto>();
@@ -145,7 +145,7 @@ public class OpContatto extends OpExtraAzienda{
       * @param user
       * user del Contatto da eliminare
       * @throws java.sql.SQLException
-      */
+
      public ArrayList<Contatto> elimina(Contatto user)throws SQLException{
 
           ArrayList<Contatto> list = new ArrayList<Contatto>();
@@ -204,7 +204,7 @@ public class OpContatto extends OpExtraAzienda{
      * @param user
      * user del Contatto da inserire
      * @throws java.sql.SQLException
-     */
+
     public void inserisci(Contatto user)throws SQLException{
 
         Connection con = null;
@@ -269,7 +269,7 @@ public class OpContatto extends OpExtraAzienda{
      * user del Contatto da modificare
      * @return lo stesso oggetto modificato
      * @throws java.sql.SQLException
-     */
+
     public Contatto modifica(Contatto user)throws SQLException{
 
         ArrayList<BeanGuiContatto> list = new ArrayList<BeanGuiContatto>();
@@ -340,7 +340,7 @@ public class OpContatto extends OpExtraAzienda{
      * id del Contatto
      * @return il bean con i dettagli del Contatto
      * @throws java.sql.SQLException
-     */
+
     public Contatto visualizzaDati(Integer id) throws SQLException{
 
         Connection con = null;
@@ -497,6 +497,6 @@ public class OpContatto extends OpExtraAzienda{
         return list;
     }
 
-
+*/
 }
 

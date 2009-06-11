@@ -67,7 +67,6 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         jPanel13 = new javax.swing.JPanel();
         jPasswordField2 = new javax.swing.JPasswordField();
         jXLabel2 = new org.jdesktop.swingx.JXLabel();
-        jXLabel1 = new org.jdesktop.swingx.JXLabel();
 
         setBackground(new java.awt.Color(0, 51, 102));
 
@@ -244,7 +243,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 705, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
@@ -278,7 +277,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
                             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(54, Short.MAX_VALUE))))
+                        .addContainerGap(80, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -349,7 +348,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        BottoneSalva.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BottoneSalva.setFont(new java.awt.Font("Tahoma", 1, 12));
         BottoneSalva.setForeground(new java.awt.Color(0, 153, 0));
         BottoneSalva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/accept.png"))); // NOI18N
         BottoneSalva.setText("Salva");
@@ -404,7 +403,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
                 .addComponent(BottoneSalva)
                 .addGap(18, 18, 18)
                 .addComponent(BottoneAnnulla)
@@ -436,12 +435,6 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         jXLabel2.setFont(new java.awt.Font("Tahoma", 1, 24));
         jXLabel2.setName("jXLabel2"); // NOI18N
 
-        jXLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jXLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/128x128/HP-Control-128x128.png"))); // NOI18N
-        jXLabel1.setText("Area Personale");
-        jXLabel1.setFont(new java.awt.Font("Tahoma", 1, 24));
-        jXLabel1.setName("jXLabel1"); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -449,11 +442,8 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jXLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(538, Short.MAX_VALUE))
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 726, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jXLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(564, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 752, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -462,9 +452,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
                 .addComponent(jXLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jXLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -498,7 +486,6 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
-    private org.jdesktop.swingx.JXLabel jXLabel1;
     private org.jdesktop.swingx.JXLabel jXLabel2;
     // End of variables declaration//GEN-END:variables
 

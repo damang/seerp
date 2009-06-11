@@ -35,7 +35,7 @@ public class OpPersonale extends OpeUtente {
      * della lista del Personale
      * @return ArrayList contenente la lista del personale
      * @throws java.sql.SQLException
-     */
+ 
     public ArrayList<Personale> elencaPersonale()throws SQLException{
 
         ArrayList<Personale> list = new ArrayList<Personale>();
@@ -95,7 +95,7 @@ public class OpPersonale extends OpeUtente {
       * ruolo che il membro del personale ricopre all'interno dell'azienda
       * @return la lista dei membri del personale che corrispondono ai criteri di ricerca
       * @throws java.sql.SQLException
-      */
+     
      public  ArrayList<Personale> ricercaPersonale(String cognome, String ruolo)throws SQLException{
          ArrayList<Personale> list = new ArrayList<Personale>();
              Connection con = null;
@@ -153,7 +153,7 @@ public class OpPersonale extends OpeUtente {
       * @param user
       * user dell'utente da eliminare
       * @throws java.sql.SQLException
-      */
+
      public void elimina(Personale user)throws SQLException{
 
          ArrayList<Personale> list = new ArrayList<Personale>();
@@ -211,7 +211,7 @@ public class OpPersonale extends OpeUtente {
       * @param user
       * user dell'utente da eliminare
       * @throws java.sql.SQLException
-      */
+
      public void eliminazioneLogica(Personale user)throws SQLException{
          ArrayList<Personale> list = new ArrayList<Personale>();
              Connection con = null;
@@ -268,7 +268,7 @@ public class OpPersonale extends OpeUtente {
      * @param user
      * user dell'utente da inserire
      * @throws java.sql.SQLException
-     */
+ 
     public void inserisci(Personale user)throws SQLException{
 
         Connection con = null;
@@ -330,7 +330,7 @@ public class OpPersonale extends OpeUtente {
      * user del membro del personale da modificare
      * @return lo stesso oggetto modificato
      * @throws java.sql.SQLException
-     */
+
     public Personale modifica(Personale user)throws SQLException{
 
         ArrayList<BeanGuiPersonale> list = new ArrayList<BeanGuiPersonale>();
@@ -398,8 +398,7 @@ public class OpPersonale extends OpeUtente {
      * @param id
      * id del membro del personale
      * @return il bean con i dettagli del membro del personale
-     * @throws java.sql.SQLException
-     */
+
     public Personale visualizzaDati(Integer id) throws SQLException{
 
         Connection con = null;
@@ -551,5 +550,5 @@ public class OpPersonale extends OpeUtente {
         }
         return list;
     }
-
+*/
 }

@@ -34,7 +34,7 @@ public class OpDipendente extends OpPersonale {
      * della lista dei Dipendenti
      * @return ArrayList contenente la lista dei Dipendenti
      * @throws java.sql.SQLException
-     */
+
     public ArrayList<Dipendente> elencaDipendente()throws SQLException{
 
         ArrayList<Dipendente> list = new ArrayList<Dipendente>();
@@ -96,7 +96,7 @@ public class OpDipendente extends OpPersonale {
       * ruolo che il Dipendente ricopre all'interno dell'azienda
       * @return la lista dei Dipendenti che corrispondono ai criteri di ricerca
       * @throws java.sql.SQLException
-      */
+
      public  ArrayList<Dipendente> ricercaDipendente(String cognome, String ruolo)throws SQLException{
 
          ArrayList<Dipendente> list = new ArrayList<Dipendente>();
@@ -158,7 +158,7 @@ public class OpDipendente extends OpPersonale {
       * @param user
       * user del Dipendente da eliminare
       * @throws java.sql.SQLException
-      */
+ 
      public void elimina(Dipendente user)throws SQLException{
          ArrayList<Dipendente> list = new ArrayList<Dipendente>();
              Connection con = null;
@@ -218,7 +218,7 @@ public class OpDipendente extends OpPersonale {
       * @param user
       * user del Dipendente da eliminare
       * @throws java.sql.SQLException
-      */
+
      public void eliminazioneLogica(Dipendente user)throws SQLException{
 
           ArrayList<Dipendente> list = new ArrayList<Dipendente>();
@@ -277,7 +277,7 @@ public class OpDipendente extends OpPersonale {
      * @param user
      * user del Dipendente da inserire
      * @throws java.sql.SQLException
-     */
+
     public void inserisci(Dipendente user)throws SQLException{
         Connection con = null;
         PreparedStatement stmt = null;
@@ -341,7 +341,7 @@ public class OpDipendente extends OpPersonale {
      * user del Dipendente da modificare
      * @return lo stesso oggetto modificato
      * @throws java.sql.SQLException
-     */
+  
     public Dipendente modifica(Dipendente user)throws SQLException{
 
         ArrayList<BeanGuiDipendente> list = new ArrayList<BeanGuiDipendente>();
@@ -411,7 +411,7 @@ public class OpDipendente extends OpPersonale {
      * id del Dipendente
      * @return il bean con i dettagli del Dipendente
      * @throws java.sql.SQLException
-     */
+
     public Dipendente visualizzaDati(Integer id) throws SQLException{
 
          Connection con = null;
@@ -476,7 +476,7 @@ public class OpDipendente extends OpPersonale {
      * @param id identificativo del dipendente
      * @return lista degli appuntamenti associati al dipendente
      * @throws java.sql.SQLException
-     */
+
     public ArrayList<Appuntamento> getAppuntamentiDipendente(Integer id) throws SQLException {
 
         ArrayList<Appuntamento> list = new ArrayList<Appuntamento>();
@@ -530,7 +530,7 @@ public class OpDipendente extends OpPersonale {
      * @param id identificativo del dipendente
      * @return lista dei contratti associati al dipendente
      * @throws java.sql.SQLException
-     */
+
     public ArrayList<Contratto> getContrattiDipendente(Integer id) throws SQLException {
 
         ArrayList<Contratto> list = new ArrayList<Contratto>();
@@ -586,7 +586,7 @@ public class OpDipendente extends OpPersonale {
      * @param id identificativo del dipendente
      * @return lista dei permessi associati al dipendente
      * @throws java.sql.SQLException
-     */
+
     public ArrayList<Permesso> getPermessiDipendente(Integer id) throws SQLException {
 
         ArrayList<Permesso> list = new ArrayList<Permesso>();
@@ -686,6 +686,6 @@ public class OpDipendente extends OpPersonale {
         }
         return list;
     }
-
+*/
 
 }

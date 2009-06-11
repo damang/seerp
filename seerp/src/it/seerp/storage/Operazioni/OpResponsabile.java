@@ -32,7 +32,7 @@ public class OpResponsabile extends OpPersonale {
      /** Metodo che permette la visualizzazione della lista dei Responsabili
      * @return ArrayList contenente la lista dei responsabili
      * @throws java.sql.SQLException
-     */
+
     public ArrayList<Responsabile> elencaResponsabile()throws SQLException{
 
         ArrayList<Responsabile> list = new ArrayList<Responsabile>();
@@ -93,7 +93,7 @@ public class OpResponsabile extends OpPersonale {
       * ruolo che il Responsabile ricopre all'interno dell'azienda
       * @return la lista dei Responsabili che corrispondono ai criteri di ricerca
       * @throws java.sql.SQLException
-      */
+
      public  ArrayList<Responsabile> ricercaResponsabile(String cognome, String ruolo)throws SQLException{
 
           ArrayList<Responsabile> list = new ArrayList<Responsabile>();
@@ -150,7 +150,7 @@ public class OpResponsabile extends OpPersonale {
       * @param user
       * user del Responsabile da eliminare
       * @throws java.sql.SQLException
-      */
+ 
      public void elimina(Responsabile user)throws SQLException{
 
           ArrayList<Responsabile> list = new ArrayList<Responsabile>();
@@ -208,7 +208,7 @@ public class OpResponsabile extends OpPersonale {
      * @param user
      * user del Responsabile da inserire
      * @throws java.sql.SQLException
-     */
+  
     public void inserisci(Responsabile user)throws SQLException{
 
         Connection con = null;
@@ -270,7 +270,7 @@ public class OpResponsabile extends OpPersonale {
      * user del Responsabile da modificare
      * @return lo stesso oggetto modificato
      * @throws java.sql.SQLException
-     */
+  
     public Responsabile modifica(Responsabile user)throws SQLException{
 
         ArrayList<BeanGuiResponsabile> list = new ArrayList<BeanGuiResponsabile>();
@@ -340,7 +340,7 @@ public class OpResponsabile extends OpPersonale {
      * id del Responsabile
      * @return il bean con i dettagli del Responsabile
      * @throws java.sql.SQLException
-     */
+
     public Responsabile visualizzaDati(Integer id) throws SQLException{
 
         Connection con = null;
@@ -398,7 +398,7 @@ public class OpResponsabile extends OpPersonale {
      * @param id identificativo del responsabile
      * @return lista dei permessi associati al responsabile
      * @throws java.sql.SQLException
-     */
+
     public ArrayList<Permesso> getPermessiResponsabile(Integer id) throws SQLException {
 
         ArrayList<Permesso> list = new ArrayList<Permesso>();
@@ -499,7 +499,7 @@ public class OpResponsabile extends OpPersonale {
         return list;
     }
 
-
+*/
 
 }
 

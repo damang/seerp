@@ -31,7 +31,7 @@ public class OpExtraAzienda extends OpeUtente {
      /** Metodo che permette la visualizzazione della lista del personale ExtraAzienda
      * @return ArrayList contenente la lista del personale
      * @throws java.sql.SQLException
-     */
+
     public ArrayList<ExtraAzienda> elencaExtraAzienda()throws SQLException{
 
         ArrayList<ExtraAzienda> list = new ArrayList<ExtraAzienda>();
@@ -91,7 +91,7 @@ public class OpExtraAzienda extends OpeUtente {
       * ruolo che il membro del personale ricopre all'interno dell'azienda
       * @return la lista dei membri del personale che corrispondono ai criteri di ricerca
       * @throws java.sql.SQLException
-      */
+  
      public  ArrayList<ExtraAzienda> ricercaExtraAzienda(String cognome, String ruolo)throws SQLException{
 
          ArrayList<ExtraAzienda> list = new ArrayList<ExtraAzienda>();
@@ -150,7 +150,7 @@ public class OpExtraAzienda extends OpeUtente {
       * @param user
       * user dell'utente da eliminare
       * @throws java.sql.SQLException
-      */
+   
      public void elimina(ExtraAzienda user)throws SQLException{
 
          ArrayList<ExtraAzienda> list = new ArrayList<ExtraAzienda>();
@@ -210,7 +210,7 @@ public class OpExtraAzienda extends OpeUtente {
       * @param user
       * user dell'utente da eliminare
       * @throws java.sql.SQLException
-      */
+  
      public void eliminazioneLogica(ExtraAzienda user)throws SQLException{
 
           ArrayList<ExtraAzienda> list = new ArrayList<ExtraAzienda>();
@@ -267,7 +267,7 @@ public class OpExtraAzienda extends OpeUtente {
      * @param user
      * user dell'utente da inserire
      * @throws java.sql.SQLException
-     */
+    
     public void inserisci(ExtraAzienda user)throws SQLException{
          Connection con = null;
         PreparedStatement stmt = null;
@@ -329,7 +329,7 @@ public class OpExtraAzienda extends OpeUtente {
      * user del membro del personale da modificare
      * @return lo stesso oggetto modificato
      * @throws java.sql.SQLException
-     */
+
     public ExtraAzienda modifica(ExtraAzienda user)throws SQLException{
         ArrayList<BeanGuiExtraAzienda> list = new ArrayList<BeanGuiExtraAzienda>();
         Connection con = null;
@@ -399,7 +399,7 @@ public class OpExtraAzienda extends OpeUtente {
      * id del membro del personale
      * @return il bean con i dettagli del membro del personale
      * @throws java.sql.SQLException
-     */
+
     public ExtraAzienda visualizzaDati(Integer id) throws SQLException{
 
         Connection con = null;
@@ -459,7 +459,7 @@ public class OpExtraAzienda extends OpeUtente {
      * @param id identificativo del cliente
      * @return lista degli appuntamenti associati al cliente
      * @throws java.sql.SQLException
-     */
+
     public ArrayList<Appuntamento> getAppuntamentiExtraAzienda(Integer id) throws SQLException {
 
         ArrayList<Appuntamento> list = new ArrayList<Appuntamento>();
@@ -513,7 +513,7 @@ public class OpExtraAzienda extends OpeUtente {
      * @param id identificativo del cliente
      * @return lista dei contratti associati al cliente
      * @throws java.sql.SQLException
-     */
+
     public ArrayList<Contratto> getContrattiExtraAzienda(Integer id) throws SQLException {
 
         ArrayList<Contratto> list = new ArrayList<Contratto>();
@@ -563,6 +563,6 @@ public class OpExtraAzienda extends OpeUtente {
         }
         return list;
     }
-
+*/
 
 }

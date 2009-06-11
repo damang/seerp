@@ -37,7 +37,6 @@ public class AreaUtentePanel extends  ObservableJPanel implements ActionListener
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jXLabel1 = new org.jdesktop.swingx.JXLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -94,12 +93,6 @@ public class AreaUtentePanel extends  ObservableJPanel implements ActionListener
         jXSearchPanel1 = new org.jdesktop.swingx.JXSearchPanel();
 
         setBackground(new java.awt.Color(0, 153, 204));
-
-        jXLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jXLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/128x128/community_users.png"))); // NOI18N
-        jXLabel1.setText("Gestione Utenti");
-        jXLabel1.setFont(new java.awt.Font("Tahoma", 1, 24));
-        jXLabel1.setName("jXLabel1"); // NOI18N
 
         jTabbedPane1.setName("jTabbedPane1"); // NOI18N
 
@@ -720,8 +713,7 @@ public class AreaUtentePanel extends  ObservableJPanel implements ActionListener
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jXLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jXLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jXLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -733,8 +725,7 @@ public class AreaUtentePanel extends  ObservableJPanel implements ActionListener
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
                     .addComponent(jXPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jXLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -802,7 +793,6 @@ public class AreaUtentePanel extends  ObservableJPanel implements ActionListener
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
-    private org.jdesktop.swingx.JXLabel jXLabel1;
     private org.jdesktop.swingx.JXLabel jXLabel2;
     private org.jdesktop.swingx.JXPanel jXPanel1;
     private org.jdesktop.swingx.JXSearchPanel jXSearchPanel1;

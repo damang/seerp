@@ -87,7 +87,7 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto>
      * @return ArrayList contentente tutti i Bean Gui dei contratti appartenenti al dipendente immesso
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si inseriscano dati errati
-     */
+
     public ArrayList<BeanGuiContratto> ricercaPerDipendente(JTextField dipendente, ArrayList<BeanGuiContratto> listGui) throws DatiErrati
     {
         OpeeContratto ope = new OpeeContratto();
@@ -175,5 +175,9 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto>
             }
         }
         return beanGuiContratto;
+    }
+
+    public ArrayList<BeanGuiContratto> ricercaPerDipendente(JTextField dipendente, ArrayList<BeanGuiContratto> listGui) throws DatiErrati {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
