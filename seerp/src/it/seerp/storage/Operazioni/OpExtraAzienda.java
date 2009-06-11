@@ -5,18 +5,6 @@
 
 package it.seerp.storage.Operazioni;
 
-import it.seerp.storage.ejb.ExtraAzienda;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import it.seerp.application.bean.BeanGuiExtraAzienda;
-import it.seerp.storage.ejb.Contratto;
-import it.seerp.storage.ejb.Appuntamento;
-import it.seerp.storage.db.ConnectionPool;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.Statement;
-import java.sql.ResultSet;
-
 
 /**
  *
