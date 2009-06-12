@@ -17,7 +17,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 
-/**
+
+
+ /**
  *
  * @author LuNy
  */
@@ -29,7 +31,7 @@ public class OpBanca {
      
      /** Metodo che permette la visualizzazione della lista delle banche
      * @return ArrayList contenente la lista delle banche
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
 
     public ArrayList<Banca> elencaBanca()throws SQLException{
         ArrayList<Banca> list = new ArrayList<Banca>();
@@ -49,7 +51,7 @@ public class OpBanca {
             while (rs.next()) {
                 Banca banca = new Banca (rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getDouble(10), rs.getDouble(11));
                                     //(1String stato, 2Date data, 3Integer durata, 4String tipo, 5String note, 6Integer dipendente, Integer extraAzienda)
-                banca.getListPagamento(this.setListPagamento(rs.getArrayList(12))); // chiedi a Luisa
+                banca.setListPagamento(this.getPagamentoBanca(rs.getInt(12))); // chiedi a Luisa
                 
                 list.add(banca);
             }}
@@ -79,7 +81,7 @@ public class OpBanca {
             }
         }return list;
 
-           throw new UnsupportedOperationException("Not supported yet.");}
+          }
 
 
      /** Metodo che permette la ricerca di un Cliente
@@ -88,7 +90,7 @@ public class OpBanca {
       * @param città
       * ruolo che il Cliente ricopre all'interno dell'azienda
       * @return la lista dei Clienti che corrispondono ai criteri di ricerca
-      * @throws java.sql.SQLException
+      * @throws java.sql.SQLException */
  
      public  ArrayList<Banca> ricercaBanca(String agenzia, String città)throws SQLException{
 
@@ -110,8 +112,8 @@ public class OpBanca {
             while (rs.next()) {
                 Banca banca = new Banca (rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getDouble(10), rs.getDouble(11));
                                     //(1String stato, 2Date data, 3Integer durata, 4String tipo, 5String note, 6Integer dipendente, Integer extraAzienda)
-                banca.getListPagamento(this.setListPagamento(rs.getArrayList(12)));
-            }}
+                banca.setListPagamento(this.getPagamentoBanca(rs.getInt(12)));
+                 }}
 
               catch (SQLException se) {
             System.out.println("SQL Exception:");
@@ -139,14 +141,14 @@ public class OpBanca {
         }
         return list;
 
-        throw new UnsupportedOperationException("Not supported yet.");}
+        }
 
 
 
      /** Metodo che permette di eliminare una Banca già esistente
       * @param agenzia
       * user della Banca da eliminare
-      * @throws java.sql.SQLException
+      * @throws java.sql.SQLException*/
 
      public void elimina(Banca id)throws SQLException{
 
@@ -168,7 +170,7 @@ public class OpBanca {
             while (rs.next()) {
                 Banca banca = new Banca (rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getDouble(10), rs.getDouble(11));
                                     //(1String stato, 2Date data, 3Integer durata, 4String tipo, 5String note, 6Integer dipendente, Integer extraAzienda)
-                banca.getListPagamento(this.setListPagamento(rs.getArrayList(12)));
+               banca.setListPagamento(this.getPagamentoBanca(rs.getInt(12))); // chiedi a Luisa
 
             }
           }
@@ -197,16 +199,12 @@ public class OpBanca {
                 ConnectionPool.releaseConnection(con);
             }
         }
-        return list;
-
-        throw new UnsupportedOperationException("Not supported yet.");}
-
-
+     }
 
     /** Metodo per inserire un nuova Banca
      * @param agenzia
      * user del Cliente da inserire
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
 
     public void inserisci(Banca agenzia)throws SQLException{
 
@@ -267,7 +265,7 @@ public class OpBanca {
      * @param idBanca
      * identificativo della banca da modificare
      * @return lo stesso oggetto modificato
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
   
     public Banca modifica(Banca id)throws SQLException{
 
@@ -306,9 +304,9 @@ public class OpBanca {
      * @param id
      * id della Banca
      * @return il bean con i dettagli della  Banca
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
  
-    public Banca visualizzaDati(Integer id) throws SQLException{
+    public Banca visualizzaDati(Integer id,Banca banca) throws SQLException{
 
         Connection con = null;
         Statement stmt = null;
@@ -326,9 +324,9 @@ public class OpBanca {
 
             // Define the resource list
             while (rs.next()) {
-                Banca banca = new Banca (rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getDouble(10), rs.getDouble(11));
+               banca = new Banca (rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getDouble(10), rs.getDouble(11));
                                     //(1String stato, 2Date data, 3Integer durata, 4String tipo, 5String note, 6Integer dipendente, Integer extraAzienda)
-                banca.setListPagamento(this.getPagamentoBanca(rs.getArrayList(12)));
+               banca.setListPagamento(this.getPagamentoBanca(rs.getInt(12))); // chiedi a Luisa
 
 
             }
@@ -363,14 +361,18 @@ public class OpBanca {
 
 
     }
+
+/**
+=======
         
 
 
  /**
+>>>>>>> .r318
      * metodo che si occupa di ricercare tutti i pagamenti legati ad una banca grazie all'id della banca
      * @param id identificativo della banca
      * @return lista dei appuntamenti associati al cliente
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
 
     public ArrayList<Pagamento> getPagamentoBanca(Integer id) throws SQLException {
 
@@ -389,7 +391,7 @@ public class OpBanca {
                     "  from banca, pagamentoAssociato, pagamento" + " where idBanca=banca " + "and pagamento=idPagamento;" + "and idBanca=" + id);
 
             while (rs.next()) {
-                Pagamento pagamento = new Pagamento(rs.getString(1), rs.getDate(2), rs.getString(3), rs.getDouble(4), rs.getString5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9), rs.getInt(10));
+                Pagamento pagamento = new Pagamento(rs.getString(1), rs.getDate(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9), rs.getInt(10));
                                                   // String note, Date dataScadenza, String descrizione, Double importo, String modalitaPagamento, String stato, String altreInformazioni, Integer idPagamento, Integer contratto, Integer banca
                 list.add(pagamento);
             }
@@ -420,5 +422,5 @@ public class OpBanca {
         return list;
 
 
-}*/
+}
     }
