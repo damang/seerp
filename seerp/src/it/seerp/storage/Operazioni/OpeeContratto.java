@@ -11,13 +11,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 /**
  * classe storage che si occupa di interfacciarsi col DBMS e compiere operazioni sui contratti
  * @author Luisa
  */
-public class OpeeContratto implements OpeEntity<Contratto,Integer> {
-
+public class OpeeContratto implements OpeEntity<Contratto, Integer> {
 
     public void inserimento(Contratto contratto) throws SQLException {
 
@@ -82,13 +82,18 @@ public class OpeeContratto implements OpeEntity<Contratto,Integer> {
             // Create a statement
             stmt = con.createStatement();
             // Execute the query
-            rs = stmt.executeQuery("SELECT * FROM Contratto"
-                                    + "where dipendente ="+ id);
+            rs = stmt.executeQuery("SELECT * FROM Contratto" + "where dipendente =" + id);
 
             // Define the resource list
             while (rs.next()) {
-                Contratto contratto = new Contratto(rs.getString(1), rs.getDate(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7));
-                //(1String stato, 2Date data, 3Integer durata, 4String tipo, 5String note, 6Integer dipendente, Integer extraAzienda)
+                GregorianCalendar date = new GregorianCalendar();
+                date.setTimeInMillis(rs.getDate(2).getTime());
+
+                Contratto contratto = new Contratto(rs.getString(1), date,
+                        rs.getInt(3), rs.getString(4), rs.getString(5),
+                        rs.getInt(6), rs.getInt(7));
+                //(1String stato, 2Date data, 3Integer durata, 4String tipo,
+                //5String note, 6Integer dipendente, Integer extraAzienda)
                 contratto.setListPagamento(this.getPagamentiContratto(rs.getInt(8)));
                 contratto.setListServizio(this.getServizioContratto(rs.getInt(9)));
                 list.add(contratto);
@@ -126,11 +131,10 @@ public class OpeeContratto implements OpeEntity<Contratto,Integer> {
 
     /**
      * metodo che ricerca tutti i contratti
-     * @return una lista dei contratti ricercati  in base all'identificati vo del dipendente
+     * @return una lista dei contratti ricercati  in base all'identificativo del dipendente
      * @throws java.sql.SQLException
      *
      
-
     public ArrayList<Contratto> visualizzaElenco() throws SQLException {
         ArrayList<Contratto> list = new ArrayList<Contratto>();
         Connection con = null;
@@ -147,8 +151,14 @@ public class OpeeContratto implements OpeEntity<Contratto,Integer> {
 
             // Define the resource list
             while (rs.next()) {
-                Contratto contratto = new Contratto(rs.getString(1), rs.getDate(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7));
-                //(1String stato, 2Date data, 3Integer durata, 4String tipo, 5String note, 6Integer dipendente, Integer extraAzienda)
+                GregorianCalendar date = new GregorianCalendar();
+                date.setTimeInMillis(rs.getDate(2).getTime());
+
+                Contratto contratto = new Contratto(rs.getString(1), date,
+                        rs.getInt(3), rs.getString(4), rs.getString(5),
+                        rs.getInt(6), rs.getInt(7));
+                //(1String stato, 2Date data, 3Integer durata, 4String tipo,
+                //5String note, 6Integer dipendente, Integer extraAzienda)
                 contratto.setListPagamento(this.getPagamentiContratto(rs.getInt(8)));
                 contratto.setListServizio(this.getServizioContratto(rs.getInt(9)));
                 list.add(contratto);
@@ -191,8 +201,8 @@ public class OpeeContratto implements OpeEntity<Contratto,Integer> {
     public Contratto modifica(Contratto contratto) throws SQLException {
         Connection con = null;
         PreparedStatement stmt = null;
-        Contratto contra= contratto;
-        ArrayList<Pagamento> listPag= contra.getListPagamento();
+        Contratto contra = contratto;
+        ArrayList<Pagamento> listPag = contra.getListPagamento();
         try {
             // Obtain a db connection
             con = ConnectionPool.getConnection();
@@ -201,21 +211,21 @@ public class OpeeContratto implements OpeEntity<Contratto,Integer> {
 
             // Create a statement
 
-  //contratto.setListPagamento(this.getPagamentiContratto(rs.getInt(8)));
-            stmt = con.prepareStatement("UPDATE Pagamento, Contratto (modalitàPagamento)SET (?)"
-                                        +"where Pagamento.contratto=Contratto.idContratto and Contratto.idContratto='"+contratto.getIdContratto()+"'");
-            
-    for(Pagamento p : listPag){
-            stmt.setString(1, p.getModalitaPagamento());
-                stmt.execute();
-              listPag.add(p);
-    }
-            
-          // Force the commit
-            con.commit();
-        }
+            //contratto.setListPagamento(this.getPagamentiContratto(rs.getInt(8)));
+            stmt = con.prepareStatement("UPDATE Pagamento, Contratto " +
+                    "(modalitàPagamento)SET (?)" + "where Pagamento.contratto=" +
+                    "Contratto.idContratto and Contratto.idContratto='" +
+                    contratto.getIdContratto() + "'");
 
-        // Force the commit
+            for (Pagamento p : listPag) {
+                stmt.setString(1, p.getModalitaPagamento());
+                stmt.execute();
+                listPag.add(p);
+            }
+
+            // Force the commit
+            con.commit();
+        } // Force the commit
         catch (SQLException se) {
             System.out.println("SQL Exception:");
 
@@ -236,16 +246,16 @@ public class OpeeContratto implements OpeEntity<Contratto,Integer> {
                 ConnectionPool.releaseConnection(con);
             }
         }
-      return contra;
+        return contra;
     }
-        /**
+
+    /**
      * ricerca il contratto con quell'identificativo
      * @param nome identificativo del contratto
      * @return un contratto con identificativo uguale al paramtero nome
      * @throws java.sql.SQLException
      *
      
-
     public Contratto visualizza(Integer nome) throws SQLException {
         Connection con = null;
         Statement stmt = null;
@@ -263,7 +273,11 @@ public class OpeeContratto implements OpeEntity<Contratto,Integer> {
 
             // Define the resource list
             while (rs.next()) {
-                contratto = new Contratto(rs.getString(1), rs.getDate(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7));
+                GregorianCalendar date = new GregorianCalendar();
+                date.setTimeInMillis(rs.getDate(2).getTime());
+
+                contratto = new Contratto(rs.getString(1), date, rs.getInt(3),
+                        rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7));
                 //(1String stato, 2Date data, 3Integer durata, 4String tipo, 5String note, 6Integer dipendente, Integer extraAzienda)
                 contratto.setListPagamento(this.getPagamentiContratto(rs.getInt(8)));
                 contratto.setListServizio(this.getServizioContratto(rs.getInt(9)));
@@ -321,11 +335,15 @@ public class OpeeContratto implements OpeEntity<Contratto,Integer> {
             stmt = con.createStatement();
             // Execute the query
             rs = stmt.executeQuery("select *" +
-                    "  from contratto, servizioAssociato, servizio" + " where idContratto=contratto " + "and servizio=idServizio;" + "and idContatto=" + id);
+                    "  from contratto, servizioAssociato, servizio" +
+                    " where idContratto=contratto " + "and servizio=idServizio;" + "and idContatto=" + id);
 
             while (rs.next()) {
-                Servizio servizio = new Servizio(rs.getString(1), rs.getBoolean(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getInt(6), rs.getInt(7), rs.getString(8));
-                //(1String descrizione, 2Boolean disponibilita, 3Integer quantita, 4String tipo,5 Double prezzo, 6Integer idServizio, 7Integer iva, 8String note)
+                Servizio servizio = new Servizio(rs.getString(1), rs.getBoolean(2),
+                        rs.getInt(3), rs.getString(4), rs.getDouble(5),
+                        rs.getInt(6), rs.getInt(7), rs.getString(8));
+                //(1String descrizione, 2Boolean disponibilita, 3Integer quantita,
+                //4String tipo,5 Double prezzo, 6Integer idServizio, 7Integer iva, 8String note)
                 list.add(servizio);
             }
         } catch (SQLException se) {
@@ -355,14 +373,16 @@ public class OpeeContratto implements OpeEntity<Contratto,Integer> {
         return list;
     }
 
-        /**
+    /**
      * metodo che si occupa di ricercare tutti i pagamenti legati ad un contratto grazie all'id del contratto
      * @param id identificativo del contratto
      * @return lista dei pagamenti associati al contratto
      * @throws java.sql.SQLException
      */
     public ArrayList<Pagamento> getPagamentiContratto(Integer id) throws SQLException {
-
+        throw new UnsupportedOperationException();
+/*
+ *
         ArrayList<Pagamento> list = new ArrayList<Pagamento>();
         Connection con = null;
         Statement stmt = null;
@@ -379,9 +399,11 @@ public class OpeeContratto implements OpeEntity<Contratto,Integer> {
                     " where idContratto=contratto " + "and idContatto=" + id);
 
             while (rs.next()) {
-                Pagamento pag = new Pagamento(rs.getString(1), rs.getDate(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9), rs.getInt(10));
-                // public Pagamento(1String note, 2Date dataScadenza, 3String descrizione, 4Double importo, 5String modalitaPagamento, 6String stato, 7String altreInformazioni, 8Integer idPagamento, Integer contratto, Integer banca
 
+                Pagamento pag = new Pagamento(rs.getString(1), rs.getDate(2),
+                        rs.getString(3), rs.getDouble(4), rs.getString(5),
+                        rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9), rs.getInt(10));
+                
                 list.add(pag);
             }
         } catch (SQLException se) {
@@ -409,7 +431,7 @@ public class OpeeContratto implements OpeEntity<Contratto,Integer> {
             }
         }
         return list;
-    }
+    */}
 
     public Contratto visualizza(Integer nome) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet.");
