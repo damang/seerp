@@ -2,6 +2,8 @@
 package it.seerp.storage.Operazioni;
 
 import it.seerp.storage.ejb.Contatto;
+import it.seerp.storage.ejb.Pagamento;
+import it.seerp.storage.ejb.Servizio;
 import java.sql.SQLException;
 import it.seerp.storage.ejb.Appuntamento;
 import it.seerp.storage.ejb.Contratto;
@@ -13,11 +15,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+
 /**
  *
  * @author LuNy
  */
 public class OpContatto extends OpExtraAzienda{
+
 
      public OpContatto(){
     super();
@@ -25,7 +29,7 @@ public class OpContatto extends OpExtraAzienda{
      
       /** Metodo che permette la visualizzazione della lista dei Contatti
      * @return ArrayList contenente la lista dei Contatti
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
 
     public ArrayList<Contatto> elencaContatto()throws SQLException{
 
@@ -74,11 +78,8 @@ public class OpContatto extends OpExtraAzienda{
             if (con != null) {
                 ConnectionPool.releaseConnection(con);
             }
-        }
-        return list;
-        throw new UnsupportedOperationException("Not supported yet.");
+        }return list;
     }
-
 
      /** Metodo che permette la ricerca di un Contatto
       * @param cognome
@@ -86,7 +87,7 @@ public class OpContatto extends OpExtraAzienda{
       * @param ruolo
       * ruolo che il Contatto ricopre all'interno dell'azienda
       * @return la lista dei Contatti che corrispondono ai criteri di ricerca
-      * @throws java.sql.SQLException
+      * @throws java.sql.SQLException*/
   
      public  ArrayList<Contatto> ricercaContatto(Integer id, String user)throws SQLException{
 
@@ -138,13 +139,13 @@ public class OpContatto extends OpExtraAzienda{
             }
         }
         return list;
-        throw new UnsupportedOperationException("Not supported yet.");}
+        }
 
 
      /** Metodo che permette di eliminare un Contatto già esistente
       * @param user
       * user del Contatto da eliminare
-      * @throws java.sql.SQLException
+      * @throws java.sql.SQLException*/
 
      public ArrayList<Contatto> elimina(Contatto user)throws SQLException{
 
@@ -196,14 +197,12 @@ public class OpContatto extends OpExtraAzienda{
             }
         }
         return list;
-
-        throw new UnsupportedOperationException("Not supported yet.");
      }
 
     /** Metodo per inserire un nuovo Contatto
      * @param user
      * user del Contatto da inserire
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
 
     public void inserisci(Contatto user)throws SQLException{
 
@@ -268,7 +267,7 @@ public class OpContatto extends OpExtraAzienda{
      * @param user
      * user del Contatto da modificare
      * @return lo stesso oggetto modificato
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
 
     public Contatto modifica(Contatto user)throws SQLException{
 
@@ -309,7 +308,7 @@ public class OpContatto extends OpExtraAzienda{
             stmt.execute();
                             // Force the commit
             con.commit();
-             contatto = this.visualizza(user.getIdUtente());
+            Contatto contatto = (Contatto) this.visualizza(user.getIdUtente());
 
         } // Force the commit
         catch (SQLException se) {
@@ -333,13 +332,13 @@ public class OpContatto extends OpExtraAzienda{
             }
         }
       return contatto;
-        throw new UnsupportedOperationException("Not supported yet.");}
+        }
 
     /** Metodo che permette la visualizzazione dei dettagli di un Contatto
      * @param id
      * id del Contatto
      * @return il bean con i dettagli del Contatto
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
 
     public Contatto visualizzaDati(Integer id) throws SQLException{
 
@@ -394,10 +393,8 @@ public class OpContatto extends OpExtraAzienda{
 
         return contatto;
     }
+    
 
-        throw new UnsupportedOperationException("Not supported yet.");
-
-    }
 
     public ArrayList<Appuntamento> getAppuntamentiContatto(Integer id) throws SQLException {
 
@@ -497,6 +494,10 @@ public class OpContatto extends OpExtraAzienda{
         return list;
     }
 
-*/
 }
+
+    
+
+
+
 
