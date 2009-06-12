@@ -47,7 +47,7 @@ public class ButtonTabComponent extends JPanel  {
         //add more space between the label and the button
         label.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 5));
         //tab button
-        JButton button = new TabButton(this.pane,this.panel,this.menu, pane.indexOfComponent(this.panel));
+        JButton button = new TabButton(this.pane,this.panel,this.menu);
       
         add(button);
         //add more space to the top of the component
