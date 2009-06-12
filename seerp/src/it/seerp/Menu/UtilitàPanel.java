@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * Utilità.java
  *
  * Created on 28-mag-2009, 16.36.18
