@@ -28,13 +28,13 @@ public class DisponibilitaLiquide {
      * @param idPagamento
      * @param listPagamento
      */
-    public DisponibilitaLiquide(Double importo, String tipo, String note, Integer idDisponibilitaLiquide, Integer idPagamento, ArrayList<Pagamento> listPagamento) {
+    public DisponibilitaLiquide(Double importo, String tipo, String note, Integer idDisponibilitaLiquide, Integer idPagamento) {
         this.importo = importo;
         this.tipo = tipo;
         this.note = note;
         this.idDisponibilitaLiquide = idDisponibilitaLiquide;
         this.idPagamento = idPagamento;
-        this.listPagamento = listPagamento;
+        this.listPagamento = new ArrayList<Pagamento>();
     }
 
     /**

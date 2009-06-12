@@ -3,12 +3,13 @@ package it.seerp.storage.ejb;
 import java.util.ArrayList;
 
 /**
- *
+ * classe per la gestione del bean Amministratore
  * @author matteo
  */
 public class Amministratore extends Personale {
 
     private Integer idAmministratore;
+    private Azienda azienda;
 
     /**
      * costruttore
@@ -26,14 +27,28 @@ public class Amministratore extends Personale {
      * @param nome
      * @param codiceFiscale
      * @param tipo
-     * @param listPermessi
-     * @param listRuoli
      * @param v
      * @param idAmministratore
      */
-    public Amministratore(Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String note, String ruolo, Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo, ArrayList<Permesso> listPermessi, ArrayList<Ruolo> listRuoli, Boolean v, Integer idAmministratore) {
-        super(idUtente, username, password, città, provincia, telefono, email, note, ruolo, idPersonale, cognome, nome, codiceFiscale, tipo, listPermessi, listRuoli, v);
+    public Amministratore(Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String note, String ruolo, Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo, Boolean v, Integer idAmministratore) {
+        super(idUtente, username, password, città, provincia, telefono, email, note, ruolo, idPersonale, cognome, nome, codiceFiscale, tipo,v);
         this.idAmministratore = idAmministratore;
+    }
+
+    /**
+     * metodo che permette di restituire le informazioni relative all'azienda
+     * @return le informazioni dell'azienda
+     */
+    public Azienda getAzienda() {
+        return azienda;
+    }
+
+    /**
+     * metoco che permette di settare le informazioni relative all'azienda
+     * @param azienda rappresenta le informazioni dell'azienda
+     */
+    public void setAzienda(Azienda azienda) {
+        this.azienda = azienda;
     }
 
     /**

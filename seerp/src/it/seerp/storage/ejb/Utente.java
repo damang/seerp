@@ -1,7 +1,7 @@
 package it.seerp.storage.ejb;
 
 /**
- *
+ * classe per la gestione del bean Utente
  * @author matteo
  */
 public class Utente {
@@ -17,11 +17,15 @@ public class Utente {
     private String ruolo;
     private Boolean visible;
 
+
+    /**
+     * costruttore vuoto
+     */
     public Utente() {
     }
 
     /**
-     * costruttore
+     * costruttore per la classe Utente
      * @param idUtente
      * @param username
      * @param password
@@ -46,6 +50,7 @@ public class Utente {
         this.visible = v;
     }
 
+
     /**
      * metodo che restituisce la visibilita dell utente
      * @return la visibilita dell'utente
@@ -56,7 +61,7 @@ public class Utente {
 
     /**
      * metodo che setta la visibilita dell utente
-     * @param visibile la visibilita dell'utente
+     * @param visible
      */
     public void setVisible(Boolean visible) {
         this.visible = visible;

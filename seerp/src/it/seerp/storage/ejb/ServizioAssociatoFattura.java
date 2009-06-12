@@ -13,17 +13,13 @@ import java.util.ArrayList;
 public class ServizioAssociatoFattura {
 
     private Integer quantita;
-    private Integer servizio;
-    private Integer fattura;
-    private Integer contratto;
+    private ServizioAssociato servizio;
+    private Fattura fattura;
     private String note;
     private ArrayList<DDT> listDDT;
 
     public ServizioAssociatoFattura(Integer quantita, Integer servizio, Integer fattura, Integer contratto, String note, ArrayList<DDT> listDDT) {
         this.quantita = quantita;
-        this.servizio = servizio;
-        this.fattura = fattura;
-        this.contratto = contratto;
         this.note = note;
         this.listDDT = listDDT;
     }
@@ -44,53 +40,38 @@ public class ServizioAssociatoFattura {
         this.listDDT = listDDT;
     }
 
+   
     /**
-     * metodo che restutisce l'id del contratto a cui sono associati dei servizi di una determinata fattura
-     * @return l'id del contratto a cui sono associati dei servizi di una determinata fattura
-     */
-    public Integer getContratto() {
-        return contratto;
-    }
-
-    /**
-     * metodo che setta l'id del contratto a cui sono associati dei servizi di una determinata fattura
-     * @param contratto l'id del contratto a cui sono associati dei servizi di una determinata fattura
-     */
-    public void setContratto(Integer contratto) {
-        this.contratto = contratto;
-    }
-
-    /**
-     *  metodo che restituisce l'id della fattura alla quale sono associati determinati servizi di un contratto
-     * @return  l'id della fattura alla quale sono associati determinati servizi di un contratto
+     *  metodo che restituisce le informazioni della fattura alla quale sono associati determinati servizi di un contratto
+     * @return  le informazioni della fattura alla quale sono associati determinati servizi di un contratto
 
      */
-    public Integer getFattura() {
+    public Fattura getFattura() {
         return fattura;
     }
 
     /**
      *  metodo che setta della fattura alla quale sono associati determinati servizi di un contratto
-     * @param Fattura_idFattura l'id della fattura alla quale sono associati determinati servizi di un contratto
+     * @param fattura le informazioni della fattura alla quale sono associati determinati servizi di un contratto
      */
-    public void setFattura(Integer Fattura_idFattura) {
-        this.fattura = Fattura_idFattura;
+    public void setFattura(Fattura fattura) {
+        this.fattura = fattura;
     }
 
     /**
      *  metodo che restituisce l'identificativo del servizio associati a quella fattura in un determinato contratto
      * @return 'identificativo del servizio associati a quella fattura in un determinato contratto
      */
-    public Integer getServizio() {
+    public ServizioAssociato getServizio() {
         return servizio;
     }
 
     /**
-     *  metodo che setta 'identificativo del servizio associati a quella fattura in un determinato contratto
-     * @param ServizioAssociato_idServizioAssociato 'identificativo del servizio associati a quella fattura in un determinato contratto
+     *  metodo che setta le informazioni del servizio associato a quella fattura in un determinato contratto
+     * @param servizio rappresenta le informazioni del servizio associato a quella fattura in un determinato contratto
      */
-    public void setServizio(Integer ServizioAssociato_idServizioAssociato) {
-        this.servizio = ServizioAssociato_idServizioAssociato;
+    public void setServizio(ServizioAssociato servizio) {
+        this.servizio = servizio;
     }
 
     /**

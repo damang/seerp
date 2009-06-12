@@ -1,80 +1,69 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package it.seerp.storage.ejb;
 
 import java.util.ArrayList;
 
 /**
- *
- * @author Luisa
+ * classe per la gestione del bean Incarico
+ * @author Luisa-Matteo
  */
 public class Incarico {
- private Integer personale;
- private Integer permesso;
- private Integer ruolo;
+  private ArrayList<Permesso> listPermessi;
+  private Ruolo ruolo;
 
 
  /**
-  *
-  * @param personale
-  * @param permesso
-  * @param ruolo
+  * costruttore vuoto
   */
- public Incarico(Integer personale, Integer permesso, Integer ruolo) {
-        this.personale = personale;
-        this.permesso = permesso;
-        this.ruolo = ruolo;
+ public Incarico() {
+      listPermessi= new ArrayList<Permesso>();
     }
 
     /**
-     * metodo che restituisce permesso legato all'incarico
+     * metodo che restituisce la lista dei permessi legato all'incarico
      * @return permesso legato all'incarico
      */
-    public Integer getPermesso() {
-        return permesso;
+    public ArrayList<Permesso> getListPermesso() {
+        return listPermessi;
     }
 
     /**
-     * metodo che restituisce il permesso legato all incarico
-     * @param permesso legato all'inarico
+     * metodo che setta la lista dei permessi legati all'incarico
+     * @param listPermessi rappresenta la lista dei permessi
      */
-    public void setPermesso(Integer permesso) {
-        this.permesso = permesso;
+    public void setPermesso(ArrayList<Permesso> listPermessi) {
+        this.listPermessi = listPermessi;
     }
 
     /**
-     * metodo che resttuisce identificativo del personale
-     * @return personale dell'incarico
+     * metodo che resttuisce il pesonale legato all incarico
+     * @return le informazioni relative al personale
      */
-    public Integer getPersonale() {
-        return personale;
-    }
-
-    /**
-     * metodo che restituisce l'identificativo del personale legato a quell'incarico
-     * @param personale l'identificativo del personale legato a quell'incarico
-     */
-    public void setPersonale(Integer personale) {
-        this.personale = personale;
-    }
-
-    /**
-     * metodo che restituisce il ruolo di quell' incarico
-     * @return ruolo dell'incarico
-     */
-    public Integer getRuolo() {
+    public Ruolo getRuolo() {
         return ruolo;
     }
 
     /**
-      * metodo che restituisce l'id del ruolo di quell' incarico
-     * @return ruolo dell'incarico
+     * metodo che setta il personale legato all incarico
+     * @param ruolo rappresenta il personale
      */
-    public void setRuolo(Integer ruolo) {
+    public void setRuolo(Ruolo ruolo) {
         this.ruolo = ruolo;
+    }
+
+     /**
+     * metodo che permette di rimuovere un permesso dalla lista dei permessi
+     * @param c rappresenta il permesso da eliminare
+     */
+    public void removePermesso(Permesso c){
+     listPermessi.remove(c);
+    }
+
+    /**
+     * metodo che permette di aggiungere un permesso alla lista dei permessi
+     * @param c rappresenta il permesso da inserire
+     */
+    public void addPermesso(Permesso c){
+      listPermessi.add(c);
     }
 
 }

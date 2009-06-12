@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 /**
  *la classe gestisce le informazioni sulle fatture ricevute
- * @author Luisa
+ * @author Luisa-Matteo
  */
 public class FatturaRicevuta extends Fattura {
 
@@ -29,8 +29,8 @@ public class FatturaRicevuta extends Fattura {
      * @param numeroProgressivo
      * @param ivaCredito
      */
-    public FatturaRicevuta(Date data, Integer idFattura, Double imponibile, Double importo, Double iva, String tipo, String note, ArrayList<NotaDiCredito> listNote, ArrayList<ServizioAssociato> listServizio, Integer idFatturaRicevuta, Integer numeroProgressivo, Double ivaCredito) {
-        super(data, idFattura, imponibile, importo, iva, tipo, note, listNote, listServizio);
+    public FatturaRicevuta(Date data, Integer idFattura, Double imponibile, Double importo, Double iva, String tipo, String note, Integer idFatturaRicevuta, Integer numeroProgressivo, Double ivaCredito) {
+        super(data, idFattura, imponibile, importo, iva, tipo, note);
         this.idFatturaRicevuta = idFatturaRicevuta;
         this.numeroProgressivo = numeroProgressivo;
         this.ivaCredito = ivaCredito;

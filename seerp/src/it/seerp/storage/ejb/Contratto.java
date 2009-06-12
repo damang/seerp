@@ -6,7 +6,7 @@ import java.util.GregorianCalendar;
 
 /**
  * classe che gestisce le informazioni sui contratti
- * @author Luisa
+ * @author Luisa-Matteo
  */
 public class Contratto {
 
@@ -16,36 +16,16 @@ public class Contratto {
     private String tipo;
     private Integer idContratto;
     private String note;
-    private Integer dipendente;
-    private Integer extraAzienda;
+    private Dipendente dipendente;
+    private ExtraAzienda extraAzienda;
     private ArrayList<Pagamento> listPagamento;
-    private ArrayList<Servizio> listServizio;
+    private ArrayList<ServizioAssociato> listServizio;
+    private ArrayList<Fattura> listFattura;
 
     /**
      *
      */
     public Contratto() {
-    }
-
-    /**
-     *
-     * @param stato
-     * @param data
-     * @param durata
-     * @param tipo
-     * @param note
-     * @param dipendente
-     * @param extraAzienda
-     */
-    public Contratto(String stato, GregorianCalendar data, Integer durata, String tipo,
-            String note, Integer dipendente, Integer extraAzienda) {
-        this.stato = stato;
-        this.data = data;
-        this.durata = durata;
-        this.tipo = tipo;
-        this.note = note;
-        this.dipendente = dipendente;
-        this.extraAzienda = extraAzienda;
     }
 
     /**
@@ -56,57 +36,41 @@ public class Contratto {
      * @param tipo
      * @param idContratto
      * @param note
-     * @param dipendente
-     * @param extraAzienda
-     * @param listPagamento
-     * @param listServizio
      */
     public Contratto(String stato, GregorianCalendar data, Integer durata, String tipo,
-            Integer idContratto, String note, Integer dipendente,
-            Integer extraAzienda, ArrayList<Pagamento> listPagamento,
-            ArrayList<Servizio> listServizio) {
+            Integer idContratto, String note) {
         this.stato = stato;
         this.data = data;
         this.durata = durata;
         this.tipo = tipo;
         this.idContratto = idContratto;
         this.note = note;
-        this.dipendente = dipendente;
-        this.extraAzienda = extraAzienda;
-        this.listPagamento = listPagamento;
-        this.listServizio = listServizio;
+        this.listPagamento = new ArrayList<Pagamento>();
+        this.listServizio = new ArrayList<ServizioAssociato>();
+        this.listFattura= new ArrayList<Fattura>();
     }
 
     /**
-     *
-     * @param stt
-     * @param da
-     * @param d
-     * @param t
-     * @param i
-     * @param n
-     * @param dip
-     * @param e
-     * @param listS
+     * metodo che permette di settare la lista delle fatture associate al contratto
+     * @param listFattura rappresenta la lista delle fatture
      */
-    public Contratto(String stt, GregorianCalendar da, Integer d, String t, Integer i,
-            String n, Integer dip, Integer e, ArrayList<Servizio> listS) {
-        this.listServizio = listS;
-        this.stato = stt;
-        this.data = da;
-        this.durata = d;
-        this.tipo = t;
-        this.idContratto = i;
-        this.note = n;
-        this.dipendente = dip;
-        this.extraAzienda = e;
+    public void setListFattura(ArrayList<Fattura> listFattura) {
+        this.listFattura = listFattura;
+    }
+
+    /**
+     * metodo che restituisce la lista delle fatture associate al contratto
+     * @return la lista delle fatture
+     */
+    public ArrayList<Fattura> getListFattura() {
+        return listFattura;
     }
 
     /**
      *  metodo che restituisce la lista di servizi associati al contratto
      * @return la lista di servizi associati al contratto
      */
-    public ArrayList<Servizio> getListServizio() {
+    public ArrayList<ServizioAssociato> getListServizio() {
         return listServizio;
     }
 
@@ -114,15 +78,15 @@ public class Contratto {
      *metodo che setta la lista di servizi associati al contratto
      * @param listServizio la lista di servizi associati al contratto
      */
-    public void setListServizio(ArrayList<Servizio> listServizio) {
+    public void setListServizio(ArrayList<ServizioAssociato> listServizio) {
         this.listServizio = listServizio;
     }
 
     /**
-     *  metodo che restituisce l'id dipendente che ha stipulato il contratto
-     * @return id dipendente che ha stipulato il contratto
+     *  metodo che restituisce le informazioni del dipendente che ha stipulato il contratto
+     * @return le infomazioni del dipendente che ha stipulato il contratto
      */
-    public Integer getDipendente() {
+    public Dipendente getDipendente() {
         return dipendente;
     }
 
@@ -130,9 +94,6 @@ public class Contratto {
      * metodo che restituisce la lista di pagamenti asociatia al contratto
      * @return la lista di pagamenti asociatia al contratto
      */
-    
-
-
     public ArrayList<Pagamento> getListPagamento() {
 
         return listPagamento;
@@ -147,26 +108,26 @@ public class Contratto {
     }
 
     /**
-     *  metodo che setta id dipendente che ha stipulato il contratto
-     * @param dipendente id dipendente che ha stipulato il contratto
+     *  metodo che setta le informazioni dipendente che ha stipulato il contratto
+     * @param dipendente rappresenta le informazioni dipendente che ha stipulato il contratto
      */
-    public void setDipendente(Integer dipendente) {
+    public void setDipendente(Dipendente dipendente) {
         this.dipendente = dipendente;
     }
 
     /**
-     * metodo che restituisce id soggetto con il quale è stato stipulato il contratto
-     * @return: id soggetto con il quale è stato stipulato il contratto
+     * metodo che restituisce le informazioni del soggetto con il quale è stato stipulato il contratto
+     * @return: le informazioni del soggetto con il quale è stato stipulato il contratto
      */
-    public Integer getExtraAzienda() {
+    public ExtraAzienda getExtraAzienda() {
         return extraAzienda;
     }
 
     /**
-     *  metodo che setta id soggetto con il quale è stato stipulato il contratto
-     * @param extraAzienda id soggetto con il quale è stato stipulato il contratto
+     *  metodo che setta le informazioni del soggetto con il quale è stato stipulato il contratto
+     * @param extraAzienda rappresenta le informazioni del soggetto con il quale è stato stipulato il contratto
      */
-    public void setExtraAzienda(Integer extraAzienda) {
+    public void setExtraAzienda(ExtraAzienda extraAzienda) {
         this.extraAzienda = extraAzienda;
     }
 
@@ -286,7 +247,7 @@ public class Contratto {
      * metodo che rimuove un servizio alla lista dei servizi
      * @param s servizio da rimuovere lista dei servizi
      */
-    public void removeServzio(Servizio s) {
+    public void removeServzio(ServizioAssociato s) {
         listServizio.remove(s);
     }
 
@@ -294,7 +255,7 @@ public class Contratto {
      * metodo che aggiunge un servizio alla lista dei servizi
      * @param s servizio da aggiungere lista dei servizi
      */
-    public void addServizio(Servizio s) {
+    public void addServizio(ServizioAssociato s) {
         listServizio.add(s);
     }
 }

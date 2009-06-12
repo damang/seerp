@@ -3,10 +3,13 @@ package it.seerp.storage.ejb;
 import java.util.GregorianCalendar;
 
 /**
- *classe utilizzata per gestire un evento
- * @author Luisa
+ * classe utilizzata per gestire un evento
+ * @author Luisa-Matteo
  */
 public class Evento {
+
+   
+    
 
     private String luogo;
     private String tema;
@@ -15,11 +18,17 @@ public class Evento {
     private GregorianCalendar data;
     private GregorianCalendar ora;
     private int idEvento;
-    private Integer agenda;
     private Boolean notifica;
+    private Agenda agd;
 
     /**
-     * cotruttore
+     * cotruttore vuoto
+     */
+    public Evento()
+    {}
+
+    /**
+     * Costruttore per la classe Evento
      * @param luogo
      * @param tema
      * @param nome
@@ -27,13 +36,11 @@ public class Evento {
      * @param data
      * @param ora
      * @param idEvento
-     * @param agenda
      * @param not
      */
-    public Evento()
-    {}
 
-    public Evento(String luogo, String tema, String nome, String note, GregorianCalendar data, GregorianCalendar ora, int idEvento, int agenda, Boolean not) {
+
+    public Evento(String luogo, String tema, String nome, String note, GregorianCalendar data, GregorianCalendar ora, int idEvento, Boolean not) {
         this.luogo = luogo;
         this.notifica = not;
         this.tema = tema;
@@ -42,7 +49,7 @@ public class Evento {
         this.data = data;
         this.ora = ora;
         this.idEvento = idEvento;
-        this.agenda = agenda;
+        
     }
 
     /**
@@ -54,6 +61,14 @@ public class Evento {
     }
 
     /**
+     * motodo che permette di restituire l'agenda a cui l'evento appartiene
+     * @return l'agenda dell'Evento
+     */
+    public Agenda getAgenda() {
+        return agd;
+    }
+
+    /**
      * metodo che setta la notificazione dell'evento
      * @param notifica notificazione dell'evento
      */
@@ -61,20 +76,12 @@ public class Evento {
         this.notifica = notifica;
     }
 
-    /**
-     * metodo che restituisce identificativo dell'agenda associata a quell'evento
-     * @return identificativo dell'agenda associata a quell'evento
-     */
-    public Integer getAgenda() {
-        return agenda;
-    }
-
+   
     /**
      * metodo che setta l'identificativo dell'agenda associata a quell'evento
-     * @param agenda identificativo dell'agenda associata a quell'evento
      */
-    public void setAgenda(Integer agenda) {
-        this.agenda = agenda;
+    public void setAgenda(Agenda a) {
+        this.agd = a;
     }
 
     /**
