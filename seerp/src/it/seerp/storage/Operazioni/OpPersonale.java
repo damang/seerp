@@ -34,7 +34,7 @@ public class OpPersonale extends OpeUtente {
     /** Metodo che permette la visualizzazione
      * della lista del Personale
      * @return ArrayList contenente la lista del personale
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
  
     public ArrayList<Personale> elencaPersonale()throws SQLException{
 
@@ -94,7 +94,7 @@ public class OpPersonale extends OpeUtente {
       * @param ruolo
       * ruolo che il membro del personale ricopre all'interno dell'azienda
       * @return la lista dei membri del personale che corrispondono ai criteri di ricerca
-      * @throws java.sql.SQLException
+      * @throws java.sql.SQLException*/
      
      public  ArrayList<Personale> ricercaPersonale(String cognome, String ruolo)throws SQLException{
          ArrayList<Personale> list = new ArrayList<Personale>();
@@ -146,13 +146,13 @@ public class OpPersonale extends OpeUtente {
         }
         return list;
 
-        throw new UnsupportedOperationException("Not supported yet.");}
+       }
 
 
      /** Metodo che permette di eliminare un membro del personale già esistente
       * @param user
       * user dell'utente da eliminare
-      * @throws java.sql.SQLException
+      * @throws java.sql.SQLException*/
 
      public void elimina(Personale user)throws SQLException{
 
@@ -202,15 +202,14 @@ public class OpPersonale extends OpeUtente {
                 ConnectionPool.releaseConnection(con);
             }
         }
-        return list;
-
-        throw new UnsupportedOperationException("Not supported yet.");}
+       
+        }
 
 
      /** Nasconde l'utente eliminato al sistema senza l'eliminazione fisica
       * @param user
       * user dell'utente da eliminare
-      * @throws java.sql.SQLException
+      * @throws java.sql.SQLException*/
 
      public void eliminazioneLogica(Personale user)throws SQLException{
          ArrayList<Personale> list = new ArrayList<Personale>();
@@ -258,16 +257,16 @@ public class OpPersonale extends OpeUtente {
                 ConnectionPool.releaseConnection(con);
             }
         }
-        return list;
+       
 
 
-        throw new UnsupportedOperationException("Not supported yet.");}
+        }
 
 
     /** Metodo per inserire un nuovo membro del personale
      * @param user
      * user dell'utente da inserire
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
  
     public void inserisci(Personale user)throws SQLException{
 
@@ -329,7 +328,7 @@ public class OpPersonale extends OpeUtente {
      * @param user
      * user del membro del personale da modificare
      * @return lo stesso oggetto modificato
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
 
     public Personale modifica(Personale user)throws SQLException{
 
@@ -392,12 +391,12 @@ public class OpPersonale extends OpeUtente {
         }
       return personale;
 
-        throw new UnsupportedOperationException("Not supported yet.");}
+        }
 
     /** Metodo che permette la visualizzazione dei dettagli di un membro del personale
      * @param id
      * id del membro del personale
-     * @return il bean con i dettagli del membro del personale
+     * @return il bean con i dettagli del membro del personale*/
 
     public Personale visualizzaDati(Integer id) throws SQLException{
 
@@ -465,7 +464,11 @@ public class OpPersonale extends OpeUtente {
             // Create a statement
             stmt = con.createStatement();
             // Execute the query
-            rs = stmt.executeQuery("select *" + "  from personale, permessoAssociato, permesso" + " where idPersonale=personale + "and permesso=idPermesso;" + "and idPersonale=" + id");
+
+            rs = stmt.executeQuery("select *" +
+                    "  from personale, permessoAssociato, permesso" + " where idPersonale=personale" + "and permesso=idPermesso" + "and idPersonale=" + id);
+           
+
 
             while (rs.next()) {
                 Permesso permesso = new Permesso(rs.getInt(1), rs.getString(2));
@@ -550,5 +553,5 @@ public class OpPersonale extends OpeUtente {
         }
         return list;
     }
-*/
+
 }
