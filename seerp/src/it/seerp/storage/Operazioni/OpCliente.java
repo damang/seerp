@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
 /**
  *
  * @author LuNy
@@ -26,7 +27,7 @@ public class OpCliente extends OpExtraAzienda {
 
     /** Metodo che permette la visualizzazione della lista dei Clienti
      * @return ArrayList contenente la lista dei Clienti
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
 
     public ArrayList<Cliente> elencaCliente()throws SQLException{
         ArrayList<Cliente> list = new ArrayList<Cliente>();
@@ -75,9 +76,9 @@ public class OpCliente extends OpExtraAzienda {
                 ConnectionPool.releaseConnection(con);
             }
         }return list;
+    }
 
-           throw new UnsupportedOperationException("Not supported yet.");}
-
+           
 
      /** Metodo che permette la ricerca di un Cliente
       * @param cognome
@@ -85,7 +86,7 @@ public class OpCliente extends OpExtraAzienda {
       * @param ruolo
       * ruolo che il Cliente ricopre all'interno dell'azienda
       * @return la lista dei Clienti che corrispondono ai criteri di ricerca
-      * @throws java.sql.SQLException
+      * @throws java.sql.SQLException*/
   
      public  ArrayList<Cliente> ricercaCliente(String cognome, String nome)throws SQLException{
          
@@ -138,13 +139,13 @@ public class OpCliente extends OpExtraAzienda {
         }
         return list;
 
-        throw new UnsupportedOperationException("Not supported yet.");}
+       }
 
 
      /** Metodo che permette di eliminare un Cliente già esistente
       * @param user
       * user del Cliente da eliminare
-      * @throws java.sql.SQLException
+      * @throws java.sql.SQLException*/
    
 
      public void elimina(String user)throws SQLException{
@@ -196,16 +197,16 @@ public class OpCliente extends OpExtraAzienda {
                 ConnectionPool.releaseConnection(con);
             }
         }
-        return list;
+       
 
-        throw new UnsupportedOperationException("Not supported yet.");}
+       }
 
 
 
      /** Nasconde l'utente eliminato al sistema senza l'eliminazione fisica
       * @param user
       * user del Cliente da eliminare
-      * @throws java.sql.SQLException
+      * @throws java.sql.SQLException*/
  
      public void eliminazioneLogica(Cliente user)throws SQLException{
 
@@ -255,15 +256,15 @@ public class OpCliente extends OpExtraAzienda {
                 ConnectionPool.releaseConnection(con);
             }
         }
-        return list;
+       
 
-        throw new UnsupportedOperationException("Not supported yet.");}
+      }
 
 
     /** Metodo per inserire un nuovo Cliente
      * @param user
      * user del Cliente da inserire
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
  
     public void inserisci(Cliente user)throws SQLException{
 
@@ -327,7 +328,7 @@ public class OpCliente extends OpExtraAzienda {
      * @param user
      * user del Cliente da modificare
      * @return lo stesso oggetto modificato
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
   
     public Cliente modifica(Cliente user)throws SQLException{
 
@@ -366,7 +367,7 @@ public class OpCliente extends OpExtraAzienda {
             stmt.execute();
                             // Force the commit
             con.commit();
-            cliente= this.visualizza(user.getIdUtente());
+            cliente = (Cliente) this.visualizza(user.getIdUtente());
 
         } // Force the commit
         catch (SQLException se) {
@@ -392,13 +393,13 @@ public class OpCliente extends OpExtraAzienda {
       return cliente;
     
 
-        throw new UnsupportedOperationException("Not supported yet.");}
+        }
 
     /** Metodo che permette la visualizzazione dei dettagli di un Cliente
      * @param id
      * id del Cliente
      * @return il bean con i dettagli del Cliente
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
    
     public Cliente visualizzaDati(Integer id) throws SQLException{
 
@@ -451,14 +452,14 @@ public class OpCliente extends OpExtraAzienda {
 
         return cliente;
 
-        throw new UnsupportedOperationException("Not supported yet.");}
+      }
 
 
     /**
      * metodo che si occupa di ricercare tutti gli appuntamenti legati ad un cliente grazie all'id del cliente
      * @param id identificativo del cliente
      * @return lista degli appuntamenti associati al cliente
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
  
     public ArrayList<Appuntamento> getAppuntamentiCliente(Integer id) throws SQLException {
 
@@ -512,7 +513,7 @@ public class OpCliente extends OpExtraAzienda {
      * metodo che si occupa di ricercare tutti i contratti legati ad un cliente grazie all'id del cliente
      * @param id identificativo del cliente
      * @return lista dei contratti associati al cliente
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
 
     public ArrayList<Contratto> getContrattiCliente(Integer id) throws SQLException {
 
@@ -563,5 +564,5 @@ public class OpCliente extends OpExtraAzienda {
         }
         return list;
     }
-*/
+
 }
