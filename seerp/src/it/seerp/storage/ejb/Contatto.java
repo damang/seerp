@@ -38,7 +38,7 @@ public class Contatto extends ExtraAzienda {
      */
 
     public Contatto(Integer idUtente, String username, String password, String città, String ruol, String provincia, String telefono, String email, String ruolo, String note, Boolean v, Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva, String fax, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti, Integer idContatto, Integer feedback) {
-        super(idUtente, username, password, città, ruol, provincia, telefono, email, ruolo, note, v, idExtraAzienda, cognome, nome, ragioneSociale, pIva, fax, listAppuntamenti, listContratti);
+        super(idUtente, username, password, città, ruol, provincia, telefono, email, ruolo, note, v, idExtraAzienda, cognome, nome, ragioneSociale, pIva, fax);
         this.idContatto = idContatto;
         this.feedback = feedback;
     }

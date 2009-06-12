@@ -1,14 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package it.seerp.storage.ejb;
 
 import java.sql.Date;
 
 /**
  * classe che gestisce le informazioni sui pagamenti
- * @author Luisa
+ * @author Luisa-Matteo
  */
 public class Pagamento {
 
@@ -20,8 +16,15 @@ public class Pagamento {
     private String stato;
     private String altreInformazioni;
     private Integer idPagamento;
-    private Integer contratto;
-    private Integer banca;
+    private Contratto contratto;
+    private Banca banca;
+    private DisponibilitaLiquide disp;
+
+    /**
+     * costruttore vuoto
+     */
+    public Pagamento()
+    {}
 
     /**
      * costruttore
@@ -34,13 +37,10 @@ public class Pagamento {
      * @param stato
      * @param altreInformazioni
      * @param idPagamento
-     * @param contratto
-     * @param banca
      */
 
-    public Pagamento()
-    {}
-    public Pagamento(String note, Date dataScadenza, String descrizione, Double importo, String modalitaPagamento, String stato, String altreInformazioni, Integer idPagamento, Integer contratto, Integer banca) {
+   
+    public Pagamento(String note, Date dataScadenza, String descrizione, Double importo, String modalitaPagamento, String stato, String altreInformazioni, Integer idPagamento) {
         this.note = note;
         this.dataScadenza = dataScadenza;
         this.descrizione = descrizione;
@@ -49,39 +49,54 @@ public class Pagamento {
         this.stato = stato;
         this.altreInformazioni = altreInformazioni;
         this.idPagamento = idPagamento;
-        this.contratto = contratto;
-        this.banca = banca;
+      
     }
 
     /**
-     * metodo che restituisce l'identificativo della banca a cui quel pagamento è asosciato
-     * @return l'identificativo della banca a cui quel pagamento è asosciato
+     * metodo che restituisce le informazioni della disponibilità liquida
+     * @return la disponibilità liquida
      */
-    public Integer getBanca() {
+    public DisponibilitaLiquide getDisp() {
+        return disp;
+    }
+
+    /**
+     * metodo che permette di settare le informazioni della disponibilità liquida
+     * @param disp rappresenta la disponibilità liquida
+     */
+    public void setDisp(DisponibilitaLiquide disp) {
+        this.disp = disp;
+    }
+
+    /**
+     * metodo che restituisce le informazioni della banca a cui quel pagamento è asosciato
+     * @return le informazioni della banca a cui quel pagamento è asosciato
+     */
+    public Banca getBanca() {
         return banca;
     }
 
     /**
-     *  metodo che setta l'identificativo della banca a cui quel pagamento è asosciato
-     * @param banca l'identificativo della banca a cui quel pagamento è asosciato
+     *  metodo che setta linformazioni della banca a cui quel pagamento è asosciato
+     * @param banca le informazioni della banca a cui quel pagamento è asosciato
      */
-    public void setBanca(Integer banca) {
+    public void setBanca(Banca banca) {
         this.banca = banca;
     }
 
     /**
-     *  metodo che restituisce l'identificativo del contratto a cui quel pagamento è asosciato
-     * @return l'identificativo del contratto a cui quel pagamento è asosciato
+     *  metodo che restituisce le informazioni del contratto a cui quel pagamento è asosciato
+     * @return le informazioni del contratto a cui quel pagamento è asosciato
      */
-    public Integer getContratto() {
+    public Contratto getContratto() {
         return contratto;
     }
 
     /**
-     * metodo che setta l'identificativo del contratto a cui quel pagamento è asosciato
-     * @param contratto l'identificativo del contratto a cui quel pagamento è asosciato
+     * metodo che setta le informzioni del contratto a cui quel pagamento è asosciato
+     * @param contratto le informazioni del contratto a cui quel pagamento è asosciato
      */
-    public void setContratto(Integer contratto) {
+    public void setContratto(Contratto contratto) {
         this.contratto = contratto;
     }
 

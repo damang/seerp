@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 /**
  * classe che gestisce le informazioni su una fattura emessa
- * @author Luisa
+ * @author Luisa-Matteo
  */
 public class FatturaEmessa extends Fattura {
 
@@ -15,9 +15,10 @@ public class FatturaEmessa extends Fattura {
     private Double ivaDebito;
     private String tipoFatt;
     private ArrayList<DDT> listDDT;
+    private ArrayList<NotaDiCredito> listNC;
 
     /**
-     *
+     * costruttore per la classe FatturaEmessa
      * @param data
      * @param idFattura
      * @param imponibile
@@ -25,21 +26,51 @@ public class FatturaEmessa extends Fattura {
      * @param iva
      * @param tipoFat
      * @param note
-     * @param listNote
-     * @param listServizio
      * @param idFatturaEmessa
      * @param numeroProgressivo
      * @param ivaDebito
      * @param tipo
-     * @param listDDT
      */
-    public FatturaEmessa(Date data, Integer idFattura, Double imponibile, Double importo, Double iva, String tipoFat, String note, ArrayList<NotaDiCredito> listNote, ArrayList<ServizioAssociato> listServizio, Integer idFatturaEmessa, Integer numeroProgressivo, Double ivaDebito, String tipo, ArrayList<DDT> listDDT) {
-        super(data, idFattura, imponibile, importo, iva, tipo, note, listNote, listServizio);
+    public FatturaEmessa(Date data, Integer idFattura, Double imponibile, Double importo, Double iva, String tipoFat, String note, Integer idFatturaEmessa, Integer numeroProgressivo, Double ivaDebito, String tipo) {
+        super(data, idFattura, imponibile, importo, iva, tipo, note);
         this.idFatturaEmessa = idFatturaEmessa;
         this.numeroProgressivo = numeroProgressivo;
         this.ivaDebito = ivaDebito;
         this.tipoFatt = tipoFat;
-        this.listDDT = listDDT;
+        this.listDDT = new ArrayList<DDT>();
+        this.listNC = new ArrayList<NotaDiCredito>();
+    }
+
+    /**
+     * metodo che setta la lista delle note di credito associato alla fattura emessa
+     * @param listNC rappresenta la lista delle note di credito
+     */
+    public void setListNC(ArrayList<NotaDiCredito> listNC) {
+        this.listNC = listNC;
+    }
+
+    /**
+     * metodo che setta il tipo di fattura emessa
+     * @param tipoFatt rappresenta il tipo di fattura
+     */
+    public void setTipoFatt(String tipoFatt) {
+        this.tipoFatt = tipoFatt;
+    }
+
+    /**
+     * metodo che restituisce la lista delle note di credito della fattura emessa
+     * @return la lista delle note di credito
+     */
+    public ArrayList<NotaDiCredito> getListNC() {
+        return listNC;
+    }
+
+    /**
+     * metodo che restituisce il tipo di fattura
+     * @return il tipo di fattura
+     */
+    public String getTipoFatt() {
+        return tipoFatt;
     }
 
     /**

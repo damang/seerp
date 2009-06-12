@@ -4,6 +4,8 @@
  */
 package it.seerp.storage.ejb;
 
+import java.util.ArrayList;
+
 /**
  * la classe gestisce le informazioni
  * @author Luisa
@@ -12,9 +14,11 @@ public class ServizioAssociato {
 
     private Integer quantita;
     private Double prezzoUnitario;
-    private Integer contratto;
-    private Integer servizio;
+    private Contratto contratto;
+    private Servizio servizio;
     private String note;
+    ArrayList<ServizioAssociatoFattura> listServizioAssociatoFattura;
+    
 
     /**
      * costruttore
@@ -24,12 +28,13 @@ public class ServizioAssociato {
      * @param servizio
      * @param note
      */
-    public ServizioAssociato(Integer quantita, Double prezzoUnitario, Integer contratto, Integer servizio, String note) {
+    public ServizioAssociato(Integer quantita, Double prezzoUnitario, String note) {
         this.quantita = quantita;
         this.prezzoUnitario = prezzoUnitario;
-        this.contratto = contratto;
-        this.servizio = servizio;
         this.note = note;
+        this.listServizioAssociatoFattura= new ArrayList<ServizioAssociatoFattura>();
+
+
     }
 
     /**
@@ -49,35 +54,35 @@ public class ServizioAssociato {
     }
 
     /**
-     *  metodo che restituisce l'id del contratto a cui determinati servizi sono associati
-     * @return l'id del contratto a cui determinati servizi sono associati
+     *  metodo che restituisce le informazioni del contratto a cui determinati servizi sono associati
+     * @return le informazioni del contratto a cui determinati servizi sono associati
      */
-    public Integer getContratto() {
+    public Contratto getContratto() {
         return contratto;
     }
 
     /**
-     * metodo che setta l'id del contratto a cui determinati servizi sono associati
-     * @param Contratto_idContratto l'id del contratto a cui determinati servizi sono associati
+     * metodo che setta le informazioni del contratto a cui determinati servizi sono associati
+     * @param contratto le informazioni del contratto a cui determinati servizi sono associati
      */
-    public void setContratto(Integer Contratto_idContratto) {
-        this.contratto = Contratto_idContratto;
+    public void setContratto(Contratto contratto) {
+        this.contratto = contratto;
     }
 
     /**
-     *  metodo che l'id di un servizio relazionatia ad un determinato contratto
-     * @return l'id di un servizio relazionatia ad un determinato contratto
+     *  metodo che le informazioni di un servizio relazionatia ad un determinato contratto
+     * @return le informazioni di un servizio relazionatia ad un determinato contratto
      */
-    public Integer getServizio() {
+    public Servizio getServizio() {
         return servizio;
     }
 
     /**
-     *  metodo che setta l'id di un servizio relazionatia ad un determinato contratto
-     * @param Servizio_idServizio l'id di un servizio relazionatia ad un determinato contratto
+     *  metodo che setta le informazioni di un servizio relazionatia ad un determinato contratto
+     * @param servizio le informazioni di un servizio relazionatia ad un determinato contratto
      */
-    public void seServizio(Integer Servizio_idServizio) {
-        this.servizio = Servizio_idServizio;
+    public void seServizio(Servizio servizio) {
+        this.servizio = servizio;
     }
 
     /**

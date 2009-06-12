@@ -1,12 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package it.seerp.storage.ejb;
 
 /**
  * classe che modella le informazione sull'Azienda
- * @author Luisa
+ * @author Luisa-Matteo
  */
 public class Azienda {
 
@@ -20,7 +16,20 @@ public class Azienda {
     private String telefono;
     private int idAzienda;
     private String note;
+    private Amministratore amministratore;
 
+    /**
+     * costruttore per la classe Azienda
+     * @param città
+     * @param email
+     * @param fax
+     * @param inidirizzo
+     * @param nazione
+     * @param pIVA
+     * @param ragioneSociale
+     * @param telefono
+     * @param idAzienda
+     */
     public Azienda(String città, String email, String fax, String inidirizzo, String nazione, String pIVA, String ragioneSociale, String telefono, int idAzienda) {
         this.città = città;
         this.email = email;
@@ -31,6 +40,38 @@ public class Azienda {
         this.ragioneSociale = ragioneSociale;
         this.telefono = telefono;
         this.idAzienda = idAzienda;
+    }
+
+    /**
+     * metodo che restituisce le informazioni dell'amministratore dell'azienda
+     * @return le informazioni dell'amministratore
+     */
+    public Amministratore getAmministratore() {
+        return amministratore;
+    }
+
+    /**
+     * metodo che restituisce le informazioni relative alla partita iva dell'azienda
+     * @return la partita ida dell'azienda
+     */
+    public String getPIVA() {
+        return pIVA;
+    }
+
+    /**
+     * metodo che permette di settare le informazioni relative all'amministratore dell'azienda
+     * @param amministratore rappresenta le informazioni dell'amministratore
+     */
+    public void setAmministratore(Amministratore amministratore) {
+        this.amministratore = amministratore;
+    }
+
+    /**
+     * metodo che permette di settare le informazioni della partita iva dell'azienda
+     * @param pIVA rappresenta la partita iva
+     */
+    public void setPIVA(String pIVA) {
+        this.pIVA = pIVA;
     }
 
     
@@ -61,7 +102,7 @@ public class Azienda {
 
     /**
      * il metodo che setta la città dell'Azienda
-     * @param citta città dell'Azienda
+     * @param città
      */
     public void setCittà(String città) {
         this.città = città;
@@ -127,7 +168,7 @@ public class Azienda {
 
     /**
      *il metodo che setta l'indirizzo dell'Azienda
-     * @param indirizzo l'indirizzo dell'Azienda
+     * @param inidirizzo
      */
     public void setInidirizzo(String inidirizzo) {
         this.inidirizzo = inidirizzo;
@@ -159,7 +200,7 @@ public class Azienda {
 
     /**
      *il metodo che setta la partita IVA dell'Azienda
-     * @param pIva partita iva dell'azienda
+     * @param partitaIVA
      */
     public void setPartitaIVA(String partitaIVA) {
         this.pIVA = partitaIVA;

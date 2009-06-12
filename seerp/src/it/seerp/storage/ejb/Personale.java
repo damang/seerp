@@ -1,14 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package it.seerp.storage.ejb;
 
 import java.util.ArrayList;
 
 /**
- *
+ * classe per la gestione del bean Personale
  * @author matteo
  */
 public class Personale extends Utente {
@@ -18,39 +13,54 @@ public class Personale extends Utente {
     private String nome;
     private String codiceFiscale;
     private String tipo;
-    private ArrayList<Permesso> listPermessi;
     private ArrayList<Ruolo> listRuoli;
 
-    public Personale(Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String note, String ruolo, Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo, ArrayList<Permesso> listPermessi, ArrayList<Ruolo> listRuoli, Boolean v) {
+
+    /**
+     * Costruttore per la classe Personale
+     * @param idUtente
+     * @param username
+     * @param password
+     * @param città
+     * @param provincia
+     * @param telefono
+     * @param email
+     * @param note
+     * @param ruolo
+     * @param idPersonale
+     * @param cognome
+     * @param nome
+     * @param codiceFiscale
+     * @param tipo
+     * @param v
+     */
+    public Personale(Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String note, String ruolo, Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo, Boolean v) {
         super(idUtente, username, password, città, provincia, telefono, email, note, ruolo, v );
         this.idPersonale = idPersonale;
         this.cognome = cognome;
         this.nome = nome;
         this.codiceFiscale = codiceFiscale;
         this.tipo = tipo;
-        this.listPermessi = listPermessi;
-        this.listRuoli = listRuoli;
+        this.listRuoli = new ArrayList<Ruolo>();
     }
 
-    
-     
-    public ArrayList<Permesso> getListaPermessi() {
-        return listPermessi;
-    }
-
-    public void setListaPermessi(ArrayList<Permesso> listaPermessi) {
-        this.listPermessi = listaPermessi;
-    }
-
+    /**
+     * metodo che permette di restituire la liste dei ruoli del personale
+     * @return la lista dei ruoli
+     */
     public ArrayList<Ruolo> getListaRuoli() {
         return listRuoli;
     }
 
-    public void setListaRuoli(ArrayList<Ruolo> listaRuoli) {
-        this.listRuoli = listaRuoli;
+    /**
+     * metodo che permette di settare la liste dei ruoli del personale
+     * @param listRuoli rappresenta la lista dei ruoli
+     */
+    public void setListRuoli(ArrayList<Ruolo> listRuoli) {
+        this.listRuoli = listRuoli;
     }
 
-   /**
+    /**
      * setta il codice fiscale del personale
      * @param codiceFiscale di tipo stringa
      */
@@ -129,12 +139,19 @@ public class Personale extends Utente {
      public Integer getIdPersonale() {
         return idPersonale;
     }
-       public void removeRuolo(Ruolo c){
+
+     /**
+      * metodo che permette di rimuovere un ruolo dalla lista dei ruoli di un personale
+      * @param c rappresenta il ruolo da rimuovere
+      */
+     public void removeRuolo(Ruolo c){
      listRuoli.remove(c);}
-    public void addRuolo(Ruolo c){
+
+     /**
+      * metodo che permette di aggiungere un ruolo alla lista dei ruoli di un personale
+      * @param c rappresenta il ruolo da inserire
+      */
+     public void addRuolo(Ruolo c){
      listRuoli.add(c);}
-   public void removePermesso(Permesso c){
-     listPermessi.remove(c);}
-    public void addPermesso(Permesso c){
-     listPermessi.add(c);}
+     
 }

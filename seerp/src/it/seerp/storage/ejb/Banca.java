@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package it.seerp.storage.ejb;
 
@@ -40,9 +36,8 @@ public class Banca {
      * @param nazione
      * @param importoInDare
      * @param importoInAvere
-     * @param listPagamento
      */
-    public Banca(String agenzia, String abi, String cab, String città, String provincia, String indirizzo, String cap, String filiale, String nazione, Double importoInDare, Double importoInAvere, ArrayList<Pagamento> listPagamento) {
+    public Banca(String agenzia, String abi, String cab, String città, String provincia, String indirizzo, String cap, String filiale, String nazione, Double importoInDare, Double importoInAvere) {
         this.agenzia = agenzia;
         this.abi = abi;
         this.cab = cab;
@@ -54,7 +49,7 @@ public class Banca {
         this.nazione = nazione;
         this.importoInDare = importoInDare;
         this.importoInAvere = importoInAvere;
-        this.listPagamento = listPagamento;
+        this.listPagamento =new ArrayList<Pagamento>();
     }
 
       /**

@@ -1,33 +1,59 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package it.seerp.storage.ejb;
 
 import java.util.ArrayList;
 
 /**
  * classe che gestisce le informazioni sugli eventi di un agenda
- * @author Luisa
+ * @author Luisa-Matteo
  */
 public class Agenda {
-    ArrayList<Evento> listEventi= new ArrayList<Evento>();
-    Integer idAgenda;
+    private ArrayList<Evento> listEventi;
+    private Integer idAgenda;
+    private Utente utente;
 
-    /**
+
+   /**
      *  costruttore classe
      * @param idAgenda
-     * @param listEventi
      */
-    public Agenda(Integer idAgenda, ArrayList<Evento> listEventi) {
+    public Agenda(Integer idAgenda) {
         this.idAgenda = idAgenda;
-        this.listEventi=listEventi;
+        listEventi= new ArrayList<Evento>();
     }
 
+    /**
+     * metodo che permette di restituire la lista degli eventi associati all'agenda
+     * @return la lista degli eventi
+     */
+    public ArrayList<Evento> getListEventi() {
+        return listEventi;
+    }
     
+    /**
+     * metodo che permette di settare la lista degli eventi associati all'agenda
+     * @param listEventi rappresenta la lista degli eventi
+     */
+     public void setListEventi(ArrayList<Evento> listEventi) {
+        this.listEventi = listEventi;
+    }
+  
+    /**
+     *  metoco che permette di restituire la informazioni dell'utente associato
+     * all'agenda
+     * @return le informazioni dell'utente
+     */
+    public Utente getUtente() {
+        return utente;
+    }
 
-
+   /**
+     * metodo che permette di settare le informazioni relative
+     * all'utente associato all'agenda
+     * @param utente rappresenta l'utente
+     */
+    public void setUtente(Utente utente) {
+        this.utente = utente;
+    }
 
     /**
      *  metodo che restituisce una lista di eventi
@@ -62,13 +88,13 @@ public class Agenda {
     }
     /**
      * metodo che elemina un evento dalla lista degli eventi
-     * @param evento da eliminare
+     * @param c
      */
     public void removeEvento(Evento c){
      listEventi.remove(c);}
     /**
      * metodo che restituisce un evento dalla lista degli eventi
-     * @param evento della lista eventi
+     * @param c
      */
     public void addEvento(Evento c){
      listEventi.add(c);}

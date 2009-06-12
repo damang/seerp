@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package it.seerp.storage.ejb;
 
 import java.sql.Date;
@@ -9,7 +5,7 @@ import java.util.ArrayList;
 
 /**
  * la classe gestisce le informazioni sui documenti di trasporto
- * @author Luisa
+ * @author Luisa-Matteo
  */
 public class DDT {
 
@@ -19,8 +15,8 @@ public class DDT {
     private Integer idDDT;
     private Integer numero;
     private String note;
-    private Integer fattureEmesse;
     private ArrayList<ServizioAssociatoFattura> listServizio;
+    private Fattura fattura;
 
     /**
      * costruttore
@@ -30,18 +26,31 @@ public class DDT {
      * @param idDDT
      * @param numero
      * @param note
-     * @param fattureEmesse
-     * @param listServizio
      */
-    public DDT(String merce, Integer quantita, Date data, Integer idDDT, Integer numero, String note, Integer fattureEmesse, ArrayList<ServizioAssociatoFattura> listServizio) {
+    public DDT(String merce, Integer quantita, Date data, Integer idDDT, Integer numero, String note) {
         this.merce = merce;
         this.quantita = quantita;
         this.data = data;
         this.idDDT = idDDT;
         this.numero = numero;
         this.note = note;
-        this.fattureEmesse = fattureEmesse;
-        this.listServizio = listServizio;
+        this.listServizio =new ArrayList<ServizioAssociatoFattura>();
+    }
+
+    /**
+     * metodo che setta le informazioni della fattura a cui il DDT è associato
+     * @param fattura rappresenta le informazioni della fattura
+     */
+    public void setFattura(Fattura fattura) {
+        this.fattura = fattura;
+    }
+
+    /**
+     * metodo che restituisce le informazioni della fattura a cui il DDT è associato
+     * @return le informazioni della fattura
+     */
+    public Fattura getFattura() {
+        return fattura;
     }
 
     /**
@@ -60,22 +69,7 @@ public class DDT {
         this.listServizio = listServizio;
     }
 
-    /**
-     * metodo che restituisce l'identificativo della fattura a cui il DDT è associato
-     * @return identificativo della fattura a cui il DDT è associato
-     */
-    public Integer getFattureEmesse() {
-        return fattureEmesse;
-    }
-
-    /**
-     * metodo che setta l'identificativo della fattura a cui il DDT è associato
-     * @param fattureEmesse identificativo della fattura a cui il DDT è associato
-     */
-    public void setFattureEmesse(Integer fattureEmesse) {
-        this.fattureEmesse = fattureEmesse;
-    }
-
+  
     /**
      *   metodo che restituisce la data del DDT
      * @return: la data del DDT

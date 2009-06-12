@@ -19,7 +19,7 @@ public class NotaDiCredito {
     private Integer idNotaDiCredito;
     private Double iva;
     private Date data;
-    private Integer fattureEmesse;
+    private Fattura fattura;
 
     /**
      * costruttore
@@ -31,9 +31,8 @@ public class NotaDiCredito {
      * @param idNotaDiCredito
      * @param iva
      * @param data
-     * @param fattureEmesse
      */
-    public NotaDiCredito(String motivazione, Integer nFattura, String note, Double importo, Integer idNotaDiCredito, Double iva, Date data, Integer fattureEmesse) {
+    public NotaDiCredito(String motivazione, Integer nFattura, String note, Double importo, Integer idNotaDiCredito, Double iva, Date data) {
         this.motivazione = motivazione;
         this.nFattura = nFattura;
         this.note = note;
@@ -41,24 +40,27 @@ public class NotaDiCredito {
         this.idNotaDiCredito = idNotaDiCredito;
         this.iva = iva;
         this.data = data;
-        this.fattureEmesse = fattureEmesse;
+       }
+
+    /**
+     * metodo che restituisce le informazioni relative alla fattuara a cui
+     * la nota di credito è associata
+     * @return le informazioni della fattura
+     */
+    public Fattura getFattura() {
+        return fattura;
     }
 
     /**
-     * metodo che restituisce l'identificativo della fattura a cui la nota di credito è associato
-     * @return identificativo della fattura a cui la nota di credito è associato
+     * metodo che setta le informazioni relative alla fattuara a cui
+     * la nota di credito è associata
+     * @param fattura rappresenta le informazioni della fattura
      */
-    public Integer getFattureEmesse() {
-        return fattureEmesse;
+    public void setFattura(Fattura fattura) {
+        this.fattura = fattura;
     }
 
-    /**
-     * metodo che setta l'identificativo della fattura a cui la nota di credito è associato
-     * @param fattureEmesse identificativo della fattura a cui la nota di credito è associato
-     */
-    public void setFattureEmesse(Integer fattureEmesse) {
-        this.fattureEmesse = fattureEmesse;
-    }
+  
 
     /**
      * metodo che restituisce la data della nota di credito

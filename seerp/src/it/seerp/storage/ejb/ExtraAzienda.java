@@ -1,13 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package it.seerp.storage.ejb;
 
 import java.util.ArrayList;
 
 /**
- *
+ * classe per la gestione del bran ExtraAzienda
  * @author matteo
  */
 public class ExtraAzienda extends Utente {
@@ -21,24 +17,6 @@ public class ExtraAzienda extends Utente {
     private String ruolo;
     private ArrayList<Appuntamento> listAppuntamenti;
     private ArrayList<Contratto> listContratti;
-
-
-    public ExtraAzienda(Integer idUtente, String username, String password, String città, String ruol,String provincia, String telefono, String email, String ruolo, String note, Boolean v, Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva, String fax, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti) {
-        super(idUtente, username, password, città, provincia, telefono, email, ruolo, note, v);
-
-        this.idExtraAzienda = idExtraAzienda;
-        this.cognome = cognome;
-        this.nome = nome;
-        this.ragioneSociale = ragioneSociale;
-        this.pIva = pIva;
-        this.fax = fax;
-
-        this.ruolo = ruol;
-
-        this.listAppuntamenti = listAppuntamenti;
-        this.listContratti = listContratti;
-    }
-
 
 
     /**
@@ -58,10 +36,25 @@ public class ExtraAzienda extends Utente {
      * @param pIva
      * @param fax
      * @param ruolo
-     * @param listAppuntamenti
-     * @param listContratti
      * @param v
      */
+
+    public ExtraAzienda(Integer idUtente, String username, String password, String città, String ruol,String provincia, String telefono, String email, String ruolo, String note, Boolean v, Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva, String fax) {
+        super(idUtente, username, password, città, provincia, telefono, email, ruolo, note, v);
+
+        this.idExtraAzienda = idExtraAzienda;
+        this.cognome = cognome;
+        this.nome = nome;
+        this.ragioneSociale = ragioneSociale;
+        this.pIva = pIva;
+        this.fax = fax;
+
+        this.ruolo = ruol;
+
+        this.listAppuntamenti = new ArrayList<Appuntamento>();
+        this.listContratti = new ArrayList<Contratto>();
+    }
+
    
 
     /**

@@ -32,21 +32,17 @@ public class Dipendente extends Personale {
      * @param nome
      * @param codiceFiscale
      * @param tipo
-     * @param listPermessi
-     * @param listRuoli
      * @param v
      * @param idDipendente
-     * @param listAppuntamenti
-     * @param listContratti
      */
 
 
-    public Dipendente(Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String note, String ruolo, Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo, ArrayList<Permesso> listPermessi, ArrayList<Ruolo> listRuoli, Boolean v, Integer idDipendente, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti) {
-        super(idUtente, username, password, città, provincia, telefono, email, note, ruolo, idPersonale, cognome, nome, codiceFiscale, tipo, listPermessi, listRuoli, v);
+    public Dipendente(Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String note, String ruolo, Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo,Boolean v, Integer idDipendente) {
+        super(idUtente, username, password, città, provincia, telefono, email, note, ruolo, idPersonale, cognome, nome, codiceFiscale, tipo, v);
 
         this.idDipendente = idDipendente;
-        this.listAppuntamenti = listAppuntamenti;
-        this.listContratti = listContratti;
+        this.listAppuntamenti = new ArrayList<Appuntamento>() ;
+        this.listContratti = new ArrayList<Contratto>();
     }
 
 
@@ -54,13 +50,7 @@ public class Dipendente extends Personale {
      * metodo che setta la lista di contratti associati ad un dipendente
      * @param listContratti  la lista di contratti associati ad un dipendente
      */
-    
-
-   
-
-  
-
-     public void setListContratti(ArrayList<Contratto> listContratti) {
+    public void setListContratti(ArrayList<Contratto> listContratti) {
 
         this.listContratti = listContratti;
     }

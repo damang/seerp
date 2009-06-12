@@ -15,7 +15,7 @@ public class Fornitore extends ExtraAzienda {
       private Integer idFornitore;
 
     public Fornitore(Integer idUtente, String username, String password, String città, String ruol, String provincia, String telefono, String email, String ruolo, String note, Boolean v, Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva, String fax, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti, Integer idFornitore) {
-        super(idUtente, username, password, città, ruol, provincia, telefono, email, ruolo, note, v, idExtraAzienda, cognome, nome, ragioneSociale, pIva, fax, listAppuntamenti, listContratti);
+        super(idUtente, username, password, città, ruol, provincia, telefono, email, ruolo, note, v, idExtraAzienda, cognome, nome, ragioneSociale, pIva, fax);
         this.idFornitore = idFornitore;
     }
 

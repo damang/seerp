@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 /**
  * classe che si occupa di gestire le informazioni sui servizi
- * @author Luisa
+ * @author Luisa-Matteo
  */
 public class Servizio {
 
@@ -14,34 +14,36 @@ public class Servizio {
     private Integer quantita;
     private String tipo;
     private Double prezzo;
-    private Integer idServizio;
     private Integer iva;
     private String note;
-    private ArrayList<Contratto> listContratti;
+    private ArrayList<ServizioAssociato> listServiAssociati;
 
-public Servizio(String descrizione, Boolean disponibilita, Integer quantita, String tipo, Double prezzo, Integer idServizio, Integer iva, String note) {
-        this.descrizione = descrizione;
-        this.disponibilita = disponibilita;
-        this.quantita = quantita;
-        this.tipo = tipo;
-        this.prezzo = prezzo;
-        this.idServizio = idServizio;
-        this.iva = iva;
-        this.note = note;
-}
-   public Servizio()
+
+    /**
+     * costruttore vuoto
+     */
+    public Servizio()
    {}
 
-    public Servizio(String descrizione, Boolean disponibilita, Integer quantita, String tipo, Double prezzo, Integer idServizio, Integer iva, String note, ArrayList<Contratto> listContratti) {
+    /**
+     * costruttore per la classe Servizio
+     * @param descrizione
+     * @param disponibilita
+     * @param quantita
+     * @param tipo
+     * @param prezzo
+     * @param iva
+     * @param note
+     */
+    public Servizio(String descrizione, Boolean disponibilita, Integer quantita, String tipo, Double prezzo, Integer iva, String note) {
         this.descrizione = descrizione;
         this.disponibilita = disponibilita;
         this.quantita = quantita;
         this.tipo = tipo;
         this.prezzo = prezzo;
-        this.idServizio = idServizio;
         this.iva = iva;
         this.note = note;
-        this.listContratti = listContratti;
+        this.listServiAssociati = new ArrayList<ServizioAssociato>();
     }
 
     /**
@@ -60,22 +62,7 @@ public Servizio(String descrizione, Boolean disponibilita, Integer quantita, Str
         this.note = note;
     }
 
-    /**
-     *  metodo che restituisce l'identificativo del servizio
-     * @return l'identificativo del servizio
-     */
-    public Integer getIdServizio() {
-        return idServizio;
-    }
-
-    /**
-     *  metodo che setta l'identificativo del servizio
-     * @param idServizio l'identificativo del servizio
-     */
-    public void setIdServizio(Integer idServizio) {
-        this.idServizio = idServizio;
-    }
-
+  
     /**
      *  metodo che restituisce la descrizone di un servizio
      * @return la descrizione del servizio
@@ -173,26 +160,34 @@ public Servizio(String descrizione, Boolean disponibilita, Integer quantita, Str
     }
 
     /**
-     *  metodo che restituisce la lista dei contratti
-     * @return la lista dei contratti
+     *  metodo che restituisce la lista dei servizi associati al contratto
+     * @return la lista dei servizi associati al contratto
      */
-    public ArrayList<Contratto> getListContratti() {
-        return listContratti;
+    public ArrayList<ServizioAssociato> getListServiziAssociati() {
+        return listServiAssociati;
     }
 
     /**
-     *  metodo che setta la lista dei contratti
-     * @param listContratti la lista dei contratti
+     *  metodo che setta la lista dei servizi associati al contratto
+     * @param listSA
      */
-    public void setListContratti(ArrayList<Contratto> listContratti) {
-        this.listContratti = listContratti;
+    public void setListServiziAssociati(ArrayList<ServizioAssociato> listSA) {
+        this.listServiAssociati = listSA;
     }
 
-    public void removeContratto(Contratto c) {
-        listContratti.remove(c);
+    /**
+     * metodo che permette di rimuovere un servizio associato dalla lista
+     * @param c rappresenta il servizio associato da rimuovere
+     */
+    public void removeServizioAssociato(ServizioAssociato c) {
+        listServiAssociati.remove(c);
     }
 
-    public void addContratto(Contratto c) {
-        listContratti.add(c);
+    /**
+     * metodo che permette di aggiungere un servizio associato dalla lista
+     * @param c rappresenta il servizio associato da inserire
+     */
+    public void addServizioAssociato(ServizioAssociato c) {
+        listServiAssociati.add(c);
     }
 }

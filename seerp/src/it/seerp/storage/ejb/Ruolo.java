@@ -1,72 +1,113 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package it.seerp.storage.ejb;
 
 import java.util.ArrayList;
 
 /**
- *
- * @author Luisa
+ * classe per la gestione del bean Ruolo
+ * @author Luisa-Matteo
  */
 public class Ruolo {
-     private ArrayList<Personale> listPersonale;
-     private ArrayList<Permesso> listPermessi;
+     private ArrayList<Incarico> listIncarico;
      private String nome;
      private Integer idRuolo;
+     private Personale personale;
 
-    public Ruolo( Integer idRuolo,String nome,ArrayList<Personale> listPersonale, ArrayList<Permesso> listPermess) {
-        this.listPersonale = listPersonale;
-        this.listPermessi = listPermessi;
+     /**
+      * costruttore per la classe Ruolo
+      * @param idRuolo
+      * @param nome
+      */
+     public Ruolo( Integer idRuolo,String nome) {
+        this.listIncarico = new ArrayList<Incarico>();
         this.nome = nome;
         this.idRuolo = idRuolo;
     }
 
-    public ArrayList<Permesso> getListPermessi() {
-        return listPermessi;
+     /**
+      * motodo che permette di restituire le informazioni relative al personale
+      * associato al ruolo
+      * @return le informazioni del personale
+      */
+     public Personale getPersonale() {
+        return personale;
     }
 
-    public ArrayList<Personale> getListPersonale() {
-        return listPersonale;
+    /**
+     * metodo che permtte di settare le informazioni realtive al pesonale
+     * associato al ruolo
+     * @param personale rappresenta le informazioni del personale
+     */
+    public void setPersonale(Personale personale) {
+        this.personale = personale;
     }
 
-    public void setListPermessi(ArrayList<Permesso> listPermessi) {
-        this.listPermessi = listPermessi;
+   
+
+    /**
+     * metodo che permette di restituire la lista degli incarichi di un ruolo
+     * @return la lista degli incarichi
+     */
+    public ArrayList<Incarico> getListIncarico() {
+        return listIncarico;
     }
 
-    public void setListPersonale(ArrayList<Personale> listPersonale) {
-        this.listPersonale = listPersonale;
+    /**
+     * metodo che permette di settare la lista degli incarichi di un ruolo
+     * @param listIncarico rappresenta la lista degli incarichi
+     */
+    public void setListIncarico(ArrayList<Incarico> listIncarico) {
+        this.listIncarico = listIncarico;
     }
 
-  
+   
 
+    /**
+     * metodo che permette di restituire il codice identificativo del ruolo
+     * @return l'identificativo del ruolo
+     */
     public Integer getIdRuolo() {
         return idRuolo;
     }
 
+    /**
+     * metodo che permette di settare il codice identificativo del ruolo
+     * @param idRuolo
+     */
     public void setIdRuolo(Integer idRuolo) {
         this.idRuolo = idRuolo;
     }
 
  
+    /**
+     * metodo che permette di restituire il nome di un ruolo
+     * @return il nome di un ruolo
+     */
     public String getNome() {
         return nome;
     }
 
+    /**
+     * metodo che permette di inserire il nome del ruolo
+     * @param nome rappresenta il nome del ruolo
+     */
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public void removePersonale(Personale c){
-     listPersonale.remove(c);}
-    public void addPersonale(Personale c){
-      listPersonale.add(c);}
 
-      public void removePermesso(Permesso c){
-     listPermessi.remove(c);}
-    public void addPermesso(Permesso c){
-     listPermessi.add(c);}
- 
+    /**
+     * metodo che permette di rimuovere un incarico dalla lista degli incarichi
+     * @param c rappresenta l'incarico da eliminare
+     */
+    public void removeIncarico(Incarico c){
+     listIncarico.remove(c);
+    }
+
+    /**
+     * metodo che permette di aggiungere un incarico alla lista degli incarichi
+     * @param c rappresenta l'incarico da inserire
+     */
+    public void addIncarico(Incarico c){
+      listIncarico.add(c);
+    }
 
 }

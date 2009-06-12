@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package it.seerp.storage.ejb;
 
 import java.sql.Date;
@@ -9,7 +5,7 @@ import java.util.ArrayList;
 
 /**
  * classe gstisce le informazioni sulle fatture
- * @author Luisa
+ * @author Luisa-Matteo
  */
 public class Fattura {
 
@@ -22,6 +18,7 @@ public class Fattura {
     private String note;
     private ArrayList<NotaDiCredito> listNotaDiCredito;
     private ArrayList<ServizioAssociato> listServizio;
+    private Contratto contratto;
 
     /**
      *
@@ -32,10 +29,8 @@ public class Fattura {
      * @param iva
      * @param tipo
      * @param note
-     * @param listNoteDiCredito
-     * @param listServizio
      */
-    public Fattura(Date data, Integer idFattura, Double imponibile, Double importo, Double iva, String tipo, String note, ArrayList<NotaDiCredito> listNoteDiCredito, ArrayList<ServizioAssociato> listServizio) {
+    public Fattura(Date data, Integer idFattura, Double imponibile, Double importo, Double iva, String tipo, String note) {
         this.data = data;
         this.idFattura = idFattura;
         this.imponibile = imponibile;
@@ -43,8 +38,41 @@ public class Fattura {
         this.iva = iva;
         this.tipo = tipo;
         this.note = note;
-        this.listNotaDiCredito = listNoteDiCredito;
-        this.listServizio = listServizio;
+        this.listNotaDiCredito = new ArrayList<NotaDiCredito>();
+        this.listServizio = new ArrayList<ServizioAssociato>();
+    }
+
+    /**
+     * metodo che setta le informazioni relative al contratto associato alla fattura
+     * @param contratto rappresenta le informazioni del contratto
+     */
+    public void setContratto(Contratto contratto) {
+        this.contratto = contratto;
+    }
+
+    /**
+     * metodo che setta la lista delle note di credito associate alla fattura
+     * @param listNotaDiCredito rappresenta la lista delle note di credito
+     */
+    public void setListNotaDiCredito(ArrayList<NotaDiCredito> listNotaDiCredito) {
+        this.listNotaDiCredito = listNotaDiCredito;
+    }
+
+    /**
+     * metodo che resituire le informazioni relative al contratto
+     * associato alla fattura
+     * @return le informazioni relative al contratto
+     */
+    public Contratto getContratto() {
+        return contratto;
+    }
+
+    /**
+     * metodo che restituisce la lista delle note di credito associato alla fattura
+     * @return la lista dei delle note di credito
+     */
+    public ArrayList<NotaDiCredito> getListNotaDiCredito() {
+        return listNotaDiCredito;
     }
 
     /**
