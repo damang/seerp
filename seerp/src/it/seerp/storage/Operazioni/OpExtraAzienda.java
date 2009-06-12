@@ -6,6 +6,22 @@
 package it.seerp.storage.Operazioni;
 
 
+import it.seerp.storage.ejb.ExtraAzienda;
+import it.seerp.storage.ejb.Pagamento;
+import it.seerp.storage.ejb.Servizio;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import it.seerp.application.bean.BeanGuiExtraAzienda;
+import it.seerp.storage.ejb.Contratto;
+import it.seerp.storage.ejb.Appuntamento;
+import it.seerp.storage.db.ConnectionPool;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
+import java.sql.ResultSet;
+=======
+>>>>>>> .r318
+
 /**
  *
  * @author LuNy
@@ -18,7 +34,7 @@ public class OpExtraAzienda extends OpeUtente {
 
      /** Metodo che permette la visualizzazione della lista del personale ExtraAzienda
      * @return ArrayList contenente la lista del personale
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
 
     public ArrayList<ExtraAzienda> elencaExtraAzienda()throws SQLException{
 
@@ -69,7 +85,7 @@ public class OpExtraAzienda extends OpeUtente {
             }
         }return list;
 
-        throw new UnsupportedOperationException("Not supported yet.");}
+       }
 
 
      /** Metodo che permette la ricerca di un membro del personale ExtraAzienda
@@ -78,7 +94,7 @@ public class OpExtraAzienda extends OpeUtente {
       * @param ruolo
       * ruolo che il membro del personale ricopre all'interno dell'azienda
       * @return la lista dei membri del personale che corrispondono ai criteri di ricerca
-      * @throws java.sql.SQLException
+      * @throws java.sql.SQLException*/
   
      public  ArrayList<ExtraAzienda> ricercaExtraAzienda(String cognome, String ruolo)throws SQLException{
 
@@ -131,13 +147,13 @@ public class OpExtraAzienda extends OpeUtente {
         }
         return list;
 
-        throw new UnsupportedOperationException("Not supported yet.");}
+       }
 
 
      /** Metodo che permette di eliminare un membro del personale ExtraAzienda già esistente
       * @param user
       * user dell'utente da eliminare
-      * @throws java.sql.SQLException
+      * @throws java.sql.SQLException*/
    
      public void elimina(ExtraAzienda user)throws SQLException{
 
@@ -189,7 +205,7 @@ public class OpExtraAzienda extends OpeUtente {
                 ConnectionPool.releaseConnection(con);
             }
         }
-        return list;
+        
 
         throw new UnsupportedOperationException("Not supported yet.");}
 
@@ -197,7 +213,7 @@ public class OpExtraAzienda extends OpeUtente {
      /** Nasconde l'utente eliminato al sistema senza l'eliminazione fisica
       * @param user
       * user dell'utente da eliminare
-      * @throws java.sql.SQLException
+      * @throws java.sql.SQLException*/
   
      public void eliminazioneLogica(ExtraAzienda user)throws SQLException{
 
@@ -247,14 +263,14 @@ public class OpExtraAzienda extends OpeUtente {
                 ConnectionPool.releaseConnection(con);
             }
         }
-        return list;
+        
         throw new UnsupportedOperationException("Not supported yet.");}
 
 
     /** Metodo per inserire un nuovo membro del personale ExtraAzienda
      * @param user
      * user dell'utente da inserire
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
     
     public void inserisci(ExtraAzienda user)throws SQLException{
          Connection con = null;
@@ -316,7 +332,7 @@ public class OpExtraAzienda extends OpeUtente {
      * @param user
      * user del membro del personale da modificare
      * @return lo stesso oggetto modificato
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
 
     public ExtraAzienda modifica(ExtraAzienda user)throws SQLException{
         ArrayList<BeanGuiExtraAzienda> list = new ArrayList<BeanGuiExtraAzienda>();
@@ -355,7 +371,7 @@ public class OpExtraAzienda extends OpeUtente {
             stmt.execute();
                             // Force the commit
             con.commit();
-            extraazienda= this.visualizza(user.getIdUtente());
+            ExtraAzienda extraazienda= (ExtraAzienda) this.visualizza(user.getIdUtente());
 
         } // Force the commit
         catch (SQLException se) {
@@ -380,13 +396,13 @@ public class OpExtraAzienda extends OpeUtente {
         }
       return extraazienda;
 
-        throw new UnsupportedOperationException("Not supported yet.");}
+       }
 
     /** Metodo che permette la visualizzazione dei dettagli di un membro del personale ExtraAzienda
      * @param id
      * id del membro del personale
      * @return il bean con i dettagli del membro del personale
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
 
     public ExtraAzienda visualizzaDati(Integer id) throws SQLException{
 
@@ -440,13 +456,13 @@ public class OpExtraAzienda extends OpeUtente {
 
         return extraazienda;
 
-        throw new UnsupportedOperationException("Not supported yet.");}
+       }
 
      /**
      * metodo che si occupa di ricercare tutti gli appuntamenti legati ad un cliente grazie all'id del cliente
      * @param id identificativo del cliente
      * @return lista degli appuntamenti associati al cliente
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
 
     public ArrayList<Appuntamento> getAppuntamentiExtraAzienda(Integer id) throws SQLException {
 
@@ -500,7 +516,7 @@ public class OpExtraAzienda extends OpeUtente {
      * metodo che si occupa di ricercare tutti i contratti legati ad un ExtraAzienda grazie all'id dell'ExtraAzienda
      * @param id identificativo del cliente
      * @return lista dei contratti associati al cliente
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
 
     public ArrayList<Contratto> getContrattiExtraAzienda(Integer id) throws SQLException {
 
@@ -551,6 +567,5 @@ public class OpExtraAzienda extends OpeUtente {
         }
         return list;
     }
-*/
 
 }
