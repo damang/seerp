@@ -6,6 +6,9 @@
 package it.seerp.storage.Operazioni;
 
 import it.seerp.storage.ejb.Dipendente;
+import it.seerp.storage.ejb.Pagamento;
+import it.seerp.storage.ejb.Personale;
+import it.seerp.storage.ejb.Servizio;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import it.seerp.application.bean.BeanGuiDipendente;
@@ -33,7 +36,7 @@ public class OpDipendente extends OpPersonale {
     /** Metodo che permette la visualizzazione
      * della lista dei Dipendenti
      * @return ArrayList contenente la lista dei Dipendenti
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
 
     public ArrayList<Dipendente> elencaDipendente()throws SQLException{
 
@@ -86,7 +89,7 @@ public class OpDipendente extends OpPersonale {
             }
         }return list;
 
-        throw new UnsupportedOperationException("Not supported yet.");}
+     }
 
 
      /** Metodo che permette la ricerca di un Dipendente
@@ -95,7 +98,7 @@ public class OpDipendente extends OpPersonale {
       * @param ruolo
       * ruolo che il Dipendente ricopre all'interno dell'azienda
       * @return la lista dei Dipendenti che corrispondono ai criteri di ricerca
-      * @throws java.sql.SQLException
+      * @throws java.sql.SQLException*/
 
      public  ArrayList<Dipendente> ricercaDipendente(String cognome, String ruolo)throws SQLException{
 
@@ -150,14 +153,14 @@ public class OpDipendente extends OpPersonale {
         }
         return list;
 
-        throw new UnsupportedOperationException("Not supported yet.");
+        
      }
 
 
      /** Metodo che permette di eliminare un Dipendente già esistente
       * @param user
       * user del Dipendente da eliminare
-      * @throws java.sql.SQLException
+      * @throws java.sql.SQLException*/
  
      public void elimina(Dipendente user)throws SQLException{
          ArrayList<Dipendente> list = new ArrayList<Dipendente>();
@@ -209,15 +212,15 @@ public class OpDipendente extends OpPersonale {
                 ConnectionPool.releaseConnection(con);
             }
         }
-        return list;
-
-        throw new UnsupportedOperationException("Not supported yet.");}
+       
+     }
+       
 
 
      /** Nasconde il Dipendente eliminato al sistema senza l'eliminazione fisica
       * @param user
       * user del Dipendente da eliminare
-      * @throws java.sql.SQLException
+      * @throws java.sql.SQLException*/
 
      public void eliminazioneLogica(Dipendente user)throws SQLException{
 
@@ -269,14 +272,13 @@ public class OpDipendente extends OpPersonale {
                 ConnectionPool.releaseConnection(con);
             }
         }
-        return list;
-        throw new UnsupportedOperationException("Not supported yet.");}
+       }
 
 
     /** Metodo per inserire un nuovo Dipendente
      * @param user
      * user del Dipendente da inserire
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
 
     public void inserisci(Dipendente user)throws SQLException{
         Connection con = null;
@@ -340,7 +342,7 @@ public class OpDipendente extends OpPersonale {
      * @param user
      * user del Dipendente da modificare
      * @return lo stesso oggetto modificato
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
   
     public Dipendente modifica(Dipendente user)throws SQLException{
 
@@ -380,7 +382,7 @@ public class OpDipendente extends OpPersonale {
             stmt.execute();
                             // Force the commit
             con.commit();
-            dipendente = this.visualizza(user.getIdUtente());
+            Dipendente dipendente =(Dipendente) this.visualizza(user.getIdUtente());
 
         } // Force the commit
         catch (SQLException se) {
@@ -404,13 +406,13 @@ public class OpDipendente extends OpPersonale {
             }
         }
       return dipendente;
-        throw new UnsupportedOperationException("Not supported yet.");}
+       }
 
     /** Metodo che permette la visualizzazione dei dettagli di un Dipendente
      * @param id
      * id del Dipendente
      * @return il bean con i dettagli del Dipendente
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
 
     public Dipendente visualizzaDati(Integer id) throws SQLException{
 
@@ -425,7 +427,12 @@ public class OpDipendente extends OpPersonale {
             // Create a statement
             stmt = con.createStatement();
             // Execute the query
+
+            rs = stmt.executeQuery("SELECT * FROM Dipendente+
+                    "where idUtente="+ id);
+
             rs = stmt.executeQuery("SELECT * FROM Dipendente where idUtente=" + id);
+
 
             // Define the resource list
             while (rs.next()) {
@@ -465,17 +472,13 @@ public class OpDipendente extends OpPersonale {
 
 
         return dipendente;
-
-
-
-
-        throw new UnsupportedOperationException("Not supported yet.");}
+        }
 
  /**
      * metodo che si occupa di ricercare tutti gli appuntamenti legati ad un dipendente grazie all'id del cliente
      * @param id identificativo del dipendente
      * @return lista degli appuntamenti associati al dipendente
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
 
     public ArrayList<Appuntamento> getAppuntamentiDipendente(Integer id) throws SQLException {
 
@@ -529,7 +532,7 @@ public class OpDipendente extends OpPersonale {
      * metodo che si occupa di ricercare tutti i contratti legati ad un dipendente grazie all'id del cliente
      * @param id identificativo del dipendente
      * @return lista dei contratti associati al dipendente
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
 
     public ArrayList<Contratto> getContrattiDipendente(Integer id) throws SQLException {
 
@@ -585,7 +588,7 @@ public class OpDipendente extends OpPersonale {
      * metodo che si occupa di ricercare tutti i permessi legati ad un dipendente grazie all'id del responsabile
      * @param id identificativo del dipendente
      * @return lista dei permessi associati al dipendente
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
 
     public ArrayList<Permesso> getPermessiDipendente(Integer id) throws SQLException {
 
@@ -686,6 +689,5 @@ public class OpDipendente extends OpPersonale {
         }
         return list;
     }
-*/
 
 }
