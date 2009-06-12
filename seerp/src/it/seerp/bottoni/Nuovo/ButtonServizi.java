@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package it.seerp.bottoni.Nuovo;
 
 import configurazioni.CommandInterface;
@@ -17,14 +16,13 @@ import javax.swing.JTabbedPane;
  *
  * @author Andrea
  */
-public class ButtonServizi extends ObserverButton implements CommandInterface  {
-
+public class ButtonServizi extends ObserverButton implements CommandInterface {
 
     protected JTabbedPane tabbedPane;
     private JPanel menu;
     GestioneServizi panel;
 
-     /**
+    /**
      *
      * @param gruppoFinestreUpdate
      * @param aThis
@@ -33,7 +31,7 @@ public class ButtonServizi extends ObserverButton implements CommandInterface  {
         this.tabbedPane = pan;
         this.menu = menu;
 
-        this.panel=new GestioneServizi();
+        this.panel = new GestioneServizi();
         this.addActionListener(act);
         panel.register(this);
     }
@@ -54,10 +52,9 @@ public class ButtonServizi extends ObserverButton implements CommandInterface  {
 
             panel.repaint();
             this.tabbedPane.addTab("Servizi", panel);
-            System.out.println(this.tabbedPane.getTabCount()-1);
-            ButtonTabComponent button=new ButtonTabComponent(this.tabbedPane,this.panel,this.menu);
-            this.tabbedPane.setTabComponentAt(this.tabbedPane.getTabCount()-1,button );
-               System.out.println(tabbedPane);
+            System.out.println(this.tabbedPane.getTabCount() - 1);
+            ButtonTabComponent button = new ButtonTabComponent(this.tabbedPane, this.panel, this.menu);
+            this.tabbedPane.setTabComponentAt(this.tabbedPane.getTabCount() - 1, button);
             panel.setVisible(true);
             menu.setVisible(true);
             panel.repaint();
@@ -67,6 +64,4 @@ public class ButtonServizi extends ObserverButton implements CommandInterface  {
 
 
     }
-
-
 }

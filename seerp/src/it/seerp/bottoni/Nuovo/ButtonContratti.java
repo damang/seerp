@@ -43,8 +43,9 @@ public class ButtonContratti extends ObserverButton   implements CommandInterfac
     }
 
     public void execute() {
+         JOptionPane.showMessageDialog(null,isPresente);
 
-        JOptionPane.showMessageDialog(null, isPresente);
+        JOptionPane.showMessageDialog(null, tabbedPane.getTabCount()-1);
 
         if (!isPresente) {
 
