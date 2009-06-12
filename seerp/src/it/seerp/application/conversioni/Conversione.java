@@ -136,7 +136,7 @@ public class Conversione
         int agenda = Integer.parseInt(pGui.getAgenda().getText());
         boolean notifica = Boolean.parseBoolean(pGui.getNotifica().getText());
 
-        Evento evento = new Evento()/*(luogo, tema, nome, note, data, ora, idEvento, agenda, notifica)*/;
+        Evento evento = new Evento((luogo, tema, nome, note, data, ora, idEvento, agenda, notifica);
 
         return evento;
     }
