@@ -5,6 +5,7 @@
 
 package it.seerp.storage.Operazioni;
 
+import it.seerp.storage.ejb.Personale;
 import it.seerp.storage.ejb.Responsabile;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class OpResponsabile extends OpPersonale {
 
      /** Metodo che permette la visualizzazione della lista dei Responsabili
      * @return ArrayList contenente la lista dei responsabili
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
 
     public ArrayList<Responsabile> elencaResponsabile()throws SQLException{
 
@@ -82,7 +83,7 @@ public class OpResponsabile extends OpPersonale {
             }
         }return list;
 
-        throw new UnsupportedOperationException("Not supported yet.");}
+       }
 
 
 
@@ -92,7 +93,7 @@ public class OpResponsabile extends OpPersonale {
       * @param ruolo
       * ruolo che il Responsabile ricopre all'interno dell'azienda
       * @return la lista dei Responsabili che corrispondono ai criteri di ricerca
-      * @throws java.sql.SQLException
+      * @throws java.sql.SQLException*/
 
      public  ArrayList<Responsabile> ricercaResponsabile(String cognome, String ruolo)throws SQLException{
 
@@ -143,13 +144,13 @@ public class OpResponsabile extends OpPersonale {
             }
         }
         return list;
-        throw new UnsupportedOperationException("Not supported yet.");}
+       }
 
 
      /** Metodo che permette di eliminare un Responsabile già esistente
       * @param user
       * user del Responsabile da eliminare
-      * @throws java.sql.SQLException
+      * @throws java.sql.SQLException*/
  
      public void elimina(Responsabile user)throws SQLException{
 
@@ -200,14 +201,14 @@ public class OpResponsabile extends OpPersonale {
                 ConnectionPool.releaseConnection(con);
             }
         }
-        return list;
+        
         throw new UnsupportedOperationException("Not supported yet.");}
 
 
     /** Metodo per inserire un nuovo Responsabile
      * @param user
      * user del Responsabile da inserire
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
   
     public void inserisci(Responsabile user)throws SQLException{
 
@@ -269,7 +270,7 @@ public class OpResponsabile extends OpPersonale {
      * @param user
      * user del Responsabile da modificare
      * @return lo stesso oggetto modificato
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
   
     public Responsabile modifica(Responsabile user)throws SQLException{
 
@@ -308,7 +309,7 @@ public class OpResponsabile extends OpPersonale {
             stmt.execute();
                             // Force the commit
             con.commit();
-            responsabile = this.visualizza(user.getIdUtente());
+            responsabile = (Responsabile) this.visualizza(user.getIdUtente());
 
         } // Force the commit
         catch (SQLException se) {
@@ -333,13 +334,13 @@ public class OpResponsabile extends OpPersonale {
         }
       return responsabile;
 
-        throw new UnsupportedOperationException("Not supported yet.");}
+        }
 
     /** Metodo che permette la visualizzazione dei dettagli di un Responsabile
      * @param id
      * id del Responsabile
      * @return il bean con i dettagli del Responsabile
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
 
     public Responsabile visualizzaDati(Integer id) throws SQLException{
 
@@ -391,13 +392,13 @@ public class OpResponsabile extends OpPersonale {
 
         return responsabile;
 
-        throw new UnsupportedOperationException("Not supported yet.");}
+      }
 
  /**
      * metodo che si occupa di ricercare tutti i permessi legati ad un responsabile grazie all'id del responsabile
      * @param id identificativo del responsabile
      * @return lista dei permessi associati al responsabile
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
 
     public ArrayList<Permesso> getPermessiResponsabile(Integer id) throws SQLException {
 
@@ -499,7 +500,7 @@ public class OpResponsabile extends OpPersonale {
         return list;
     }
 
-*/
+
 
 }
 
