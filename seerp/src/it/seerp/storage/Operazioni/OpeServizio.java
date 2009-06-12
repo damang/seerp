@@ -193,8 +193,11 @@ public class OpeServizio implements OpeEntity<Servizio, Integer> {
             rs = stmt.executeQuery(query);
 
             while (rs.next()) {
-                Servizio e = new Servizio(rs.getString(1), rs.getBoolean(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getInt(6), rs.getInt(7), rs.getString(8));
-                //(1String descrizione, 2Boolean disponibilita, 3Integer quantita, 4String tipo, 5Double prezzo, 6Integer idServizio, 7Integer iva, 8String note
+                Servizio e = new Servizio(rs.getString(1), rs.getBoolean(2),
+                        rs.getInt(3), rs.getString(4), rs.getDouble(5),
+                        rs.getInt(6), rs.getInt(7), rs.getString(8));
+                //(1String descrizione, 2Boolean disponibilita, 3Integer quantita,
+                //4String tipo, 5Double prezzo, 6Integer idServizio, 7Integer iva, 8String note
                 lista.add(e);
             }
         } catch (SQLException se) {
@@ -243,12 +246,15 @@ public class OpeServizio implements OpeEntity<Servizio, Integer> {
             stmt = con.createStatement();
             // Execute the query
 
-            rs = stmt.executeQuery("SELECT * FROM Servizio WHERE servizio.idServizio= '"+idServizio+"'");
+            rs = stmt.executeQuery("SELECT * FROM Servizio WHERE servizio.idServizio= '" + idServizio + "'");
 
             // Define the resource list
             while (rs.next()) {
-       Servizio e = new Servizio(rs.getString(1), rs.getBoolean(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getInt(6), rs.getInt(7), rs.getString(8));
-                //(1String descrizione, 2Boolean disponibilita, 3Integer quantita, 4String tipo, 5Double prezzo, 6Integer idServizio, 7Integer iva, 8String note
+                Servizio e = new Servizio(rs.getString(1), rs.getBoolean(2),
+                        rs.getInt(3), rs.getString(4), rs.getDouble(5),
+                        rs.getInt(6), rs.getInt(7), rs.getString(8));
+            //(1String descrizione, 2Boolean disponibilita, 3Integer quantita,
+            //4String tipo, 5Double prezzo, 6Integer idServizio, 7Integer iva, 8String note
 
             }
         } catch (SQLException se) {
