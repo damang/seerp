@@ -22,12 +22,13 @@ import java.awt.event.ActionListener;
  * @author Andrea
  */
 public class GestioneContratti extends ObservableJPanel implements ActionListener {
-
+//beangui kavolo;
     
 
     /** Creates new form GestioneContratti */
     public GestioneContratti() {
         initComponents();
+        //settava cn i campi
     }
 
     
