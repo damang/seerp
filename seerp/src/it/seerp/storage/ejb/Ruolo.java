@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public class Ruolo {
      private ArrayList<Incarico> listIncarico;
      private String nome;
-     private Integer idRuolo;
      private Personale personale;
 
      /**
@@ -17,10 +16,10 @@ public class Ruolo {
       * @param idRuolo
       * @param nome
       */
-     public Ruolo( Integer idRuolo,String nome) {
+     public Ruolo(String nome) {
         this.listIncarico = new ArrayList<Incarico>();
         this.nome = nome;
-        this.idRuolo = idRuolo;
+        
     }
 
      /**
@@ -58,25 +57,6 @@ public class Ruolo {
     public void setListIncarico(ArrayList<Incarico> listIncarico) {
         this.listIncarico = listIncarico;
     }
-
-   
-
-    /**
-     * metodo che permette di restituire il codice identificativo del ruolo
-     * @return l'identificativo del ruolo
-     */
-    public Integer getIdRuolo() {
-        return idRuolo;
-    }
-
-    /**
-     * metodo che permette di settare il codice identificativo del ruolo
-     * @param idRuolo
-     */
-    public void setIdRuolo(Integer idRuolo) {
-        this.idRuolo = idRuolo;
-    }
-
  
     /**
      * metodo che permette di restituire il nome di un ruolo
