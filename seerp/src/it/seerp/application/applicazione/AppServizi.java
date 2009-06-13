@@ -57,7 +57,7 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio>
      * nel caso in cui si immettano dati errati
      * @throws it.seerp.application.Exception.RicercaFallita
      * nel caso in cui la ricerca non produce risultati
-     */
+    
     public ArrayList<BeanGuiServizio> ricerca(JTextField nome, ArrayList<BeanGuiServizio> listGui) throws DatiErrati
     {
         OpeServizio ope = new OpeServizio();
@@ -171,5 +171,9 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio>
             }
         }
         return beanGui;
+    }
+
+    public ArrayList<BeanGuiServizio> ricerca(JTextField nome, ArrayList<BeanGuiServizio> list) throws DatiErrati {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

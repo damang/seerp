@@ -18,6 +18,42 @@ import javax.swing.JTextField;
  */
 public class AppAgenda implements GestioneAgenda<BeanGuiEvento>
 {
+
+    public ArrayList<BeanGuiEvento> visualizzaListaEventi(ArrayList<BeanGuiEvento> listGui) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public BeanGuiEvento visualizzaDettagli(JTextField id, BeanGuiEvento gui) throws DatiErrati {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void notificaEventi(BeanGuiEvento beanGuiEventi) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void inserimento(BeanGuiEvento beanGuiEventi) throws DatiErrati, DatiDuplicati {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public BeanGuiEvento modifica(BeanGuiEvento beanGuiEventi) throws DatiErrati {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public ArrayList<BeanGuiEvento> ricercaPerTema(JTextField tema, ArrayList<BeanGuiEvento> list) throws DatiErrati {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public ArrayList<BeanGuiEvento> ricercaPerNome(JTextField nome, ArrayList<BeanGuiEvento> list) throws DatiErrati, RicercaFallita {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public ArrayList<BeanGuiEvento> ricercaPerGiorno(JTextField giorno, ArrayList<BeanGuiEvento> list) throws DatiErrati, RicercaFallita {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void cancellaEvento(BeanGuiEvento beanGuiEventi) throws CancellazioneFallita {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
     /**
      * Metodo che permette la visualizzazione della lista degli eventi
      * @return  Array List contenente la lista degli eventi
@@ -118,7 +154,7 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento>
      * in caso di inserimento di dati errati
      * @throws it.seerp.application.Exception.DatiDuplicati
      * nel caso in cui esista l'evento che si tenta di inserire
-     */
+
 
     public void inserimento(BeanGuiEvento beanGui) throws DatiErrati, DatiDuplicati
     {
@@ -126,7 +162,7 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento>
         Evento eve = it.seerp.application.conversioni.Conversione.conversioneEvento(beanGui);
         try
         {
-            ope.inserimento(eve);
+            //ope.inserimento(eve);
         }
         catch (SQLException se)
         {

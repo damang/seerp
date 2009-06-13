@@ -94,7 +94,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * Metodo che permette di modificare i dati di un Amministratore
      * @param user rappresenta l'Amministratore da modificare
      * @return l'Amministratore modificato
-     */
+  
     public BeanGuiAmministratore modificaAmministratore(BeanGuiAmministratore user) {
         super.modifica(user);
         OpAmministratore a = new OpAmministratore();
