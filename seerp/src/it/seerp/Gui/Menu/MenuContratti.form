@@ -54,7 +54,7 @@
         <Property name="name" type="java.lang.String" value="aggiungiButton1" noResource="true"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Menu.AggiungiButton(this)"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Menu.AggiungiButton();//(this, this.pannello)"/>
       </AuxValues>
     </Component>
     <Component class="it.seerp.Gui.Menu.ModificaButton" name="modificaButton1">

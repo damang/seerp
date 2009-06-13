@@ -7,6 +7,7 @@
 package it.seerp.Gui.Menu;
 
 import configurazioni.CommandInterface;
+import it.seerp.Gui.Gestione.Utenti.AreaUtentePanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,6 +16,8 @@ import java.awt.event.ActionListener;
  * @author Andrea
  */
 public class MenuContratti extends javax.swing.JPanel implements ActionListener {
+
+  
 
     /** Creates new form Economia */
     public MenuContratti() {
@@ -26,7 +29,7 @@ public class MenuContratti extends javax.swing.JPanel implements ActionListener 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        aggiungiButton1 = new it.seerp.Gui.Menu.AggiungiButton(this);
+        aggiungiButton1 = new it.seerp.Gui.Menu.AggiungiButton();//(this, this.pannello);
         modificaButton1 = new it.seerp.Gui.Menu.ModificaButton(this);
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Contratti", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_BOTTOM));
