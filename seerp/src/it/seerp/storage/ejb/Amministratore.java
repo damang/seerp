@@ -11,6 +11,11 @@ public class Amministratore extends Personale {
     private Integer idAmministratore;
     private Azienda azienda;
 
+    public Amministratore(Integer idUtente, String username, String password, String città, String provincia, String telefono, String cap, String email, String note, String ruolo, Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo, Boolean v, Integer idAmministratore) {
+        super(idUtente, username, password, città, provincia, telefono, cap, email, note, ruolo, idPersonale, cognome, nome, codiceFiscale, tipo, v);
+        this.idAmministratore = idAmministratore;
+    }
+
     /**
      * costruttore
      * @param idUtente
@@ -30,10 +35,7 @@ public class Amministratore extends Personale {
      * @param v
      * @param idAmministratore
      */
-    public Amministratore(Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String note, String ruolo, Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo, Boolean v, Integer idAmministratore) {
-        super(idUtente, username, password, città, provincia, telefono, email, note, ruolo, idPersonale, cognome, nome, codiceFiscale, tipo,v);
-        this.idAmministratore = idAmministratore;
-    }
+   
 
     /**
      * metodo che permette di restituire le informazioni relative all'azienda

@@ -16,6 +16,11 @@ public class Dipendente extends Personale {
     private ArrayList<Appuntamento> listAppuntamenti;
     private ArrayList<Contratto> listContratti;
 
+    public Dipendente(Integer idUtente, String username, String password, String città, String provincia, String telefono, String cap, String email, String note, String ruolo, Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo, Boolean v, Integer idDipendente) {
+        super(idUtente, username, password, città, provincia, telefono, cap, email, note, ruolo, idPersonale, cognome, nome, codiceFiscale, tipo, v);
+        this.idDipendente = idDipendente;
+    }
+
     /**
      *
      * @param idUtente
@@ -37,14 +42,7 @@ public class Dipendente extends Personale {
      */
 
 
-    public Dipendente(Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String note, String ruolo, Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo,Boolean v, Integer idDipendente) {
-        super(idUtente, username, password, città, provincia, telefono, email, note, ruolo, idPersonale, cognome, nome, codiceFiscale, tipo, v);
-
-        this.idDipendente = idDipendente;
-        this.listAppuntamenti = new ArrayList<Appuntamento>() ;
-        this.listContratti = new ArrayList<Contratto>();
-    }
-
+ 
 
     /**
      * metodo che setta la lista di contratti associati ad un dipendente
