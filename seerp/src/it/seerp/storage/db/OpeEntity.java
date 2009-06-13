@@ -39,6 +39,7 @@ public interface OpeEntity<E, G> {
      * nel caso in cui ci siano problemi legati alla visualizzazione nel database
      *
      */
+
     public E visualizza(G nome) throws SQLException;
 
     /**
