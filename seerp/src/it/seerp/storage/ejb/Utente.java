@@ -16,6 +16,10 @@ public class Utente {
     private String note;
     private String ruolo;
     private Boolean visible;
+    /**
+     *
+     */
+    public String cap;
 
 
     /**
@@ -32,22 +36,40 @@ public class Utente {
      * @param città
      * @param provincia
      * @param telefono
+     * @param cap
      * @param email
      * @param ruolo
      * @param note
      * @param v
      */
-    public Utente(Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String ruolo, String note, Boolean v) {
+    public Utente(Integer idUtente, String username, String password, String città, String provincia, String telefono,String cap, String email, String ruolo, String note, Boolean v) {
         this.idUtente = idUtente;
         this.username = username;
         this.password = password;
         this.città = città;
         this.provincia = provincia;
         this.telefono = telefono;
+        this.cap= cap;
         this.email = email;
         this.note = note;
         this.ruolo = ruolo;
         this.visible = v;
+    }
+
+    /**
+     * metodo che permette di restituire il cap dell'utenet
+     * @return il cap
+     */
+    public String getCap() {
+        return cap;
+    }
+
+    /**
+     * metodo che permette di settare il cap dell'utente
+     * @param cap rappresenta il cap
+     */
+    public void setCap(String cap) {
+        this.cap = cap;
     }
 
 
