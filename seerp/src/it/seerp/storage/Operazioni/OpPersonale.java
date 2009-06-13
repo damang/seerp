@@ -227,7 +227,7 @@ public class OpPersonale extends OpeUtente {
         try {
 
             Statement stmt1 = con.createStatement();
-            String sqlTest = "SELECT * FROM Personale WHERE nome='"+ user.getCodiceFiscale() +"' ";
+            String sqlTest = "SELECT * FROM Personale WHERE codiceFiscale='"+ user.getCodiceFiscale() +"' ";
             ResultSet rs = stmt1.executeQuery(sqlTest);
 
             if (rs.next()) {
@@ -287,7 +287,7 @@ public class OpPersonale extends OpeUtente {
 
 
         try {
-            String sql="SELECT * FROM Cliente where idUtente= ? ";
+            String sql="SELECT * FROM Personale where idUtente= ? ";
             // Create a statement
             stmt = (PreparedStatement) con.prepareStatement(sql);
             stmt.setString(1,id.toString());
