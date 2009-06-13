@@ -12,7 +12,6 @@ package it.seerp.Gui.frame;
 
 import configurazioni.pattern.observer.Observable;
 import configurazioni.pattern.observer.Observer;
-import it.seerp.bottoni.Nuovo.ButtonTabComponent;
 import java.util.Iterator;
 import java.util.Vector;
 import javax.swing.JPanel;
