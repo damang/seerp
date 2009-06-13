@@ -128,7 +128,7 @@ public class AuthConfig implements Serializable
                     _loginHandlerClass=prop.getProperty("authentication");
                     _authznHandlerClass=prop.getProperty("authorization");
                     //carico i paramtri di input del db
-                    is = new FileInputStream("database.properties");
+                    is = new FileInputStream("file_config\\database.properties");
                     Properties p2=new Properties();
                     p2.load(is);
                     _htLoginInitParam=p2;

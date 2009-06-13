@@ -35,8 +35,7 @@ import org.jdesktop.swingx.auth.LoginService;
 public class JaasUtil extends LoginService
 {
 	public static final String LOGINCONTEXT_NAME = "JaasUtil";
-	private static final String USERAUTH_KEY_CONFIGFILE = "./configurazioni/jaas/jaasutil_config.properties";
-
+	private static final String USERAUTH_KEY_CONFIGFILE = "file_config\\jaasutil_config.properties";
 	private String _name;
 	private String _userId;
 	private char[] _password;
@@ -52,7 +51,7 @@ public class JaasUtil extends LoginService
 	}*/
     public JaasUtil()
 	{
-		
+        	   
 	}
 	/*public JaasUtil(String userID, String password, String contextName)
 	{
