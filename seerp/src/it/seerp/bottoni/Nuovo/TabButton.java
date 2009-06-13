@@ -51,7 +51,7 @@ public class TabButton extends JButton implements ActionListener {
         if (i != -1) {
             pane.remove(i);
             pane.repaint();
-            menu.setVisible(false);
+           // menu.setVisible(false);
             pannel.notifyObservers();
         }
     }

@@ -7,6 +7,7 @@ package it.seerp.bottoni.Nuovo;
 import configurazioni.CommandInterface;
 import configurazioni.Gui.ConfigurazioneUtente.TIPO_UTENTE_CONST;
 import it.seerp.Gui.Gestione.Utenti.AreaUtentePanel;
+import it.seerp.Gui.Menu.MenuUtente;
 import it.seerp.Gui.command.ObserverButton;
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -26,7 +27,7 @@ import javax.swing.JTabbedPane;
 public class AreaUtenteButton extends ObserverButton implements CommandInterface {
 
     protected JTabbedPane tabbedPane;
-    private JPanel menu;
+    private MenuUtente menu;
     AreaUtentePanel panel;
     String s = "";
 
@@ -35,7 +36,7 @@ public class AreaUtenteButton extends ObserverButton implements CommandInterface
      * @param gruppoFinestreUpdate
      * @param aThis
      */
-    public AreaUtenteButton(JTabbedPane pan, JPanel menu, ActionListener act) throws SQLException {
+    public AreaUtenteButton(JTabbedPane pan, MenuUtente menu, ActionListener act) throws SQLException {
         this.tabbedPane = pan;
         this.menu = menu; 
         //this.panel = new AreaUtentePanel(TIPO_UTENTE_CONST.CLIENTE);
@@ -58,14 +59,17 @@ public class AreaUtenteButton extends ObserverButton implements CommandInterface
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "problemi di comunicazione col DBMS");
             }
-          
+            
+
             isPresente = true;
             this.tabbedPane.addTab(s, panel);
             System.out.println(this.tabbedPane.getTabCount() - 1);
             ButtonTabComponent button = new ButtonTabComponent(this.tabbedPane, this.panel, this.menu);
             this.tabbedPane.setTabComponentAt(this.tabbedPane.getTabCount() - 1, button);
             panel.setVisible(true);
-            menu.setVisible(true);
+            
+            
+
             panel.repaint();
             this.tabbedPane.setSelectedComponent(panel);
             this.setEnabled(false);
