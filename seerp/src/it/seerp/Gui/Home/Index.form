@@ -295,7 +295,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="it.seerp.bottoni.Nuovo.AreaUtenteButton" name="areaUtenteButton1">
+                <Component class="it.seerp.bottoni.Nuovo2.AreaUtenteButton" name="areaUtenteButton1">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/it/seerp/icone/32x32/User-32x32.png"/>
@@ -306,10 +306,10 @@
                     <Property name="name" type="java.lang.String" value="areaUtenteButton1" noResource="true"/>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this)"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo2.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this)"/>
                   </AuxValues>
                 </Component>
-                <Component class="it.seerp.bottoni.Nuovo.AreaUtenteButton" name="areaUtenteButton2">
+                <Component class="it.seerp.bottoni.Nuovo2.AreaUtenteButton" name="areaUtenteButton2">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/it/seerp/icone/32x32/users.png"/>
@@ -320,10 +320,10 @@
                     <Property name="name" type="java.lang.String" value="areaUtenteButton2" noResource="true"/>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente2,this)"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo2.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente2,this)"/>
                   </AuxValues>
                 </Component>
-                <Component class="it.seerp.bottoni.Nuovo.AreaUtenteButton" name="areaUtenteButton3">
+                <Component class="it.seerp.bottoni.Nuovo2.AreaUtenteButton" name="areaUtenteButton3">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/it/seerp/icone/32x32/TruckYellow-32x32.png"/>
@@ -335,10 +335,10 @@
                     <Property name="name" type="java.lang.String" value="areaUtenteButton3" noResource="true"/>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente3,this)"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo2.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente3,this)"/>
                   </AuxValues>
                 </Component>
-                <Component class="it.seerp.bottoni.Nuovo.AreaUtenteButton" name="areaUtenteButton4">
+                <Component class="it.seerp.bottoni.Nuovo2.AreaUtenteButton" name="areaUtenteButton4">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/it/seerp/icone/32x32/community_users.png"/>
@@ -349,7 +349,7 @@
                     <Property name="name" type="java.lang.String" value="areaUtenteButton4" noResource="true"/>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente4,this)"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo2.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente4,this)"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
@@ -430,7 +430,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="it.seerp.bottoni.Nuovo.ButtonContratti" name="buttonContratti1">
+                <Component class="it.seerp.bottoni.Nuovo2.ButtonContratti" name="buttonContratti1">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/it/seerp/icone/32x32/page.png"/>
@@ -441,10 +441,10 @@
                     <Property name="name" type="java.lang.String" value="buttonContratti1" noResource="true"/>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.ButtonContratti(this.jTabbedPanePrincipale,this.menuContratti1,this)"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo2.ButtonContratti(this.jTabbedPanePrincipale,this.menuContratti1,this)"/>
                   </AuxValues>
                 </Component>
-                <Component class="it.seerp.bottoni.Nuovo.ButtonServizi" name="buttonServizi1">
+                <Component class="it.seerp.bottoni.Nuovo2.ButtonServizi" name="buttonServizi1">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/it/seerp/icone/32x32/shopping_cart.png"/>
@@ -458,7 +458,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonServizi1ActionPerformed"/>
                   </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.ButtonServizi(this.jTabbedPanePrincipale,this.menuUtente1,this)"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo2.ButtonServizi(this.jTabbedPanePrincipale,this.menuUtente1,this)"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
@@ -500,7 +500,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="it.seerp.bottoni.Nuovo.AreaPersonaleButton" name="areaPersonaleButton1">
+                <Component class="it.seerp.bottoni.Nuovo2.AreaPersonaleButton" name="areaPersonaleButton1">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/it/seerp/icone/32x32/HP-Control-32x32.png"/>
@@ -510,7 +510,7 @@
                     <Property name="name" type="java.lang.String" value="areaPersonaleButton1" noResource="true"/>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.AreaPersonaleButton(this.jTabbedPanePrincipale, this.menuAreaPersonale1, this)"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo2.AreaPersonaleButton(this.jTabbedPanePrincipale, this.menuAreaPersonale1, this)"/>
                   </AuxValues>
                 </Component>
               </SubComponents>

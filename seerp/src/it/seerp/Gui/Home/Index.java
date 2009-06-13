@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import configurazioni.CommandInterface;
 import it.seerp.Gui.frame.ObservervableJTabbedPanel;
-import it.seerp.bottoni.Nuovo.AreaUtenteButton;
+import it.seerp.bottoni.Nuovo2.AreaUtenteButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -45,20 +45,20 @@ public class Index extends javax.swing.JFrame implements ActionListener {
         jXTaskPane1 = new org.jdesktop.swingx.JXTaskPane();
         jPanel1 = new javax.swing.JPanel();
         try{
-        areaUtenteButton1 = new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this);
-        areaUtenteButton2 = new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente2,this);
-        areaUtenteButton3 = new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente3,this);
-        areaUtenteButton4 = new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente4,this);}
+        areaUtenteButton1 = new it.seerp.bottoni.Nuovo2.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this);
+        areaUtenteButton2 = new it.seerp.bottoni.Nuovo2.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente2,this);
+        areaUtenteButton3 = new it.seerp.bottoni.Nuovo2.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente3,this);
+        areaUtenteButton4 = new it.seerp.bottoni.Nuovo2.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente4,this);}
         catch (SQLException e){e.getMessage();}
         jXTaskPane2 = new org.jdesktop.swingx.JXTaskPane();
         jXPanel2 = new org.jdesktop.swingx.JXPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        buttonContratti1 = new it.seerp.bottoni.Nuovo.ButtonContratti(this.jTabbedPanePrincipale,this.menuContratti1,this);
-        buttonServizi1 = new it.seerp.bottoni.Nuovo.ButtonServizi(this.jTabbedPanePrincipale,this.menuUtente1,this);
+        buttonContratti1 = new it.seerp.bottoni.Nuovo2.ButtonContratti(this.jTabbedPanePrincipale,this.menuContratti1,this);
+        buttonServizi1 = new it.seerp.bottoni.Nuovo2.ButtonServizi(this.jTabbedPanePrincipale,this.menuUtente1,this);
         jXTaskPane3 = new org.jdesktop.swingx.JXTaskPane();
         jXPanel3 = new org.jdesktop.swingx.JXPanel();
-        areaPersonaleButton1 = new it.seerp.bottoni.Nuovo.AreaPersonaleButton(this.jTabbedPanePrincipale, this.menuAreaPersonale1, this);
+        areaPersonaleButton1 = new it.seerp.bottoni.Nuovo2.AreaPersonaleButton(this.jTabbedPanePrincipale, this.menuAreaPersonale1, this);
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
@@ -429,13 +429,13 @@ public class Index extends javax.swing.JFrame implements ActionListener {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
-    private it.seerp.bottoni.Nuovo.AreaPersonaleButton areaPersonaleButton1;
-    private it.seerp.bottoni.Nuovo.AreaUtenteButton areaUtenteButton1;
-    private it.seerp.bottoni.Nuovo.AreaUtenteButton areaUtenteButton2;
-    private it.seerp.bottoni.Nuovo.AreaUtenteButton areaUtenteButton3;
-    private it.seerp.bottoni.Nuovo.AreaUtenteButton areaUtenteButton4;
-    private it.seerp.bottoni.Nuovo.ButtonContratti buttonContratti1;
-    private it.seerp.bottoni.Nuovo.ButtonServizi buttonServizi1;
+    private it.seerp.bottoni.Nuovo2.AreaPersonaleButton areaPersonaleButton1;
+    private it.seerp.bottoni.Nuovo2.AreaUtenteButton areaUtenteButton1;
+    private it.seerp.bottoni.Nuovo2.AreaUtenteButton areaUtenteButton2;
+    private it.seerp.bottoni.Nuovo2.AreaUtenteButton areaUtenteButton3;
+    private it.seerp.bottoni.Nuovo2.AreaUtenteButton areaUtenteButton4;
+    private it.seerp.bottoni.Nuovo2.ButtonContratti buttonContratti1;
+    private it.seerp.bottoni.Nuovo2.ButtonServizi buttonServizi1;
     private javax.swing.JMenuItem contentsMenuItem;
     private javax.swing.JMenuItem copyMenuItem;
     private javax.swing.JMenuItem cutMenuItem;
