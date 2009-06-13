@@ -99,7 +99,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         jPanel3.setName("jPanel3"); // NOI18N
 
         jTextField1.setText("Nome Servizio");
-        jTextField1.setName("jTextField1"); // NOI18N
+        jTextField1.setName("NomeServizio"); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -121,7 +121,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         jPanel4.setName("jPanel4"); // NOI18N
 
         jTextField2.setText("1000");
-        jTextField2.setName("jTextField2"); // NOI18N
+        jTextField2.setName("Quantita"); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -143,7 +143,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         jPanel5.setName("jPanel5"); // NOI18N
 
         jTextField3.setText("Tipo");
-        jTextField3.setName("jTextField3"); // NOI18N
+        jTextField3.setName("Tipo"); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -165,7 +165,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         jPanel7.setName("jPanel7"); // NOI18N
 
         jTextField5.setText("000.00");
-        jTextField5.setName("jTextField5"); // NOI18N
+        jTextField5.setName("Prezzo"); // NOI18N
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -266,7 +266,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         jPanel20.setName("jPanel20"); // NOI18N
 
         jTextField14.setText("10%");
-        jTextField14.setName("jTextField14"); // NOI18N
+        jTextField14.setName("Iva"); // NOI18N
 
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
         jPanel20.setLayout(jPanel20Layout);
@@ -305,7 +305,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
                             .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(222, 222, 222))
+                .addGap(10, 10, 10))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -335,7 +335,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         jPanel9.setName("jPanel9"); // NOI18N
 
         jTextField4.setText("Azienda");
-        jTextField4.setName("jTextField4"); // NOI18N
+        jTextField4.setName("Azienda"); // NOI18N
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -357,7 +357,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         jPanel12.setName("jPanel12"); // NOI18N
 
         jTextField7.setText("1452369874125001");
-        jTextField7.setName("jTextField7"); // NOI18N
+        jTextField7.setName("PartitaIva"); // NOI18N
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -379,7 +379,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         jPanel14.setName("jPanel14"); // NOI18N
 
         jTextField9.setText("E-mail");
-        jTextField9.setName("jTextField9"); // NOI18N
+        jTextField9.setName("Email"); // NOI18N
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -401,7 +401,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         jPanel15.setName("jPanel15"); // NOI18N
 
         jTextField10.setText("Telefono");
-        jTextField10.setName("jTextField10"); // NOI18N
+        jTextField10.setName("Telefono"); // NOI18N
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -423,7 +423,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         jPanel16.setName("jPanel16"); // NOI18N
 
         jTextField11.setText("Città");
-        jTextField11.setName("jTextField11"); // NOI18N
+        jTextField11.setName("Citta"); // NOI18N
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -445,7 +445,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         jPanel17.setName("jPanel17"); // NOI18N
 
         jTextField12.setText("Provincia");
-        jTextField12.setName("jTextField12"); // NOI18N
+        jTextField12.setName("Provincia"); // NOI18N
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
@@ -470,7 +470,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
-        jTextArea2.setName("jTextArea2"); // NOI18N
+        jTextArea2.setName("Note"); // NOI18N
         jScrollPane4.setViewportView(jTextArea2);
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
@@ -538,7 +538,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
                     .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -551,8 +551,8 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(93, 93, 93)))
+                .addGap(0, 0, 0))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -636,7 +636,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jXPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jXPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 609, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
