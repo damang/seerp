@@ -56,7 +56,7 @@ public class ButtonContratti extends ObserverButton implements CommandInterface 
             this.tabbedPane.setSelectedComponent(panel);
             this.setEnabled(false);
             panel.setVisible(true);
-            menu.setVisible(true);
+           // menu.setVisible(true);
             panel.repaint();
 
 

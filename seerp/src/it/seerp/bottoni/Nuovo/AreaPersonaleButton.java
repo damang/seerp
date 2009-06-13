@@ -25,7 +25,7 @@ public class AreaPersonaleButton extends ObserverButton implements CommandInterf
     protected JTabbedPane tabbedPane;
     private JPanel menu;
     AreaPersonalePanel panel;
-    MenuAreaPersonale menuUt;
+
 
     /**
      *
@@ -35,7 +35,7 @@ public class AreaPersonaleButton extends ObserverButton implements CommandInterf
     public AreaPersonaleButton(JTabbedPane pan, JPanel menu, ActionListener act) {
         this.tabbedPane = pan;
         this.menu = menu;
-        this.menuUt = new MenuAreaPersonale();
+   
         this.panel = new AreaPersonalePanel();
 
         this.addActionListener(act);
@@ -52,7 +52,6 @@ public class AreaPersonaleButton extends ObserverButton implements CommandInterf
 
             isPresente = true;
 
-            menu.add(menuUt);
             panel.repaint();
             this.tabbedPane.addTab("Area Personale", panel);
 
@@ -60,7 +59,7 @@ public class AreaPersonaleButton extends ObserverButton implements CommandInterf
             this.tabbedPane.setTabComponentAt(this.tabbedPane.getTabCount() - 1, button);
             this.tabbedPane.setSelectedComponent(panel);
             panel.setVisible(true);
-            menu.setVisible(true);
+         //   menu.setVisible(true);
             panel.repaint();
 
         }

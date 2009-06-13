@@ -57,7 +57,7 @@ public class ButtonServizi extends ObserverButton implements CommandInterface {
             this.tabbedPane.setTabComponentAt(this.tabbedPane.getTabCount() - 1, button);
             this.tabbedPane.setSelectedComponent(panel);
             panel.setVisible(true);
-            menu.setVisible(true);
+        //    menu.setVisible(true);
            this.setEnabled(false);
 
             panel.repaint();
