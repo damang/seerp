@@ -85,7 +85,7 @@ public class OpPersonale extends OpeUtente {
       * @return la lista dei membri del personale che corrispondono ai criteri di ricerca
       * @throws java.sql.SQLException*/
      
-     public  ArrayList<Personale> ricercaPersonale(String cognome, String ruolo)throws SQLException{
+     public  ArrayList<Personale> ricercaPersonale()throws SQLException{
         ArrayList<Personale> list=this.elencaPersonale();
         return list;
        }
