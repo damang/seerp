@@ -47,5 +47,5 @@ public interface OpeEntity<E, G> {
      * @throws java.sql.SQLException
      * nel caso in cui ci siano problemi legati alla ricerca nel database
      */
-    public ArrayList<E> visualizzaElenco() throws SQLException;
+    public ArrayList<G> visualizzaElenco() throws SQLException;
 }
