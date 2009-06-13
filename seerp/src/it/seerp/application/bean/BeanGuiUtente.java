@@ -1,14 +1,21 @@
 package it.seerp.application.bean;
 
+import it.seerp.application.validation.EmailValidator;
+import it.seerp.application.validation.NotAlphabeticValidator;
+import it.seerp.application.validation.NotEqualLengthValidator;
+import it.seerp.application.validation.NotEmptyValidator;
+import it.seerp.application.validation.NotMaxLengthValidator;
+import it.seerp.application.validation.NotMinLengthValidator;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import org.jdesktop.swingx.JXPanel;
 
 /**
  *
- * @author matteo
+ * @author matteo - Tommaso Cattolico
  */
-public class BeanGuiUtente
-{
+public class BeanGuiUtente {
+
     private JTextField idUtenteTxt;
     private JTextField txtUsername;
     private JTextField txtPassword;
@@ -18,12 +25,28 @@ public class BeanGuiUtente
     private JTextField txtEmail;
     private JTextArea txtNote;
     private JTextField txtNotifica;
-    private JTextField Ruolo;
+    private JTextField ruolo;
+    private JXPanel grafica;
+    private NotEmptyValidator val;
+    private NotEqualLengthValidator valEqLen;
+    private NotMinLengthValidator valMinLen;
+    private NotMaxLengthValidator valMaxLen;
+    private EmailValidator valEma;
+    private NotAlphabeticValidator valApha;
+
+    /**
+     * Costruttore a cui viene passato un componente grafico necessario alla
+     * validazione del campo
+     */
+    public BeanGuiUtente(JXPanel c) {
+        grafica = c;
+    }
 
     /**
      *
      */
-    public BeanGuiUtente() {}
+    public BeanGuiUtente() {
+    }
 
     /**
      *
@@ -48,37 +71,37 @@ public class BeanGuiUtente
         this.txtEmail = txtEmail;
         this.txtNote = txtNote;
         this.txtNotifica = txtNotifica;
-        this.Ruolo = Ruolo;
+        this.ruolo = Ruolo;
     }
-
-    
 
     /**
      *
      * @return
      */
-    public JTextField getRuolo() {
-        return Ruolo;
+    public JTextField getRuolo() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
+        return ruolo;
     }
 
     /**
      *
-     * @param Ruolo
+     * @param pRuolo
      */
-    public void setRuolo(JTextField Ruolo) {
-        this.Ruolo = Ruolo;
+    public void setRuolo(JTextField pruolo) {
+        this.ruolo = pruolo;
+        val = new NotEmptyValidator(grafica, ruolo, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
     }
 
     /**
      *
-     * @param txtNotifica
+     * @param ptxtNotifica
      */
-    public void setTxtNotifica(JTextField txtNotifica) {
-        this.txtNotifica = txtNotifica;
+    public void setTxtNotifica(JTextField ptxtNotifica) {
+        this.txtNotifica = ptxtNotifica;
     }
-
-
-
 
     /**
      * 
@@ -90,26 +113,28 @@ public class BeanGuiUtente
 
     /**
      *
-     * @param txtnotifica
+     * @param ptxtnotifica
      */
-    public void setTxtnotifica(JTextField txtnotifica) {
-        this.txtNotifica = txtnotifica;
+    public void setTxtnotifica(JTextField ptxtnotifica) {
+        this.txtNotifica = ptxtnotifica;
     }
 
     /**
      *
-     * @param idUtenteTxt
+     * @param pidUtenteTxt
      */
-    public void setIdUtenteTxt(JTextField idUtenteTxt) {
-        this.idUtenteTxt = idUtenteTxt;
+    public void setIdUtenteTxt(JTextField pidUtenteTxt) {
+        this.idUtenteTxt = pidUtenteTxt;
+        val = new NotEmptyValidator(grafica, idUtenteTxt, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
     }
 
     /**
      *
-     * @param txtNote
+     * @param ptxtNote
      */
-    public void setTxtNote(JTextArea txtNote) {
-        this.txtNote = txtNote;
+    public void setTxtNote(JTextArea ptxtNote) {
+        this.txtNote = ptxtNote;
     }
 
     /**
@@ -124,7 +149,10 @@ public class BeanGuiUtente
      *
      * @return
      */
-    public JTextField getIdUtenteTxt() {
+    public JTextField getIdUtenteTxt() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return idUtenteTxt;
     }
 
@@ -132,7 +160,13 @@ public class BeanGuiUtente
      * 
      * @return
      */
-    public JTextField getTxtCittà() {
+    public JTextField getTxtCittà() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
+        if (!valApha.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return txtCittà;
     }
 
@@ -140,7 +174,13 @@ public class BeanGuiUtente
      *
      * @return
      */
-    public JTextField getTxtEmail() {
+    public JTextField getTxtEmail() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
+        if (!valEma.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return txtEmail;
     }
 
@@ -148,7 +188,13 @@ public class BeanGuiUtente
      *
      * @return
      */
-    public JTextField getTxtPassword() {
+    public JTextField getTxtPassword() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
+        if (!valMinLen.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return txtPassword;
     }
 
@@ -156,7 +202,12 @@ public class BeanGuiUtente
      *
      * @return
      */
-    public JTextField getTxtProvincia() {
+    public JTextField getTxtProvincia() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        } else if (!valEqLen.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return txtProvincia;
     }
 
@@ -164,7 +215,10 @@ public class BeanGuiUtente
      *
      * @return
      */
-    public JTextField getTxtTelefono() {
+    public JTextField getTxtTelefono() throws Exception {
+        if (!valMinLen.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return txtTelefono;
     }
 
@@ -172,63 +226,93 @@ public class BeanGuiUtente
      *
      * @return
      */
-    public JTextField getTxtUsername() {
+    public JTextField getTxtUsername() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
+        if (!valMinLen.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return txtUsername;
     }
 
     /**
      *
-     * @param idUtenteTxt
+     * @param pidUtenteTxt
      */
-    public void setIdUtenteText(JTextField idUtenteTxt) {
-        this.idUtenteTxt = idUtenteTxt;
+    public void setIdUtenteText(JTextField pidUtenteTxt) {
+        this.idUtenteTxt = pidUtenteTxt;
+        val = new NotEmptyValidator(grafica, idUtenteTxt, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
     }
 
     /**
      *
-     * @param txtCittà
+     * @param ptxtCittà
      */
-    public void setTxtCittà(JTextField txtCittà) {
-        this.txtCittà = txtCittà;
+    public void setTxtCittà(JTextField ptxtCittà) {
+        this.txtCittà = ptxtCittà;
+        val = new NotEmptyValidator(grafica, txtCittà, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
+        valApha = new NotAlphabeticValidator(grafica, txtCittà, "La stringa inserita deve essere alfabetica.");
+        grafica.setInputVerifier(valApha);
     }
 
     /**
      *
-     * @param txtEmail
+     * @param ptxtEmail
      */
-    public void setTxtEmail(JTextField txtEmail) {
-        this.txtEmail = txtEmail;
+    public void setTxtEmail(JTextField ptxtEmail) {
+        this.txtEmail = ptxtEmail;
+        val = new NotEmptyValidator(grafica, txtEmail, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
+        valEma = new EmailValidator(grafica, txtEmail, "Formato e-mail inserito non valido.");
+        grafica.setInputVerifier(valEma);
     }
 
     /**
      *
-     * @param txtPassword
+     * @param ptxtPassword
      */
-    public void setTxtPassword(JTextField txtPassword) {
-        this.txtPassword = txtPassword;
+    public void setTxtPassword(JTextField ptxtPassword) {
+        this.txtPassword = ptxtPassword;
+        val = new NotEmptyValidator(grafica, txtPassword, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
+        valMaxLen = new NotMaxLengthValidator(grafica, txtProvincia, "Il campo deve essere di massimo 15 caratteri", 16);
+        grafica.setInputVerifier(valMaxLen);
     }
 
     /**
      *
-     * @param txtProvincia
+     * @param ptxtProvincia
      */
-    public void setTxtProvincia(JTextField txtProvincia) {
-        this.txtProvincia = txtProvincia;
+    public void setTxtProvincia(JTextField ptxtProvincia) {
+        this.txtProvincia = ptxtProvincia;
+        val = new NotEmptyValidator(grafica, txtProvincia, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
+        valEqLen = new NotEqualLengthValidator(grafica, txtProvincia, "Il campo deve essere di 2 caratteri", 2);
+        grafica.setInputVerifier(valEqLen);
     }
 
     /**
      *
-     * @param txtTelefono
+     * @param ptxtTelefono
      */
-    public void setTxtTelefono(JTextField txtTelefono) {
-        this.txtTelefono = txtTelefono;
+    public void setTxtTelefono(JTextField ptxtTelefono) {
+        this.txtTelefono = ptxtTelefono;
+        valMinLen = new NotMinLengthValidator(grafica, txtTelefono, "Il campo deve essere di almeno 8 caratteri", 8);
+        grafica.setInputVerifier(valMinLen);
     }
 
     /**
      *
-     * @param txtUsername
+     * @param ptxtUsername
      */
-    public void setTxtUsername(JTextField txtUsername) {
-        this.txtUsername = txtUsername;
+    public void setTxtUsername(JTextField ptxtUsername) {
+        this.txtUsername = ptxtUsername;
+        val = new NotEmptyValidator(grafica, txtUsername, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
+        valMaxLen = new NotMaxLengthValidator(grafica, txtProvincia, "Il campo deve essere di massimo 15 caratteri", 16);
+        grafica.setInputVerifier(valMaxLen);
     }
 }
