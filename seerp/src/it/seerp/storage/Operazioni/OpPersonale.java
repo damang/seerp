@@ -102,7 +102,7 @@ public class OpPersonale extends OpeUtente {
            String sql="DELETE * FROM Personale where username =?";
             // Create a statement
             stmt = (PreparedStatement) con.prepareStatement(sql);
-            stmt.setString(1, user.getNome());
+            stmt.setString(1, user.getUsername());
             // Execute the query
             stmt.executeQuery(sql);
                 }
