@@ -1,5 +1,7 @@
-
 package it.seerp.Gui.Home;
+import java.sql.SQLException;
+
+
 
 import configurazioni.CommandInterface;
 import it.seerp.Gui.frame.ObservervableJTabbedPanel;
@@ -42,10 +44,12 @@ public class Index extends javax.swing.JFrame implements ActionListener {
         jXLabel1 = new org.jdesktop.swingx.JXLabel();
         jXTaskPane1 = new org.jdesktop.swingx.JXTaskPane();
         jPanel1 = new javax.swing.JPanel();
+        try{
         areaUtenteButton1 = new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this);
         areaUtenteButton2 = new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente2,this);
         areaUtenteButton3 = new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente3,this);
-        areaUtenteButton4 = new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente4,this);
+        areaUtenteButton4 = new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente4,this);}
+        catch (SQLException e){e.getMessage();}
         jXTaskPane2 = new org.jdesktop.swingx.JXTaskPane();
         jXPanel2 = new org.jdesktop.swingx.JXPanel();
         jButton1 = new javax.swing.JButton();
