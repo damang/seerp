@@ -2,26 +2,23 @@ package it.seerp.application.validation;
 
 import javax.swing.JComponent;
 import javax.swing.JTextField;
-import javax.swing.JDialog;
+import org.jdesktop.swingx.JXPanel;
 
 /**
- * A class for performing basic validation on text fields. All it does is make
- * sure that they are not null.
- *
- * @author Michael Urban
+ * La classe che sviluppa i meccanismi di validazione dei campi di testo. 
+ * Tutto quello che fa è assicurarsi che i campi non siano vuoti.
+ * @author Tommaso Cattolico
  */
+public class NotEmptyValidator extends AbstractValidator {
 
-public class NotEmptyValidator extends AbstractValidator
-{
-    public NotEmptyValidator(JDialog parent, JTextField c, String message)
-    {
+    public NotEmptyValidator(JXPanel parent, JTextField c, String message) {
         super(parent, c, message);
     }
 
-    protected boolean validationCriteria(JComponent c)
-    {
-        if (((JTextField)c).getText().equals(""))
+    protected boolean validationCriteria(JComponent c) {
+        if (((JTextField) c).getText().equals("")) {
             return false;
+        }
         return true;
     }
 }
