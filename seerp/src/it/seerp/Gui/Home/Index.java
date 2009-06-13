@@ -4,6 +4,9 @@ import java.sql.SQLException;
 
 
 import configurazioni.CommandInterface;
+import it.seerp.Gui.Gestione.Utenti.AreaUtentePanel;
+import it.seerp.Gui.GestioneContratti.GestioneContratti;
+import it.seerp.Gui.frame.ObservableJPanel;
 import it.seerp.Gui.frame.ObservervableJTabbedPanel;
 import it.seerp.bottoni.Nuovo.AreaUtenteButton;
 import java.awt.event.ActionEvent;
@@ -76,6 +79,11 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
             jTabbedPanePrincipale.setName("jTabbedPanePrincipale"); // NOI18N
+            jTabbedPanePrincipale.addChangeListener(new javax.swing.event.ChangeListener() {
+                public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                    jTabbedPanePrincipaleStateChanged(evt);
+                }
+            });
 
             menu.setName("menu"); // NOI18N
 
@@ -92,9 +100,9 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                 .addGroup(menuLayout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(menuUtente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGap(18, 18, 18)
                     .addComponent(menuContratti1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 917, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1138, Short.MAX_VALUE)
                     .addComponent(menuAreaPersonale1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap())
             );
@@ -102,11 +110,14 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                 menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(menuLayout.createSequentialGroup()
                     .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(menuUtente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(menuContratti1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(menuAreaPersonale1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(14, Short.MAX_VALUE))
+                        .addComponent(menuAreaPersonale1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(menuUtente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
+
+            this.menuUtente1.setVisible(false);
+            this.menuContratti1.setVisible(false);
 
             jXTaskPaneContainer1.setName("jXTaskPaneContainer1"); // NOI18N
 
@@ -372,9 +383,9 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.DEFAULT_SIZE, 1460, Short.MAX_VALUE)
+                        .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.DEFAULT_SIZE, 1693, Short.MAX_VALUE)
                         .addGap(10, 10, 10))
                     .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
@@ -382,10 +393,10 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(25, 25, 25)
                 .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.PREFERRED_SIZE, 792, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, 916, Short.MAX_VALUE)
+                .addContainerGap(22, Short.MAX_VALUE))
+            .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, 943, Short.MAX_VALUE)
         );
 
         pack();
@@ -418,6 +429,31 @@ public class Index extends javax.swing.JFrame implements ActionListener {
     private void areaUtenteButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areaUtenteButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_areaUtenteButton1ActionPerformed
+
+    private void jTabbedPanePrincipaleStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPanePrincipaleStateChanged
+        if(jTabbedPanePrincipale.getTabCount()>0) {
+
+               ObservableJPanel p= (ObservableJPanel) jTabbedPanePrincipale.getComponentAt(jTabbedPanePrincipale.getSelectedIndex());
+               if(p.getClass().equals(AreaUtentePanel.class)) {
+                  this.menuContratti1.setVisible(false);
+                  this.menuAreaPersonale1.setVisible(false);
+                  this.menuUtente1.setVisible(true);
+                  this.menuUtente1.setPannello((AreaUtentePanel)p);
+               }
+               else if(p.getClass().equals(GestioneContratti.class)) {
+                  this.menuUtente1.setVisible(false);
+                  this.menuAreaPersonale1.setVisible(false);
+                  this.menuContratti1.setVisible(true);
+                  //this.menuUtente1.setPannello((AreaUtentePanel)p);
+               }
+        }
+        else {
+            this.menuContratti1.setVisible(false);
+                  this.menuAreaPersonale1.setVisible(false);
+                  this.menuUtente1.setVisible(false);
+        }
+
+    }//GEN-LAST:event_jTabbedPanePrincipaleStateChanged
 
     /**
      * @param args the command line arguments
