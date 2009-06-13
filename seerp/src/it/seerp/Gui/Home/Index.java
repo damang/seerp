@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -43,112 +44,125 @@ public class Index extends javax.swing.JFrame implements ActionListener {
         jXLabel1 = new org.jdesktop.swingx.JXLabel();
         jXTaskPane1 = new org.jdesktop.swingx.JXTaskPane();
         jPanel1 = new javax.swing.JPanel();
-        areaUtenteButton1 = new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this);
-        areaUtenteButton2 = new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this);
-        areaUtenteButton3 = new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this);
-        areaUtenteButton4 = new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this);
-        jXTaskPane2 = new org.jdesktop.swingx.JXTaskPane();
-        jXPanel2 = new org.jdesktop.swingx.JXPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        buttonContratti1 = new it.seerp.bottoni.Nuovo.ButtonContratti(this.jTabbedPanePrincipale,this.menuContratti1,this);
-        buttonServizi1 = new it.seerp.bottoni.Nuovo.ButtonServizi(this.jTabbedPanePrincipale,this.menuUtente1,this);
-        jXTaskPane3 = new org.jdesktop.swingx.JXTaskPane();
-        jXPanel3 = new org.jdesktop.swingx.JXPanel();
-        areaPersonaleButton1 = new it.seerp.bottoni.Nuovo.AreaPersonaleButton(this.jTabbedPanePrincipale, this.menuAreaPersonale1, this);
-        menuBar = new javax.swing.JMenuBar();
-        fileMenu = new javax.swing.JMenu();
-        openMenuItem = new javax.swing.JMenuItem();
-        saveMenuItem = new javax.swing.JMenuItem();
-        saveAsMenuItem = new javax.swing.JMenuItem();
-        exitMenuItem = new javax.swing.JMenuItem();
-        editMenu = new javax.swing.JMenu();
-        cutMenuItem = new javax.swing.JMenuItem();
-        copyMenuItem = new javax.swing.JMenuItem();
-        pasteMenuItem = new javax.swing.JMenuItem();
-        deleteMenuItem = new javax.swing.JMenuItem();
-        helpMenu = new javax.swing.JMenu();
-        contentsMenuItem = new javax.swing.JMenuItem();
-        aboutMenuItem = new javax.swing.JMenuItem();
+        try{
+            areaUtenteButton1 = new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this);
+            areaUtenteButton2 = new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this);
+            areaUtenteButton3 = new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this);
+            areaUtenteButton4 = new it.seerp.bottoni.Nuovo.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this);
+            jXTaskPane2 = new org.jdesktop.swingx.JXTaskPane();
+            jXPanel2 = new org.jdesktop.swingx.JXPanel();
+            jButton1 = new javax.swing.JButton();
+            jButton2 = new javax.swing.JButton();
+            buttonContratti1 = new it.seerp.bottoni.Nuovo.ButtonContratti(this.jTabbedPanePrincipale,this.menuContratti1,this);
+            buttonServizi1 = new it.seerp.bottoni.Nuovo.ButtonServizi(this.jTabbedPanePrincipale,this.menuUtente1,this);
+            jXTaskPane3 = new org.jdesktop.swingx.JXTaskPane();
+            jXPanel3 = new org.jdesktop.swingx.JXPanel();
+            areaPersonaleButton1 = new it.seerp.bottoni.Nuovo.AreaPersonaleButton(this.jTabbedPanePrincipale, this.menuAreaPersonale1, this);
+            menuBar = new javax.swing.JMenuBar();
+            fileMenu = new javax.swing.JMenu();
+            openMenuItem = new javax.swing.JMenuItem();
+            saveMenuItem = new javax.swing.JMenuItem();
+            saveAsMenuItem = new javax.swing.JMenuItem();
+            exitMenuItem = new javax.swing.JMenuItem();
+            editMenu = new javax.swing.JMenu();
+            cutMenuItem = new javax.swing.JMenuItem();
+            copyMenuItem = new javax.swing.JMenuItem();
+            pasteMenuItem = new javax.swing.JMenuItem();
+            deleteMenuItem = new javax.swing.JMenuItem();
+            helpMenu = new javax.swing.JMenu();
+            contentsMenuItem = new javax.swing.JMenuItem();
+            aboutMenuItem = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTabbedPanePrincipale.setName("jTabbedPanePrincipale"); // NOI18N
+            jTabbedPanePrincipale.setName("jTabbedPanePrincipale"); // NOI18N
 
-        menu.setName("menu"); // NOI18N
+            menu.setName("menu"); // NOI18N
 
-        menuAreaPersonale1.setName("menuAreaPersonale1"); // NOI18N
+            menuAreaPersonale1.setName("menuAreaPersonale1"); // NOI18N
 
-        menuUtente1.setName("menuUtente1"); // NOI18N
+            menuUtente1.setName("menuUtente1"); // NOI18N
 
-        menuContratti1.setName("menuContratti1"); // NOI18N
+            menuContratti1.setName("menuContratti1"); // NOI18N
 
-        javax.swing.GroupLayout menuLayout = new javax.swing.GroupLayout(menu);
-        menu.setLayout(menuLayout);
-        menuLayout.setHorizontalGroup(
-            menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(menuUtente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(menuContratti1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 905, Short.MAX_VALUE)
-                .addComponent(menuAreaPersonale1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        menuLayout.setVerticalGroup(
-            menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuLayout.createSequentialGroup()
-                .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+            javax.swing.GroupLayout menuLayout = new javax.swing.GroupLayout(menu);
+            menu.setLayout(menuLayout);
+            menuLayout.setHorizontalGroup(
+                menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(menuLayout.createSequentialGroup()
+                    .addContainerGap()
                     .addComponent(menuUtente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(menuContratti1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(menuAreaPersonale1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 917, Short.MAX_VALUE)
+                    .addComponent(menuAreaPersonale1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap())
+            );
+            menuLayout.setVerticalGroup(
+                menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(menuLayout.createSequentialGroup()
+                    .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(menuUtente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(menuContratti1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(menuAreaPersonale1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(14, Short.MAX_VALUE))
+            );
 
-        jXTaskPaneContainer1.setName("jXTaskPaneContainer1"); // NOI18N
+            jXTaskPaneContainer1.setName("jXTaskPaneContainer1"); // NOI18N
 
-        jXPanel1.setName("jXPanel1"); // NOI18N
+            jXPanel1.setName("jXPanel1"); // NOI18N
 
-        jXLabel1.setText("mes di benvenuto");
-        jXLabel1.setName("jXLabel1"); // NOI18N
+            jXLabel1.setText("mes di benvenuto");
+            jXLabel1.setName("jXLabel1"); // NOI18N
 
-        javax.swing.GroupLayout jXPanel1Layout = new javax.swing.GroupLayout(jXPanel1);
-        jXPanel1.setLayout(jXPanel1Layout);
-        jXPanel1Layout.setHorizontalGroup(
-            jXPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jXPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jXLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jXPanel1Layout.setVerticalGroup(
-            jXPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jXPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jXLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+            javax.swing.GroupLayout jXPanel1Layout = new javax.swing.GroupLayout(jXPanel1);
+            jXPanel1.setLayout(jXPanel1Layout);
+            jXPanel1Layout.setHorizontalGroup(
+                jXPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jXPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jXLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                    .addContainerGap())
+            );
+            jXPanel1Layout.setVerticalGroup(
+                jXPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jXPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jXLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addContainerGap())
+            );
 
-        jXTaskPaneContainer1.add(jXPanel1);
+            jXTaskPaneContainer1.add(jXPanel1);
 
-        jXTaskPane1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/24x24/community_users.png"))); // NOI18N
-        jXTaskPane1.setTitle("Gestione Utenti");
-        jXTaskPane1.setName("jXTaskPane1"); // NOI18N
+            jXTaskPane1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/24x24/community_users.png"))); // NOI18N
+            jXTaskPane1.setTitle("Gestione Utenti");
+            jXTaskPane1.setName("jXTaskPane1"); // NOI18N
 
-        jPanel1.setName("jPanel1"); // NOI18N
+            jPanel1.setName("jPanel1"); // NOI18N
 
+        }
+        catch (SQLException e){ JOptionPane.showMessageDialog(null, "problemi di connessione");}
         areaUtenteButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/User-32x32.png"))); // NOI18N
         areaUtenteButton1.setText("Responsabili");
         areaUtenteButton1.setContentAreaFilled(false);
         areaUtenteButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         areaUtenteButton1.setName("areaUtenteButton1"); // NOI18N
+        areaUtenteButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                areaUtenteButton1ActionPerformed(evt);
+            }
+        });
 
         areaUtenteButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/users.png"))); // NOI18N
         areaUtenteButton2.setText("Dipendenti");
         areaUtenteButton2.setContentAreaFilled(false);
         areaUtenteButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         areaUtenteButton2.setName("areaUtenteButton2"); // NOI18N
+        areaUtenteButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                areaUtenteButton2ActionPerformed(evt);
+            }
+        });
 
         areaUtenteButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/TruckYellow-32x32.png"))); // NOI18N
         areaUtenteButton3.setText("Fornitori");
@@ -277,7 +291,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
         jXPanel3.setName("jXPanel3"); // NOI18N
 
         areaPersonaleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/HP-Control-32x32.png"))); // NOI18N
-        areaPersonaleButton1.setText("areaPersonaleButton1");
+        areaPersonaleButton1.setText("Area Personale"); // NOI18N
         areaPersonaleButton1.setContentAreaFilled(false);
         areaPersonaleButton1.setName("areaPersonaleButton1"); // NOI18N
 
@@ -287,8 +301,8 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             jXPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jXPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(areaPersonaleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(areaPersonaleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jXPanel3Layout.setVerticalGroup(
             jXPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -360,7 +374,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.DEFAULT_SIZE, 1436, Short.MAX_VALUE)
+                        .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.DEFAULT_SIZE, 1460, Short.MAX_VALUE)
                         .addGap(10, 10, 10))
                     .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
@@ -371,7 +385,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.PREFERRED_SIZE, 792, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, 913, Short.MAX_VALUE)
+            .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, 916, Short.MAX_VALUE)
         );
 
         pack();
@@ -396,6 +410,14 @@ public class Index extends javax.swing.JFrame implements ActionListener {
     private void buttonServizi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonServizi1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonServizi1ActionPerformed
+
+    private void areaUtenteButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areaUtenteButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_areaUtenteButton2ActionPerformed
+
+    private void areaUtenteButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areaUtenteButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_areaUtenteButton1ActionPerformed
 
     /**
      * @param args the command line arguments
