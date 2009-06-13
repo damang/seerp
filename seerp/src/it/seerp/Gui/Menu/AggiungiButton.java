@@ -5,6 +5,8 @@
 package it.seerp.Gui.Menu;
 
 import configurazioni.CommandInterface;
+import it.seerp.Gui.AreaPersonale.AreaPersonalePanel;
+import it.seerp.Gui.Gestione.Utenti.AreaUtentePanel;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -14,7 +16,7 @@ import javax.swing.JOptionPane;
  * @author Andrea
  */
 public class AggiungiButton extends JButton implements CommandInterface {
-    String s="luu";
+    AreaUtentePanel areaUt;
 
     public AggiungiButton() {
         super();
@@ -23,13 +25,14 @@ public class AggiungiButton extends JButton implements CommandInterface {
     public AggiungiButton(ActionListener l) {
         super();
         this.addActionListener(l);
+     //   areaUt=panel;
     }
 
-    AggiungiButton(MenuServizi aThis) {
-        throw new UnsupportedOperationException("Not yet implemented");
+    public void setAreaUt(AreaUtentePanel areaUt) {
+        this.areaUt = areaUt;
     }
-
     public void execute() {
-       JOptionPane.showMessageDialog(null, s);
+
+      //areaUt.getSalva().setVisible(true);
     }
 }

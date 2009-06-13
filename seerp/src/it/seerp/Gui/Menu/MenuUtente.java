@@ -12,8 +12,12 @@
 package it.seerp.Gui.Menu;
 
 import configurazioni.CommandInterface;
+import it.seerp.Gui.AreaPersonale.AreaPersonalePanel;
+import it.seerp.Gui.Gestione.Utenti.AreaUtentePanel;
+import it.seerp.Gui.frame.ObservableJPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JPanel;
 
 /**
  *
@@ -21,11 +25,27 @@ import java.awt.event.ActionListener;
  */
 public class MenuUtente extends javax.swing.JPanel implements ActionListener {
 
+    AreaUtentePanel pannello=null;
+     public MenuUtente() {
+         initComponents();
+       }
+
     /** Creates new form MenuUtente */
-    public MenuUtente() {
-        initComponents();
+    public MenuUtente(AreaUtentePanel pannello) {
+
+       // initComponents();
+       // this.pannello = pannello;
+        
+    }
+    public void setPannello(AreaUtentePanel pannello){
+        this.pannello = pannello;
+        this.aggiungiButton1.setAreaUt(pannello);
     }
 
+    public AreaUtentePanel getPannello() {
+        return pannello;
+    }
+   
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
