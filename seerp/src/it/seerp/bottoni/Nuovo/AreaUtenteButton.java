@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.seerp.bottoni.Nuovo2;
+package it.seerp.bottoni.Nuovo;
 
 import configurazioni.CommandInterface;
 import configurazioni.Gui.ConfigurazioneUtente.TIPO_UTENTE_CONST;
