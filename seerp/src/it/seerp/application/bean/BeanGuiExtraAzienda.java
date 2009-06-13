@@ -2,7 +2,6 @@ package it.seerp.application.bean;
 
 import java.util.ArrayList;
 import javax.swing.JComboBox;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -25,7 +24,6 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * Costruttore vuoto per la classe Bean Gui ExtraAzienda
      */
     public BeanGuiExtraAzienda() {
-        
     }
 
     /**
@@ -51,8 +49,6 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
         this.listAppuntamenti = listAppuntamenti;
         this.listContratti = listContratti;
     }
-
-   
 
     /**
      * metodo che restituisce la lista degli appuntamenti di un ExtraAzienda
@@ -202,28 +198,31 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * metodo che rimuove un appuntamento dalla lista degli appuntamenti
      * @param p rappresenta l'asspuntamento da rimuovere
      */
-    public void removeAppuntamento(BeanGuiAppuntamento p){
-     listAppuntamenti.remove(p);}
+    public void removeAppuntamento(BeanGuiAppuntamento p) {
+        listAppuntamenti.remove(p);
+    }
 
     /**
      * metodo che aggiunge un appuntamento nella lista degli appuntamenti
      * @param p rappresenta l'appuntamento che si vuole inserire
      */
-    public void addAppuntamento(BeanGuiAppuntamento p){
-     listAppuntamenti.add(p);}
+    public void addAppuntamento(BeanGuiAppuntamento p) {
+        listAppuntamenti.add(p);
+    }
 
     /**
      * metodo che rimuove un contratto dalla lista dei contratti
      * @param c rappresenta il contratto che si vuole eliminare
      */
-    public void removeContratto(BeanGuiContratto c){
-     listContratti.remove(c);}
+    public void removeContratto(BeanGuiContratto c) {
+        listContratti.remove(c);
+    }
 
-       /**
-        * metodo che aggiunge un contratto alla lista dei contratti
-        * @param c rappresenta il contratto che si vuole inserire
-        */
-       public void addContratto(BeanGuiContratto c){
-     listContratti.add(c);}
-
+    /**
+     * metodo che aggiunge un contratto alla lista dei contratti
+     * @param c rappresenta il contratto che si vuole inserire
+     */
+    public void addContratto(BeanGuiContratto c) {
+        listContratti.add(c);
+    }
 }

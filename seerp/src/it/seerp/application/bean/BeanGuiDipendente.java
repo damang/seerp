@@ -1,23 +1,35 @@
 package it.seerp.application.bean;
 
-import it.seerp.storage.ejb.Appuntamento;
-import it.seerp.storage.ejb.Contratto;
+import it.seerp.application.validation.NotEmptyValidator;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import org.jdesktop.swingx.JXPanel;
 
 /**
  *
- * @author matteo
+ * @author matteo - Tommaso Cattolico
  */
 public class BeanGuiDipendente extends BeanGuiPersonale {
+
+    private ArrayList<BeanGuiAppuntamento> listAppuntamenti;
+    private ArrayList<BeanGuiContratto> listContratti;
+    private JTextField idDipendenteTxt;
+    private JXPanel grafica;
+    private NotEmptyValidator val;
+
+    /**
+     * Costruttore a cui viene passato un componente grafico necessario alla
+     * validazione del campo
+     */
+    public BeanGuiDipendente(JXPanel c) {
+        grafica = c;
+    }
 
     /**
      * Costruttore vuoto per la classe Bean Gui Personale
      */
     public BeanGuiDipendente() {
-
     }
 
     /**
@@ -40,15 +52,11 @@ public class BeanGuiDipendente extends BeanGuiPersonale {
         this.idDipendenteTxt = idDipendenteTxt;
     }
 
-   private ArrayList<BeanGuiAppuntamento> listAppuntamenti;
-   private ArrayList<BeanGuiContratto> listContratti;
-   private JTextField idDipendenteTxt;
-
-     /**
-      * metodo che restituisce la lista degli appuntamenti che un Personale deve ricevere
-      * @return la lista degli appuntamenti
-      */
-     public ArrayList<BeanGuiAppuntamento> getListAppuntamenti() {
+    /**
+     * metodo che restituisce la lista degli appuntamenti che un Personale deve ricevere
+     * @return la lista degli appuntamenti
+     */
+    public ArrayList<BeanGuiAppuntamento> getListAppuntamenti() {
         return listAppuntamenti;
     }
 
@@ -76,21 +84,24 @@ public class BeanGuiDipendente extends BeanGuiPersonale {
         this.listContratti = listContratti;
     }
 
-     /**
-      * metodo che restituisce il campo contenente l'id del Personale
-      * @return il campo id del Personale
-      */
-     public JTextField getIdDipendenteTxt() {
+    /**
+     * metodo che restituisce il campo contenente l'id del Personale
+     * @return il campo id del Personale
+     */
+    public JTextField getIdDipendenteTxt() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return idDipendenteTxt;
     }
 
-      
-
     /**
      * metodo che setta il campi id del Personale
-     * @param idDipendenteTxt rappresenta il campo id da inserire
+     * @param pidDipendenteTxt rappresenta il campo id da inserire
      */
-    public void setIdDipendenteTxt(JTextField idDipendenteTxt) {
-        this.idDipendenteTxt = idDipendenteTxt;
+    public void setIdDipendenteTxt(JTextField pidDipendenteTxt) {
+        this.idDipendenteTxt = pidDipendenteTxt;
+        val = new NotEmptyValidator(grafica, idDipendenteTxt, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
     }
 }
