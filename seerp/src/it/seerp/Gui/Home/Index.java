@@ -1,11 +1,14 @@
 package it.seerp.Gui.Home;
+
 import java.sql.SQLException;
 
 
 
 import configurazioni.CommandInterface;
+import it.seerp.Gui.AreaPersonale.AreaPersonalePanel;
 import it.seerp.Gui.Gestione.Utenti.AreaUtentePanel;
 import it.seerp.Gui.GestioneContratti.GestioneContratti;
+import it.seerp.Gui.GestioneServizi.GestioneServizi;
 import it.seerp.Gui.frame.ObservableJPanel;
 import it.seerp.Gui.frame.ObservervableJTabbedPanel;
 import it.seerp.bottoni.Nuovo.AreaUtenteButton;
@@ -124,6 +127,8 @@ public class Index extends javax.swing.JFrame implements ActionListener {
 
             this.menuUtente1.setVisible(false);
             this.menuContratti1.setVisible(false);
+            menuServizi1.setVisible(false);
+            menuAreaPersonale2.setVisible(false);
 
             jXTaskPaneContainer1.setName("jXTaskPaneContainer1"); // NOI18N
 
@@ -437,28 +442,39 @@ public class Index extends javax.swing.JFrame implements ActionListener {
     }//GEN-LAST:event_areaUtenteButton1ActionPerformed
 
     private void jTabbedPanePrincipaleStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPanePrincipaleStateChanged
-        if(jTabbedPanePrincipale.getTabCount()>0) {
+        if (jTabbedPanePrincipale.getTabCount() > 0) {
 
-               ObservableJPanel p= (ObservableJPanel) jTabbedPanePrincipale.getComponentAt(jTabbedPanePrincipale.getSelectedIndex());
-               if(p.getClass().equals(AreaUtentePanel.class)) {
-                  this.menuContratti1.setVisible(false);
-                  this.menuAreaPersonale2.setVisible(false);
-                  this.menuUtente1.setVisible(true);
-                  this.menuUtente1.setPannello((AreaUtentePanel)p);
-               }
-               else if(p.getClass().equals(GestioneContratti.class)) {
-                  this.menuUtente1.setVisible(false);
-                  this.menuAreaPersonale2.setVisible(false);
-                  this.menuContratti1.setVisible(true);
-                  //this.menuUtente1.setPannello((AreaUtentePanel)p);
-               }
-        }
-        else {
+            ObservableJPanel p = (ObservableJPanel) jTabbedPanePrincipale.getComponentAt(jTabbedPanePrincipale.getSelectedIndex());
+            if (p.getClass().equals(AreaUtentePanel.class)) {
+                this.menuContratti1.setVisible(false);
+                this.menuAreaPersonale2.setVisible(false);
+                this.menuServizi1.setVisible(false);
+                this.menuUtente1.setVisible(true);
+                this.menuUtente1.setPannello((AreaUtentePanel) p);
+            } else if (p.getClass().equals(GestioneContratti.class)) {
+                this.menuUtente1.setVisible(false);
+                this.menuAreaPersonale2.setVisible(false);
+                this.menuServizi1.setVisible(false);
+                this.menuContratti1.setVisible(true);
+            //this.menuUtente1.setPannello((AreaUtentePanel)p);
+            } else if (p.getClass().equals(GestioneServizi.class)) {
+                this.menuContratti1.setVisible(false);
+                this.menuAreaPersonale2.setVisible(false);
+                this.menuUtente1.setVisible(false);
+                this.menuServizi1.setVisible(true);
+            } else if (p.getClass().equals(AreaPersonalePanel.class)) {
+                this.menuContratti1.setVisible(false);
+                this.menuUtente1.setVisible(false);
+                this.menuServizi1.setVisible(false);
+                this.menuAreaPersonale2.setVisible(true);
+            }}
+            else
+            {
             this.menuContratti1.setVisible(false);
-                  this.menuAreaPersonale2.setVisible(false);
-                  this.menuUtente1.setVisible(false);
-        }
-
+                this.menuAreaPersonale2.setVisible(false);
+                this.menuUtente1.setVisible(false);
+                this.menuServizi1.setVisible(false);}
+        
     }//GEN-LAST:event_jTabbedPanePrincipaleStateChanged
 
     /**
