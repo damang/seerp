@@ -21,6 +21,7 @@ public class ObserverButton extends JButton implements Observer {
 
     public synchronized void refreshData(Observable subject) {
         isPresente = false;
+        this.setEnabled(true);
     }
 
 }
