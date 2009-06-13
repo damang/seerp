@@ -117,7 +117,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel3.setName("jPanel3"); // NOI18N
 
         jTextField1.setText("Nome");
-        jTextField1.setName("jTextField1"); // NOI18N
+        jTextField1.setName("Nome"); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -139,7 +139,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel4.setName("jPanel4"); // NOI18N
 
         jTextField2.setText("Cognome");
-        jTextField2.setName("jTextField2"); // NOI18N
+        jTextField2.setName("Cognome"); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -161,7 +161,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel5.setName("jPanel5"); // NOI18N
 
         jTextField3.setText("Codice Fiscale");
-        jTextField3.setName("jTextField3"); // NOI18N
+        jTextField3.setName("CodiceFiscale"); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -183,7 +183,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel6.setName("jPanel6"); // NOI18N
 
         jTextField4.setText("E-mail");
-        jTextField4.setName("jTextField4"); // NOI18N
+        jTextField4.setName("E-mail"); // NOI18N
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -204,7 +204,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel7.setName("jPanel7"); // NOI18N
 
         jTextField5.setText("Telefono");
-        jTextField5.setName("jTextField5"); // NOI18N
+        jTextField5.setName("Telefono"); // NOI18N
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -226,7 +226,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel8.setName("jPanel8"); // NOI18N
 
         jTextField6.setText("Città");
-        jTextField6.setName("jTextField6"); // NOI18N
+        jTextField6.setName("Citta"); // NOI18N
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -248,7 +248,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel9.setName("jPanel9"); // NOI18N
 
         jTextField7.setText("Provincia");
-        jTextField7.setName("jTextField7"); // NOI18N
+        jTextField7.setName("Provincia"); // NOI18N
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -584,7 +584,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel28.setName("jPanel28"); // NOI18N
 
         jTextField8.setText("Username");
-        jTextField8.setName("jTextField8"); // NOI18N
+        jTextField8.setName("Username"); // NOI18N
 
         javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
         jPanel28.setLayout(jPanel28Layout);
@@ -606,7 +606,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel29.setName("jPanel29"); // NOI18N
 
         jTextField16.setText("Password");
-        jTextField16.setName("jTextField16"); // NOI18N
+        jTextField16.setName("Password"); // NOI18N
 
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
         jPanel29.setLayout(jPanel29Layout);
