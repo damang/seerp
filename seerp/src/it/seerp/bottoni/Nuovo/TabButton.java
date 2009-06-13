@@ -1,4 +1,4 @@
-package it.seerp.bottoni.Nuovo2;
+package it.seerp.bottoni.Nuovo;
 
 import it.seerp.Gui.frame.ObservableJPanel;
 import java.awt.*;
