@@ -13,7 +13,6 @@ package it.seerp.Gui.GestioneContratti;
 
 import configurazioni.CommandInterface;
 import it.seerp.Gui.frame.ObservableJPanel;
-import it.seerp.bottoni.Nuovo.ButtonContratti;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
