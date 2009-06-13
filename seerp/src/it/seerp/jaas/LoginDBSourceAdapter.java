@@ -10,11 +10,14 @@
 package it.seerp.jaas;
 
 
+import it.seerp.storage.db.ConnectionPool;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
 
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.security.auth.login.LoginException;
 
 
@@ -36,7 +39,12 @@ public class LoginDBSourceAdapter implements LoginSourceAdapter
 
 	public boolean authenticate (String userID, char[] password)
 	{
-		Connection conn = getConnection ();
+		Connection conn=null;
+        try {
+            conn = getConnection();
+        } catch (SQLException ex) {
+           ex.printStackTrace();
+        }
 		if (conn == null)
 		{
 			System.out.println("No connection");
@@ -108,9 +116,9 @@ public class LoginDBSourceAdapter implements LoginSourceAdapter
 	}
 
 	//////////////////////////////////////////////
-	private Connection getConnection ()
+	private Connection getConnection () throws SQLException
 	{
-		if (_htConnProp == null)
+		/*if (_htConnProp == null)
 			return null;
 
 		String driver = (String)_htConnProp.get ("driver");
@@ -142,6 +150,7 @@ public class LoginDBSourceAdapter implements LoginSourceAdapter
 			e.printStackTrace();
 		}
 
-		return connection;
+		return connection;*/
+        return ConnectionPool.getConnection();
 	}
 }
