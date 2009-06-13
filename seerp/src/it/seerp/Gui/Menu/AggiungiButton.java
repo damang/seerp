@@ -32,7 +32,7 @@ public class AggiungiButton extends JButton implements CommandInterface {
         this.areaUt = areaUt;
     }
     public void execute() {
-
+    JOptionPane.showMessageDialog(null,areaUt.getTipoUtente() );
       //areaUt.getSalva().setVisible(true);
     }
 }
