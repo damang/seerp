@@ -78,7 +78,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         jPanel3.setName("jPanel3"); // NOI18N
 
         jTextField1.setText("Nome");
-        jTextField1.setName("jTextField1"); // NOI18N
+        jTextField1.setName("Nome"); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -100,7 +100,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         jPanel4.setName("jPanel4"); // NOI18N
 
         jTextField2.setText("Cognome");
-        jTextField2.setName("jTextField2"); // NOI18N
+        jTextField2.setName("Cognome"); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -122,7 +122,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         jPanel5.setName("jPanel5"); // NOI18N
 
         jTextField3.setText("Codice Fiscale");
-        jTextField3.setName("jTextField3"); // NOI18N
+        jTextField3.setName("CodiceFiscale"); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -144,7 +144,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         jPanel6.setName("jPanel6"); // NOI18N
 
         jTextField4.setText("E-mail");
-        jTextField4.setName("jTextField4"); // NOI18N
+        jTextField4.setName("E-mail"); // NOI18N
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -165,7 +165,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         jPanel7.setName("jPanel7"); // NOI18N
 
         jTextField5.setText("Telefono");
-        jTextField5.setName("jTextField5"); // NOI18N
+        jTextField5.setName("Telefono"); // NOI18N
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -187,7 +187,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         jPanel8.setName("jPanel8"); // NOI18N
 
         jTextField6.setText("Città");
-        jTextField6.setName("jTextField6"); // NOI18N
+        jTextField6.setName("Citta"); // NOI18N
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -209,7 +209,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         jPanel9.setName("jPanel9"); // NOI18N
 
         jTextField7.setText("Provincia");
-        jTextField7.setName("jTextField7"); // NOI18N
+        jTextField7.setName("Provincia"); // NOI18N
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -234,7 +234,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setName("jTextArea1"); // NOI18N
+        jTextArea1.setName("Note"); // NOI18N
         jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
@@ -243,7 +243,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 705, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
@@ -259,9 +259,9 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -276,8 +276,8 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
                             .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(80, Short.MAX_VALUE))))
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,7 +307,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         jPanel11.setName("jPanel11"); // NOI18N
 
         jTextField8.setText("Username");
-        jTextField8.setName("jTextField8"); // NOI18N
+        jTextField8.setName("Username"); // NOI18N
         jTextField8.setOpaque(false);
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
@@ -330,7 +330,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         jPanel12.setName("jPanel12"); // NOI18N
 
         jPasswordField1.setText("jPasswordField1");
-        jPasswordField1.setName("jPasswordField1"); // NOI18N
+        jPasswordField1.setName("Password"); // NOI18N
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -374,7 +374,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         jPanel13.setName("jPanel13"); // NOI18N
 
         jPasswordField2.setText("jPasswordField1");
-        jPasswordField2.setName("jPasswordField2"); // NOI18N
+        jPasswordField2.setName("ConfermaPassword"); // NOI18N
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -403,7 +403,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
                 .addComponent(BottoneSalva)
                 .addGap(18, 18, 18)
                 .addComponent(BottoneAnnulla)
@@ -442,8 +442,8 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jXLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(564, Short.MAX_VALUE))
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 752, Short.MAX_VALUE)
+                .addContainerGap(494, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

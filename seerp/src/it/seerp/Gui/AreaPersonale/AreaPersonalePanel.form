@@ -24,9 +24,9 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jXLabel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="564" max="32767" attributes="0"/>
+              <EmptySpace pref="494" max="32767" attributes="0"/>
           </Group>
-          <Component id="jTabbedPane1" alignment="0" pref="752" max="32767" attributes="0"/>
+          <Component id="jTabbedPane1" alignment="0" pref="682" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -66,8 +66,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel10" alignment="0" max="32767" attributes="2"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="jPanel10" alignment="0" max="32767" attributes="3"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
@@ -88,9 +88,9 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jPanel6" min="-2" max="-2" attributes="2"/>
-                              <EmptySpace pref="80" max="32767" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -153,7 +153,7 @@
                 <Component class="javax.swing.JTextField" name="jTextField1">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Nome"/>
-                    <Property name="name" type="java.lang.String" value="jTextField1" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="Nome" noResource="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -191,7 +191,7 @@
                 <Component class="javax.swing.JTextField" name="jTextField2">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Cognome"/>
-                    <Property name="name" type="java.lang.String" value="jTextField2" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="Cognome" noResource="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -229,7 +229,7 @@
                 <Component class="javax.swing.JTextField" name="jTextField3">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Codice Fiscale"/>
-                    <Property name="name" type="java.lang.String" value="jTextField3" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="CodiceFiscale" noResource="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -266,7 +266,7 @@
                 <Component class="javax.swing.JTextField" name="jTextField4">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="E-mail"/>
-                    <Property name="name" type="java.lang.String" value="jTextField4" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="E-mail" noResource="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -304,7 +304,7 @@
                 <Component class="javax.swing.JTextField" name="jTextField5">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Telefono"/>
-                    <Property name="name" type="java.lang.String" value="jTextField5" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="Telefono" noResource="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -342,7 +342,7 @@
                 <Component class="javax.swing.JTextField" name="jTextField6">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Citt&#xe0;"/>
-                    <Property name="name" type="java.lang.String" value="jTextField6" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="Citta" noResource="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -380,7 +380,7 @@
                 <Component class="javax.swing.JTextField" name="jTextField7">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Provincia"/>
-                    <Property name="name" type="java.lang.String" value="jTextField7" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="Provincia" noResource="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -400,7 +400,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" pref="705" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="625" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -429,7 +429,7 @@
                       <Properties>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="rows" type="int" value="5"/>
-                        <Property name="name" type="java.lang.String" value="jTextArea1" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="Note" noResource="true"/>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -461,7 +461,7 @@
                           <Component id="jPanel13" alignment="0" max="32767" attributes="1"/>
                           <Component id="jPanel12" alignment="0" max="32767" attributes="1"/>
                       </Group>
-                      <EmptySpace pref="180" max="32767" attributes="0"/>
+                      <EmptySpace pref="110" max="32767" attributes="0"/>
                       <Component id="BottoneSalva" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="BottoneAnnulla" min="-2" max="-2" attributes="0"/>
@@ -524,7 +524,7 @@
                 <Component class="javax.swing.JTextField" name="jTextField8">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Username"/>
-                    <Property name="name" type="java.lang.String" value="jTextField8" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="Username" noResource="true"/>
                     <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
                 </Component>
@@ -563,7 +563,7 @@
                 <Component class="javax.swing.JPasswordField" name="jPasswordField1">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jPasswordField1"/>
-                    <Property name="name" type="java.lang.String" value="jPasswordField1" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="Password" noResource="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -651,7 +651,7 @@
                 <Component class="javax.swing.JPasswordField" name="jPasswordField2">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jPasswordField1"/>
-                    <Property name="name" type="java.lang.String" value="jPasswordField2" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="ConfermaPassword" noResource="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
