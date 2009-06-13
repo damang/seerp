@@ -1,22 +1,35 @@
 package it.seerp.application.bean;
 
+import it.seerp.application.validation.NotEmptyValidator;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import org.jdesktop.swingx.JXPanel;
 
 /**
  *
- * @author Luisa
+ * @author Luisa - Tommaso Cattolico
  */
 public class BeanGuiEvento {
+
     private JTextField luogo;
-    private JTextField  tema;
-    private JTextField  nome;
-    private JTextArea  note;
-    private JTextField  data;
-    private JTextField  ora;
-    private JTextField  idEvento;
-    private JTextField  agenda;
-    private JTextField  notifica;
+    private JTextField tema;
+    private JTextField nome;
+    private JTextArea note;
+    private JTextField data;
+    private JTextField ora;
+    private JTextField idEvento;
+    private JTextField agenda;
+    private JTextField notifica;
+    private JXPanel grafica;
+    private NotEmptyValidator val;
+
+    /**
+     * Costruttore a cui viene passato un componente grafico necessario alla
+     * validazione del campo
+     */
+    public BeanGuiEvento(JXPanel c) {
+        grafica = c;
+    }
 
     /**
      *Costruttore per la Classe Bean Gui Evento
@@ -83,89 +96,112 @@ public class BeanGuiEvento {
     /**
      *Costruttore vuoto per la classe Bean Gui Evento
      */
-    public BeanGuiEvento() {}
-
-    
-
+    public BeanGuiEvento() {
+    }
 
     /**
      * metodo che restituisce il campo contenente l'id dell'Agenda
      * @return il campo id dell'Agenda
      */
-    public JTextField getAgenda() {
+    public JTextField getAgenda() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return agenda;
     }
 
     /**
      * metodo che setta il campo id dell'Agenda
-     * @param agenda rappresenta il campo id dell'Agenda da inserire
+     * @param pagenda rappresenta il campo id dell'Agenda da inserire
      */
-    public void setAgenda(JTextField agenda) {
-        this.agenda = agenda;
+    public void setAgenda(JTextField pagenda) {
+        this.agenda = pagenda;
+        val = new NotEmptyValidator(grafica, agenda, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
     }
 
     /**
      * metodo che restituisce il campo contenente la data dell'Evento
      * @return il campo data dell'Evento
      */
-    public JTextField getData() {
+    public JTextField getData() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return data;
     }
 
     /**
      * metodo che setta il campo data dell'Evento
-     * @param data rappresenta il campo data da inserire
+     * @param pdata rappresenta il campo data da inserire
      */
-    public void setData(JTextField data) {
-        this.data = data;
+    public void setData(JTextField pdata) {
+        this.data = pdata;
+        val = new NotEmptyValidator(grafica, data, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
     }
 
     /**
      * metodo che testituisce il campo contenente l'id dell'Evento
      * @return il campo id dell'Evento
      */
-    public JTextField getIdEvento() {
+    public JTextField getIdEvento() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return idEvento;
     }
 
     /**
      * metodo che permette di settare il campo id dell'Evento
-     * @param idEvento rappresenta il campo id  da inserire
+     * @param pidEvento rappresenta il campo id  da inserire
      */
-    public void setIdEvento(JTextField idEvento) {
-        this.idEvento = idEvento;
+    public void setIdEvento(JTextField pidEvento) {
+        this.idEvento = pidEvento;
+        val = new NotEmptyValidator(grafica, idEvento, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
     }
 
     /**
      * metodo che restituisce il campo contenente il luogo dell'Evento
      * @return il campo luogo dell'Evento
      */
-    public JTextField getLuogo() {
+    public JTextField getLuogo() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return luogo;
     }
 
     /**
      *metodo che setta il campo luogo dell'Evento
-     * @param luogo rappresenta il campo luogo da inserire
+     * @param pluogo rappresenta il campo luogo da inserire
      */
-    public void setLuogo(JTextField luogo) {
-        this.luogo = luogo;
+    public void setLuogo(JTextField pluogo) {
+        this.luogo = pluogo;
+        val = new NotEmptyValidator(grafica, luogo, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
     }
 
     /**
      * metodo che restituisce il campo contenente il nome dell'Evento
      * @return il campo nome dell'Evente
      */
-    public JTextField getNome() {
+    public JTextField getNome() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return nome;
     }
 
     /**
      * metodo che setta il campo nome dell'Evento
-     * @param nome rappresenta il campo nome da inserire
+     * @param pnome rappresenta il campo nome da inserire
      */
-    public void setNome(JTextField nome) {
-        this.nome = nome;
+    public void setNome(JTextField pnome) {
+        this.nome = pnome;
+        val = new NotEmptyValidator(grafica, nome, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
     }
 
     /**
@@ -178,44 +214,51 @@ public class BeanGuiEvento {
 
     /**
      * metodo che setta il campo note dell'Evento
-     * @param note rappresenta il campo note da inserire
+     * @param pnote rappresenta il campo note da inserire
      */
-    public void setNote(JTextArea note) {
-        this.note = note;
+    public void setNote(JTextArea pnote) {
+        this.note = pnote;
     }
 
     /**
      * metodo che restituisce il campo contenente l'ora dell'Evento
      * @return il campo ora
      */
-    public JTextField getOra() {
+    public JTextField getOra() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return ora;
     }
 
     /**
      * metodo che setta il campo ora dell'Evento
-     * @param ora rappesenta il campo ora  da inserire
+     * @param pora rappesenta il campo ora  da inserire
      */
-    public void setOra(JTextField ora) {
-        this.ora = ora;
+    public void setOra(JTextField pora) {
+        this.ora = pora;
+        val = new NotEmptyValidator(grafica, ora, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
     }
 
-
-    
     /**
      * metodo che restituisce il campo contentente il tema dell'Evento
      * @return il campo tema
      */
-    public JTextField getTema() {
+    public JTextField getTema() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return tema;
     }
 
     /**
      * metodo che setta il campo tema dell'Evento
-     * @param tema rappresenta il campo tema da inserire
+     * @param ptema rappresenta il campo tema da inserire
      */
-    public void setTema(JTextField tema) {
-        this.tema = tema;
+    public void setTema(JTextField ptema) {
+        this.tema = ptema;
+        val = new NotEmptyValidator(grafica, tema, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
     }
-
 }

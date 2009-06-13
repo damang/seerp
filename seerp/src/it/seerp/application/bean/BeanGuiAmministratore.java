@@ -1,25 +1,33 @@
 package it.seerp.application.bean;
 
-import it.seerp.storage.ejb.Permesso;
-import it.seerp.storage.ejb.Ruolo;
+import it.seerp.application.validation.NotEmptyValidator;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import org.jdesktop.swingx.JXPanel;
 
 /**
  *
- * @author matteo
+ * @author matteo - Tommaso Cattolico
  */
 public class BeanGuiAmministratore extends BeanGuiPersonale {
 
+    private JTextField idAmministratoreTxt;
+    private JXPanel grafica;
+    private NotEmptyValidator val;
 
+    /**
+     * Costruttore a cui viene passato un componente grafico necessario alla
+     * validazione del campo
+     */
+    public BeanGuiAmministratore(JXPanel c) {
+        grafica = c;
+    }
 
     /**
      * costruttore vuoto per il Bean Gui Amministratore
      */
     public BeanGuiAmministratore() {
-        
     }
 
     /**
@@ -38,23 +46,24 @@ public class BeanGuiAmministratore extends BeanGuiPersonale {
         this.idAmministratoreTxt = idAmministratoreTxt;
     }
 
-   private JTextField idAmministratoreTxt;
-
-   /**
+    /**
      * metodo che restituisce l'identificatore dell'amministatore dal campo associato
      * @return l'identificatore dell'Amministratore
      */
-    public JTextField getIdAmministratoreTxt() {
+    public JTextField getIdAmministratoreTxt() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return idAmministratoreTxt;
     }
 
     /**
      *  metodo che permette di settare l'identificatico dell'amministraotre nel campo associato
-     * @param idAmministratoreTxt rappresenta l'identificativo dell'Amministratore da inserire
+     * @param pidAmministratoreTxt rappresenta l'identificativo dell'Amministratore da inserire
      */
-    public void setIdAmministratoreTxt(JTextField idAmministratoreTxt) {
-        this.idAmministratoreTxt = idAmministratoreTxt;
+    public void setIdAmministratoreTxt(JTextField pidAmministratoreTxt) {
+        this.idAmministratoreTxt = pidAmministratoreTxt;
+        val = new NotEmptyValidator(grafica, idAmministratoreTxt, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
     }
-
-
 }

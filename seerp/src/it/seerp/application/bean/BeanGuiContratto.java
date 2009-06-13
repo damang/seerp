@@ -6,7 +6,7 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author Luisa
+ * @author Luisa - Tommaso Cattolico
  */
 public class BeanGuiContratto {
 
@@ -14,7 +14,7 @@ public class BeanGuiContratto {
     private JTextField data;
     private JTextField durata;
     private JTextField tipo;
-     private JTextArea note;
+    private JTextArea note;
     private JTextField idContratto;
     private JTextField dipendente;
     private JTextField extraAzienda;

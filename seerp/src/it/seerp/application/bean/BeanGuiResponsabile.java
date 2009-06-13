@@ -1,26 +1,33 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package it.seerp.application.bean;
 
+import it.seerp.application.validation.NotEmptyValidator;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import org.jdesktop.swingx.JXPanel;
 
 /**
  *
- * @author matteo
+ * @author matteo - Tommaso Cattolico
  */
 public class BeanGuiResponsabile extends BeanGuiPersonale {
+
+    private JTextField idResponsabileTxt;
+    private JXPanel grafica;
+    private NotEmptyValidator val;
+
+    /**
+     * Costruttore a cui viene passato un componente grafico necessario alla
+     * validazione del campo
+     */
+    public BeanGuiResponsabile(JXPanel c) {
+        grafica = c;
+    }
 
     /**
      * 
      */
     public BeanGuiResponsabile() {
-        
     }
 
     /**
@@ -39,30 +46,24 @@ public class BeanGuiResponsabile extends BeanGuiPersonale {
         this.idResponsabileTxt = idResponsabileTxt;
     }
 
-   
-
-   
-
-    
-
-    
-
-    private JTextField idResponsabileTxt;
-
     /**
      *
-     * @param idResponsabileTxt
+     * @param pidResponsabileTxt
      */
-    public void setIdResponsabileTxt(JTextField idResponsabileTxt) {
-        this.idResponsabileTxt = idResponsabileTxt;
+    public void setIdResponsabileTxt(JTextField pidResponsabileTxt) {
+        this.idResponsabileTxt = pidResponsabileTxt;
+        val = new NotEmptyValidator(grafica, idResponsabileTxt, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
     }
 
     /**
      * 
      * @return
      */
-    public JTextField getIdResponsabileTxt() {
+    public JTextField getIdResponsabileTxt() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return idResponsabileTxt;
     }
-
 }

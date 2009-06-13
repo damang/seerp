@@ -1,41 +1,49 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package it.seerp.application.bean;
 
+import it.seerp.application.validation.NotEmptyValidator;
 import javax.swing.JTextField;
+import org.jdesktop.swingx.JXPanel;
 
 /**
  *
- * @author matteo
+ * @author matteo - Tommaso Cattolico
  */
 public class BeanGuiIncarico {
 
- private JTextField txtPersonale;
- private JTextField txtPermesso;
- private  JTextField txtRuolo;
+    private JTextField txtPersonale;
+    private JTextField txtPermesso;
+    private JTextField txtRuolo;
+    private JXPanel grafica;
+    private NotEmptyValidator val;
 
- /**
-  * Costruttore per la classe BeanGuiIncarico
-  * @param txtPersonale
-  * @param txtPermesso
-  * @param txtRuolo
-  */
- public BeanGuiIncarico(JTextField txtPersonale, JTextField txtPermesso, JTextField txtRuolo) {
+    /**
+     * Costruttore a cui viene passato un componente grafico necessario alla
+     * validazione del campo
+     */
+    public BeanGuiIncarico(JXPanel c) {
+        grafica = c;
+    }
+
+    /**
+     * Costruttore per la classe BeanGuiIncarico
+     * @param txtPersonale
+     * @param txtPermesso
+     * @param txtRuolo
+     */
+    public BeanGuiIncarico(JTextField txtPersonale, JTextField txtPermesso, JTextField txtRuolo) {
         this.txtPersonale = txtPersonale;
         this.txtPermesso = txtPermesso;
         this.txtRuolo = txtRuolo;
     }
 
- 
-
     /**
      * Metodo che permette di restituire il campo permesso dell'Incarico
      * @return il campo permesso
      */
-    public JTextField getTxtPermesso() {
+    public JTextField getTxtPermesso() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return txtPermesso;
     }
 
@@ -43,7 +51,10 @@ public class BeanGuiIncarico {
      * Metodo che permette di restituire il campo personale dell'Incarico
      * @return il campo personale
      */
-    public JTextField getTxtPersonale() {
+    public JTextField getTxtPersonale() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return txtPersonale;
     }
 
@@ -51,32 +62,40 @@ public class BeanGuiIncarico {
      * Metodo che permette di restituire il campo ruolo dell'Incarico
      * @return il campo ruolo
      */
-    public JTextField getTxtRuolo() {
+    public JTextField getTxtRuolo() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return txtRuolo;
     }
 
     /**
      * Metodo che permette di settare il campo permesso di un Incarico
-     * @param txtPermesso rappresenta il campo permesso da inserire
+     * @param ptxtPermesso rappresenta il campo permesso da inserire
      */
-    public void setTxtPermesso(JTextField txtPermesso) {
-        this.txtPermesso = txtPermesso;
+    public void setTxtPermesso(JTextField ptxtPermesso) {
+        this.txtPermesso = ptxtPermesso;
+        val = new NotEmptyValidator(grafica, txtPermesso, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
     }
 
     /**
      * Metodo che permette di settare il campo personale di un incarico
-     * @param txtPersonale rappresenta il campo persnale da inserire
+     * @param ptxtPersonale rappresenta il campo persnale da inserire
      */
-    public void setTxtPersonale(JTextField txtPersonale) {
-        this.txtPersonale = txtPersonale;
+    public void setTxtPersonale(JTextField ptxtPersonale) {
+        this.txtPersonale = ptxtPersonale;
+        val = new NotEmptyValidator(grafica, txtPersonale, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
     }
 
     /**
      * Metodo che permette di settare il campo ruolo di un incarico
-     * @param txtRuolo rappresenta il campo ruolo da inserire
+     * @param ptxtRuolo rappresenta il campo ruolo da inserire
      */
-    public void setTxtRuolo(JTextField txtRuolo) {
-        this.txtRuolo = txtRuolo;
+    public void setTxtRuolo(JTextField ptxtRuolo) {
+        this.txtRuolo = ptxtRuolo;
+        val = new NotEmptyValidator(grafica, txtRuolo, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
     }
-
 }

@@ -1,21 +1,33 @@
 package it.seerp.application.bean;
 
+import it.seerp.application.validation.NotEmptyValidator;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import org.jdesktop.swingx.JXPanel;
 
 /**
  *
- * @author matteo
+ * @author matteo - Tommaso Cattolico
  */
 public class BeanGuiFornitore extends BeanGuiExtraAzienda {
+
+    private JTextField idFornitoreTxt;
+    private JXPanel grafica;
+    private NotEmptyValidator val;
+
+    /**
+     * Costruttore a cui viene passato un componente grafico necessario alla
+     * validazione del campo
+     */
+    public BeanGuiFornitore(JXPanel c) {
+        grafica = c;
+    }
 
     /**
      * Costruttore per vuoto per la classe BeanGuiFornitore
      */
     public BeanGuiFornitore() {
-        
     }
 
     /**
@@ -36,26 +48,24 @@ public class BeanGuiFornitore extends BeanGuiExtraAzienda {
         this.idFornitoreTxt = idFornitoreTxt;
     }
 
-    private JTextField idFornitoreTxt;
-
     /**
      * Metodo che permette di restituire il campo id di un Fornitore
      * @return il campo id del Fornitore
      */
-    public JTextField getIdFornitoreTxt() {
+    public JTextField getIdFornitoreTxt() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return idFornitoreTxt;
     }
 
-   
-
     /**
      * Metodo che permette di settare il campo id del Fornitore
-     * @param idFornitoreTxt rappresenta l'id da inserire
+     * @param pidFornitoreTxt rappresenta l'id da inserire
      */
-    public void setIdFornitoreTxt(JTextField idFornitoreTxt) {
-        this.idFornitoreTxt = idFornitoreTxt;
+    public void setIdFornitoreTxt(JTextField pidFornitoreTxt) {
+        this.idFornitoreTxt = pidFornitoreTxt;
+        val = new NotEmptyValidator(grafica, idFornitoreTxt, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
     }
-
-
-
 }

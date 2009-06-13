@@ -1,21 +1,34 @@
 package it.seerp.application.bean;
 
+import it.seerp.application.validation.NotEmptyValidator;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import org.jdesktop.swingx.JXPanel;
 
 /**
  *
- * @author matteo
+ * @author matteo - Tommaso Cattolico
  */
-public class BeanGuiContatto extends BeanGuiExtraAzienda{
+public class BeanGuiContatto extends BeanGuiExtraAzienda {
+
+    private JTextField idContattoTxt;
+    private JTextField txtFeedback;
+    private JXPanel grafica;
+    private NotEmptyValidator val;
+
+    /**
+     * Costruttore a cui viene passato un componente grafico necessario alla
+     * validazione del campo
+     */
+    public BeanGuiContatto(JXPanel c) {
+        grafica = c;
+    }
 
     /**
      * Costruttore vuoto per la classe Bean Gui Contatto
      */
     public BeanGuiContatto() {
-        
     }
 
     /**
@@ -38,14 +51,14 @@ public class BeanGuiContatto extends BeanGuiExtraAzienda{
         this.txtFeedback = txtFeedback;
     }
 
-    private JTextField idContattoTxt;
-    private JTextField txtFeedback;
-
     /**
      * metodo che restituisce il campo contenente l'id del Contatto
      * @return il campo id del Contatto
      */
-    public JTextField getIdContattoTxt() {
+    public JTextField getIdContattoTxt() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return idContattoTxt;
     }
 
@@ -59,10 +72,12 @@ public class BeanGuiContatto extends BeanGuiExtraAzienda{
 
     /**
      * metodo che permette di settare il campo contenente l'id del Contatto
-     * @param idContattoTxt rappresenta il campo id da inserire
+     * @param pidContattoTxt rappresenta il campo id da inserire
      */
-    public void setIdContattoTxt(JTextField idContattoTxt) {
-        this.idContattoTxt = idContattoTxt;
+    public void setIdContattoTxt(JTextField pidContattoTxt) {
+        this.idContattoTxt = pidContattoTxt;
+        val = new NotEmptyValidator(grafica, idContattoTxt, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
     }
 
     /**
@@ -72,7 +87,4 @@ public class BeanGuiContatto extends BeanGuiExtraAzienda{
     public void setTxtFeedback(JTextField txtFeedback) {
         this.txtFeedback = txtFeedback;
     }
-
-
-
 }
