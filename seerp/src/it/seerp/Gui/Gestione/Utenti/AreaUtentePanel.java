@@ -8,24 +8,39 @@
  *
  * Created on 28-mag-2009, 17.59.24
  */
-
 package it.seerp.Gui.Gestione.Utenti;
 
 import configurazioni.CommandInterface;
+import configurazioni.Gui.ConfigurazioneUtente;
 import it.seerp.Gui.AreaPersonale.*;
 import it.seerp.Gui.frame.ObservableJPanel;
+import it.seerp.Gui.tabella.ClienteTm;
+import it.seerp.Gui.tabella.DipendenteTm;
+import it.seerp.Gui.tabella.FornitoreTm;
+import it.seerp.Gui.tabella.Generica;
+import it.seerp.Gui.tabella.ResponsabileTm;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Andrea
  */
-public class AreaUtentePanel extends  ObservableJPanel implements ActionListener {
+public class AreaUtentePanel extends ObservableJPanel implements ActionListener {
+
+    ConfigurazioneUtente.TIPO_UTENTE_CONST tipoUtente;
 
     /** Creates new form AreaPersonalePanel */
     public AreaUtentePanel() {
         initComponents();
+    }
+
+    public AreaUtentePanel(ConfigurazioneUtente.TIPO_UTENTE_CONST tipoUtente) throws SQLException {
+        this.tipoUtente = tipoUtente;
+        this.settaTableModel();
+         initComponents();
     }
 
     /** This method is called from within the constructor to
@@ -267,13 +282,13 @@ public class AreaUtentePanel extends  ObservableJPanel implements ActionListener
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 637, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -373,11 +388,6 @@ public class AreaUtentePanel extends  ObservableJPanel implements ActionListener
 
         jCheckBox5.setText("Elimina");
         jCheckBox5.setName("jCheckBox5"); // NOI18N
-        jCheckBox5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox5ActionPerformed(evt);
-            }
-        });
 
         jCheckBox6.setText("Elenca");
         jCheckBox6.setName("jCheckBox6"); // NOI18N
@@ -419,11 +429,6 @@ public class AreaUtentePanel extends  ObservableJPanel implements ActionListener
 
         jCheckBox9.setText("Elimina");
         jCheckBox9.setName("jCheckBox9"); // NOI18N
-        jCheckBox9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox9ActionPerformed(evt);
-            }
-        });
 
         jCheckBox10.setText("Elenca");
         jCheckBox10.setName("jCheckBox10"); // NOI18N
@@ -462,11 +467,6 @@ public class AreaUtentePanel extends  ObservableJPanel implements ActionListener
 
         jCheckBox13.setText("Elimina");
         jCheckBox13.setName("jCheckBox13"); // NOI18N
-        jCheckBox13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox13ActionPerformed(evt);
-            }
-        });
 
         jCheckBox14.setText("Elenca");
         jCheckBox14.setName("jCheckBox14"); // NOI18N
@@ -514,7 +514,7 @@ public class AreaUtentePanel extends  ObservableJPanel implements ActionListener
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addContainerGap(170, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -542,7 +542,7 @@ public class AreaUtentePanel extends  ObservableJPanel implements ActionListener
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel17Layout.setVerticalGroup(
@@ -641,7 +641,7 @@ public class AreaUtentePanel extends  ObservableJPanel implements ActionListener
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel28, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel29, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(420, Short.MAX_VALUE))
+                .addContainerGap(417, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Dati LogIn", jPanel27);
@@ -658,18 +658,13 @@ public class AreaUtentePanel extends  ObservableJPanel implements ActionListener
 
         jScrollPane2.setName("jScrollPane2"); // NOI18N
 
-        jXTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        jXTable1.setModel(tModel);
         jXTable1.setName("jXTable1"); // NOI18N
+        jXTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jXTable1MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jXTable1);
 
         jXSearchPanel1.setName("jXSearchPanel1"); // NOI18N
@@ -682,21 +677,24 @@ public class AreaUtentePanel extends  ObservableJPanel implements ActionListener
                 .addContainerGap()
                 .addGroup(jXPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jXPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jXSearchPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jXPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jXPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jXPanel1Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jXSearchPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jXPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane2)
-                        .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(93, 93, 93))))
         );
         jXPanel1Layout.setVerticalGroup(
             jXPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jXPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jXSearchPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(235, 235, 235))
         );
@@ -729,18 +727,9 @@ public class AreaUtentePanel extends  ObservableJPanel implements ActionListener
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox5ActionPerformed
-
-    private void jCheckBox9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox9ActionPerformed
-
-    private void jCheckBox13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox13ActionPerformed
-
+    private void jXTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jXTable1MouseClicked
+       JOptionPane.showMessageDialog(null, "luii");
+    }//GEN-LAST:event_jXTable1MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox jCheckBox1;
@@ -798,10 +787,24 @@ public class AreaUtentePanel extends  ObservableJPanel implements ActionListener
     private org.jdesktop.swingx.JXSearchPanel jXSearchPanel1;
     private org.jdesktop.swingx.JXTable jXTable1;
     // End of variables declaration//GEN-END:variables
+    Generica tModel;
 
     public void actionPerformed(ActionEvent e) {
-         CommandInterface cmd=(CommandInterface) e.getSource();
-       cmd.execute();
+        CommandInterface cmd = (CommandInterface) e.getSource();
+        cmd.execute();
+    }
+
+    private void settaTableModel() throws SQLException {
+
+        if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
+            tModel = new ClienteTm();
+        } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
+            tModel = new DipendenteTm();
+        } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
+            tModel=new FornitoreTm();
+        } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
+           tModel=new ResponsabileTm();
+        }
     }
 
 }
