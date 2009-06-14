@@ -3,6 +3,7 @@ package it.seerp.application.applicazione;
 import it.seerp.application.bean.BeanGuiCliente;
 import it.seerp.application.bean.BeanGuiContatto;
 import it.seerp.application.bean.BeanGuiFornitore;
+import it.seerp.application.conversioni.Conversione;
 import it.seerp.storage.Operazioni.OpCliente;
 import it.seerp.storage.Operazioni.OpContatto;
 import it.seerp.storage.Operazioni.OpFornitore;
@@ -10,77 +11,68 @@ import it.seerp.storage.ejb.Cliente;
 import it.seerp.storage.ejb.Contatto;
 import it.seerp.storage.ejb.Fornitore;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  * Classe che permette la gestione delle operazione relative agli ExtraAzienda
- * @author matteo
+ * @author matteo - Tommaso Cattolico
  */
 public class AppGestioneExtraAzienda extends AppGestioneUtente {
 
     /**
      * Metodo che permette di inserire un nuovo Contatto
      * @param cont il Contatto che si vuole inserire
-     
-    public void inserisciContatto(BeanGuiContatto cont){
-      super.inserisci(cont);
-      OpContatto a = new OpContatto();
-      Contatto co= it.seerp.application.conversioni.Conversione.conversioneContatto(cont);
+     */
+    public void inserisciContatto(BeanGuiContatto cont) {
+        super.inserisci(cont);
+        OpContatto a = new OpContatto();
         try {
+            Contatto co = Conversione.conversioneContatto(cont);
             a.inserisci(co);
-        } catch (SQLException ex) {
-             System.out.println("SQL Exception:");
-            while (ex != null)
-            {
-                System.out.println("State  : " + ex.getSQLState());
-                System.out.println("Message: " + ex.getMessage());
-                System.out.println("Error  : " + ex.getErrorCode());
-                ex = ex.getNextException();
-            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
     }
-
 
     /**
      * Metodo che permette di inserire un nuovo Cliente
      * @param clien il Cliente che si vuole inserire
-     
-    public void inserisciCliente(BeanGuiCliente clien){
-      super.inserisci(clien);
-      OpCliente a = new OpCliente();
-      Cliente cl= it.seerp.application.conversioni.Conversione.conversioneCliente(clien);
+     */
+    public void inserisciCliente(BeanGuiCliente clien) {
+        super.inserisci(clien);
+        OpCliente a = new OpCliente();
         try {
+            Cliente cl = Conversione.conversioneCliente(clien);
             a.inserisci(cl);
-        } catch (SQLException ex) {
-             System.out.println("SQL Exception:");
-            while (ex != null)
-            {
-                System.out.println("State  : " + ex.getSQLState());
-                System.out.println("Message: " + ex.getMessage());
-                System.out.println("Error  : " + ex.getErrorCode());
-                ex = ex.getNextException();
-            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
     }
 
     /**
      * Metodo che permette di inserire un nuovo Fornitore
      * @param forn il Fornitore che si vuole inserire
-     
-    public void inserisciFornitore(BeanGuiFornitore forn){
-      super.inserisci(forn);
-      OpFornitore a = new OpFornitore();
-      Fornitore fo= it.seerp.application.conversioni.Conversione.conversioneFornitore(forn);
+     */
+    public void inserisciFornitore(BeanGuiFornitore forn) {
+        super.inserisci(forn);
+        OpFornitore a = new OpFornitore();
         try {
+            Fornitore fo = Conversione.conversioneFornitore(forn);
             a.inserisci(fo);
-        } catch (SQLException ex) {
-             System.out.println("SQL Exception:");
-            while (ex != null)
-            {
-                System.out.println("State  : " + ex.getSQLState());
-                System.out.println("Message: " + ex.getMessage());
-                System.out.println("Error  : " + ex.getErrorCode());
-                ex = ex.getNextException();
-            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
     }
 
@@ -88,74 +80,65 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
      * Metodo che permette di modificare i dati di un Contatto
      * @param cont il Contatto che si deve modificare
      * @return il Contatto modificato
-     
-    public BeanGuiContatto modificaContatto(BeanGuiContatto cont){
-      super.modifica(cont);
-      OpContatto a = new OpContatto();
-      Contatto co= it.seerp.application.conversioni.Conversione.conversioneContatto(cont);
+     */
+    public BeanGuiContatto modificaContatto(BeanGuiContatto cont) {
+        super.modifica(cont);
+        OpContatto a = new OpContatto();
         try {
+            Contatto co = Conversione.conversioneContatto(cont);
             co = a.modifica(co);
-
-        } catch (SQLException ex) {
-            System.out.println("SQL Exception:");
-            while (ex != null)
-            {
-                System.out.println("State  : " + ex.getSQLState());
-                System.out.println("Message: " + ex.getMessage());
-                System.out.println("Error  : " + ex.getErrorCode());
-                ex = ex.getNextException();
-            }
+            cont = Conversione.conversioneContatto(co, cont);
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
-          return it.seerp.application.conversioni.Conversione.conversioneContatto(co, cont);
-      }
+        return cont;
+    }
 
-     /**
-      * Metodo che permette di modificare i dati di un Cliente
-      * @param clien il cliente che si deve modificare
-      * @return il cliente modificato
-      
-     public BeanGuiCliente modificaCliente(BeanGuiCliente clien){
-      super.modifica(clien);
-      OpCliente a = new OpCliente();
-      Cliente cl= it.seerp.application.conversioni.Conversione.conversioneCliente(clien);
+    /**
+     * Metodo che permette di modificare i dati di un Cliente
+     * @param clien il cliente che si deve modificare
+     * @return il cliente modificato
+     */
+    public BeanGuiCliente modificaCliente(BeanGuiCliente clien) {
+        super.modifica(clien);
+        OpCliente a = new OpCliente();
         try {
+            Cliente cl = Conversione.conversioneCliente(clien);
             cl = a.modifica(cl);
-
-        } catch (SQLException ex) {
-            System.out.println("SQL Exception:");
-            while (ex != null)
-            {
-                System.out.println("State  : " + ex.getSQLState());
-                System.out.println("Message: " + ex.getMessage());
-                System.out.println("Error  : " + ex.getErrorCode());
-                ex = ex.getNextException();
-            }
+            clien = Conversione.conversioneCliente(cl, clien);
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
-          return it.seerp.application.conversioni.Conversione.conversioneCliente(cl, clien);
-      }
+        return clien;
+    }
 
-     /**
-      * Metodo che permette di modificare i dati di un Fornitore
-      * @param forn il Fornitore che si vuole modificare
-      * @return il Fornitore modificato
-      
-     public BeanGuiFornitore modificaFornitore(BeanGuiFornitore forn){
-      super.modifica(forn);
-      OpFornitore a = new OpFornitore();
-      Fornitore fo= it.seerp.application.conversioni.Conversione.conversioneFornitore(forn);
+    /**
+     * Metodo che permette di modificare i dati di un Fornitore
+     * @param forn il Fornitore che si vuole modificare
+     * @return il Fornitore modificato
+     */
+    public BeanGuiFornitore modificaFornitore(BeanGuiFornitore forn) {
+        super.modifica(forn);
+        OpFornitore a = new OpFornitore();
         try {
+            Fornitore fo = Conversione.conversioneFornitore(forn);
             fo = a.modifica(fo);
-
-        } catch (SQLException ex) {
-            System.out.println("SQL Exception:");
-            while (ex != null)
-            {
-                System.out.println("State  : " + ex.getSQLState());
-                System.out.println("Message: " + ex.getMessage());
-                System.out.println("Error  : " + ex.getErrorCode());
-                ex = ex.getNextException();
-            }
+            forn = Conversione.conversioneFornitore(fo, forn);
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
-          return it.seerp.application.conversioni.Conversione.conversioneFornitore(fo, forn);
-      }*/
+        return forn;
+    }
 }
