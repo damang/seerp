@@ -24,13 +24,13 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="aggiungiButton1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="eliminaButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="eliminaButton1" min="-2" pref="65" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="modificaButton1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <Component id="modificaButtonUtente1" min="-2" pref="81" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -38,10 +38,12 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="modificaButton1" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="eliminaButton1" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="aggiungiButton1" alignment="0" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="modificaButtonUtente1" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                      <Component id="eliminaButton1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="aggiungiButton1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -49,7 +51,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="it.seerp.Gui.Menu.AggiungiButton" name="aggiungiButton1">
+    <Component class="it.seerp.Gui.Menu.AggiungiButtonUtenti" name="aggiungiButton1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/it/seerp/icone/32x32/user_add.png"/>
@@ -58,10 +60,10 @@
         <Property name="name" type="java.lang.String" value="aggiungiButton1" noResource="true"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Menu.AggiungiButton(this)"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Menu.AggiungiButtonUtenti(this)"/>
       </AuxValues>
     </Component>
-    <Component class="it.seerp.Gui.Menu.EliminaButton" name="eliminaButton1">
+    <Component class="it.seerp.Gui.Menu.EliminaButtonUtente" name="eliminaButton1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/it/seerp/icone/32x32/user_remove.png"/>
@@ -70,20 +72,14 @@
         <Property name="name" type="java.lang.String" value="eliminaButton1" noResource="true"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Menu.EliminaButton(this)"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Menu.EliminaButtonUtente(this)"/>
       </AuxValues>
     </Component>
-    <Component class="it.seerp.Gui.Menu.ModificaButton" name="modificaButton1">
+    <Component class="it.seerp.Gui.Menu.ModificaButtonUtente" name="modificaButtonUtente1">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/it/seerp/icone/32x32/window_edit.png"/>
-        </Property>
-        <Property name="toolTipText" type="java.lang.String" value="Modifica"/>
-        <Property name="name" type="java.lang.String" value="modificaButton1" noResource="true"/>
+        <Property name="text" type="java.lang.String" value="modificaButtonUtente1"/>
+        <Property name="name" type="java.lang.String" value="modificaButtonUtente1" noResource="true"/>
       </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Menu.ModificaButton(this)"/>
-      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
