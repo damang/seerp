@@ -9,6 +9,7 @@ import java.util.ArrayList;
  */
 public class Servizio {
 
+    private Integer idServizio;
     private String descrizione;
     private Boolean disponibilita;
     private Integer quantita;
@@ -25,17 +26,8 @@ public class Servizio {
     public Servizio()
    {}
 
-    /**
-     * costruttore per la classe Servizio
-     * @param descrizione
-     * @param disponibilita
-     * @param quantita
-     * @param tipo
-     * @param prezzo
-     * @param iva
-     * @param note
-     */
-    public Servizio(String descrizione, Boolean disponibilita, Integer quantita, String tipo, Double prezzo, Integer iva, String note) {
+    public Servizio(Integer idServizio, String descrizione, Boolean disponibilita, Integer quantita, String tipo, Double prezzo, Integer iva, String note, ArrayList<ServizioAssociato> listServiAssociati) {
+        this.idServizio = idServizio;
         this.descrizione = descrizione;
         this.disponibilita = disponibilita;
         this.quantita = quantita;
@@ -43,8 +35,10 @@ public class Servizio {
         this.prezzo = prezzo;
         this.iva = iva;
         this.note = note;
-        this.listServiAssociati = new ArrayList<ServizioAssociato>();
+        this.listServiAssociati = listServiAssociati;
     }
+
+  
 
     /**
      *  metodo che restituisce le note dell'evento
