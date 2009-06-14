@@ -1,8 +1,12 @@
 package it.seerp.application.bean;
 
+import it.seerp.application.validation.NotAlphabeticValidator;
+import it.seerp.application.validation.NotEmptyValidator;
+import it.seerp.application.validation.NotMinNumberValidator;
 import java.util.ArrayList;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import org.jdesktop.swingx.JXPanel;
 
 /**
  *
@@ -20,13 +24,24 @@ public class BeanGuiContratto {
     private JTextField extraAzienda;
     private ArrayList<BeanGuiPagamento> listPagamento;
     private ArrayList<BeanGuiServizio> listServizio;
+    private JXPanel grafica;
+    private NotEmptyValidator val;
+    private NotMinNumberValidator valMinNum;
+    private NotAlphabeticValidator valApha;
 
+    /**
+     * Costruttore a cui viene passato un componente grafico necessario alla
+     * validazione del campo
+     */
+    public BeanGuiContratto(JXPanel c) {
+        grafica = c;
+    }
 
     /**
      * Costruttore vuoto per la classe Bean Gui Contratto
      */
-    public BeanGuiContratto() {}
-
+    public BeanGuiContratto() {
+    }
 
     /**
      * Costruttore per la classe Bean Gui Contratto
@@ -103,32 +118,47 @@ public class BeanGuiContratto {
      *  che ha stipulato il Contratto
      * @return il campo id del Dipendente
      */
-    public JTextField getDipendente() {
+    public JTextField getDipendente() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
+        if (!valApha.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return dipendente;
     }
 
     /**
      * metodo che setta il campo id del Dipendente che ha stipulato il Contratto
-     * @param dipendente rappresenta il campo id del Dipendente  da inserire
+     * @param pdipendente rappresenta il campo id del Dipendente  da inserire
      */
-    public void setDipendente(JTextField dipendente) {
-        this.dipendente = dipendente;
+    public void setDipendente(JTextField pdipendente) {
+        this.dipendente = pdipendente;
+        val = new NotEmptyValidator(grafica, dipendente, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
+        valApha = new NotAlphabeticValidator(grafica, dipendente, "La stringa inserita deve essere alfabetica.");
+        grafica.setInputVerifier(valApha);
     }
 
     /**
      * metodo che restituisce il campo contenente la durata di un Contratto
      * @return il campo durata del Contratto
      */
-    public JTextField getDurata() {
+    public JTextField getDurata() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return durata;
     }
 
     /**
      * metodo che setta il campo durata del Contratto
-     * @param durata rappresenta il campo durata  da inserire
+     * @param pdurata rappresenta il campo durata  da inserire
      */
-    public void setDurata(JTextField durata) {
-        this.durata = durata;
+    public void setDurata(JTextField pdurata) {
+        this.durata = pdurata;
+        val = new NotEmptyValidator(grafica, durata, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
     }
 
     /**
@@ -201,16 +231,26 @@ public class BeanGuiContratto {
      * metodo che restituisce il campo contente il tipo di Contratto
      * @return il campo tipo
      */
-    public JTextField getTipo() {
+    public JTextField getTipo() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
+        if (!valApha.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return tipo;
     }
 
     /**
      * metodo che setta il campo tipo di un Contratto
-     * @param tipo rappresenta il campo tipo da inserire
+     * @param ptipo rappresenta il campo tipo da inserire
      */
-    public void setTipo(JTextField tipo) {
-        this.tipo = tipo;
+    public void setTipo(JTextField ptipo) {
+        this.tipo = ptipo;
+        val = new NotEmptyValidator(grafica, tipo, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
+        valApha = new NotAlphabeticValidator(grafica, tipo, "La stringa inserita deve essere alfabetica.");
+        grafica.setInputVerifier(valApha);
     }
 
     /**
