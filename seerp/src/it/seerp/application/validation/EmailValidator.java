@@ -5,7 +5,8 @@ import javax.swing.JTextField;
 import org.jdesktop.swingx.JXPanel;
 
 /**
- *
+ * La classe che sviluppa i meccanismi di validazione dei campi di testo.
+ * Tutto quello che fa è controllare che l'email sia in un formato valido
  * @author Tommaso Cattolico
  */
 public class EmailValidator extends AbstractValidator {
