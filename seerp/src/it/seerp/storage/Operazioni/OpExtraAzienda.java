@@ -1,34 +1,35 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 package it.seerp.storage.Operazioni;
 
+import com.mysql.jdbc.PreparedStatement;
 
 import it.seerp.storage.ejb.ExtraAzienda;
-import it.seerp.storage.ejb.Pagamento;
-import it.seerp.storage.ejb.Servizio;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import it.seerp.application.bean.BeanGuiExtraAzienda;
-import it.seerp.storage.ejb.Contratto;
+import it.seerp.storage.Exception.DatiDuplicatiEx;
+import it.seerp.storage.Exception.DatiErratiEx;
 import it.seerp.storage.ejb.Appuntamento;
+import it.seerp.storage.ejb.Contratto;
 import it.seerp.storage.db.ConnectionPool;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.Statement;
-import java.sql.ResultSet;
 
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 /**
- *
+ * classe per la gestione  ExtraAzienda
  * @author LuNy
- */
+*/
+
+
 public class OpExtraAzienda extends OpeUtente {
 
-     public OpExtraAzienda(){
-    super();
+    Connection con = null;
+
+     public OpExtraAzienda()throws SQLException {
+        super();
+        con = ConnectionPool.getConnection();
     }
 
      /** Metodo che permette la visualizzazione della lista del personale ExtraAzienda
@@ -43,33 +44,20 @@ public class OpExtraAzienda extends OpeUtente {
         ResultSet rs = null;
 
         try {
-            // Obtain a db connection
-            con = ConnectionPool.getConnection();
-            // Create a statement
-            stmt = con.createStatement();
+            String sql = "SELECT * FROM ExtraAzienda where Visible='true'";
+            stmt = (PreparedStatement) con.prepareStatement(sql);
             // Execute the query
-            rs = stmt.executeQuery("SELECT * FROM ExtraAzienda");
+            rs = stmt.executeQuery(sql);
 
             // Define the resource list
             while (rs.next()) {
                 ExtraAzienda extraazienda = new ExtraAzienda (rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getBoolean(11), rs.getInt(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17) );
-                                                          // Integer idUtente, String username, String password, String città, String ruol,String provincia, String telefono, String email, String ruolo, String note, Boolean v, Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva, String fax, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti)
-                extraazienda.setListAppuntamenti(this.getAppuntamentiExtraAzienda(rs.getInt(18))); // chiedi a Luisa
-                extraazienda.setListContratti(this.getContrattiExtraAzienda(rs.getInt(19)));
+                                                        
                 list.add(extraazienda);
             }}
 
         catch (SQLException se) {
-            System.out.println("SQL Exception:");
-
-
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
-            }
+            System.out.println("errore nella visualizzazione dell'elenco");
 
         } finally {
             // Release the resources
@@ -98,39 +86,27 @@ public class OpExtraAzienda extends OpeUtente {
      public  ArrayList<ExtraAzienda> ricercaExtraAzienda(String cognome, String ruolo)throws SQLException{
 
          ArrayList<ExtraAzienda> list = new ArrayList<ExtraAzienda>();
-             Connection con = null;
+            
              Statement stmt = null;
              ResultSet rs = null;
 
             try {
-            // Obtain a db connection
-            con = ConnectionPool.getConnection();
+           String sql = "SELECT * FROM ExtraAzienda where cognome = ? AND ruolo = ?";
             // Create a statement
-            stmt = con.createStatement();
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+            stmt.setString(1, cognome);
+            stmt.setString(2, ruolo);
             // Execute the query
-            rs = stmt.executeQuery("SELECT * FROM ExtraAzienda"
-                                    + "where cognome ="+ cognome +"AND" + "where ruolo="+ ruolo);
+            rs = stmt.executeQuery(sql);
 
             // Define the resource list
             while (rs.next()) {
-                ExtraAzienda extraazienda = new ExtraAzienda (rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getBoolean(11), rs.getInt(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17) );
-                                                          // Integer idUtente, String username, String password, String città, String ruol,String provincia, String telefono, String email, String ruolo, String note, Boolean v, Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva, String fax, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti)
-                extraazienda.setListAppuntamenti(this.getAppuntamentiExtraAzienda(rs.getInt(18))); // chiedi a Luisa
-                extraazienda.setListContratti(this.getContrattiExtraAzienda(rs.getInt(19)));
+                 ExtraAzienda extraazienda = new ExtraAzienda (rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getBoolean(11), rs.getInt(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17) );
 
             }}
 
               catch (SQLException se) {
-            System.out.println("SQL Exception:");
-
-
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
-            }
+            System.out.println("errore nella ricerca");
 
         } finally {
             // Release the resources
@@ -156,47 +132,21 @@ public class OpExtraAzienda extends OpeUtente {
    
      public void elimina(ExtraAzienda user)throws SQLException{
 
-         ArrayList<ExtraAzienda> list = new ArrayList<ExtraAzienda>();
-             Connection con = null;
-             Statement stmt = null;
-             ResultSet rs = null;
-
+         PreparedStatement stmt = null;
             try {
-            // Obtain a db connection
-            con = ConnectionPool.getConnection();
+           String sql = "DELETE * FROM ExtraAzienda where username =?";
             // Create a statement
-            stmt = con.createStatement();
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+            stmt.setString(1, user.getUsername());
             // Execute the query
-            rs = stmt.executeQuery("DELETE * FROM ExtraAzienda"
-                                    + "where username ="+ user);
-
-              // Define the resource list
-            while (rs.next()) {
-                ExtraAzienda extraazienda = new ExtraAzienda (rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getBoolean(11), rs.getInt(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17) );
-                                                          // Integer idUtente, String username, String password, String città, String ruol,String provincia, String telefono, String email, String ruolo, String note, Boolean v, Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva, String fax, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti)
-                extraazienda.setListAppuntamenti(this.getAppuntamentiExtraAzienda(rs.getInt(18))); // chiedi a Luisa
-                extraazienda.setListContratti(this.getContrattiExtraAzienda(rs.getInt(19)));
-
-
-            }}
+            stmt.executeQuery(sql);
+ }
 
               catch (SQLException se) {
-            System.out.println("SQL Exception:");
-
-
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
-            }
+            System.out.println("errore nell'eliminazione del personale");
 
         } finally {
             // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
             if (stmt != null) {
                 stmt.close();
             }
@@ -204,9 +154,9 @@ public class OpExtraAzienda extends OpeUtente {
                 ConnectionPool.releaseConnection(con);
             }
         }
-        
+     }
 
-        throw new UnsupportedOperationException("Not supported yet.");}
+        
 
 
      /** Nasconde l'utente eliminato al sistema senza l'eliminazione fisica
@@ -216,45 +166,22 @@ public class OpExtraAzienda extends OpeUtente {
   
      public void eliminazioneLogica(ExtraAzienda user)throws SQLException{
 
-          ArrayList<ExtraAzienda> list = new ArrayList<ExtraAzienda>();
-             Connection con = null;
-             Statement stmt = null;
-             ResultSet rs = null;
+          PreparedStatement stmt = null;
 
             try {
-            // Obtain a db connection
-            con = ConnectionPool.getConnection();
+           String sql = "UPDATE ExtraAzienda SET Visible='false' where username = ?";
             // Create a statement
-            stmt = con.createStatement();
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+
             // Execute the query
-            rs = stmt.executeQuery("UPDATE Cliente SET Visible='f'"
-                                    + "where username ="+ user);
-                  // Define the resource list
-            while (rs.next()) {
-                ExtraAzienda extraazienda = new ExtraAzienda (rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getBoolean(11), rs.getInt(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17) );
-                                                          // Integer idUtente, String username, String password, String città, String ruol,String provincia, String telefono, String email, String ruolo, String note, Boolean v, Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva, String fax, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti)
-                extraazienda.setListAppuntamenti(this.getAppuntamentiExtraAzienda(rs.getInt(18))); // chiedi a Luisa
-                extraazienda.setListContratti(this.getContrattiExtraAzienda(rs.getInt(19)));
-
-            }}
-
-              catch (SQLException se) {
-            System.out.println("SQL Exception:");
-
-
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
-            }
+            stmt.executeQuery();
+                  
+            } catch (SQLException se) {
+            System.out.println("errore nell'eliminazione logica dell'utente");
 
         } finally {
             // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
+            
             if (stmt != null) {
                 stmt.close();
             }
@@ -263,7 +190,7 @@ public class OpExtraAzienda extends OpeUtente {
             }
         }
         
-        throw new UnsupportedOperationException("Not supported yet.");}
+        }
 
 
     /** Metodo per inserire un nuovo membro del personale ExtraAzienda
@@ -271,14 +198,18 @@ public class OpExtraAzienda extends OpeUtente {
      * user dell'utente da inserire
      * @throws java.sql.SQLException*/
     
-    public void inserisci(ExtraAzienda user)throws SQLException{
-         Connection con = null;
-        PreparedStatement stmt = null;
+    public void inserisci(ExtraAzienda user)throws SQLException,DatiDuplicatiEx{
+         PreparedStatement stmt = null;
         try {
-            // Obtain a db connection
-            con = ConnectionPool.getConnection();
 
-            stmt = con.prepareStatement ("INSERT INTO ExtraAzienda VALUE (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            Statement stmt1 = con.createStatement();
+            String sqlTest = "SELECT * FROM ExtraAzienda WHERE nome='" + user.getPIva() + "' ";
+            ResultSet rs = stmt1.executeQuery(sqlTest);
+
+            if (rs.next()) {
+                throw new DatiDuplicatiEx("utente già esistente nel database");
+            } else {
+                String sql = "INSERT INTO ExtraAzienda (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
             stmt.setInt(1, user.getIdUtente());
             stmt.setString(2, user.getUsername());
@@ -297,24 +228,14 @@ public class OpExtraAzienda extends OpeUtente {
             stmt.setString(15, user.getRagioneSociale());
             stmt.setString(16, user.getPIva());
             stmt.setString(17, user.getFax());
-            stmt.setArrayList(18, user.getListAppuntamenti());
-            stmt.setArrayList(19, user.getListContratti());
+           
 
             stmt.execute();
-
-            con.commit();
-    }
-         catch (SQLException se) {
-            System.out.println("SQL Exception:");
-
-
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
             }
+        } catch (SQLException se) {
+            System.out.println("errore di inserimento del personale");
+
+
         } finally {
             // Release the resources
             if (stmt != null) {
@@ -324,7 +245,7 @@ public class OpExtraAzienda extends OpeUtente {
                 ConnectionPool.releaseConnection(con);
             }
         }
-        throw new UnsupportedOperationException("Not supported yet.");}
+      }
 
 
     /** Metodo che permette la modifica di un membro del personale ExtraAzienda presente nel sistema
@@ -333,19 +254,22 @@ public class OpExtraAzienda extends OpeUtente {
      * @return lo stesso oggetto modificato
      * @throws java.sql.SQLException*/
 
-    public ExtraAzienda modifica(ExtraAzienda user)throws SQLException{
-        ArrayList<BeanGuiExtraAzienda> list = new ArrayList<BeanGuiExtraAzienda>();
-        Connection con = null;
-        PreparedStatement stmt = null;
-        
-       
-        try {
-             // Obtain a db connection
-            con = ConnectionPool.getConnection();
+    public ExtraAzienda modifica(ExtraAzienda user) throws SQLException, DatiErratiEx, DatiDuplicatiEx {
+     PreparedStatement stmt = null;
+        ExtraAzienda extraazienda = null;
 
-           
+        try {
+
+            Statement stmt1 = con.createStatement();
+            String sqlTest =  "SELECT * FROM ExtraAzienda WHERE nome='" + user.getPIva() + "' ";
+            ResultSet rs = stmt1.executeQuery(sqlTest);
+
+            if (rs.next()) {
+                throw new DatiDuplicatiEx("utente già esistente nel database");
+            } else {
+
             // Create a statement
-            stmt = con.prepareStatement("UPDATE Cliente VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )"  +"where idUtente="+ user.getIdUtente());
+            stmt = (PreparedStatement) con.prepareStatement("UPDATE ExtraAzienda VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )" + "where idUtente=" + user.getIdUtente());
 
             stmt.setInt(1, user.getIdUtente());
             stmt.setString(2, user.getUsername());
@@ -364,27 +288,16 @@ public class OpExtraAzienda extends OpeUtente {
             stmt.setString(15, user.getRagioneSociale());
             stmt.setString(16, user.getPIva());
             stmt.setString(17, user.getFax());
-            stmt.setArrayList(18, user.getListAppuntamenti());
-            stmt.setArrayList(19, user.getListContratti());
             
             stmt.execute();
-                            // Force the commit
-            con.commit();
-            ExtraAzienda extraazienda= (ExtraAzienda) this.visualizza(user.getIdUtente());
 
-        } // Force the commit
-        catch (SQLException se) {
-            System.out.println("SQL Exception:");
+                extraazienda = this.visualizzaDati(user.getIdExtraAzienda());
+        } 
+        }catch (SQLException se) {
+            System.out.println("errore nella modifica");
 
 
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
-            }
-        } finally {
+           } finally {
             // Release the resources
             if (stmt != null) {
                 stmt.close();
@@ -405,39 +318,42 @@ public class OpExtraAzienda extends OpeUtente {
 
     public ExtraAzienda visualizzaDati(Integer id) throws SQLException{
 
-        Connection con = null;
-        Statement stmt = null;
+        ExtraAzienda extraazienda = null;
+        PreparedStatement stmt = null;
         ResultSet rs = null;
-
         try {
-            // Obtain a db connection
-            con = ConnectionPool.getConnection();
+            String sql = "SELECT * FROM ExtraAzienda where idUtente= ? ";
             // Create a statement
-            stmt = con.createStatement();
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+            stmt.setString(1, id.toString());
             // Execute the query
-            rs = stmt.executeQuery("SELECT * FROM ExtraAzienda" +
-                    "where idUtente= " + id);
-
+            rs = stmt.executeQuery();
+            
             // Define the resource list
             while (rs.next()) {
-                ExtraAzienda extraazienda = new ExtraAzienda (rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getBoolean(11), rs.getInt(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17) );
-                                                          // Integer idUtente, String username, String password, String città, String ruol,String provincia, String telefono, String email, String ruolo, String note, Boolean v, Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva, String fax, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti)
-                extraazienda.setListAppuntamenti(this.getAppuntamentiExtraAzienda(rs.getInt(18))); // chiedi a Luisa
-                extraazienda.setListContratti(this.getContrattiExtraAzienda(rs.getInt(19)));
+               extraazienda = new ExtraAzienda (rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getBoolean(11), rs.getInt(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17) );
+                                                        
+               PreparedStatement stmt1;
+               String sql2 = "Select nome From Appuntamento,ExtraAzienda where idAppuntamento=appuntamento and idExtraAzienda = ?";
+                stmt1 = (PreparedStatement) con.prepareStatement(sql2);
+                stmt1.setInt(1, extraazienda.getIdExtraAzienda());
+                ResultSet rs1 = stmt1.executeQuery();
+                while (rs1.next()) {
+                    Appuntamento appuntamento = new Appuntamento(rs.getString(1));
+                    extraazienda.addAppuntamento(appuntamento);
 
-            }
-        } catch (SQLException se) {
-            System.out.println("SQL Exception:");
-
-
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
-            }
-
+               PreparedStatement stmt2;
+               String sql3 = "Select nome From Contratto,ExtraAzienda where idContratto=contratto and idExtraAzienda = ?";
+                stmt2 = (PreparedStatement) con.prepareStatement(sql3);
+                stmt2.setInt(1, extraazienda.getIdExtraAzienda());
+                ResultSet rs2 = stmt2.executeQuery();
+                while (rs2.next()) {
+                    Contratto contratto = new Contratto(rs.getString(1));
+                    extraazienda.addContratto(contratto);
+            }}
+        }}
+         catch (SQLException se) {
+            System.out.println("errore di visualizzazione");
 
         } finally {
             // Release the resources
@@ -466,35 +382,25 @@ public class OpExtraAzienda extends OpeUtente {
     public ArrayList<Appuntamento> getAppuntamentiExtraAzienda(Integer id) throws SQLException {
 
         ArrayList<Appuntamento> list = new ArrayList<Appuntamento>();
-        Connection con = null;
+       
         Statement stmt = null;
         ResultSet rs = null;
 
-        try {
-            // Obtain a db connection
-            con = ConnectionPool.getConnection();
+     try {
+            String sql = "Select nome From Appuntamento,ExtraAzienda where idAppuntamento=appuntamento and idExtraAzienda = ?";
             // Create a statement
-            stmt = con.createStatement();
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+            stmt.setInt(1, id);
             // Execute the query
-            rs = stmt.executeQuery("select *" +
-                    "  from extraazienda, appuntamentoAssociato, appuntamento" + " where idExtraAzienda=extraazienda " + "and appuntamento=idAppuntamento;" + "and idExtraAzienda=" + id);
+            rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
-                Appuntamento appuntamento = new Appuntamento(rs.getDate(1), rs.getTime(2), rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getBoolean(7));
-                // Date data, Time ora, Integer idAppuntamento, String note, Integer dipendente, Integer extraAzienda, Boolean notifica
+                Appuntamento appuntamento = new Appuntamento(rs.getString(1));
                 list.add(appuntamento);
             }
         } catch (SQLException se) {
-            System.out.println("SQL Exception:");
-
-
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
-            }
+            System.out.println("errore nella visualizzazione degli appuntamenti");
+            
 
         } finally {
             // Release the resources
@@ -520,37 +426,27 @@ public class OpExtraAzienda extends OpeUtente {
     public ArrayList<Contratto> getContrattiExtraAzienda(Integer id) throws SQLException {
 
         ArrayList<Contratto> list = new ArrayList<Contratto>();
-        Connection con = null;
+      
         Statement stmt = null;
         ResultSet rs = null;
 
         try {
-            // Obtain a db connection
-            con = ConnectionPool.getConnection();
+            String sql = "Select nome From Contratto,ExtraAzienda where idContratto=contratto and idExtraAzienda = ?";
             // Create a statement
-            stmt = con.createStatement();
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+            stmt.setInt(1, id);
             // Execute the query
-            rs = stmt.executeQuery("select *" +
-                    "  from ExtraAzienda, contrattoAssociato, contratto" + " where idExtraAzienda=extraazienda " + "and contratto=idContratto;" + "and idExtraAzienda=" + id);
+            rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
-                Contratto contratto = new Contratto(rs.getString(1), rs.getDate(2), rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getInt(7), rs.getInt(8));
-
-                contratto.setListPagamento(this.getPagamentiContratto(rs.getInt(9)));
-                contratto.setListServizio(this.getServizioContratto(rs.getInt(10)));
+                Contratto contratto = new Contratto(rs.getString(1));
                 list.add(contratto);
             }
         } catch (SQLException se) {
-            System.out.println("SQL Exception:");
+            System.out.println("errore nella visualizzazione dei contratti");
 
 
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
-            }
+            
 
         } finally {
             // Release the resources
