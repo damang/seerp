@@ -1,19 +1,20 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package it.seerp.application.bean;
 
+import it.seerp.application.validation.NotAlphabeticValidator;
+import it.seerp.application.validation.NotEmptyValidator;
+import it.seerp.application.validation.NotMinNumberValidator;
+import it.seerp.application.validation.NotNumericValidator;
 import java.util.ArrayList;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import org.jdesktop.swingx.JXPanel;
 
 /**
  *
- * @author Luisa
+ * @author Luisa - Tommaso Cattolico
  */
 public class BeanGuiServizio {
+
     private JTextField descrizione;
     private JTextField disponibilita;
     private JTextField quantita;
@@ -23,11 +24,25 @@ public class BeanGuiServizio {
     private JTextField iva;
     private JTextArea note;
     private ArrayList<BeanGuiContratto> listContratti;
+    private JXPanel grafica;
+    private NotEmptyValidator val;
+    private NotAlphabeticValidator valApha;
+    private NotMinNumberValidator valMinNum;
+    private NotNumericValidator valNum;
+
+    /**
+     * Costruttore a cui viene passato un componente grafico necessario alla
+     * validazione del campo
+     */
+    public BeanGuiServizio(JXPanel c) {
+        grafica = c;
+    }
 
     /**
      *
      */
-    public BeanGuiServizio() {    }
+    public BeanGuiServizio() {
+    }
 
     /**
      *
@@ -51,7 +66,6 @@ public class BeanGuiServizio {
         this.note = note;
     }
 
-
     /**
      *
      * @return
@@ -67,34 +81,47 @@ public class BeanGuiServizio {
     public void setListContratti(ArrayList<BeanGuiContratto> listContratti) {
         this.listContratti = listContratti;
     }
+
     /**
      *
      * @param c
      */
-    public void removeContratto(BeanGuiContratto c){
-     listContratti.remove(c);}
-      /**
-       *
-       * @param c
-       */
-      public void addContratto(BeanGuiContratto c){
-     listContratti.add(c);}
+    public void removeContratto(BeanGuiContratto c) {
+        listContratti.remove(c);
+    }
 
+    /**
+     *
+     * @param c
+     */
+    public void addContratto(BeanGuiContratto c) {
+        listContratti.add(c);
+    }
 
-      /**
-       *
-       * @return
-       */
-      public JTextField getDescrizione() {
+    /**
+     *
+     * @return
+     */
+    public JTextField getDescrizione() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
+        if (!valApha.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return descrizione;
     }
 
-      /**
-       * 
-       * @param descrizione
-       */
-      public void setDescrizione(JTextField descrizione) {
-        this.descrizione = descrizione;
+    /**
+     *
+     * @param pdescrizione
+     */
+    public void setDescrizione(JTextField pdescrizione) {
+        this.descrizione = pdescrizione;
+        val = new NotEmptyValidator(grafica, descrizione, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
+        valApha = new NotAlphabeticValidator(grafica, descrizione, "La stringa inserita deve essere alfabetica.");
+        grafica.setInputVerifier(valApha);
     }
 
     /**
@@ -133,16 +160,26 @@ public class BeanGuiServizio {
      *
      * @return
      */
-    public JTextField getIva() {
+    public JTextField getIva() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
+        if (!valNum.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return iva;
     }
 
     /**
      *
-     * @param iva
+     * @param piva
      */
-    public void setIva(JTextField iva) {
-        this.iva = iva;
+    public void setIva(JTextField piva) {
+        this.iva = piva;
+        val = new NotEmptyValidator(grafica, iva, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
+        valNum = new NotNumericValidator(grafica, iva, "Il campo deve essere numerico.");
+        grafica.setInputVerifier(valNum);
     }
 
     /**
@@ -155,58 +192,87 @@ public class BeanGuiServizio {
 
     /**
      *
-     * @param note
+     * @param pnote
      */
-    public void setNote(JTextArea note) {
-        this.note = note;
+    public void setNote(JTextArea pnote) {
+        this.note = pnote;
     }
 
     /**
      *
      * @return
      */
-    public JTextField getPrezzo() {
+    public JTextField getPrezzo() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
+        if (!valNum.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return prezzo;
     }
 
     /**
      *
-     * @param prezzo
+     * @param pprezzo
      */
-    public void setPrezzo(JTextField prezzo) {
-        this.prezzo = prezzo;
+    public void setPrezzo(JTextField pprezzo) {
+        this.prezzo = pprezzo;
+        val = new NotEmptyValidator(grafica, iva, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
+        valNum = new NotNumericValidator(grafica, iva, "Il campo deve essere numerico.");
+        grafica.setInputVerifier(valNum);
     }
 
     /**
      *
      * @return
      */
-    public JTextField getQuantita() {
+    public JTextField getQuantita() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
+        if (!valMinNum.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return quantita;
     }
 
     /**
      *
-     * @param quantita
+     * @param pquantita
      */
-    public void setQuantita(JTextField quantita) {
-        this.quantita = quantita;
+    public void setQuantita(JTextField pquantita) {
+        this.quantita = pquantita;
+        val = new NotEmptyValidator(grafica, quantita, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
+        valMinNum = new NotMinNumberValidator(grafica, quantita, "Il campo non può essere minore di 1.", 1);
+        grafica.setInputVerifier(valMinNum);
     }
 
     /**
      *
      * @return
      */
-    public JTextField getTipo() {
+    public JTextField getTipo() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
+        if (!valApha.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return tipo;
     }
 
     /**
      *
-     * @param tipo
+     * @param ptipo
      */
-    public void setTipo(JTextField tipo) {
-        this.tipo = tipo;
+    public void setTipo(JTextField ptipo) {
+        this.tipo = ptipo;
+        val = new NotEmptyValidator(grafica, tipo, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
+        valApha = new NotAlphabeticValidator(grafica, tipo, "La stringa inserita deve essere alfabetica.");
+        grafica.setInputVerifier(valApha);
     }
-
 }
