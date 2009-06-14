@@ -1,20 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package it.seerp.storage.Operazioni;
 
 import it.seerp.storage.ejb.Dipendente;
-import it.seerp.storage.ejb.Pagamento;
-import it.seerp.storage.ejb.Personale;
-import it.seerp.storage.ejb.Servizio;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import it.seerp.application.bean.BeanGuiDipendente;
-import it.seerp.storage.ejb.Contratto;
-import it.seerp.storage.ejb.Appuntamento;
-import it.seerp.storage.ejb.Permesso;
+import it.seerp.storage.Exception.DatiDuplicatiEx;
+import it.seerp.storage.Exception.DatiErratiEx;
 import it.seerp.storage.ejb.Ruolo;
 import it.seerp.storage.db.ConnectionPool;
 import java.sql.Connection;
@@ -22,122 +12,48 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-
 /**
  *
- * @author LuNy
+ * @author Matteo
  */
 public class OpDipendente extends OpPersonale {
 
-   public OpDipendente(){
-    super();
+    Connection con = null;
+
+    /**
+     * costruttore
+     * @throws java.sql.SQLException
+     */
+    public OpDipendente() throws SQLException {
+        super();
+        con = ConnectionPool.getConnection();
     }
 
     /** Metodo che permette la visualizzazione
-     * della lista dei Dipendenti
-     * @return ArrayList contenente la lista dei Dipendenti
+     * della lista dei dipendenti
+     * @return ArrayList contenente la lista dei dipendenti
      * @throws java.sql.SQLException*/
-
-    public ArrayList<Dipendente> elencaDipendente()throws SQLException{
+    public ArrayList<Dipendente> elencaDipendente() throws SQLException {
 
         ArrayList<Dipendente> list = new ArrayList<Dipendente>();
-        Connection con = null;
-        Statement stmt = null;
+        PreparedStatement stmt = null;
         ResultSet rs = null;
 
         try {
-            // Obtain a db connection
-            con = ConnectionPool.getConnection();
-            // Create a statement
-            stmt = con.createStatement();
+            String sql = "SELECT * FROM Dipendente where Visible='true'";
+            stmt = (PreparedStatement) con.prepareStatement(sql);
             // Execute the query
-            rs = stmt.executeQuery("SELECT * FROM Dipendente");
+            rs = stmt.executeQuery(sql);
 
             // Define the resource list
             while (rs.next()) {
-                Dipendente dipendente = new Dipendente (rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getString(12), rs.getString(13), rs.getString(14), rs.getBoolean(17), rs.getInt(18) );
-                                                     //Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String note, String ruolo, Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo, ArrayList<Permesso> listPermessi, ArrayList<Ruolo> listRuoli, Boolean v, Integer idDipendente, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti
-                dipendente.setListaPermessi(this.getPermessiDipendente(rs.getInt(15))); // chiedi a Luisa
-                dipendente.setListaRuoli(this.getRuoloDipendente(rs.getInt(16)));
-                dipendente.setListAppuntamenti(this.getAppuntamentiDipendente(rs.getInt(19)));
-                dipendente.setListContratti(this.getContrattiDipendente(rs.getInt(20)));
+                Dipendente dipendente = new Dipendente(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+                        rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getInt(11), rs.getString(12), rs.getString(13),
+                        rs.getString(14), rs.getString(15), rs.getBoolean(16), rs.getInt(17));
                 list.add(dipendente);
-            }}
-
-        catch (SQLException se) {
-            System.out.println("SQL Exception:");
-
-
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
             }
-
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
-        }return list;
-
-     }
-
-
-     /** Metodo che permette la ricerca di un Dipendente
-      * @param cognome
-      * cognome del Dipendente da ricercare
-      * @param ruolo
-      * ruolo che il Dipendente ricopre all'interno dell'azienda
-      * @return la lista dei Dipendenti che corrispondono ai criteri di ricerca
-      * @throws java.sql.SQLException*/
-
-     public  ArrayList<Dipendente> ricercaDipendente(String cognome, String ruolo)throws SQLException{
-
-         ArrayList<Dipendente> list = new ArrayList<Dipendente>();
-             Connection con = null;
-             Statement stmt = null;
-             ResultSet rs = null;
-
-            try {
-            // Obtain a db connection
-            con = ConnectionPool.getConnection();
-            // Create a statement
-            stmt = con.createStatement();
-            // Execute the query
-            rs = stmt.executeQuery("SELECT * FROM Dipendente"
-                                    + "where cognome ="+ cognome +"AND" + "where Ruolo="+ ruolo);
-
-            // Define the resource list
-            while (rs.next()) {
-                Dipendente dipendente = new Dipendente (rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getString(12), rs.getString(13), rs.getString(14), rs.getBoolean(17), rs.getInt(18) );
-                                                     //Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String note, String ruolo, Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo, ArrayList<Permesso> listPermessi, ArrayList<Ruolo> listRuoli, Boolean v, Integer idDipendente, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti
-                dipendente.setListaPermessi(this.getPermessiDipendente(rs.getInt(15))); // chiedi a Luisa
-                dipendente.setListaRuoli(this.getRuoloDipendente(rs.getInt(16)));
-                dipendente.setListAppuntamenti(this.getAppuntamentiDipendente(rs.getInt(19)));
-                dipendente.setListContratti(this.getContrattiDipendente(rs.getInt(20)));
-
-            }}
-
-              catch (SQLException se) {
-            System.out.println("SQL Exception:");
-
-
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
-            }
+        } catch (SQLException se) {
+            System.out.println("errore nella visualizzazione dell'elenco");
 
         } finally {
             // Release the resources
@@ -152,180 +68,32 @@ public class OpDipendente extends OpPersonale {
             }
         }
         return list;
-
-        
-     }
-
-
-     /** Metodo che permette di eliminare un Dipendente già esistente
-      * @param user
-      * user del Dipendente da eliminare
-      * @throws java.sql.SQLException*/
- 
-     public void elimina(Dipendente user)throws SQLException{
-         ArrayList<Dipendente> list = new ArrayList<Dipendente>();
-             Connection con = null;
-             Statement stmt = null;
-             ResultSet rs = null;
-
-            try {
-            // Obtain a db connection
-            con = ConnectionPool.getConnection();
-            // Create a statement
-            stmt = con.createStatement();
-            // Execute the query
-            rs = stmt.executeQuery("DELETE * FROM Cliente"
-                                    + "where username ="+ user);
-
-              // Define the resource list
-            while (rs.next()) {
-                Dipendente dipendente = new Dipendente (rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getString(12), rs.getString(13), rs.getString(14), rs.getBoolean(17), rs.getInt(18) );
-                                                   //  Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String note, String ruolo, Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo, ArrayList<Permesso> listPermessi, ArrayList<Ruolo> listRuoli, Boolean v, Integer idDipendente, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti
-                dipendente.setListaPermessi(this.getPermessiDipendente(rs.getInt(15))); // chiedi a Luisa
-                dipendente.setListaRuoli(this.getRuoloDipendente(rs.getInt(16)));
-                dipendente.setListAppuntamenti(this.getAppuntamentiDipendente(rs.getInt(19)));
-                dipendente.setListContratti(this.getContrattiDipendente(rs.getInt(20)));
-
-            }}
-
-              catch (SQLException se) {
-            System.out.println("SQL Exception:");
-
-
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
-            }
-
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
-        }
-       
-     }
-       
-
-
-     /** Nasconde il Dipendente eliminato al sistema senza l'eliminazione fisica
-      * @param user
-      * user del Dipendente da eliminare
-      * @throws java.sql.SQLException*/
-
-     public void eliminazioneLogica(Dipendente user)throws SQLException{
-
-          ArrayList<Dipendente> list = new ArrayList<Dipendente>();
-             Connection con = null;
-             Statement stmt = null;
-             ResultSet rs = null;
-
-            try {
-            // Obtain a db connection
-            con = ConnectionPool.getConnection();
-            // Create a statement
-            stmt = con.createStatement();
-            // Execute the query
-            rs = stmt.executeQuery("UPDATE Dipendente SET Visible='f'"
-                                    + "where username ="+ user);
-                  // Define the resource list
-            while (rs.next()) {
-                Dipendente dipendente = new Dipendente (rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getString(12), rs.getString(13), rs.getString(14), rs.getBoolean(17), rs.getInt(18) );
-                                                   //  Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String note, String ruolo, Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo, ArrayList<Permesso> listPermessi, ArrayList<Ruolo> listRuoli, Boolean v, Integer idDipendente, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti
-                dipendente.setListaPermessi(this.getPermessiDipendente(rs.getInt(15))); // chiedi a Luisa
-                dipendente.setListaRuoli(this.getRuoloDipendente(rs.getInt(16)));
-                dipendente.setListAppuntamenti(this.getAppuntamentiDipendente(rs.getInt(19)));
-                dipendente.setListContratti(this.getContrattiDipendente(rs.getInt(20)));
-
-            }}
-
-              catch (SQLException se) {
-            System.out.println("SQL Exception:");
-
-
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
-            }
-
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
-        }
-       }
-
-
-    /** Metodo per inserire un nuovo Dipendente
-     * @param user
-     * user del Dipendente da inserire
-     * @throws java.sql.SQLException*/
-
-    public void inserisci(Dipendente user)throws SQLException{
-        Connection con = null;
-        PreparedStatement stmt = null;
-        try {
-            // Obtain a db connection
-            con = ConnectionPool.getConnection();
-
-            stmt = con.prepareStatement ("INSERT INTO Cliente VALUE (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-        
-            stmt.setInt(1, user.getIdUtente());
-            stmt.setString(2, user.getUsername());
-            stmt.setString(3, user.getPassword());
-            stmt.setString(4, user.getCittà());
-            stmt.setString(5, user.getProvincia());
-            stmt.setString(6, user.getTelefono());
-            stmt.setString(7, user.getEmail());
-            stmt.setString(8, user.getNote());
-            stmt.setString(9. user.getRuolo());
-            stmt.setInt(10, user.getIdPersonale());
-            stmt.setString(11, user.getCognome());
-            stmt.setString(12, user.getNome());
-            stmt.setString(13, user.getCodiceFiscale());
-            stmt.setString(14, user.getTipo());
-            stmt.setArrayList(15, user.getListaPermessi());
-            stmt.setArrayList(16, user.getListaRuoli());
-            stmt.setBoolean(17, user.getVisible());
-            stmt.setInt(18, user.getIdDipendente());
-            stmt.setArrayList(19, user.getListAppuntamenti());
-            stmt.setArrayList(20, user.getListContratti());
-
- 
-            stmt.execute();
-
-            con.commit();
     }
-         catch (SQLException se) {
-            System.out.println("SQL Exception:");
 
+    /** Metodo che permette la ricerca di un membro dei dipendenti
+     * @return la lista dei membri dei dipendente che corrispondono ai criteri di ricerca
+     * @throws java.sql.SQLException*/
+    public ArrayList<Dipendente> ricercaDipendente() throws SQLException {
+        ArrayList<Dipendente> list = this.elencaDipendente();
+        return list;
+    }
 
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
+    /** Metodo che permette di eliminare un membro dei dipendenti già esistente
+     * @param user
+     * user dell'utente da eliminare
+     * @throws java.sql.SQLException*/
+    public void elimina(Dipendente user) throws SQLException {
+        PreparedStatement stmt = null;
+        try {
+            String sql = "DELETE * FROM Dipendente where username =?";
+            // Create a statement
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+            stmt.setString(1, user.getUsername());
+            // Execute the query
+            stmt.executeQuery(sql);
+        } catch (SQLException se) {
+            System.out.println("errore nell'eliminazione del dipendente");
 
-                se = se.getNextException();
-            }
         } finally {
             // Release the resources
             if (stmt != null) {
@@ -335,67 +103,148 @@ public class OpDipendente extends OpPersonale {
                 ConnectionPool.releaseConnection(con);
             }
         }
-        throw new UnsupportedOperationException("Not supported yet.");}
 
+    }
 
-    /** Metodo che permette la modifica di un Dipendente presente nel sistema
+    /** Nasconde l'utente eliminato al sistema senza l'eliminazione fisica
      * @param user
-     * user del Dipendente da modificare
-     * @return lo stesso oggetto modificato
+     * user dell'utente da eliminare
      * @throws java.sql.SQLException*/
-  
-    public Dipendente modifica(Dipendente user)throws SQLException{
+    public void eliminazioneLogica(Dipendente user) throws SQLException {
 
-        ArrayList<BeanGuiDipendente> list = new ArrayList<BeanGuiDipendente>();
-        Connection con = null;
         PreparedStatement stmt = null;
+        try {
+            String sql = "UPDATE Dipendente SET Visible='false' where username = ?";
+            // Create a statement
+            stmt = (PreparedStatement) con.prepareStatement(sql);
 
+            // Execute the query
+            stmt.executeQuery();
+        } catch (SQLException se) {
+            System.out.println("errore nell'eliminazione logica del dipendente");
+
+        } finally {
+            // Release the resources
+
+            if (stmt != null) {
+                stmt.close();
+            }
+            if (con != null) {
+                ConnectionPool.releaseConnection(con);
+            }
+        }
+
+
+
+    }
+
+    /** Metodo per inserire un nuovo membro dei dipiendenti
+     * @param user
+     * user dell'utente da inserire
+     * @throws java.sql.SQLException
+     * @throws DatiDuplicatiEx
+     */
+    public void inserisci(Dipendente user) throws SQLException, DatiDuplicatiEx {
+
+
+        PreparedStatement stmt = null;
+        try {
+
+            Statement stmt1 = con.createStatement();
+            String sqlTest = "SELECT * FROM Dipendente WHERE codiceFiscale='" + user.getCodiceFiscale() + "' ";
+            ResultSet rs = stmt1.executeQuery(sqlTest);
+
+            if (rs.next()) {
+                throw new DatiDuplicatiEx("dipendente già esistente nel database");
+            } else {
+                String sql = "INSERT INTO Dipendente (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+                stmt = (PreparedStatement) con.prepareStatement(sql);
+                stmt.setInt(1, user.getIdUtente());
+                stmt.setString(2, user.getUsername());
+                stmt.setString(3, user.getPassword());
+                stmt.setString(4, user.getCittà());
+                stmt.setString(5, user.getProvincia());
+                stmt.setString(6, user.getTelefono());
+                stmt.setString(7, user.getCap());
+                stmt.setString(8, user.getEmail());
+                stmt.setString(9, user.getNote());
+                stmt.setString(10, user.getRuolo());
+                stmt.setInt(11, user.getIdPersonale());
+                stmt.setString(12, user.getCognome());
+                stmt.setString(13, user.getNome());
+                stmt.setString(14, user.getCodiceFiscale());
+                stmt.setString(15, user.getTipo());
+                stmt.setBoolean(16, user.getVisible());
+                stmt.setInt(17, user.getIdDipendente());
+                stmt.execute();
+            }
+        } catch (SQLException se) {
+            System.out.println("errore di inserimento del dipendente");
+
+        } finally {
+            // Release the resources
+            if (stmt != null) {
+                stmt.close();
+            }
+            if (con != null) {
+                ConnectionPool.releaseConnection(con);
+            }
+        }
+    }
+
+    /** Metodo che permette la modifica di un membro dei dipendenti presente nel sistema
+     * @param user
+     * user del membro dei dipendenti da modificare
+     * @return lo stesso oggetto modificato
+     * @throws java.sql.SQLException
+     * @throws DatiErratiEx
+     * @throws DatiDuplicatiEx
+     */
+    public Dipendente modifica(Dipendente user) throws SQLException, DatiErratiEx, DatiDuplicatiEx {
+
+        PreparedStatement stmt = null;
+        Dipendente dipendente = null;
 
         try {
-             // Obtain a db connection
-            con = ConnectionPool.getConnection();
 
+            Statement stmt1 = con.createStatement();
+            String sqlTest = "SELECT * FROM Dipendente WHERE codiceFiscale='" + user.getCodiceFiscale() + "' ";
+            ResultSet rs = stmt1.executeQuery(sqlTest);
 
-            // Create a statement
-            stmt = con.prepareStatement("UPDATE Dipendente VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )"  +"where idDipendente="+ user.getIdDipendente());
+            if (rs.next()) {
+                throw new DatiDuplicatiEx("dipendete già esistente nel database");
+            } else {
 
-            stmt.setInt(1, user.getIdUtente());
-            stmt.setString(2, user.getUsername());
-            stmt.setString(3, user.getPassword());
-            stmt.setString(4, user.getCittà());
-            stmt.setString(5, user.getProvincia());
-            stmt.setString(6, user.getTelefono());
-            stmt.setString(7, user.getEmail());
-            stmt.setString(8, user.getNote());
-            stmt.setString(9. user.getRuolo());
-            stmt.setInt(10, user.getIdPersonale());
-            stmt.setString(11, user.getCognome());
-            stmt.setString(12, user.getNome());
-            stmt.setString(13, user.getCodiceFiscale());
-            stmt.setString(14, user.getTipo());
-            stmt.setArrayList(15, user.getListaPermessi());
-            stmt.setArrayList(16, user.getListaRuoli());
-            stmt.setBoolean(17, user.getVisible());
-            stmt.setInt(18, user.getIdDipendente());
-            stmt.setArrayList(19, user.getListAppuntamenti());
-            stmt.setArrayList(20, user.getListContratti());
-            stmt.execute();
-                            // Force the commit
-            con.commit();
-            Dipendente dipendente =(Dipendente) this.visualizza(user.getIdUtente());
+                // Create a statement
+                stmt = (PreparedStatement) con.prepareStatement("UPDATE Dipendente VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )" + "where idUtente=" + user.getIdUtente());
 
-        } // Force the commit
-        catch (SQLException se) {
-            System.out.println("SQL Exception:");
+                stmt.setInt(1, user.getIdUtente());
+                stmt.setString(2, user.getUsername());
+                stmt.setString(3, user.getPassword());
+                stmt.setString(4, user.getCittà());
+                stmt.setString(5, user.getProvincia());
+                stmt.setString(6, user.getTelefono());
+                stmt.setString(7, user.getCap());
+                stmt.setString(8, user.getEmail());
+                stmt.setString(9, user.getNote());
+                stmt.setString(10, user.getRuolo());
+                stmt.setInt(11, user.getIdPersonale());
+                stmt.setString(12, user.getCognome());
+                stmt.setString(13, user.getNome());
+                stmt.setString(14, user.getCodiceFiscale());
+                stmt.setString(15, user.getTipo());
+                stmt.setBoolean(16, user.getVisible());
+                stmt.setInt(17, user.getIdDipendente());
 
+                stmt.execute();
 
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
+                dipendente = this.visualizzaDati(dipendente.getIdDipendente());
 
-                se = se.getNextException();
             }
+        } catch (SQLException se) {
+            System.out.println("errore nella modifica");
+
         } finally {
             // Release the resources
             if (stmt != null) {
@@ -405,57 +254,48 @@ public class OpDipendente extends OpPersonale {
                 ConnectionPool.releaseConnection(con);
             }
         }
-      return dipendente;
-       }
+        return dipendente;
 
-    /** Metodo che permette la visualizzazione dei dettagli di un Dipendente
+    }
+
+    /** Metodo che permette la visualizzazione dei dettagli di un membro dei dipendendenti
      * @param id
-     * id del Dipendente
-     * @return il bean con i dettagli del Dipendente
-     * @throws java.sql.SQLException*/
-
-    public Dipendente visualizzaDati(Integer id) throws SQLException{
-
-         Connection con = null;
-        Statement stmt = null;
+     * id del membro dei dipendenti
+     * @return il bean con i dettagli del membro del personale
+     * @throws SQLException
+     */
+    public Dipendente visualizzaDati(Integer id) throws SQLException {
+        Dipendente dipendente = null;
+        PreparedStatement stmt = null;
         ResultSet rs = null;
 
 
         try {
-            // Obtain a db connection
-            con = ConnectionPool.getConnection();
+            String sql = "SELECT * FROM Dipendente where idDipendente= ? ";
             // Create a statement
-            stmt = con.createStatement();
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+            stmt.setString(1, id.toString());
             // Execute the query
-
-            rs = stmt.executeQuery("SELECT * FROM Dipendente+
-                    "where idUtente="+ id);
-
-            rs = stmt.executeQuery("SELECT * FROM Dipendente where idUtente=" + id);
-
+            rs = stmt.executeQuery();
 
             // Define the resource list
             while (rs.next()) {
-                 Dipendente dipendente = new Dipendente (rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getString(12), rs.getString(13), rs.getString(14), rs.getBoolean(17), rs.getInt(18) );
-                                                   //  Integer idUtente, String username, String password, String città, String provincia, String telefono, String email, String note, String ruolo, Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo, ArrayList<Permesso> listPermessi, ArrayList<Ruolo> listRuoli, Boolean v, Integer idDipendente, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti
-                dipendente.setListaPermessi(this.getPermessiDipendente(rs.getInt(15))); // chiedi a Luisa
-                dipendente.setListaRuoli(this.getRuoloDipendente(rs.getInt(16)));
-                dipendente.setListAppuntamenti(this.getAppuntamentiDipendente(rs.getInt(19)));
-                dipendente.setListContratti(this.getContrattiDipendente(rs.getInt(20)));
+                dipendente = new Dipendente(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+                        rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getInt(11), rs.getString(12), rs.getString(13),
+                        rs.getString(14), rs.getString(15), rs.getBoolean(16), rs.getInt(17));
 
+                PreparedStatement stmt1;
+                String sql2 = "Select nome From Ruolo,Dipendente where idRuolo=ruolo and idDipendente = ?";
+                stmt1 = (PreparedStatement) con.prepareStatement(sql2);
+                stmt1.setInt(1, dipendente.getIdDipendente());
+                ResultSet rs1 = stmt1.executeQuery();
+                while (rs1.next()) {
+                    Ruolo ruolo = new Ruolo(rs.getString(1));
+                    dipendente.addRuolo(ruolo);
+                }
             }
         } catch (SQLException se) {
-            System.out.println("SQL Exception:");
-
-
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
-            }
-
+            System.out.println("errore di visualizzazione");
 
         } finally {
             // Release the resources
@@ -469,211 +309,38 @@ public class OpDipendente extends OpPersonale {
                 ConnectionPool.releaseConnection(con);
             }
         }
-
 
         return dipendente;
-        }
 
- /**
-     * metodo che si occupa di ricercare tutti gli appuntamenti legati ad un dipendente grazie all'id del cliente
-     * @param id identificativo del dipendente
-     * @return lista degli appuntamenti associati al dipendente
-     * @throws java.sql.SQLException*/
-
-    public ArrayList<Appuntamento> getAppuntamentiDipendente(Integer id) throws SQLException {
-
-        ArrayList<Appuntamento> list = new ArrayList<Appuntamento>();
-        Connection con = null;
-        Statement stmt = null;
-        ResultSet rs = null;
-
-        try {
-            // Obtain a db connection
-            con = ConnectionPool.getConnection();
-            // Create a statement
-            stmt = con.createStatement();
-            // Execute the query
-            rs = stmt.executeQuery("select *" +
-                    "  from dipendente, appuntamentoAssociato, appuntamento" + " where idDipendente=dipendente " + "and appuntamento=idAppuntamento;" + "and idDipendente=" + id);
-
-            while (rs.next()) {
-                Appuntamento appuntamento = new Appuntamento(rs.getDate(1), rs.getTime(2), rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getBoolean(7));
-                // Date data, Time ora, Integer idAppuntamento, String note, Integer dipendente, Integer extraAzienda, Boolean notifica
-                list.add(appuntamento);
-            }
-        } catch (SQLException se) {
-            System.out.println("SQL Exception:");
-
-
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
-            }
-
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
-        }
-        return list;
     }
 
-/**
-     * metodo che si occupa di ricercare tutti i contratti legati ad un dipendente grazie all'id del cliente
-     * @param id identificativo del dipendente
-     * @return lista dei contratti associati al dipendente
-     * @throws java.sql.SQLException*/
-
-    public ArrayList<Contratto> getContrattiDipendente(Integer id) throws SQLException {
-
-        ArrayList<Contratto> list = new ArrayList<Contratto>();
-        Connection con = null;
-        Statement stmt = null;
-        ResultSet rs = null;
-
-        try {
-            // Obtain a db connection
-            con = ConnectionPool.getConnection();
-            // Create a statement
-            stmt = con.createStatement();
-            // Execute the query
-            rs = stmt.executeQuery("select *" +
-                    "  from dipendente, contrattoAssociato, contratto" + " where idDipendente=dipendente " + "and contratto=idContratto;" + "and idDipendente=" + id);
-
-            while (rs.next()) {
-                Contratto contratto = new Contratto(rs.getString(1), rs.getDate(2), rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getInt(7), rs.getInt(8));
-
-                contratto.setListPagamento(this.getPagamentiContratto(rs.getInt(9)));
-                contratto.setListServizio(this.getServizioContratto(rs.getInt(10)));
-                list.add(contratto);
-            }
-        } catch (SQLException se) {
-            System.out.println("SQL Exception:");
-
-
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
-            }
-
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
-        }
-        return list;
-    }
-
-     /**
-     * metodo che si occupa di ricercare tutti i permessi legati ad un dipendente grazie all'id del responsabile
-     * @param id identificativo del dipendente
-     * @return lista dei permessi associati al dipendente
-     * @throws java.sql.SQLException*/
-
-    public ArrayList<Permesso> getPermessiDipendente(Integer id) throws SQLException {
-
-        ArrayList<Permesso> list = new ArrayList<Permesso>();
-        Connection con = null;
-        Statement stmt = null;
-        ResultSet rs = null;
-
-        try {
-            // Obtain a db connection
-            con = ConnectionPool.getConnection();
-            // Create a statement
-            stmt = con.createStatement();
-            // Execute the query
-            rs = stmt.executeQuery("select *" +
-                    "  from dipendente, permessoAssociato, permesso" + " where idDipendente=dipendente " + "and permesso=idPermesso;" + "and idDipendente=" + id);
-
-            while (rs.next()) {
-                Permesso permesso = new Permesso(rs.getInt(1), rs.getString(2));
-                // Date data, Time ora, Integer idAppuntamento, String note, Integer dipendente, Integer extraAzienda, Boolean notifica
-                permesso.setListPersonale(this.getPersonalePermessi(rs.getInt(3)));
-                permesso.setListRuolo(this,getRuoloPermessi(rs.getInt(4)));
-                list.add(permesso);
-            }
-        } catch (SQLException se) {
-            System.out.println("SQL Exception:");
-
-
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
-            }
-
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
-        }
-        return list;
-    }
-
- public ArrayList<Ruolo> getRuoloDipendente(Integer id) throws SQLException {
+    /**
+     *
+     * @param id
+     * @return
+     * @throws java.sql.SQLException
+     */
+    public ArrayList<Ruolo> getRuoloPersonale(Integer id) throws SQLException {
 
         ArrayList<Ruolo> list = new ArrayList<Ruolo>();
-        Connection con = null;
-        Statement stmt = null;
+
+        PreparedStatement stmt = null;
         ResultSet rs = null;
 
         try {
-            // Obtain a db connection
-            con = ConnectionPool.getConnection();
+            String sql = "Select nome From Ruolo,Responsabile where idRuolo=ruolo and idResponsabile = ?";
             // Create a statement
-            stmt = con.createStatement();
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+            stmt.setInt(1, id);
             // Execute the query
-            rs = stmt.executeQuery("select *" +
-                    "  from dipendente, ruoloAssociato, ruolo" + " where idDipendente=dipendente " + "and ruolo=idRuolo;" + "and idDipendente=" + id);
+            rs = stmt.executeQuery();
 
             while (rs.next()) {
-                Ruolo ruolo = new Ruolo(rs.getInt(1), rs.getString(2));
-
-                ruolo.setListPersonale(this.getPersonaleRuolo(rs.getInt(3)));
-                ruolo.setListPermessi(this.getPermessiRuolo(rs.getInt(4)));
+                Ruolo ruolo = new Ruolo(rs.getString(1));
                 list.add(ruolo);
             }
         } catch (SQLException se) {
-            System.out.println("SQL Exception:");
-
-
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
-            }
+            System.out.println("errore nella visualizzazione dei permessi");
 
         } finally {
             // Release the resources
@@ -689,5 +356,4 @@ public class OpDipendente extends OpPersonale {
         }
         return list;
     }
-
 }

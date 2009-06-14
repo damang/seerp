@@ -1,6 +1,6 @@
 package it.seerp.storage.operazioni;
 
-import it.seerp.storage.Exception.DatiErrati;
+
 import it.seerp.storage.Operazioni.OpPersonale;
 import it.seerp.storage.db.ConnectionPool;
 import it.seerp.storage.ejb.Personale;
@@ -13,22 +13,24 @@ import java.sql.SQLException;
  *
  * @author Ila
  */
+
 public class OpAreaPersonale extends OpPersonale {
 
   
-  //  public Personale visualizzaDati(Integer id) throws SQLException {
-
         /** Metodo che permette la visualizzazione dei dettagli
          * di un membro del personale nella propria area personale
          * @param id
          * id del membro del personale
          * @return il bean con i dettagli del membro del personale
          * @throws java.sql.SQLException
-         
+         */
+
+  public Personale visualizzaDati(Integer id) throws SQLException {
+       
        return super.visualizzaDati(id);
     }
 
-    public Utente modificaPassword(Utente u) throws SQLException, DatiErrati {
+    public Utente modificaPassword(Utente u) throws SQLException{
 
 
         // throw new UnsupportedOperationException("Not supported yet.");
@@ -71,5 +73,5 @@ public class OpAreaPersonale extends OpPersonale {
             }
         }
         return ute;
- */   
+    }
 }
