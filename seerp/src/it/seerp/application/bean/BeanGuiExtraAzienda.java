@@ -1,12 +1,17 @@
 package it.seerp.application.bean;
 
+import it.seerp.application.validation.NotAlphabeticValidator;
+import it.seerp.application.validation.NotEmptyValidator;
+import it.seerp.application.validation.NotEqualLengthValidator;
+import it.seerp.application.validation.NotMinLengthValidator;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
+import org.jdesktop.swingx.JXPanel;
 
 /**
  *
- * @author matteo
+ * @author matteo - Tommaso Cattolico
  */
 public class BeanGuiExtraAzienda extends BeanGuiUtente {
 
@@ -19,6 +24,19 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
     private JComboBox cmbRuolo;
     private ArrayList<BeanGuiAppuntamento> listAppuntamenti;
     private ArrayList<BeanGuiContratto> listContratti;
+    private JXPanel grafica;
+    private NotEmptyValidator val;
+    private NotEqualLengthValidator valEqLen;
+    private NotMinLengthValidator valMinLen;
+    private NotAlphabeticValidator valApha;
+
+    /**
+     * Costruttore a cui viene passato un componente grafico necessario alla
+     * validazione del campo
+     */
+    public BeanGuiExtraAzienda(JXPanel c) {
+        grafica = c;
+    }
 
     /**
      * Costruttore vuoto per la classe Bean Gui ExtraAzienda
@@ -100,42 +118,58 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
 
     /**
      *metodo che setta il campo contenente il cognome dell'ExtraAzienda
-     * @param txtCognome rappresenta il campo cognome da inserire
+     * @param ptxtCognome rappresenta il campo cognome da inserire
      */
-    public void setTxtCognome(JTextField txtCognome) {
-        this.txtCognome = txtCognome;
+    public void setTxtCognome(JTextField ptxtCognome) {
+        this.txtCognome = ptxtCognome;
+        val = new NotEmptyValidator(grafica, txtCognome, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
+        valApha = new NotAlphabeticValidator(grafica, txtCognome, "La stringa inserita deve essere alfabetica.");
+        grafica.setInputVerifier(valApha);
     }
 
     /**
      * metodo che setta il campo contenente il nome dell'ExtraAzienda
-     * @param txtNome rappresenta il campo nome da inserire
+     * @param ptxtNome rappresenta il campo nome da inserire
      */
-    public void setTxtNome(JTextField txtNome) {
-        this.txtNome = txtNome;
+    public void setTxtNome(JTextField ptxtNome) {
+        this.txtNome = ptxtNome;
+        val = new NotEmptyValidator(grafica, txtNome, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
+        valApha = new NotAlphabeticValidator(grafica, txtNome, "La stringa inserita deve essere alfabetica.");
+        grafica.setInputVerifier(valApha);
     }
 
     /**
      *metodo che setta il campo contenente il fax dell'ExtraAzienda
-     * @param txtFax rappresenta il campo fax da inserire
+     * @param ptxtFax rappresenta il campo fax da inserire
      */
-    public void setTxtFax(JTextField txtFax) {
-        this.txtFax = txtFax;
+    public void setTxtFax(JTextField ptxtFax) {
+        this.txtFax = ptxtFax;
+        valMinLen = new NotMinLengthValidator(grafica, txtFax, "Il campo deve essere di almeno 8 caratteri", 8);
+        grafica.setInputVerifier(valMinLen);
     }
 
     /**
      *metodo che setta il campo contenente la partita iva dell'ExtraAzienda
-     * @param txtPIva rappresenta il campo partita iva da inserire
+     * @param ptxtPIva rappresenta il campo partita iva da inserire
      */
-    public void setTxtPIva(JTextField txtPIva) {
-        this.txtPIva = txtPIva;
+    public void setTxtPIva(JTextField ptxtPIva) {
+        this.txtPIva = ptxtPIva;
+        val = new NotEmptyValidator(grafica, txtPIva, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
+        valEqLen = new NotEqualLengthValidator(grafica, txtPIva, "Il campo deve essere di 11 caratteri", 11);
+        grafica.setInputVerifier(valEqLen);
     }
 
     /**
      * metodo che setta il campo contenente la ragione sociale dell'ExtraAzienda
-     * @param txtRagioneSociale rappresenta il campo ragione sociale da inserire
+     * @param ptxtRagioneSociale rappresenta il campo ragione sociale da inserire
      */
-    public void setTxtRagioneSociale(JTextField txtRagioneSociale) {
-        this.txtRagioneSociale = txtRagioneSociale;
+    public void setTxtRagioneSociale(JTextField ptxtRagioneSociale) {
+        this.txtRagioneSociale = ptxtRagioneSociale;
+        val = new NotEmptyValidator(grafica, txtRagioneSociale, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
     }
 
     /**
@@ -158,7 +192,13 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * metodo che restituisce il campo contenente il cognome dell'ExtraAzienda
      * @return il campo cognome dell'ExtraAzienda
      */
-    public JTextField getTxtCognome() {
+    public JTextField getTxtCognome() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
+        if (!valApha.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return txtCognome;
     }
 
@@ -166,7 +206,13 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * metodo che restituisce il campo contenente il nome dell'ExtraAzienda
      * @return il campo nome dell'ExtraAzieda
      */
-    public JTextField getTxtNome() {
+    public JTextField getTxtNome() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
+        if (!valApha.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return txtNome;
     }
 
@@ -174,7 +220,10 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * metodo che restituisce il campo contenente il fax dell'ExtraAzienda
      * @return il campo fax dell'extraAzienda
      */
-    public JTextField getTxtFax() {
+    public JTextField getTxtFax() throws Exception {
+        if (!valMinLen.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return txtFax;
     }
 
@@ -182,7 +231,12 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * metodo che restituisce il campo contenente la partita iva dell'ExtraAzienda
      * @return il campo partita iva dell'extraAzienda
      */
-    public JTextField getTxtPIva() {
+    public JTextField getTxtPIva() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        } else if (!valEqLen.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return txtPIva;
     }
 
@@ -190,7 +244,10 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * metodo che restituisce il campo contenente la ragione sociale dell'ExtraAzienda
      * @return il campo ragione sociale dell'extraAzienda
      */
-    public JTextField getTxtRagioneSociale() {
+    public JTextField getTxtRagioneSociale() throws Exception {
+        if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
         return txtRagioneSociale;
     }
 
