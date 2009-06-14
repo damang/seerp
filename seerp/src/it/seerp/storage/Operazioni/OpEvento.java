@@ -1,5 +1,6 @@
 package it.seerp.storage.operazioni;
 
+import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import it.seerp.application.Exception.DatiDuplicati;
 import it.seerp.application.Exception.DatiErrati;
@@ -7,7 +8,6 @@ import it.seerp.application.bean.BeanGuiEvento;
 import it.seerp.storage.Exception.DatiDuplicatiEx;
 import it.seerp.storage.Exception.DatiErratiEx;
 import it.seerp.storage.ejb.Evento;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import it.seerp.storage.db.ConnectionPool;
@@ -28,7 +28,7 @@ public class OpEvento implements OpeEntity<Evento, BeanGuiEvento> {
 
     public OpEvento() throws SQLException {
 
-        conn = ConnectionPool.getConnection();
+        conn = (Connection) ConnectionPool.getConnection();
     }
 
     /** crea la query per inserire l'evento e nel database
