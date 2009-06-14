@@ -10,6 +10,7 @@ import it.seerp.storage.Operazioni.OpeUtente;
 import it.seerp.storage.ejb.Utente;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -24,22 +25,20 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
      * @return la lista di tutti gli utenti
      */
     public ArrayList<BeanGuiUtente> elenca(ArrayList<BeanGuiUtente> listGui) {
-        OpeUtente ope = new OpeUtente();
         try {
-            ArrayList<Utente> list = ope.visualizzaElenco();
+            OpeUtente ope = new OpeUtente();
+            ArrayList<Utente> list = ope.visualizzaElenco()
             int i = 0;
             for (Utente user : list) {
                 listGui.add(Conversione.conversioneUtente(user, listGui.get(i)));
                 i++;
             }
         } catch (SQLException se) {
-            System.out.println("SQL Exception:");
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-                se = se.getNextException();
-            }
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
         return listGui;
     }
@@ -59,23 +58,20 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
      * nel momento in cui nn viene trovato l'elemento e la ricerca fallisce
      */
     public ArrayList<BeanGuiUtente> ricerca(JTextField cognome, JTextField ruolo, ArrayList<BeanGuiUtente> list) throws DatiErrati, RicercaFallita {
-
-        OpeUtente ope = new OpeUtente();
         try {
+            OpeUtente ope = new OpeUtente();
             ArrayList<Utente> listGui = ope.ricerca(cognome.getText(), ruolo.getText());
             int i = 0;
             for (Utente user : listGui) {
-                list.add(it.seerp.application.conversioni.Conversione.conversioneUtente(user, list.get(i)));
+                list.add(Conversione.conversioneUtente(user, list.get(i)));
                 i++;
             }
         } catch (SQLException se) {
-            System.out.println("SQL Exception:");
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-                se = se.getNextException();
-            }
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
         return list;
     }
@@ -86,18 +82,16 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
      * l'utente che si vuole eliminare
      */
     public void elimina(BeanGuiUtente user) {
-        OpeUtente ope = new OpeUtente();
-        Utente ut = it.seerp.application.conversioni.Conversione.conversioneUtente(user);
         try {
+                    OpeUtente ope = new OpeUtente();
+        Utente ut = Conversione.conversioneUtente(user);
             ope.elimina(ut);
-        } catch (SQLException ex) {
-            System.out.println("SQL Exception:");
-            while (ex != null) {
-                System.out.println("State  : " + ex.getSQLState());
-                System.out.println("Message: " + ex.getMessage());
-                System.out.println("Error  : " + ex.getErrorCode());
-                ex = ex.getNextException();
-            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
     }
 
@@ -107,18 +101,16 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
      * l'utente che si vuole eliminare logicamente
      */
     public void eliminazioneLogica(BeanGuiUtente user) {
-        OpeUtente ope = new OpeUtente();
-        Utente ut = it.seerp.application.conversioni.Conversione.conversioneUtente(user);
         try {
+                    OpeUtente ope = new OpeUtente();
+        Utente ut = Conversione.conversioneUtente(user);
             ope.eliminaLogica(ut);
-        } catch (SQLException ex) {
-            System.out.println("SQL Exception:");
-            while (ex != null) {
-                System.out.println("State  : " + ex.getSQLState());
-                System.out.println("Message: " + ex.getMessage());
-                System.out.println("Error  : " + ex.getErrorCode());
-                ex = ex.getNextException();
-            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
     }
 
@@ -134,19 +126,18 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
      * nel caso in cui i dati inseriti sono duplicati
      */
     public BeanGuiUtente inserisci(BeanGuiUtente user) throws DatiErrati, DatiDuplicati {
-        OpeUtente a = new OpeUtente();
-        Utente serv = it.seerp.application.conversioni.Conversione.conversioneUtente(user);
-        try {
+
+        try{
+            OpeUtente a = new OpeUtente();
+        Utente serv = Conversione.conversioneUtente(user);
             a.inserimento(serv);
-            user = it.seerp.application.conversioni.Conversione.conversioneUtente(serv, user);
+            user = Conversione.conversioneUtente(serv, user);
         } catch (SQLException se) {
-            System.out.println("SQL Exception:");
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-                se = se.getNextException();
-            }
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
         return user;
     }
@@ -161,19 +152,17 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
      * nel caso in cui i dati inseriti sono errati
      */
     public BeanGuiUtente modifica(BeanGuiUtente user) throws DatiErrati {
-        OpeUtente ope = new OpeUtente();
-        Utente utente = it.seerp.application.conversioni.Conversione.conversioneUtente(user);
         try {
+                    OpeUtente ope = new OpeUtente();
+        Utente utente = Conversione.conversioneUtente(user);
             utente = ope.modifica(utente);
-            user = it.seerp.application.conversioni.Conversione.conversioneUtente(utente, user);
+            user = Conversione.conversioneUtente(utente, user);
         } catch (SQLException se) {
-            System.out.println("SQL Exception:");
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-                se = se.getNextException();
-            }
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
         return user;
     }
@@ -189,18 +178,16 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
      * nel caso in cui i dati inseriti sono errati
      */
     public BeanGuiUtente visualizzaDati(JTextField user, BeanGuiUtente beanGui) throws DatiErrati {
-        OpeUtente ope = new OpeUtente();
         try {
-            Utente utente = ope.visualizza(Integer.parseInt(user.getText()));
+            OpeUtente ope = new OpeUtente();
+            Utente utente = ope.visualizza(beanGui);
             beanGui = it.seerp.application.conversioni.Conversione.conversioneUtente(utente, beanGui);
         } catch (SQLException se) {
-            System.out.println("SQL Exception:");
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-                se = se.getNextException();
-            }
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
         return beanGui;
     }

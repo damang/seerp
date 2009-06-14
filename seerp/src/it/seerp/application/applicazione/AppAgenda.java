@@ -11,79 +11,34 @@ import it.seerp.storage.operazioni.OpeEvento;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JTextField;
+import it.seerp.application.conversioni.Conversione;
+import javax.swing.JOptionPane;
 
 /**
  * Classe del livello application riguardante la Gestione dell'Agenda
  * @author Tommaso Cattolico
  */
-public class AppAgenda implements GestioneAgenda<BeanGuiEvento>
-{
+public class AppAgenda implements GestioneAgenda<BeanGuiEvento> {
 
-    public ArrayList<BeanGuiEvento> visualizzaListaEventi(ArrayList<BeanGuiEvento> listGui) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public BeanGuiEvento visualizzaDettagli(JTextField id, BeanGuiEvento gui) throws DatiErrati {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public void notificaEventi(BeanGuiEvento beanGuiEventi) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public void inserimento(BeanGuiEvento beanGuiEventi) throws DatiErrati, DatiDuplicati {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public BeanGuiEvento modifica(BeanGuiEvento beanGuiEventi) throws DatiErrati {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public ArrayList<BeanGuiEvento> ricercaPerTema(JTextField tema, ArrayList<BeanGuiEvento> list) throws DatiErrati {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public ArrayList<BeanGuiEvento> ricercaPerNome(JTextField nome, ArrayList<BeanGuiEvento> list) throws DatiErrati, RicercaFallita {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public ArrayList<BeanGuiEvento> ricercaPerGiorno(JTextField giorno, ArrayList<BeanGuiEvento> list) throws DatiErrati, RicercaFallita {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public void cancellaEvento(BeanGuiEvento beanGuiEventi) throws CancellazioneFallita {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
     /**
      * Metodo che permette la visualizzazione della lista degli eventi
      * @return  Array List contenente la lista degli eventi
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui vi siano dati errati
-
-
-    public ArrayList<BeanGuiEvento> visualizzaListaEventi(ArrayList<BeanGuiEvento> listGui)
-    {
+     */
+    public ArrayList<BeanGuiEvento> visualizzaListaEventi(ArrayList<BeanGuiEvento> listGui) {
         OpeEvento ope = new OpeEvento();
-        try
-        {
-            ArrayList<Evento> list = ope.visualizzaElenco();
-            for (Evento eve : list)
-            {
+        ArrayList<Evento> list;
+        try {
+            list = ope.visualizzaElenco();
+            for (Evento eve : list) {
                 BeanGuiEvento eveGui = new BeanGuiEvento();
-                eveGui = it.seerp.application.conversioni.Conversione.conversioneEvento(eve, eveGui);
+                eveGui = Conversione.conversioneEvento(eve, eveGui);
                 listGui.add(eveGui);
             }
-        }
-        catch (SQLException se)
-        {
-            System.out.println("SQL Exception:");
-            while (se != null)
-            {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-                se = se.getNextException();
-            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
         }
         return listGui;
     }
@@ -95,54 +50,36 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento>
      * @param list
      * lista di tutti gli eventi
      * @return Bean Gui dell'evento
-   
-
-    public BeanGuiEvento visualizzaDettagli(JTextField id, BeanGuiEvento gui) throws DatiErrati
-    {
+     */
+    public BeanGuiEvento visualizzaDettagli(JTextField id, BeanGuiEvento gui) throws DatiErrati {
         OpeEvento ope = new OpeEvento();
-        try
-        {
+        try {
             Evento eve = ope.visualizza(Integer.parseInt(id.getText()));
-            it.seerp.application.conversioni.Conversione.conversioneEvento(eve, gui);
-        }
-        catch (SQLException se)
-        {
-            System.out.println("SQL Exception:");
-            while (se != null)
-            {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-                se = se.getNextException();
-            }
+            gui = Conversione.conversioneEvento(eve, gui);
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
         }
         return gui;
     }
 
-     /**
+    /**
      * Metodo che permette la gestione delle notifiche
      * @param beanGuiEventi
      * Bean Gui dell'evento da visualizzare
-
-
-    public void notificaEventi(BeanGuiEvento beanGui)
-    {
+     */
+    public void notificaEventi(BeanGuiEvento beanGui) {
         OpeEvento ope = new OpeEvento();
-        Evento eve = it.seerp.application.conversioni.Conversione.conversioneEvento(beanGui);
-        try
-        {
+        try {
+            Evento eve = Conversione.conversioneEvento(beanGui);
             ope.notificaEvento(eve);
-        }
-        catch (SQLException se)
-        {
-            System.out.println("SQL Exception:");
-            while (se != null)
-            {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-                se = se.getNextException();
-            }
+            JOptionPane.showMessageDialog(null, "Notifica creata con successo");
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
     }
 
@@ -154,62 +91,22 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento>
      * in caso di inserimento di dati errati
      * @throws it.seerp.application.Exception.DatiDuplicati
      * nel caso in cui esista l'evento che si tenta di inserire
-
-
-    public void inserimento(BeanGuiEvento beanGui) throws DatiErrati, DatiDuplicati
-    {
+     */
+    public void inserimento(BeanGuiEvento beanGui) throws DatiErrati, DatiDuplicati {
         OpeEvento ope = new OpeEvento();
-        Evento eve = it.seerp.application.conversioni.Conversione.conversioneEvento(beanGui);
-        try
-        {
-            //ope.inserimento(eve);
-        }
-        catch (SQLException se)
-        {
-            System.out.println("SQL Exception:");
-            while (se != null)
-            {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-                se = se.getNextException();
-            }
+        try {
+            Evento eve = Conversione.conversioneEvento(beanGui);
+            ope.inserimento(eve);
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
     }
 
-    public ArrayList<BeanGuiEvento> visualizzaListaEventi(ArrayList<BeanGuiEvento> listGui) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public BeanGuiEvento visualizzaDettagli(JTextField id, BeanGuiEvento gui) throws DatiErrati {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public void notificaEventi(BeanGuiEvento beanGuiEventi) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public BeanGuiEvento modifica(BeanGuiEvento beanGuiEventi) throws DatiErrati {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public ArrayList<BeanGuiEvento> ricercaPerTema(JTextField tema, ArrayList<BeanGuiEvento> list) throws DatiErrati {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public ArrayList<BeanGuiEvento> ricercaPerNome(JTextField nome, ArrayList<BeanGuiEvento> list) throws DatiErrati, RicercaFallita {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public ArrayList<BeanGuiEvento> ricercaPerGiorno(JTextField giorno, ArrayList<BeanGuiEvento> list) throws DatiErrati, RicercaFallita {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public void cancellaEvento(BeanGuiEvento beanGuiEventi) throws CancellazioneFallita {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-      /**
+    /**
      * Metodo che permette la modifica di un evento
      * @param beanGuiEventi
      * Bean Gui dell'evento da modificare
@@ -217,66 +114,46 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento>
      * Bean Gui dell'evento modificato
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si inseriscano dati errati
-
-
-    public BeanGuiEvento modifica(BeanGuiEvento beanGui) throws DatiErrati
-    {
+     */
+    public BeanGuiEvento modifica(BeanGuiEvento beanGui) throws DatiErrati {
         OpeEvento a = new OpeEvento();
-        Evento eve = it.seerp.application.conversioni.Conversione.conversioneEvento(beanGui);
-
-        try
-        {
+        try {
+            Evento eve = Conversione.conversioneEvento(beanGui);
             eve = a.modifica(eve);
-            beanGui = it.seerp.application.conversioni.Conversione.conversioneEvento(eve, beanGui);
-        }
-        catch (SQLException se)
-        {
-            System.out.println("SQL Exception:");
-            while (se != null)
-            {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-                se = se.getNextException();
-            }
+            beanGui = Conversione.conversioneEvento(eve, beanGui);
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
         return beanGui;
     }
 
-     /**
+    /**
      * Metodo che permette la ricerca di un evento
      * @param tema
      * tema dell'evento da ricercare
      * @para list
-      * lista di tutti gli eventi
+     * lista di tutti gli eventi
      * @return la lista degli eventi che corrispondono ai criteri di ricerca
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si inseriscano dati errati
-
-
-    public ArrayList<BeanGuiEvento> ricercaPerTema(JTextField tema, ArrayList<BeanGuiEvento> listGui) throws DatiErrati
-    {
+     */
+    public ArrayList<BeanGuiEvento> ricercaPerTema(JTextField tema, ArrayList<BeanGuiEvento> listGui) throws DatiErrati {
         OpeEvento ope = new OpeEvento();
-        try
-        {
+        try {
             ArrayList<Evento> list = ope.ricercaPerTema(tema.getText());
-            for (Evento eve : list)
-            {
+            for (Evento eve : list) {
                 BeanGuiEvento eveGui = new BeanGuiEvento();
-                eveGui = it.seerp.application.conversioni.Conversione.conversioneEvento(eve, eveGui);
+                eveGui = Conversione.conversioneEvento(eve, eveGui);
                 listGui.add(eveGui);
             }
-        }
-        catch (SQLException se)
-        {
-            System.out.println("SQL Exception:");
-            while (se != null)
-            {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-                se = se.getNextException();
-            }
+
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
         }
         return listGui;
     }
@@ -292,31 +169,20 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento>
      * nel caso in cui si inseriscano dati errati
      * @throws it.seerp.application.Exception.RicercaFallita
      * nel caso in cui la ricerca non produca risultati
-
-
-    public ArrayList<BeanGuiEvento> ricercaPerNome(JTextField nome, ArrayList<BeanGuiEvento> listGui) throws DatiErrati, RicercaFallita
-    {
+     */
+    public ArrayList<BeanGuiEvento> ricercaPerNome(JTextField nome, ArrayList<BeanGuiEvento> listGui) throws DatiErrati, RicercaFallita {
         OpeEvento ope = new OpeEvento();
-        try
-        {
+        try {
             ArrayList<Evento> list = ope.ricercaEvento(nome.getText());
-            for (Evento eve : list)
-            {
+            for (Evento eve : list) {
                 BeanGuiEvento eveGui = new BeanGuiEvento();
-                eveGui = it.seerp.application.conversioni.Conversione.conversioneEvento(eve, eveGui);
+                eveGui = Conversione.conversioneEvento(eve, eveGui);
                 listGui.add(eveGui);
             }
-        }
-        catch (SQLException se)
-        {
-            System.out.println("SQL Exception:");
-            while (se != null)
-            {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-                se = se.getNextException();
-            }
+
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
         }
         return listGui;
     }
@@ -332,31 +198,20 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento>
      * nel caso in cui si inseriscano dati errati
      * @throws it.seerp.application.Exception.RicercaFallita
      * nel caso in cui la ricerca non produca risultati
-
-
-    public ArrayList<BeanGuiEvento> ricercaPerGiorno(JTextField giorno, ArrayList<BeanGuiEvento> listGui) throws DatiErrati, RicercaFallita
-    {
+     */
+    public ArrayList<BeanGuiEvento> ricercaPerGiorno(JTextField giorno, ArrayList<BeanGuiEvento> listGui) throws DatiErrati, RicercaFallita {
         OpeEvento ope = new OpeEvento();
-        try
-        {
+        try {
             ArrayList<Evento> list = ope.ricercaPerGiorno(giorno.getText());
-            for (Evento eve : list)
-            {
+            for (Evento eve : list) {
                 BeanGuiEvento eveGui = new BeanGuiEvento();
-                eveGui = it.seerp.application.conversioni.Conversione.conversioneEvento(eve, eveGui);
+                eveGui = Conversione.conversioneEvento(eve, eveGui);
                 listGui.add(eveGui);
             }
-        }
-        catch (SQLException se)
-        {
-            System.out.println("SQL Exception:");
-            while (se != null)
-            {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-                se = se.getNextException();
-            }
+
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
         }
         return listGui;
     }
@@ -369,26 +224,18 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento>
      * nel caso in cui il sistema fallisca nell'eliminazione dell'evento
      * @throws it.seerp.application.Exception.RicercaFallita
      * nel caso in cui la ricerca non produca risultati
-
-
-    public void cancellaEvento(BeanGuiEvento beanGui) throws CancellazioneFallita
-    {
+     */
+    public void cancellaEvento(BeanGuiEvento beanGui) throws CancellazioneFallita {
         OpeEvento ope = new OpeEvento();
-        Evento eve = it.seerp.application.conversioni.Conversione.conversioneEvento(beanGui);
-        try
-        {
+        try {
+            Evento eve = Conversione.conversioneEvento(beanGui);
             ope.cancella(eve);
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
-        catch (SQLException se)
-        {
-            System.out.println("SQL Exception:");
-            while (se != null)
-            {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-                se = se.getNextException();
-            }
-        }
-    }*/
+    }
 }
