@@ -5,7 +5,7 @@
 
 package it.seerp.Gui.tabella;
 
-import it.seerp.application.applicazione.AppGestioneExtraAzienda;
+
 import it.seerp.storage.ejb.Fornitore;
 import java.sql.SQLException;
 import java.util.Iterator;
