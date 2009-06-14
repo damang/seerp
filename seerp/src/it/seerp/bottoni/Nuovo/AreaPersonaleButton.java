@@ -26,7 +26,6 @@ public class AreaPersonaleButton extends ObserverButton implements CommandInterf
     private JPanel menu;
     AreaPersonalePanel panel;
 
-
     /**
      *
      * @param gruppoFinestreUpdate
@@ -35,9 +34,7 @@ public class AreaPersonaleButton extends ObserverButton implements CommandInterf
     public AreaPersonaleButton(JTabbedPane pan, JPanel menu, ActionListener act) {
         this.tabbedPane = pan;
         this.menu = menu;
-   
         this.panel = new AreaPersonalePanel();
-
         this.addActionListener(act);
         panel.register(this);
     }
@@ -59,7 +56,7 @@ public class AreaPersonaleButton extends ObserverButton implements CommandInterf
             this.tabbedPane.setTabComponentAt(this.tabbedPane.getTabCount() - 1, button);
             this.tabbedPane.setSelectedComponent(panel);
             panel.setVisible(true);
-         //   menu.setVisible(true);
+
             panel.repaint();
 
         }
