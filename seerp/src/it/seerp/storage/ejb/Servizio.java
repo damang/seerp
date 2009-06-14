@@ -26,7 +26,7 @@ public class Servizio {
     public Servizio()
    {}
 
-    public Servizio(Integer idServizio, String descrizione, Boolean disponibilita, Integer quantita, String tipo, Double prezzo, Integer iva, String note, ArrayList<ServizioAssociato> listServiAssociati) {
+    public Servizio(Integer idServizio, String descrizione, Boolean disponibilita, Integer quantita, String tipo, Double prezzo, Integer iva, String note) {
         this.idServizio = idServizio;
         this.descrizione = descrizione;
         this.disponibilita = disponibilita;
@@ -35,7 +35,7 @@ public class Servizio {
         this.prezzo = prezzo;
         this.iva = iva;
         this.note = note;
-        this.listServiAssociati = listServiAssociati;
+        this.listServiAssociati =new ArrayList<ServizioAssociato>();
     }
 
   
