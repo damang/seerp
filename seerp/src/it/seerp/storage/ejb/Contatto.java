@@ -13,12 +13,7 @@ import java.util.ArrayList;
  */
 public class Contatto extends ExtraAzienda {
 
-    public Contatto(Integer idUtente, String username, String password, String città, String ruol, String provincia, String telefono, String cap, String email, String ruolo, String note, Boolean v, Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva, String fax, Integer idContatto, Integer feedback) {
-        super(idUtente, username, password, città, ruol, provincia, telefono, cap, email, ruolo, note, v, idExtraAzienda, cognome, nome, ragioneSociale, pIva, fax);
-        this.idContatto = idContatto;
-        this.feedback = feedback;
-    }
-        /**
+          /**
      * costruttore
      * @param idUtente
      * @param username
@@ -43,14 +38,11 @@ public class Contatto extends ExtraAzienda {
      * @param feedback
      */
 
-
-
-
-
-
-
-
-
+    public Contatto(Integer idUtente, String username, String password, String città, String ruol, String provincia, String telefono, String cap, String email, String ruolo, String note, Boolean v, Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva, String fax, Integer idContatto, Integer feedback) {
+        super(idUtente, username, password, città, ruol, provincia, telefono, cap, email, ruolo, note, v, idExtraAzienda, cognome, nome, ragioneSociale, pIva, fax);
+        this.idContatto = idContatto;
+        this.feedback = feedback;
+    }
     private Integer idContatto;
     private Integer feedback;
     
