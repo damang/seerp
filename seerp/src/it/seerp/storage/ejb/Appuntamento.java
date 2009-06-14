@@ -2,6 +2,7 @@ package it.seerp.storage.ejb;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.GregorianCalendar;
 
 /**
  * classe che gestisce gli appuntamenti
@@ -9,8 +10,8 @@ import java.sql.Time;
  */
 public class Appuntamento {
 
-    private Date data;
-    private Time ora;
+    private GregorianCalendar data;
+    private GregorianCalendar ora;
     private Integer idAppuntamento;
     private String note;
     private Dipendente dipendente;
@@ -25,7 +26,7 @@ public class Appuntamento {
      * @param note
      * @param notifica
      */
-    public Appuntamento(Date data, Time ora, Integer idAppuntamento, String note, Boolean notifica) {
+    public Appuntamento(GregorianCalendar data, GregorianCalendar ora, Integer idAppuntamento, String note, Boolean notifica) {
         this.data = data;
         this.ora = ora;
         this.idAppuntamento = idAppuntamento;
@@ -102,7 +103,7 @@ public class Appuntamento {
      * il metodo che restituisce la data dell'appuntamento
      * @return data dell'appuntamento
      */
-    public Date getData() {
+    public GregorianCalendar getData() {
         return data;
     }
 
@@ -110,7 +111,7 @@ public class Appuntamento {
      *  il metodo che setta la data di un appuntamento
      * @param data data dell'appuntamento
      */
-    public void setData(Date data) {
+    public void setData(GregorianCalendar data) {
         this.data = data;
     }
 
@@ -134,7 +135,7 @@ public class Appuntamento {
      * il metodo che restituisce l'ora dell'appuntamento
      * @return: ora dell'appuntamento
      */
-    public Time getOra() {
+    public GregorianCalendar getOra() {
         return ora;
     }
 
@@ -142,7 +143,7 @@ public class Appuntamento {
      * il metodo che setta l'ora dell'appuntamento
      * @param ora l'ora dell'appuntamento
      */
-    public void setOra(Time ora) {
+    public void setOra(GregorianCalendar ora) {
         this.ora = ora;
     }
 }

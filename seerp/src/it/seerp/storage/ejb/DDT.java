@@ -2,6 +2,7 @@ package it.seerp.storage.ejb;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 /**
  * la classe gestisce le informazioni sui documenti di trasporto
@@ -11,7 +12,7 @@ public class DDT {
 
     private String merce;
     private Integer quantita;
-    private Date data;
+    private GregorianCalendar data;
     private Integer idDDT;
     private Integer numero;
     private String note;
@@ -27,7 +28,7 @@ public class DDT {
      * @param numero
      * @param note
      */
-    public DDT(String merce, Integer quantita, Date data, Integer idDDT, Integer numero, String note) {
+    public DDT(String merce, Integer quantita, GregorianCalendar data, Integer idDDT, Integer numero, String note) {
         this.merce = merce;
         this.quantita = quantita;
         this.data = data;
@@ -74,7 +75,7 @@ public class DDT {
      *   metodo che restituisce la data del DDT
      * @return: la data del DDT
      */
-    public Date getData() {
+    public GregorianCalendar getData() {
         return data;
     }
 
@@ -82,7 +83,7 @@ public class DDT {
      * metodo che  setta la data del DDT
      * @param data la data del DDT
      */
-    public void setData(Date data) {
+    public void setDat(GregorianCalendar data) {
         this.data = data;
     }
 

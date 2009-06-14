@@ -2,6 +2,8 @@ package it.seerp.storage.ejb;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
+
 
 /**
  * classe gstisce le informazioni sulle fatture
@@ -9,7 +11,7 @@ import java.util.ArrayList;
  */
 public class Fattura {
 
-    private Date data;
+    private GregorianCalendar data;
     private Integer idFattura;
     private Double imponibile;
     private Double importo;
@@ -30,7 +32,7 @@ public class Fattura {
      * @param tipo
      * @param note
      */
-    public Fattura(Date data, Integer idFattura, Double imponibile, Double importo, Double iva, String tipo, String note) {
+    public Fattura(GregorianCalendar data, Integer idFattura, Double imponibile, Double importo, Double iva, String tipo, String note) {
         this.data = data;
         this.idFattura = idFattura;
         this.imponibile = imponibile;
@@ -127,7 +129,7 @@ public class Fattura {
      * metodo che restituisce la data della fattura
      * @return la data della fattura
      */
-    public Date getData() {
+    public GregorianCalendar getData() {
         return data;
     }
 
@@ -135,7 +137,7 @@ public class Fattura {
      * metodo che setta la data della fattura
      * @param data la data della fattura
      */
-    public void setData(Date data) {
+    public void setData(GregorianCalendar data) {
         this.data = data;
     }
 
