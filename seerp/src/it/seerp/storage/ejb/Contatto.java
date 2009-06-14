@@ -2,10 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package it.seerp.storage.ejb;
-
-import java.util.ArrayList;
 
 /**
  *
@@ -13,7 +10,10 @@ import java.util.ArrayList;
  */
 public class Contatto extends ExtraAzienda {
 
-          /**
+    private Integer idContatto;
+    private Integer feedback;
+
+    /**
      * costruttore
      * @param idUtente
      * @param username
@@ -37,16 +37,12 @@ public class Contatto extends ExtraAzienda {
      * @param idContatto
      * @param feedback
      */
-
     public Contatto(Integer idUtente, String username, String password, String città, String ruol, String provincia, String telefono, String cap, String email, String ruolo, String note, Boolean v, Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva, String fax, Integer idContatto, Integer feedback) {
         super(idUtente, username, password, città, ruol, provincia, telefono, cap, email, ruolo, note, v, idExtraAzienda, cognome, nome, ragioneSociale, pIva, fax);
         this.idContatto = idContatto;
         this.feedback = feedback;
     }
-    private Integer idContatto;
-    private Integer feedback;
-    
- 
+
     /**
      * restituisce il feedback associato al Contatto
      * @return un intero che rappresenti il feedback
@@ -78,6 +74,4 @@ public class Contatto extends ExtraAzienda {
     public void setIdContatto(Integer idContatto) {
         this.idContatto = idContatto;
     }
-
-
 }
