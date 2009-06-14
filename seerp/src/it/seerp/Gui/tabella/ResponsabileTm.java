@@ -5,7 +5,6 @@
 
 package it.seerp.Gui.tabella;
 
-import it.seerp.application.applicazione.AppGestionePersonale;
 import it.seerp.storage.ejb.Responsabile;
 import java.sql.SQLException;
 import java.util.Iterator;
@@ -31,7 +30,7 @@ public class ResponsabileTm extends Generica <Responsabile>{
         super.setColumnIdentifiers(list);
         super.setColumnCount(6);
 
-        AppGestionePersonale op = new AppGestionePersonale();
+       // AppGestionePersonale op = new AppGestionePersonale();
         /*Iterator<Responsabile> it = op.visualizzaResponsabili().iterator();
         while (it.hasNext()) {
             this.addNewData(it.next());

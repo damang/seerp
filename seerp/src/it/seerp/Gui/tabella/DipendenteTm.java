@@ -5,7 +5,7 @@
 
 package it.seerp.Gui.tabella;
 
-import it.seerp.application.applicazione.AppGestionePersonale;
+
 import it.seerp.storage.ejb.Cliente;
 import it.seerp.storage.ejb.Dipendente;
 import it.seerp.storage.ejb.Responsabile;

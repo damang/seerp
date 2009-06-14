@@ -5,13 +5,8 @@
 
 package it.seerp.Gui.tabella;
 
-import it.seerp.application.applicazione.AppGestioneExtraAzienda;
-import it.seerp.application.applicazione.AppGestioneUtente;
-import it.seerp.application.bean.BeanGuiCliente;
-import it.seerp.application.bean.BeanGuiUtente;
 import it.seerp.storage.ejb.Cliente;
 import java.sql.SQLException;
-import java.util.Iterator;
 import java.util.Vector;
 import javax.swing.JTable;
 
@@ -34,7 +29,7 @@ public class ClienteTm extends Generica <Cliente>{
         super.setColumnIdentifiers(list);
         super.setColumnCount(4);
 
-        AppGestioneExtraAzienda op = new AppGestioneExtraAzienda();
+       // AppGestioneExtraAzienda op = new AppGestioneExtraAzienda();
        /* Iterator<Cliente> it = op.visualizzaClienti().iterator();
         while (it.hasNext()) {
             this.addNewData(it.next());
@@ -57,7 +52,7 @@ public class ClienteTm extends Generica <Cliente>{
         super.setColumnIdentifiers(list);
         super.setColumnCount(4);
 
-        AppGestioneExtraAzienda op = new AppGestioneExtraAzienda();
+       // AppGestioneExtraAzienda op = new AppGestioneExtraAzienda();
        /* Iterator<Cliente> it = op.visualizzaClienti().iterator();
         while (it.hasNext()) {
             this.addNewData(it.next());
