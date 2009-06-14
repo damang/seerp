@@ -6,12 +6,12 @@ import org.jdesktop.swingx.JXPanel;
 
 /**
  * La classe che sviluppa i meccanismi di validazione dei campi di testo.
- * Tutto quello che fa è controllare che il campo immesso sia alfabetico
+ * Tutto quello che fa è controllare che il campo immesso sia numerico
  * @author Tommaso Cattolico
  */
-public class NotAlphabeticValidator extends AbstractValidator {
+public class NotNumericValidator extends AbstractValidator {
 
-    public NotAlphabeticValidator(JXPanel parent, JTextField c, String message) {
+    public NotNumericValidator(JXPanel parent, JTextField c, String message) {
         super(parent, c, message);
     }
 

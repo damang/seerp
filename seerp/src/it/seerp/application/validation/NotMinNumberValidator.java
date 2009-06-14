@@ -6,21 +6,21 @@ import org.jdesktop.swingx.JXPanel;
 
 /**
  * La classe che sviluppa i meccanismi di validazione dei campi di testo.
- * Tutto quello che fa è controllare che la lunghezza minima del campo sia giusta.
+ * Tutto quello che fa è controllare che l'email sia in un formato valido
  * @author Tommaso Cattolico
  */
-public class NotMaxLengthValidator extends AbstractValidator {
+public class NotMinNumberValidator extends AbstractValidator {
 
-    private int length;
+    int number;
 
-    public NotMaxLengthValidator(JXPanel parent, JTextField c, String message, int length) {
+    public NotMinNumberValidator(JXPanel parent, JTextField c, String message, int n) {
         super(parent, c, message);
-        this.length = length;
+        number = n;
     }
 
     @Override
     protected boolean validationCriteria(JComponent c) {
-        if (((JTextField) c).getText().length() > length) {
+        if (Integer.parseInt(((JTextField) c).getText()) < number) {
             return false;
         }
         return true;

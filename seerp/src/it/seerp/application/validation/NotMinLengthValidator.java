@@ -6,7 +6,7 @@ import org.jdesktop.swingx.JXPanel;
 
 /**
  * La classe che sviluppa i meccanismi di validazione dei campi di testo.
- * Tutto quello che la lunghezza minima del campo sia giusta.
+ * Tutto quello che fa è controllare che la lunghezza minima del campo sia giusta.
  * @author Tommaso Cattolico
  */
 public class NotMinLengthValidator extends AbstractValidator {
