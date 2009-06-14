@@ -2,7 +2,6 @@ package it.seerp.storage.Operazioni;
 
 import com.mysql.jdbc.PreparedStatement;
 
-import it.seerp.storage.ejb.Personale;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import it.seerp.storage.Exception.DatiDuplicatiEx;
@@ -23,14 +22,18 @@ public class OpResponsabile extends OpeUtente {
 
     Connection con = null;
 
+    /**
+     * costruttore per la classe
+     * @throws java.sql.SQLException
+     */
     public OpResponsabile() throws SQLException {
         super();
         con = ConnectionPool.getConnection();
     }
 
     /** Metodo che permette la visualizzazione
-     * della lista del Personale
-     * @return ArrayList contenente la lista del personale
+     * della lista dei responsabili
+     * @return ArrayList contenente la lista dei responsabili
      * @throws java.sql.SQLException*/
     public ArrayList<Responsabile> elencaResponsabile() throws SQLException {
 
@@ -39,7 +42,7 @@ public class OpResponsabile extends OpeUtente {
         ResultSet rs = null;
 
         try {
-            String sql = "SELECT * FROM Responsabile";
+            String sql = "SELECT * FROM Responsabile where Visible='true'";
             stmt = (PreparedStatement) con.prepareStatement(sql);
             // Execute the query
             rs = stmt.executeQuery(sql);
@@ -48,7 +51,7 @@ public class OpResponsabile extends OpeUtente {
             while (rs.next()) {
                 Responsabile responsabile = new Responsabile(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
                         rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getInt(11), rs.getString(12), rs.getString(13),
-                        rs.getString(14), rs.getString(15), rs.getBoolean(16),rs.getInt(17));
+                        rs.getString(14), rs.getString(15), rs.getBoolean(16), rs.getInt(17));
                 list.add(responsabile);
             }
         } catch (SQLException se) {
@@ -69,19 +72,15 @@ public class OpResponsabile extends OpeUtente {
         return list;
     }
 
-    /** Metodo che permette la ricerca di un membro del personale
-     * @param cognome
-     * cognome del membro del personale da ricercare
-     * @param ruolo
-     * ruolo che il membro del personale ricopre all'interno dell'azienda
-     * @return la lista dei membri del personale che corrispondono ai criteri di ricerca
+    /** Metodo che permette la ricerca di un membro dei responsabili
+     * @return la lista dei membri dei responsabili che corrispondono ai criteri di ricerca
      * @throws java.sql.SQLException*/
     public ArrayList<Responsabile> ricercaResponsabile() throws SQLException {
-         ArrayList<Responsabile> list=this.elencaResponsabile();
+        ArrayList<Responsabile> list = this.elencaResponsabile();
         return list;
     }
 
-    /** Metodo che permette di eliminare un membro del personale già esistente
+    /** Metodo che permette di eliminare un membro dei responsabili già esistente
      * @param user
      * user dell'utente da eliminare
      * @throws java.sql.SQLException*/
@@ -141,22 +140,24 @@ public class OpResponsabile extends OpeUtente {
 
     }
 
-    /** Metodo per inserire un nuovo membro del personale
+    /** Metodo per inserire un nuovo responsabile
      * @param user
      * user dell'utente da inserire
-     * @throws java.sql.SQLException*/
-    public void inserisci(Responsabile user) throws SQLException,DatiDuplicatiEx {
+     * @throws java.sql.SQLException
+     * @throws DatiDuplicatiEx
+     */
+    public void inserisci(Responsabile user) throws SQLException, DatiDuplicatiEx {
 
 
         PreparedStatement stmt = null;
         try {
 
             Statement stmt1 = con.createStatement();
-            String sqlTest = "SELECT * FROM Responsabile WHERE nome='" + user.getCodiceFiscale() + "' ";
+            String sqlTest = "SELECT * FROM Responsabile WHERE codiceFiscale='" + user.getCodiceFiscale() + "' ";
             ResultSet rs = stmt1.executeQuery(sqlTest);
 
             if (rs.next()) {
-                throw new DatiDuplicatiEx("evento già esistente nel database");
+                throw new DatiDuplicatiEx("responsabile già esistente nel database");
             } else {
                 String sql = "INSERT INTO Responsabile (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
@@ -194,11 +195,14 @@ public class OpResponsabile extends OpeUtente {
         }
     }
 
-    /** Metodo che permette la modifica di un membro del personale presente nel sistema
+    /** Metodo che permette la modifica di un membro dei responsabili presente nel sistema
      * @param user
-     * user del membro del personale da modificare
+     * user del membro dei responsabili da modificare
      * @return lo stesso oggetto modificato
-     * @throws java.sql.SQLException*/
+     * @throws java.sql.SQLException
+     * @throws DatiErratiEx
+     * @throws DatiDuplicatiEx
+     */
     public Responsabile modifica(Responsabile user) throws SQLException, DatiErratiEx, DatiDuplicatiEx {
 
         PreparedStatement stmt = null;
@@ -211,7 +215,7 @@ public class OpResponsabile extends OpeUtente {
             ResultSet rs = stmt1.executeQuery(sqlTest);
 
             if (rs.next()) {
-                throw new DatiDuplicatiEx("evento già esistente nel database");
+                throw new DatiDuplicatiEx("responsabile già esistente nel database");
             } else {
 
                 // Create a statement
@@ -256,10 +260,12 @@ public class OpResponsabile extends OpeUtente {
 
     }
 
-    /** Metodo che permette la visualizzazione dei dettagli di un membro del personale
+    /** Metodo che permette la visualizzazione dei dettagli di un membro dei responsabili
      * @param id
-     * id del membro del personale
-     * @return il bean con i dettagli del membro del personale*/
+     * id del membro dei responsabili
+     * @return il bean con i dettagli del membro del personale
+     * @throws SQLException
+     */
     public Responsabile visualizzaDati(Integer id) throws SQLException {
         Responsabile responsabile = null;
         PreparedStatement stmt = null;
@@ -278,7 +284,7 @@ public class OpResponsabile extends OpeUtente {
             while (rs.next()) {
                 responsabile = new Responsabile(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
                         rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getInt(11), rs.getString(12), rs.getString(13),
-                        rs.getString(14), rs.getString(15), rs.getBoolean(16),rs.getInt(17));
+                        rs.getString(14), rs.getString(15), rs.getBoolean(16), rs.getInt(17));
 
                 PreparedStatement stmt1;
                 String sql2 = "Select nome From Ruolo,Responsabile where idRuolo=ruolo and idResponsabile = ?";
@@ -310,6 +316,12 @@ public class OpResponsabile extends OpeUtente {
 
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     * @throws java.sql.SQLException
+     */
     public ArrayList<Ruolo> getRuoloPersonale(Integer id) throws SQLException {
 
         ArrayList<Ruolo> list = new ArrayList<Ruolo>();
