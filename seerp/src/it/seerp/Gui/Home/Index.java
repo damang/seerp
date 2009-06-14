@@ -11,11 +11,8 @@ import it.seerp.Gui.GestioneContratti.GestioneContratti;
 import it.seerp.Gui.GestioneServizi.GestioneServizi;
 import it.seerp.Gui.frame.ObservableJPanel;
 import it.seerp.Gui.frame.ObservervableJTabbedPanel;
-import it.seerp.bottoni.Nuovo.AreaUtenteButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -397,7 +394,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.DEFAULT_SIZE, 1693, Short.MAX_VALUE)
+                        .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.DEFAULT_SIZE, 1894, Short.MAX_VALUE)
                         .addGap(10, 10, 10))))
         );
         layout.setVerticalGroup(
@@ -456,12 +453,13 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                 this.menuAreaPersonale2.setVisible(false);
                 this.menuServizi1.setVisible(false);
                 this.menuContratti1.setVisible(true);
-            //this.menuUtente1.setPannello((AreaUtentePanel)p);
+                this.menuContratti1.setPannello((GestioneContratti)p);
             } else if (p.getClass().equals(GestioneServizi.class)) {
                 this.menuContratti1.setVisible(false);
                 this.menuAreaPersonale2.setVisible(false);
                 this.menuUtente1.setVisible(false);
                 this.menuServizi1.setVisible(true);
+                this.menuServizi1.setPannello((GestioneServizi)p);
             } else if (p.getClass().equals(AreaPersonalePanel.class)) {
                 this.menuContratti1.setVisible(false);
                 this.menuUtente1.setVisible(false);
@@ -470,7 +468,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             }}
             else
             {
-            this.menuContratti1.setVisible(false);
+                this.menuContratti1.setVisible(false);
                 this.menuAreaPersonale2.setVisible(false);
                 this.menuUtente1.setVisible(false);
                 this.menuServizi1.setVisible(false);}
