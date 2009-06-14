@@ -1,6 +1,7 @@
 package it.seerp.storage.ejb;
 
 import java.sql.Date;
+import java.util.GregorianCalendar;
 
 /**
  * classe che gestisce le informazioni sui pagamenti
@@ -9,7 +10,7 @@ import java.sql.Date;
 public class Pagamento {
 
     private String note;
-    private Date dataScadenza;
+    private GregorianCalendar dataScadenza;
     private String descrizione;
     private Double importo;
     private String modalitaPagamento;
@@ -40,7 +41,7 @@ public class Pagamento {
      */
 
    
-    public Pagamento(String note, Date dataScadenza, String descrizione, Double importo, String modalitaPagamento, String stato, String altreInformazioni, Integer idPagamento) {
+    public Pagamento(String note, GregorianCalendar dataScadenza, String descrizione, Double importo, String modalitaPagamento, String stato, String altreInformazioni, Integer idPagamento) {
         this.note = note;
         this.dataScadenza = dataScadenza;
         this.descrizione = descrizione;
@@ -120,7 +121,7 @@ public class Pagamento {
      *  metodo che restituisce la scadenza del pagamento
      * @return dataScadenza la data di scadenza del pagamento
      */
-    public Date getDataScadenza() {
+    public GregorianCalendar getDataScadenza() {
         return dataScadenza;
     }
 
@@ -128,7 +129,7 @@ public class Pagamento {
      *  metodo che setta la data di scadenza del pagamento
      * @param dataScadenza la data di scadenza del pagamento
      */
-    public void setDataScadenza(Date dataScadenza) {
+    public void setDataScadenza(GregorianCalendar dataScadenza) {
         this.dataScadenza = dataScadenza;
     }
 
