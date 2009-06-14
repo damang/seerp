@@ -26,6 +26,17 @@ public class Servizio {
     public Servizio()
    {}
 
+    /**
+     *
+     * @param idServizio
+     * @param descrizione
+     * @param disponibilita
+     * @param quantita
+     * @param tipo
+     * @param prezzo
+     * @param iva
+     * @param note
+     */
     public Servizio(Integer idServizio, String descrizione, Boolean disponibilita, Integer quantita, String tipo, Double prezzo, Integer iva, String note) {
         this.idServizio = idServizio;
         this.descrizione = descrizione;
@@ -184,4 +195,22 @@ public class Servizio {
     public void addServizioAssociato(ServizioAssociato c) {
         listServiAssociati.add(c);
     }
+
+    /**
+     *
+     * @return
+     */
+    public Integer getIdServizio() {
+        return idServizio;
+    }
+
+    /**
+     * 
+     * @param idServizio
+     */
+    public void setIdServizio(Integer idServizio) {
+        this.idServizio = idServizio;
+    }
+
+
 }
