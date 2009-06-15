@@ -16,7 +16,7 @@ public class BeanGuiBanca {
     private JTextField agenzia;
     private JTextField abi;
     private JTextField cab;
-    private JTextField città;
+    private JTextField citta;
     private JTextField provincia;
     private JTextField indirizzo;
     private JTextField cap;
@@ -39,11 +39,11 @@ public class BeanGuiBanca {
      * @param importoInDare
      * @param importoInAvere
      */
-    public BeanGuiBanca(JTextField agenzia, JTextField abi, JTextField cab, JTextField città, JTextField provincia, JTextField indirizzo, JTextField cap, JTextField filiale, JTextField nazione, JTextField importoInDare, JTextField importoInAvere) {
+    public BeanGuiBanca(JTextField agenzia, JTextField abi, JTextField cab, JTextField citta, JTextField provincia, JTextField indirizzo, JTextField cap, JTextField filiale, JTextField nazione, JTextField importoInDare, JTextField importoInAvere) {
         this.agenzia = agenzia;
         this.abi = abi;
         this.cab = cab;
-        this.città = città;
+        this.citta = citta;
         this.provincia = provincia;
         this.indirizzo = indirizzo;
         this.cap = cap;
@@ -90,8 +90,8 @@ public class BeanGuiBanca {
      *  metodo che restituisce il campo contente la città della Banca
      * @return il campo città
      */
-    public JTextField getCittà() {
-        return città;
+    public JTextField getCitta() {
+        return citta;
     }
 
     /**
@@ -178,8 +178,8 @@ public class BeanGuiBanca {
      * metodo che setta il campo contenente la città della Banca
      * @param città che rapprensenta il campo città da inserire
      */
-    public void setCittà(JTextField città) {
-        this.città = città;
+    public void setCittà(JTextField citta) {
+        this.citta = citta;
     }
 
     /**

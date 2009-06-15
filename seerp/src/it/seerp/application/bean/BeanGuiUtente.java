@@ -19,7 +19,7 @@ public class BeanGuiUtente {
     private JTextField idUtenteTxt;
     private JTextField txtUsername;
     private JTextField txtPassword;
-    private JTextField txtCittà;
+    private JTextField txtCitta;
     private JTextField txtProvincia;
     private JTextField cap;
     private JTextField txtTelefono;
@@ -65,11 +65,11 @@ public class BeanGuiUtente {
      * @param Ruolo
      * @param visible
      */
-    public BeanGuiUtente(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField txtNotifica, JTextField tipo,JTextField visible) {
+    public BeanGuiUtente(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCitta, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField txtNotifica, JTextField tipo,JTextField visible) {
         this.idUtenteTxt = idUtenteTxt;
         this.txtUsername = txtUsername;
         this.txtPassword = txtPassword;
-        this.txtCittà = txtCittà;
+        this.txtCitta = txtCitta;
         this.txtProvincia = txtProvincia;
         this.txtTelefono = txtTelefono;
         this.txtEmail = txtEmail;
@@ -184,14 +184,14 @@ public class BeanGuiUtente {
      * @return
      * @throws Exception
      */
-    public JTextField getTxtCittà() throws Exception {
+    public JTextField getTxtCitta() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
             throw new Exception("Errore nella grafica!");
         }
         if (!valApha.shouldYieldFocus(grafica)) {
             throw new Exception("Errore nella grafica!");
         }
-        return txtCittà;
+        return txtCitta;
     }
 
     /**
@@ -279,11 +279,11 @@ public class BeanGuiUtente {
      *
      * @param ptxtCittà
      */
-    public void setTxtCittà(JTextField ptxtCittà) {
-        this.txtCittà = ptxtCittà;
-        val = new NotEmptyValidator(grafica, txtCittà, "Il campo non può essere vuoto.");
+    public void setTxtCitta(JTextField ptxtCitta) {
+        this.txtCitta = ptxtCitta;
+        val = new NotEmptyValidator(grafica, txtCitta, "Il campo non può essere vuoto.");
         grafica.setInputVerifier(val);
-        valApha = new NotAlphabeticValidator(grafica, txtCittà, "La stringa inserita deve essere alfabetica.");
+        valApha = new NotAlphabeticValidator(grafica, txtCitta, "La stringa inserita deve essere alfabetica.");
         grafica.setInputVerifier(valApha);
     }
 
