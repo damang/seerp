@@ -7,7 +7,9 @@ package it.seerp.bottoni.Nuovo;
 
 import configurazioni.CommandInterface;
 import it.seerp.Gui.Gestione.Ruoli.GestioneRuoli;
+import it.seerp.Gui.Home.Index;
 import it.seerp.Gui.InfoAzienda.InfoAzienda;
+import it.seerp.Gui.Menu.MenuInfoAzienda;
 import it.seerp.Gui.Menu.MenuRuoli;
 import it.seerp.Gui.command.ObserverButton;
 import java.awt.event.ActionListener;
@@ -22,16 +24,17 @@ import javax.swing.JTabbedPane;
 public class ButtonInfoAzienda  extends ObserverButton implements CommandInterface{
 
     protected JTabbedPane tabbedPane;
-    private MenuRuoli menu;
+    private MenuInfoAzienda menu;
     InfoAzienda panel;
     String s = "";
+
 
     /**
      *
      * @param gruppoFinestreUpdate
      * @param aThis
      */
-    public ButtonInfoAzienda(JTabbedPane pan, MenuRuoli menu, ActionListener act) throws SQLException {
+    public ButtonInfoAzienda(JTabbedPane pan, MenuInfoAzienda menu, ActionListener act) throws SQLException {
         this.tabbedPane = pan;
         this.menu = menu;
         //this.panel = new AreaUtentePanel(TIPO_UTENTE_CONST.CLIENTE);
