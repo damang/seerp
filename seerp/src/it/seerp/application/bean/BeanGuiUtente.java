@@ -25,15 +25,15 @@ public class BeanGuiUtente {
     private JTextField txtEmail;
     private JTextArea txtNote;
     private JTextField txtNotifica;
-    private JTextField ruolo;
+    private JTextField tipo;
     private JTextField visible;
-    private JXPanel grafica;
-    private NotEmptyValidator val;
-    private NotEqualLengthValidator valEqLen;
-    private NotMinLengthValidator valMinLen;
-    private NotMaxLengthValidator valMaxLen;
-    private EmailValidator valEma;
-    private NotAlphabeticValidator valApha;
+    protected JXPanel grafica;
+    protected NotEmptyValidator val;
+    protected NotEqualLengthValidator valEqLen;
+    protected NotMinLengthValidator valMinLen;
+    protected NotMaxLengthValidator valMaxLen;
+    protected EmailValidator valEma;
+    protected NotAlphabeticValidator valApha;
 
     /**
      * Costruttore a cui viene passato un componente grafico necessario alla
@@ -62,7 +62,7 @@ public class BeanGuiUtente {
      * @param txtNotifica
      * @param Ruolo
      */
-    public BeanGuiUtente(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField txtNotifica, JTextField Ruolo,JTextField visible) {
+    public BeanGuiUtente(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField txtNotifica, JTextField tipo,JTextField visible) {
         this.idUtenteTxt = idUtenteTxt;
         this.txtUsername = txtUsername;
         this.txtPassword = txtPassword;
@@ -72,7 +72,7 @@ public class BeanGuiUtente {
         this.txtEmail = txtEmail;
         this.txtNote = txtNote;
         this.txtNotifica = txtNotifica;
-        this.ruolo = Ruolo;
+        this.tipo = tipo;
         this.visible=visible;
     }
 
@@ -80,20 +80,20 @@ public class BeanGuiUtente {
      *
      * @return
      */
-    public JTextField getRuolo() throws Exception {
+    public JTextField getTipo() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
             throw new Exception("Errore nella grafica!");
         }
-        return ruolo;
+        return tipo;
     }
 
     /**
      *
      * @param pRuolo
      */
-    public void setRuolo(JTextField pruolo) {
-        this.ruolo = pruolo;
-        val = new NotEmptyValidator(grafica, ruolo, "Il campo non può essere vuoto.");
+    public void setTipo(JTextField ptipo) {
+        this.tipo = ptipo;
+        val = new NotEmptyValidator(grafica, tipo, "Il campo non può essere vuoto.");
         grafica.setInputVerifier(val);
     }
 
