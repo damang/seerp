@@ -93,7 +93,7 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
             stmt.setString(6, utente.getTelefono());
             stmt.setString(7, utente.getCap());
             stmt.setString(8, utente.getNote());
-            stmt.setString(9, utente.getRuolo());
+            stmt.setString(9, utente.getTipo());
             stmt.setBoolean(10, utente.getVisible());
 
             stmt.execute();
@@ -132,7 +132,7 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
             stmt.setString(6, bean.getTelefono());
             stmt.setString(7, bean.getCap());
             stmt.setString(8, bean.getNote());
-            stmt.setString(9, bean.getRuolo());
+            stmt.setString(9, bean.getTipo());
             stmt.setBoolean(10, bean.getVisible());
 
             stmt.execute();
