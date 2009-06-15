@@ -24,23 +24,26 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="aggiungiButtonServizi1" min="-2" pref="64" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="eiminaButtonServizi1" min="-2" pref="54" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+              <Component id="aggiungiButtonServizi1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="eiminaButtonServizi1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="modificaButtonServizi1" min="-2" pref="88" max="-2" attributes="0"/>
+              <Component id="modificaButtonServizi1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="29" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="aggiungiButtonServizi1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="eiminaButtonServizi1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="modificaButtonServizi1" alignment="3" min="-2" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                      <Component id="eiminaButtonServizi1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="modificaButtonServizi1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="aggiungiButtonServizi1" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -50,7 +53,10 @@
   <SubComponents>
     <Component class="it.seerp.Gui.Menu.AggiungiButtonServizi" name="aggiungiButtonServizi1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="aggiungiButtonServizi1"/>
+        <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/it/seerp/icone/32x32/add.png"/>
+        </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Aggiungi"/>
         <Property name="name" type="java.lang.String" value="aggiungiButtonServizi1" noResource="true"/>
       </Properties>
       <AuxValues>
@@ -59,7 +65,10 @@
     </Component>
     <Component class="it.seerp.Gui.Menu.EiminaButtonServizi" name="eiminaButtonServizi1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="eiminaButtonServizi1"/>
+        <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/it/seerp/icone/32x32/remove.png"/>
+        </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Elimina"/>
         <Property name="name" type="java.lang.String" value="eiminaButtonServizi1" noResource="true"/>
       </Properties>
       <AuxValues>
@@ -68,7 +77,10 @@
     </Component>
     <Component class="it.seerp.Gui.Menu.ModificaButtonServizi" name="modificaButtonServizi1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="modificaButtonServizi1"/>
+        <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/it/seerp/icone/32x32/blog_post_edit.png"/>
+        </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Modifica"/>
         <Property name="name" type="java.lang.String" value="modificaButtonServizi1" noResource="true"/>
       </Properties>
       <AuxValues>
