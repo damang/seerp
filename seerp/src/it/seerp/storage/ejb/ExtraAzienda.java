@@ -8,7 +8,6 @@ import java.util.ArrayList;
  */
 public class ExtraAzienda extends Utente {
 
-    private Integer idExtraAzienda;
     private String cognome;
     private String nome;
     private String ragioneSociale;
@@ -39,10 +38,9 @@ public class ExtraAzienda extends Utente {
      * @param v
      */
 
-    public ExtraAzienda(Integer idUtente, String username, String password, String città, String tipo,String provincia, String telefono,String cap, String email, String ruolo, String note, Boolean v, Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva, String fax) {
+    public ExtraAzienda(Integer idUtente, String username, String password, String città, String tipo,String provincia, String telefono,String cap, String email, String ruolo, String note, Boolean v, String cognome, String nome, String ragioneSociale, String pIva, String fax) {
         super(idUtente, username, password, città, provincia, telefono,cap, email, ruolo, note, v);
 
-        this.idExtraAzienda = idExtraAzienda;
         this.cognome = cognome;
         this.nome = nome;
         this.ragioneSociale = ragioneSociale;
@@ -103,13 +101,6 @@ public class ExtraAzienda extends Utente {
         return fax;
     }
 
-    /**
-     *restituisce il codice identificativo dell'ExtraAzienda
-     * @return un intero che rappresenta l'identificativo
-     */
-    public Integer getIdExtraAzienda() {
-        return idExtraAzienda;
-    }
 
     /**
      *restituisce il gnome dell'ExtraAzienda
@@ -159,14 +150,7 @@ public class ExtraAzienda extends Utente {
         this.fax = fax;
     }
 
-    /**
-     * setta il codice identificativo dell'ExtraAzienda
-     * @param idExtraAzienda di tipo intero
-     */
-    public void setIdExtraAzienda(Integer idExtraAzienda) {
-        this.idExtraAzienda = idExtraAzienda;
-    }
-
+   
     /**
      * setta il nome dell'ExtraAzienda
      * @param nome di tipo stringa
