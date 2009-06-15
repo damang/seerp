@@ -5,12 +5,11 @@ import it.seerp.application.Exception.DatiErrati;
 import it.seerp.application.bean.BeanGuiServizio;
 import it.seerp.application.conversioni.Conversione;
 import it.seerp.application.interfacce.GestioneServizi;
-import it.seerp.storage.Operazioni.OpeServizio;
+import it.seerp.storage.Operazioni.OpServizio;
 import it.seerp.storage.ejb.Servizio;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 /**
  * Classe del livello application riguardante la Gestione dei Servizi
@@ -23,8 +22,8 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio> {
      * @return ArrayList contenente i servizi
      */
     public ArrayList<BeanGuiServizio> elenca(ArrayList<BeanGuiServizio> listGui) {
-        OpeServizio ope = new OpeServizio();
         try {
+            OpServizio ope = new OpServizio();
             ArrayList<Servizio> list = ope.visualizzaElenco();
             for (Servizio serv : list) {
                 BeanGuiServizio servGui = new BeanGuiServizio();
@@ -43,18 +42,18 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio> {
 
     /**
      * Metodo che permette la ricerca di un servizio
-     * @param nome
-     * nome del servizio
+     * @param listGui
+     * Array List di bean gui da riempire coi dati che corrispondono ai criteri di ricerca
      * @return ArrayList con i servizi che corrispondono al nome inserito
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si immettano dati errati
      * @throws it.seerp.application.Exception.RicercaFallita
      * nel caso in cui la ricerca non produce risultati
      */
-    public ArrayList<BeanGuiServizio> ricerca(JTextField nome, ArrayList<BeanGuiServizio> listGui) throws DatiErrati {
-        OpeServizio ope = new OpeServizio();
+    public ArrayList<BeanGuiServizio> ricerca(ArrayList<BeanGuiServizio> listGui) throws DatiErrati {
         try {
-            ArrayList<Servizio> list = ope.ricercaPerNome(nome.getText());
+            OpServizio ope = new OpServizio();
+            ArrayList<Servizio> list = ope.ricerca();
             for (Servizio serv : list) {
                 BeanGuiServizio servGui = new BeanGuiServizio();
                 servGui = Conversione.conversioneServizio(serv, servGui);
@@ -78,10 +77,10 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio> {
      * nel caso in cui si immettano dati errati
      */
     public void inserisci(BeanGuiServizio beanGui) throws DatiErrati, DatiDuplicati {
-        OpeServizio a = new OpeServizio();
         try {
+            OpServizio ope = new OpServizio();
             Servizio serv = Conversione.conversioneServizio(beanGui);
-            a.inserimento(serv);
+            ope.inserimento(serv);
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
@@ -97,10 +96,10 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio> {
      * nome del servizio
      * @return Bean Gui del servizio da visualizzare
      */
-    public BeanGuiServizio visualizza(JTextField nome, BeanGuiServizio beanGui) {
-        OpeServizio ope = new OpeServizio();
+    public BeanGuiServizio visualizza(String nome, BeanGuiServizio beanGui) {
         try {
-            Servizio serv = ope.visualizza(Integer.parseInt(nome.getText()));
+            OpServizio ope = new OpServizio();
+            Servizio serv = ope.visualizza(Integer.parseInt(nome));
             beanGui = Conversione.conversioneServizio(serv, beanGui);
         } catch (SQLException se) {
             se.printStackTrace();
@@ -121,8 +120,8 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio> {
      * nel caso in cui si immettano dati errati durante la modifica
      */
     public BeanGuiServizio modifica(BeanGuiServizio beanGui) throws DatiErrati {
-        OpeServizio ope = new OpeServizio();
         try {
+            OpServizio ope = new OpServizio();
             Servizio serv = Conversione.conversioneServizio(beanGui);
             serv = ope.modifica(serv);
             beanGui = Conversione.conversioneServizio(serv, beanGui);

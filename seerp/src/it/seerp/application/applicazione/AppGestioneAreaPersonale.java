@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  * alla gestionde dellì'Area Personale
  * @author matteo - Tommaso Cattolico
  */
-public class AppGestioneAreaPersonale implements GestioneAreaPersonale<Utente, BeanGuiUtente> {
+public class AppGestioneAreaPersonale implements GestioneAreaPersonale<BeanGuiUtente> {
 
     /**
      * Metodo che permette di visualizzare tutti i dati relativi ad un utente

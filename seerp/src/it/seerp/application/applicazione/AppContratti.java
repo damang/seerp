@@ -10,7 +10,6 @@ import it.seerp.storage.ejb.Contratto;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 /**
  * Classe del livello application riguardante la Gestione dei Contratti
@@ -46,11 +45,11 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto> {
      * lista di tutti i contratti
      * @return Bean Gui del contratto che è stato selezionato
      */
-    public BeanGuiContratto visualizzaContratto(JTextField id, BeanGuiContratto gui) throws DatiErrati {
+    public BeanGuiContratto visualizzaContratto(String id, BeanGuiContratto gui) throws DatiErrati {
         try {
             OpContratto ope = new OpContratto();
-        //Contratto cont = ope.visualizza(Integer.parseInt(id.getText()));
-        //gui = Conversione.conversioneContratto(cont, gui);
+            Contratto cont = ope.visualizza(Integer.parseInt(id));
+            gui = Conversione.conversioneContratto(cont, gui);
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
@@ -68,15 +67,15 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto> {
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si inseriscano dati errati
      */
-    public ArrayList<BeanGuiContratto> ricercaPerDipendente(JTextField dipendente, ArrayList<BeanGuiContratto> listGui) throws DatiErrati {
+    public ArrayList<BeanGuiContratto> ricercaPerDipendente(ArrayList<BeanGuiContratto> listGui) throws DatiErrati {
         try {
             OpContratto ope = new OpContratto();
-        //ArrayList<Contratto> list = ope.ricercaPerDipendente(Integer.parseInt(dipendente.getText()));
-        //for (Contratto cont : list) {
-        //    BeanGuiContratto contGui = new BeanGuiContratto();
-        //    contGui = it.seerp.application.conversioni.Conversione.conversioneContratto(cont, contGui);
-        //    listGui.add(contGui);
-        //}
+            ArrayList<Contratto> list = ope.ricercaPerDipendente();
+            for (Contratto cont : list) {
+                BeanGuiContratto contGui = new BeanGuiContratto();
+                contGui = it.seerp.application.conversioni.Conversione.conversioneContratto(cont, contGui);
+                listGui.add(contGui);
+            }
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
