@@ -3,6 +3,7 @@ package it.seerp.application.bean;
 import it.seerp.application.validation.NotEmptyValidator;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import org.jdesktop.swingx.JXPanel;
 
@@ -12,7 +13,6 @@ import org.jdesktop.swingx.JXPanel;
  */
 public class BeanGuiCliente extends BeanGuiExtraAzienda {
 
-    private JTextField idClienteTxt;
     private JXPanel grafica;
     private NotEmptyValidator val;
 
@@ -32,42 +32,30 @@ public class BeanGuiCliente extends BeanGuiExtraAzienda {
     }
 
     /**
-     * 
-     * @param idExtraAziendaTxt
-     * @param txtCognome
-     * @param txtNome
-     * @param txtRagioneSociale
-     * @param txtPIva
-     * @param txtFax
-     * @param cmbRuolo
-     * @param idClienteTxt
+     *
+     * @param idUtenteTxt
+     * @param txtUsername
+     * @param txtPassword
+     * @param txtCittà
+     * @param txtProvincia
+     * @param txtTelefono
+     * @param txtEmail
+     * @param txtNote
+     * @param txtNotifica
+     * @param tipo
+     * @param visible
+     * @param cognome
+     * @param nome
+     * @param ragioneSociale
+     * @param pIva
+     * @param fax
+     * @param ruolo
      */
-    public BeanGuiCliente(JTextField idExtraAziendaTxt, JTextField txtCognome, JTextField txtNome, JTextField txtRagioneSociale, JTextField txtPIva, JTextField txtFax, JComboBox cmbRuolo, JTextField idClienteTxt) {
-        super(idExtraAziendaTxt, txtCognome, txtNome, txtRagioneSociale, txtPIva, txtFax, cmbRuolo);
-        this.idClienteTxt = idClienteTxt;
+    public BeanGuiCliente(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField txtNotifica, JTextField tipo, JTextField visible, JTextField cognome, JTextField nome, JTextField ragioneSociale, JTextField pIva, JTextField fax, JTextField ruolo) {
+        super(idUtenteTxt, txtUsername, txtPassword, txtCittà, txtProvincia, txtTelefono, txtEmail, txtNote, txtNotifica, tipo, visible, cognome, nome, ragioneSociale, pIva, fax, ruolo);
     }
+
 
    
 
-    /**
-     *  motodo che setta il campo contenente l'id del Cliente
-     * @param pidClienteTxt rappresenta il campo id  da inserire
-     */
-    public void setIdClienteTxt(JTextField pidClienteTxt) {
-        this.idClienteTxt = pidClienteTxt;
-        val = new NotEmptyValidator(grafica, idClienteTxt, "Il campo non può essere vuoto.");
-        grafica.setInputVerifier(val);
-    }
-
-    /**
-     * metodo che restituisce il campo contenente l'id del Cliente
-     * @return il campo id del Cliente
-     * @throws Exception
-     */
-    public JTextField getIdClienteTxt() throws Exception {
-        if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
-        }
-        return idClienteTxt;
-    }
 }

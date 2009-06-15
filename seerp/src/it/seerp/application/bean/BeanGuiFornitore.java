@@ -3,6 +3,7 @@ package it.seerp.application.bean;
 import it.seerp.application.validation.NotEmptyValidator;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import org.jdesktop.swingx.JXPanel;
 
@@ -12,7 +13,6 @@ import org.jdesktop.swingx.JXPanel;
  */
 public class BeanGuiFornitore extends BeanGuiExtraAzienda {
 
-    private JTextField idFornitoreTxt;
     private JXPanel grafica;
     private NotEmptyValidator val;
 
@@ -32,42 +32,26 @@ public class BeanGuiFornitore extends BeanGuiExtraAzienda {
     }
 
     /**
-     * 
-     * @param idExtraAziendaTxt
-     * @param txtCognome
-     * @param txtNome
-     * @param txtRagioneSociale
-     * @param txtPIva
-     * @param txtFax
-     * @param cmbRuolo
-     * @param idFornitoreTxt
+     *
+     * @param idUtenteTxt
+     * @param txtUsername
+     * @param txtPassword
+     * @param txtCittà
+     * @param txtProvincia
+     * @param txtTelefono
+     * @param txtEmail
+     * @param txtNote
+     * @param txtNotifica
+     * @param tipo
+     * @param visible
+     * @param cognome
+     * @param nome
+     * @param ragioneSociale
+     * @param pIva
+     * @param fax
+     * @param ruolo
      */
-    public BeanGuiFornitore(JTextField idExtraAziendaTxt, JTextField txtCognome, JTextField txtNome, JTextField txtRagioneSociale, JTextField txtPIva, JTextField txtFax, JComboBox cmbRuolo, JTextField idFornitoreTxt) {
-        super(idExtraAziendaTxt, txtCognome, txtNome, txtRagioneSociale, txtPIva, txtFax, cmbRuolo);
-        this.idFornitoreTxt = idFornitoreTxt;
-    }
-
-    
-
-    /**
-     * Metodo che permette di restituire il campo id di un Fornitore
-     * @return il campo id del Fornitore
-     * @throws Exception
-     */
-    public JTextField getIdFornitoreTxt() throws Exception {
-        if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
-        }
-        return idFornitoreTxt;
-    }
-
-    /**
-     * Metodo che permette di settare il campo id del Fornitore
-     * @param pidFornitoreTxt rappresenta l'id da inserire
-     */
-    public void setIdFornitoreTxt(JTextField pidFornitoreTxt) {
-        this.idFornitoreTxt = pidFornitoreTxt;
-        val = new NotEmptyValidator(grafica, idFornitoreTxt, "Il campo non può essere vuoto.");
-        grafica.setInputVerifier(val);
+    public BeanGuiFornitore(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField txtNotifica, JTextField tipo, JTextField visible, JTextField cognome, JTextField nome, JTextField ragioneSociale, JTextField pIva, JTextField fax, JTextField ruolo) {
+        super(idUtenteTxt, txtUsername, txtPassword, txtCittà, txtProvincia, txtTelefono, txtEmail, txtNote, txtNotifica, tipo, visible, cognome, nome, ragioneSociale, pIva, fax, ruolo);
     }
 }

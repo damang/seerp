@@ -15,12 +15,10 @@ import org.jdesktop.swingx.JXPanel;
  */
 public class BeanGuiPersonale extends BeanGuiUtente {
 
-    private JTextField idPersonaleTxt;
-    private JTextField txtCognome;
-    private JTextField txtNome;
-    private JTextField txtCodiceFiscale;
-    private JComboBox cmbTipo;
-    private ArrayList<BeanGuiRuolo> listRuoli;
+    private JTextField cognome;
+    private JTextField nome;
+    private JTextField codiceFiscale;
+    private JTextField ruolo;
     private JXPanel grafica;
     private NotEmptyValidator val;
     private NotEqualLengthValidator valEqLen;
@@ -40,53 +38,25 @@ public class BeanGuiPersonale extends BeanGuiUtente {
     public BeanGuiPersonale() {
     }
 
-    /**
-     *
-     * @param idUtenteTxt
-     * @param txtUsername
-     * @param txtPassword
-     * @param txtCittà
-     * @param txtProvincia
-     * @param txtTelefono
-     * @param txtEmail
-     * @param txtNote
-     * @param txtNotifica
-     * @param Ruolo
-     * @param visible
-     * @param idPersonaleTxt
-     * @param txtCognome
-     * @param txtNome
-     * @param txtCodiceFiscale
-     * @param cmbTipo
-     */
-    public BeanGuiPersonale(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField txtNotifica, JTextField Ruolo, JTextField visible, JTextField idPersonaleTxt, JTextField txtCognome, JTextField txtNome, JTextField txtCodiceFiscale, JComboBox cmbTipo) {
-        super(idUtenteTxt, txtUsername, txtPassword, txtCittà, txtProvincia, txtTelefono, txtEmail, txtNote, txtNotifica, Ruolo, visible);
-        this.idPersonaleTxt = idPersonaleTxt;
-        this.txtCognome = txtCognome;
-        this.txtNome = txtNome;
-        this.txtCodiceFiscale = txtCodiceFiscale;
-        this.cmbTipo = cmbTipo;
-        this.listRuoli= new ArrayList<BeanGuiRuolo>();
+    public BeanGuiPersonale(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField txtNotifica, JTextField tipo, JTextField visible, JTextField cognome, JTextField nome, JTextField codiceFiscale, JTextField ruolo) {
+        super(idUtenteTxt, txtUsername, txtPassword, txtCittà, txtProvincia, txtTelefono, txtEmail, txtNote, txtNotifica, tipo, visible);
+        this.cognome = cognome;
+        this.nome = nome;
+        this.codiceFiscale = codiceFiscale;
+        this.ruolo = ruolo;
     }
 
    
 
-    /**
-     *
-     * @return
-     */
-    public ArrayList<BeanGuiRuolo> getListRuoli() {
-        return listRuoli;
+
+
+
+    public JTextField getRuolo() {
+        return ruolo;
     }
 
-  
-
-    /**
-     *
-     * @param listRuoli
-     */
-    public void setListRuoli(ArrayList<BeanGuiRuolo> listRuoli) {
-        this.listRuoli = listRuoli;
+    public void setListRuoli(JTextField ruolo) {
+        this.ruolo = ruolo;
     }
 
     /**
@@ -100,7 +70,7 @@ public class BeanGuiPersonale extends BeanGuiUtente {
         if (!valEqLen.shouldYieldFocus(grafica)) {
             throw new Exception("Errore nella grafica!");
         }
-        return txtCodiceFiscale;
+        return codiceFiscale;
     }
 
     /**
@@ -114,21 +84,10 @@ public class BeanGuiPersonale extends BeanGuiUtente {
         if (!valApha.shouldYieldFocus(grafica)) {
             throw new Exception("Errore nella grafica!");
         }
-        return txtCognome;
+        return cognome;
     }
+   
 
-    /**
-     *
-     * @return
-     */
-    public JTextField getIdPersonale() {
-        return idPersonaleTxt;
-    }
-
-    /**
-     *
-     * @return
-     */
     public JTextField getNome() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
             throw new Exception("Errore nella grafica!");
@@ -136,7 +95,7 @@ public class BeanGuiPersonale extends BeanGuiUtente {
         if (!valApha.shouldYieldFocus(grafica)) {
             throw new Exception("Errore nella grafica!");
         }
-        return txtNome;
+        return nome;
     }
 
     
@@ -146,10 +105,10 @@ public class BeanGuiPersonale extends BeanGuiUtente {
      * @param pcodiceFiscale
      */
     public void setCodiceFiscale(JTextField pcodiceFiscale) {
-        this.txtCodiceFiscale = pcodiceFiscale;
-        val = new NotEmptyValidator(grafica, txtCodiceFiscale, "Il campo non può essere vuoto.");
+        this.codiceFiscale = pcodiceFiscale;
+        val = new NotEmptyValidator(grafica, codiceFiscale, "Il campo non può essere vuoto.");
         grafica.setInputVerifier(val);
-        valEqLen = new NotEqualLengthValidator(grafica, txtCodiceFiscale, "Il campo deve essere di 16 caratteri", 16);
+        valEqLen = new NotEqualLengthValidator(grafica, codiceFiscale, "Il campo deve essere di 16 caratteri", 16);
         grafica.setInputVerifier(valEqLen);
 
     }
@@ -159,53 +118,23 @@ public class BeanGuiPersonale extends BeanGuiUtente {
      * @param pcognome
      */
     public void setCognome(JTextField pcognome) {
-        this.txtCognome = pcognome;
-        val = new NotEmptyValidator(grafica, txtCognome, "Il campo non può essere vuoto.");
+        this.cognome = pcognome;
+        val = new NotEmptyValidator(grafica, cognome, "Il campo non può essere vuoto.");
         grafica.setInputVerifier(val);
-        valApha = new NotAlphabeticValidator(grafica, txtCognome, "La stringa inserita deve essere alfabetica.");
+        valApha = new NotAlphabeticValidator(grafica, cognome, "La stringa inserita deve essere alfabetica.");
         grafica.setInputVerifier(valApha);
     }
 
-    /**
-     *
-     * @param idPersonale
-     */
-    public void setIdPersonale(JTextField idPersonale) {
-        this.idPersonaleTxt = idPersonale;
-    }
 
     /**
      *
      * @param pnome
      */
     public void setNome(JTextField pnome) {
-        this.txtNome = pnome;
-        val = new NotEmptyValidator(grafica, txtNome, "Il campo non può essere vuoto.");
+        this.nome = pnome;
+        val = new NotEmptyValidator(grafica, nome, "Il campo non può essere vuoto.");
         grafica.setInputVerifier(val);
-        valApha = new NotAlphabeticValidator(grafica, txtNome, "La stringa inserita deve essere alfabetica.");
+        valApha = new NotAlphabeticValidator(grafica, nome, "La stringa inserita deve essere alfabetica.");
         grafica.setInputVerifier(valApha);
     }
-
-    /**
-     *
-     * @param tipo
-     */
-    public void setTipo(JComboBox tipo) {
-        this.cmbTipo = tipo;
-    }
-
-
-     /**
-      * 
-      * @param c 
-      */
-     public void removeRuolo(BeanGuiRuolo c){
-     listRuoli.remove(c);}
-
-     /**
-      *
-      * @param c 
-      */
-     public void addRuolo(BeanGuiRuolo c){
-     listRuoli.add(c);}
 }

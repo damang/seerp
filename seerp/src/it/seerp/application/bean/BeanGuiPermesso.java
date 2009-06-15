@@ -12,9 +12,8 @@ import org.jdesktop.swingx.JXPanel;
 public class BeanGuiPermesso {
 
     private JTextField idPermesso;
-    private JTextField task;
     private JTextField action;
-    private BeanGuiIncarico incarico;
+    private JTextField path;
     private JXPanel grafica;
     private NotEmptyValidator val;
 
@@ -32,13 +31,13 @@ public class BeanGuiPermesso {
     public BeanGuiPermesso() {
     }
 
-    public BeanGuiPermesso(JTextField idPermesso, JTextField task, JTextField action) {
+    public BeanGuiPermesso(JTextField idPermesso, JTextField action, JTextField path) {
         this.idPermesso = idPermesso;
-        this.task = task;
         this.action = action;
+        this.path = path;
     }
 
-  
+   
 
     /**
      *
@@ -64,18 +63,14 @@ public class BeanGuiPermesso {
 
     public void setAction(JTextField action) {
         this.action = action;
-        val = new NotEmptyValidator(grafica, task,"il campo non può essere vuoto.");
+        val = new NotEmptyValidator(grafica, action,"il campo non può essere vuoto.");
         grafica.setInputVerifier(val);
     }
 
-    public void setIncarico(BeanGuiIncarico incarico) {
-        this.incarico = incarico;
-
-    }
-
-    public void setTask(JTextField task) {
-        this.task = task;
-        val = new NotEmptyValidator(grafica, task,"il campo non può eseere vuoto.");
+   
+    public void setPath(JTextField path) {
+        this.path = path;
+        val = new NotEmptyValidator(grafica, path,"il campo non può eseere vuoto.");
         grafica.setInputVerifier(val);
     }
 
@@ -86,15 +81,13 @@ public class BeanGuiPermesso {
         return action;
     }
 
-    public BeanGuiIncarico getIncarico() {
-        return incarico;
-    }
+  
 
-    public JTextField getTask() throws Exception {
+    public JTextField getPath() throws Exception {
           if (!val.shouldYieldFocus(grafica)) {
             throw new Exception("Errore nella grafica!");
         }
-        return task;
+        return path;
     }
 
 }
