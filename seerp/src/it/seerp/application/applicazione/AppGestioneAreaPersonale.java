@@ -22,8 +22,8 @@ public class AppGestioneAreaPersonale implements GestioneAreaPersonale<Utente, B
      * @return il Bean Grafico contenente i dati dell'utente
      */
     public BeanGuiUtente visualizzaDati(BeanGuiUtente beanGui) {
-        OpAreaPersonale ope = new OpAreaPersonale();
         try {
+            OpAreaPersonale ope = new OpAreaPersonale();
             Utente user = Conversione.conversioneUtente(beanGui);
             user = ope.visualizzaDati(user.getIdUtente());
             beanGui = it.seerp.application.conversioni.Conversione.conversioneUtente(user, beanGui);
@@ -45,8 +45,8 @@ public class AppGestioneAreaPersonale implements GestioneAreaPersonale<Utente, B
      * nel caso in cui i dati inseriti sono errati
      */
     public BeanGuiUtente modificaPassword(BeanGuiUtente beanGui) throws DatiErrati {
-        OpAreaPersonale ope = new OpAreaPersonale();
         try {
+            OpAreaPersonale ope = new OpAreaPersonale();
             Utente user = Conversione.conversioneUtente(beanGui);
             user = ope.modificaPassword(user);
             beanGui = Conversione.conversioneUtente(user, beanGui);

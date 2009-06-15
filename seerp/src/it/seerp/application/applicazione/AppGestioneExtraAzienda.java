@@ -44,8 +44,8 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
      */
     public void inserisciCliente(BeanGuiCliente clien) {
         super.inserisci(clien);
-        OpCliente a = new OpCliente();
         try {
+            OpCliente a = new OpCliente();
             Cliente cl = Conversione.conversioneCliente(clien);
             a.inserisci(cl);
         } catch (SQLException se) {
@@ -105,8 +105,8 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
      */
     public BeanGuiCliente modificaCliente(BeanGuiCliente clien) {
         super.modifica(clien);
-        OpCliente a = new OpCliente();
         try {
+            OpCliente a = new OpCliente();
             Cliente cl = Conversione.conversioneCliente(clien);
             cl = a.modifica(cl);
             clien = Conversione.conversioneCliente(cl, clien);

@@ -27,7 +27,7 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
     public ArrayList<BeanGuiUtente> elenca(ArrayList<BeanGuiUtente> listGui) {
         try {
             OpeUtente ope = new OpeUtente();
-            ArrayList<Utente> list = ope.visualizzaElenco()
+            ArrayList<Utente> list = ope.visualizzaElenco();
             int i = 0;
             for (Utente user : list) {
                 listGui.add(Conversione.conversioneUtente(user, listGui.get(i)));
@@ -180,8 +180,8 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
     public BeanGuiUtente visualizzaDati(JTextField user, BeanGuiUtente beanGui) throws DatiErrati {
         try {
             OpeUtente ope = new OpeUtente();
-            Utente utente = ope.visualizza(beanGui);
-            beanGui = it.seerp.application.conversioni.Conversione.conversioneUtente(utente, beanGui);
+            //Utente utente = ope.visualizza(beanGui);
+            //beanGui = it.seerp.application.conversioni.Conversione.conversioneUtente(utente, beanGui);
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
