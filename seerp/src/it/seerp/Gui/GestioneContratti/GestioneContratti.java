@@ -110,7 +110,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
         extraAzienda.setTxtProvincia(provincia);
         extraAzienda.setTxtEmail(mail);
         //contratto.setBeanGuiFornitore(extraAzienda);
-        contratto.addPagamento(servizio);
+     //   contratto.addServizio(servizio);
         contratto.addPagamento(pagamento);
     }
 
