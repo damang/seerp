@@ -3,6 +3,7 @@ package it.seerp.storage.ejb;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 /**
  * classe che gestisce le informazioni su una fattura emessa
@@ -17,29 +18,15 @@ public class FatturaEmessa extends Fattura {
     private ArrayList<DDT> listDDT;
     private ArrayList<NotaDiCredito> listNC;
 
-    /**
-     * costruttore per la classe FatturaEmessa
-     * @param data
-     * @param idFattura
-     * @param imponibile
-     * @param importo
-     * @param iva
-     * @param tipoFat
-     * @param note
-     * @param idFatturaEmessa
-     * @param numeroProgressivo
-     * @param ivaDebito
-     * @param tipo
-     */
-    public FatturaEmessa(Date data, Integer idFattura, Double imponibile, Double importo, Double iva, String tipoFat, String note, Integer idFatturaEmessa, Integer numeroProgressivo, Double ivaDebito, String tipo) {
+    public FatturaEmessa(GregorianCalendar data, Integer idFattura, Double imponibile, Double importo, Double iva, String tipo, String note, Integer idFatturaEmessa, Integer numeroProgressivo, Double ivaDebito) {
         super(data, idFattura, imponibile, importo, iva, tipo, note);
         this.idFatturaEmessa = idFatturaEmessa;
         this.numeroProgressivo = numeroProgressivo;
         this.ivaDebito = ivaDebito;
-        this.tipoFatt = tipoFat;
-        this.listDDT = new ArrayList<DDT>();
-        this.listNC = new ArrayList<NotaDiCredito>();
-    }
+        listDDT= new ArrayList<DDT>();
+        listNC= new ArrayList<NotaDiCredito>();
+        }
+
 
     /**
      * metodo che setta la lista delle note di credito associato alla fattura emessa
