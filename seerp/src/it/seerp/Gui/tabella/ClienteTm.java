@@ -71,7 +71,7 @@ public class ClienteTm extends Generica <Cliente>{
     @Override
     protected Vector creaArrayObjectData(Cliente o) {
         Vector c = new Vector();
-        c.add(o.getIdCliente());
+        c.add(o.getIdUtente());
         c.add(o.getRagioneSociale());
         c.add(o.getNome());
         c.add(o.getCognome());

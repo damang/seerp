@@ -86,7 +86,7 @@ public class FornitoreTm extends Generica <Fornitore>{
 
     protected Vector creaArrayObjectData(Fornitore o) {
         Vector c = new Vector();
-        c.add(o.getIdFornitore());
+        c.add(o.getIdUtente());
         c.add(o.getPIva());
         c.add(o.getRagioneSociale());
         c.add(o.getProvincia());
