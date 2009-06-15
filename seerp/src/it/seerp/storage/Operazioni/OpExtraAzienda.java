@@ -52,8 +52,8 @@ public class OpExtraAzienda extends OpeUtente {
 
             // Define the resource list
             while (rs.next()) {
-                ExtraAzienda extraazienda = new ExtraAzienda (rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getInt(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18) );
-                  // Integer idUtente, String username, String password, String città, String tipo 5,String provincia, String telefono,String cap, String email, String ruolo 10, String note, Boolean v, Integer idExtraAzienda, String cognome, String nome 15, String ragioneSociale, String pIva, String fax) {
+                ExtraAzienda extraazienda = new ExtraAzienda (rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17) );
+                                                         //Integer idUtente, String username, String password, String città, String tipo 5 ,String provincia, String telefono,String cap, String email, String ruolo 10,               String note, Boolean v,           String cognome, String nome, String ragioneSociale 15, String pIva, String fax) {
 
                 list.add(extraazienda);
             }}
@@ -178,18 +178,19 @@ public class OpExtraAzienda extends OpeUtente {
             } else {
                 String sql = "INSERT INTO ExtraAzienda (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
+
             stmt.setInt(1, user.getIdUtente());
             stmt.setString(2, user.getUsername());
             stmt.setString(3, user.getPassword());
             stmt.setString(4, user.getCittà());
-            stmt.setString(5, user.getRuolo());
+            stmt.setString(5, user.getTipo());
             stmt.setString(6, user.getProvincia());
             stmt.setString(7, user.getTelefono());
-            stmt.setString(8, user.getEmail());
-            stmt.setString(9, user.getRuolo());
-            stmt.setString(10, user.getNote());
-            stmt.setBoolean(11, user.getVisible());
-            stmt.setInt(12, user.getIdExtraAzienda());
+            stmt.setString(8, user.getCap());
+            stmt.setString(9, user.getEmail());
+            stmt.setString(10, user.getRuolo());
+            stmt.setString(11, user.getNote());
+            stmt.setBoolean(12, user.getVisible());
             stmt.setString(13, user.getCognome());
             stmt.setString(14, user.getNome());
             stmt.setString(15, user.getRagioneSociale());
@@ -238,18 +239,18 @@ public class OpExtraAzienda extends OpeUtente {
             // Create a statement
             stmt = (PreparedStatement) con.prepareStatement("UPDATE ExtraAzienda VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )" + "where idUtente=" + user.getIdUtente());
 
-            stmt.setInt(1, user.getIdUtente());
+           stmt.setInt(1, user.getIdUtente());
             stmt.setString(2, user.getUsername());
             stmt.setString(3, user.getPassword());
             stmt.setString(4, user.getCittà());
-            stmt.setString(5, user.getRuolo());
+            stmt.setString(5, user.getTipo());
             stmt.setString(6, user.getProvincia());
             stmt.setString(7, user.getTelefono());
-            stmt.setString(8, user.getEmail());
-            stmt.setString(9, user.getRuolo());
-            stmt.setString(10, user.getNote());
-            stmt.setBoolean(11, user.getVisible());
-            stmt.setInt(12, user.getIdExtraAzienda());
+            stmt.setString(8, user.getCap());
+            stmt.setString(9, user.getEmail());
+            stmt.setString(10, user.getRuolo());
+            stmt.setString(11, user.getNote());
+            stmt.setBoolean(12, user.getVisible());
             stmt.setString(13, user.getCognome());
             stmt.setString(14, user.getNome());
             stmt.setString(15, user.getRagioneSociale());
@@ -258,7 +259,7 @@ public class OpExtraAzienda extends OpeUtente {
             
             stmt.execute();
 
-                extraazienda = this.visualizzaDati(user.getIdExtraAzienda());
+                extraazienda = this.visualizzaDati(user.getIdUtente());
         } 
         }catch (SQLException se) {
             System.out.println("errore nella modifica");
@@ -298,13 +299,13 @@ public class OpExtraAzienda extends OpeUtente {
             
             // Define the resource list
             while (rs.next()) {
-               extraazienda = new ExtraAzienda (rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getInt(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18) );
-                       //Integer idUtente, String username, String password, String città, String ruol 5 ring provincia, String telefono, String email, String ruolo, String cap10String note, Boolean v, Integer idExtraAzienda, String cognome, String nome15String ragioneSociale, String pIva, String fax, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti) {
+               extraazienda = new ExtraAzienda (rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17) );
+                                                        //Integer idUtente, String username, String password, String città, String ruol 5 ring provincia, String telefono, String email, String ruolo, String cap10String note, Boolean v, Integer idExtraAzienda, String cognome, String nome15String ragioneSociale, String pIva, String fax, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti) {
 
                PreparedStatement stmt1;
                String sql2 = "Select nome From Appuntamento,ExtraAzienda where idAppuntamento=appuntamento and idExtraAzienda = ?";
                 stmt1 = (PreparedStatement) con.prepareStatement(sql2);
-                stmt1.setInt(1, extraazienda.getIdExtraAzienda());
+                stmt1.setInt(1, extraazienda.getIdUtente());
                 ResultSet rs1 = stmt1.executeQuery();
                 while (rs1.next()) {
                     GregorianCalendar data1 = new GregorianCalendar();
@@ -317,7 +318,7 @@ public class OpExtraAzienda extends OpeUtente {
                PreparedStatement stmt2;
                String sql3 = "Select nome From Contratto,ExtraAzienda where idContratto=contratto and idExtraAzienda = ?";
                 stmt2 = (PreparedStatement) con.prepareStatement(sql3);
-                stmt2.setInt(1, extraazienda.getIdExtraAzienda());
+                stmt2.setInt(1, extraazienda.getIdUtente());
                 ResultSet rs2 = stmt2.executeQuery();
                 while (rs2.next()) {
                     GregorianCalendar data = new GregorianCalendar();
