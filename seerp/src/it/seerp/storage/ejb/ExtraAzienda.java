@@ -39,7 +39,7 @@ public class ExtraAzienda extends Utente {
      * @param v
      */
 
-    public ExtraAzienda(Integer idUtente, String username, String password, String città, String ruol,String provincia, String telefono,String cap, String email, String ruolo, String note, Boolean v, Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva, String fax) {
+    public ExtraAzienda(Integer idUtente, String username, String password, String città, String tipo,String provincia, String telefono,String cap, String email, String ruolo, String note, Boolean v, Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva, String fax) {
         super(idUtente, username, password, città, provincia, telefono,cap, email, ruolo, note, v);
 
         this.idExtraAzienda = idExtraAzienda;
@@ -48,9 +48,7 @@ public class ExtraAzienda extends Utente {
         this.ragioneSociale = ragioneSociale;
         this.pIva = pIva;
         this.fax = fax;
-
-        this.tipo = ruol;
-
+        this.tipo = tipo;
         this.listAppuntamenti = new ArrayList<Appuntamento>();
         this.listContratti = new ArrayList<Contratto>();
     }
