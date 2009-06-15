@@ -17,6 +17,10 @@ public class BeanGuiAgenda {
     private JXPanel grafica;
     private NotEmptyValidator val;
 
+    public BeanGuiAgenda() {
+        
+    }
+
     /**
      * Costruttore a cui viene passato un componente grafico necessario alla
      * validazione del campo
