@@ -43,7 +43,7 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
         String query = "INSERT INTO evento(luogo, tema, nome, note,data, ora) VALUE (?,?,?,?,?,?)";
         //da controllare campi
         String sqlTest = "SELECT * FROM evento WHERE nome='" + e.getNome() + "' ";
-        try {
+        
             stmt1 = conn.createStatement();
             stmt = (PreparedStatement) conn.prepareStatement(query);
             ResultSet rs = stmt1.executeQuery(sqlTest);
@@ -65,22 +65,6 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
                 stmt.execute();
 
             }
-        } catch (SQLException x) {
-            System.out.println("Errore nell'inserimento sql non valido o db non connesso");
-            x.printStackTrace();
-        } finally {
-            // Release the resources
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (stmt1 != null) {
-                stmt1.close();
-            }
-            if (conn != null) {
-                ConnectionPool.releaseConnection(conn);
-            }
-        }
-
     }
 
     /** crea la query per modificare un evento nel database
@@ -96,7 +80,7 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
         String query = "UPDATE evento(luogo, tema, nome, note,data, ora) VALUE (?,?,?,?,?,?)";
         //da controllare campi
         String sqlTest = "SELECT * FROM evento WHERE nome='" + e.getNome() + "' ";
-        try {
+        
             stmt1 = conn.createStatement();
             stmt = (PreparedStatement) conn.prepareStatement(query);
             ResultSet rs = stmt1.executeQuery(sqlTest);
@@ -118,25 +102,9 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
                 stmt.execute();
 
             }
-        } catch (SQLException x) {
-            System.out.println("Errore nella modifica sql non valido o db non connesso");
-            x.printStackTrace();
-        } finally {
-            // Release the resources
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (stmt1 != null) {
-                stmt1.close();
-            }
-            if (conn != null) {
-                ConnectionPool.releaseConnection(conn);
-            }
+        
             return e;
         }
-
-    }
-
     /** crea la query per visualizzare i dettagli
      * di un evento presente nel database
      * @return i dettagli dell'evento
@@ -148,8 +116,6 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         Evento ev = null;
-
-        try {
 
             String query = "SELECT * FROM Evento, Agenda" +
                     "where Evento.idAgenda=Agenda.idAgenda and idAgenda=?";
@@ -174,21 +140,7 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
 
 
             }
-        } catch (SQLException se) {
-            System.out.println("errore nella visualizzazione dell'evento");
-
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (conn != null) {
-                ConnectionPool.releaseConnection(conn);
-            }
-        }
+       
 
         return ev;
 
@@ -207,8 +159,6 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
-
-        try {
 
             String query = "SELECT * FROM Evento, Agenda, Utente " +
                     "WHERE agenda=idAgenda and idAgenda=idUtente ";
@@ -229,21 +179,7 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
 
                 lista.add(ev);
             }
-        } catch (SQLException se) {
-            System.out.println("Errore nella visualizzazione dell'elenco");
-
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (conn != null) {
-                ConnectionPool.releaseConnection(conn);
-            }
-        }
+       
         return lista;
     }
 
@@ -277,52 +213,28 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
 
         PreparedStatement stmt = null;
 
-        try {
-
             String query = "DELETE FROM evento WHERE idEvento='" + e.getIdEvento() + "'";
             stmt = (PreparedStatement) conn.prepareStatement(query);
             stmt.executeUpdate();
-
-        } catch (SQLException se) {
-            System.out.println("Errore nell'eliminazione dell'elenco");
-
-        } finally {
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (conn != null) {
-                ConnectionPool.releaseConnection(conn);
-            }
-        }
-    }
+         }
     /*crea la query per settare il campo notifica a true*/
 
     public void notificaEvento(Evento e) throws SQLException {
 
         PreparedStatement stmt = null;
 
-        try {
+       
             String query = "UPDATE Evento(notifica) SET (?) " +
                     "WHERE idEvento='" + e.getIdEvento() + "'";
             stmt.setBoolean(1, e.getNotifica());
             stmt = (PreparedStatement) conn.prepareStatement(query);
-            stmt.executeUpdate();
-
-        } finally {
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (conn != null) {
-                ConnectionPool.releaseConnection(conn);
-            }
+            stmt.executeUpdate();   
         }
-    }
 
     public ArrayList<Evento> eventiNotificati(GregorianCalendar data) throws SQLException {
 
         PreparedStatement stmt = null;
         ArrayList<Evento> evNotificati = new ArrayList<Evento>();
-        try {
 
             GregorianCalendar gc = new GregorianCalendar();
             Date a = new Date(gc.getTimeInMillis());
@@ -344,17 +256,7 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
                 stmt.executeUpdate();
 
             }
-        } catch (SQLException se) {
-            System.out.println("Errore nella visualizzazione dell'elenco");
-
-        } finally {
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (conn != null) {
-                ConnectionPool.releaseConnection(conn);
-            }
-        }
+        
         return evNotificati;
 
     }
