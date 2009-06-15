@@ -571,7 +571,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         jTabbedPane1.addTab("Permessi", jPanel2);
 
         jXLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jXLabel2.setText("Gestione Permessi");
+        jXLabel2.setText("Gestione Ruoli");
         jXLabel2.setFont(new java.awt.Font("Tahoma", 1, 24));
         jXLabel2.setName("jXLabel2"); // NOI18N
 
