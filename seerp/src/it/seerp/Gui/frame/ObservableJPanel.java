@@ -14,13 +14,13 @@ package it.seerp.Gui.frame;
 import configurazioni.pattern.observer.*;
 import java.util.Iterator;
 import java.util.Vector;
-import javax.swing.JPanel;
+import org.jdesktop.swingx.JXPanel;
 
 /**
  *
  * @author Luisa
  */
-public class ObservableJPanel extends javax.swing.JPanel implements Observable {
+public class ObservableJPanel extends JXPanel implements Observable {
 
     private Vector obs = new Vector();
 
