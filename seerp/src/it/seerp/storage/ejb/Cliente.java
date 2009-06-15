@@ -12,52 +12,32 @@ import java.util.ArrayList;
  */
 public class Cliente extends ExtraAzienda {
 
-    private Integer idCliente;
-
-    public Cliente(Integer idUtente, String username, String password, String città, String ruol, String provincia, String telefono, String cap, String email, String ruolo, String note, Boolean v, Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva, String fax, Integer idCliente) {
-        super(idUtente, username, password, città, ruol, provincia, telefono, cap, email, ruolo, note, v, idExtraAzienda, cognome, nome, ragioneSociale, pIva, fax);
-        this.idCliente = idCliente;
-    }
-
-   
+  
 
     /**
-     *
+     * 
      * @param idUtente
      * @param username
      * @param password
      * @param città
+     * @param ruol
      * @param provincia
      * @param telefono
+     * @param cap
      * @param email
-     * @param ruol
+     * @param ruolo
      * @param note
      * @param v
-     * @param idExtraAzienda
      * @param cognome
      * @param nome
      * @param ragioneSociale
      * @param pIva
      * @param fax
-     * @param ruolo
-     * @param listAppuntamenti
-     * @param listContratti
-     * @param idCliente
      */
-
-    /**
-     * restituisce il codice identificativo del Cliente
-     * @return una stringa contenente il codice identificativo
-     */
-    public Integer getIdCliente() {
-        return idCliente;
+    public Cliente(Integer idUtente, String username, String password, String città, String ruol, String provincia, String telefono, String cap, String email, String ruolo, String note, Boolean v, String cognome, String nome, String ragioneSociale, String pIva, String fax) {
+        super(idUtente, username, password, città, ruol, provincia, telefono, cap, email, ruolo, note, v, cognome, nome, ragioneSociale, pIva, fax);
+     
     }
 
-    /**
-     *setta il codice identificativo del Cliente
-     * @param idCliente identificativo del cliente
-     */
-    public void setIdCliente(Integer idCliente) {
-        this.idCliente = idCliente;
-    }
+
 }
