@@ -2,7 +2,6 @@ package it.seerp.storage.Operazioni;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
-import it.seerp.application.bean.BeanGuiUtente;
 import it.seerp.storage.Exception.DatiErratiEx;
 import it.seerp.storage.db.ConnectionPool;
 import it.seerp.storage.db.OpeEntity;
@@ -11,27 +10,34 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
 /**
  *
  * @author matteo
  */
-public class OpeUtente implements OpeEntity<Utente> {
+public class OpeUtente implements OpeEntity<Utente, Integer> {
 
     private Connection conn;
 
+    /**
+     *
+     * @throws java.sql.SQLException
+     */
     public OpeUtente() throws SQLException {
         conn = (Connection) ConnectionPool.getConnection();
     }
 
+    /*
+     * metodo che permette di visualizzare l'elenco degli utenti
+     * @return ArrayList<Utente> l'elenco degli utenti
+     * @throws SQLException
+     */
     public ArrayList<Utente> visualizzaElenco() throws SQLException {
 
         ArrayList<Utente> list = new ArrayList<Utente>();
-       
+
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
-            // Obtain a db connection
 
             // Create a statement
             String sql = "SELECT * FROM Utente where Visible='true'";
@@ -41,8 +47,10 @@ public class OpeUtente implements OpeEntity<Utente> {
 
             // Define the resource list
             while (rs.next()) {
+
                 Utente utente = new Utente(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getBoolean(11));
-                //(1Integer idUtente, 2String username, 3Integer password, 4String città, 5String provincia, 6String telefono, 7String email, 8String note, 9Boolean v )
+//(1Integer idUtente, 2String username, 3Integer password, 4String città, 5String provincia, 6String telefono, 7String email, 8String note, 9Boolean v )
+
                 list.add(utente);
             }
         } catch (SQLException se) {
@@ -63,7 +71,12 @@ public class OpeUtente implements OpeEntity<Utente> {
     }
 
 
-    //modifica
+    /*
+     * metodo che permette di modificare i dati di un utente
+     * @return Utente l'utente modificato
+     * @throws SQLException
+     * @throws DatiErratiEx
+     */
     public Utente modifica(Utente utente) throws SQLException, DatiErratiEx {
 
         try {
@@ -98,6 +111,12 @@ public class OpeUtente implements OpeEntity<Utente> {
 
     }
 
+    /*
+     * metodo che permette di inserire i dati di un utente
+     * @param bean il bean di utente
+     * @throws SQLException
+     * @throws DatiErratiEx
+     */
     public void inserimento(Utente bean) throws SQLException {
 
         try {
@@ -129,7 +148,13 @@ public class OpeUtente implements OpeEntity<Utente> {
         }
     }
 
-    public Utente visualizza(Utente bean) throws SQLException {
+    /*
+     * metodo che permette di visualizzare i dati di un utente
+     * @return Utente l'utente visualizzato
+     * @throws SQLException
+     * @throws DatiErratiEx
+     */
+    public Utente visualizza(Integer id) throws SQLException {
 
         Utente utente = new Utente();
 
@@ -137,18 +162,18 @@ public class OpeUtente implements OpeEntity<Utente> {
         ResultSet rs = null;
         try {
 
-            // Create a statement
-
             // Execute the query
             String sql = "SELECT * FROM Utente WHERE idUtente = ?";
             stmt = (PreparedStatement) conn.prepareStatement(sql);
-            stmt.setInt(1,bean.getIdUtente());
+            stmt.setInt(1, id);
             rs = stmt.executeQuery(sql);
 
             // Define the resource list
             while (rs.next()) {
-                utente = new Utente(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getBoolean(11));
 
+                utente = new Utente(rs.getInt(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),
+                        rs.getString(8), rs.getString(9), rs.getString(10), rs.getBoolean(11));
 
             }
 
@@ -169,12 +194,22 @@ public class OpeUtente implements OpeEntity<Utente> {
         return utente;
     }
 
-    public ArrayList<Utente> ricerca(String nome, String ruolo) throws SQLException {
+    /**
+     * metodo che permette di visualizzare i dati degli utenti per effettuare una ricerca
+     * @return ArrayList<Utente> la lista degli utenti per effetturare la ricerca
+     * @throws java.sql.SQLException
+     */
+    public ArrayList<Utente> ricerca() throws SQLException {
         ArrayList<Utente> list = this.visualizzaElenco();
-       
+
         return list;
     }
 
+    /**
+     * il metodo permette di eliminare logicamente un utente
+     * @param ut
+     * @throws java.sql.SQLException
+     */
     public void eliminaLogica(Utente ut) throws SQLException {
 
         PreparedStatement stmt = null;
@@ -200,6 +235,11 @@ public class OpeUtente implements OpeEntity<Utente> {
         }
     }
 
+    /**
+     *  metodo che permette l'eliminazione di un utente
+     * @param ut
+     * @throws java.sql.SQLException
+     */
     public void elimina(Utente ut) throws SQLException {
         PreparedStatement stmt = null;
         try {
