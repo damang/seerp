@@ -118,8 +118,8 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         jCheckBox1.setText("Gestione Clienti");
         jCheckBox1.setName("GestioneClienti"); // NOI18N
 
-        jCheckBox2.setText("Gestione Contrtti");
-        jCheckBox2.setName("GestioneContrtti"); // NOI18N
+        jCheckBox2.setText("Gestione Contratti");
+        jCheckBox2.setName("GestioneContratti"); // NOI18N
 
         jCheckBox3.setText("Gestione Fornitori");
         jCheckBox3.setName("GestioneFornitori"); // NOI18N
