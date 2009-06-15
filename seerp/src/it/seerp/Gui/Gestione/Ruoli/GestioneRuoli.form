@@ -172,8 +172,8 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="jCheckBox2">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Gestione Contrtti"/>
-                    <Property name="name" type="java.lang.String" value="GestioneContrtti" noResource="true"/>
+                    <Property name="text" type="java.lang.String" value="Gestione Contratti"/>
+                    <Property name="name" type="java.lang.String" value="GestioneContratti" noResource="true"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="jCheckBox3">
