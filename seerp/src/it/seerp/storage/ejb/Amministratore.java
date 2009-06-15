@@ -10,6 +10,10 @@ public class Amministratore extends Personale {
 
     private Azienda azienda;
 
+    public Amministratore() {
+        
+    }
+
     public Amministratore(Integer idUtente, String username, String password, String città, String provincia, String telefono, String cap, String email, String note, String tipo, Integer idPersonale, String cognome, String nome, String codiceFiscale, Ruolo ruolo, Boolean v) {
         super(idUtente, username, password, città, provincia, telefono, cap, email, note, tipo, cognome, nome, codiceFiscale, v, ruolo);
     }
