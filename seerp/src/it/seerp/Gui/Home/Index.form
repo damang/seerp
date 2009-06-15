@@ -158,7 +158,9 @@
                   <Component id="menuServizi1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="menuAreaPersonale2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="663" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="menuInfoAzienda1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="746" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -171,6 +173,7 @@
                       <Component id="menuServizi1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="menuAreaPersonale2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="menuRuoli1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="menuInfoAzienda1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -213,6 +216,11 @@
         <Component class="it.seerp.Gui.Menu.MenuRuoli" name="menuRuoli1">
           <Properties>
             <Property name="name" type="java.lang.String" value="menuRuoli1" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="it.seerp.Gui.Menu.MenuInfoAzienda" name="menuInfoAzienda1">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="menuInfoAzienda1" noResource="true"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -273,16 +281,10 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="areaUtenteButton3" pref="162" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="areaUtenteButton4" pref="162" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="areaUtenteButton3" alignment="0" pref="162" max="32767" attributes="0"/>
+                              <Component id="areaUtenteButton4" alignment="0" pref="162" max="32767" attributes="0"/>
                               <Component id="areaUtenteButton1" alignment="0" pref="162" max="32767" attributes="0"/>
                               <Component id="areaUtenteButton2" alignment="1" pref="162" max="32767" attributes="0"/>
                           </Group>
@@ -582,6 +584,9 @@
                     <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="name" type="java.lang.String" value="buttonInfoAzienda1" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.ButtonInfoAzienda(this.jTabbedPanePrincipale, this.menuInfoAzienda1, this)"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>

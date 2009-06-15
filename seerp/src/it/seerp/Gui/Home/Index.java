@@ -44,6 +44,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
         menuServizi1 = new it.seerp.Gui.Menu.MenuServizi();
         menuAreaPersonale2 = new it.seerp.Gui.Menu.MenuAreaPersonale();
         menuRuoli1 = new it.seerp.Gui.Menu.MenuRuoli();
+        menuInfoAzienda1 = new it.seerp.Gui.Menu.MenuInfoAzienda();
         jXTaskPaneContainer1 = new org.jdesktop.swingx.JXTaskPaneContainer();
         jXPanel1 = new org.jdesktop.swingx.JXPanel();
         jXLabel1 = new org.jdesktop.swingx.JXLabel();
@@ -64,7 +65,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             jXPanel3 = new org.jdesktop.swingx.JXPanel();
             areaPersonaleButton1 = new it.seerp.bottoni.Nuovo.AreaPersonaleButton(this.jTabbedPanePrincipale, this.menuAreaPersonale2, this);
             buttonRuoli1 = new it.seerp.bottoni.Nuovo.ButtonRuoli(this.jTabbedPanePrincipale, this.menuRuoli1, this);
-            buttonInfoAzienda1 = new it.seerp.bottoni.Nuovo.ButtonInfoAzienda();
+            buttonInfoAzienda1 = new it.seerp.bottoni.Nuovo.ButtonInfoAzienda(this.jTabbedPanePrincipale, this.menuInfoAzienda1, this);
             menuBar = new javax.swing.JMenuBar();
             fileMenu = new javax.swing.JMenu();
             openMenuItem = new javax.swing.JMenuItem();
@@ -101,6 +102,8 @@ public class Index extends javax.swing.JFrame implements ActionListener {
 
             menuRuoli1.setName("menuRuoli1"); // NOI18N
 
+            menuInfoAzienda1.setName("menuInfoAzienda1"); // NOI18N
+
             javax.swing.GroupLayout menuLayout = new javax.swing.GroupLayout(menu);
             menu.setLayout(menuLayout);
             menuLayout.setHorizontalGroup(
@@ -116,7 +119,9 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                     .addComponent(menuServizi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(menuAreaPersonale2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(663, Short.MAX_VALUE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(menuInfoAzienda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(746, Short.MAX_VALUE))
             );
             menuLayout.setVerticalGroup(
                 menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,7 +131,8 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                         .addComponent(menuUtente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(menuServizi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(menuAreaPersonale2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(menuRuoli1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(menuRuoli1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(menuInfoAzienda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
 
@@ -214,15 +220,11 @@ public class Index extends javax.swing.JFrame implements ActionListener {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(areaUtenteButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(areaUtenteButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(areaUtenteButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                    .addComponent(areaUtenteButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(areaUtenteButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                    .addComponent(areaUtenteButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                    .addComponent(areaUtenteButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                    .addComponent(areaUtenteButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -591,6 +593,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
     private it.seerp.Gui.Menu.MenuAreaPersonale menuAreaPersonale2;
     private javax.swing.JMenuBar menuBar;
     private it.seerp.Gui.Menu.MenuContratti menuContratti1;
+    private it.seerp.Gui.Menu.MenuInfoAzienda menuInfoAzienda1;
     private it.seerp.Gui.Menu.MenuRuoli menuRuoli1;
     private it.seerp.Gui.Menu.MenuServizi menuServizi1;
     private it.seerp.Gui.Menu.MenuUtente menuUtente1;
