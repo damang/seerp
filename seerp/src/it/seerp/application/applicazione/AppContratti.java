@@ -5,7 +5,7 @@ import it.seerp.application.Exception.DatiErrati;
 import it.seerp.application.bean.BeanGuiContratto;
 import it.seerp.application.conversioni.Conversione;
 import it.seerp.application.interfacce.GestioneContratti;
-import it.seerp.storage.Operazioni.OpeeContratto;
+import it.seerp.storage.Operazioni.OpContratto;
 import it.seerp.storage.ejb.Contratto;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -23,8 +23,8 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto> {
      * @return ArrayList dei contratti presenti nel sistema
      */
     public ArrayList<BeanGuiContratto> visualizza(ArrayList<BeanGuiContratto> listGui) {
-        OpeeContratto ope = new OpeeContratto();
         try {
+            OpContratto ope = new OpContratto();
             ArrayList<Contratto> list = ope.visualizzaElenco();
             for (Contratto cont : list) {
                 BeanGuiContratto contGui = new BeanGuiContratto();
@@ -47,10 +47,10 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto> {
      * @return Bean Gui del contratto che è stato selezionato
      */
     public BeanGuiContratto visualizzaContratto(JTextField id, BeanGuiContratto gui) throws DatiErrati {
-        OpeeContratto ope = new OpeeContratto();
         try {
-            Contratto cont = ope.visualizza(Integer.parseInt(id.getText()));
-            gui = Conversione.conversioneContratto(cont, gui);
+            OpContratto ope = new OpContratto();
+            //Contratto cont = ope.visualizza(Integer.parseInt(id.getText()));
+            //gui = Conversione.conversioneContratto(cont, gui);
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
@@ -67,28 +67,22 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto> {
      * @return ArrayList contentente tutti i Bean Gui dei contratti appartenenti al dipendente immesso
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si inseriscano dati errati
-
-
+     */
     public ArrayList<BeanGuiContratto> ricercaPerDipendente(JTextField dipendente, ArrayList<BeanGuiContratto> listGui) throws DatiErrati {
-        OpeeContratto ope = new OpeeContratto();
         try {
-            ArrayList<Contratto> list = ope.ricercaPerDipendente(Integer.parseInt(dipendente.getText()));
-            for (Contratto cont : list) {
-                BeanGuiContratto contGui = new BeanGuiContratto();
-                contGui = it.seerp.application.conversioni.Conversione.conversioneContratto(cont, contGui);
-                listGui.add(contGui);
-            }
+            OpContratto ope = new OpContratto();
+            //ArrayList<Contratto> list = ope.ricercaPerDipendente(Integer.parseInt(dipendente.getText()));
+            //for (Contratto cont : list) {
+            //    BeanGuiContratto contGui = new BeanGuiContratto();
+            //    contGui = it.seerp.application.conversioni.Conversione.conversioneContratto(cont, contGui);
+            //    listGui.add(contGui);
+            //}
         } catch (SQLException se) {
-            System.out.println("SQL Exception:");
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-                se = se.getNextException();
-            }
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
         }
         return listGui;
-    }*/
+    }
 
     /**
      * Metodo che permette l'inserimento di un contratto
@@ -100,9 +94,9 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto> {
      * nel caso in cui il contratto da inserire esista già
      */
     public void inserisci(BeanGuiContratto beanGuiContratto) throws DatiErrati, DatiDuplicati {
-        OpeeContratto a = new OpeeContratto();
         Contratto contratto = Conversione.conversioneContratto(beanGuiContratto);
         try {
+            OpContratto a = new OpContratto();
             a.inserimento(contratto);
         } catch (SQLException se) {
             se.printStackTrace();
@@ -119,10 +113,9 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto> {
      * nel caso in cui si immettano dati errati
      */
     public BeanGuiContratto modifica(BeanGuiContratto beanGuiContratto) throws DatiErrati {
-        OpeeContratto a = new OpeeContratto();
         Contratto contratto = Conversione.conversioneContratto(beanGuiContratto);
-
         try {
+            OpContratto a = new OpContratto();
             Contratto b = a.modifica(contratto);
             beanGuiContratto = Conversione.conversioneContratto(b, beanGuiContratto);
         } catch (SQLException se) {
@@ -130,9 +123,5 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto> {
             JOptionPane.showMessageDialog(null, "Errore nel database!");
         }
         return beanGuiContratto;
-    }
-
-    public ArrayList<BeanGuiContratto> ricercaPerDipendente(JTextField dipendente, ArrayList<BeanGuiContratto> listGui) throws DatiErrati {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
