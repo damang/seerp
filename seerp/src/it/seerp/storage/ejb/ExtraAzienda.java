@@ -17,6 +17,10 @@ public class ExtraAzienda extends Utente {
     private ArrayList<Appuntamento> listAppuntamenti;
     private ArrayList<Contratto> listContratti;
 
+    public ExtraAzienda() {
+        
+    }
+
 
     /**
      *
