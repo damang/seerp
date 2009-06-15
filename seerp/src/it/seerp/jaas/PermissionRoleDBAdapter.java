@@ -16,6 +16,7 @@
 
 package it.seerp.jaas;
 
+import it.seerp.storage.ejb.Permesso;
 import it.seerp.storage.db.ConnectionPool;
 import java.security.CodeSource;
 import java.security.PermissionCollection;
