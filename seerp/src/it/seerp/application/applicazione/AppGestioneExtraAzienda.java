@@ -25,8 +25,8 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
      */
     public void inserisciContatto(BeanGuiContatto cont) {
         super.inserisci(cont);
-        OpContatto a = new OpContatto();
         try {
+            OpContatto a = new OpContatto();
             Contatto co = Conversione.conversioneContatto(cont);
             a.inserisci(co);
         } catch (SQLException se) {
@@ -63,8 +63,8 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
      */
     public void inserisciFornitore(BeanGuiFornitore forn) {
         super.inserisci(forn);
-        OpFornitore a = new OpFornitore();
         try {
+            OpFornitore a = new OpFornitore();
             Fornitore fo = Conversione.conversioneFornitore(forn);
             a.inserisci(fo);
         } catch (SQLException se) {
@@ -83,8 +83,8 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
      */
     public BeanGuiContatto modificaContatto(BeanGuiContatto cont) {
         super.modifica(cont);
-        OpContatto a = new OpContatto();
         try {
+            OpContatto a = new OpContatto();
             Contatto co = Conversione.conversioneContatto(cont);
             co = a.modifica(co);
             cont = Conversione.conversioneContatto(co, cont);
@@ -127,8 +127,8 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
      */
     public BeanGuiFornitore modificaFornitore(BeanGuiFornitore forn) {
         super.modifica(forn);
-        OpFornitore a = new OpFornitore();
         try {
+            OpFornitore a = new OpFornitore();
             Fornitore fo = Conversione.conversioneFornitore(forn);
             fo = a.modifica(fo);
             forn = Conversione.conversioneFornitore(fo, forn);
