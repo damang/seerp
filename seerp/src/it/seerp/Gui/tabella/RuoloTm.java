@@ -21,7 +21,7 @@ public class RuoloTm extends Generica<Ruolo> {
         Object[] list = new Object[]{ "nome" };
 
         super.setColumnIdentifiers(list);
-        //super.setColumnCount(1);
+        super.setColumnCount(1);
 
        // AppGestioneExtraAzienda op = new AppGestioneExtraAzienda();
        /* Iterator<Cliente> it = op.visualizzaClienti().iterator();
@@ -36,6 +36,7 @@ public class RuoloTm extends Generica<Ruolo> {
      */
     public RuoloTm(JTable table) throws SQLException {
         this();
+        this.table=table;
     }
 
     public boolean isCellEditable(int row, int column) {
