@@ -125,7 +125,6 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
      * nel caso in cui i dati inseriti sono duplicati
      */
     public BeanGuiUtente inserisci(BeanGuiUtente user) throws DatiErrati, DatiDuplicati {
-
         try {
             OpeUtente a = new OpeUtente();
             Utente serv = Conversione.conversioneUtente(user);

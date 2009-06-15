@@ -33,6 +33,9 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto, Contrat
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
         return listGui;
     }
@@ -53,6 +56,9 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto, Contrat
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
         return gui;
     }
@@ -73,12 +79,15 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto, Contrat
             ArrayList<Contratto> list = ope.ricercaPerDipendente();
             for (Contratto cont : list) {
                 BeanGuiContratto contGui = new BeanGuiContratto();
-                contGui = it.seerp.application.conversioni.Conversione.conversioneContratto(cont, contGui);
+                contGui = Conversione.conversioneContratto(cont, contGui);
                 listGui.add(contGui);
             }
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
         return listGui;
     }
