@@ -1,7 +1,9 @@
 package it.seerp.application.conversioni;
 
+import it.seerp.application.bean.BeanGuiAgenda;
 import it.seerp.application.bean.BeanGuiAmministratore;
 import it.seerp.application.bean.BeanGuiAppuntamento;
+import it.seerp.application.bean.BeanGuiAzienda;
 import it.seerp.application.bean.BeanGuiCliente;
 import it.seerp.application.bean.BeanGuiContatto;
 import it.seerp.application.bean.BeanGuiContratto;
@@ -18,8 +20,10 @@ import it.seerp.application.bean.BeanGuiRuolo;
 import it.seerp.application.bean.BeanGuiServizio;
 import it.seerp.application.bean.BeanGuiServizioAssociato;
 import it.seerp.application.bean.BeanGuiUtente;
+import it.seerp.storage.ejb.Agenda;
 import it.seerp.storage.ejb.Amministratore;
 import it.seerp.storage.ejb.Appuntamento;
+import it.seerp.storage.ejb.Azienda;
 import it.seerp.storage.ejb.Cliente;
 import it.seerp.storage.ejb.Contatto;
 import it.seerp.storage.ejb.Contratto;
@@ -45,6 +49,7 @@ import java.util.GregorianCalendar;
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import sun.util.calendar.Gregorian;
 
 /**
  * Classe che permette la conversione tra diversi tipi di Bean e Bean Gui
@@ -72,19 +77,22 @@ public class Conversione {
             ServizioAssociato s1 = conversioneServizioAssociato(s);
             listSer.add(s1);
         }
-
+        Contratto contratto= new Contratto();
         String stato = pGui.getStato().getText();
+        contratto.setStato(stato);
         GregorianCalendar data = null;
         data.setTimeInMillis(Long.parseLong(pGui.getData().getText()));
+        contratto.setData(data);
         int durata = Integer.parseInt(pGui.getDurata().getText());
+        contratto.setDurata(durata);
         String tipo = pGui.getTipo().getText();
+        contratto.setTipo(tipo);
         int idContratto = Integer.parseInt(pGui.getIdContratto().getText());
+        contratto.setIdContratto(idContratto);
         String note = pGui.getNote().getText();
-        Dipendente dipendente = conversioneDipendente(pGui.getDipendente());
-        ExtraAzienda extraAzienda = conversioneExtraAzienda(pGui.getExtraAzienda());
-        Contratto contratto = new Contratto(stato,data,durata,tipo,idContratto,note);
-        contratto.setExtraAzienda(extraAzienda);
-        contratto.setDipendente(dipendente);
+        contratto.setNote(note);
+        contratto.setDipendente(conversioneDipendente(pGui.getDipendente()));
+        contratto.setExtraAzienda(conversioneExtraAzienda(pGui.getExtraAzienda()));
         return contratto;
     }
 
@@ -94,7 +102,7 @@ public class Conversione {
      * @param gui il Bean Grafico che deve essere modificato
      * @return Il Bean Gui Contratto convertito
      */
-    public static BeanGuiContratto conversioneContratto(Contratto c, BeanGuiContratto gui) {
+    public static BeanGuiContratto conversioneContratto(Contratto c, BeanGuiContratto gui) throws Exception {
         JTextField field = new JTextField();
         JTextArea area = new JTextArea();
 
@@ -110,10 +118,8 @@ public class Conversione {
         gui.setIdContratto(field);
         area.setText(c.getNote());
         gui.setNote(area);
-        field.setText(c.getDipendente().toString());
-        gui.setDipendente(field);
-        field.setText(c.getExtraAzienda().toString());
-        gui.setExtraAzienda(field);
+        gui.setDipendente(conversioneDipendente(c.getDipendente(), new BeanGuiDipendente()));
+        gui.setExtraAzienda(conversazioneExtraAzienda(c.getExtraAzienda(), new BeanGuiExtraAzienda()));
         gui.setListPagamento(gui.getListPagamento());
         gui.setListServizio(gui.getListServizio());
 
@@ -127,17 +133,20 @@ public class Conversione {
      * @return Il Bean Evento convertito
      */
     public static Evento conversioneEvento(BeanGuiEvento pGui) throws Exception {
-        String luogo = pGui.getLuogo().getText();
-        String tema = pGui.getTema().getText();
-        String nome = pGui.getNome().getText();
-        String note = pGui.getNote().getText();
-        Date data = Date.valueOf(pGui.getData().getText());
-        Time ora = Time.valueOf(pGui.getOra().getText());
-        int idEvento = Integer.parseInt(pGui.getIdEvento().getText());
-        int agenda = Integer.parseInt(pGui.getAgenda().getText());
-        boolean notifica = Boolean.parseBoolean(pGui.getNotifica().getText());
-
-        Evento evento = new Evento(luogo, tema, nome, note, data, ora, idEvento, agenda, notifica);
+        Evento evento= new Evento();
+        evento.setLuogo(pGui.getLuogo().getText());
+        evento.setTema(pGui.getTema().getText());
+        evento.setNome(pGui.getNome().getText());
+        evento.setNote(pGui.getNote().getText());
+        GregorianCalendar data = null;
+        data.setTimeInMillis(Long.parseLong(pGui.getData().getText()));
+        evento.setData(data);
+        GregorianCalendar ora= null;
+        ora.setTimeInMillis(Long.parseLong(pGui.getOra().getText()));
+        evento.setOra(ora);
+        evento.setIdEvento(Integer.parseInt(pGui.getIdEvento().getText()));
+        evento.setAgenda(conversioneAgenda(pGui.getAgenda()));
+        evento.setNotifica(Boolean.parseBoolean(pGui.getNotifica().getText()));
 
         return evento;
     }
@@ -167,8 +176,7 @@ public class Conversione {
         gui.setOra(field);
         field.setText(Integer.toString(e.getIdEvento()));
         gui.setIdEvento(field);
-        field.setText(e.getAgenda().toString());
-        gui.setAgenda(field);
+        gui.setAgenda(conversioneAgenda(e.getAgenda(), new BeanGuiAgenda()));
 
         return gui;
     }
@@ -179,25 +187,23 @@ public class Conversione {
      * Il Bean Gui Servizio da convertire
      * @return Il Bean Servizio convertito
      */
-    public static Servizio conversioneServizio(BeanGuiServizio pGui) {
-        ArrayList<Contratto> list = new ArrayList<Contratto>();
+    public static Servizio conversioneServizio(BeanGuiServizio pGui) throws Exception {
+        ArrayList<ServizioAssociato> list = new ArrayList<ServizioAssociato>();
 
-        for (BeanGuiContratto c : pGui.getListContratti()) {
-            Contratto c1 = conversioneContratto(c);
+        for (BeanGuiServizioAssociato c : pGui.getListServiziAssociati()) {
+            ServizioAssociato c1 = conversioneAssociato(c);
             list.add(c1);
         }
-
-        String descrizione = pGui.getDescrizione().getText();
-        boolean disponibilita = Boolean.parseBoolean(pGui.getDisponibilita().getText());
-        int quantita = Integer.parseInt(pGui.getQuantita().getText());
-        String tipo = pGui.getTipo().getText();
-        double prezzo = Double.parseDouble(pGui.getPrezzo().getText());
-        int idServizio = Integer.parseInt(pGui.getIdServizio().getText());
-        int iva = Integer.parseInt(pGui.getIva().getText());
-        String note = pGui.getNote().getText();
-
-        Servizio servizio = new Servizio(descrizione, disponibilita, quantita, tipo, prezzo, idServizio, iva, note, list);
-
+        Servizio servizio = new Servizio();
+        servizio.setDescrizione(pGui.getDescrizione().getText());
+        servizio.setDisponibilita(Boolean.parseBoolean(pGui.getDisponibilita().getText()));
+        servizio.setQuantita(Integer.parseInt(pGui.getQuantita().getText()));
+        servizio.setTipo( pGui.getTipo().getText());
+        servizio.setPrezzo(Double.parseDouble(pGui.getPrezzo().getText()));
+        servizio.setIdServizio(Integer.parseInt(pGui.getIdServizio().getText()));
+        servizio.setIva(Integer.parseInt(pGui.getIva().getText()));
+        servizio.setNote(pGui.getNote().getText());
+        servizio.setListServiziAssociati(list);
         return servizio;
     }
 
@@ -228,7 +234,7 @@ public class Conversione {
         gui.setIva(field);
         area.setText(s.getNote());
         gui.setNote(area);
-        gui.setListContratti(gui.getListContratti());
+        gui.setListServiziAssociati(gui.getListServiziAssociati());
 
         return gui;
     }
@@ -239,21 +245,8 @@ public class Conversione {
      * Il Bean Gui Pagamento da convertire
      * @return Il Bean Pagamento convertito
      */
-    public static Pagamento conversionePagamento(BeanGuiPagamento p) {
-        String note = p.getNote().getText();
-        Date dataScadenza = Date.valueOf(p.getDataScadenza().getText());
-        String descrizione = p.getDescrizione().getText();
-        double importo = Double.parseDouble(p.getImporto().getText());
-        String modalitaPagamento = p.getModalitaPagamento().getText();
-        String stato = p.getStato().getText();
-        String altreInformazioni = p.getAltreInformazioni().getText();
-        int idPagamento = Integer.parseInt(p.getIdPagamento().getText());
-        int contratto = Integer.parseInt(p.getContratto().getText());
-        int banca = Integer.parseInt(p.getBanca().getText());
-
-        Pagamento pagamento = new Pagamento(note, dataScadenza, descrizione, importo, modalitaPagamento, stato, altreInformazioni, idPagamento, contratto, banca);
-
-        return pagamento;
+    public static Pagamento conversionePagamento(BeanGuiPagamento p) throws Exception {
+       throw new UnsupportedOperationException("Not yet implemented");
     }
 
     /**
@@ -262,30 +255,8 @@ public class Conversione {
      * @param pagamento il Bean Grafico che deve essere modificato
      * @return Il Bean Gui Pagamento convertito
      */
-    public static BeanGuiPagamento conversionePagamento(Pagamento p, BeanGuiPagamento pagamento) {
-        JTextField field = new JTextField();
-        JTextArea area = new JTextArea();
-        area.setText(p.getNote());
-        pagamento.setNote(area);
-        field.setText(p.getDataScadenza().toString());
-        pagamento.setDataScadenza(field);
-        field.setText(p.getDescrizione());
-        pagamento.setDescrizione(field);
-        field.setText(p.getImporto().toString());
-        pagamento.setImporto(field);
-        field.setText(p.getModalitaPagamento());
-        pagamento.setModalitaPagamento(field);
-        field.setText(p.getStato());
-        pagamento.setStato(field);
-        field.setText(p.getAltreInformazioni());
-        pagamento.setAltreInformazioni(field);
-        field.setText(p.getIdPagamento().toString());
-        pagamento.setIdPagamento(field);
-        field.setText(p.getContratto().toString());
-        pagamento.setContratto(field);
-        field.setText(p.getBanca().toString());
-        pagamento.setBanca(field);
-        return pagamento;
+    public static BeanGuiPagamento conversionePagamento(Pagamento p, BeanGuiPagamento pagamento) throws Exception {
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 
     /**
@@ -295,17 +266,18 @@ public class Conversione {
      * @return il Bean convertito
      */
     public static Utente conversioneUtente(BeanGuiUtente bUtente) throws Exception {
-        Integer id = Integer.parseInt(bUtente.getIdUtenteTxt().getText());
-        String username = bUtente.getTxtUsername().getText();
-        String password = bUtente.getTxtPassword().getText();
-        String città = bUtente.getTxtCittà().getText();
-        String prov = bUtente.getTxtProvincia().getText();
-        String telefono = bUtente.getTxtTelefono().getText();
-        String email = bUtente.getTxtEmail().getText();
-        String note = bUtente.getTxtNote().getText();
-        String ruolo = bUtente.getRuolo().getText();
-        Boolean notifica = Boolean.parseBoolean(bUtente.getTxtNotifica().getText());
-        Utente utente = new Utente(id, username, password, città, prov, telefono, email, ruolo, note, notifica);
+        Utente utente = new Utente();
+        utente.setIdUtente(Integer.parseInt(bUtente.getIdUtenteTxt().getText()));
+        utente.setUsername(bUtente.getTxtUsername().getText());
+        utente.setPassword(bUtente.getTxtPassword().getText());
+        utente.setCittà(bUtente.getTxtCittà().getText());
+        utente.setProvincia(bUtente.getTxtProvincia().getText());
+        utente.setCap(bUtente.getCap().getText());
+        utente.setTelefono(bUtente.getTxtTelefono().getText());
+        utente.setEmail(bUtente.getTxtEmail().getText());
+        utente.setNote(bUtente.getTxtNote().getText());
+        utente.setTipo(bUtente.getTipo().getText());
+        utente.setVisible(Boolean.parseBoolean(bUtente.getTxtNotifica().getText()));
         return utente;
     }
 
@@ -333,8 +305,8 @@ public class Conversione {
         utente.setTxtUsername(field);
         field.setText(user.getVisible().toString());
         utente.setTxtnotifica(field);
-        field.setText(user.getRuolo());
-        utente.setRuolo(field);
+        field.setText(user.getTipo());
+        utente.setTipo(field);
         return utente;
     }
 
@@ -345,36 +317,25 @@ public class Conversione {
      * @return il Bean convertito
      */
     public static Personale conversionePersonale(BeanGuiPersonale bp) throws Exception {
-        ArrayList<Permesso> a = new ArrayList<Permesso>();
-        ArrayList<Ruolo> a1 = new ArrayList<Ruolo>();
+        
 
-        for (BeanGuiPermesso b : bp.getListPermessi()) {
-            Permesso b1 = conversionePermesso(b);
-            a.add(b1);
-        }
-
-        for (BeanGuiRuolo b : bp.getListRuoli()) {
-            Ruolo b1 = conversioneRuolo(b);
-            a1.add(b1);
-        }
-
-        Integer id = Integer.parseInt(bp.getIdUtenteTxt().getText());
-        String username = bp.getTxtUsername().getText();
-        String password = bp.getTxtPassword().getText();
-        String città = bp.getTxtCittà().getText();
-        String prov = bp.getTxtProvincia().getText();
-        String telefono = bp.getTxtTelefono().getText();
-        String email = bp.getTxtEmail().getText();
-        String note = bp.getTxtNote().getText();
-        Integer idp = Integer.parseInt(bp.getIdPersonale().getText());
-        String cognome = bp.getCognome().getText();
-        String nome = bp.getNome().getText();
-        String codiceFiscale = bp.getCodiceFiscale().getText();
-        String tipo = bp.getTipo().getToolTipText();
-        String ruolo = bp.getRuolo().getText();
-        Boolean notifica = Boolean.parseBoolean(bp.getTxtNotifica().getText());
-        Personale p = new Personale(id, username, password, città, prov, telefono, email, note, ruolo, idp, cognome, nome, codiceFiscale, tipo, a, a1, notifica);
-        return p;
+        Personale utente = new Personale();
+        utente.setIdUtente(Integer.parseInt(bp.getIdUtenteTxt().getText()));
+        utente.setUsername(bp.getTxtUsername().getText());
+        utente.setPassword(bp.getTxtPassword().getText());
+        utente.setCittà(bp.getTxtCittà().getText());
+        utente.setProvincia(bp.getTxtProvincia().getText());
+        utente.setCap(bp.getCap().getText());
+        utente.setTelefono(bp.getTxtTelefono().getText());
+        utente.setEmail(bp.getTxtEmail().getText());
+        utente.setNote(bp.getTxtNote().getText());
+        utente.setTipo(bp.getTipo().getText());
+        utente.setVisible(Boolean.parseBoolean(bp.getTxtNotifica().getText()));
+        utente.setCognome(bp.getCognome().getText());
+        utente.setNome(bp.getNome().getText());
+        utente.setCodiceFiscale(bp.getCodiceFiscale().getText());
+        utente.setRuolo(new Ruolo(bp.getRuolo().getText()));
+        return utente;
     }
 
     /**
@@ -401,22 +362,15 @@ public class Conversione {
         bp.setTxtTelefono(c);
         c.setText(p.getNote().toString());
         bp.setTxtUsername(c);
-        c.setText(p.getIdPersonale().toString());
-        bp.setIdPersonale(c);
         c.setText(p.getCognome());
         bp.setCognome(c);
         c.setText(p.getNome());
         bp.setNome(c);
         c.setText(p.getCodiceFiscale());
         bp.setCodiceFiscale(c);
-        d.setToolTipText(p.getTipo());
-        bp.setTipo(d);
-        bp.setListPermessi(bp.getListPermessi());
-        bp.setListRuoli(bp.getListRuoli());
-        c.setText(p.getVisible().toString());
-        bp.setTxtnotifica(c);
-        c.setText(p.getRuolo());
+        c.setText(p.getRuolo().getNome());
         bp.setRuolo(c);
+        bp.setTxtnotifica(c);
         return bp;
     }
 
@@ -441,26 +395,27 @@ public class Conversione {
             Contratto b1 = conversioneContratto(b);
             a1.add(b1);
         }
-
-        Integer id = Integer.parseInt(e.getIdUtenteTxt().getText());
-        String username = e.getTxtUsername().getText();
-        String password = e.getTxtPassword().getText();
-        String città = e.getTxtCittà().getText();
-        String prov = e.getTxtProvincia().getText();
-        String telefono = e.getTxtTelefono().getText();
-        String email = e.getTxtEmail().getText();
-        String note = e.getTxtNote().getText();
-        Integer ide = Integer.parseInt(e.getIdExtraAziendaTxt().getText());
-        String cognome = e.getTxtCognome().getText();
-        String nome = e.getTxtNome().getText();
-        String ragSoc = e.getTxtRagioneSociale().getText();
-        String pIva = e.getTxtPIva().getText();
-        String fax = e.getTxtFax().getText();
-        String ruolo = e.getCmbRuolo().getToolTipText();
-        Boolean notifica = Boolean.parseBoolean(e.getTxtNotifica().getText());
-
-        ExtraAzienda extra = new ExtraAzienda(id, username, password, città, ruolo, prov, telefono, email, ruolo, note, notifica, ide, cognome, nome, ragSoc, pIva, fax, a, a1);
-        return extra;
+        ExtraAzienda utente = new ExtraAzienda();
+         utente.setIdUtente(Integer.parseInt(e.getIdUtenteTxt().getText()));
+        utente.setUsername(e.getTxtUsername().getText());
+        utente.setPassword(e.getTxtPassword().getText());
+        utente.setCittà(e.getTxtCittà().getText());
+        utente.setProvincia(e.getTxtProvincia().getText());
+        utente.setCap(e.getCap().getText());
+        utente.setTelefono(e.getTxtTelefono().getText());
+        utente.setEmail(e.getTxtEmail().getText());
+        utente.setNote(e.getTxtNote().getText());
+        utente.setTipo(e.getTipo().getText());
+        utente.setVisible(Boolean.parseBoolean(e.getTxtNotifica().getText()));
+        utente.setCognome(e.getCognome().getText());
+        utente.setNome(e.getNome().getText());
+        utente.setRagioneSociale(e.getRagioneSociale().getText());
+        utente.setPIva(e.getPIva().getText());
+        utente.setFax(e.getFax().getText());
+        utente.setTipo(e.getTipo().getText());
+        utente.setListAppuntamenti(a);
+        utente.setListContratti(a1);
+        return utente;
     }
 
     /**
@@ -469,7 +424,7 @@ public class Conversione {
      * @param extra il Bean Grafico che deve essere modificato
      * @return il Bean Gui convertito
      */
-    public static BeanGuiExtraAzienda conversazioneExtraAzienda(ExtraAzienda e, BeanGuiExtraAzienda extra) {
+    public static BeanGuiExtraAzienda conversazioneExtraAzienda(ExtraAzienda e, BeanGuiExtraAzienda extra) throws Exception {
 
         JTextField c = new JTextField();
         c.setText(e.getIdUtente().toString());
@@ -486,23 +441,23 @@ public class Conversione {
         extra.setTxtTelefono(c);
         c.setText(e.getNote().toString());
         extra.setTxtUsername(c);
+        c.setText(e.getCap().toString());
+        extra.setCap(c);
         c.setText(e.getVisible().toString());
         extra.setTxtnotifica(c);
-        c.setText(e.getIdExtraAzienda().toString());
-        extra.setIdExtraAziendaTxt(c);
+        
         c.setText(e.getCognome().toString());
-        extra.setTxtCognome(c);
+        extra.setCognome(c);
         c.setText(e.getNome().toString());
-        extra.setTxtNome(c);
+        extra.setNome(c);
         c.setText(e.getRagioneSociale().toString());
-        extra.setTxtRagioneSociale(c);
+        extra.setRagioneSociale(c);
         c.setText(e.getPIva().toString());
-        extra.setTxtPIva(c);
+        extra.setPIva(c);
         c.setText(e.getFax().toString());
-        extra.getTxtFax();
-        JComboBox d = new JComboBox();
-        d.setToolTipText(e.getRuolo());
-        extra.setCmbRuolo(d);
+        extra.getFax();
+        c.setText(e.getRuolo());
+        extra.setRuolo(c);
         extra.setListAppuntamenti(extra.getListAppuntamenti());
         extra.setListContratti(extra.getListContratti());
         return extra;
@@ -516,38 +471,24 @@ public class Conversione {
      */
     public static Responsabile conversioneResponsabile(BeanGuiResponsabile r) throws Exception {
 
-        ArrayList<Permesso> a = new ArrayList<Permesso>();
-        ArrayList<Ruolo> a1 = new ArrayList<Ruolo>();
-
-        for (BeanGuiPermesso b : r.getListPermessi()) {
-            Permesso b1 = conversionePermesso(b);
-            a.add(b1);
-        }
-
-        for (BeanGuiRuolo b : r.getListRuoli()) {
-            Ruolo b1 = conversioneRuolo(b);
-            a1.add(b1);
-        }
-
-        Integer id = Integer.parseInt(r.getIdUtenteTxt().getText());
-        String username = r.getTxtUsername().getText();
-        String password = r.getTxtPassword().getText();
-        String città = r.getTxtCittà().getText();
-        String prov = r.getTxtProvincia().getText();
-        String telefono = r.getTxtTelefono().getText();
-        String email = r.getTxtEmail().getText();
-        String note = r.getTxtNote().getText();
-        Integer idp = Integer.parseInt(r.getIdPersonale().getText());
-        String cognome = r.getCognome().getText();
-        String nome = r.getNome().getText();
-        String codiceFiscale = r.getCodiceFiscale().getText();
-        String tipo = r.getTipo().getToolTipText();
-        Boolean notifica = Boolean.parseBoolean(r.getTxtNotifica().getText());
-        Integer idr = Integer.parseInt(r.getIdResponsabileTxt().getText());
-        String ruolo = r.getRuolo().getText();
-
-        Responsabile res = new Responsabile(id, username, password, città, prov, telefono, email, note, ruolo, idp, cognome, nome, codiceFiscale, tipo, a, a1, notifica, idr);
-        return res;
+        Responsabile utente = new Responsabile();
+        utente.setIdUtente(Integer.parseInt(r.getIdUtenteTxt().getText()));
+        utente.setUsername(r.getTxtUsername().getText());
+        utente.setPassword(r.getTxtPassword().getText());
+        utente.setCittà(r.getTxtCittà().getText());
+        utente.setProvincia(r.getTxtProvincia().getText());
+        utente.setCap(r.getCap().getText());
+        utente.setTelefono(r.getTxtTelefono().getText());
+        utente.setEmail(r.getTxtEmail().getText());
+        utente.setNote(r.getTxtNote().getText());
+        utente.setTipo(r.getTipo().getText());
+        utente.setVisible(Boolean.parseBoolean(r.getTxtNotifica().getText()));
+        utente.setCognome(r.getCognome().getText());
+        utente.setNome(r.getNome().getText());
+        utente.setCodiceFiscale(r.getCodiceFiscale().getText());
+        utente.setRuolo(new Ruolo(r.getRuolo().getText()));
+        return utente;
+       
     }
 
     /**
@@ -559,7 +500,6 @@ public class Conversione {
     public static BeanGuiResponsabile conversioneResponsabile(Responsabile e, BeanGuiResponsabile br) {
 
         JTextField c = new JTextField();
-        JComboBox d = new JComboBox();
         c.setText(e.getIdUtente().toString());
         br.setIdUtenteText(c);
         c.setText(e.getPassword());
@@ -574,22 +514,16 @@ public class Conversione {
         br.setTxtTelefono(c);
         c.setText(e.getNote().toString());
         br.setTxtUsername(c);
-        c.setText(e.getIdPersonale().toString());
-        br.setIdPersonale(c);
         c.setText(e.getCognome());
         br.setCognome(c);
         c.setText(e.getNome());
         br.setNome(c);
         c.setText(e.getCodiceFiscale());
         br.setCodiceFiscale(c);
-        d.setToolTipText(e.getTipo());
-        br.setTipo(d);
-        br.setListPermessi(br.getListPermessi());
-        br.setListRuoli(br.getListRuoli());
+        c.setText(e.getRuolo().getNome());
+        br.setRuolo(c);
         c.setText(e.getVisible().toString());
         br.setTxtnotifica(c);
-        c.setText(e.getIdResponsabile().toString());
-        br.setIdResponsabileTxt(c);
         return br;
     }
 
@@ -600,9 +534,6 @@ public class Conversione {
      * @return il Bean convertito
      */
     public static Dipendente conversioneDipendente(BeanGuiDipendente r) throws Exception {
-
-        ArrayList<Permesso> a = new ArrayList<Permesso>();
-        ArrayList<Ruolo> a1 = new ArrayList<Ruolo>();
 
         ArrayList<Appuntamento> a2 = new ArrayList<Appuntamento>();
         ArrayList<Contratto> a3 = new ArrayList<Contratto>();
@@ -617,50 +548,36 @@ public class Conversione {
             a3.add(b1);
         }
 
-        for (BeanGuiPermesso b : r.getListPermessi()) {
-            Permesso b1 = conversionePermesso(b);
-            a.add(b1);
-        }
-
-        for (BeanGuiRuolo b : r.getListRuoli()) {
-            Ruolo b1 = conversioneRuolo(b);
-            a1.add(b1);
-        }
-
-        Integer id = Integer.parseInt(r.getIdUtenteTxt().getText());
-        String username = r.getTxtUsername().getText();
-        String password = r.getTxtPassword().getText();
-        String città = r.getTxtCittà().getText();
-        String prov = r.getTxtProvincia().getText();
-        String telefono = r.getTxtTelefono().getText();
-        String email = r.getTxtEmail().getText();
-        String note = r.getTxtNote().getText();
-        Integer idp = Integer.parseInt(r.getIdPersonale().getText());
-        String cognome = r.getCognome().getText();
-        String nome = r.getNome().getText();
-        String ruolo = r.getRuolo().getText();
-        String codiceFiscale = r.getCodiceFiscale().getText();
-        String tipo = r.getTipo().getToolTipText();
-        Boolean notifica = Boolean.parseBoolean(r.getTxtNotifica().getText());
-        Integer idd = Integer.parseInt(r.getIdDipendenteTxt().getText());
-
-
-
-        Dipendente dip = new Dipendente(id, username, password, città, prov, telefono, email, note, ruolo, idp, cognome, nome, codiceFiscale, tipo, a, a1, notifica, idd, a2, a3);
-        return dip;
+        Dipendente utente = new Dipendente();
+        utente.setIdUtente(Integer.parseInt(r.getIdUtenteTxt().getText()));
+        utente.setUsername(r.getTxtUsername().getText());
+        utente.setPassword(r.getTxtPassword().getText());
+        utente.setCittà(r.getTxtCittà().getText());
+        utente.setProvincia(r.getTxtProvincia().getText());
+        utente.setCap(r.getCap().getText());
+        utente.setTelefono(r.getTxtTelefono().getText());
+        utente.setEmail(r.getTxtEmail().getText());
+        utente.setNote(r.getTxtNote().getText());
+        utente.setTipo(r.getTipo().getText());
+        utente.setVisible(Boolean.parseBoolean(r.getTxtNotifica().getText()));
+        utente.setCognome(r.getCognome().getText());
+        utente.setNome(r.getNome().getText());
+        utente.setCodiceFiscale(r.getCodiceFiscale().getText());
+        utente.setRuolo(new Ruolo(r.getRuolo().getText()));
+        utente.setListAppuntamenti(a2);
+        utente.setListContratti(a3);
+        return utente;
     }
 
     /**
-     * Metodo che converte un Bean Responsabile in un Bean Gui Responsabile
+     * Metodo che converte un Bean Dipendente in un Bean Gui Diependente
      * @param e il Bean da convertire
      * @param bd il Bean Grafico che deve essere modificato
      * @return il Bean Gui convertito
      */
     public static BeanGuiDipendente conversioneDipendente(Dipendente e, BeanGuiDipendente bd) {
 
-
         JTextField c = new JTextField();
-        JComboBox d = new JComboBox();
         c.setText(e.getIdUtente().toString());
         bd.setIdUtenteText(c);
         c.setText(e.getPassword());
@@ -675,72 +592,21 @@ public class Conversione {
         bd.setTxtTelefono(c);
         c.setText(e.getNote().toString());
         bd.setTxtUsername(c);
-        c.setText(e.getIdPersonale().toString());
-        bd.setIdPersonale(c);
         c.setText(e.getCognome());
         bd.setCognome(c);
         c.setText(e.getNome());
         bd.setNome(c);
         c.setText(e.getCodiceFiscale());
         bd.setCodiceFiscale(c);
-        d.setToolTipText(e.getTipo());
-        bd.setTipo(d);
-        bd.setListPermessi(bd.getListPermessi());
-        bd.setListRuoli(bd.getListRuoli());
+        c.setText(e.getRuolo().getNome());
+        bd.setRuolo(c);
         c.setText(e.getVisible().toString());
         bd.setTxtnotifica(c);
-        c.setText(e.getIdDipendente().toString());
-        bd.setIdDipendenteTxt(c);
         bd.setListAppuntamenti(bd.getListAppuntamenti());
         bd.setListContratti(bd.getListContratti());
         return bd;
     }
 
-    /**
-     * Metodo che converte un Bean Responsabile in un Bean Gui Responsabile
-     * @param e il Bean da convertire
-     * @param bd il Bean Grafico che deve essere modificato
-     * @return il Bean Gui convertito
-     */
-    public static BeanGuiDipendente conversioneResponsabile(Dipendente e, BeanGuiDipendente bd) {
-
-
-        JTextField c = new JTextField();
-        JComboBox d = new JComboBox();
-        c.setText(e.getIdUtente().toString());
-        bd.setIdUtenteText(c);
-        c.setText(e.getPassword());
-        bd.setTxtPassword(c);
-        c.setText(e.getCittà());
-        bd.setTxtCittà(c);
-        c.setText(e.getEmail());
-        bd.setTxtEmail(c);
-        c.setText(e.getProvincia());
-        bd.setTxtProvincia(c);
-        c.setText(e.getTelefono());
-        bd.setTxtTelefono(c);
-        c.setText(e.getNote().toString());
-        bd.setTxtUsername(c);
-        c.setText(e.getIdPersonale().toString());
-        bd.setIdPersonale(c);
-        c.setText(e.getCognome());
-        bd.setCognome(c);
-        c.setText(e.getNome());
-        bd.setNome(c);
-        c.setText(e.getCodiceFiscale());
-        bd.setCodiceFiscale(c);
-        d.setToolTipText(e.getTipo());
-        bd.setTipo(d);
-        bd.setListPermessi(bd.getListPermessi());
-        bd.setListRuoli(bd.getListRuoli());
-        c.setText(e.getVisible().toString());
-        bd.setTxtnotifica(c);
-        c.setText(e.getIdDipendente().toString());
-        bd.setIdDipendenteTxt(c);
-        bd.setListAppuntamenti(bd.getListAppuntamenti());
-        bd.setListContratti(bd.getListContratti());
-        return bd;
-    }
 
     /**
      * Metodo che converte un Bean Amministratore in un Bean Gui Amministratore
@@ -748,82 +614,63 @@ public class Conversione {
      * @param br il Bean Grafico che deve essere modificato
      * @return il Bean Gui convertito
      */
-    public static BeanGuiAmministratore conversioneAmministratore(Amministratore e, BeanGuiAmministratore br) {
+    public static BeanGuiAmministratore conversioneAmministratore(Amministratore e, BeanGuiAmministratore ba) {
 
-        JTextField c = new JTextField();
-        JComboBox d = new JComboBox();
-        c.setText(e.getIdAmministratore().toString());
-        br.setIdAmministratoreTxt(c);
+       JTextField c = new JTextField();
         c.setText(e.getIdUtente().toString());
-        br.setIdUtenteText(c);
+        ba.setIdUtenteText(c);
         c.setText(e.getPassword());
-        br.setTxtPassword(c);
+        ba.setTxtPassword(c);
         c.setText(e.getCittà());
-        br.setTxtCittà(c);
+        ba.setTxtCittà(c);
         c.setText(e.getEmail());
-        br.setTxtEmail(c);
+        ba.setTxtEmail(c);
         c.setText(e.getProvincia());
-        br.setTxtProvincia(c);
+        ba.setTxtProvincia(c);
         c.setText(e.getTelefono());
-        br.setTxtTelefono(c);
+        ba.setTxtTelefono(c);
         c.setText(e.getNote().toString());
-        br.setTxtUsername(c);
-        c.setText(e.getIdPersonale().toString());
-        br.setIdPersonale(c);
+        ba.setTxtUsername(c);
         c.setText(e.getCognome());
-        br.setCognome(c);
+        ba.setCognome(c);
         c.setText(e.getNome());
-        br.setNome(c);
+        ba.setNome(c);
         c.setText(e.getCodiceFiscale());
-        br.setCodiceFiscale(c);
-        d.setToolTipText(e.getTipo());
-        br.setTipo(d);
-        br.setListPermessi(br.getListPermessi());
-        br.setListRuoli(br.getListRuoli());
+        ba.setCodiceFiscale(c);
+        c.setText(e.getRuolo().getNome());
+        ba.setRuolo(c);
         c.setText(e.getVisible().toString());
-        br.setTxtnotifica(c);
-
-        return br;
+        ba.setTxtnotifica(c);
+        ba.setAzienda(conversioneAzienda(e.getAzienda(), new BeanGuiAzienda()));
+        return ba;
     }
 
     /**
-     * Metodo che converte un Bean Gui Responsabile in un normale Bean Responsabile
+     * Metodo che converte un Bean Gui Amministratore in un normale Bean Amministratore
      * @param e
      * Il Bean Gui da convertire
      * @return il Bean convertito
      */
     public static Amministratore conversioneAmministratore(BeanGuiAmministratore r) throws Exception {
 
-        ArrayList<Permesso> a = new ArrayList<Permesso>();
-        ArrayList<Ruolo> a1 = new ArrayList<Ruolo>();
-
-        for (BeanGuiPermesso b : r.getListPermessi()) {
-            Permesso b1 = conversionePermesso(b);
-            a.add(b1);
-        }
-
-        for (BeanGuiRuolo b : r.getListRuoli()) {
-            Ruolo b1 = conversioneRuolo(b);
-            a1.add(b1);
-        }
-
-        Integer id = Integer.parseInt(r.getIdUtenteTxt().getText());
-        String username = r.getTxtUsername().getText();
-        String password = r.getTxtPassword().getText();
-        String città = r.getTxtCittà().getText();
-        String prov = r.getTxtProvincia().getText();
-        String telefono = r.getTxtTelefono().getText();
-        String email = r.getTxtEmail().getText();
-        String note = r.getTxtNote().getText();
-        Integer idp = Integer.parseInt(r.getIdPersonale().getText());
-        String cognome = r.getCognome().getText();
-        String nome = r.getNome().getText();
-        String codiceFiscale = r.getCodiceFiscale().getText();
-        String tipo = r.getTipo().getToolTipText();
-        Boolean notifica = Boolean.parseBoolean(r.getTxtNotifica().getText());
-        Integer ida = Integer.parseInt(r.getIdAmministratoreTxt().getText());
-        Amministratore amm = new Amministratore(id, username, password, città, prov, telefono, email, note, tipo, idp, cognome, nome, codiceFiscale, tipo, a, a1, notifica, ida);
-        return amm;
+        Amministratore utente = new Amministratore();
+        utente.setIdUtente(Integer.parseInt(r.getIdUtenteTxt().getText()));
+        utente.setUsername(r.getTxtUsername().getText());
+        utente.setPassword(r.getTxtPassword().getText());
+        utente.setCittà(r.getTxtCittà().getText());
+        utente.setProvincia(r.getTxtProvincia().getText());
+        utente.setCap(r.getCap().getText());
+        utente.setTelefono(r.getTxtTelefono().getText());
+        utente.setEmail(r.getTxtEmail().getText());
+        utente.setNote(r.getTxtNote().getText());
+        utente.setTipo(r.getTipo().getText());
+        utente.setVisible(Boolean.parseBoolean(r.getTxtNotifica().getText()));
+        utente.setCognome(r.getCognome().getText());
+        utente.setNome(r.getNome().getText());
+        utente.setCodiceFiscale(r.getCodiceFiscale().getText());
+        utente.setRuolo(new Ruolo(r.getRuolo().getText()));
+        utente.setAzienda(conversioneAgenda(r.getAzienda()));
+        return utente;
     }
 
     /**
@@ -855,8 +702,10 @@ public class Conversione {
         String telefono = e.getTxtTelefono().getText();
         String email = e.getTxtEmail().getText();
         String note = e.getTxtNote().getText();
+        String cap = e.getCap().getText();
         Integer ide = Integer.parseInt(e.getIdExtraAziendaTxt().getText());
         String cognome = e.getTxtCognome().getText();
+        String ruol= e.getRuolo().getText();
         String nome = e.getTxtNome().getText();
         String ragSoc = e.getTxtRagioneSociale().getText();
         String pIva = e.getTxtPIva().getText();
@@ -867,7 +716,9 @@ public class Conversione {
         Integer feedback = Integer.parseInt(e.getTxtFeedback().getText());
 
 
-        Contatto cont = new Contatto(id, username, password, città, ruolo, prov, telefono, email, ruolo, note, notifica, ide, cognome, nome, ragSoc, pIva, fax, a, a1, idc, feedback);
+        Contatto cont = new Contatto(id,username,password,città,ruol,prov,telefono,cap,email,ruolo,note,notifica,ide,cognome,nome,ragSoc,pIva,fax,idc,feedback);
+        cont.setListAppuntamenti(a);
+        cont.setListContratti(a1);
         return cont;
     }
 
@@ -908,7 +759,7 @@ public class Conversione {
         c.setText(e.getPIva().toString());
         cont.setTxtPIva(c);
         c.setText(e.getFax().toString());
-        cont.getTxtFax();
+        cont.setTxtFax(c);
         JComboBox d = new JComboBox();
         d.setToolTipText(e.getRuolo());
         cont.setCmbRuolo(d);
@@ -956,12 +807,13 @@ public class Conversione {
         String nome = e.getTxtNome().getText();
         String ragSoc = e.getTxtRagioneSociale().getText();
         String pIva = e.getTxtPIva().getText();
+        String ruol= e.getRuolo().getText();
         String fax = e.getTxtFax().getText();
         String ruolo = e.getCmbRuolo().getToolTipText();
         Boolean notifica = Boolean.parseBoolean(e.getTxtNotifica().getText());
         Integer idc = Integer.parseInt(e.getIdClienteTxt().getText());
 
-        Cliente cl = new Cliente(id, username, password, città, ruolo, prov, telefono, email, ruolo, note, notifica, ide, cognome, nome, ragSoc, pIva, fax, a, a1, idc);
+        Cliente cl = new Cliente(id,username,password,città,ruol,prov,telefono,cap,email,ruolo,note,notifica,ide,cognome,nome,ragioneSociale,pIva,fax,idc);
 
         return cl;
     }
@@ -1115,24 +967,7 @@ public class Conversione {
      * @return il Bean Gui convertito
      */
     public static BeanGuiAppuntamento conversioneAppuntamento(Appuntamento b, BeanGuiAppuntamento app) {
-        JTextField c = new JTextField();
-        c.setText(b.getData().toString());
-        app.setData(c);
-        c.setText(b.getDipendente().toString());
-        app.setDipendente(c);
-        c.setText(b.getExtraAzienda().toString());
-        app.setExtraAzienda(c);
-        c.setText(b.getIdAppuntamento().toString());
-        app.setIdAppuntamento(c);
-        c.setText(b.getNotifica().toString());
-        app.setNotifica(c);
-        c.setText(b.getOra().toString());
-        app.setOra(c);
-        JTextArea d = new JTextArea();
-        d.setText(b.getNote());
-        app.setNote(d);
-
-        return app;
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 
     /**
@@ -1142,17 +977,7 @@ public class Conversione {
      * @return il Bean convertito
      */
     public static Appuntamento conversioneAppuntamento(BeanGuiAppuntamento b) {
-        Date a = new Date(Long.parseLong(b.getData().getText()));
-        Time c = new Time(Long.parseLong(b.getOra().getText()));
-        Integer id = Integer.parseInt(b.getIdAppuntamento().getText());
-        Integer idd = Integer.parseInt(b.getDipendente().getText());
-        Integer ide = Integer.parseInt(b.getExtraAzienda().getText());
-        Boolean notifica = Boolean.parseBoolean(b.getNotifica().getText());
-        String note = b.getNote().getText();
-
-        Appuntamento app = new Appuntamento(a, c, id, note, idd, ide, notifica);
-
-        return app;
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 
     /**
@@ -1250,5 +1075,29 @@ public class Conversione {
         r.setListPersonale(r.getListPersonale());
         r.setListPermessi(r.getListPermessi());
         return r;
+    }
+
+    private static Agenda conversioneAgenda(BeanGuiAgenda agenda) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    private static Azienda conversioneAgenda(BeanGuiAzienda azienda) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    private static BeanGuiAgenda conversioneAgenda(Agenda agenda, BeanGuiAgenda beanGuiAgenda) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    private static ServizioAssociato conversioneAssociato(BeanGuiServizioAssociato c) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    private static BeanGuiAzienda conversioneAzienda(Azienda azienda, BeanGuiAzienda beanGuiAzienda) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    private static ServizioAssociato conversioneServizioAssociato(BeanGuiServizioAssociato s) {
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 }
