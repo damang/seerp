@@ -17,7 +17,7 @@ import java.util.Enumeration;
 import java.util.Vector;
 import java.util.Iterator;
 
-public class AuthPermissionCollection extends PermissionCollection
+public class PermessoCollection extends PermissionCollection
 {
 	private Vector _perms = new Vector ();
 	
@@ -56,7 +56,7 @@ public class AuthPermissionCollection extends PermissionCollection
     public int size() {
         return _perms.size();
     }
-    public void remove (AccessPermission c) {
+    public void remove (Permesso c) {
         _perms.remove(c);
     }
 

@@ -75,7 +75,7 @@ public class PermissionRoleDBAdapter implements PermissionAdapter
 		Principal[] principals = domain.getPrincipals();
 		
 		String role = principals[1].getName();
-        AuthPermissionCollection list=null;
+        PermessoCollection list=null;
         
             list = getPermissionsUt(role);
 
@@ -93,7 +93,7 @@ public class PermissionRoleDBAdapter implements PermissionAdapter
 		Principal[] principals, CodeSource codeSource)
 	{
 		String role = principals[1].getName();
-        AuthPermissionCollection list=null;
+        PermessoCollection list=null;
       
             list = getPermissionsUt(role);
        
@@ -137,11 +137,11 @@ public class PermissionRoleDBAdapter implements PermissionAdapter
 	}
 */
 
-	public static AuthPermissionCollection getPermissionsUt(String role) {
+	public static PermessoCollection getPermissionsUt(String role) {
 		if (Debug.DEBUG)
 			Debug.trace("PermissionRoleDBAdapter::getAllPermissions");
-		String SQL="SELECT task, action FROM permesso p, incarico i, ruolo r WHERE idPermesso=i.permesso and i.ruolo=r.nome and r.nome=?";
-        AuthPermissionCollection perms = new AuthPermissionCollection();
+		String SQL="SELECT idPermesso, task, action FROM permesso p, incarico i, ruolo r WHERE idPermesso=i.permesso and i.ruolo=r.nome and r.nome=?";
+        PermessoCollection perms = new PermessoCollection();
 
 		Connection conn=null;
         try {
@@ -170,11 +170,10 @@ public class PermissionRoleDBAdapter implements PermissionAdapter
 			{
 				while (rs.next())
 				{
-				
+                    int id= rs.getInt("idPermesso");
 					String task = rs.getString ("task");
 					String action = rs.getString ("action");
-					perms.add(new AccessPermission(task, action));
-					
+					perms.add(new Permesso(id,task, action));
 				}
 			}
 
