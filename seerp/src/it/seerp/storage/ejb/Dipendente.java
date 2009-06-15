@@ -15,6 +15,10 @@ public class Dipendente extends Personale {
     private ArrayList<Appuntamento> listAppuntamenti;
     private ArrayList<Contratto> listContratti;
 
+    public Dipendente() {
+        
+    }
+
      /**
      *
      * @param idUtente
