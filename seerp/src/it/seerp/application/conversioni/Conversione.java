@@ -8,6 +8,7 @@ import it.seerp.application.bean.BeanGuiContratto;
 import it.seerp.application.bean.BeanGuiDipendente;
 import it.seerp.application.bean.BeanGuiEvento;
 import it.seerp.application.bean.BeanGuiExtraAzienda;
+import it.seerp.application.bean.BeanGuiFattura;
 import it.seerp.application.bean.BeanGuiFornitore;
 import it.seerp.application.bean.BeanGuiPagamento;
 import it.seerp.application.bean.BeanGuiPermesso;
@@ -15,6 +16,7 @@ import it.seerp.application.bean.BeanGuiPersonale;
 import it.seerp.application.bean.BeanGuiResponsabile;
 import it.seerp.application.bean.BeanGuiRuolo;
 import it.seerp.application.bean.BeanGuiServizio;
+import it.seerp.application.bean.BeanGuiServizioAssociato;
 import it.seerp.application.bean.BeanGuiUtente;
 import it.seerp.storage.ejb.Amministratore;
 import it.seerp.storage.ejb.Appuntamento;
@@ -24,6 +26,7 @@ import it.seerp.storage.ejb.Contratto;
 import it.seerp.storage.ejb.Dipendente;
 import it.seerp.storage.ejb.Evento;
 import it.seerp.storage.ejb.ExtraAzienda;
+import it.seerp.storage.ejb.Fattura;
 import it.seerp.storage.ejb.Fornitore;
 import it.seerp.storage.ejb.Pagamento;
 import it.seerp.storage.ejb.Permesso;
@@ -32,10 +35,13 @@ import it.seerp.storage.ejb.Responsabile;
 import it.seerp.storage.ejb.Ruolo;
 
 import it.seerp.storage.ejb.Servizio;
+import it.seerp.storage.ejb.ServizioAssociato;
 import it.seerp.storage.ejb.Utente;
+import java.lang.String;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -52,31 +58,33 @@ public class Conversione {
      * Il Bean Gui Contratto da convertire
      * @return Il Bean Contratto convertito
      */
-    public static Contratto conversioneContratto(BeanGuiContratto pGui) {
+    public static Contratto conversioneContratto(BeanGuiContratto pGui) throws Exception {
         ArrayList<Pagamento> listPag = new ArrayList<Pagamento>();
-        ArrayList<Servizio> listSer = new ArrayList<Servizio>();
+        ArrayList<ServizioAssociato> listSer = new ArrayList<ServizioAssociato>();
+        ArrayList<Fattura> listFatt= new ArrayList<Fattura>();
 
         for (BeanGuiPagamento p : pGui.getListPagamento()) {
             Pagamento p1 = conversionePagamento(p);
             listPag.add(p1);
         }
 
-        for (BeanGuiServizio s : pGui.getListServizio()) {
-            Servizio s1 = conversioneServizio(s);
+        for (BeanGuiServizioAssociato s : pGui.getListServizio()) {
+            ServizioAssociato s1 = conversioneServizioAssociato(s);
             listSer.add(s1);
         }
 
         String stato = pGui.getStato().getText();
-        Date data = Date.valueOf(pGui.getData().getText());
+        GregorianCalendar data = null;
+        data.setTimeInMillis(Long.parseLong(pGui.getData().getText()));
         int durata = Integer.parseInt(pGui.getDurata().getText());
         String tipo = pGui.getTipo().getText();
         int idContratto = Integer.parseInt(pGui.getIdContratto().getText());
         String note = pGui.getNote().getText();
-        int dipendente = Integer.parseInt(pGui.getDipendente().getText());
-        int extraAzienda = Integer.parseInt(pGui.getExtraAzienda().getText());
-
-        Contratto contratto = new Contratto()/*(stato, data, durata, tipo, idContratto, note, dipendente, extraAzienda, listPag, listSer)*/;
-
+        Dipendente dipendente = conversioneDipendente(pGui.getDipendente());
+        ExtraAzienda extraAzienda = conversioneExtraAzienda(pGui.getExtraAzienda());
+        Contratto contratto = new Contratto(stato,data,durata,tipo,idContratto,note);
+        contratto.setExtraAzienda(extraAzienda);
+        contratto.setDipendente(dipendente);
         return contratto;
     }
 

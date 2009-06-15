@@ -3,6 +3,7 @@ package it.seerp.storage.ejb;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 /**
  *la classe gestisce le informazioni sulle fatture ricevute
@@ -14,27 +15,14 @@ public class FatturaRicevuta extends Fattura {
     private Integer numeroProgressivo;
     private Double ivaCredito;
 
-    /**
-     *
-     * @param data
-     * @param idFattura
-     * @param imponibile
-     * @param importo
-     * @param iva
-     * @param tipo
-     * @param note
-     * @param listNote
-     * @param listServizio
-     * @param idFatturaRicevuta
-     * @param numeroProgressivo
-     * @param ivaCredito
-     */
-    public FatturaRicevuta(Date data, Integer idFattura, Double imponibile, Double importo, Double iva, String tipo, String note, Integer idFatturaRicevuta, Integer numeroProgressivo, Double ivaCredito) {
+    public FatturaRicevuta(GregorianCalendar data, Integer idFattura, Double imponibile, Double importo, Double iva, String tipo, String note, Integer idFatturaRicevuta, Integer numeroProgressivo, Double ivaCredito) {
         super(data, idFattura, imponibile, importo, iva, tipo, note);
         this.idFatturaRicevuta = idFatturaRicevuta;
         this.numeroProgressivo = numeroProgressivo;
         this.ivaCredito = ivaCredito;
     }
+
+  
   
 
     /**
