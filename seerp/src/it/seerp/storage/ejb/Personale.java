@@ -14,6 +14,10 @@ public class Personale extends Utente {
     private String tipo;
     private Ruolo ruolo;
 
+    public Personale() {
+        
+    }
+
 
     /**
      * Costruttore per la classe Personale
