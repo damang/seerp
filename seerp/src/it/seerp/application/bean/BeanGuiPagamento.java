@@ -21,7 +21,7 @@ public class BeanGuiPagamento {
     private JTextField stato;
     private JTextField altreInformazioni;
     private JTextField idPagamento;
-    private JTextField contratto;
+    private BeanGuiContratto contratto;
     private JTextField banca;
 
     /**
@@ -42,7 +42,7 @@ public class BeanGuiPagamento {
      * @param contratto
      * @param banca
      */
-    public BeanGuiPagamento(JTextArea note, JTextField dataScadenza, JTextField descrizione, JTextField importo, JTextField modalitaPagamento, JTextField stato, JTextField altreInformazioni, JTextField idPagamento, JTextField contratto, JTextField banca) {
+    public BeanGuiPagamento(JTextArea note, JTextField dataScadenza, JTextField descrizione, JTextField importo, JTextField modalitaPagamento, JTextField stato, JTextField altreInformazioni, JTextField idPagamento, JTextField banca) {
         this.note = note;
         this.dataScadenza = dataScadenza;
         this.descrizione = descrizione;
@@ -51,7 +51,7 @@ public class BeanGuiPagamento {
         this.stato = stato;
         this.altreInformazioni = altreInformazioni;
         this.idPagamento = idPagamento;
-        this.contratto = contratto;
+        
         this.banca = banca;
     }
 
@@ -91,7 +91,7 @@ public class BeanGuiPagamento {
      * metodo che
      * @return
      */
-    public JTextField getContratto() {
+    public BeanGuiContratto getContratto() {
         return contratto;
     }
 
@@ -99,7 +99,7 @@ public class BeanGuiPagamento {
      * metodo che
      * @param contratto
      */
-    public void setContratto(JTextField contratto) {
+    public void setContratto(BeanGuiContratto contratto) {
         this.contratto = contratto;
     }
 
