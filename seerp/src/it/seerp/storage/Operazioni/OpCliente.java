@@ -173,20 +173,23 @@ public class OpCliente extends OpExtraAzienda {
             } else {
                 String sql = "INSERT INTO Cliente (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-                stmt.setInt(1, user.getIdUtente());
-                stmt.setString(2, user.getUsername());
-                stmt.setString(3, user.getPassword());
-                stmt.setString(4, user.getCittà());
-                stmt.setString(5, user.getProvincia());
-                stmt.setString(6, user.getTelefono());
-                stmt.setString(7, user.getEmail());
-                stmt.setString(8, user.getNote());
-                stmt.setString(9, user.getCognome());
-                stmt.setString(10, user.getNome());
-                stmt.setString(11, user.getRagioneSociale());
-                stmt.setString(12, user.getPIva());
-                stmt.setString(13, user.getFax());
-                stmt.setString(14, user.getRuolo());
+               stmt.setInt(1, user.getIdUtente());
+            stmt.setString(2, user.getUsername());
+            stmt.setString(3, user.getPassword());
+            stmt.setString(4, user.getCittà());
+            stmt.setString(5, user.getRuolo());
+            stmt.setString(6, user.getProvincia());
+            stmt.setString(7, user.getTelefono());
+            stmt.setString(8, user.getCap());
+            stmt.setString(9, user.getEmail());
+            stmt.setString(10, user.getRuolo());
+            stmt.setString(11, user.getNote());
+            stmt.setBoolean(12, user.getVisible());
+            stmt.setString(13, user.getCognome());
+            stmt.setString(14, user.getNome());
+            stmt.setString(15, user.getRagioneSociale());
+            stmt.setString(16, user.getPIva());
+            stmt.setString(17, user.getFax());
                 
 
                 stmt.execute();
