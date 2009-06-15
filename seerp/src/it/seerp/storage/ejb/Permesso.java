@@ -1,6 +1,7 @@
 
 package it.seerp.storage.ejb;
 
+import it.seerp.jaas.AccessPermission;
 import java.util.ArrayList;
 
 /**
@@ -10,9 +11,8 @@ import java.util.ArrayList;
 public class Permesso {
 
     private Integer idPermesso;
-    private String task;
-    private String action;
-    private Incarico incarico;
+    private AccessPermission perm;
+
    
 
     /**
@@ -21,10 +21,9 @@ public class Permesso {
      * @param task
      * @param action
      */
-    public Permesso(Integer idPermesso, String task,String action) {
+    public Permesso(Integer idPermesso, String task, String action) {
        this.idPermesso=idPermesso;
-       this.action=action;
-       this.task=task;
+       this.perm=new AccessPermission(task, action);
 
     }
 
@@ -33,7 +32,7 @@ public class Permesso {
      * @return l'action del permesso
      */
     public String getAction() {
-        return action;
+        return perm.getActions();
     }
 
     /**
@@ -48,8 +47,8 @@ public class Permesso {
      * metodo che permtte di restituire le informazioni relative all'incarico
      * @return le informazioni relative all'incarico
      */
-    public Incarico getIncarico() {
-        return incarico;
+    public AccessPermission getPermesso() {
+        return perm;
     }
 
     /**
@@ -57,15 +56,19 @@ public class Permesso {
      * @return il task del permesso
      */
     public String getTask() {
-        return task;
+        return perm.getName();
     }
 
     /**
-     * metodo che permette di settare l'action di un permesso
+     * metodo che permette di settare il permesso
      * @param action rappresenta l'action del permesso
      */
-    public void setAction(String action) {
-        this.action = action;
+    public void setPermesso(String task,String action) {
+        this.perm = new AccessPermission(task, action);
+    }
+
+    public void setPermesso(AccessPermission p) {
+        this.perm = p;
     }
 
     /**
@@ -75,22 +78,4 @@ public class Permesso {
     public void setIdPermesso(Integer idPermesso) {
         this.idPermesso = idPermesso;
     }
-
-    /**
-     * metodo che permette di settare le informazioni relative all'incarico
-     * @param incarico rappresenta le informazioni dell'incarico
-     */
-    public void setIncarico(Incarico incarico) {
-        this.incarico = incarico;
-    }
-
-    /**
-     * metodo che permette di settare il task del permesso
-     * @param task rappresenta il task
-     */
-    public void setTask(String task) {
-        this.task = task;
-    }
-
-
 }

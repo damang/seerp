@@ -12,7 +12,6 @@ import java.util.ArrayList;
  */
 public class Dipendente extends Personale {
 
-    private Integer idDipendente;
     private ArrayList<Appuntamento> listAppuntamenti;
     private ArrayList<Contratto> listContratti;
 
@@ -33,12 +32,10 @@ public class Dipendente extends Personale {
      * @param codiceFiscale
      * @param tipo
      * @param v
-     * @param idDipendente
      */
 
-    public Dipendente(Integer idUtente, String username, String password, String città, String provincia, String telefono, String cap, String email, String note, String ruolo, Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo, Boolean v, Integer idDipendente) {
-        super(idUtente, username, password, città, provincia, telefono, cap, email, note, ruolo, idPersonale, cognome, nome, codiceFiscale, tipo, v);
-        this.idDipendente = idDipendente;
+    public Dipendente(Integer idUtente, String username, String password, String città, String provincia, String telefono, String cap, String email, String note, String tipo, String cognome, String nome, String codiceFiscale, Ruolo ruolo, Boolean v) {
+        super(idUtente, username, password, città, provincia, telefono, cap, email, note, tipo, cognome, nome, codiceFiscale, v, ruolo);
         this.listAppuntamenti= new  ArrayList<Appuntamento>();
         this.listContratti= new ArrayList<Contratto>();
 
@@ -79,22 +76,6 @@ public class Dipendente extends Personale {
      */
     public void setListAppuntamenti(ArrayList<Appuntamento> listAppuntamenti) {
         this.listAppuntamenti = listAppuntamenti;
-    }
-
-    /**
-     *  restituisce il codice identificativo del Dipendente
-     * @return una stringa contenente l'identificativo del Dipendente
-     */
-    public Integer getIdDipendente() {
-        return idDipendente;
-    }
-
-    /**
-     * setta il codice identificativo del Dipendente
-     * @param idDipendente di tipo int
-     */
-    public void setIdDipendente(Integer idDipendente) {
-        this.idDipendente = idDipendente;
     }
 
     /**
