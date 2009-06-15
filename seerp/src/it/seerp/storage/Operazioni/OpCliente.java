@@ -55,8 +55,6 @@ public class OpCliente extends OpExtraAzienda {
             System.out.println("errore nella visualizzazione dell'elenco");
 
 
-
-
         } finally {
             // Release the resources
             if (rs != null) {
@@ -72,52 +70,23 @@ public class OpCliente extends OpExtraAzienda {
         return list;
     }
 
-    /** Metodo che permette la ricerca di un Cliente
-     * @param cognome
-     * cognome del Cliente da ricercare
-     * @param ruolo
-     * ruolo che il Cliente ricopre all'interno dell'azienda
-     * @return la lista dei Clienti che corrispondono ai criteri di ricerca
-     * @throws java.sql.SQLException*/
-    public ArrayList<Cliente> ricercaCliente(String cognome, String nome) throws SQLException {
+    
+    
 
-        ArrayList<Cliente> list = new ArrayList<Cliente>();
-        Connection con = null;
-        Statement stmt = null;
-        ResultSet rs = null;
+     /** Metodo che permette la ricerca di un Cliente
+      * @param cognome
+      * cognome del Cliente da ricercare
+      * @param ruolo
+      * ruolo che il Cliente ricopre all'interno dell'azienda
+      * @return la lista dei Clienti che corrispondono ai criteri di ricerca
+      * @throws java.sql.SQLException*/
+  
+     public  ArrayList<Cliente> ricercaCliente(String cognome, String ruolo)throws SQLException{
+         
+             ArrayList<Cliente> list = this.elencaCliente();
 
-        try {
-            String sql = "SELECT * FROM ExtraAzienda where cognome = ? AND nome = ?";
-            // Create a statement
-            stmt = (PreparedStatement) con.prepareStatement(sql);
-            stmt.setString(1, cognome);
-            stmt.setString(2, nome);
-            // Execute the query
-            rs = stmt.executeQuery(sql);
-            // Define the resource list
-            while (rs.next()) {
-                Cliente cliente = new Cliente(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getInt(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18), rs.getInt(19));
-
-
-
-            }
-        } catch (SQLException se) {
-            System.out.println("errore nella ricerca");
-
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
-        }
         return list;
-
+        
     }
 
     /** Metodo che permette di eliminare un Cliente già esistente
@@ -325,28 +294,9 @@ public class OpCliente extends OpExtraAzienda {
             while (rs.next()) {
                 cliente = new Cliente(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getInt(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18), rs.getInt(19));
 
-                PreparedStatement stmt1;
-                String sql2 = "Select nome From Appuntamento,Cliente where idAppuntamento=appuntamento and idCliente = ?";
-                stmt1 = (PreparedStatement) con.prepareStatement(sql2);
-                stmt1.setInt(1, cliente.getIdCliente());
-                ResultSet rs1 = stmt1.executeQuery();
-                while (rs1.next()) {
-                    Appuntamento appuntamento = new Appuntamento(rs.getString(1));
-                    cliente.addAppuntamento(appuntamento);
-
-                    PreparedStatement stmt2;
-                    String sql3 = "Select nome From Contratto,Cliente where idContratto=contratto and idCliente = ?";
-                    stmt2 = (PreparedStatement) con.prepareStatement(sql3);
-                    stmt2.setInt(1, cliente.getIdCliente());
-                    ResultSet rs2 = stmt2.executeQuery();
-                    while (rs2.next()) {
-                        Contratto contratto = new Contratto(rs.getString(1));
-                        cliente.addContratto(contratto);
-
-                    }
-                }
-            }
-        } catch (SQLException se) {
+               
+            
+        }} catch (SQLException se) {
             System.out.println("errore di visualizzazione");
 
         } finally {
@@ -364,95 +314,6 @@ public class OpCliente extends OpExtraAzienda {
 
         return cliente;
 
-    }
-
-    /**
-     * metodo che si occupa di ricercare tutti gli appuntamenti legati ad un cliente grazie all'id del cliente
-     * @param id identificativo del cliente
-     * @return lista degli appuntamenti associati al cliente
-     * @throws java.sql.SQLException*/
-    public ArrayList<Appuntamento> getAppuntamentiCliente(Integer id) throws SQLException {
-
-        ArrayList<Appuntamento> list = new ArrayList<Appuntamento>();
-
-        Statement stmt = null;
-        ResultSet rs = null;
-
-        try {
-            String sql = "Select nome From Appuntamento,Cliente where idAppuntamento=appuntamento and idCliente = ?";
-            // Create a statement
-            stmt = (PreparedStatement) con.prepareStatement(sql);
-            stmt.setInt(1, id);
-            // Execute the query
-            rs = stmt.executeQuery(sql);
-
-            while (rs.next()) {
-                Appuntamento appuntamento = new Appuntamento(rs.getString(1));
-                list.add(appuntamento);
-            }
-        } catch (SQLException se) {
-            System.out.println("errore nella visualizzazione degli appuntamenti");
-
-
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
-        }
-        return list;
-    }
-
-    /**
-     * metodo che si occupa di ricercare tutti i contratti legati ad un cliente grazie all'id del cliente
-     * @param id identificativo del cliente
-     * @return lista dei contratti associati al cliente
-     * @throws java.sql.SQLException*/
-    public ArrayList<Contratto> getContrattiCliente(Integer id) throws SQLException {
-
-        ArrayList<Contratto> list = new ArrayList<Contratto>();
-
-        Statement stmt = null;
-        ResultSet rs = null;
-
-
-        try {
-            String sql = "Select nome From Contratto,Cliente where idContratto=contratto and idCliente = ?";
-            // Create a statement
-            stmt = (PreparedStatement) con.prepareStatement(sql);
-            stmt.setInt(1, id);
-            // Execute the query
-            rs = stmt.executeQuery(sql);
-
-            while (rs.next()) {
-                Contratto contratto = new Contratto(rs.getString(1));
-                list.add(contratto);
-            }
-        } catch (SQLException se) {
-            System.out.println("errore nella visualizzazione dei contratti");
-
-
-
-
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
-        }
-        return list;
     }
 }
 
