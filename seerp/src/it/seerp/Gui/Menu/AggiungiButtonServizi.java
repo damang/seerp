@@ -9,7 +9,6 @@ import configurazioni.CommandInterface;
 import it.seerp.Gui.GestioneServizi.GestioneServizi;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,7 +34,8 @@ public class AggiungiButtonServizi extends JButton implements CommandInterface {
     
      areaSer.getSalva().setEnabled(true);
      areaSer.getAnnulla().setEnabled(true);
-     areaSer.editabile(true);}
+     areaSer.editabile(true);
+    }
 
 
 
