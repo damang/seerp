@@ -15,7 +15,6 @@ public class BeanGuiDipendente extends BeanGuiPersonale {
 
     private ArrayList<BeanGuiAppuntamento> listAppuntamenti;
     private ArrayList<BeanGuiContratto> listContratti;
-    private JTextField idDipendenteTxt;
     private JXPanel grafica;
     private NotEmptyValidator val;
 
@@ -34,32 +33,9 @@ public class BeanGuiDipendente extends BeanGuiPersonale {
     public BeanGuiDipendente() {
     }
 
-    /**
-     *
-     * @param idUtenteTxt
-     * @param txtUsername
-     * @param txtPassword
-     * @param txtCittà
-     * @param txtProvincia
-     * @param txtTelefono
-     * @param txtEmail
-     * @param txtNote
-     * @param txtNotifica
-     * @param Ruolo
-     * @param visible
-     * @param idPersonaleTxt
-     * @param txtCognome
-     * @param txtNome
-     * @param txtCodiceFiscale
-     * @param cmbTipo
-     * @param idDipendenteTxt
-     */
-    public BeanGuiDipendente(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField txtNotifica, JTextField Ruolo, JTextField visible, JTextField idPersonaleTxt, JTextField txtCognome, JTextField txtNome, JTextField txtCodiceFiscale, JComboBox cmbTipo, JTextField idDipendenteTxt) {
-        super(idUtenteTxt, txtUsername, txtPassword, txtCittà, txtProvincia, txtTelefono, txtEmail, txtNote, txtNotifica, Ruolo, visible, idPersonaleTxt, txtCognome, txtNome, txtCodiceFiscale, cmbTipo);
-        this.idDipendenteTxt = idDipendenteTxt;
+    public BeanGuiDipendente(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField txtNotifica, JTextField tipo, JTextField visible, JTextField cognome, JTextField nome, JTextField codiceFiscale, JTextField ruolo) {
+        super(idUtenteTxt, txtUsername, txtPassword, txtCittà, txtProvincia, txtTelefono, txtEmail, txtNote, txtNotifica, tipo, visible, cognome, nome, codiceFiscale, ruolo);
     }
-
-   
 
     /**
      * metodo che restituisce la lista degli appuntamenti che un Personale deve ricevere
@@ -92,29 +68,6 @@ public class BeanGuiDipendente extends BeanGuiPersonale {
     public void setListContratti(ArrayList<BeanGuiContratto> listContratti) {
         this.listContratti = listContratti;
     }
-
-    /**
-     * metodo che restituisce il campo contenente l'id del Personale
-     * @return il campo id del Personale
-     * @throws Exception
-     */
-    public JTextField getIdDipendenteTxt() throws Exception {
-        if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
-        }
-        return idDipendenteTxt;
-    }
-
-    /**
-     * metodo che setta il campi id del Personale
-     * @param pidDipendenteTxt rappresenta il campo id da inserire
-     */
-    public void setIdDipendenteTxt(JTextField pidDipendenteTxt) {
-        this.idDipendenteTxt = pidDipendenteTxt;
-        val = new NotEmptyValidator(grafica, idDipendenteTxt, "Il campo non può essere vuoto.");
-        grafica.setInputVerifier(val);
-    }
-
 
     /**
      *

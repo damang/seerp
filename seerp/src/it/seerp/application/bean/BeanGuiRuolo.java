@@ -2,6 +2,7 @@ package it.seerp.application.bean;
 
 import it.seerp.application.validation.NotEmptyValidator;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import javax.swing.JTextField;
 import org.jdesktop.swingx.JXPanel;
 
@@ -11,8 +12,8 @@ import org.jdesktop.swingx.JXPanel;
  */
 public class BeanGuiRuolo {
 
-    private BeanGuiPersonale personale;
-    private ArrayList<BeanGuiIncarico> listIncarichi;
+    private ArrayList<BeanGuiPersonale> listPersonale;
+    private Hashtable<String,ArrayList<String>> listPermessi;
     private JTextField nome;
     private JXPanel grafica;
     private NotEmptyValidator val;
@@ -37,7 +38,6 @@ public class BeanGuiRuolo {
      * @param nome
      */
     public BeanGuiRuolo(JTextField nome) {
-        this.listIncarichi = new ArrayList<BeanGuiIncarico>();
         this.nome = nome;
     }
 
@@ -66,35 +66,36 @@ public class BeanGuiRuolo {
 
     /**
      *
-     * @param c
+     * @return
      */
-    public void removeIncarico(BeanGuiIncarico c) {
-        listIncarichi.remove(c);
-    }
-
-    /**
-     *
-     * @param c
-     */
-    public void addIncarico(BeanGuiIncarico c) {
-        listIncarichi.add(c);
+    public Hashtable<String, ArrayList<String>> getListPermessi() {
+        return listPermessi;
     }
 
     /**
      *
      * @return
      */
-    public BeanGuiPersonale getPersonale() {
-        return personale;
+    public ArrayList<BeanGuiPersonale> getListPersonale() {
+        return listPersonale;
+    }
+
+    /**
+     * 
+     * @param listPermessi
+     */
+    public void setListPermessi(Hashtable<String, ArrayList<String>> listPermessi) {
+        this.listPermessi = listPermessi;
     }
 
     /**
      *
-     * @param personale
+     * @param listPersonale
      */
-    public void setPersonale(BeanGuiPersonale personale) {
-        this.personale = personale;
+    public void setListPersonale(ArrayList<BeanGuiPersonale> listPersonale) {
+        this.listPersonale = listPersonale;
     }
 
+   
     
 }

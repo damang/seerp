@@ -13,13 +13,13 @@ import org.jdesktop.swingx.JXPanel;
  */
 public class BeanGuiResponsabile extends BeanGuiPersonale {
 
-    private JTextField idResponsabileTxt;
     private JXPanel grafica;
     private NotEmptyValidator val;
 
     /**
      * Costruttore a cui viene passato un componente grafico necessario alla
      * validazione del campo
+     * @param c 
      */
     public BeanGuiResponsabile(JXPanel c) {
         grafica = c;
@@ -31,31 +31,25 @@ public class BeanGuiResponsabile extends BeanGuiPersonale {
     public BeanGuiResponsabile() {
     }
 
-    public BeanGuiResponsabile(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField txtNotifica, JTextField Ruolo, JTextField visible, JTextField idPersonaleTxt, JTextField txtCognome, JTextField txtNome, JTextField txtCodiceFiscale, JComboBox cmbTipo, JTextField idResponsabileTxt) {
-        super(idUtenteTxt, txtUsername, txtPassword, txtCittà, txtProvincia, txtTelefono, txtEmail, txtNote, txtNotifica, Ruolo, visible, idPersonaleTxt, txtCognome, txtNome, txtCodiceFiscale, cmbTipo);
-        this.idResponsabileTxt = idResponsabileTxt;
-    }
-
-   
-
     /**
      *
-     * @param pidResponsabileTxt
+     * @param idUtenteTxt
+     * @param txtUsername
+     * @param txtPassword
+     * @param txtCittà
+     * @param txtProvincia
+     * @param txtTelefono
+     * @param txtEmail
+     * @param txtNote
+     * @param txtNotifica
+     * @param tipo
+     * @param visible
+     * @param cognome
+     * @param nome
+     * @param codiceFiscale
+     * @param ruolo
      */
-    public void setIdResponsabileTxt(JTextField pidResponsabileTxt) {
-        this.idResponsabileTxt = pidResponsabileTxt;
-        val = new NotEmptyValidator(grafica, idResponsabileTxt, "Il campo non può essere vuoto.");
-        grafica.setInputVerifier(val);
-    }
-
-    /**
-     * 
-     * @return
-     */
-    public JTextField getIdResponsabileTxt() throws Exception {
-        if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
-        }
-        return idResponsabileTxt;
+    public BeanGuiResponsabile(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField txtNotifica, JTextField tipo, JTextField visible, JTextField cognome, JTextField nome, JTextField codiceFiscale, JTextField ruolo) {
+        super(idUtenteTxt, txtUsername, txtPassword, txtCittà, txtProvincia, txtTelefono, txtEmail, txtNote, txtNotifica, tipo, visible, cognome, nome, codiceFiscale, ruolo);
     }
 }
