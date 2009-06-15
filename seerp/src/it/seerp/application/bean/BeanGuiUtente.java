@@ -21,6 +21,7 @@ public class BeanGuiUtente {
     private JTextField txtPassword;
     private JTextField txtCittà;
     private JTextField txtProvincia;
+    private JTextField cap;
     private JTextField txtTelefono;
     private JTextField txtEmail;
     private JTextArea txtNote;
@@ -38,6 +39,7 @@ public class BeanGuiUtente {
     /**
      * Costruttore a cui viene passato un componente grafico necessario alla
      * validazione del campo
+     * @param c
      */
     public BeanGuiUtente(JXPanel c) {
         grafica = c;
@@ -61,6 +63,7 @@ public class BeanGuiUtente {
      * @param txtNote
      * @param txtNotifica
      * @param Ruolo
+     * @param visible
      */
     public BeanGuiUtente(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField txtNotifica, JTextField tipo,JTextField visible) {
         this.idUtenteTxt = idUtenteTxt;
@@ -79,6 +82,7 @@ public class BeanGuiUtente {
     /**
      *
      * @return
+     * @throws Exception
      */
     public JTextField getTipo() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
@@ -89,12 +93,28 @@ public class BeanGuiUtente {
 
     /**
      *
-     * @param pRuolo
+     * @param pruolo
      */
     public void setTipo(JTextField ptipo) {
         this.tipo = ptipo;
         val = new NotEmptyValidator(grafica, tipo, "Il campo non può essere vuoto.");
         grafica.setInputVerifier(val);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public JTextField getCap() {
+        return cap;
+    }
+
+    /**
+     *
+     * @param cap
+     */
+    public void setCap(JTextField cap) {
+        this.cap = cap;
     }
 
     /**
@@ -150,6 +170,7 @@ public class BeanGuiUtente {
     /**
      *
      * @return
+     * @throws Exception
      */
     public JTextField getIdUtenteTxt() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
@@ -161,6 +182,7 @@ public class BeanGuiUtente {
     /**
      * 
      * @return
+     * @throws Exception
      */
     public JTextField getTxtCittà() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
@@ -175,6 +197,7 @@ public class BeanGuiUtente {
     /**
      *
      * @return
+     * @throws Exception
      */
     public JTextField getTxtEmail() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
@@ -189,6 +212,7 @@ public class BeanGuiUtente {
     /**
      *
      * @return
+     * @throws Exception 
      */
     public JTextField getTxtPassword() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
@@ -203,6 +227,7 @@ public class BeanGuiUtente {
     /**
      *
      * @return
+     * @throws Exception
      */
     public JTextField getTxtProvincia() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
@@ -216,6 +241,7 @@ public class BeanGuiUtente {
     /**
      *
      * @return
+     * @throws Exception
      */
     public JTextField getTxtTelefono() throws Exception {
         if (!valMinLen.shouldYieldFocus(grafica)) {
@@ -227,6 +253,7 @@ public class BeanGuiUtente {
     /**
      *
      * @return
+     * @throws Exception
      */
     public JTextField getTxtUsername() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
