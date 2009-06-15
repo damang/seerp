@@ -13,10 +13,10 @@ import java.awt.event.ActionListener;
  *
  * @author Andrea
  */
-public class UtilitàPanel extends javax.swing.JPanel implements ActionListener {
+public class UtilitaPanel extends javax.swing.JPanel implements ActionListener {
 
     /** Creates new form Utilità */
-    public UtilitàPanel() {
+    public UtilitaPanel() {
         initComponents();
     }
 
@@ -32,7 +32,7 @@ public class UtilitàPanel extends javax.swing.JPanel implements ActionListener 
         BottoneStampa = new javax.swing.JButton();
         BottoneCerca = new javax.swing.JButton();
 
-        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Utilità", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_BOTTOM));
+        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Utilit�", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_BOTTOM));
 
         BottoneStampa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/printer.png"))); // NOI18N
         BottoneStampa.setToolTipText("Stamoa");
