@@ -1,7 +1,6 @@
 package it.seerp.storage.Operazioni;
 
 import it.seerp.storage.Exception.DatiErratiEx;
-import it.seerp.application.bean.BeanGuiContratto;
 import it.seerp.storage.db.ConnectionPool;
 import it.seerp.storage.db.OpeEntity;
 import it.seerp.storage.ejb.Contratto;
@@ -9,19 +8,17 @@ import it.seerp.storage.ejb.Pagamento;
 import it.seerp.storage.ejb.Servizio;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Connection;
-import com.sun.xml.internal.bind.v2.model.core.ID;
 import it.seerp.storage.ejb.ServizioAssociato;
 
 /**
  * classe storage che si occupa di interfacciarsi col DBMS e compiere operazioni sui contratti
  * @author Luisa-Ila
  */
-public class OpContratto implements OpeEntity<Contratto, BeanGuiContratto> {
+public class OpContratto implements OpeEntity<Contratto> {
 
     private Connection conn;
 
@@ -68,18 +65,10 @@ public class OpContratto implements OpeEntity<Contratto, BeanGuiContratto> {
      * @return una lista dei contratti ricercati in base all'identificati vo del dipendente
      * @throws java.sql.SQLException     
      */
-    public ArrayList<Contratto> ricercaPerDipendente(Integer id) throws SQLException {
+    public ArrayList<Contratto> ricercaPerDipendente() throws SQLException {
 
-        ArrayList<BeanGuiContratto> lista = this.visualizzaElenco();
-        ArrayList<Contratto> b = new ArrayList<Contratto>();
-        for (BeanGuiContratto a : lista) {
-            Contratto contr = it.seerp.application.conversioni.Conversione.conversioneContratto(a);
-            b.add(contr);
-        }
-        return b;
-
-
-
+        ArrayList<Contratto> lista = this.visualizzaElenco();
+        return lista;
     }
 
     /**
@@ -87,14 +76,13 @@ public class OpContratto implements OpeEntity<Contratto, BeanGuiContratto> {
      * @return una lista dei contratti ricercati  in base all'identificativo del dipendente
      * @throws java.sql.SQLException
      */
-    public ArrayList<BeanGuiContratto> visualizzaElenco() throws SQLException {
+    public ArrayList<Contratto> visualizzaElenco() throws SQLException {
 
-        ArrayList<BeanGuiContratto> lista = new ArrayList<BeanGuiContratto>();
-        BeanGuiContratto gui = new BeanGuiContratto();
+        ArrayList<Contratto> lista = new ArrayList<Contratto>();
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
-
+        Contratto contratto = null;
         try {
             String sql = "SELECT * FROM Contratto";
             stmt = (PreparedStatement) conn.prepareStatement(sql);
@@ -107,12 +95,11 @@ public class OpContratto implements OpeEntity<Contratto, BeanGuiContratto> {
                 GregorianCalendar date = new GregorianCalendar();
                 date.setTimeInMillis(rs.getDate(2).getTime());
 
-
-                Contratto contratto = new Contratto(rs.getString(1), date,
+                contratto = new Contratto(rs.getString(1), date,
                         rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getString(6));
 
 
-                lista.add(it.seerp.application.conversioni.Conversione.conversioneContratto(contratto, gui));
+                lista.add(contratto);
             }
         } catch (SQLException se) {
             System.out.println("SQL Exception:");
@@ -180,17 +167,17 @@ public class OpContratto implements OpeEntity<Contratto, BeanGuiContratto> {
      * @return un contratto con identificativo uguale al paramtero nome
      * @throws java.sql.SQLException
      */
-    public Contratto visualizza(BeanGuiContratto bean) throws SQLException {
-       
+    public Contratto visualizza(Contratto bean) throws SQLException {
+
         PreparedStatement stmt = null;
         ResultSet rs = null;
         Contratto contratto = null;
 
         try {
-            String sql="SELECT * FROM Contratto WHERE idContratto= ?";
+            String sql = "SELECT * FROM Contratto WHERE idContratto= ?";
             stmt = (PreparedStatement) conn.prepareStatement(sql);
 
-            stmt.setString(1,bean.getIdContratto().toString());
+            stmt.setString(1, bean.getIdContratto().toString());
             rs = stmt.executeQuery();
 
             // Define the resource list
@@ -198,22 +185,21 @@ public class OpContratto implements OpeEntity<Contratto, BeanGuiContratto> {
                 GregorianCalendar date = new GregorianCalendar();
                 date.setTimeInMillis(rs.getDate(7).getTime());
 
-                contratto = new Contratto( rs.getString(4), date,rs.getInt(1),
-                        rs.getString(3),rs.getInt(2),  rs.getString(8));
-             
+                contratto = new Contratto(rs.getString(4), date, rs.getInt(1),
+                        rs.getString(3), rs.getInt(2), rs.getString(8));
+
                 PreparedStatement stmt1;
-                String sql2="SELECT * FROM contratto,serviziassociati " +
+                String sql2 = "SELECT * FROM contratto,serviziassociati " +
                         "WHERE contratto.idContratto=serviziassociati.contratto AND idContratto=?";
-                stmt1=(PreparedStatement) conn.prepareStatement(sql2);
+                stmt1 = (PreparedStatement) conn.prepareStatement(sql2);
                 stmt1.setInt(1, contratto.getIdContratto());
-                ResultSet rs2=stmt1.executeQuery();
-                while (rs2.next())
-                {
+                ResultSet rs2 = stmt1.executeQuery();
+                while (rs2.next()) {
                     /*Integer quantita, Double prezzoUnitario, String note*/
-                   ServizioAssociato sa=new ServizioAssociato(rs.getInt(2),rs.getDouble(3),rs.getString(4));
-                   contratto.addServizio(sa);
+                    ServizioAssociato sa = new ServizioAssociato(rs.getInt(2), rs.getDouble(3), rs.getString(4));
+                    contratto.addServizio(sa);
                 }
-               }
+            }
         } catch (SQLException se) {
             System.out.println("Errore nella visualizzazione dei dati del contratto");
 
@@ -255,7 +241,6 @@ public class OpContratto implements OpeEntity<Contratto, BeanGuiContratto> {
             rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
-                /*Integer idServizio, String descrizione, Boolean disponibilita, Integer quantita, String tipo, Double prezzo, Integer iva, String note, ArrayList<ServizioAssociato> listServiAssociati*/
 
                 Servizio servizio = new Servizio(rs.getInt(1), rs.getString(2), rs.getBoolean(2),
                         rs.getInt(3), rs.getString(4), rs.getDouble(5),
