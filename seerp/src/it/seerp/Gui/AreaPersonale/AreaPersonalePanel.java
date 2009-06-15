@@ -15,10 +15,8 @@ import it.seerp.Gui.frame.ObservableJPanel;
 import it.seerp.application.Exception.DatiErrati;
 import it.seerp.application.applicazione.AppGestioneUtente;
 import it.seerp.application.bean.BeanGuiUtente;
-import java.awt.JobAttributes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -53,7 +51,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
     public void legameBean() {
         utente.setTxtProvincia(provincia);
         utente.setTxtTelefono(tell);
-        utente.setTxtCittà(citta);
+        utente.setTxtCitta(citta);
         utente.setTxtEmail(mail);
         utente.setTxtUsername(user);
     //cambire in campo password utente.setTxtPassword(pwd);
