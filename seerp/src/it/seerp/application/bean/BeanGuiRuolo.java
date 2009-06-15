@@ -1,6 +1,6 @@
 package it.seerp.application.bean;
 
-import it.seerp.application.validation.NotEmptyValidator;
+import it.seerp.application.validation.StartWithValidator;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import javax.swing.JTextField;
@@ -13,10 +13,10 @@ import org.jdesktop.swingx.JXPanel;
 public class BeanGuiRuolo {
 
     private ArrayList<BeanGuiPersonale> listPersonale;
-    private Hashtable<String,ArrayList<String>> listPermessi;
+    private Hashtable<String, ArrayList<String>> listPermessi;
     private JTextField nome;
     private JXPanel grafica;
-    private NotEmptyValidator val;
+    private StartWithValidator valStartW;
 
     /**
      * Costruttore a cui viene passato un componente grafico necessario alla
@@ -47,21 +47,20 @@ public class BeanGuiRuolo {
      * @throws Exception
      */
     public JTextField getNome() throws Exception {
-        if (!val.shouldYieldFocus(grafica)) {
+        if (!valStartW.shouldYieldFocus(grafica)) {
             throw new Exception("Errore nella grafica!");
         }
         return nome;
     }
 
-  
     /**
      *
      * @param pnome
      */
     public void setNome(JTextField pnome) {
         this.nome = pnome;
-        val = new NotEmptyValidator(grafica, nome, "Il campo non può essere vuoto.");
-        grafica.setInputVerifier(val);
+        valStartW = new StartWithValidator(grafica, nome, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(valStartW);
     }
 
     /**
@@ -95,7 +94,4 @@ public class BeanGuiRuolo {
     public void setListPersonale(ArrayList<BeanGuiPersonale> listPersonale) {
         this.listPersonale = listPersonale;
     }
-
-   
-    
 }
