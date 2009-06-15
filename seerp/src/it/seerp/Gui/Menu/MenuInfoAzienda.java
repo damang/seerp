@@ -43,7 +43,10 @@ public class MenuInfoAzienda extends javax.swing.JPanel implements ActionListene
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jXTaskPane1 = new org.jdesktop.swingx.JXTaskPane();
         modificaButtonInfoAzienda1 = new it.seerp.Gui.Menu.ModificaButtonInfoAzienda();
+
+        jXTaskPane1.setName("jXTaskPane1"); // NOI18N
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Azienda", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_BOTTOM));
 
@@ -70,6 +73,7 @@ public class MenuInfoAzienda extends javax.swing.JPanel implements ActionListene
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private org.jdesktop.swingx.JXTaskPane jXTaskPane1;
     private it.seerp.Gui.Menu.ModificaButtonInfoAzienda modificaButtonInfoAzienda1;
     // End of variables declaration//GEN-END:variables
 
