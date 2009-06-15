@@ -2,7 +2,8 @@ package it.seerp.storage.operazioni;
 
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Connection;
-import it.seerp.application.bean.BeanGuiEvento;
+import it.seerp.application.Exception.DatiDuplicati;
+import it.seerp.application.Exception.DatiErrati;
 import it.seerp.storage.Exception.DatiDuplicatiEx;
 import it.seerp.storage.Exception.DatiErratiEx;
 import it.seerp.storage.ejb.Evento;
@@ -16,12 +17,11 @@ import java.sql.Statement;
 
 import java.util.GregorianCalendar;
 
-
 /**
  *
  * @author Ila
  */
-public class OpEvento implements OpeEntity<Evento, BeanGuiEvento> {
+public class OpEvento implements OpeEntity<Evento> {
 
     private Connection conn;
 
@@ -90,7 +90,7 @@ public class OpEvento implements OpeEntity<Evento, BeanGuiEvento> {
      * @throws Dati Errati
      */
     public Evento modifica(Evento e) throws DatiDuplicatiEx, DatiErratiEx, SQLException {
-        
+
         PreparedStatement stmt = null;
         Statement stmt1 = null;
         String query = "UPDATE evento(luogo, tema, nome, note,data, ora) VALUE (?,?,?,?,?,?)";
@@ -143,7 +143,7 @@ public class OpEvento implements OpeEntity<Evento, BeanGuiEvento> {
      * @param nome è il nome dell'evento da visualizzare
      * @throws SQLException
      */
-    public Evento visualizza(BeanGuiEvento eve) throws SQLException {
+    public Evento visualizza(Evento eve) throws SQLException {
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -155,7 +155,7 @@ public class OpEvento implements OpeEntity<Evento, BeanGuiEvento> {
                     "where Evento.idAgenda=Agenda.idAgenda and idAgenda=?";
 
             stmt = (PreparedStatement) conn.prepareStatement(query);
-            stmt.setInt(1, Integer.parseInt(eve.getIdEvento().toString()));
+            stmt.setInt(1, eve.getIdEvento());
             // Execute the query
             rs = stmt.executeQuery(query);
 
@@ -201,10 +201,9 @@ public class OpEvento implements OpeEntity<Evento, BeanGuiEvento> {
      * @throws SQLException
      * @throws ClassNotFoundException
      */
-    public ArrayList<BeanGuiEvento> visualizzaElenco() throws SQLException {
+    public ArrayList<Evento> visualizzaElenco() throws SQLException {
 
-        ArrayList<BeanGuiEvento> lista = new ArrayList<BeanGuiEvento>();
-        BeanGuiEvento gui = new BeanGuiEvento();
+        ArrayList<Evento> lista = new ArrayList<Evento>();
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -228,7 +227,7 @@ public class OpEvento implements OpeEntity<Evento, BeanGuiEvento> {
                         rs.getString(4), date, time, rs.getInt(7),
                         rs.getBoolean(8));
 
-                lista.add(it.seerp.application.conversioni.Conversione.conversioneEvento(ev, gui));
+                lista.add(ev);
             }
         } catch (SQLException se) {
             System.out.println("Errore nella visualizzazione dell'elenco");
@@ -255,15 +254,11 @@ public class OpEvento implements OpeEntity<Evento, BeanGuiEvento> {
      * @return	La lista degli eventi ricercata
      * @throws SQLException
      */
-    public ArrayList<Evento> ricercaEvento(String nome) throws SQLException {
-        ArrayList<BeanGuiEvento> lista = this.visualizzaElenco();
-        ArrayList<Evento> b = new ArrayList<Evento>();
-        for (BeanGuiEvento a : lista) {
-            Evento evento = it.seerp.application.conversioni.Conversione.conversioneEvento(a);
-            b.add(evento);
-        }
+    public ArrayList<Evento> ricercaEvento() throws SQLException {
+
+        ArrayList<Evento> b = this.visualizzaElenco();
         return b;
- }
+    }
 
     /**
      * Crea la query per ricercare gli eventi conformi al parametro 'tema'
@@ -334,7 +329,7 @@ public class OpEvento implements OpeEntity<Evento, BeanGuiEvento> {
             String query = "SELECT nome,tema,data FROM Evento" +
                     " WHERE notifica=true and data<='" + a.toString() + "'";
             ResultSet rs = stmt.executeQuery(query);
-         
+
             while (rs.next()) {
                 Evento e = new Evento();
 
@@ -349,12 +344,10 @@ public class OpEvento implements OpeEntity<Evento, BeanGuiEvento> {
                 stmt.executeUpdate();
 
             }
-        }
-            catch (SQLException se) {
+        } catch (SQLException se) {
             System.out.println("Errore nella visualizzazione dell'elenco");
 
-            }
-         finally {
+        } finally {
             if (stmt != null) {
                 stmt.close();
             }
@@ -363,7 +356,6 @@ public class OpEvento implements OpeEntity<Evento, BeanGuiEvento> {
             }
         }
         return evNotificati;
-    
-}
 
-  }
+    }
+}
