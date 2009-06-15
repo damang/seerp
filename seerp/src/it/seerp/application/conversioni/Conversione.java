@@ -1023,7 +1023,7 @@ public class Conversione {
         azienda1.setCitta(azienda.getCitta().getText());
         azienda1.setEmail(azienda.getEmail().getText());
         azienda1.setFax(azienda.getFax().getText());
-        azienda1.setInidirizzo(azienda.getInidirizzo().getText());
+        azienda1.setIndirizzo(azienda.getInidirizzo().getText());
         azienda1.setNazione(azienda.getNazione().getText());
         azienda1.setPIVA(azienda.getPIVA().getText());
         azienda1.setRagioneSociale(azienda.getRagioneSociale().getText());
