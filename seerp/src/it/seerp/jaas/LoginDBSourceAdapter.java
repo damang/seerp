@@ -11,13 +11,10 @@ package it.seerp.jaas;
 
 
 import it.seerp.storage.db.ConnectionPool;
-import java.util.ArrayList;
 import java.util.Hashtable;
 
 
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.security.auth.login.LoginException;
 
 
