@@ -3,6 +3,7 @@ package it.seerp.application.bean;
 import it.seerp.application.validation.NotEmptyValidator;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import org.jdesktop.swingx.JXPanel;
 
@@ -21,6 +22,7 @@ public class BeanGuiDipendente extends BeanGuiPersonale {
     /**
      * Costruttore a cui viene passato un componente grafico necessario alla
      * validazione del campo
+     * @param c
      */
     public BeanGuiDipendente(JXPanel c) {
         grafica = c;
@@ -33,24 +35,31 @@ public class BeanGuiDipendente extends BeanGuiPersonale {
     }
 
     /**
-     * Costruttore per la classe Bean Gui Personale
+     *
+     * @param idUtenteTxt
+     * @param txtUsername
+     * @param txtPassword
+     * @param txtCittà
+     * @param txtProvincia
+     * @param txtTelefono
+     * @param txtEmail
+     * @param txtNote
+     * @param txtNotifica
+     * @param Ruolo
+     * @param visible
      * @param idPersonaleTxt
      * @param txtCognome
      * @param txtNome
      * @param txtCodiceFiscale
      * @param cmbTipo
-     * @param listPermessi
-     * @param listRuoli
-     * @param listAppuntamenti
-     * @param listContratti
      * @param idDipendenteTxt
      */
-    public BeanGuiDipendente(JTextField idPersonaleTxt, JTextField txtCognome, JTextField txtNome, JTextField txtCodiceFiscale, JComboBox cmbTipo, ArrayList<BeanGuiPermesso> listPermessi, ArrayList<BeanGuiRuolo> listRuoli, ArrayList<BeanGuiAppuntamento> listAppuntamenti, ArrayList<BeanGuiContratto> listContratti, JTextField idDipendenteTxt) {
-        super(idPersonaleTxt, txtCognome, txtNome, txtCodiceFiscale, cmbTipo, listPermessi, listRuoli);
-        this.listAppuntamenti = listAppuntamenti;
-        this.listContratti = listContratti;
+    public BeanGuiDipendente(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField txtNotifica, JTextField Ruolo, JTextField visible, JTextField idPersonaleTxt, JTextField txtCognome, JTextField txtNome, JTextField txtCodiceFiscale, JComboBox cmbTipo, JTextField idDipendenteTxt) {
+        super(idUtenteTxt, txtUsername, txtPassword, txtCittà, txtProvincia, txtTelefono, txtEmail, txtNote, txtNotifica, Ruolo, visible, idPersonaleTxt, txtCognome, txtNome, txtCodiceFiscale, cmbTipo);
         this.idDipendenteTxt = idDipendenteTxt;
     }
+
+   
 
     /**
      * metodo che restituisce la lista degli appuntamenti che un Personale deve ricevere
@@ -87,6 +96,7 @@ public class BeanGuiDipendente extends BeanGuiPersonale {
     /**
      * metodo che restituisce il campo contenente l'id del Personale
      * @return il campo id del Personale
+     * @throws Exception
      */
     public JTextField getIdDipendenteTxt() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
@@ -104,4 +114,36 @@ public class BeanGuiDipendente extends BeanGuiPersonale {
         val = new NotEmptyValidator(grafica, idDipendenteTxt, "Il campo non può essere vuoto.");
         grafica.setInputVerifier(val);
     }
+
+
+    /**
+     *
+     * @param c
+     */
+    public void removeAppuntamento(BeanGuiAppuntamento c){
+     listAppuntamenti.remove(c);}
+
+
+     /**
+      *
+      * @param c
+      */
+     public void addAppuntamento(BeanGuiAppuntamento c){
+     listAppuntamenti.add(c);}
+
+
+     /**
+      *
+      * @param c
+      */
+     public void removeContratto(BeanGuiContratto c){
+     listContratti.remove(c);}
+
+
+     /**
+      * 
+      * @param c
+      */
+     public void addContratto(BeanGuiContratto c){
+     listContratti.add(c);}
 }

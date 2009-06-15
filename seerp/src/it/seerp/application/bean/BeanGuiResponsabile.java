@@ -3,6 +3,7 @@ package it.seerp.application.bean;
 import it.seerp.application.validation.NotEmptyValidator;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import org.jdesktop.swingx.JXPanel;
 
@@ -30,21 +31,12 @@ public class BeanGuiResponsabile extends BeanGuiPersonale {
     public BeanGuiResponsabile() {
     }
 
-    /**
-     *
-     * @param idPersonaleTxt
-     * @param txtCognome
-     * @param txtNome
-     * @param txtCodiceFiscale
-     * @param cmbTipo
-     * @param listPermessi
-     * @param listRuoli
-     * @param idResponsabileTxt
-     */
-    public BeanGuiResponsabile(JTextField idPersonaleTxt, JTextField txtCognome, JTextField txtNome, JTextField txtCodiceFiscale, JComboBox cmbTipo, ArrayList<BeanGuiPermesso> listPermessi, ArrayList<BeanGuiRuolo> listRuoli, JTextField idResponsabileTxt) {
-        super(idPersonaleTxt, txtCognome, txtNome, txtCodiceFiscale, cmbTipo, listPermessi, listRuoli);
+    public BeanGuiResponsabile(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField txtNotifica, JTextField Ruolo, JTextField visible, JTextField idPersonaleTxt, JTextField txtCognome, JTextField txtNome, JTextField txtCodiceFiscale, JComboBox cmbTipo, JTextField idResponsabileTxt) {
+        super(idUtenteTxt, txtUsername, txtPassword, txtCittà, txtProvincia, txtTelefono, txtEmail, txtNote, txtNotifica, Ruolo, visible, idPersonaleTxt, txtCognome, txtNome, txtCodiceFiscale, cmbTipo);
         this.idResponsabileTxt = idResponsabileTxt;
     }
+
+   
 
     /**
      *

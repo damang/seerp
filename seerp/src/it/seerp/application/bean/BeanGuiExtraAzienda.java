@@ -53,10 +53,8 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * @param txtPIva
      * @param txtFax
      * @param cmbRuolo
-     * @param listAppuntamenti
-     * @param listContratti
      */
-    public BeanGuiExtraAzienda(JTextField idExtraAziendaTxt, JTextField txtCognome, JTextField txtNome, JTextField txtRagioneSociale, JTextField txtPIva, JTextField txtFax, JComboBox cmbRuolo, ArrayList<BeanGuiAppuntamento> listAppuntamenti, ArrayList<BeanGuiContratto> listContratti) {
+    public BeanGuiExtraAzienda(JTextField idExtraAziendaTxt, JTextField txtCognome, JTextField txtNome, JTextField txtRagioneSociale, JTextField txtPIva, JTextField txtFax, JComboBox cmbRuolo) {
         this.idExtraAziendaTxt = idExtraAziendaTxt;
         this.txtCognome = txtCognome;
         this.txtNome = txtNome;
@@ -64,8 +62,8 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
         this.txtPIva = txtPIva;
         this.txtFax = txtFax;
         this.cmbRuolo = cmbRuolo;
-        this.listAppuntamenti = listAppuntamenti;
-        this.listContratti = listContratti;
+        this.listAppuntamenti= new ArrayList<BeanGuiAppuntamento>();
+        this.listContratti= new ArrayList<BeanGuiContratto>();
     }
 
     /**

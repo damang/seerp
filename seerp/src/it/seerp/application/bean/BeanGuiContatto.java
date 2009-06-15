@@ -20,6 +20,7 @@ public class BeanGuiContatto extends BeanGuiExtraAzienda {
     /**
      * Costruttore a cui viene passato un componente grafico necessario alla
      * validazione del campo
+     * @param c
      */
     public BeanGuiContatto(JXPanel c) {
         grafica = c;
@@ -32,7 +33,7 @@ public class BeanGuiContatto extends BeanGuiExtraAzienda {
     }
 
     /**
-     * Costruttore per la classe Bean Gui Contatto
+     * 
      * @param idExtraAziendaTxt
      * @param txtCognome
      * @param txtNome
@@ -40,20 +41,21 @@ public class BeanGuiContatto extends BeanGuiExtraAzienda {
      * @param txtPIva
      * @param txtFax
      * @param cmbRuolo
-     * @param listAppuntamenti
-     * @param listContratti
      * @param idContattoTxt
      * @param txtFeedback
      */
-    public BeanGuiContatto(JTextField idExtraAziendaTxt, JTextField txtCognome, JTextField txtNome, JTextField txtRagioneSociale, JTextField txtPIva, JTextField txtFax, JComboBox cmbRuolo, ArrayList<BeanGuiAppuntamento> listAppuntamenti, ArrayList<BeanGuiContratto> listContratti, JTextField idContattoTxt, JTextField txtFeedback) {
-        super(idExtraAziendaTxt, txtCognome, txtNome, txtRagioneSociale, txtPIva, txtFax, cmbRuolo, listAppuntamenti, listContratti);
+    public BeanGuiContatto(JTextField idExtraAziendaTxt, JTextField txtCognome, JTextField txtNome, JTextField txtRagioneSociale, JTextField txtPIva, JTextField txtFax, JComboBox cmbRuolo, JTextField idContattoTxt, JTextField txtFeedback) {
+        super(idExtraAziendaTxt, txtCognome, txtNome, txtRagioneSociale, txtPIva, txtFax, cmbRuolo);
         this.idContattoTxt = idContattoTxt;
         this.txtFeedback = txtFeedback;
     }
 
+   
+
     /**
      * metodo che restituisce il campo contenente l'id del Contatto
      * @return il campo id del Contatto
+     * @throws Exception
      */
     public JTextField getIdContattoTxt() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {

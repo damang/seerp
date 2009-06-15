@@ -23,7 +23,7 @@ public class BeanGuiServizio {
     private JTextField idServizio;
     private JTextField iva;
     private JTextArea note;
-    private ArrayList<BeanGuiContratto> listContratti;
+    private ArrayList<BeanGuiServizioAssociato> listServiziAssociati;
     private JXPanel grafica;
     private NotEmptyValidator val;
     private NotAlphabeticValidator valApha;
@@ -33,6 +33,7 @@ public class BeanGuiServizio {
     /**
      * Costruttore a cui viene passato un componente grafico necessario alla
      * validazione del campo
+     * @param c
      */
     public BeanGuiServizio(JXPanel c) {
         grafica = c;
@@ -70,37 +71,40 @@ public class BeanGuiServizio {
      *
      * @return
      */
-    public ArrayList<BeanGuiContratto> getListContratti() {
-        return listContratti;
+    public ArrayList<BeanGuiServizioAssociato> getListServiziAssociati() {
+        return listServiziAssociati;
     }
 
     /**
      *
-     * @param listContratti
+     * @param listServiziAssociati
      */
-    public void setListContratti(ArrayList<BeanGuiContratto> listContratti) {
-        this.listContratti = listContratti;
+    public void setListServiziAssociati(ArrayList<BeanGuiServizioAssociato> listServiziAssociati) {
+        this.listServiziAssociati = listServiziAssociati;
+    }
+
+   
+
+    /**
+     *
+     * @param c
+     */
+    public void removeServizio(BeanGuiServizioAssociato c) {
+        listServiziAssociati.remove(c);
     }
 
     /**
      *
      * @param c
      */
-    public void removeContratto(BeanGuiContratto c) {
-        listContratti.remove(c);
-    }
-
-    /**
-     *
-     * @param c
-     */
-    public void addContratto(BeanGuiContratto c) {
-        listContratti.add(c);
+    public void addServizio(BeanGuiServizioAssociato c) {
+        listServiziAssociati.add(c);
     }
 
     /**
      *
      * @return
+     * @throws Exception
      */
     public JTextField getDescrizione() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
@@ -159,6 +163,7 @@ public class BeanGuiServizio {
     /**
      *
      * @return
+     * @throws Exception
      */
     public JTextField getIva() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
@@ -201,6 +206,7 @@ public class BeanGuiServizio {
     /**
      *
      * @return
+     * @throws Exception
      */
     public JTextField getPrezzo() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
@@ -227,6 +233,7 @@ public class BeanGuiServizio {
     /**
      *
      * @return
+     * @throws Exception
      */
     public JTextField getQuantita() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
@@ -253,6 +260,7 @@ public class BeanGuiServizio {
     /**
      *
      * @return
+     * @throws Exception
      */
     public JTextField getTipo() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {

@@ -12,9 +12,9 @@ import org.jdesktop.swingx.JXPanel;
 public class BeanGuiPermesso {
 
     private JTextField idPermesso;
-    private JTextField Nome;
-    private ArrayList<BeanGuiPersonale> listPersonale;
-    private ArrayList<BeanGuiRuolo> listRuolo;
+    private JTextField task;
+    private JTextField action;
+    private BeanGuiIncarico incarico;
     private JXPanel grafica;
     private NotEmptyValidator val;
 
@@ -32,62 +32,13 @@ public class BeanGuiPermesso {
     public BeanGuiPermesso() {
     }
 
-    /**
-     *
-     * @param idPermesso
-     * @param Nome
-     * @param listPersonale
-     * @param listRuolo
-     */
-    public BeanGuiPermesso(JTextField idPermesso, JTextField Nome, ArrayList<BeanGuiPersonale> listPersonale, ArrayList<BeanGuiRuolo> listRuolo) {
+    public BeanGuiPermesso(JTextField idPermesso, JTextField task, JTextField action) {
         this.idPermesso = idPermesso;
-        this.Nome = Nome;
-        this.listPersonale = listPersonale;
-        this.listRuolo = listRuolo;
+        this.task = task;
+        this.action = action;
     }
 
-    /**
-     *
-     * @return
-     */
-    public ArrayList<BeanGuiPersonale> getListPersonale() {
-        return listPersonale;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public ArrayList<BeanGuiRuolo> getListRuolo() {
-        return listRuolo;
-    }
-
-    /**
-     *
-     * @param listPersonale
-     */
-    public void setListPersonale(ArrayList<BeanGuiPersonale> listPersonale) {
-        this.listPersonale = listPersonale;
-    }
-
-    /**
-     *
-     * @param listRuolo
-     */
-    public void setListRuolo(ArrayList<BeanGuiRuolo> listRuolo) {
-        this.listRuolo = listRuolo;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public JTextField getNome() throws Exception {
-        if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
-        }
-        return Nome;
-    }
+  
 
     /**
      *
@@ -100,16 +51,7 @@ public class BeanGuiPermesso {
         return idPermesso;
     }
 
-    /**
-     *
-     * @param pNome
-     */
-    public void setNome(JTextField pNome) {
-        this.Nome = pNome;
-        val = new NotEmptyValidator(grafica, Nome, "Il campo non può essere vuoto.");
-        grafica.setInputVerifier(val);
-    }
-
+    
     /**
      *
      * @param pidPermesso
@@ -120,35 +62,39 @@ public class BeanGuiPermesso {
         grafica.setInputVerifier(val);
     }
 
-    /**
-     *
-     * @param c
-     */
-    public void removePersonale(BeanGuiPersonale c) {
-        listPersonale.remove(c);
+    public void setAction(JTextField action) {
+        this.action = action;
+        val = new NotEmptyValidator(grafica, task,"il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);
     }
 
-    /**
-     *
-     * @param c
-     */
-    public void addPersonale(BeanGuiPersonale c) {
-        listPersonale.add(c);
+    public void setIncarico(BeanGuiIncarico incarico) {
+        this.incarico = incarico;
+
     }
 
-    /**
-     *
-     * @param c
-     */
-    public void removeRuolo(BeanGuiRuolo c) {
-        listRuolo.remove(c);
+    public void setTask(JTextField task) {
+        this.task = task;
+        val = new NotEmptyValidator(grafica, task,"il campo non può eseere vuoto.");
+        grafica.setInputVerifier(val);
     }
 
-    /**
-     * 
-     * @param c
-     */
-    public void addRuolo(BeanGuiRuolo c) {
-        listRuolo.add(c);
+    public JTextField getAction() throws Exception {
+          if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
+        return action;
     }
+
+    public BeanGuiIncarico getIncarico() {
+        return incarico;
+    }
+
+    public JTextField getTask() throws Exception {
+          if (!val.shouldYieldFocus(grafica)) {
+            throw new Exception("Errore nella grafica!");
+        }
+        return task;
+    }
+
 }

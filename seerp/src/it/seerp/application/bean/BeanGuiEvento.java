@@ -18,7 +18,7 @@ public class BeanGuiEvento {
     private JTextField data;
     private JTextField ora;
     private JTextField idEvento;
-    private JTextField agenda;
+    private BeanGuiAgenda agenda;
     private JTextField notifica;
     private JXPanel grafica;
     private NotEmptyValidator val;
@@ -26,13 +26,20 @@ public class BeanGuiEvento {
     /**
      * Costruttore a cui viene passato un componente grafico necessario alla
      * validazione del campo
+     * @param c
      */
     public BeanGuiEvento(JXPanel c) {
         grafica = c;
     }
 
     /**
-     *Costruttore per la Classe Bean Gui Evento
+     *Costruttore vuoto per la classe Bean Gui Evento
+     */
+    public BeanGuiEvento() {
+    }
+
+    /**
+     *
      * @param luogo
      * @param tema
      * @param nome
@@ -40,10 +47,10 @@ public class BeanGuiEvento {
      * @param data
      * @param ora
      * @param idEvento
-     * @param agenda
      * @param notifica
+     * @param grafica
      */
-    public BeanGuiEvento(JTextField luogo, JTextField tema, JTextField nome, JTextArea note, JTextField data, JTextField ora, JTextField idEvento, JTextField agenda, JTextField notifica) {
+    public BeanGuiEvento(JTextField luogo, JTextField tema, JTextField nome, JTextArea note, JTextField data, JTextField ora, JTextField idEvento, JTextField notifica, JXPanel grafica) {
         this.luogo = luogo;
         this.tema = tema;
         this.nome = nome;
@@ -51,9 +58,11 @@ public class BeanGuiEvento {
         this.data = data;
         this.ora = ora;
         this.idEvento = idEvento;
-        this.agenda = agenda;
         this.notifica = notifica;
+        this.grafica = grafica;
     }
+
+   
 
     /**
      * metodo che restituisce il campo contenente la notifica dell'Evento
@@ -71,39 +80,17 @@ public class BeanGuiEvento {
         this.notifica = notifica;
     }
 
-    /**
-     *Costruttore per la classe Bean Gui Evento
-     * @param luogo
-     * @param tema
-     * @param nome
-     * @param note
-     * @param data
-     * @param ora
-     * @param idEvento
-     * @param agenda
-     */
-    public BeanGuiEvento(JTextField luogo, JTextField tema, JTextField nome, JTextArea note, JTextField data, JTextField ora, JTextField idEvento, JTextField agenda) {
-        this.luogo = luogo;
-        this.tema = tema;
-        this.nome = nome;
-        this.note = note;
-        this.data = data;
-        this.ora = ora;
-        this.idEvento = idEvento;
-        this.agenda = agenda;
-    }
+    
 
-    /**
-     *Costruttore vuoto per la classe Bean Gui Evento
-     */
-    public BeanGuiEvento() {
-    }
+    
 
+    
     /**
-     * metodo che restituisce il campo contenente l'id dell'Agenda
-     * @return il campo id dell'Agenda
+     * 
+     * @return
+     * @throws java.lang.Exception
      */
-    public JTextField getAgenda() throws Exception {
+    public BeanGuiAgenda getAgenda() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
             throw new Exception("Errore nella grafica!");
         }
@@ -111,18 +98,18 @@ public class BeanGuiEvento {
     }
 
     /**
-     * metodo che setta il campo id dell'Agenda
-     * @param pagenda rappresenta il campo id dell'Agenda da inserire
+     *
+     * @param pagenda
      */
-    public void setAgenda(JTextField pagenda) {
+    public void setAgenda(BeanGuiAgenda pagenda) {
         this.agenda = pagenda;
-        val = new NotEmptyValidator(grafica, agenda, "Il campo non può essere vuoto.");
-        grafica.setInputVerifier(val);
+      
     }
 
     /**
      * metodo che restituisce il campo contenente la data dell'Evento
      * @return il campo data dell'Evento
+     * @throws Exception
      */
     public JTextField getData() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
@@ -144,6 +131,7 @@ public class BeanGuiEvento {
     /**
      * metodo che testituisce il campo contenente l'id dell'Evento
      * @return il campo id dell'Evento
+     * @throws Exception
      */
     public JTextField getIdEvento() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
@@ -165,6 +153,7 @@ public class BeanGuiEvento {
     /**
      * metodo che restituisce il campo contenente il luogo dell'Evento
      * @return il campo luogo dell'Evento
+     * @throws Exception
      */
     public JTextField getLuogo() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
@@ -186,6 +175,7 @@ public class BeanGuiEvento {
     /**
      * metodo che restituisce il campo contenente il nome dell'Evento
      * @return il campo nome dell'Evente
+     * @throws Exception
      */
     public JTextField getNome() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
@@ -223,6 +213,7 @@ public class BeanGuiEvento {
     /**
      * metodo che restituisce il campo contenente l'ora dell'Evento
      * @return il campo ora
+     * @throws Exception
      */
     public JTextField getOra() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
@@ -244,6 +235,7 @@ public class BeanGuiEvento {
     /**
      * metodo che restituisce il campo contentente il tema dell'Evento
      * @return il campo tema
+     * @throws Exception
      */
     public JTextField getTema() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {

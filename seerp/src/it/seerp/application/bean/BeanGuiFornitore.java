@@ -19,6 +19,7 @@ public class BeanGuiFornitore extends BeanGuiExtraAzienda {
     /**
      * Costruttore a cui viene passato un componente grafico necessario alla
      * validazione del campo
+     * @param c
      */
     public BeanGuiFornitore(JXPanel c) {
         grafica = c;
@@ -31,7 +32,7 @@ public class BeanGuiFornitore extends BeanGuiExtraAzienda {
     }
 
     /**
-     *  Costruttore per la classe BenaGuiFornitore
+     * 
      * @param idExtraAziendaTxt
      * @param txtCognome
      * @param txtNome
@@ -39,18 +40,19 @@ public class BeanGuiFornitore extends BeanGuiExtraAzienda {
      * @param txtPIva
      * @param txtFax
      * @param cmbRuolo
-     * @param listAppuntamenti
-     * @param listContratti
      * @param idFornitoreTxt
      */
-    public BeanGuiFornitore(JTextField idExtraAziendaTxt, JTextField txtCognome, JTextField txtNome, JTextField txtRagioneSociale, JTextField txtPIva, JTextField txtFax, JComboBox cmbRuolo, ArrayList<BeanGuiAppuntamento> listAppuntamenti, ArrayList<BeanGuiContratto> listContratti, JTextField idFornitoreTxt) {
-        super(idExtraAziendaTxt, txtCognome, txtNome, txtRagioneSociale, txtPIva, txtFax, cmbRuolo, listAppuntamenti, listContratti);
+    public BeanGuiFornitore(JTextField idExtraAziendaTxt, JTextField txtCognome, JTextField txtNome, JTextField txtRagioneSociale, JTextField txtPIva, JTextField txtFax, JComboBox cmbRuolo, JTextField idFornitoreTxt) {
+        super(idExtraAziendaTxt, txtCognome, txtNome, txtRagioneSociale, txtPIva, txtFax, cmbRuolo);
         this.idFornitoreTxt = idFornitoreTxt;
     }
+
+    
 
     /**
      * Metodo che permette di restituire il campo id di un Fornitore
      * @return il campo id del Fornitore
+     * @throws Exception
      */
     public JTextField getIdFornitoreTxt() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
