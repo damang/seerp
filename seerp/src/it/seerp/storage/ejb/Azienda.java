@@ -1,7 +1,7 @@
 package it.seerp.storage.ejb;
 
 /**
- * classe che modella le informazione sull'Azienda
+ * classe che modella le informazioni sull'Azienda
  * @author Luisa-Matteo
  */
 public class Azienda {
@@ -9,7 +9,7 @@ public class Azienda {
     private String città;
     private String email;
     private String fax;
-    private String inidirizzo;
+    private String indirizzo;
     private String nazione;
     private String pIVA;
     private String ragioneSociale;
@@ -23,18 +23,18 @@ public class Azienda {
      * @param città
      * @param email
      * @param fax
-     * @param inidirizzo
+     * @param indirizzo
      * @param nazione
      * @param pIVA
      * @param ragioneSociale
      * @param telefono
      * @param idAzienda
      */
-    public Azienda(String città, String email, String fax, String inidirizzo, String nazione, String pIVA, String ragioneSociale, String telefono, int idAzienda) {
+    public Azienda(String città, String email, String fax, String indirizzo, String nazione, String pIVA, String ragioneSociale, String telefono, int idAzienda) {
         this.città = città;
         this.email = email;
         this.fax = fax;
-        this.inidirizzo = inidirizzo;
+        this.indirizzo = indirizzo;
         this.nazione = nazione;
         this.pIVA = pIVA;
         this.ragioneSociale = ragioneSociale;
@@ -162,16 +162,16 @@ public class Azienda {
      *il metodo che restituisce l'indirizzo dell'Azienda
      * @return: indirizzo dell'Azienda
      */
-    public String getInidirizzo() {
-        return inidirizzo;
+    public String getIndirizzo() {
+        return indirizzo;
     }
 
     /**
      *il metodo che setta l'indirizzo dell'Azienda
      * @param inidirizzo
      */
-    public void setInidirizzo(String inidirizzo) {
-        this.inidirizzo = inidirizzo;
+    public void setIndirizzo(String indirizzo) {
+        this.indirizzo = indirizzo;
     }
 
     /**
@@ -189,23 +189,6 @@ public class Azienda {
     public void setNazione(String nazione) {
         this.nazione = nazione;
     }
-
-    /**
-     * il metodo che restituisce la partita Iva dell'Azienda
-     * @return: partita Iva dell'Azienda
-     */
-    public String getPartitaIVA() {
-        return pIVA;
-    }
-
-    /**
-     *il metodo che setta la partita IVA dell'Azienda
-     * @param partitaIVA
-     */
-    public void setPartitaIVA(String partitaIVA) {
-        this.pIVA = partitaIVA;
-    }
-
     /**
      *
      *il metodo che restituisce la ragione sociale dell'Azienda
