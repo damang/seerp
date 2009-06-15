@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  * Classe del livello application riguardante la Gestione dei Servizi
  * @author Tommaso Cattolico
  */
-public class AppServizi implements GestioneServizi<BeanGuiServizio> {
+public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio> {
 
     /**
      * Metodo che permette di visualizzare l'elenco dei servizi
@@ -133,5 +133,17 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio> {
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
         return beanGui;
+    }
+
+    public ArrayList<Servizio> visualizzaTabella() {
+        ArrayList<Servizio> list = new ArrayList<Servizio>();
+        try {
+            OpServizio ope = new OpServizio();
+            list = ope.visualizzaElenco();
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        }
+        return list;
     }
 }
