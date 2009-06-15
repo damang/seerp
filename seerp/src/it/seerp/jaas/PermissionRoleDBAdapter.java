@@ -174,7 +174,7 @@ public class PermissionRoleDBAdapter implements PermissionAdapter
                     int id= rs.getInt("idPermesso");
 					String task = rs.getString ("task");
 					String action = rs.getString ("action");
-					perms.add(new Permesso(id,task, action));
+					perms.add(new Permesso(id, task, action));
 				}
 			}
 
