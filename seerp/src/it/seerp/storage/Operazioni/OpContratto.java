@@ -18,10 +18,14 @@ import it.seerp.storage.ejb.ServizioAssociato;
  * classe storage che si occupa di interfacciarsi col DBMS e compiere operazioni sui contratti
  * @author Luisa-Ila
  */
-public class OpContratto implements OpeEntity<Contratto> {
+public class OpContratto implements OpeEntity<Contratto, Integer> {
 
     private Connection conn;
 
+    /**
+     * 
+     * @throws java.sql.SQLException
+     */
     public OpContratto() throws SQLException {
         conn = (Connection) ConnectionPool.getConnection();
     }
@@ -61,7 +65,6 @@ public class OpContratto implements OpeEntity<Contratto> {
 
     /**
      * metodo che ricerca i contratti associati a quel dipendente con identificativo uguale a id
-     * @param id identificativo del dipendente
      * @return una lista dei contratti ricercati in base all'identificati vo del dipendente
      * @throws java.sql.SQLException     
      */
@@ -123,9 +126,10 @@ public class OpContratto implements OpeEntity<Contratto> {
 
     /**
      * metodo che si occupa della modifica di una tupla di contratto
-     * @param contratto che contiene le informazioni da modificare
+     * @param contr
      * @return contratto dopo la query di update
      * @throws java.sql.SQLException
+     * @throws DatiErratiEx
      *
      */
     public Contratto modifica(Contratto contr) throws SQLException, DatiErratiEx {
@@ -163,11 +167,11 @@ public class OpContratto implements OpeEntity<Contratto> {
 
     /**
      * ricerca il contratto con quell'identificativo
-     * @param nome identificativo del contratto
+     * @param bean
      * @return un contratto con identificativo uguale al paramtero nome
      * @throws java.sql.SQLException
      */
-    public Contratto visualizza(Contratto bean) throws SQLException {
+    public Contratto visualizza(Integer id) throws SQLException {
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -177,7 +181,7 @@ public class OpContratto implements OpeEntity<Contratto> {
             String sql = "SELECT * FROM Contratto WHERE idContratto= ?";
             stmt = (PreparedStatement) conn.prepareStatement(sql);
 
-            stmt.setString(1, bean.getIdContratto().toString());
+            stmt.setInt(1, id);
             rs = stmt.executeQuery();
 
             // Define the resource list
@@ -265,5 +269,9 @@ public class OpContratto implements OpeEntity<Contratto> {
             }
         }
         return list;
+    }
+
+    public Contratto visualizza(Contratto bean) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
