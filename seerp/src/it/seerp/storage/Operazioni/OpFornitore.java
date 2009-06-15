@@ -54,8 +54,8 @@ public class OpFornitore extends OpExtraAzienda {
 
             // Define the resource list
             while (rs.next()) {
-                Fornitore fornitore = new Fornitore(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getInt(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17) , rs.getString(18), rs.getInt(19));
-      // Integer idUtente, String username, String password, String città, String ruol 5, String provincia, String telefono, String cap, String email , String ruolo 10, String note, Boolean v, Integer idExtraAzienda, String cognome, String nome 15, String ragioneSociale, String pIva, String fax, Integer idFornitore) {
+                Fornitore fornitore = new Fornitore(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17) );
+    // Integer idUtente, String username, String password, String città, String ruol, String provincia, String telefono, String cap, String email, String ruolo, String note, Boolean v, String cognome, String nome, String ragioneSociale, String pIva, String fax) {
 
                 list.add(fornitore);
             }}
@@ -188,7 +188,6 @@ public class OpFornitore extends OpExtraAzienda {
             } else {
                 String sql = "INSERT INTO Fornitore (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-
             stmt.setInt(1, user.getIdUtente());
             stmt.setString(2, user.getUsername());
             stmt.setString(3, user.getPassword());
@@ -196,19 +195,17 @@ public class OpFornitore extends OpExtraAzienda {
             stmt.setString(5, user.getRuolo());
             stmt.setString(6, user.getProvincia());
             stmt.setString(7, user.getTelefono());
-            stmt.setString(8, user.getEmail());
-            stmt.setString(9, user.getRuolo());
-            stmt.setString(10, user.getNote());
-            stmt.setBoolean(11, user.getVisible());
-            stmt.setInt(12, user.getIdExtraAzienda());
+            stmt.setString(8, user.getCap());
+            stmt.setString(9, user.getEmail());
+            stmt.setString(10, user.getRuolo());
+            stmt.setString(11, user.getNote());
+            stmt.setBoolean(12, user.getVisible());
+
             stmt.setString(13, user.getCognome());
             stmt.setString(14, user.getNome());
             stmt.setString(15, user.getRagioneSociale());
             stmt.setString(16, user.getPIva());
             stmt.setString(17, user.getFax());
-            
-            stmt.setInt(18, user.getIdFornitore());
-
 
              stmt.execute();
             }
@@ -259,18 +256,19 @@ public class OpFornitore extends OpExtraAzienda {
             stmt.setString(5, user.getRuolo());
             stmt.setString(6, user.getProvincia());
             stmt.setString(7, user.getTelefono());
-            stmt.setString(8, user.getEmail());
-            stmt.setString(9, user.getRuolo());
-            stmt.setString(10, user.getNote());
-            stmt.setBoolean(11, user.getVisible());
-            stmt.setInt(12, user.getIdExtraAzienda());
+            stmt.setString(8, user.getCap());
+            stmt.setString(9, user.getEmail());
+            stmt.setString(10, user.getRuolo());
+            stmt.setString(11, user.getNote());
+            stmt.setBoolean(12, user.getVisible());
+          
             stmt.setString(13, user.getCognome());
             stmt.setString(14, user.getNome());
             stmt.setString(15, user.getRagioneSociale());
             stmt.setString(16, user.getPIva());
             stmt.setString(17, user.getFax());
            
-            stmt.setInt(18, user.getIdFornitore());
+            
 
             stmt.execute();
              
@@ -319,7 +317,7 @@ public class OpFornitore extends OpExtraAzienda {
 
             // Define the resource list
             while (rs.next()) {
-            fornitore = new Fornitore(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getInt(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17) , rs.getString(18), rs.getInt(19));
+            fornitore = new Fornitore(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17) );
 
             }
         } catch (SQLException se) {
