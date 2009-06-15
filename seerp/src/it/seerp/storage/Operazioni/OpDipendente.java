@@ -1,7 +1,5 @@
 package it.seerp.storage.Operazioni;
 
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
 import it.seerp.storage.ejb.Dipendente;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,6 +10,8 @@ import it.seerp.storage.db.ConnectionPool;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
+import com.mysql.jdbc.PreparedStatement;
+import com.mysql.jdbc.Connection;
 
 /**
  *
@@ -46,11 +46,19 @@ public class OpDipendente extends OpPersonale {
             // Execute the query
             rs = stmt.executeQuery(sql);
 
+
+            /*
+             * Integer idUtente1, String username2, String password3, String città4,
+            String provincia5, String telefono6, String cap7, String email8, String note9,
+            String tipo10, String cognome11, String nome12, String codiceFiscale13, Ruolo ruolo14, Boolean v15
+             */
             // Define the resource list
             while (rs.next()) {
-                Dipendente dipendente = new Dipendente(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-                        rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getInt(11), rs.getString(12), rs.getString(13),
-                        rs.getString(14), rs.getString(15), rs.getBoolean(16), rs.getInt(17));
+                Dipendente dipendente = new Dipendente(rs.getInt(1), rs.getString(2),
+                        rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),
+                        rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
+                        rs.getString(11), rs.getString(12), rs.getString(13), new Ruolo(rs.getString(14)),
+                        rs.getBoolean(15));
                 list.add(dipendente);
             }
         } catch (SQLException se) {
@@ -73,7 +81,8 @@ public class OpDipendente extends OpPersonale {
 
     /** Metodo che permette la ricerca di un membro dei dipendenti
      * @return la lista dei membri dei dipendente che corrispondono ai criteri di ricerca
-     * @throws java.sql.SQLException*/
+     * @throws java.sql.SQLException
+     */
     public ArrayList<Dipendente> ricercaDipendente() throws SQLException {
         ArrayList<Dipendente> list = this.elencaDipendente();
         return list;
@@ -82,7 +91,8 @@ public class OpDipendente extends OpPersonale {
     /** Metodo che permette di eliminare un membro dei dipendenti già esistente
      * @param user
      * user dell'utente da eliminare
-     * @throws java.sql.SQLException*/
+     * @throws java.sql.SQLException
+     */
     public void elimina(Dipendente user) throws SQLException {
         PreparedStatement stmt = null;
         try {
@@ -110,7 +120,8 @@ public class OpDipendente extends OpPersonale {
     /** Nasconde l'utente eliminato al sistema senza l'eliminazione fisica
      * @param user
      * user dell'utente da eliminare
-     * @throws java.sql.SQLException*/
+     * @throws java.sql.SQLException
+     */
     public void eliminazioneLogica(Dipendente user) throws SQLException {
 
         PreparedStatement stmt = null;
@@ -134,9 +145,6 @@ public class OpDipendente extends OpPersonale {
                 ConnectionPool.releaseConnection(con);
             }
         }
-
-
-
     }
 
     /** Metodo per inserire un nuovo membro dei dipiendenti
@@ -146,7 +154,6 @@ public class OpDipendente extends OpPersonale {
      * @throws DatiDuplicatiEx
      */
     public void inserisci(Dipendente user) throws SQLException, DatiDuplicatiEx {
-
 
         PreparedStatement stmt = null;
         try {
@@ -160,7 +167,14 @@ public class OpDipendente extends OpPersonale {
             } else {
                 String sql = "INSERT INTO Dipendente (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
+                /*
+                 * Integer idUtente1, String username2, String password3, String città4,
+                String provincia5, String telefono6, String cap7, String email8, String note9,
+                String tipo10, String cognome11, String nome12, String codiceFiscale13, Ruolo ruolo14, Boolean v15
+                 */
+
                 stmt = (PreparedStatement) con.prepareStatement(sql);
+
                 stmt.setInt(1, user.getIdUtente());
                 stmt.setString(2, user.getUsername());
                 stmt.setString(3, user.getPassword());
@@ -170,14 +184,12 @@ public class OpDipendente extends OpPersonale {
                 stmt.setString(7, user.getCap());
                 stmt.setString(8, user.getEmail());
                 stmt.setString(9, user.getNote());
-                stmt.setString(10, user.getRuolo());
-                stmt.setInt(11, user.getIdPersonale());
-                stmt.setString(12, user.getCognome());
-                stmt.setString(13, user.getNome());
-                stmt.setString(14, user.getCodiceFiscale());
-                stmt.setString(15, user.getTipo());
-                stmt.setBoolean(16, user.getVisible());
-                stmt.setInt(17, user.getIdDipendente());
+                stmt.setString(10, user.getTipo());
+                stmt.setString(11, user.getCognome());
+                stmt.setString(12, user.getNome());
+                stmt.setString(13, user.getCodiceFiscale());
+                stmt.setString(14, user.getRuolo().getNome());
+                stmt.setBoolean(15, user.getVisible());
                 stmt.execute();
             }
         } catch (SQLException se) {
@@ -229,18 +241,16 @@ public class OpDipendente extends OpPersonale {
                 stmt.setString(7, user.getCap());
                 stmt.setString(8, user.getEmail());
                 stmt.setString(9, user.getNote());
-                stmt.setString(10, user.getRuolo());
-                stmt.setInt(11, user.getIdPersonale());
-                stmt.setString(12, user.getCognome());
-                stmt.setString(13, user.getNome());
-                stmt.setString(14, user.getCodiceFiscale());
-                stmt.setString(15, user.getTipo());
-                stmt.setBoolean(16, user.getVisible());
-                stmt.setInt(17, user.getIdDipendente());
+                stmt.setString(10, user.getTipo());
+                stmt.setString(11, user.getCognome());
+                stmt.setString(12, user.getNome());
+                stmt.setString(13, user.getCodiceFiscale());
+                stmt.setString(14, user.getRuolo().getNome());
+                stmt.setBoolean(15, user.getVisible());
 
                 stmt.execute();
 
-                dipendente = this.visualizzaDati(dipendente.getIdDipendente());
+                dipendente = this.visualizzaDati(dipendente.getIdUtente());
 
             }
         } catch (SQLException se) {
@@ -281,19 +291,12 @@ public class OpDipendente extends OpPersonale {
 
             // Define the resource list
             while (rs.next()) {
-                dipendente = new Dipendente(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-                        rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getInt(11), rs.getString(12), rs.getString(13),
-                        rs.getString(14), rs.getString(15), rs.getBoolean(16), rs.getInt(17));
+                dipendente = new Dipendente(rs.getInt(1), rs.getString(2),
+                        rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),
+                        rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
+                        rs.getString(11), rs.getString(12), rs.getString(13), new Ruolo(rs.getString(14)),
+                        rs.getBoolean(15));
 
-                PreparedStatement stmt1;
-                String sql2 = "Select nome From Ruolo,Dipendente where idRuolo=ruolo and idDipendente = ?";
-                stmt1 = (PreparedStatement) con.prepareStatement(sql2);
-                stmt1.setInt(1, dipendente.getIdDipendente());
-                ResultSet rs1 = stmt1.executeQuery();
-                while (rs1.next()) {
-                    Ruolo ruolo = new Ruolo(rs.getString(1));
-                    dipendente.addRuolo(ruolo);
-                }
             }
         } catch (SQLException se) {
             System.out.println("errore di visualizzazione");
@@ -313,48 +316,5 @@ public class OpDipendente extends OpPersonale {
 
         return dipendente;
 
-    }
-
-    /**
-     *
-     * @param id
-     * @return
-     * @throws java.sql.SQLException
-     */
-    public ArrayList<Ruolo> getRuoloPersonale(Integer id) throws SQLException {
-
-        ArrayList<Ruolo> list = new ArrayList<Ruolo>();
-
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
-        try {
-            String sql = "Select nome From Ruolo,Responsabile where idRuolo=ruolo and idResponsabile = ?";
-            // Create a statement
-            stmt = (PreparedStatement) con.prepareStatement(sql);
-            stmt.setInt(1, id);
-            // Execute the query
-            rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                Ruolo ruolo = new Ruolo(rs.getString(1));
-                list.add(ruolo);
-            }
-        } catch (SQLException se) {
-            System.out.println("errore nella visualizzazione dei permessi");
-
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
-        }
-        return list;
     }
 }
