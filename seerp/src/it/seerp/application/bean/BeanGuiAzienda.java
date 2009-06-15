@@ -8,7 +8,7 @@ import javax.swing.JTextField;
  */
 public class BeanGuiAzienda {
 
-    private JTextField città;
+    private JTextField citta;
     private JTextField email;
     private JTextField fax;
     private JTextField inidirizzo;
@@ -25,8 +25,8 @@ public class BeanGuiAzienda {
 
     
 
-    public BeanGuiAzienda(JTextField città, JTextField email, JTextField fax, JTextField inidirizzo, JTextField nazione, JTextField pIVA, JTextField ragioneSociale, JTextField telefono, JTextField idAzienda, JTextField note, BeanGuiAmministratore amministratore) {
-        this.città = città;
+    public BeanGuiAzienda(JTextField citta, JTextField email, JTextField fax, JTextField inidirizzo, JTextField nazione, JTextField pIVA, JTextField ragioneSociale, JTextField telefono, JTextField idAzienda, JTextField note, BeanGuiAmministratore amministratore) {
+        this.citta = citta;
         this.email = email;
         this.fax = fax;
         this.inidirizzo = inidirizzo;
@@ -39,8 +39,8 @@ public class BeanGuiAzienda {
         this.amministratore = amministratore;
     }
 
-    public void setCittà(JTextField città) {
-        this.città = città;
+    public void setCitta(JTextField citta) {
+        this.citta = citta;
     }
 
     public void setEmail(JTextField email) {
@@ -88,8 +88,8 @@ public class BeanGuiAzienda {
         return amministratore;
     }
 
-    public JTextField getCittà() {
-        return città;
+    public JTextField getCitta() {
+        return citta;
     }
 
     public JTextField getEmail() {
