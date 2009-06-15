@@ -6,7 +6,7 @@ import javax.swing.JTextField;
  *
  * @author matteo
  */
-class BeanGuiAzienda {
+public class BeanGuiAzienda {
 
     private JTextField città;
     private JTextField email;
@@ -19,6 +19,11 @@ class BeanGuiAzienda {
     private JTextField idAzienda;
     private JTextField note;
     private BeanGuiAmministratore amministratore;
+
+    public BeanGuiAzienda() {
+    }
+
+    
 
     public BeanGuiAzienda(JTextField città, JTextField email, JTextField fax, JTextField inidirizzo, JTextField nazione, JTextField pIVA, JTextField ragioneSociale, JTextField telefono, JTextField idAzienda, JTextField note, BeanGuiAmministratore amministratore) {
         this.città = città;
