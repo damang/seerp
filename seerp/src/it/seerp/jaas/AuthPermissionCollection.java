@@ -56,5 +56,9 @@ public class AuthPermissionCollection extends PermissionCollection
     public int size() {
         return _perms.size();
     }
+    public void remove (AccessPermission c) {
+        _perms.remove(c);
+    }
+
 
 }
