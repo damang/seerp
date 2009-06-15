@@ -8,12 +8,13 @@ import java.io.File;
  * Classe che modella un permesso di accesso al sistema
  * @author peppe
  */
-public class AccessPermission extends Permission implements Serializable {
+public class Permesso extends Permission implements Serializable {
 
     private static final String WILD = "*";
     private static final String SEP_WILD = File.separator + WILD;
     private String _action;
     private String _path;
+    private int _id;
     private boolean _bTail = false;
 
     /**
@@ -21,18 +22,25 @@ public class AccessPermission extends Permission implements Serializable {
      * @param name nome del permesso
      * @param action azione eseguibile
      */
-    public AccessPermission(String name, String action) {
+    public Permesso(int id,String name, String action) {
         super(name);
         getPath(name);
         _action = action;
+        _id=id;
+    }
+    public Permesso(String name, String action) {
+        super(name);
+        getPath(name);
+        _action = action;
+        _id=-1;
     }
 
     public boolean implies(Permission permission) {
-        if (!(permission instanceof AccessPermission)) {
+        if (!(permission instanceof Permesso)) {
             return false;
         }
 
-        AccessPermission that = (AccessPermission) permission;
+        Permesso that = (Permesso) permission;
 
         return (containWith(that._path) && compareAction(that.getActions()));
 
@@ -42,10 +50,10 @@ public class AccessPermission extends Permission implements Serializable {
         if (obj == this) {
             return true;
         }
-        if (!(obj instanceof AccessPermission)) {
+        if (!(obj instanceof Permesso)) {
             return false;
         }
-        AccessPermission that = (AccessPermission) obj;
+        Permesso that = (Permesso) obj;
         return (this.getName().equals(that.getName()) &&
                 this.compareAction(that.getActions()));
     }
@@ -97,5 +105,8 @@ public class AccessPermission extends Permission implements Serializable {
         } else {
             return _path.equals(path);
         }
+    }
+    public int getId() {
+        return _id;
     }
 }

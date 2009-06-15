@@ -128,7 +128,7 @@ public class AuthPolicy extends java.security.Policy
 			java.util.Enumeration enu = perms.elements();
 			while (enu.hasMoreElements())
 			{
-				AccessPermission item = (AccessPermission) enu.nextElement();
+				Permesso item = (Permesso) enu.nextElement();
 			}
 					
 			return perms;
