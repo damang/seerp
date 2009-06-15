@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @param <G> tipo generico
  * @author Luisa
  */
-public interface OpeEntity<E, G> {
+public interface OpeEntity<E> {
 
     /**
      * metodo che inserisce la tupla delle informazioni contenute nel bean
@@ -40,7 +40,7 @@ public interface OpeEntity<E, G> {
      *
      */
 
-    public E visualizza(G nome) throws SQLException;
+    public E visualizza(E bean) throws SQLException;
 
     /**
      * metodo che restuisce l iniseme delle entity di una tabella
@@ -48,5 +48,5 @@ public interface OpeEntity<E, G> {
      * @throws java.sql.SQLException
      * nel caso in cui ci siano problemi legati alla ricerca nel database
      */
-    public ArrayList<G> visualizzaElenco() throws SQLException;
+    public ArrayList<E> visualizzaElenco() throws SQLException;
 }
