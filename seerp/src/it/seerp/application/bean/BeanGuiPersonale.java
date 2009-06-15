@@ -139,13 +139,7 @@ public class BeanGuiPersonale extends BeanGuiUtente {
         return txtNome;
     }
 
-    /**
-     *
-     * @return
-     */
-    public JComboBox getTipo() {
-        return cmbTipo;
-    }
+    
 
     /**
      * 
