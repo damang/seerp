@@ -1,7 +1,7 @@
 package it.seerp.storage.ejb;
 
-import it.seerp.jaas.AccessPermission;
-import it.seerp.jaas.AuthPermissionCollection;
+import it.seerp.storage.ejb.Permesso;
+import it.seerp.jaas.PermessoCollection;
 import java.util.ArrayList;
 
 /**
@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @author Luisa-Matteo
  */
 public class Ruolo {
-     private ArrayList<Permesso> listPermesso;
+     private PermessoCollection listPermesso;
      private String nome;
      private ArrayList<Personale> listPersonale;
 
@@ -19,7 +19,7 @@ public class Ruolo {
       * @param nome
       */
      public Ruolo(String nome) {
-        this.listPermesso= new ArrayList<Permesso>();
+        this.listPermesso= new PermessoCollection();
         this.nome = nome;
         this.listPersonale= new ArrayList<Personale>();
     }
@@ -48,7 +48,7 @@ public class Ruolo {
      * metodo che permette di restituire la lista degli incarichi di un ruolo
      * @return la lista degli incarichi
      */
-    public ArrayList<Permesso> getListPermesso() {
+    public PermessoCollection getListPermesso() {
         return listPermesso;
     }
 
@@ -56,7 +56,7 @@ public class Ruolo {
      * metodo che permette di settare la lista degli incarichi di un ruolo
      * @param listIncarico rappresenta la lista degli incarichi
      */
-    public void setListPermesso(ArrayList<Permesso> listPermesso) {
+    public void setListPermesso(PermessoCollection listPermesso) {
         this.listPermesso = listPermesso;
     }
  
