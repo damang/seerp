@@ -14,7 +14,7 @@ public class ExtraAzienda extends Utente {
     private String ragioneSociale;
     private String pIva;
     private String fax;
-    private String ruolo;
+    private String tipo;
     private ArrayList<Appuntamento> listAppuntamenti;
     private ArrayList<Contratto> listContratti;
 
@@ -49,7 +49,7 @@ public class ExtraAzienda extends Utente {
         this.pIva = pIva;
         this.fax = fax;
 
-        this.ruolo = ruol;
+        this.tipo = ruol;
 
         this.listAppuntamenti = new ArrayList<Appuntamento>();
         this.listContratti = new ArrayList<Contratto>();
@@ -142,7 +142,7 @@ public class ExtraAzienda extends Utente {
      * @return una stringa contenente il ruolo
      */
     public String getRuolo() {
-        return ruolo;
+        return tipo;
     }
 
     /**
@@ -198,7 +198,7 @@ public class ExtraAzienda extends Utente {
      * @param ruolo di tipo stringa
      */
     public void setRuolo(String ruolo) {
-        this.ruolo = ruolo;
+        this.tipo = ruolo;
     }
     /**
      *  * metodo che rimuove un appuntamento alla lista contratti
