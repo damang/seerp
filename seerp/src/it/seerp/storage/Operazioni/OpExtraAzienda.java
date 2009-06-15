@@ -13,6 +13,7 @@ import it.seerp.storage.ejb.Appuntamento;
 import it.seerp.storage.ejb.Contratto;
 import it.seerp.storage.db.ConnectionPool;
 import java.sql.Connection;
+import java.util.GregorianCalendar;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -51,8 +52,9 @@ public class OpExtraAzienda extends OpeUtente {
 
             // Define the resource list
             while (rs.next()) {
-                ExtraAzienda extraazienda = new ExtraAzienda (rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getBoolean(11), rs.getInt(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17) );
-                                                        
+                ExtraAzienda extraazienda = new ExtraAzienda (rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getInt(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18), rs.getString(19), rs.getString(20) );
+                            //Integer idUtente, String username, String password, String città, String ruol 5,String provincia, String telefono, String email, String ruolo, String cap 10, String note, Boolean v, Integer idExtraAzienda, String cognome, String nome 15, String ragioneSociale, String pIva, String fax, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti) {
+
                 list.add(extraazienda);
             }}
 
@@ -84,44 +86,9 @@ public class OpExtraAzienda extends OpeUtente {
       * @throws java.sql.SQLException*/
   
      public  ArrayList<ExtraAzienda> ricercaExtraAzienda(String cognome, String ruolo)throws SQLException{
-
-         ArrayList<ExtraAzienda> list = new ArrayList<ExtraAzienda>();
-            
-             Statement stmt = null;
-             ResultSet rs = null;
-
-            try {
-           String sql = "SELECT * FROM ExtraAzienda where cognome = ? AND ruolo = ?";
-            // Create a statement
-            stmt = (PreparedStatement) con.prepareStatement(sql);
-            stmt.setString(1, cognome);
-            stmt.setString(2, ruolo);
-            // Execute the query
-            rs = stmt.executeQuery(sql);
-
-            // Define the resource list
-            while (rs.next()) {
-                 ExtraAzienda extraazienda = new ExtraAzienda (rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getBoolean(11), rs.getInt(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17) );
-
-            }}
-
-              catch (SQLException se) {
-            System.out.println("errore nella ricerca");
-
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
-        }
-        return list;
-
+           
+              ArrayList<ExtraAzienda> list = this.elencaExtraAzienda();
+              return list;
        }
 
 
@@ -331,15 +298,20 @@ public class OpExtraAzienda extends OpeUtente {
             
             // Define the resource list
             while (rs.next()) {
-               extraazienda = new ExtraAzienda (rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getBoolean(11), rs.getInt(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17) );
-                                                        
+               extraazienda = new ExtraAzienda (rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getInt(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18) );
+                       //Integer idUtente, String username, String password, String città, String ruol 5 ring provincia, String telefono, String email, String ruolo, String cap10String note, Boolean v, Integer idExtraAzienda, String cognome, String nome15String ragioneSociale, String pIva, String fax, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti) {
+
                PreparedStatement stmt1;
                String sql2 = "Select nome From Appuntamento,ExtraAzienda where idAppuntamento=appuntamento and idExtraAzienda = ?";
                 stmt1 = (PreparedStatement) con.prepareStatement(sql2);
                 stmt1.setInt(1, extraazienda.getIdExtraAzienda());
                 ResultSet rs1 = stmt1.executeQuery();
                 while (rs1.next()) {
-                    Appuntamento appuntamento = new Appuntamento(rs.getString(1));
+                    GregorianCalendar data1 = new GregorianCalendar();
+                    GregorianCalendar ora= new GregorianCalendar();
+                    ora.setTimeInMillis(Long.parseLong(rs.getString(2)));
+                    data1.setTimeInMillis(Long.parseLong(rs.getString(1)));
+                   Appuntamento appuntamento = new Appuntamento(data1, ora, rs.getInt(3), rs.getString(4), rs.getBoolean(5));
                     extraazienda.addAppuntamento(appuntamento);
 
                PreparedStatement stmt2;
@@ -348,7 +320,11 @@ public class OpExtraAzienda extends OpeUtente {
                 stmt2.setInt(1, extraazienda.getIdExtraAzienda());
                 ResultSet rs2 = stmt2.executeQuery();
                 while (rs2.next()) {
-                    Contratto contratto = new Contratto(rs.getString(1));
+                    GregorianCalendar data = new GregorianCalendar();
+                    data.setTimeInMillis(Long.parseLong(rs.getString(2)));
+                    Contratto contratto = new Contratto( rs.getString(1), data,rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getString(6));
+
+
                     extraazienda.addContratto(contratto);
             }}
         }}
@@ -372,95 +348,5 @@ public class OpExtraAzienda extends OpeUtente {
         return extraazienda;
 
        }
-
-     /**
-     * metodo che si occupa di ricercare tutti gli appuntamenti legati ad un cliente grazie all'id del cliente
-     * @param id identificativo del cliente
-     * @return lista degli appuntamenti associati al cliente
-     * @throws java.sql.SQLException*/
-
-    public ArrayList<Appuntamento> getAppuntamentiExtraAzienda(Integer id) throws SQLException {
-
-        ArrayList<Appuntamento> list = new ArrayList<Appuntamento>();
-       
-        Statement stmt = null;
-        ResultSet rs = null;
-
-     try {
-            String sql = "Select nome From Appuntamento,ExtraAzienda where idAppuntamento=appuntamento and idExtraAzienda = ?";
-            // Create a statement
-            stmt = (PreparedStatement) con.prepareStatement(sql);
-            stmt.setInt(1, id);
-            // Execute the query
-            rs = stmt.executeQuery(sql);
-
-            while (rs.next()) {
-                Appuntamento appuntamento = new Appuntamento(rs.getString(1));
-                list.add(appuntamento);
-            }
-        } catch (SQLException se) {
-            System.out.println("errore nella visualizzazione degli appuntamenti");
-            
-
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
-        }
-        return list;
-    }
-
-/**
-     * metodo che si occupa di ricercare tutti i contratti legati ad un ExtraAzienda grazie all'id dell'ExtraAzienda
-     * @param id identificativo del cliente
-     * @return lista dei contratti associati al cliente
-     * @throws java.sql.SQLException*/
-
-    public ArrayList<Contratto> getContrattiExtraAzienda(Integer id) throws SQLException {
-
-        ArrayList<Contratto> list = new ArrayList<Contratto>();
-      
-        Statement stmt = null;
-        ResultSet rs = null;
-
-        try {
-            String sql = "Select nome From Contratto,ExtraAzienda where idContratto=contratto and idExtraAzienda = ?";
-            // Create a statement
-            stmt = (PreparedStatement) con.prepareStatement(sql);
-            stmt.setInt(1, id);
-            // Execute the query
-            rs = stmt.executeQuery(sql);
-
-            while (rs.next()) {
-                Contratto contratto = new Contratto(rs.getString(1));
-                list.add(contratto);
-            }
-        } catch (SQLException se) {
-            System.out.println("errore nella visualizzazione dei contratti");
-
-
-            
-
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
-        }
-        return list;
-    }
-
+    
 }
