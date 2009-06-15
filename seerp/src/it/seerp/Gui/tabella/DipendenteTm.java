@@ -73,7 +73,7 @@ public class DipendenteTm extends Generica <Dipendente>{
     @Override
     protected Vector creaArrayObjectData(Dipendente o) {
         Vector c = new Vector();
-        c.add(o.getIdDipendente());
+        c.add(o.getIdUtente());
         c.add(o.getNome());
         c.add(o.getCognome());
         c.add(o.getEmail());
