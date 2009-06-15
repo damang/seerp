@@ -29,7 +29,7 @@ public class LoginSourceAdapterFactory
 			{
 				Class c = Class.forName(cName);
 				handler = (LoginSourceAdapter)c.newInstance();
-				handler.initialize (cfg.getLoginInitParam());
+				//handler.initialize (cfg.getLoginInitParam());
 			}
 			catch (ClassNotFoundException cfe)
 			{
