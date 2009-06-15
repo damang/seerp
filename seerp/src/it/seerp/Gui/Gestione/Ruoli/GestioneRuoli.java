@@ -24,6 +24,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 /**
@@ -31,7 +32,7 @@ import javax.swing.table.TableModel;
  * @author Andrea
  */
 public class GestioneRuoli extends ObservableJPanel implements ActionListener {
-    private TableModel tModel;
+    private TableModel tModel= new DefaultTableModel();
 
         /** Creates new form AreaPersonalePanel */
     public GestioneRuoli() {
