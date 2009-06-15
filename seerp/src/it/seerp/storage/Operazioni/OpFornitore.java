@@ -5,28 +5,33 @@
 
 package it.seerp.storage.Operazioni;
 
+import com.mysql.jdbc.PreparedStatement;
 import it.seerp.storage.ejb.Fornitore;
-import it.seerp.application.bean.BeanGuiFornitore;
+
 import it.seerp.storage.ejb.Pagamento;
 import it.seerp.storage.ejb.Servizio;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import it.seerp.storage.ejb.Contratto;
+import it.seerp.storage.Exception.DatiDuplicatiEx;
+import it.seerp.storage.Exception.DatiErratiEx;
 import it.seerp.storage.ejb.Appuntamento;
+import it.seerp.storage.ejb.Contratto;
 import it.seerp.storage.db.ConnectionPool;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
 import java.sql.Statement;
-
 /**
  *
  * @author LuNy
  */
 public class OpFornitore extends OpExtraAzienda {
 
-    public OpFornitore(){
-    super();
+    Connection con = null;
+
+    public OpFornitore()throws SQLException {
+        super();
+        con = ConnectionPool.getConnection();
     }
 
     /** Metodo che permette la visualizzazione della lista dei Fornitori
@@ -35,39 +40,28 @@ public class OpFornitore extends OpExtraAzienda {
     
     public ArrayList<Fornitore> elencaFornitore()throws SQLException{
 
-         ArrayList<Fornitore> list = new ArrayList<Fornitore>();
+        ArrayList<Fornitore> list = new ArrayList<Fornitore>();
         Connection con = null;
         Statement stmt = null;
         ResultSet rs = null;
 
-        try {
-            // Obtain a db connection
-            con = ConnectionPool.getConnection();
-            // Create a statement
-            stmt = con.createStatement();
+       
+             try {
+            String sql = "SELECT * FROM Fornitore where Visible='true'";
+            stmt = (PreparedStatement) con.prepareStatement(sql);
             // Execute the query
-            rs = stmt.executeQuery("SELECT * FROM Cliente");
+            rs = stmt.executeQuery(sql);
 
             // Define the resource list
             while (rs.next()) {
-                Fornitore fornitore = new Fornitore(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getBoolean(11), rs.getInt(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17) , rs.getInt(20));
-                                         //Integer idUtente, String username, String password, String città, String ruol, String provincia, String telefono,     String email,     String ruolo,       String note,     Boolean v,  Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva,      String fax, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti, Integer idFornitore
-                fornitore.setListAppuntamenti(this.getAppuntamentiFornitore(rs.getInt(18))); // chiedi a Luisa
-                fornitore.setListContratti(this.getContrattiFornitore(rs.getInt(19)));
+                Fornitore fornitore = new Fornitore(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getInt(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17) , rs.getString(18), rs.getInt(19));
+      // Integer idUtente, String username, String password, String città, String ruol 5, String provincia, String telefono, String cap, String email , String ruolo 10, String note, Boolean v, Integer idExtraAzienda, String cognome, String nome 15, String ragioneSociale, String pIva, String fax, Integer idFornitore) {
+
                 list.add(fornitore);
             }}
 
         catch (SQLException se) {
-            System.out.println("SQL Exception:");
-
-
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
-            }
+            System.out.println("errore nella visualizzazione dell'elenco");
 
         } finally {
             // Release the resources
@@ -94,54 +88,10 @@ public class OpFornitore extends OpExtraAzienda {
  
      public  ArrayList<Fornitore> ricercaFornitore(String cognome, String ruolo)throws SQLException{
 
-         ArrayList<Fornitore> list = new ArrayList<Fornitore>();
-             Connection con = null;
-             Statement stmt = null;
-             ResultSet rs = null;
+        ArrayList<Fornitore> list = this.elencaFornitore();
 
-            try {
-            // Obtain a db connection
-            con = ConnectionPool.getConnection();
-            // Create a statement
-            stmt = con.createStatement();
-            // Execute the query
-            rs = stmt.executeQuery("SELECT * FROM Fornitore"
-                                    + "where cognome ="+ cognome +"AND" + "where ruolo="+ ruolo);
-
-            // Define the resource list
-            while (rs.next()) {
-                Fornitore fornitore = new Fornitore(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getBoolean(11), rs.getInt(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17) , rs.getInt(20));
-                                         //Integer idUtente, String username, String password, String città, String ruol, String provincia, String telefono,     String email,     String ruolo,       String note,     Boolean v,  Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva,      String fax, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti, Integer idFornitore
-                fornitore.setListAppuntamenti(this.getAppuntamentiFornitore(rs.getInt(18))); // chiedi a Luisa
-                fornitore.setListContratti(this.getContrattiFornitore(rs.getInt(19)));
-
-            }}
-
-              catch (SQLException se) {
-            System.out.println("SQL Exception:");
-
-
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
-            }
-
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
-        }
         return list;
+      
       }
 
 
@@ -152,46 +102,25 @@ public class OpFornitore extends OpExtraAzienda {
  
      public void elimina(Fornitore user)throws SQLException{
 
-           ArrayList<Fornitore> list = new ArrayList<Fornitore>();
-             Connection con = null;
-             Statement stmt = null;
-             ResultSet rs = null;
+           PreparedStatement stmt = null;
 
             try {
-            // Obtain a db connection
-            con = ConnectionPool.getConnection();
-            // Create a statement
-            stmt = con.createStatement();
+            String sql ="DELETE * FROM Fornitore"
+                                    + "where username ="+ user;
+
+             // Create a statement
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+            stmt.setString(1, user.getUsername());
             // Execute the query
-            rs = stmt.executeQuery("DELETE * FROM Cliente"
-                                    + "where username ="+ user);
+            stmt.executeQuery(sql);
 
-              // Define the resource list
-            while (rs.next()) {
-                Fornitore fornitore = new Fornitore(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getBoolean(11), rs.getInt(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17) , rs.getInt(20));
-                                         //Integer idUtente, String username, String password, String città, String ruol, String provincia, String telefono,     String email,     String ruolo,       String note,     Boolean v,  Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva,      String fax, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti, Integer idFornitore
-                fornitore.setListAppuntamenti(this.getAppuntamentiFornitore(rs.getInt(18))); // chiedi a Luisa
-                fornitore.setListContratti(this.getContrattiFornitore(rs.getInt(19)));
-
-            }}
-
-              catch (SQLException se) {
-            System.out.println("SQL Exception:");
+            }catch (SQLException se) {
+            System.out.println("errore nell'eliminazione del personale");
 
 
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
-            }
-
+            
         } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
+            
             if (stmt != null) {
                 stmt.close();
             }
@@ -200,7 +129,7 @@ public class OpFornitore extends OpExtraAzienda {
             }
         }
 
-        throw new UnsupportedOperationException("Not supported yet.");}
+      }
 
 
      /** Nasconde l'utente eliminato al sistema senza l'eliminazione fisica
@@ -209,45 +138,27 @@ public class OpFornitore extends OpExtraAzienda {
       * @throws java.sql.SQLException*/
 
      public void eliminazioneLogica(Fornitore user)throws SQLException{
-          ArrayList<Fornitore> list = new ArrayList<Fornitore>();
-             Connection con = null;
-             Statement stmt = null;
-             ResultSet rs = null;
+         PreparedStatement stmt = null;
 
             try {
-            // Obtain a db connection
-            con = ConnectionPool.getConnection();
-            // Create a statement
-            stmt = con.createStatement();
+            
+            String sql ="UPDATE Fornitore SET Visible='false'"
+                                    + "where username ="+ user;
+
+             // Create a statement
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+
             // Execute the query
-            rs = stmt.executeQuery("UPDATE Fornitore SET Visible='f'"
-                                    + "where username ="+ user);
-                  // Define the resource list
-            while (rs.next()) {
-                Fornitore fornitore = new Fornitore(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getBoolean(11), rs.getInt(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17) , rs.getInt(20));
-                                         //Integer idUtente, String username, String password, String città, String ruol, String provincia, String telefono,     String email,     String ruolo,       String note,     Boolean v,  Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva,      String fax, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti, Integer idFornitore
-                fornitore.setListAppuntamenti(this.getAppuntamentiFornitore(rs.getInt(18))); // chiedi a Luisa
-                fornitore.setListContratti(this.getContrattiFornitore(rs.getInt(19)));
+            stmt.executeQuery();
 
-            }}
-
-              catch (SQLException se) {
-            System.out.println("SQL Exception:");
+            } catch (SQLException se) {
+            System.out.println("errore nell'eliminazione logica dell'utente");
 
 
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
-            }
-
+           
         } finally {
             // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
+            
             if (stmt != null) {
                 stmt.close();
             }
@@ -256,7 +167,7 @@ public class OpFornitore extends OpExtraAzienda {
             }
         }
       
-        throw new UnsupportedOperationException("Not supported yet.");}
+      }
 
 
     /** Metodo per inserire un nuovo Fornitore
@@ -264,15 +175,18 @@ public class OpFornitore extends OpExtraAzienda {
      * user del Fornitore da inserire
      * @throws java.sql.SQLException*/
 
-    public void inserisci(Fornitore user)throws SQLException{
+    public void inserisci(Fornitore user)throws SQLException,DatiDuplicatiEx{
 
-        Connection con = null;
         PreparedStatement stmt = null;
         try {
-            // Obtain a db connection
-            con = ConnectionPool.getConnection();
+            Statement stmt1 = con.createStatement();
+            String sqlTest = "SELECT * FROM Fornitore WHERE nome='" + user.getPIva() + "' ";
+            ResultSet rs = stmt1.executeQuery(sqlTest);
 
-            stmt = con.prepareStatement ("INSERT INTO Fornitore VALUE (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+          if (rs.next()) {
+                throw new DatiDuplicatiEx("utente già esistente nel database");
+            } else {
+                String sql = "INSERT INTO Fornitore (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 
             stmt.setInt(1, user.getIdUtente());
@@ -292,26 +206,15 @@ public class OpFornitore extends OpExtraAzienda {
             stmt.setString(15, user.getRagioneSociale());
             stmt.setString(16, user.getPIva());
             stmt.setString(17, user.getFax());
-            stmt.setArrayList(18, user.getListAppuntamenti());
-            stmt.setArrayList(19, user.getListContratti());
-            stmt.setInt(20, user.getIdFornitore());
+            
+            stmt.setInt(18, user.getIdFornitore());
 
 
-            stmt.execute();
-
-            con.commit();
-    }
-         catch (SQLException se) {
-            System.out.println("SQL Exception:");
-
-
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
+             stmt.execute();
             }
+        } catch (SQLException se) {
+            System.out.println("errore di inserimento del personale");
+
         } finally {
             // Release the resources
             if (stmt != null) {
@@ -321,7 +224,7 @@ public class OpFornitore extends OpExtraAzienda {
                 ConnectionPool.releaseConnection(con);
             }
         }
-        throw new UnsupportedOperationException("Not supported yet.");}
+      }
 
 
     /** Metodo che permette la modifica di un Fornitore presente nel sistema
@@ -330,20 +233,24 @@ public class OpFornitore extends OpExtraAzienda {
      * @return lo stesso oggetto modificato
      * @throws java.sql.SQLException*/
 
-    public Fornitore modifica(Fornitore user)throws SQLException{
-
-        ArrayList<BeanGuiFornitore> list = new ArrayList<BeanGuiFornitore>();
-        Connection con = null;
+    public Fornitore modifica(Fornitore user)throws SQLException, DatiErratiEx, DatiDuplicatiEx {
         PreparedStatement stmt = null;
+        Fornitore fornitore = null;
 
+        
+            try {
+            Statement stmt1 = con.createStatement();
+            String sqlTest =  "SELECT * FROM Fornitore WHERE nome='" + user.getPIva() + "' ";
+            ResultSet rs = stmt1.executeQuery(sqlTest);
 
-        try {
-             // Obtain a db connection
-            con = ConnectionPool.getConnection();
+            if (rs.next()) {
+                throw new DatiDuplicatiEx("utente già esistente nel database");
+            } else {
 
+            }
 
             // Create a statement
-            stmt = con.prepareStatement("UPDATE Fornitore VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )"  +"where idUtente="+ user.getIdUtente());
+           stmt = (PreparedStatement) con.prepareStatement("UPDATE Fornitore VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )"  +"where idUtente="+ user.getIdUtente());
 
             stmt.setInt(1, user.getIdUtente());
             stmt.setString(2, user.getUsername());
@@ -362,28 +269,19 @@ public class OpFornitore extends OpExtraAzienda {
             stmt.setString(15, user.getRagioneSociale());
             stmt.setString(16, user.getPIva());
             stmt.setString(17, user.getFax());
-            stmt.setArrayList(18, user.getListAppuntamenti());
-            stmt.setArrayList(19, user.getListContratti());
-            stmt.setInt(20, user.getIdFornitore());
+           
+            stmt.setInt(18, user.getIdFornitore());
 
             stmt.execute();
-                            // Force the commit
-            con.commit();
-           Fornitore fornitore= (Fornitore) this.visualizza(user.getIdUtente());
+             
+            fornitore= (Fornitore) this.visualizza(user.getIdFornitore());
 
         } // Force the commit
         catch (SQLException se) {
-            System.out.println("SQL Exception:");
+            System.out.println("Errore nella modifica");
 
 
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
-            }
-        } finally {
+        }finally {
             // Release the resources
             if (stmt != null) {
                 stmt.close();
@@ -404,38 +302,28 @@ public class OpFornitore extends OpExtraAzienda {
 
     public Fornitore visualizzaDati(Integer id) throws SQLException{
 
-        Connection con = null;
-        Statement stmt = null;
+        
+        PreparedStatement stmt = null;
         ResultSet rs = null;
         Fornitore fornitore = null;
 
         try {
-            // Obtain a db connection
-            con = ConnectionPool.getConnection();
-            // Create a statement
-            stmt = con.createStatement();
+            
+            String sql = "SELECT * FROM Fornitore" +
+                    "where idUtente= " + id;
+
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+            stmt.setString(1, id.toString());
             // Execute the query
-            rs = stmt.executeQuery("SELECT * FROM Cliente" +
-                    "where idUtente= " + id);
+            rs = stmt.executeQuery(sql);
 
             // Define the resource list
             while (rs.next()) {
-                Fornitore fornitore = new Fornitore(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getBoolean(11), rs.getInt(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17) , rs.getInt(20));
-                                         //Integer idUtente, String username, String password, String città, String ruol, String provincia, String telefono,     String email,     String ruolo,       String note,     Boolean v,  Integer idExtraAzienda, String cognome, String nome, String ragioneSociale, String pIva,      String fax, ArrayList<Appuntamento> listAppuntamenti, ArrayList<Contratto> listContratti, Integer idFornitore
-                fornitore.setListAppuntamenti(this.getAppuntamentiFornitore(rs.getInt(18))); // chiedi a Luisa
-                fornitore.setListContratti(this.getContrattiFornitore(rs.getInt(19)));
+            fornitore = new Fornitore(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getInt(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17) , rs.getString(18), rs.getInt(19));
+
             }
         } catch (SQLException se) {
-            System.out.println("SQL Exception:");
-
-
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
-            }
+            System.out.println("errore di visualizzazione");
 
         } finally {
             // Release the resources
@@ -451,118 +339,5 @@ public class OpFornitore extends OpExtraAzienda {
         }
 
         return fornitore;
-    }
-
-
-     /**
-     * metodo che si occupa di ricercare tutti gli appuntamenti legati ad un cliente grazie all'id del cliente
-     * @param id identificativo del cliente
-     * @return lista degli appuntamenti associati al cliente
-     * @throws java.sql.SQLException*/
-
-    public ArrayList<Appuntamento> getAppuntamentiFornitore(Integer id) throws SQLException {
-
-        ArrayList<Appuntamento> list = new ArrayList<Appuntamento>();
-        Connection con = null;
-        Statement stmt = null;
-        ResultSet rs = null;
-
-        try {
-            // Obtain a db connection
-            con = ConnectionPool.getConnection();
-            // Create a statement
-            stmt = con.createStatement();
-            // Execute the query
-            rs = stmt.executeQuery("select *" +
-                    "  from fornitore, appuntamentoAssociato, appuntamento" + " where idFornitore=fornitore " + "and appuntamento=idAppuntamento;" + "and idFornitore=" + id);
-
-            while (rs.next()) {
-                Appuntamento appuntamento = new Appuntamento(rs.getDate(1), rs.getTime(2), rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getBoolean(7));
-                // Date data, Time ora, Integer idAppuntamento, String note, Integer dipendente, Integer extraAzienda, Boolean notifica
-                list.add(appuntamento);
-            }
-        } catch (SQLException se) {
-            System.out.println("SQL Exception:");
-
-
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
-            }
-
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
-        }
-        return list;
-    }
-
-/**
-     * metodo che si occupa di ricercare tutti i contratti legati ad un cliente grazie all'id del cliente
-     * @param id identificativo del cliente
-     * @return lista dei contratti associati al cliente
-     * @throws java.sql.SQLException*/
-
-    public ArrayList<Contratto> getContrattiFornitore(Integer id) throws SQLException {
-
-        ArrayList<Contratto> list = new ArrayList<Contratto>();
-        Connection con = null;
-        Statement stmt = null;
-        ResultSet rs = null;
-
-        try {
-            // Obtain a db connection
-            con = ConnectionPool.getConnection();
-            // Create a statement
-            stmt = con.createStatement();
-            // Execute the query
-            rs = stmt.executeQuery("select *" +
-                    "  from fornitore, contrattoAssociato, contratto" + " where idFornitore=fornitore " + "and contratto=idContratto;" + "and idFornitore=" + id);
-
-            while (rs.next()) {
-                Contratto contratto = new Contratto(rs.getString(1), rs.getDate(2), rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getInt(7), rs.getInt(8));
-
-                contratto.setListPagamento(this.getPagamentiContratto(rs.getInt(9)));
-                contratto.setListServizio(this.getServizioContratto(rs.getInt(10)));
-                list.add(contratto);
-            }
-        } catch (SQLException se) {
-            System.out.println("SQL Exception:");
-
-
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
-            }
-
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
-        }
-        return list;
-    }
-
-
+    } 
 }
