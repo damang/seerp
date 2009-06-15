@@ -20,6 +20,7 @@ import it.seerp.Gui.tabella.DipendenteTm;
 import it.seerp.Gui.tabella.FornitoreTm;
 import it.seerp.Gui.tabella.Generica;
 import it.seerp.Gui.tabella.ResponsabileTm;
+import it.seerp.Gui.tabella.RuoloTm;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -32,10 +33,11 @@ import javax.swing.table.TableModel;
  * @author Andrea
  */
 public class GestioneRuoli extends ObservableJPanel implements ActionListener {
-    private TableModel tModel= new DefaultTableModel();
+    private TableModel tModel;
 
         /** Creates new form AreaPersonalePanel */
-    public GestioneRuoli() {
+    public GestioneRuoli() throws SQLException {
+        tModel=new RuoloTm();
         initComponents();
     }
 
