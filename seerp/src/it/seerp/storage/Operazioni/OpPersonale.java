@@ -46,9 +46,14 @@ public class OpPersonale extends OpeUtente {
 
             // Define the resource list
             while (rs.next()) {
-                Personale personale = new Personale(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-                        rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getInt(11), rs.getString(12), rs.getString(13),
-                        rs.getString(14), rs.getString(15), rs.getBoolean(16));
+    /*
+     * Integer idUtente1, String username2, String password3, String città4,
+       String provincia5, String telefono6,String cap7, String email8, String note9,
+       String tipo10, String cognome11, String nome12, String codiceFiscale13, Boolean v14, String ruolo15
+     */
+         Personale personale = new Personale(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+         rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),rs.getString(11), rs.getString(12),
+         rs.getString(13), rs.getBoolean(14), new Ruolo(rs.getString(15)));
                 list.add(personale);
             }
         } catch (SQLException se) {
@@ -76,6 +81,48 @@ public class OpPersonale extends OpeUtente {
      * ruolo che il membro del personale ricopre all'interno dell'azienda
      * @return la lista dei membri del personale che corrispondono ai criteri di ricerca
      * @throws java.sql.SQLException*/
+
+    public ArrayList<Personale> elencaPersonalePerRuolo(Ruolo ruolo) throws SQLException{
+        ArrayList<Personale> list = new ArrayList<Personale>();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            String sql = "SELECT * FROM Personale WHERE Ruolo=?";
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+             stmt.setString(1, ruolo.getNome());
+            rs = stmt.executeQuery(sql);
+
+            // Define the resource list
+            while (rs.next()) {
+    /*
+     * Integer idUtente1, String username2, String password3, String città4,
+       String provincia5, String telefono6,String cap7, String email8, String note9,
+       String tipo10, String cognome11, String nome12, String codiceFiscale13, Boolean v14, String ruolo15
+     */
+         Personale personale = new Personale(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+         rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),rs.getString(11), rs.getString(12),
+         rs.getString(13), rs.getBoolean(14), new Ruolo(rs.getString(15)));
+                list.add(personale);
+            }
+        } catch (SQLException se) {
+            System.out.println("errore nella visualizzazione dell'elenco");
+
+        } finally {
+            // Release the resources
+            if (rs != null) {
+                rs.close();
+            }
+            if (stmt != null) {
+                stmt.close();
+            }
+            if (con != null) {
+                ConnectionPool.releaseConnection(con);
+            }
+        }
+        return list;
+    }
+
     public ArrayList<Personale> ricercaPersonale() throws SQLException {
         ArrayList<Personale> list = this.elencaPersonale();
         return list;
@@ -159,7 +206,11 @@ public class OpPersonale extends OpeUtente {
                 throw new DatiDuplicatiEx("personale già esistente nel database");
             } else {
                 String sql = "INSERT INTO Personale (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-
+ /*
+     * Integer idUtente1, String username2, String password3, String città4,
+       String provincia5, String telefono6,String cap7, String email8, String note9,
+       String tipo10, String cognome11, String nome12, String codiceFiscale13, Boolean v14, String ruolo15
+     */
                 stmt = (PreparedStatement) con.prepareStatement(sql);
                 stmt.setInt(1, user.getIdUtente());
                 stmt.setString(2, user.getUsername());
@@ -170,13 +221,13 @@ public class OpPersonale extends OpeUtente {
                 stmt.setString(7, user.getCap());
                 stmt.setString(8, user.getEmail());
                 stmt.setString(9, user.getNote());
-                stmt.setString(10, user.getRuolo());
-                stmt.setInt(11, user.getIdPersonale());
-                stmt.setString(12, user.getCognome());
-                stmt.setString(13, user.getNome());
-                stmt.setString(14, user.getCodiceFiscale());
-                stmt.setString(15, user.getTipo());
-                stmt.setBoolean(16, user.getVisible());
+                stmt.setString(10, user.getTipo());
+                stmt.setString(11, user.getCognome());
+                stmt.setString(12, user.getNome());
+                stmt.setString(13, user.getCodiceFiscale());
+                stmt.setBoolean(14, user.getVisible());
+                stmt.setString(15, user.getRuolo().getNome());
+
                 stmt.execute();
             }
         } catch (SQLException se) {
@@ -216,7 +267,7 @@ public class OpPersonale extends OpeUtente {
                 // Create a statement
                 stmt = (PreparedStatement) con.prepareStatement("UPDATE Personale VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )" + "where idUtente=" + user.getIdUtente());
 
-                stmt.setInt(1, user.getIdUtente());
+               stmt.setInt(1, user.getIdUtente());
                 stmt.setString(2, user.getUsername());
                 stmt.setString(3, user.getPassword());
                 stmt.setString(4, user.getCittà());
@@ -225,17 +276,16 @@ public class OpPersonale extends OpeUtente {
                 stmt.setString(7, user.getCap());
                 stmt.setString(8, user.getEmail());
                 stmt.setString(9, user.getNote());
-                stmt.setString(10, user.getRuolo());
-                stmt.setInt(11, user.getIdPersonale());
-                stmt.setString(12, user.getCognome());
-                stmt.setString(13, user.getNome());
-                stmt.setString(14, user.getCodiceFiscale());
-                stmt.setString(15, user.getTipo());
-                stmt.setBoolean(16, user.getVisible());
+                stmt.setString(10, user.getTipo());
+                stmt.setString(11, user.getCognome());
+                stmt.setString(12, user.getNome());
+                stmt.setString(13, user.getCodiceFiscale());
+                stmt.setBoolean(14,user.getVisible());
+                stmt.setString(15, user.getRuolo().getNome());
 
                 stmt.execute();
 
-                personale = this.visualizzaDati(user.getIdPersonale());
+                personale = this.visualizzaDati(user.getIdUtente());
 
             }
         } catch (SQLException se) {
@@ -258,6 +308,7 @@ public class OpPersonale extends OpeUtente {
      * @param id
      * id del membro del personale
      * @return il bean con i dettagli del membro del personale*/
+
     public Personale visualizzaDati(Integer id) throws SQLException {
         Personale personale = null;
         PreparedStatement stmt = null;
@@ -275,20 +326,12 @@ public class OpPersonale extends OpeUtente {
             // Define the resource list
             while (rs.next()) {
                 personale = new Personale(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-                        rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getInt(11), rs.getString(12), rs.getString(13),
-                        rs.getString(14), rs.getString(15), rs.getBoolean(16));
+         rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),rs.getString(11), rs.getString(12),
+         rs.getString(13), rs.getBoolean(14), new Ruolo(rs.getString(15)));
 
-                PreparedStatement stmt1;
-                String sql2 = "Select nome From Ruolo,Personale where idRuolo=ruolo and idPersonale = ?";
-                stmt1 = (PreparedStatement) con.prepareStatement(sql2);
-                stmt1.setInt(1, personale.getIdPersonale());
-                ResultSet rs1 = stmt1.executeQuery();
-                while (rs1.next()) {
-                    Ruolo ruolo = new Ruolo(rs.getString(1));
-                    personale.addRuolo(ruolo);
                 }
             }
-        } catch (SQLException se) {
+         catch (SQLException se) {
             System.out.println("errore di visualizzazione");
 
         } finally {
