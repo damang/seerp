@@ -1,9 +1,7 @@
 package it.seerp.storage.operazioni;
 
-import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
-import it.seerp.application.Exception.DatiDuplicati;
-import it.seerp.application.Exception.DatiErrati;
+import com.mysql.jdbc.Connection;
 import it.seerp.application.bean.BeanGuiEvento;
 import it.seerp.storage.Exception.DatiDuplicatiEx;
 import it.seerp.storage.Exception.DatiErratiEx;
@@ -17,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import java.util.GregorianCalendar;
+
 
 /**
  *
@@ -148,11 +147,10 @@ public class OpEvento implements OpeEntity<Evento, BeanGuiEvento> {
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        Evento ev = new Evento();
+        Evento ev = null;
 
         try {
 
-            // Create a statement
             String query = "SELECT * FROM Evento, Agenda" +
                     "where Evento.idAgenda=Agenda.idAgenda and idAgenda=?";
 
@@ -229,8 +227,7 @@ public class OpEvento implements OpeEntity<Evento, BeanGuiEvento> {
                 Evento ev = new Evento(rs.getString(1), rs.getString(2), rs.getString(3),
                         rs.getString(4), date, time, rs.getInt(7),
                         rs.getBoolean(8));
-//(1String luogo, 2String tema, 3String nome, 4String note,5 Date data,
-                //6Time ora, 7int idEvento, 8Boolean not)
+
                 lista.add(it.seerp.application.conversioni.Conversione.conversioneEvento(ev, gui));
             }
         } catch (SQLException se) {
