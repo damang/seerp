@@ -178,7 +178,7 @@ public class OpDipendente extends OpPersonale {
                 stmt.setInt(1, user.getIdUtente());
                 stmt.setString(2, user.getUsername());
                 stmt.setString(3, user.getPassword());
-                stmt.setString(4, user.getCittà());
+                stmt.setString(4, user.getCitta());
                 stmt.setString(5, user.getProvincia());
                 stmt.setString(6, user.getTelefono());
                 stmt.setString(7, user.getCap());
@@ -235,7 +235,7 @@ public class OpDipendente extends OpPersonale {
                 stmt.setInt(1, user.getIdUtente());
                 stmt.setString(2, user.getUsername());
                 stmt.setString(3, user.getPassword());
-                stmt.setString(4, user.getCittà());
+                stmt.setString(4, user.getCitta());
                 stmt.setString(5, user.getProvincia());
                 stmt.setString(6, user.getTelefono());
                 stmt.setString(7, user.getCap());
