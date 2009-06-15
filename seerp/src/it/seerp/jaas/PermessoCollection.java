@@ -11,6 +11,7 @@
 
 package it.seerp.jaas;
 
+import it.seerp.storage.ejb.Permesso;
 import java.security.Permission;
 import java.security.PermissionCollection;
 import java.util.Enumeration;

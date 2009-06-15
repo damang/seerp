@@ -18,6 +18,7 @@
 package it.seerp.jaas;
 
 //import java.io.FilePermission;
+import it.seerp.storage.ejb.Permesso;
 import java.security.*;
 import java.security.PermissionCollection;
 //import java.security.Policy;
