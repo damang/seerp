@@ -4,7 +4,6 @@ import it.seerp.storage.Exception.DatiErratiEx;
 import it.seerp.storage.db.ConnectionPool;
 import it.seerp.storage.db.OpeEntity;
 import it.seerp.storage.ejb.Contratto;
-import it.seerp.storage.ejb.Pagamento;
 import it.seerp.storage.ejb.Servizio;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -132,39 +131,6 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
      * @throws DatiErratiEx
      *
      */
-    public Contratto modifica(Contratto contr) throws SQLException, DatiErratiEx {
-
-        PreparedStatement stmt = null;
-
-        ArrayList<Pagamento> listPag = contr.getListPagamento();
-        try {
-
-            stmt = (PreparedStatement) conn.prepareStatement("UPDATE Pagamento, Contratto " +
-                    "(modalitàPagamento)SET (?)" + "where Pagamento.contratto=" +
-                    "Contratto.idContratto and Contratto.idContratto='" +
-                    contr.getIdContratto() + "'");
-
-            for (Pagamento p : listPag) {
-                stmt.setString(1, p.getModalitaPagamento());
-                stmt.execute();
-                listPag.add(p);
-            }
-
-        } catch (SQLException se) {
-            System.out.println("Errore nella modifica della modalità pagamenti di contratto");
-
-        } finally {
-            // Release the resources
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (conn != null) {
-                ConnectionPool.releaseConnection(conn);
-            }
-        }
-        return contr;
-    }
-
     /**
      * ricerca il contratto con quell'identificativo
      * @param bean
@@ -271,7 +237,7 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
         return list;
     }
 
-    public Contratto visualizza(Contratto bean) throws SQLException {
+    public Contratto modifica(Contratto bean) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }
