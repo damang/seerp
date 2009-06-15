@@ -8,7 +8,8 @@ package it.seerp.bottoni.Nuovo;
 import configurazioni.CommandInterface;
 import configurazioni.Gui.ConfigurazioneUtente.TIPO_UTENTE_CONST;
 import it.seerp.Gui.Gestione.Utenti.AreaUtentePanel;
-import it.seerp.Gui.GestionePermessi.GestionePermessi;
+import it.seerp.Gui.Gestione.Ruoli.GestioneRuoli;
+import it.seerp.Gui.Menu.MenuRuoli;
 import it.seerp.Gui.Menu.MenuUtente;
 import it.seerp.Gui.command.ObserverButton;
 import java.awt.Color;
@@ -26,7 +27,7 @@ public class ButtonRuoli extends ObserverButton implements CommandInterface{
 
     protected JTabbedPane tabbedPane;
     private MenuRuoli menu;
-    GestionePermessi panel;
+    GestioneRuoli panel;
     String s = "";
 
     /**
@@ -34,7 +35,7 @@ public class ButtonRuoli extends ObserverButton implements CommandInterface{
      * @param gruppoFinestreUpdate
      * @param aThis
      */
-    public ButtonRuoli(JTabbedPane pan, MenuUtente menu, ActionListener act) throws SQLException {
+    public ButtonRuoli(JTabbedPane pan, MenuRuoli menu, ActionListener act) throws SQLException {
         this.tabbedPane = pan;
         this.menu = menu;
         //this.panel = new AreaUtentePanel(TIPO_UTENTE_CONST.CLIENTE);
@@ -78,7 +79,7 @@ public class ButtonRuoli extends ObserverButton implements CommandInterface{
 
     private void setAreaRuolo() throws SQLException {
 
-              this.panel = new GestionePermessi();
+              this.panel = new GestioneRuoli();
               panel.register(this);
 
 
