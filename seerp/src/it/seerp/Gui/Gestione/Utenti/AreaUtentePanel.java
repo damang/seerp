@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /*
  * AreaPersonalePanel.java
@@ -12,7 +8,6 @@ package it.seerp.Gui.Gestione.Utenti;
 
 import configurazioni.CommandInterface;
 import configurazioni.Gui.ConfigurazioneUtente;
-import it.seerp.Gui.AreaPersonale.*;
 import it.seerp.Gui.BottoniGenerici.ButtonAnnulla;
 import it.seerp.Gui.BottoniGenerici.ButtonSalva;
 import it.seerp.Gui.frame.ObservableJPanel;
