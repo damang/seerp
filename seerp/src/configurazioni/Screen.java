@@ -40,4 +40,15 @@ public class Screen {
         }
         com.setLocation((screenSize.width - comSize.width) / 2, (screenSize.height - comSize.height) / 2);
     }
+     static public void settaFinestra(Component com) {
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+       /* Dimension comSize = com.getSize();
+        if (comSize.height > screenSize.height) {
+            comSize.height = screenSize.height;
+        }
+        if (comSize.width > screenSize.width) {
+            comSize.width = screenSize.width;
+        }*/
+        com.setSize(screenSize.width, screenSize.height);
+    }
 }
