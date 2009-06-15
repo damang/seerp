@@ -24,24 +24,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
 
 /**
  *
  * @author Andrea
  */
 public class GestioneRuoli extends ObservableJPanel implements ActionListener {
+    private TableModel tModel;
 
-    ConfigurazioneUtente.TIPO_UTENTE_CONST tipoUtente;
-
-    /** Creates new form AreaPersonalePanel */
+        /** Creates new form AreaPersonalePanel */
     public GestioneRuoli() {
         initComponents();
-    }
-
-    public GestioneRuoli(ConfigurazioneUtente.TIPO_UTENTE_CONST tipoUtente) throws SQLException {
-        this.tipoUtente = tipoUtente;
-        this.settaTableModel();
-         initComponents();
     }
 
     /** This method is called from within the constructor to
@@ -724,24 +718,11 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
     private org.jdesktop.swingx.JXSearchPanel jXSearchPanel1;
     private org.jdesktop.swingx.JXTable jXTable1;
     // End of variables declaration//GEN-END:variables
-    Generica tModel;
+
 
     public void actionPerformed(ActionEvent e) {
         CommandInterface cmd = (CommandInterface) e.getSource();
         cmd.execute();
-    }
-
-    private void settaTableModel() throws SQLException {
-
-        if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
-            tModel = new ClienteTm();
-        } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
-            tModel = new DipendenteTm();
-        } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
-            tModel=new FornitoreTm();
-        } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
-           tModel=new ResponsabileTm();
-        }
     }
 
 }
