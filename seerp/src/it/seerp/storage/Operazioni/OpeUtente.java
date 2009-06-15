@@ -1,10 +1,9 @@
 package it.seerp.storage.Operazioni;
 
 import com.mysql.jdbc.Connection;
-
 import com.mysql.jdbc.PreparedStatement;
-import it.seerp.application.Exception.DatiErrati;
 import it.seerp.application.bean.BeanGuiUtente;
+import it.seerp.storage.Exception.DatiErratiEx;
 import it.seerp.storage.db.ConnectionPool;
 import it.seerp.storage.db.OpeEntity;
 import it.seerp.storage.ejb.Utente;
@@ -12,11 +11,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
 /**
  *
  * @author matteo
  */
-public class OpeUtente implements OpeEntity<Utente, BeanGuiUtente> {
+public class OpeUtente implements OpeEntity<Utente> {
 
     private Connection conn;
 
@@ -24,11 +24,10 @@ public class OpeUtente implements OpeEntity<Utente, BeanGuiUtente> {
         conn = (Connection) ConnectionPool.getConnection();
     }
 
-    public ArrayList<BeanGuiUtente> visualizzaElenco() throws SQLException {
+    public ArrayList<Utente> visualizzaElenco() throws SQLException {
 
-        ArrayList<BeanGuiUtente> list = new ArrayList<BeanGuiUtente>();
-        BeanGuiUtente gui = new BeanGuiUtente();
-
+        ArrayList<Utente> list = new ArrayList<Utente>();
+       
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
@@ -44,7 +43,7 @@ public class OpeUtente implements OpeEntity<Utente, BeanGuiUtente> {
             while (rs.next()) {
                 Utente utente = new Utente(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getBoolean(11));
                 //(1Integer idUtente, 2String username, 3Integer password, 4String città, 5String provincia, 6String telefono, 7String email, 8String note, 9Boolean v )
-                list.add(it.seerp.application.conversioni.Conversione.conversioneUtente(utente, gui));
+                list.add(utente);
             }
         } catch (SQLException se) {
             System.out.println("errore di visualizzazione elenco");
@@ -65,7 +64,7 @@ public class OpeUtente implements OpeEntity<Utente, BeanGuiUtente> {
 
 
     //modifica
-    public Utente modifica(Utente utente) throws SQLException, DatiErrati {
+    public Utente modifica(Utente utente) throws SQLException, DatiErratiEx {
 
         try {
 
@@ -130,7 +129,7 @@ public class OpeUtente implements OpeEntity<Utente, BeanGuiUtente> {
         }
     }
 
-    public Utente visualizza(BeanGuiUtente bean) throws SQLException {
+    public Utente visualizza(Utente bean) throws SQLException {
 
         Utente utente = new Utente();
 
@@ -143,7 +142,7 @@ public class OpeUtente implements OpeEntity<Utente, BeanGuiUtente> {
             // Execute the query
             String sql = "SELECT * FROM Utente WHERE idUtente = ?";
             stmt = (PreparedStatement) conn.prepareStatement(sql);
-            stmt.setInt(1, Integer.parseInt(bean.getIdUtenteTxt().toString()));
+            stmt.setInt(1,bean.getIdUtente());
             rs = stmt.executeQuery(sql);
 
             // Define the resource list
@@ -152,6 +151,7 @@ public class OpeUtente implements OpeEntity<Utente, BeanGuiUtente> {
 
 
             }
+
         } catch (SQLException se) {
             System.out.println("errore nella visualizzazione dell'utente");
         } finally {
@@ -170,11 +170,8 @@ public class OpeUtente implements OpeEntity<Utente, BeanGuiUtente> {
     }
 
     public ArrayList<Utente> ricerca(String nome, String ruolo) throws SQLException {
-        ArrayList<BeanGuiUtente> list1 = this.visualizzaElenco();
-        ArrayList<Utente> list = new ArrayList<Utente>();
-        for (BeanGuiUtente a : list1) {
-            list.add(it.seerp.application.conversioni.Conversione.conversioneUtente(a));
-        }
+        ArrayList<Utente> list = this.visualizzaElenco();
+       
         return list;
     }
 
