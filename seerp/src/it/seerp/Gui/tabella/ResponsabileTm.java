@@ -69,7 +69,7 @@ public class ResponsabileTm extends Generica <Responsabile>{
     @Override
     protected Vector creaArrayObjectData(Responsabile o) {
         Vector c = new Vector();
-        c.add(o.getIdResponsabile());
+        c.add(o.getIdUtente());
         c.add(o.getNome());
         c.add(o.getCognome());
         c.add(o.getEmail());
