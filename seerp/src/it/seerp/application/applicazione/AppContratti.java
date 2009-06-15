@@ -15,13 +15,13 @@ import javax.swing.JOptionPane;
  * Classe del livello application riguardante la Gestione dei Contratti
  * @author Tommaso Cattolico
  */
-public class AppContratti implements GestioneContratti<BeanGuiContratto> {
+public class AppContratti implements GestioneContratti<BeanGuiContratto, Contratto> {
 
     /**
      * Metodo che permette la visualizzazione della lista dei contratti
      * @return ArrayList dei contratti presenti nel sistema
      */
-    public ArrayList<BeanGuiContratto> visualizza(ArrayList<BeanGuiContratto> listGui) {
+    public ArrayList<BeanGuiContratto> elenca(ArrayList<BeanGuiContratto> listGui) {
         try {
             OpContratto ope = new OpContratto();
             ArrayList<Contratto> list = ope.visualizzaElenco();
@@ -128,5 +128,17 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto> {
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
         return beanGuiContratto;
+    }
+
+    public ArrayList<Contratto> visualizzaTabella() {
+        ArrayList<Contratto> list = new ArrayList<Contratto>();
+        try {
+            OpContratto ope = new OpContratto();
+            list = ope.visualizzaElenco();
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        }
+        return list;
     }
 }

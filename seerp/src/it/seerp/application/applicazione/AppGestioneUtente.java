@@ -190,4 +190,16 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
         }
         return beanGui;
     }
+
+    public ArrayList<Utente> visualizzaTabella() {
+        ArrayList<Utente> list = new ArrayList<Utente>();
+        try {
+            OpeUtente ope = new OpeUtente();
+            list = ope.visualizzaElenco();
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        }
+        return list;
+    }
 }

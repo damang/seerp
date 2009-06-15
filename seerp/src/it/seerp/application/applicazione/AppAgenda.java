@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  * Classe del livello application riguardante la Gestione dell'Agenda
  * @author Tommaso Cattolico
  */
-public class AppAgenda implements GestioneAgenda<BeanGuiEvento> {
+public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
 
     /**
      * Metodo che permette la visualizzazione della lista degli eventi
@@ -25,7 +25,7 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento> {
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui vi siano dati errati
      */
-    public ArrayList<BeanGuiEvento> visualizzaListaEventi(ArrayList<BeanGuiEvento> listGui) {
+    public ArrayList<BeanGuiEvento> elenca(ArrayList<BeanGuiEvento> listGui) {
         ArrayList<Evento> list;
         try {
             OpEvento ope = new OpEvento();
@@ -234,5 +234,17 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento> {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
+    }
+
+    public ArrayList<Evento> visualizzaTabella() {
+        ArrayList<Evento> list = new ArrayList<Evento>();
+        try {
+            OpEvento ope = new OpEvento();
+            list = ope.visualizzaElenco();
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        }
+        return list;
     }
 }
