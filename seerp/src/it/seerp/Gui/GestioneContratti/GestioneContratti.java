@@ -104,9 +104,9 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
         servizio.setQuantita(qnt);
         servizio.setTipo(tipo);
         servizio.setDescrizione(descrizione);
-        extraAzienda.setTxtCittà(cittafor);
-        extraAzienda.setTxtNome(azienda);
-        extraAzienda.setTxtPIva(piva);
+        extraAzienda.setTxtCitta(cittafor);
+        //extraAzienda.setTxtNome(azienda);
+        //extraAzienda.setTxtPIva(piva);
         extraAzienda.setTxtProvincia(provincia);
         extraAzienda.setTxtEmail(mail);
         //contratto.setBeanGuiFornitore(extraAzienda);
