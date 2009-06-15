@@ -9,7 +9,7 @@ public class Utente {
     private Integer idUtente;
     private String username;
     private String password;
-    private String città;
+    private String citta;
     private String provincia;
     private String telefono;
     private String email;
@@ -33,7 +33,7 @@ public class Utente {
      * @param idUtente
      * @param username
      * @param password
-     * @param città
+     * @param citta
      * @param provincia
      * @param telefono
      * @param cap
@@ -42,11 +42,11 @@ public class Utente {
      * @param note
      * @param v
      */
-    public Utente(Integer idUtente, String username, String password, String città, String provincia, String telefono,String cap, String email, String ruolo, String note, Boolean v) {
+    public Utente(Integer idUtente, String username, String password, String citta, String provincia, String telefono,String cap, String email, String ruolo, String note, Boolean v) {
         this.idUtente = idUtente;
         this.username = username;
         this.password = password;
-        this.città = città;
+        this.citta = citta;
         this.provincia = provincia;
         this.telefono = telefono;
         this.cap= cap;
@@ -114,11 +114,11 @@ public class Utente {
     }
 
     /**
-     * restituisce la città dove l'utente risiede
-     * @return una stringa contente la città
+     * restituisce la citta dove l'utente risiede
+     * @return una stringa contente la citta
      */
-    public String getCittà() {
-        return città;
+    public String getCitta() {
+        return citta;
     }
 
     /**
@@ -178,11 +178,11 @@ public class Utente {
     }
 
     /**
-     * setta la città di residenza dell'utente
-     * @param città di tipo stringa
+     * setta la citta di residenza dell'utente
+     * @param citta di tipo stringa
      */
-    public void setCittà(String città) {
-        this.città = città;
+    public void setCitta(String citta) {
+        this.citta = citta;
     }
 
     /**

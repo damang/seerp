@@ -18,6 +18,10 @@ public class ServizioAssociato {
     private Servizio servizio;
     private String note;
     ArrayList<ServizioAssociatoFattura> listServizioAssociatoFattura;
+
+    public ServizioAssociato() {
+        
+    }
     
 
     /**

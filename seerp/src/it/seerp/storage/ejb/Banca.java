@@ -12,7 +12,7 @@ public class Banca {
     private String agenzia;
     private String abi;
     private String cab;
-    private String città;
+    private String citta;
     private String provincia;
     private String indirizzo;
     private String cap;
@@ -28,7 +28,7 @@ public class Banca {
      * @param agenzia
      * @param abi
      * @param cab
-     * @param città
+     * @param citta
      * @param provincia
      * @param indirizzo
      * @param cap
@@ -37,11 +37,11 @@ public class Banca {
      * @param importoInDare
      * @param importoInAvere
      */
-    public Banca(String agenzia, String abi, String cab, String città, String provincia, String indirizzo, String cap, String filiale, String nazione, Double importoInDare, Double importoInAvere) {
+    public Banca(String agenzia, String abi, String cab, String citta, String provincia, String indirizzo, String cap, String filiale, String nazione, Double importoInDare, Double importoInAvere) {
         this.agenzia = agenzia;
         this.abi = abi;
         this.cab = cab;
-        this.città = città;
+        this.citta = citta;
         this.provincia = provincia;
         this.indirizzo = indirizzo;
         this.cap = cap;
@@ -108,8 +108,8 @@ public class Banca {
      * metodo che restutisce la citta della banca
      * @return citta della banca
      */
-    public String getCittà() {
-        return città;
+    public String getCitta() {
+        return citta;
     }
 
     /**
@@ -194,10 +194,10 @@ public class Banca {
 
     /**
      * metodo che setta la citta della banca
-     * @param città la ditta della banca
+     * @param citta la ditta della banca
      */
-    public void setCittà(String città) {
-        this.città = città;
+    public void setCitta(String citta) {
+        this.citta = citta;
     }
 
     /**

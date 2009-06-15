@@ -11,6 +11,10 @@ public class Agenda {
     private Integer idAgenda;
     private Utente utente;
 
+    public Agenda() {
+        
+    }
+
 
    /**
      *  costruttore classe

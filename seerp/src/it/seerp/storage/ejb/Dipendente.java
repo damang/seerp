@@ -38,8 +38,8 @@ public class Dipendente extends Personale {
      * @param v
      */
 
-    public Dipendente(Integer idUtente, String username, String password, String città, String provincia, String telefono, String cap, String email, String note, String tipo, String cognome, String nome, String codiceFiscale, Ruolo ruolo, Boolean v) {
-        super(idUtente, username, password, città, provincia, telefono, cap, email, note, tipo, cognome, nome, codiceFiscale, v, ruolo);
+    public Dipendente(Integer idUtente, String username, String password, String citta, String provincia, String telefono, String cap, String email, String note, String tipo, String cognome, String nome, String codiceFiscale, Ruolo ruolo, Boolean v) {
+        super(idUtente, username, password, citta, provincia, telefono, cap, email, note, tipo, cognome, nome, codiceFiscale, v, ruolo);
         this.listAppuntamenti= new  ArrayList<Appuntamento>();
         this.listContratti= new ArrayList<Contratto>();
 

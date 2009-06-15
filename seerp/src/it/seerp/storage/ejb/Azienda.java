@@ -6,7 +6,7 @@ package it.seerp.storage.ejb;
  */
 public class Azienda {
 
-    private String città;
+    private String citta;
     private String email;
     private String fax;
     private String indirizzo;
@@ -17,6 +17,10 @@ public class Azienda {
     private int idAzienda;
     private String note;
     private Amministratore amministratore;
+
+    public Azienda() {
+        
+    }
 
     /**
      * costruttore per la classe Azienda
@@ -30,8 +34,8 @@ public class Azienda {
      * @param telefono
      * @param idAzienda
      */
-    public Azienda(String città, String email, String fax, String indirizzo, String nazione, String pIVA, String ragioneSociale, String telefono, int idAzienda) {
-        this.città = città;
+    public Azienda(String citta, String email, String fax, String inidirizzo, String nazione, String pIVA, String ragioneSociale, String telefono, int idAzienda) {
+        this.citta = citta;
         this.email = email;
         this.fax = fax;
         this.indirizzo = indirizzo;
@@ -96,16 +100,16 @@ public class Azienda {
      * il metodo che restituisce la città dell'Azienda
      * @return : città dell'Azienda
      */
-    public String getCittà() {
-        return città;
+    public String getCitta() {
+        return citta;
     }
 
     /**
      * il metodo che setta la città dell'Azienda
      * @param città
      */
-    public void setCittà(String città) {
-        this.città = città;
+    public void setCitta(String citta) {
+        this.citta = citta;
     }
 
     /**
