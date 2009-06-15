@@ -31,7 +31,7 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
     public void inserimento(Servizio serv) throws SQLException, DatiErratiEx {
 
         PreparedStatement stmt = null;
-        try {
+        
 
             String query = "INSERT INTO Servizio VALUE (?,?,?,?,?,?,?)";
             stmt = (PreparedStatement) conn.prepareStatement(query);
@@ -45,19 +45,6 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
             stmt.setString(8, serv.getNote());
 
             stmt.executeUpdate();
-
-        } catch (SQLException se) {
-            System.out.println("Errore nell'inserimento di un nuovo servizio");
-
-        } finally {
-            // Release the resources
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (conn != null) {
-                ConnectionPool.releaseConnection(conn);
-            }
-        }
 
     }
 
@@ -83,9 +70,9 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
 
         PreparedStatement stmt = null;
 
-        try {
-
-            stmt = (PreparedStatement) conn.prepareStatement("UPDATE Servizio SET (?, ?, ?, ?, ?, ?)" + "where idServizio=" + servizio.getIdServizio());
+            stmt = (PreparedStatement) conn.prepareStatement
+                    ("UPDATE Servizio SET (?, ?, ?, ?, ?, ?)" +
+                    "where idServizio=" + servizio.getIdServizio());
             stmt.setString(2, servizio.getDescrizione());
             stmt.setBoolean(3, servizio.getDisponibilita());
             stmt.setInt(4, servizio.getQuantita());
@@ -96,18 +83,6 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
 
             stmt.execute();
 
-        } catch (SQLException se) {
-            System.out.println("Errore nella modifica del servizio");
-
-        } finally {
-            // Release the resources
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (conn != null) {
-                ConnectionPool.releaseConnection(conn);
-            }
-        }
         return servizio;
     }
 
@@ -123,7 +98,7 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
 
         ArrayList<Servizio> lista = new ArrayList<Servizio>();
 
-        try {
+        
             String query = "SELECT * FROM Servizio ";
             stmt = (PreparedStatement) conn.prepareStatement(query);
 
@@ -137,21 +112,7 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
 
                 lista.add(e);
             }
-        } catch (SQLException se) {
-            System.out.println("errore nella visualizzazione dell'elenco dei servizi");
-
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (conn != null) {
-                ConnectionPool.releaseConnection(conn);
-            }
-        }
+        
         return lista;
     }
 
@@ -167,7 +128,7 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
         ResultSet rs = null;
         Servizio serv = null;
 
-        try {
+        
             String query = "SELECT * FROM Servizio WHERE servizio.idServizio= ?";
             stmt = (PreparedStatement) conn.prepareStatement(query);
             stmt.setInt(1, id);
@@ -180,24 +141,8 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
                         rs.getInt(3), rs.getString(4), rs.getDouble(5),
                         rs.getInt(6), rs.getString(7));
 
-
             }
-        } catch (SQLException se) {
-            System.out.println("errore nella visualizzazione di un servizio");
-
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (conn != null) {
-                ConnectionPool.releaseConnection(conn);
-            }
-        }
-
+  
         return serv;
     }
 }
