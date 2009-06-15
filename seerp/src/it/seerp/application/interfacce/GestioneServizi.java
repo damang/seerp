@@ -13,11 +13,11 @@ public interface GestioneServizi <E>
 {
     public ArrayList<E> elenca (ArrayList<E> listGui);
 
-    public ArrayList<E> ricerca (JTextField nome,ArrayList<E> list)throws DatiErrati;
+    public ArrayList<E> ricerca (ArrayList<E> list)throws DatiErrati;
 
     public void inserisci (E BeansGuiServizio)throws DatiErrati, DatiDuplicati;
 
-    public E visualizza(JTextField nome, E beanGui);
+    public E visualizza(String nome, E beanGui);
 
     public E modifica (E BeansGuiServizio) throws DatiErrati;
 }
