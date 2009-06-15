@@ -51,8 +51,8 @@ public class OpContatto extends OpExtraAzienda{
 
             // Define the resource list
             while (rs.next()) {
-                Contatto contatto = new Contatto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getInt(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18), rs.getInt(19), rs.getInt(20));
-       // Integer idUtente, String username, String password, String città, String ruol 5, String provincia, String telefono, String cap, String email, String ruolo 10, String note, Boolean v, Integer idExtraAzienda, String cognome, String nome 15, String ragioneSociale, String pIva, String fax, Integer idContatto, Integer feedback) {
+                Contatto contatto = new Contatto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getInt(18));
+       // Integer idUtente, String username, String password, String città, String ruol 5 , String provincia, String telefono, String cap, String email, String ruolo 10, String note, Boolean v, String cognome, String nome, String ragioneSociale 15, String pIva, String fax, Integer feedback) {
 
                 list.add(contatto);
             }}
@@ -143,7 +143,7 @@ public class OpContatto extends OpExtraAzienda{
             } else {
                 String sql = "INSERT INTO Contatto (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
              stmt = (PreparedStatement) con.prepareStatement(sql);
-                stmt.setInt(1, user.getIdUtente());
+               stmt.setInt(1, user.getIdUtente());
             stmt.setString(2, user.getUsername());
             stmt.setString(3, user.getPassword());
             stmt.setString(4, user.getCittà());
@@ -155,15 +155,14 @@ public class OpContatto extends OpExtraAzienda{
             stmt.setString(10, user.getRuolo());
             stmt.setString(11, user.getNote());
             stmt.setBoolean(12, user.getVisible());
-            stmt.setInt(13, user.getIdExtraAzienda());
-            stmt.setString(14, user.getCognome());
-            stmt.setString(15, user.getNome());
-            stmt.setString(16, user.getRagioneSociale());
-            stmt.setString(17, user.getPIva());
-            stmt.setString(18, user.getFax());
-            stmt.setInt(19, user.getIdContatto());
-            stmt.setInt(20, user.getFeedback());
 
+            stmt.setString(13, user.getCognome());
+            stmt.setString(14, user.getNome());
+            stmt.setString(15, user.getRagioneSociale());
+            stmt.setString(16, user.getPIva());
+            stmt.setString(17, user.getFax());
+
+            stmt.setInt(18, user.getFeedback());
 
            stmt.execute();
             }
@@ -219,14 +218,14 @@ public class OpContatto extends OpExtraAzienda{
             stmt.setString(10, user.getRuolo());
             stmt.setString(11, user.getNote());
             stmt.setBoolean(12, user.getVisible());
-            stmt.setInt(13, user.getIdExtraAzienda());
-            stmt.setString(14, user.getCognome());
-            stmt.setString(15, user.getNome());
-            stmt.setString(16, user.getRagioneSociale());
-            stmt.setString(17, user.getPIva());
-            stmt.setString(18, user.getFax());
-            stmt.setInt(19, user.getIdContatto());
-            stmt.setInt(20, user.getFeedback());
+            
+            stmt.setString(13, user.getCognome());
+            stmt.setString(14, user.getNome());
+            stmt.setString(15, user.getRagioneSociale());
+            stmt.setString(16, user.getPIva());
+            stmt.setString(17, user.getFax());
+            
+            stmt.setInt(18, user.getFeedback());
 
              stmt.execute();
 
@@ -273,7 +272,7 @@ public class OpContatto extends OpExtraAzienda{
             // Define the resource list
             while (rs.next()) {
 
-                 contatto = new Contatto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getInt(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18), rs.getInt(19), rs.getInt(20));
+                 contatto = new Contatto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getInt(18));
        // Integer idUtente, String username, String password, String città, String ruol 5, String provincia, String telefono, String cap, String email, String ruolo 10, String note, Boolean v, Integer idExtraAzienda, String cognome, String nome 15, String ragioneSociale, String pIva, String fax, Integer idContatto, Integer feedback) {
 
             }
