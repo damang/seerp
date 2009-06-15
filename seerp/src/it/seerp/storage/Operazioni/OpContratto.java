@@ -40,7 +40,7 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
             stmt.setInt(2, contratto.getDurata());
             stmt.setString(3, contratto.getStato());
             stmt.setString(4, contratto.getTipo());
-            stmt.setInt(5, contratto.getExtraAzienda().getIdExtraAzienda());
+            stmt.setInt(5, contratto.getExtraAzienda().getIdUtente());
             stmt.setInt(6, contratto.getDipendente().getIdUtente());
             java.sql.Date sqlDate = new java.sql.Date(new java.util.Date().getTime());
             stmt.setDate(7, sqlDate);
