@@ -45,53 +45,53 @@ public class MenuRuoli extends javax.swing.JPanel implements ActionListener {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        aggiungiButtonServizi1 = new it.seerp.Gui.Menu.AggiungiButtonServizi(this);
-        eiminaButtonServizi1 = new it.seerp.Gui.Menu.EiminaButtonServizi(this);
-        modificaButtonServizi1 = new it.seerp.Gui.Menu.ModificaButtonServizi(this);
+        aggiungiButtonRuoli1 = new it.seerp.Gui.Menu.AggiungiButtonRuoli();
+        eiminaButtonRuoli1 = new it.seerp.Gui.Menu.EiminaButtonRuoli();
+        modificaButtonRuoli1 = new it.seerp.Gui.Menu.ModificaButtonRuoli();
 
-        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Servizi", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_BOTTOM));
+        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ruoli", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_BOTTOM));
 
-        aggiungiButtonServizi1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/add.png"))); // NOI18N
-        aggiungiButtonServizi1.setToolTipText("Aggiungi");
-        aggiungiButtonServizi1.setName("aggiungiButtonServizi1"); // NOI18N
+        aggiungiButtonRuoli1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/add.png"))); // NOI18N
+        aggiungiButtonRuoli1.setToolTipText("Aggiungi");
+        aggiungiButtonRuoli1.setName("aggiungiButtonRuoli1"); // NOI18N
 
-        eiminaButtonServizi1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/remove.png"))); // NOI18N
-        eiminaButtonServizi1.setToolTipText("Elimina");
-        eiminaButtonServizi1.setName("eiminaButtonServizi1"); // NOI18N
+        eiminaButtonRuoli1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/remove.png"))); // NOI18N
+        eiminaButtonRuoli1.setToolTipText("Elimina");
+        eiminaButtonRuoli1.setName("eiminaButtonRuoli1"); // NOI18N
 
-        modificaButtonServizi1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/blog_post_edit.png"))); // NOI18N
-        modificaButtonServizi1.setToolTipText("Modifica");
-        modificaButtonServizi1.setName("modificaButtonServizi1"); // NOI18N
+        modificaButtonRuoli1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/application_edit.png"))); // NOI18N
+        modificaButtonRuoli1.setToolTipText("Modifica");
+        modificaButtonRuoli1.setName("modificaButtonRuoli1"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(7, 7, 7)
-                .addComponent(aggiungiButtonServizi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(eiminaButtonServizi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(aggiungiButtonRuoli1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(modificaButtonServizi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(eiminaButtonRuoli1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(modificaButtonRuoli1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(eiminaButtonServizi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(modificaButtonServizi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(aggiungiButtonServizi1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(modificaButtonRuoli1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(eiminaButtonRuoli1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(aggiungiButtonRuoli1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private it.seerp.Gui.Menu.AggiungiButtonServizi aggiungiButtonServizi1;
-    private it.seerp.Gui.Menu.EiminaButtonServizi eiminaButtonServizi1;
-    private it.seerp.Gui.Menu.ModificaButtonServizi modificaButtonServizi1;
+    private it.seerp.Gui.Menu.AggiungiButtonRuoli aggiungiButtonRuoli1;
+    private it.seerp.Gui.Menu.EiminaButtonRuoli eiminaButtonRuoli1;
+    private it.seerp.Gui.Menu.ModificaButtonRuoli modificaButtonRuoli1;
     // End of variables declaration//GEN-END:variables
 
     public void actionPerformed(ActionEvent e) {
