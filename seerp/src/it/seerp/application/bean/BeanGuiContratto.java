@@ -20,10 +20,11 @@ public class BeanGuiContratto {
     private JTextField tipo;
     private JTextArea note;
     private JTextField idContratto;
-    private JTextField dipendente;
-    private JTextField extraAzienda;
+    private BeanGuiDipendente dipendente;
+    private BeanGuiExtraAzienda extraAzienda;
     private ArrayList<BeanGuiPagamento> listPagamento;
-    private ArrayList<BeanGuiServizio> listServizio;
+    private ArrayList<BeanGuiServizioAssociato> listServizio;
+    private ArrayList<BeanGuiFattura> listFatture;
     private JXPanel grafica;
     private NotEmptyValidator val;
     private NotMinNumberValidator valMinNum;
@@ -54,15 +55,17 @@ public class BeanGuiContratto {
      * @param dipendente
      * @param extraAzienda
      */
-    public BeanGuiContratto(JTextField stato, JTextField data, JTextField durata, JTextField tipo, JTextField idContratto, JTextArea note, JTextField dipendente, JTextField extraAzienda) {
+    public BeanGuiContratto(JTextField stato, JTextField data, JTextField durata, JTextField tipo, JTextField idContratto, JTextArea note) {
         this.stato = stato;
         this.data = data;
         this.durata = durata;
         this.tipo = tipo;
         this.idContratto = idContratto;
         this.note = note;
-        this.dipendente = dipendente;
-        this.extraAzienda = extraAzienda;
+        this.listFatture= new ArrayList<BeanGuiFattura>();
+        this.listPagamento= new ArrayList<BeanGuiPagamento>();
+        this.listServizio= new ArrayList<BeanGuiServizioAssociato>();
+    
     }
 
     /**
@@ -85,7 +88,7 @@ public class BeanGuiContratto {
      * metodo che restituisce la lista dei servizi associati ad un Contratto
      * @return la lista dei servizi
      */
-    public ArrayList<BeanGuiServizio> getListServizio() {
+    public ArrayList<BeanGuiServizioAssociato> getListServizio() {
         return listServizio;
     }
 
@@ -93,7 +96,7 @@ public class BeanGuiContratto {
      * metodo che setta la lista dei servizi di un Contratto
      * @param listServizio rappresenta la lista dei servizi da inserire
      */
-    public void setListServizio(ArrayList<BeanGuiServizio> listServizio) {
+    public void setListServizio(ArrayList<BeanGuiServizioAssociato> listServizio) {
         this.listServizio = listServizio;
     }
 
@@ -113,31 +116,16 @@ public class BeanGuiContratto {
         this.data = data;
     }
 
-    /**
-     *  metodo che restituisce il campo contenente l'id del Dipendente
-     *  che ha stipulato il Contratto
-     * @return il campo id del Dipendente
-     */
-    public JTextField getDipendente() throws Exception {
-        if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
-        }
-        if (!valApha.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
-        }
+  
+    public BeanGuiDipendente getDipendente() throws Exception {
+      
         return dipendente;
     }
 
-    /**
-     * metodo che setta il campo id del Dipendente che ha stipulato il Contratto
-     * @param pdipendente rappresenta il campo id del Dipendente  da inserire
-     */
-    public void setDipendente(JTextField pdipendente) {
+  
+    public void setDipendente(BeanGuiDipendente pdipendente) {
         this.dipendente = pdipendente;
-        val = new NotEmptyValidator(grafica, dipendente, "Il campo non può essere vuoto.");
-        grafica.setInputVerifier(val);
-        valApha = new NotAlphabeticValidator(grafica, dipendente, "La stringa inserita deve essere alfabetica.");
-        grafica.setInputVerifier(valApha);
+      
     }
 
     /**
@@ -161,21 +149,12 @@ public class BeanGuiContratto {
         grafica.setInputVerifier(val);
     }
 
-    /**
-     * metodo che restituisce il campo contenente l'id dell'ExtraAzienda con
-     * cui è stato stipulato il Contratto
-     * @return il campo id dell'ExtraAzienda
-     */
-    public JTextField getExtraAzienda() {
+   
+    public BeanGuiExtraAzienda getExtraAzienda() {
         return extraAzienda;
     }
 
-    /**
-     * metodo che setta il campo id dell'ExtraAzienda
-     * con cui è stato stipulato il Contratto
-     * @param extraAzienda rappresenta il campo id da inserire
-     */
-    public void setExtraAzienda(JTextField extraAzienda) {
+    public void setExtraAzienda(BeanGuiExtraAzienda extraAzienda) {
         this.extraAzienda = extraAzienda;
     }
 
@@ -269,19 +248,25 @@ public class BeanGuiContratto {
         listPagamento.add(p);
     }
 
-    /**
-     * metodo che permette di rimuovere un servizio dalla lista dei servizi
-     * @param s rapprensenta il servizio che si vuole eliminare
-     */
-    public void removeServzio(BeanGuiServizio s) {
+    
+
+   
+    public void addServizio(BeanGuiServizioAssociato s) {
+        listServizio.add(s);
+    }
+
+
+    public void removeServizio(BeanGuiServizioAssociato s) {
         listServizio.remove(s);
     }
 
-    /**
-     * metodo che permetted i inserire un servizio nella lista dei servizi
-     * @param s rappresenta il servizio che si vuole inserire
-     */
-    public void addPagamento(BeanGuiServizio s) {
-        listServizio.add(s);
+
+    public void addFattura(BeanGuiFattura s) {
+        listFatture.add(s);
+    }
+
+
+    public void removeFattura(BeanGuiFattura s) {
+        listFatture.remove(s);
     }
 }

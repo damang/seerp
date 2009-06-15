@@ -7,12 +7,13 @@ import org.jdesktop.swingx.JXPanel;
 
 /**
  *
- * @author Luisa - Tommaso Cattolico
+ * @author Luisa - Tommaso Cattolico - 
  */
 public class BeanGuiAgenda {
 
     private ArrayList<BeanGuiEvento> listEventi = new ArrayList<BeanGuiEvento>();
     private JTextField idAgenda;
+    private BeanGuiUtente utente;
     private JXPanel grafica;
     private NotEmptyValidator val;
 
@@ -85,4 +86,24 @@ public class BeanGuiAgenda {
         val = new NotEmptyValidator(grafica, idAgenda, "Il campo non può essere vuoto.");
         grafica.setInputVerifier(val);
     }
+
+    /**
+     * metodo che permette di restituire il bean grafico
+     * dell'utente associato al bean grafico dell'agenda
+     * @return il bean grafico dell'utente
+     */
+    public BeanGuiUtente getUtente() {
+        return utente;
+    }
+
+    /**
+     * metodo che permette di settare il bran grafico
+     * dell'utente associato al bean grafico dell'agenda
+     * @param utente rappresenta il bean grafico
+     */
+    public void setUtente(BeanGuiUtente utente) {
+        this.utente = utente;
+    }
+
+
 }

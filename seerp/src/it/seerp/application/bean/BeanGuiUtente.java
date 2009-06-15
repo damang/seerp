@@ -26,6 +26,7 @@ public class BeanGuiUtente {
     private JTextArea txtNote;
     private JTextField txtNotifica;
     private JTextField ruolo;
+    private JTextField visible;
     private JXPanel grafica;
     private NotEmptyValidator val;
     private NotEqualLengthValidator valEqLen;
@@ -61,7 +62,7 @@ public class BeanGuiUtente {
      * @param txtNotifica
      * @param Ruolo
      */
-    public BeanGuiUtente(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField txtNotifica, JTextField Ruolo) {
+    public BeanGuiUtente(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField txtNotifica, JTextField Ruolo,JTextField visible) {
         this.idUtenteTxt = idUtenteTxt;
         this.txtUsername = txtUsername;
         this.txtPassword = txtPassword;
@@ -72,6 +73,7 @@ public class BeanGuiUtente {
         this.txtNote = txtNote;
         this.txtNotifica = txtNotifica;
         this.ruolo = Ruolo;
+        this.visible=visible;
     }
 
     /**
@@ -315,4 +317,22 @@ public class BeanGuiUtente {
         valMaxLen = new NotMaxLengthValidator(grafica, txtProvincia, "Il campo deve essere di massimo 15 caratteri", 16);
         grafica.setInputVerifier(valMaxLen);
     }
+
+    /**
+     * 
+     * @return
+     */
+    public JTextField getVisible() {
+        return visible;
+    }
+
+    /**
+     *
+     * @param visible
+     */
+    public void setVisible(JTextField visible) {
+        this.visible = visible;
+    }
+
+
 }

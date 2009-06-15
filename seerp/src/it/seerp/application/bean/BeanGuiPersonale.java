@@ -5,6 +5,7 @@ import it.seerp.application.validation.NotEmptyValidator;
 import it.seerp.application.validation.NotEqualLengthValidator;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import org.jdesktop.swingx.JXPanel;
 
@@ -19,7 +20,6 @@ public class BeanGuiPersonale extends BeanGuiUtente {
     private JTextField txtNome;
     private JTextField txtCodiceFiscale;
     private JComboBox cmbTipo;
-    private ArrayList<BeanGuiPermesso> listPermessi;
     private ArrayList<BeanGuiRuolo> listRuoli;
     private JXPanel grafica;
     private NotEmptyValidator val;
@@ -42,31 +42,34 @@ public class BeanGuiPersonale extends BeanGuiUtente {
 
     /**
      *
+     * @param idUtenteTxt
+     * @param txtUsername
+     * @param txtPassword
+     * @param txtCittà
+     * @param txtProvincia
+     * @param txtTelefono
+     * @param txtEmail
+     * @param txtNote
+     * @param txtNotifica
+     * @param Ruolo
+     * @param visible
      * @param idPersonaleTxt
      * @param txtCognome
      * @param txtNome
      * @param txtCodiceFiscale
      * @param cmbTipo
-     * @param listPermessi
-     * @param listRuoli
      */
-    public BeanGuiPersonale(JTextField idPersonaleTxt, JTextField txtCognome, JTextField txtNome, JTextField txtCodiceFiscale, JComboBox cmbTipo, ArrayList<BeanGuiPermesso> listPermessi, ArrayList<BeanGuiRuolo> listRuoli) {
+    public BeanGuiPersonale(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCittà, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField txtNotifica, JTextField Ruolo, JTextField visible, JTextField idPersonaleTxt, JTextField txtCognome, JTextField txtNome, JTextField txtCodiceFiscale, JComboBox cmbTipo) {
+        super(idUtenteTxt, txtUsername, txtPassword, txtCittà, txtProvincia, txtTelefono, txtEmail, txtNote, txtNotifica, Ruolo, visible);
         this.idPersonaleTxt = idPersonaleTxt;
         this.txtCognome = txtCognome;
         this.txtNome = txtNome;
         this.txtCodiceFiscale = txtCodiceFiscale;
         this.cmbTipo = cmbTipo;
-        this.listPermessi = listPermessi;
-        this.listRuoli = listRuoli;
+        this.listRuoli= new ArrayList<BeanGuiRuolo>();
     }
 
-    /**
-     *
-     * @return
-     */
-    public ArrayList<BeanGuiPermesso> getListPermessi() {
-        return listPermessi;
-    }
+   
 
     /**
      *
@@ -76,13 +79,7 @@ public class BeanGuiPersonale extends BeanGuiUtente {
         return listRuoli;
     }
 
-    /**
-     *
-     * @param listPermessi
-     */
-    public void setListPermessi(ArrayList<BeanGuiPermesso> listPermessi) {
-        this.listPermessi = listPermessi;
-    }
+  
 
     /**
      *
@@ -202,4 +199,19 @@ public class BeanGuiPersonale extends BeanGuiUtente {
     public void setTipo(JComboBox tipo) {
         this.cmbTipo = tipo;
     }
+
+
+     /**
+      * 
+      * @param c 
+      */
+     public void removeRuolo(BeanGuiRuolo c){
+     listRuoli.remove(c);}
+
+     /**
+      *
+      * @param c 
+      */
+     public void addRuolo(BeanGuiRuolo c){
+     listRuoli.add(c);}
 }

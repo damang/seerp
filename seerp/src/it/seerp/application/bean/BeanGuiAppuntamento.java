@@ -13,10 +13,9 @@ public class BeanGuiAppuntamento {
     private JTextField ora;
     private JTextField idAppuntamento;
     private JTextArea note;
-    private JTextField dipendente;
-
-    private JTextField extraAzienda;
-     private JTextField notifica;
+    private BeanGuiDipendente dipendente;
+    private BeanGuiExtraAzienda extraAzienda;
+    private JTextField notifica;
 
      /**
       * Costruttore vuoto per la classe Bean Gui Appuntamento
@@ -37,13 +36,11 @@ public class BeanGuiAppuntamento {
       * @param extraAzienda
       * @param notifica
       */
-     public BeanGuiAppuntamento(JTextField data, JTextField ora, JTextField idAppuntamento, JTextArea note, JTextField dipendente, JTextField extraAzienda,JTextField notifica) {
+     public BeanGuiAppuntamento(JTextField data, JTextField ora, JTextField idAppuntamento, JTextArea note,JTextField notifica) {
         this.data = data;
         this.ora = ora;
         this.idAppuntamento = idAppuntamento;
         this.note = note;
-        this.dipendente = dipendente;
-        this.extraAzienda = extraAzienda;
         this.notifica=notifica;
     }
 
@@ -72,19 +69,13 @@ public class BeanGuiAppuntamento {
         return data;
     }
 
-    /**
-     * metodo che restituisce il campo contenente l'identificatico del dipente
-     * @return l'id del dipendente
-     */
-    public JTextField getDipendente() {
+    
+    public BeanGuiDipendente getDipendente() {
         return dipendente;
     }
 
-    /**
-     * metodo che restituisce il campo contenente l'identificativo dell'ExtraAzienda
-     * @return l'id dell'ExtraAzienda
-     */
-    public JTextField getExtraAzienda() {
+    
+    public BeanGuiExtraAzienda getExtraAzienda() {
         return extraAzienda;
     }
 
@@ -120,19 +111,13 @@ public class BeanGuiAppuntamento {
         this.data = data;
     }
 
-    /**
-     * metodo che setta il campo contenente l'id del Dipendente
-     * @param dipendente rappresenta il campo id del Dipendente da inserire
-     */
-    public void setDipendente(JTextField dipendente) {
+   
+    public void setDipendente(BeanGuiDipendente dipendente) {
         this.dipendente = dipendente;
     }
 
-    /**
-     * metodo che setta il campo contentente l'id dell'ExtraAzienda
-     * @param extraAzienda rappresenta il campo id dell'ExtraAzienda da inserire
-     */
-    public void setExtraAzienda(JTextField extraAzienda) {
+   
+    public void setExtraAzienda(BeanGuiExtraAzienda extraAzienda) {
         this.extraAzienda = extraAzienda;
     }
 

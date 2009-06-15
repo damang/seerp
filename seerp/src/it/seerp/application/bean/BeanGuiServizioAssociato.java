@@ -15,15 +15,13 @@ import javax.swing.JTextField;
 public class BeanGuiServizioAssociato {
  private JTextField quantita;
     private JTextField prezzoUnitario;
-    private JTextField contratto;
-    private JTextField servizio;
+    private BeanGuiContratto contratto;
+    private BeanGuiServizio servizio;
     private JTextArea note;
 
-    public BeanGuiServizioAssociato(JTextField quantita, JTextField prezzoUnitario, JTextField contratto, JTextField servizio, JTextArea note) {
+    public BeanGuiServizioAssociato(JTextField quantita, JTextField prezzoUnitario, JTextArea note) {
         this.quantita = quantita;
         this.prezzoUnitario = prezzoUnitario;
-        this.contratto = contratto;
-        this.servizio = servizio;
         this.note = note;
     }
 
@@ -31,7 +29,7 @@ public class BeanGuiServizioAssociato {
      * metodo che restituisce
      * @return
      */
-    public JTextField getContratto() {
+    public BeanGuiContratto getContratto() {
         return contratto;
     }
 
@@ -39,7 +37,7 @@ public class BeanGuiServizioAssociato {
      * metodo che
      * @param contratto
      */
-    public void setContratto(JTextField contratto) {
+    public void setContratto(BeanGuiContratto contratto) {
         this.contratto = contratto;
     }
 
@@ -95,7 +93,7 @@ public class BeanGuiServizioAssociato {
      * metodo che restituisce
      * @return
      */
-    public JTextField getServizio() {
+    public BeanGuiServizio getServizio() {
         return servizio;
     }
 
@@ -103,7 +101,7 @@ public class BeanGuiServizioAssociato {
      * metodo che setta
      * @param servizio
      */
-    public void setServizio(JTextField servizio) {
+    public void setServizio(BeanGuiServizio servizio) {
         this.servizio = servizio;
     }
 }
