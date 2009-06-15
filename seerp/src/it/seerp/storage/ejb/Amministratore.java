@@ -14,8 +14,8 @@ public class Amministratore extends Personale {
         
     }
 
-    public Amministratore(Integer idUtente, String username, String password, String città, String provincia, String telefono, String cap, String email, String note, String tipo, Integer idPersonale, String cognome, String nome, String codiceFiscale, Ruolo ruolo, Boolean v) {
-        super(idUtente, username, password, città, provincia, telefono, cap, email, note, tipo, cognome, nome, codiceFiscale, v, ruolo);
+    public Amministratore(Integer idUtente, String username, String password, String citta, String provincia, String telefono, String cap, String email, String note, String tipo, Integer idPersonale, String cognome, String nome, String codiceFiscale, Ruolo ruolo, Boolean v) {
+        super(idUtente, username, password, citta, provincia, telefono, cap, email, note, tipo, cognome, nome, codiceFiscale, v, ruolo);
     }
 
     /**

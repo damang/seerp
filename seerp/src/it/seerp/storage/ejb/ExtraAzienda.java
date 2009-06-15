@@ -42,8 +42,8 @@ public class ExtraAzienda extends Utente {
      * @param v
      */
 
-    public ExtraAzienda(Integer idUtente, String username, String password, String città, String tipo,String provincia, String telefono,String cap, String email, String ruolo, String note, Boolean v, String cognome, String nome, String ragioneSociale, String pIva, String fax) {
-        super(idUtente, username, password, città, provincia, telefono,cap, email, ruolo, note, v);
+    public ExtraAzienda(Integer idUtente, String username, String password, String citta, String tipo,String provincia, String telefono,String cap, String email, String ruolo, String note, Boolean v, String cognome, String nome, String ragioneSociale, String pIva, String fax) {
+        super(idUtente, username, password, citta, provincia, telefono,cap, email, ruolo, note, v);
 
         this.cognome = cognome;
         this.nome = nome;

@@ -36,8 +36,8 @@ public class Personale extends Utente {
      * @param tipo
      * @param v
      */
-    public Personale(Integer idUtente, String username, String password, String città, String provincia, String telefono,String cap, String email, String note, String tipo, String cognome, String nome, String codiceFiscale, Boolean v, Ruolo ruolo) {
-        super(idUtente, username, password, città, provincia, telefono,cap,email, note, tipo, v );
+    public Personale(Integer idUtente, String username, String password, String citta, String provincia, String telefono,String cap, String email, String note, String tipo, String cognome, String nome, String codiceFiscale, Boolean v, Ruolo ruolo) {
+        super(idUtente, username, password, citta, provincia, telefono,cap,email, note, tipo, v );
         this.cognome = cognome;
         this.nome = nome;
         this.codiceFiscale = codiceFiscale;
