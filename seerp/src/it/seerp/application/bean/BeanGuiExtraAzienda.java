@@ -54,6 +54,10 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
         this.ruolo = ruolo;
     }
 
+    public void setRagioneSociale(JTextField ragioneSociale) {
+        this.ragioneSociale = ragioneSociale;
+    }
+
    
 
     /**
