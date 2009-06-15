@@ -38,6 +38,9 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
         return listGui;
     }
@@ -58,6 +61,9 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
         return gui;
     }
@@ -151,6 +157,9 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
         return listGui;
     }
