@@ -11,7 +11,6 @@ import it.seerp.storage.ejb.Utente;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 /**
  * classe per permette di effettuare le operazioni della Gestione
@@ -57,10 +56,10 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
      * @throws it.seerp.application.Exception.RicercaFallita
      * nel momento in cui nn viene trovato l'elemento e la ricerca fallisce
      */
-    public ArrayList<BeanGuiUtente> ricerca(JTextField cognome, JTextField ruolo, ArrayList<BeanGuiUtente> list) throws DatiErrati, RicercaFallita {
+    public ArrayList<BeanGuiUtente> ricerca(ArrayList<BeanGuiUtente> list) throws DatiErrati, RicercaFallita {
         try {
             OpeUtente ope = new OpeUtente();
-            ArrayList<Utente> listGui = ope.ricerca(cognome.getText(), ruolo.getText());
+            ArrayList<Utente> listGui = ope.ricerca();
             int i = 0;
             for (Utente user : listGui) {
                 list.add(Conversione.conversioneUtente(user, list.get(i)));
@@ -83,8 +82,8 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
      */
     public void elimina(BeanGuiUtente user) {
         try {
-                    OpeUtente ope = new OpeUtente();
-        Utente ut = Conversione.conversioneUtente(user);
+            OpeUtente ope = new OpeUtente();
+            Utente ut = Conversione.conversioneUtente(user);
             ope.elimina(ut);
         } catch (SQLException se) {
             se.printStackTrace();
@@ -102,8 +101,8 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
      */
     public void eliminazioneLogica(BeanGuiUtente user) {
         try {
-                    OpeUtente ope = new OpeUtente();
-        Utente ut = Conversione.conversioneUtente(user);
+            OpeUtente ope = new OpeUtente();
+            Utente ut = Conversione.conversioneUtente(user);
             ope.eliminaLogica(ut);
         } catch (SQLException se) {
             se.printStackTrace();
@@ -127,9 +126,9 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
      */
     public BeanGuiUtente inserisci(BeanGuiUtente user) throws DatiErrati, DatiDuplicati {
 
-        try{
+        try {
             OpeUtente a = new OpeUtente();
-        Utente serv = Conversione.conversioneUtente(user);
+            Utente serv = Conversione.conversioneUtente(user);
             a.inserimento(serv);
             user = Conversione.conversioneUtente(serv, user);
         } catch (SQLException se) {
@@ -153,8 +152,8 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
      */
     public BeanGuiUtente modifica(BeanGuiUtente user) throws DatiErrati {
         try {
-                    OpeUtente ope = new OpeUtente();
-        Utente utente = Conversione.conversioneUtente(user);
+            OpeUtente ope = new OpeUtente();
+            Utente utente = Conversione.conversioneUtente(user);
             utente = ope.modifica(utente);
             user = Conversione.conversioneUtente(utente, user);
         } catch (SQLException se) {
@@ -177,11 +176,11 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui i dati inseriti sono errati
      */
-    public BeanGuiUtente visualizzaDati(JTextField user, BeanGuiUtente beanGui) throws DatiErrati {
+    public BeanGuiUtente visualizzaDati(String user, BeanGuiUtente beanGui) throws DatiErrati {
         try {
             OpeUtente ope = new OpeUtente();
-            //Utente utente = ope.visualizza(beanGui);
-            //beanGui = it.seerp.application.conversioni.Conversione.conversioneUtente(utente, beanGui);
+            Utente utente = ope.visualizza(Integer.parseInt(user));
+            beanGui = it.seerp.application.conversioni.Conversione.conversioneUtente(utente, beanGui);
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
