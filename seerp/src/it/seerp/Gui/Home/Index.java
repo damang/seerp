@@ -5,15 +5,33 @@ import java.sql.SQLException;
 
 
 import configurazioni.CommandInterface;
+import configurazioni.Screen;
 import it.seerp.Gui.AreaPersonale.AreaPersonalePanel;
 import it.seerp.Gui.Gestione.Utenti.AreaUtentePanel;
 import it.seerp.Gui.GestioneContratti.GestioneContratti;
 import it.seerp.Gui.GestioneServizi.GestioneServizi;
 import it.seerp.Gui.frame.ObservableJPanel;
 import it.seerp.Gui.frame.ObservervableJTabbedPanel;
+import it.seerp.jaas.AuthPolicy;
+import it.seerp.jaas.AuthPrincipal;
+import it.seerp.jaas.JaasUtil;
+import java.awt.GraphicsEnvironment;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.security.Policy;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.security.auth.Subject;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import org.jdesktop.swingx.JXLoginPane;
+import org.jdesktop.swingx.auth.LoginAdapter;
+import org.jdesktop.swingx.auth.LoginEvent;
 
 /**
  *
@@ -24,10 +42,15 @@ public class Index extends javax.swing.JFrame implements ActionListener {
     ObservervableJTabbedPanel areaPersonaleFrame;
 
     /** Creates new form Index */
-    public Index() {
+    public Index(Subject sub) {
+        ut_sub=sub;
         areaPersonaleFrame = new ObservervableJTabbedPanel();
+        
         initComponents();
         areaPersonaleFrame.register(areaPersonaleButton1);
+      //  GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+       // setSize(ge.getMaximumWindowBounds().width,ge.getMaximumWindowBounds().height);
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     /** This method is called from within the constructor to
@@ -145,7 +168,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
 
             jXPanel1.setName("jXPanel1"); // NOI18N
 
-            jXLabel1.setText("mes di benvenuto");
+            jXLabel1.setText("Benvenuto " + ut_sub.getPrincipals().iterator().next().getName());
             jXLabel1.setName("jXLabel1"); // NOI18N
 
             javax.swing.GroupLayout jXPanel1Layout = new javax.swing.GroupLayout(jXPanel1);
@@ -459,7 +482,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, 943, Short.MAX_VALUE)
+            .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -550,13 +573,46 @@ public class Index extends javax.swing.JFrame implements ActionListener {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            public void run() {
-                new Index().setVisible(true);
+        Policy.setPolicy(new AuthPolicy());
+        System.setProperty("java.security.auth.login.config","file_config\\jaasutil.config");
+        try {
+          UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (InstantiationException ex) {
+            ex.printStackTrace();
+        } catch (IllegalAccessException ex) {
+           ex.printStackTrace();
+        } catch (UnsupportedLookAndFeelException ex) {
+           ex.printStackTrace();
+        }
+      /*  final JaasUtil ja = new JaasUtil();
+        ja.addLoginListener(new LoginAdapter() {
+            @Override
+            public void loginSucceeded(LoginEvent source) {
+                super.loginSucceeded(source);
+                 java.awt.EventQueue.invokeLater(new Runnable() {
+                        public void run() {
+                            new Index(ja.getSubject()).setVisible(true);
+                        }
+                 });
             }
         });
-    }
+        JXLoginPane p = new JXLoginPane(ja);
+        JXLoginPane.showLoginFrame(p).setVisible(true);*/
+        final Subject _subject = new Subject();
+        _subject.getPrincipals().add(new AuthPrincipal("majinb","username"));
+        _subject.getPrincipals().add(new AuthPrincipal ("amministratore","ruolo"));
+        java.awt.EventQueue.invokeLater(new Runnable() {
+                        public void run() {
+                            new Index(_subject).setVisible(true);
+                        }
+                 });
+
+
+
+
+   }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
@@ -602,7 +658,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JMenuItem saveAsMenuItem;
     private javax.swing.JMenuItem saveMenuItem;
     // End of variables declaration//GEN-END:variables
-
+    private Subject ut_sub;
     public void actionPerformed(ActionEvent e) {
         CommandInterface cmd = (CommandInterface) e.getSource();
         cmd.execute();
