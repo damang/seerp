@@ -46,8 +46,8 @@ public class OpCliente extends OpExtraAzienda {
 
             // Define the resource list
             while (rs.next()) {
-                Cliente cliente = new Cliente(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getInt(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18), rs.getInt(19));
-// Integer idUtente, String username, String password, String città, String ruol 5, String provincia, String telefono, String cap, String email, String ruolo 10, String note, Boolean v, Integer idExtraAzienda, String cognome, String nome 15, String ragioneSociale, String pIva, String fax, Integer idCliente) {
+                Cliente cliente = new Cliente(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17));
+//Integer idUtente, String username, String password, String città, String ruol 5, String provincia, String telefono, String cap, String email, String ruolo 10, String note, Boolean v, String cognome, String nome, String ragioneSociale 15, String pIva, String fax) {
 
                 list.add(cliente);
             }
@@ -181,15 +181,13 @@ public class OpCliente extends OpExtraAzienda {
                 stmt.setString(6, user.getTelefono());
                 stmt.setString(7, user.getEmail());
                 stmt.setString(8, user.getNote());
-
-                stmt.setInt(9, user.getIdExtraAzienda());
-                stmt.setString(10, user.getCognome());
-                stmt.setString(11, user.getNome());
-                stmt.setString(12, user.getRagioneSociale());
-                stmt.setString(13, user.getPIva());
-                stmt.setString(14, user.getFax());
-                stmt.setString(15, user.getRuolo());
-                stmt.setInt(16, user.getIdCliente());
+                stmt.setString(9, user.getCognome());
+                stmt.setString(10, user.getNome());
+                stmt.setString(11, user.getRagioneSociale());
+                stmt.setString(12, user.getPIva());
+                stmt.setString(13, user.getFax());
+                stmt.setString(14, user.getRuolo());
+                
 
                 stmt.execute();
             }
@@ -233,21 +231,22 @@ public class OpCliente extends OpExtraAzienda {
             stmt.setString(2, user.getUsername());
             stmt.setString(3, user.getPassword());
             stmt.setString(4, user.getCittà());
-            stmt.setString(5, user.getProvincia());
-            stmt.setString(6, user.getTelefono());
-            stmt.setString(7, user.getEmail());
-            stmt.setString(8, user.getNote());
-            stmt.setInt(9, user.getIdExtraAzienda());
-            stmt.setString(10, user.getCognome());
-            stmt.setString(11, user.getNome());
-            stmt.setString(12, user.getRagioneSociale());
-            stmt.setString(13, user.getPIva());
-            stmt.setString(14, user.getFax());
-            stmt.setString(15, user.getRuolo());
-            stmt.setInt(16, user.getIdCliente());
-
-            stmt.execute();
-            cliente = (Cliente) this.visualizzaDati(user.getIdCliente());
+            stmt.setString(5, user.getRuolo());
+            stmt.setString(6, user.getProvincia());
+            stmt.setString(7, user.getTelefono());
+            stmt.setString(8, user.getCap());
+            stmt.setString(9, user.getEmail());
+            stmt.setString(10, user.getRuolo());
+            stmt.setString(11, user.getNote());
+            stmt.setBoolean(12, user.getVisible());
+            stmt.setString(13, user.getCognome());
+            stmt.setString(14, user.getNome());
+            stmt.setString(15, user.getRagioneSociale());
+            stmt.setString(16, user.getPIva());
+            stmt.setString(17, user.getFax());
+            
+             stmt.execute();
+            cliente = (Cliente) this.visualizzaDati(user.getIdUtente());
 
         } // Force the commit
         catch (SQLException se) {
@@ -292,7 +291,7 @@ public class OpCliente extends OpExtraAzienda {
 
             // Define the resource list
             while (rs.next()) {
-                cliente = new Cliente(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getInt(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18), rs.getInt(19));
+                cliente = new Cliente(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17));
 
                
             
