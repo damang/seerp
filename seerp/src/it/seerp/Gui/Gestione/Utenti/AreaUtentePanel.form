@@ -27,7 +27,6 @@
                       <Component id="jXPanel1" min="-2" pref="331" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="jTabbedPane1" min="-2" pref="684" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="1"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -57,7 +56,7 @@
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jTabbedPane1" pref="462" max="32767" attributes="1"/>
-                  <Component id="jXPanel1" alignment="0" min="-2" pref="462" max="-2" attributes="1"/>
+                  <Component id="jXPanel1" alignment="0" min="-2" max="-2" attributes="1"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
