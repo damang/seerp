@@ -70,6 +70,7 @@ public class Azienda {
         this.amministratore = amministratore;
     }
 
+  
     /**
      * metodo che permette di settare le informazioni della partita iva dell'azienda
      * @param pIVA rappresenta la partita iva
