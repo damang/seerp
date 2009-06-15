@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @author Luisa-Matteo
  */
 public class Ruolo {
-     private AuthPermissionCollection listPermesso;
+     private ArrayList<Permesso> listPermesso;
      private String nome;
      private ArrayList<Personale> listPersonale;
 
@@ -19,7 +19,7 @@ public class Ruolo {
       * @param nome
       */
      public Ruolo(String nome) {
-        this.listPermesso= new AuthPermissionCollection();
+        this.listPermesso= new ArrayList<Permesso>();
         this.nome = nome;
         this.listPersonale= new ArrayList<Personale>();
     }
@@ -48,7 +48,7 @@ public class Ruolo {
      * metodo che permette di restituire la lista degli incarichi di un ruolo
      * @return la lista degli incarichi
      */
-    public AuthPermissionCollection getListPermesso() {
+    public ArrayList<Permesso> getListPermesso() {
         return listPermesso;
     }
 
@@ -56,7 +56,7 @@ public class Ruolo {
      * metodo che permette di settare la lista degli incarichi di un ruolo
      * @param listIncarico rappresenta la lista degli incarichi
      */
-    public void setListPermesso(AuthPermissionCollection listPermesso) {
+    public void setListPermesso(ArrayList<Permesso> listPermesso) {
         this.listPermesso = listPermesso;
     }
  
@@ -80,7 +80,7 @@ public class Ruolo {
      * metodo che permette di rimuovere un incarico dalla lista degli incarichi
      * @param c rappresenta l'incarico da eliminare
      */
-    public void removePermesso(AccessPermission c){
+    public void removePermesso(Permesso c){
      listPermesso.remove(c);
     }
 
@@ -88,7 +88,7 @@ public class Ruolo {
      * metodo che permette di aggiungere un incarico alla lista degli incarichi
      * @param c rappresenta l'incarico da inserire
      */
-    public void addPermesso(AccessPermission c){
+    public void addPermesso(Permesso c){
       listPermesso.add(c);
     }
 
