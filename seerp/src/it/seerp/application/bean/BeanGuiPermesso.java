@@ -1,7 +1,6 @@
 package it.seerp.application.bean;
 
 import it.seerp.application.validation.NotEmptyValidator;
-import java.util.ArrayList;
 import javax.swing.JTextField;
 import org.jdesktop.swingx.JXPanel;
 
@@ -37,8 +36,6 @@ public class BeanGuiPermesso {
         this.path = path;
     }
 
-   
-
     /**
      *
      * @return
@@ -50,7 +47,6 @@ public class BeanGuiPermesso {
         return idPermesso;
     }
 
-    
     /**
      *
      * @param pidPermesso
@@ -61,33 +57,29 @@ public class BeanGuiPermesso {
         grafica.setInputVerifier(val);
     }
 
-    public void setAction(JTextField action) {
-        this.action = action;
-        val = new NotEmptyValidator(grafica, action,"il campo non può essere vuoto.");
+    public void setAction(JTextField paction) {
+        this.action = paction;
+        val = new NotEmptyValidator(grafica, action, "Il campo non può essere vuoto.");
         grafica.setInputVerifier(val);
     }
 
-   
-    public void setPath(JTextField path) {
-        this.path = path;
-        val = new NotEmptyValidator(grafica, path,"il campo non può eseere vuoto.");
+    public void setPath(JTextField ppath) {
+        this.path = ppath;
+        val = new NotEmptyValidator(grafica, path, "Il campo non può eseere vuoto.");
         grafica.setInputVerifier(val);
     }
 
     public JTextField getAction() throws Exception {
-          if (!val.shouldYieldFocus(grafica)) {
+        if (!val.shouldYieldFocus(grafica)) {
             throw new Exception("Errore nella grafica!");
         }
         return action;
     }
 
-  
-
     public JTextField getPath() throws Exception {
-          if (!val.shouldYieldFocus(grafica)) {
+        if (!val.shouldYieldFocus(grafica)) {
             throw new Exception("Errore nella grafica!");
         }
         return path;
     }
-
 }
