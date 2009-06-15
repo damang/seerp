@@ -1,6 +1,5 @@
 package it.seerp.storage.ejb;
 
-import it.seerp.storage.ejb.Permesso;
 import it.seerp.jaas.PermessoCollection;
 import java.util.ArrayList;
 
