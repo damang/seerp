@@ -13,6 +13,10 @@ import java.util.ArrayList;
  */
 public class Responsabile extends Personale {
 
+    public Responsabile() {
+        
+    }
+
     public Responsabile(Integer idUtente, String username, String password, String città, String provincia, String telefono, String cap, String email, String note, String tipo, String cognome, String nome, String codiceFiscale, Ruolo ruolo, Boolean v) {
        super(idUtente, username, password, città, provincia, telefono, cap, email, note, tipo, cognome, nome, codiceFiscale, v, ruolo);
     }
