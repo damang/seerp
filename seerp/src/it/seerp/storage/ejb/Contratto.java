@@ -50,6 +50,8 @@ public class Contratto {
         this.listFattura= new ArrayList<Fattura>();
     }
 
+
+
     /**
      * metodo che permette di settare la lista delle fatture associate al contratto
      * @param listFattura rappresenta la lista delle fatture
