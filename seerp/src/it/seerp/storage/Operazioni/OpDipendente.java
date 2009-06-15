@@ -1,5 +1,7 @@
 package it.seerp.storage.Operazioni;
 
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
 import it.seerp.storage.ejb.Dipendente;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -7,8 +9,7 @@ import it.seerp.storage.Exception.DatiDuplicatiEx;
 import it.seerp.storage.Exception.DatiErratiEx;
 import it.seerp.storage.ejb.Ruolo;
 import it.seerp.storage.db.ConnectionPool;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -26,7 +27,7 @@ public class OpDipendente extends OpPersonale {
      */
     public OpDipendente() throws SQLException {
         super();
-        con = ConnectionPool.getConnection();
+        con = (Connection) ConnectionPool.getConnection();
     }
 
     /** Metodo che permette la visualizzazione
