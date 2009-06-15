@@ -15,7 +15,7 @@ import it.seerp.storage.Exception.DatiErratiEx;
  * la classe storage che si occupa di interfacciarsi con il dbms e compiere operazioni sui servizi
  * @author Ila
  */
-public class OpServizio implements OpeEntity<Servizio> {
+public class OpServizio implements OpeEntity<Servizio, Integer> {
 
     private Connection conn;
 
@@ -67,7 +67,7 @@ public class OpServizio implements OpeEntity<Servizio> {
      * @return lista di servizi che rispettano i parametri di ricerca
      * @throws java.sql.SQLException
      */
-    public ArrayList<Servizio> ricerca(String nome) throws SQLException {
+    public ArrayList<Servizio> ricerca() throws SQLException {
 
         ArrayList<Servizio> b = this.visualizzaElenco();
         return b;
@@ -161,7 +161,7 @@ public class OpServizio implements OpeEntity<Servizio> {
      * @return servizio che corrisponde a quell'identificativo
      * @throws java.sql.SQLException
      */
-    public Servizio visualizza(Servizio ser) throws SQLException {
+    public Servizio visualizza(Integer id) throws SQLException {
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -170,7 +170,7 @@ public class OpServizio implements OpeEntity<Servizio> {
         try {
             String query = "SELECT * FROM Servizio WHERE servizio.idServizio= ?";
             stmt = (PreparedStatement) conn.prepareStatement(query);
-            stmt.setInt(1, ser.getIdServizio());
+            stmt.setInt(1, id);
 
             rs = stmt.executeQuery(query);
 
