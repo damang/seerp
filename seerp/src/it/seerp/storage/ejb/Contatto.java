@@ -12,6 +12,10 @@ public class Contatto extends ExtraAzienda {
 
     private Integer feedback;
 
+    public Contatto() {
+        
+    }
+
     /**
      * costruttore
      * @param idUtente
