@@ -269,4 +269,13 @@ public class BeanGuiContratto {
     public void removeFattura(BeanGuiFattura s) {
         listFatture.remove(s);
     }
+
+    public ArrayList<BeanGuiFattura> getListFatture() {
+        return listFatture;
+    }
+
+    public void setListFatture(ArrayList<BeanGuiFattura> listFatture) {
+        this.listFatture = listFatture;
+    }
+    
 }
