@@ -32,34 +32,21 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
     public void inserimento(Contratto contratto) throws SQLException, DatiErratiEx {
 
         PreparedStatement stmt = null;
-        try {
-            String query = "INSERT INTO Contratto VALUES (?, ?, ?, ?, ?, ?, ? )" + "where idContratto=" + contratto.getIdContratto();
 
-            stmt = (PreparedStatement) conn.prepareStatement(query);
+        String query = "INSERT INTO Contratto VALUES (?, ?, ?, ?, ?, ?, ? )" + "where idContratto=" + contratto.getIdContratto();
 
-            stmt.setInt(2, contratto.getDurata());
-            stmt.setString(3, contratto.getStato());
-            stmt.setString(4, contratto.getTipo());
-            stmt.setInt(5, contratto.getExtraAzienda().getIdUtente());
-            stmt.setInt(6, contratto.getDipendente().getIdUtente());
-            java.sql.Date sqlDate = new java.sql.Date(new java.util.Date().getTime());
-            stmt.setDate(7, sqlDate);
-            stmt.setString(8, contratto.getNote());
+        stmt = (PreparedStatement) conn.prepareStatement(query);
 
-            stmt.execute();
+        stmt.setInt(2, contratto.getDurata());
+        stmt.setString(3, contratto.getStato());
+        stmt.setString(4, contratto.getTipo());
+        stmt.setInt(5, contratto.getExtraAzienda().getIdUtente());
+        stmt.setInt(6, contratto.getDipendente().getIdUtente());
+        java.sql.Date sqlDate = new java.sql.Date(new java.util.Date().getTime());
+        stmt.setDate(7, sqlDate);
+        stmt.setString(8, contratto.getNote());
 
-        } catch (SQLException se) {
-            System.out.println("Errore di inserimento del contratto");
-
-        } finally {
-            // Release the resources
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (conn != null) {
-                ConnectionPool.releaseConnection(conn);
-            }
-        }
+        stmt.execute();
     }
 
     /**
@@ -85,52 +72,29 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         Contratto contratto = null;
-        try {
-            String sql = "SELECT * FROM Contratto";
-            stmt = (PreparedStatement) conn.prepareStatement(sql);
 
-            // Execute the query
-            rs = stmt.executeQuery(sql);
+        String sql = "SELECT * FROM Contratto";
+        stmt = (PreparedStatement) conn.prepareStatement(sql);
 
-            // Define the resource list
-            while (rs.next()) {
-                GregorianCalendar date = new GregorianCalendar();
-                date.setTimeInMillis(rs.getDate(2).getTime());
+        // Execute the query
+        rs = stmt.executeQuery(sql);
 
-                contratto = new Contratto(rs.getString(1), date,
-                        rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getString(6));
+        // Define the resource list
+        while (rs.next()) {
+            GregorianCalendar date = new GregorianCalendar();
+            date.setTimeInMillis(rs.getDate(2).getTime());
 
-
-                lista.add(contratto);
-            }
-        } catch (SQLException se) {
-            System.out.println("SQL Exception:");
+            contratto = new Contratto(rs.getString(1), date,
+                    rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getString(6));
 
 
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (conn != null) {
-                ConnectionPool.releaseConnection(conn);
-            }
+            lista.add(contratto);
+
         }
         return lista;
 
     }
 
-    /**
-     * metodo che si occupa della modifica di una tupla di contratto
-     * @param contr
-     * @return contratto dopo la query di update
-     * @throws java.sql.SQLException
-     * @throws DatiErratiEx
-     *
-     */
     /**
      * ricerca il contratto con quell'identificativo
      * @param bean
@@ -143,48 +107,34 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
         ResultSet rs = null;
         Contratto contratto = null;
 
-        try {
-            String sql = "SELECT * FROM Contratto WHERE idContratto= ?";
-            stmt = (PreparedStatement) conn.prepareStatement(sql);
 
-            stmt.setInt(1, id);
-            rs = stmt.executeQuery();
+        String sql = "SELECT * FROM Contratto WHERE idContratto= ?";
+        stmt = (PreparedStatement) conn.prepareStatement(sql);
 
-            // Define the resource list
-            while (rs.next()) {
-                GregorianCalendar date = new GregorianCalendar();
-                date.setTimeInMillis(rs.getDate(7).getTime());
+        stmt.setInt(1, id);
+        rs = stmt.executeQuery();
 
-                contratto = new Contratto(rs.getString(4), date, rs.getInt(1),
-                        rs.getString(3), rs.getInt(2), rs.getString(8));
+        // Define the resource list
+        while (rs.next()) {
+            GregorianCalendar date = new GregorianCalendar();
+            date.setTimeInMillis(rs.getDate(7).getTime());
 
-                PreparedStatement stmt1;
-                String sql2 = "SELECT * FROM contratto,serviziassociati " +
-                        "WHERE contratto.idContratto=serviziassociati.contratto AND idContratto=?";
-                stmt1 = (PreparedStatement) conn.prepareStatement(sql2);
-                stmt1.setInt(1, contratto.getIdContratto());
-                ResultSet rs2 = stmt1.executeQuery();
-                while (rs2.next()) {
-                    /*Integer quantita, Double prezzoUnitario, String note*/
-                    ServizioAssociato sa = new ServizioAssociato(rs.getInt(2), rs.getDouble(3), rs.getString(4));
-                    contratto.addServizio(sa);
-                }
-            }
-        } catch (SQLException se) {
-            System.out.println("Errore nella visualizzazione dei dati del contratto");
+            contratto = new Contratto(rs.getString(4), date, rs.getInt(1),
+                    rs.getString(3), rs.getInt(2), rs.getString(8));
 
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (conn != null) {
-                ConnectionPool.releaseConnection(conn);
+            PreparedStatement stmt1;
+            String sql2 = "SELECT * FROM contratto,serviziassociati " +
+                    "WHERE contratto.idContratto=serviziassociati.contratto AND idContratto=?";
+            stmt1 = (PreparedStatement) conn.prepareStatement(sql2);
+            stmt1.setInt(1, contratto.getIdContratto());
+            ResultSet rs2 = stmt1.executeQuery();
+            while (rs2.next()) {
+                /*Integer quantita, Double prezzoUnitario, String note*/
+                ServizioAssociato sa = new ServizioAssociato(rs.getInt(2), rs.getDouble(3), rs.getString(4));
+                contratto.addServizio(sa);
             }
         }
+
         return contratto;
     }
 
@@ -200,40 +150,25 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
-        try {
-            String sql = "SELECT * FROM contratto, serviziAssociati, servizio " +
-                    "WHERE contratto.idContratto=serviziAssociati.contratto AND" +
-                    " serviziAssociati.servizio=servizio.idServizio AND idContratto= ?";
-            // Create a statement
-            stmt = (PreparedStatement) conn.prepareStatement(sql);
-            stmt.setInt(1, id);
-            // Execute the query
-            rs = stmt.executeQuery(sql);
 
-            while (rs.next()) {
+        String sql = "SELECT * FROM contratto, serviziAssociati, servizio " +
+                "WHERE contratto.idContratto=serviziAssociati.contratto AND" +
+                " serviziAssociati.servizio=servizio.idServizio AND idContratto= ?";
+        // Create a statement
+        stmt = (PreparedStatement) conn.prepareStatement(sql);
+        stmt.setInt(1, id);
+        // Execute the query
+        rs = stmt.executeQuery(sql);
 
-                Servizio servizio = new Servizio(rs.getInt(1), rs.getString(2), rs.getBoolean(2),
-                        rs.getInt(3), rs.getString(4), rs.getDouble(5),
-                        rs.getInt(6), rs.getString(8));
+        while (rs.next()) {
 
-                list.add(servizio);
-            }
-        } catch (SQLException se) {
-            System.out.println("SQL Exception:");
+            Servizio servizio = new Servizio(rs.getInt(1), rs.getString(2), rs.getBoolean(2),
+                    rs.getInt(3), rs.getString(4), rs.getDouble(5),
+                    rs.getInt(6), rs.getString(8));
 
-
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (conn != null) {
-                ConnectionPool.releaseConnection(conn);
-            }
+            list.add(servizio);
         }
+
         return list;
     }
 
