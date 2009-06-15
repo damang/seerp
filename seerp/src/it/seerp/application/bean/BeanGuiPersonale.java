@@ -55,7 +55,7 @@ public class BeanGuiPersonale extends BeanGuiUtente {
         return ruolo;
     }
 
-    public void setListRuoli(JTextField ruolo) {
+    public void setRuolo(JTextField ruolo) {
         this.ruolo = ruolo;
     }
 
