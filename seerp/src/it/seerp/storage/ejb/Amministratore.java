@@ -8,12 +8,10 @@ import java.util.ArrayList;
  */
 public class Amministratore extends Personale {
 
-    private Integer idAmministratore;
     private Azienda azienda;
 
-    public Amministratore(Integer idUtente, String username, String password, String città, String provincia, String telefono, String cap, String email, String note, String ruolo, Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo, Boolean v, Integer idAmministratore) {
-        super(idUtente, username, password, città, provincia, telefono, cap, email, note, ruolo, idPersonale, cognome, nome, codiceFiscale, tipo, v);
-        this.idAmministratore = idAmministratore;
+    public Amministratore(Integer idUtente, String username, String password, String città, String provincia, String telefono, String cap, String email, String note, String tipo, Integer idPersonale, String cognome, String nome, String codiceFiscale, Ruolo ruolo, Boolean v) {
+        super(idUtente, username, password, città, provincia, telefono, cap, email, note, tipo, cognome, nome, codiceFiscale, v, ruolo);
     }
 
     /**
@@ -51,21 +49,5 @@ public class Amministratore extends Personale {
      */
     public void setAzienda(Azienda azienda) {
         this.azienda = azienda;
-    }
-
-    /**
-     * restituisce il codice identificativo dell'Amministratore
-     * @return il codice identificativo di un amministratore
-     */
-    public Integer getIdAmministratore() {
-        return idAmministratore;
-    }
-
-    /**
-     * setta il codice identificativo dell'Amministatore
-     * @param idAmministratore di un amministratore
-     */
-    public void setIdAmministratore(Integer idAmministratore) {
-        this.idAmministratore = idAmministratore;
     }
 }

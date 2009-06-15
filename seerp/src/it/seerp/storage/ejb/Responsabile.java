@@ -13,31 +13,8 @@ import java.util.ArrayList;
  */
 public class Responsabile extends Personale {
 
-    public Responsabile(Integer idUtente, String username, String password, String città, String provincia, String telefono, String cap, String email, String note, String ruolo, Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo, Boolean v, Integer idResponsabile) {
-        super(idUtente, username, password, città, provincia, telefono, cap, email, note, ruolo, idPersonale, cognome, nome, codiceFiscale, tipo, v);
-        this.idResponsabile = idResponsabile;
-    }
-
-   
-
-  
-
-   private Integer idResponsabile;
-
-    /**
-     * restituisce l'idetificatore del Responsabile
-     * @return un intero che rappresenta l'id del Responsabile
-     */
-    public Integer getIdResponsabile() {
-        return idResponsabile;
-    }
-
-    /**
-     * setta il codice identificativo del Responsabile
-     * @param idResponsabile di tipo int
-     */
-    public void setIdResponsabile(Integer idResponsabile) {
-        this.idResponsabile = idResponsabile;
+    public Responsabile(Integer idUtente, String username, String password, String città, String provincia, String telefono, String cap, String email, String note, String tipo, String cognome, String nome, String codiceFiscale, Ruolo ruolo, Boolean v) {
+       super(idUtente, username, password, città, provincia, telefono, cap, email, note, tipo, cognome, nome, codiceFiscale, v, ruolo);
     }
 
 }

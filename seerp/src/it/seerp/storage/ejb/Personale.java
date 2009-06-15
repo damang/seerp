@@ -8,12 +8,11 @@ import java.util.ArrayList;
  */
 public class Personale extends Utente {
 
-    private Integer idPersonale;
     private String cognome;
     private String nome;
     private String codiceFiscale;
     private String tipo;
-    private ArrayList<Ruolo> listRuoli;
+    private Ruolo ruolo;
 
 
     /**
@@ -27,37 +26,34 @@ public class Personale extends Utente {
      * @param email
      * @param note
      * @param ruolo
-     * @param idPersonale
      * @param cognome
      * @param nome
      * @param codiceFiscale
      * @param tipo
      * @param v
      */
-    public Personale(Integer idUtente, String username, String password, String città, String provincia, String telefono,String cap, String email, String note, String ruolo, Integer idPersonale, String cognome, String nome, String codiceFiscale, String tipo, Boolean v) {
-        super(idUtente, username, password, città, provincia, telefono,cap,email, note, ruolo, v );
-        this.idPersonale = idPersonale;
+    public Personale(Integer idUtente, String username, String password, String città, String provincia, String telefono,String cap, String email, String note, String tipo, String cognome, String nome, String codiceFiscale, Boolean v, Ruolo ruolo) {
+        super(idUtente, username, password, città, provincia, telefono,cap,email, note, tipo, v );
         this.cognome = cognome;
         this.nome = nome;
         this.codiceFiscale = codiceFiscale;
-        this.tipo = tipo;
-        this.listRuoli = new ArrayList<Ruolo>();
+        this.ruolo = ruolo;
     }
 
     /**
      * metodo che permette di restituire la liste dei ruoli del personale
      * @return la lista dei ruoli
      */
-    public ArrayList<Ruolo> getListaRuoli() {
-        return listRuoli;
+    public Ruolo getRuolo() {
+        return ruolo;
     }
 
     /**
      * metodo che permette di settare la liste dei ruoli del personale
      * @param listRuoli rappresenta la lista dei ruoli
      */
-    public void setListRuoli(ArrayList<Ruolo> listRuoli) {
-        this.listRuoli = listRuoli;
+    public void setRuolo(Ruolo ruolo) {
+        this.ruolo = ruolo;
     }
 
     /**
@@ -123,35 +119,4 @@ public class Personale extends Utente {
     public String getTipo() {
         return tipo;
     }
-
-    /**
-     * setta il codice identificativo del personale
-     * @param idPersonale di tipo intero
-     */
-    public void setIdPersonale(Integer idPersonale) {
-        this.idPersonale = idPersonale;
-    }
-
-     /**
-      * restituisce il codice identificativo del personale
-      * @return un intero che rappresenta l'identificativo
-      */
-     public Integer getIdPersonale() {
-        return idPersonale;
-    }
-
-     /**
-      * metodo che permette di rimuovere un ruolo dalla lista dei ruoli di un personale
-      * @param c rappresenta il ruolo da rimuovere
-      */
-     public void removeRuolo(Ruolo c){
-     listRuoli.remove(c);}
-
-     /**
-      * metodo che permette di aggiungere un ruolo alla lista dei ruoli di un personale
-      * @param c rappresenta il ruolo da inserire
-      */
-     public void addRuolo(Ruolo c){
-     listRuoli.add(c);}
-     
 }

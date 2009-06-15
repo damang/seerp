@@ -14,7 +14,7 @@ public class Utente {
     private String telefono;
     private String email;
     private String note;
-    private String ruolo;
+    private String tipo;
     private Boolean visible;
     /**
      *
@@ -38,7 +38,7 @@ public class Utente {
      * @param telefono
      * @param cap
      * @param email
-     * @param ruolo
+     * @param tipo
      * @param note
      * @param v
      */
@@ -52,7 +52,7 @@ public class Utente {
         this.cap= cap;
         this.email = email;
         this.note = note;
-        this.ruolo = ruolo;
+        this.tipo = ruolo;
         this.visible = v;
     }
 
@@ -77,8 +77,8 @@ public class Utente {
      * metodo che restituisce la visibilita dell utente
      * @return la visibilita dell'utente
      */
-    public String getRuolo() {
-        return ruolo;
+    public String getTipo() {
+        return tipo;
     }
 
     /**
@@ -173,8 +173,8 @@ public class Utente {
      * setta il ruolo dell'utente
      * @param ruolo di tipo stringa
      */
-    public void setRuolo(String ruolo) {
-        this.ruolo = ruolo;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     /**

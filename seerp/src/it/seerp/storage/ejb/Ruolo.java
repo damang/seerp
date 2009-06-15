@@ -1,5 +1,7 @@
 package it.seerp.storage.ejb;
 
+import it.seerp.jaas.AccessPermission;
+import it.seerp.jaas.AuthPermissionCollection;
 import java.util.ArrayList;
 
 /**
@@ -7,9 +9,9 @@ import java.util.ArrayList;
  * @author Luisa-Matteo
  */
 public class Ruolo {
-     private ArrayList<Incarico> listIncarico;
+     private AuthPermissionCollection listPermesso;
      private String nome;
-     private Personale personale;
+     private ArrayList<Personale> listPersonale;
 
      /**
       * costruttore per la classe Ruolo
@@ -17,9 +19,9 @@ public class Ruolo {
       * @param nome
       */
      public Ruolo(String nome) {
-        this.listIncarico = new ArrayList<Incarico>();
+        this.listPermesso= new AuthPermissionCollection();
         this.nome = nome;
-        
+        this.listPersonale= new ArrayList<Personale>();
     }
 
      /**
@@ -27,8 +29,8 @@ public class Ruolo {
       * associato al ruolo
       * @return le informazioni del personale
       */
-     public Personale getPersonale() {
-        return personale;
+     public ArrayList<Personale> getPersonale() {
+        return listPersonale;
     }
 
     /**
@@ -36,8 +38,8 @@ public class Ruolo {
      * associato al ruolo
      * @param personale rappresenta le informazioni del personale
      */
-    public void setPersonale(Personale personale) {
-        this.personale = personale;
+    public void setPersonale(ArrayList<Personale> personale) {
+        this.listPersonale = personale;
     }
 
    
@@ -46,16 +48,16 @@ public class Ruolo {
      * metodo che permette di restituire la lista degli incarichi di un ruolo
      * @return la lista degli incarichi
      */
-    public ArrayList<Incarico> getListIncarico() {
-        return listIncarico;
+    public AuthPermissionCollection getListPermesso() {
+        return listPermesso;
     }
 
     /**
      * metodo che permette di settare la lista degli incarichi di un ruolo
      * @param listIncarico rappresenta la lista degli incarichi
      */
-    public void setListIncarico(ArrayList<Incarico> listIncarico) {
-        this.listIncarico = listIncarico;
+    public void setListPermesso(AuthPermissionCollection listPermesso) {
+        this.listPermesso = listPermesso;
     }
  
     /**
@@ -78,16 +80,16 @@ public class Ruolo {
      * metodo che permette di rimuovere un incarico dalla lista degli incarichi
      * @param c rappresenta l'incarico da eliminare
      */
-    public void removeIncarico(Incarico c){
-     listIncarico.remove(c);
+    public void removePermesso(AccessPermission c){
+     listPermesso.remove(c);
     }
 
     /**
      * metodo che permette di aggiungere un incarico alla lista degli incarichi
      * @param c rappresenta l'incarico da inserire
      */
-    public void addIncarico(Incarico c){
-      listIncarico.add(c);
+    public void addPermesso(AccessPermission c){
+      listPermesso.add(c);
     }
 
 }
