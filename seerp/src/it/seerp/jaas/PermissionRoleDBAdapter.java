@@ -16,6 +16,7 @@
 
 package it.seerp.jaas;
 
+import it.seerp.storage.db.ConnectionPool;
 import java.security.CodeSource;
 import java.security.PermissionCollection;
 import java.security.Principal;
@@ -26,14 +27,14 @@ import java.util.Iterator;
 
 
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
 public class PermissionRoleDBAdapter implements PermissionAdapter
 {
-    private final String SQL="SELECT task, action FROM permesso p, incarico i, ruolo r WHERE idPermesso=i.permesso and i.ruolo=r.nome and r.nome=?";
-
-	private Hashtable _htConnProp;
+  //  private Hashtable _htConnProp;
 	private Connection _connection;
 	//private Hashtable _htPermissions;
 
@@ -50,9 +51,9 @@ public class PermissionRoleDBAdapter implements PermissionAdapter
 	 */
 	public void initialize(Hashtable initParams)
 	{
-		if (Debug.DEBUG)
-			Debug.trace("PermissionRoleDBAdapter::initialize");
-		_htConnProp = initParams;
+	//	if (Debug.DEBUG)
+	//		Debug.trace("PermissionRoleDBAdapter::initialize");
+	//	_htConnProp = initParams;
 		//_htPermissions = getAllPermissions ();
 
 	}
@@ -74,11 +75,14 @@ public class PermissionRoleDBAdapter implements PermissionAdapter
 		Principal[] principals = domain.getPrincipals();
 		
 		String role = principals[1].getName();
-        AuthPermissionCollection list = getPermissionsUt(role);
-			
-		//}
+        AuthPermissionCollection list=null;
+        
+            list = getPermissionsUt(role);
 
-		return list;
+       
+		//}
+        return list;
+		
 	}
 
 
@@ -89,7 +93,10 @@ public class PermissionRoleDBAdapter implements PermissionAdapter
 		Principal[] principals, CodeSource codeSource)
 	{
 		String role = principals[1].getName();
-        AuthPermissionCollection list = getPermissionsUt(role);
+        AuthPermissionCollection list=null;
+      
+            list = getPermissionsUt(role);
+       
         return list;
 	}
 
@@ -102,55 +109,19 @@ public class PermissionRoleDBAdapter implements PermissionAdapter
 		try
 		{
 			if (_connection != null && !_connection.isClosed())
-				_connection.close ();
+				ConnectionPool.releaseConnection(_connection);
 			_connection = null;
+
 		}
 		catch (SQLException sqe)
 		{
+            sqe.printStackTrace();
 		}
 
 	}
 
 
-	//////////////////////////////////////////////
-	private Connection getConnection ()
-	{
-		if (_htConnProp == null)
-			return null;
-
-		String driver = (String)_htConnProp.get ("driver");
-		String url = (String)_htConnProp.get ("url");
-		String user = (String)_htConnProp.get ("username");
-		String password = (String)_htConnProp.get("password");
-		Connection connection = null;
-       
-		// load the driver, if it is not loaded
-		try
-		{
-			Class.forName(driver);
-		}
-		catch (ClassNotFoundException e)
-		{
-			e.printStackTrace();
-		}
-
-		// Get the connection to the database
-		try
-		{
-			connection =
-				DriverManager.getConnection(url, user, password);
-
-		}
-		catch (SQLException e)
-		{
-			e.printStackTrace();
-		}
-
-		return connection;
-	}
-
-
-	/*private boolean isTitleTo (String name, Principal[] principals)
+		/*private boolean isTitleTo (String name, Principal[] principals)
 	{
 		if (principals == null || principals.length == 0)
 			return true;
@@ -166,12 +137,18 @@ public class PermissionRoleDBAdapter implements PermissionAdapter
 	}
 */
 
-	protected AuthPermissionCollection getPermissionsUt(String role) {
+	public static AuthPermissionCollection getPermissionsUt(String role) {
 		if (Debug.DEBUG)
 			Debug.trace("PermissionRoleDBAdapter::getAllPermissions");
-		AuthPermissionCollection perms = new AuthPermissionCollection();
+		String SQL="SELECT task, action FROM permesso p, incarico i, ruolo r WHERE idPermesso=i.permesso and i.ruolo=r.nome and r.nome=?";
+        AuthPermissionCollection perms = new AuthPermissionCollection();
 
-		Connection conn = getConnection ();
+		Connection conn=null;
+        try {
+            conn = ConnectionPool.getConnection();
+        } catch (SQLException ex) {
+           ex.printStackTrace();
+        }
 		if (conn == null)
 		{
 			System.out.println("No connection");
@@ -193,18 +170,11 @@ public class PermissionRoleDBAdapter implements PermissionAdapter
 			{
 				while (rs.next())
 				{
-					//String name = rs.getString ("name");
+				
 					String task = rs.getString ("task");
 					String action = rs.getString ("action");
-					
 					perms.add(new AccessPermission(task, action));
-					/*ArrayList ar = (ArrayList)perms.get(name);
-					if (ar == null)
-					{
-						ar = new ArrayList ();
-						perms.put(name, ar);
-					}			
-					ar.add (perm);*/
+					
 				}
 			}
 

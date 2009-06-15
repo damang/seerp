@@ -76,7 +76,7 @@ public class PermissionAdapterFactory
 			{
 				Class c = Class.forName(cName);
 				adapter = (PermissionAdapter)c.newInstance();
-				adapter.initialize (cfg.getAuthznInitParam());
+				//adapter.initialize (cfg.getAuthznInitParam());
 			}
 			catch (ClassNotFoundException cfe)
 			{

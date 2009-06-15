@@ -23,7 +23,7 @@ import javax.security.auth.login.LoginException;
 
 public class LoginDBSourceAdapter implements LoginSourceAdapter
 {
-	private Hashtable _htConnProp;
+//	private Hashtable _htConnProp;
 	private Connection _connection;
 	private String _group;
     boolean bOK = false;
@@ -34,7 +34,7 @@ public class LoginDBSourceAdapter implements LoginSourceAdapter
 
 	public void initialize (Hashtable htProperty)
 	{
-		_htConnProp = htProperty;
+		//_htConnProp = htProperty;
 	}
 
 	public boolean authenticate (String userID, char[] password)
@@ -113,6 +113,17 @@ public class LoginDBSourceAdapter implements LoginSourceAdapter
 
 	public void terminate ()
 	{
+        try
+		{
+			if (_connection != null && !_connection.isClosed())
+				ConnectionPool.releaseConnection(_connection);
+			_connection = null;
+
+		}
+		catch (SQLException sqe)
+		{
+            sqe.printStackTrace();
+		}
 	}
 
 	//////////////////////////////////////////////
