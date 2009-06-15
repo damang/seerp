@@ -14,6 +14,10 @@ import java.util.ArrayList;
 public class Fornitore extends ExtraAzienda {
       private Integer idFornitore;
 
+    public Fornitore() {
+        
+    }
+
     public Fornitore(Integer idUtente, String username, String password, String città, String ruol, String provincia, String telefono, String cap, String email, String ruolo, String note, Boolean v, String cognome, String nome, String ragioneSociale, String pIva, String fax) {
         super(idUtente, username, password, città, ruol, provincia, telefono, cap, email, ruolo, note, v, cognome, nome, ragioneSociale, pIva, fax);
         this.idFornitore = idFornitore;
