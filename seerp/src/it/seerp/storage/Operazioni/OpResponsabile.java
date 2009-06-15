@@ -1,5 +1,6 @@
 package it.seerp.storage.Operazioni;
 
+import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
 import java.sql.SQLException;
@@ -9,7 +10,7 @@ import it.seerp.storage.Exception.DatiErratiEx;
 import it.seerp.storage.ejb.Ruolo;
 import it.seerp.storage.db.ConnectionPool;
 import it.seerp.storage.ejb.Responsabile;
-import java.sql.Connection;
+
 
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -28,7 +29,7 @@ public class OpResponsabile extends OpeUtente {
      */
     public OpResponsabile() throws SQLException {
         super();
-        con = ConnectionPool.getConnection();
+        con = (Connection) ConnectionPool.getConnection();
     }
 
     /** Metodo che permette la visualizzazione
