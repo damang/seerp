@@ -24,18 +24,35 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jXPanel1" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jXLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jXPanel1" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jXLabel4" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="169" max="32767" attributes="0"/>
+                      <Component id="buttonSalva1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="buttonAnnulla1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="247" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="jXLabel4" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="jXLabel4" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="buttonAnnulla1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="buttonSalva1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jXPanel1" pref="543" max="32767" attributes="2"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -146,9 +163,9 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="tipo">
               <Properties>
-                <Property name="opaque" type="boolean" value="false"/>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
                 <Property name="name" type="java.lang.String" value="tipo" noResource="true"/>
+                <Property name="opaque" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tipoActionPerformed"/>
@@ -188,9 +205,9 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="tipo1">
               <Properties>
-                <Property name="opaque" type="boolean" value="false"/>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
                 <Property name="name" type="java.lang.String" value="tipo1" noResource="true"/>
+                <Property name="opaque" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tipo1ActionPerformed"/>
@@ -230,9 +247,9 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="tipo4">
               <Properties>
-                <Property name="opaque" type="boolean" value="false"/>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
                 <Property name="name" type="java.lang.String" value="tipo4" noResource="true"/>
+                <Property name="opaque" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tipo4ActionPerformed"/>
@@ -272,9 +289,9 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="tipo5">
               <Properties>
-                <Property name="opaque" type="boolean" value="false"/>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
                 <Property name="name" type="java.lang.String" value="tipo5" noResource="true"/>
+                <Property name="opaque" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tipo5ActionPerformed"/>
@@ -314,9 +331,9 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="tipo6">
               <Properties>
-                <Property name="opaque" type="boolean" value="false"/>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
                 <Property name="name" type="java.lang.String" value="tipo6" noResource="true"/>
+                <Property name="opaque" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tipo6ActionPerformed"/>
@@ -356,9 +373,9 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="tipo7">
               <Properties>
-                <Property name="opaque" type="boolean" value="false"/>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
                 <Property name="name" type="java.lang.String" value="tipo7" noResource="true"/>
+                <Property name="opaque" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tipo7ActionPerformed"/>
@@ -368,5 +385,15 @@
         </Container>
       </SubComponents>
     </Container>
+    <Component class="it.seerp.Gui.BottoniGenerici.ButtonAnnulla" name="buttonAnnulla1">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="buttonAnnulla1" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="it.seerp.Gui.BottoniGenerici.ButtonSalva" name="buttonSalva1">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="buttonSalva1" noResource="true"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>
