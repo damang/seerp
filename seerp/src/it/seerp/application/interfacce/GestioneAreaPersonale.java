@@ -7,8 +7,8 @@ import it.seerp.application.Exception.DatiErrati;
  *
  * @author matteo - Tommaso Cattolico
  */
-public interface GestioneAreaPersonale <U extends BeanGuiUtente>
-{
+public interface GestioneAreaPersonale<U extends BeanGuiUtente> {
+
     public U visualizzaDati(U utente);
 
     public U modificaPassword(U utente) throws DatiErrati;
