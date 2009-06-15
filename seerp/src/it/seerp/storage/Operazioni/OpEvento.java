@@ -21,7 +21,7 @@ import java.util.GregorianCalendar;
  *
  * @author Ila
  */
-public class OpEvento implements OpeEntity<Evento> {
+public class OpEvento implements OpeEntity<Evento, Integer> {
 
     private Connection conn;
 
@@ -143,7 +143,7 @@ public class OpEvento implements OpeEntity<Evento> {
      * @param nome è il nome dell'evento da visualizzare
      * @throws SQLException
      */
-    public Evento visualizza(Evento eve) throws SQLException {
+    public Evento visualizza(Integer id) throws SQLException {
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -155,7 +155,7 @@ public class OpEvento implements OpeEntity<Evento> {
                     "where Evento.idAgenda=Agenda.idAgenda and idAgenda=?";
 
             stmt = (PreparedStatement) conn.prepareStatement(query);
-            stmt.setInt(1, eve.getIdEvento());
+            stmt.setInt(1, id);
             // Execute the query
             rs = stmt.executeQuery(query);
 
