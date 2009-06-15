@@ -28,7 +28,7 @@ public class OpAzienda {
         stmt = (PreparedStatement) conn.prepareStatement(query);
 
         stmt.setInt(1, az.getIdAzienda());
-        stmt.setString(2, az.getCittà());
+        stmt.setString(2, az.getCitta());
         stmt.setString(3, az.getEmail());
         stmt.setString(4, az.getFax());
         stmt.setString(5, az.getIndirizzo());
@@ -49,7 +49,7 @@ public class OpAzienda {
         stmt = (PreparedStatement) conn.prepareStatement("UPDATE Azienda SET (?, ?, ?, ?, ?, ?,?,?,?)");
 
         stmt.setInt(1, az.getIdAzienda());
-        stmt.setString(2, az.getCittà());
+        stmt.setString(2, az.getCitta());
         stmt.setString(3, az.getEmail());
         stmt.setString(4, az.getFax());
         stmt.setString(5, az.getIndirizzo());
