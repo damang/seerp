@@ -53,10 +53,10 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
     public void legameBean() {
         azienda.setEmail(mail);
         azienda.setPIVA(piva);
-        azienda.setCitta(citta);
         azienda.setInidirizzo(via);
         azienda.setRagioneSociale(nm);
         azienda.setNote(naz);
+        azienda.setCitta(citta);
     }
 
     /** Creates new form NewJPanel */
