@@ -479,7 +479,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="it.seerp.bottoni.Nuovo.AreaPersonaleButton" name="areaPersonaleButton1">
+                <Component class="null" name="areaPersonaleButton1">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/it/seerp/icone/32x32/HP-Control-32x32.png"/>
@@ -493,7 +493,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="areaPersonaleButton1ActionPerformed"/>
                   </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.AreaPersonaleButton(this.jTabbedPanePrincipale, this.menuAreaPersonale2, this)"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new null(this.jTabbedPanePrincipale, this.menuAreaPersonale2, this)"/>
                   </AuxValues>
                 </Component>
                 <Component class="it.seerp.bottoni.Nuovo.ButtonRuoli" name="buttonRuoli1">

@@ -3,38 +3,39 @@
  * and open the template in the editor.
  */
 
-package it.seerp.bottoni.Nuovo;
+package it.seerp.Gui.bottoni.gestioni;
 
 import it.seerp.configurazioni.pattern.command.CommandInterface;
+import it.seerp.configurazioni.Gui.ConfigurazioneUtente.TIPO_UTENTE_CONST;
+import it.seerp.Gui.Gestione.Utenti.AreaUtentePanel;
 import it.seerp.Gui.Gestione.Ruoli.GestioneRuoli;
-import it.seerp.Gui.Home.Index;
-import it.seerp.Gui.InfoAzienda.InfoAzienda;
-import it.seerp.Gui.Menu.MenuInfoAzienda;
 import it.seerp.Gui.Menu.MenuRuoli;
+import it.seerp.Gui.Menu.MenuUtente;
 import it.seerp.Gui.command.ObserverButton;
+import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 
+
 /**
  *
- * @author Andrea
+ * @author peppe
  */
-public class ButtonInfoAzienda  extends ObserverButton implements CommandInterface{
+public class ButtonRuoli extends ObserverButton implements CommandInterface{
 
     protected JTabbedPane tabbedPane;
-    private MenuInfoAzienda menu;
-    InfoAzienda panel;
+    private MenuRuoli menu;
+    GestioneRuoli panel;
     String s = "";
-
 
     /**
      *
      * @param gruppoFinestreUpdate
      * @param aThis
      */
-    public ButtonInfoAzienda(JTabbedPane pan, MenuInfoAzienda menu, ActionListener act) throws SQLException {
+    public ButtonRuoli(JTabbedPane pan, MenuRuoli menu, ActionListener act) throws SQLException {
         this.tabbedPane = pan;
         this.menu = menu;
         //this.panel = new AreaUtentePanel(TIPO_UTENTE_CONST.CLIENTE);
@@ -45,7 +46,7 @@ public class ButtonInfoAzienda  extends ObserverButton implements CommandInterfa
 
     }
 
-    public ButtonInfoAzienda() {
+    public ButtonRuoli() {
         super();
     }
 
@@ -53,7 +54,7 @@ public class ButtonInfoAzienda  extends ObserverButton implements CommandInterfa
 
         if (!isPresente) {
             try {
-                this.setAreaInfo();
+                this.setAreaRuolo();
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "problemi di comunicazione col DBMS");
             }
@@ -76,9 +77,9 @@ public class ButtonInfoAzienda  extends ObserverButton implements CommandInterfa
         }
     }
 
-    private void setAreaInfo() throws SQLException {
+    private void setAreaRuolo() throws SQLException {
 
-              this.panel = new InfoAzienda();
+              this.panel = new GestioneRuoli();
               panel.register(this);
 
 

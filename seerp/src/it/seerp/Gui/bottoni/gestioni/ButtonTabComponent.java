@@ -2,7 +2,7 @@
  * and open the template in the editor.
  */
 
-package it.seerp.bottoni.Nuovo;
+package it.seerp.Gui.bottoni.gestioni;
 
 import it.seerp.Gui.frame.ObservableJPanel;
 import javax.swing.*;
