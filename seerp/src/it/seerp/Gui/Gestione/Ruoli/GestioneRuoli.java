@@ -106,7 +106,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jXTable1 = new org.jdesktop.swingx.JXTable();
-        jXSearchPanel1 = new org.jdesktop.swingx.JXSearchPanel();
+        jXFindBar3 = new org.jdesktop.swingx.JXFindBar();
 
         setBackground(new java.awt.Color(0, 204, 0));
 
@@ -594,7 +594,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         });
         jScrollPane2.setViewportView(jXTable1);
 
-        jXSearchPanel1.setName("jXSearchPanel1"); // NOI18N
+        jXFindBar3.setName("jXFindBar3"); // NOI18N
 
         javax.swing.GroupLayout jXPanel1Layout = new javax.swing.GroupLayout(jXPanel1);
         jXPanel1.setLayout(jXPanel1Layout);
@@ -602,14 +602,10 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
             jXPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jXPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jXPanel1Layout.createSequentialGroup()
-                .addComponent(jXSearchPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                .addGap(93, 93, 93))
-            .addGroup(jXPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jXPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jXFindBar3, javax.swing.GroupLayout.Alignment.LEADING, 0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
         jXPanel1Layout.setVerticalGroup(
@@ -620,8 +616,8 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
                 .addGap(11, 11, 11)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jXSearchPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(308, 308, 308))
+                .addComponent(jXFindBar3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(258, 258, 258))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -631,12 +627,12 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jXPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jXPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 882, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jXLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                        .addComponent(jXLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
                         .addGap(894, 894, 894)))
                 .addContainerGap())
         );
@@ -715,9 +711,11 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextField jTextField1;
+    private org.jdesktop.swingx.JXFindBar jXFindBar1;
+    private org.jdesktop.swingx.JXFindBar jXFindBar2;
+    private org.jdesktop.swingx.JXFindBar jXFindBar3;
     private org.jdesktop.swingx.JXLabel jXLabel2;
     private org.jdesktop.swingx.JXPanel jXPanel1;
-    private org.jdesktop.swingx.JXSearchPanel jXSearchPanel1;
     private org.jdesktop.swingx.JXTable jXTable1;
     // End of variables declaration//GEN-END:variables
 
