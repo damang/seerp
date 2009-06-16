@@ -160,7 +160,7 @@
                   <Component id="menuAreaPersonale2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="menuInfoAzienda1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="746" max="32767" attributes="0"/>
+                  <EmptySpace pref="747" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -521,6 +521,10 @@
                               <Component id="buttonInfoAzienda1" alignment="0" pref="162" max="32767" attributes="1"/>
                               <Component id="areaPersonaleButton1" alignment="0" min="-2" pref="154" max="-2" attributes="1"/>
                               <Component id="buttonRuoli1" alignment="0" min="-2" pref="156" max="-2" attributes="1"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="buttonAgenda1" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -535,6 +539,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="areaPersonaleButton1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
+                          <Component id="buttonAgenda1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -586,6 +591,15 @@
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.ButtonInfoAzienda(this.jTabbedPanePrincipale, this.menuInfoAzienda1, this)"/>
+                  </AuxValues>
+                </Component>
+                <Component class="it.seerp.bottoni.Nuovo.ButtonAgenda" name="buttonAgenda1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="buttonAgenda1"/>
+                    <Property name="name" type="java.lang.String" value="buttonAgenda1" noResource="true"/>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.bottoni.Nuovo.ButtonAgenda(this.jTabbedPanePrincipale, this.menuRuoli1, this)"/>
                   </AuxValues>
                 </Component>
               </SubComponents>

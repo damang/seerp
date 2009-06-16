@@ -51,6 +51,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
       //  GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
        // setSize(ge.getMaximumWindowBounds().width,ge.getMaximumWindowBounds().height);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.pack();
     }
 
     /** This method is called from within the constructor to
@@ -89,6 +90,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             areaPersonaleButton1 = new it.seerp.bottoni.Nuovo.AreaPersonaleButton(this.jTabbedPanePrincipale, this.menuAreaPersonale2, this);
             buttonRuoli1 = new it.seerp.bottoni.Nuovo.ButtonRuoli(this.jTabbedPanePrincipale, this.menuRuoli1, this);
             buttonInfoAzienda1 = new it.seerp.bottoni.Nuovo.ButtonInfoAzienda(this.jTabbedPanePrincipale, this.menuInfoAzienda1, this);
+            buttonAgenda1 = new it.seerp.bottoni.Nuovo.ButtonAgenda(this.jTabbedPanePrincipale, this.menuRuoli1, this);
             menuBar = new javax.swing.JMenuBar();
             fileMenu = new javax.swing.JMenu();
             openMenuItem = new javax.swing.JMenuItem();
@@ -144,7 +146,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                     .addComponent(menuAreaPersonale2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(menuInfoAzienda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(746, Short.MAX_VALUE))
+                    .addContainerGap(747, Short.MAX_VALUE))
             );
             menuLayout.setVerticalGroup(
                 menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,7 +170,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
 
             jXPanel1.setName("jXPanel1"); // NOI18N
 
-            jXLabel1.setText("Benvenuto " + ut_sub.getPrincipals().iterator().next().getName());
+            jXLabel1.setText("mes di benvenuto");
             jXLabel1.setName("jXLabel1"); // NOI18N
 
             javax.swing.GroupLayout jXPanel1Layout = new javax.swing.GroupLayout(jXPanel1);
@@ -387,6 +389,9 @@ public class Index extends javax.swing.JFrame implements ActionListener {
         buttonInfoAzienda1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         buttonInfoAzienda1.setName("buttonInfoAzienda1"); // NOI18N
 
+        buttonAgenda1.setText("buttonAgenda1");
+        buttonAgenda1.setName("buttonAgenda1"); // NOI18N
+
         javax.swing.GroupLayout jXPanel3Layout = new javax.swing.GroupLayout(jXPanel3);
         jXPanel3.setLayout(jXPanel3Layout);
         jXPanel3Layout.setHorizontalGroup(
@@ -395,7 +400,10 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                 .addGroup(jXPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buttonInfoAzienda1, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
                     .addComponent(areaPersonaleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonRuoli1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonRuoli1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jXPanel3Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(buttonAgenda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jXPanel3Layout.setVerticalGroup(
@@ -406,7 +414,8 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                 .addComponent(buttonInfoAzienda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(areaPersonaleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonAgenda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jXTaskPane3.getContentPane().add(jXPanel3);
@@ -482,7 +491,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, 943, Short.MAX_VALUE)
         );
 
         pack();
@@ -621,6 +630,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
     private it.seerp.bottoni.Nuovo.AreaUtenteButton areaUtenteButton2;
     private it.seerp.bottoni.Nuovo.AreaUtenteButton areaUtenteButton3;
     private it.seerp.bottoni.Nuovo.AreaUtenteButton areaUtenteButton4;
+    private it.seerp.bottoni.Nuovo.ButtonAgenda buttonAgenda1;
     private it.seerp.bottoni.Nuovo.ButtonContratti buttonContratti1;
     private it.seerp.bottoni.Nuovo.ButtonInfoAzienda buttonInfoAzienda1;
     private it.seerp.bottoni.Nuovo.ButtonRuoli buttonRuoli1;

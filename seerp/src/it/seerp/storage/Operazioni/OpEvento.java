@@ -168,10 +168,10 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
 
             while (rs.next()) {
                 GregorianCalendar date = new GregorianCalendar();
-                date.setTimeInMillis(rs.getDate(5).getTime());
+                date.setTimeInMillis(rs.getDate("data").getTime());
 
                 GregorianCalendar time = new GregorianCalendar();
-                time.setTimeInMillis(rs.getTime(6).getTime());
+                time.setTimeInMillis(rs.getTime("ora").getTime());
 
                 Evento ev = new Evento(rs.getString(1), rs.getString(2), rs.getString(3),
                         rs.getString(4), date, time, rs.getInt(7),
