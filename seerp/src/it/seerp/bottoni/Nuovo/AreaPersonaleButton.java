@@ -56,6 +56,7 @@ public class AreaPersonaleButton extends ObserverButton implements CommandInterf
             this.tabbedPane.setTabComponentAt(this.tabbedPane.getTabCount() - 1, button);
             this.tabbedPane.setSelectedComponent(panel);
             panel.setVisible(true);
+            this.setEnabled(false);
 
             panel.repaint();
 
