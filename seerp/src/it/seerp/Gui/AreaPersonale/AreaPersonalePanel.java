@@ -85,8 +85,8 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         pwd1 = new javax.swing.JPasswordField();
         jPanel13 = new javax.swing.JPanel();
         pwd2 = new javax.swing.JPasswordField();
-        modifica = new it.seerp.Gui.BottoniGenerici.ButtonSalva();
         buttonSalva2 = new it.seerp.Gui.BottoniGenerici.ButtonSalva();
+        modifica = new it.seerp.Gui.BottoniGenerici.ButtonSalva();
         jXLabel2 = new org.jdesktop.swingx.JXLabel();
 
         setBackground(new java.awt.Color(0, 51, 102));
@@ -353,6 +353,14 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
 
         jPanel2.add(jPanel13);
 
+        buttonSalva2.setName("buttonSalva2"); // NOI18N
+        buttonSalva2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonSalva2MouseClicked(evt);
+            }
+        });
+        jPanel2.add(buttonSalva2);
+
         modifica.setText("Modifica");
         modifica.setName("modifica"); // NOI18N
         modifica.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -361,14 +369,6 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
             }
         });
         jPanel2.add(modifica);
-
-        buttonSalva2.setName("buttonSalva2"); // NOI18N
-        buttonSalva2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buttonSalva2MouseClicked(evt);
-            }
-        });
-        jPanel2.add(buttonSalva2);
 
         jTabbedPane1.addTab("Modifica Password", jPanel2);
 
