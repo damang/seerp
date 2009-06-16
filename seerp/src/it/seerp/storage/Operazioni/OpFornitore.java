@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package it.seerp.storage.Operazioni;
 
 import com.mysql.jdbc.PreparedStatement;
@@ -21,6 +20,7 @@ import java.sql.Connection;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
+
 /**
  *
  * @author LuNy
@@ -29,7 +29,7 @@ public class OpFornitore extends OpExtraAzienda {
 
     Connection con = null;
 
-    public OpFornitore()throws SQLException {
+    public OpFornitore() throws SQLException {
         super();
         con = ConnectionPool.getConnection();
     }
@@ -37,156 +37,107 @@ public class OpFornitore extends OpExtraAzienda {
     /** Metodo che permette la visualizzazione della lista dei Fornitori
      * @return ArrayList contenente la lista dei  Fornitori
      * @throws java.sql.SQLException*/
-    
-    public ArrayList<Fornitore> elencaFornitore()throws SQLException{
+    public ArrayList<Fornitore> elencaFornitore() throws SQLException {
 
         ArrayList<Fornitore> list = new ArrayList<Fornitore>();
         Connection con = null;
         Statement stmt = null;
         ResultSet rs = null;
 
-       
-             try {
-            String sql = "SELECT * FROM Fornitore where Visible='true'";
-            stmt = (PreparedStatement) con.prepareStatement(sql);
-            // Execute the query
-            rs = stmt.executeQuery(sql);
 
-            // Define the resource list
-            while (rs.next()) {
-                Fornitore fornitore = new Fornitore(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17) );
-    // Integer idUtente, String username, String password, String città, String ruol, String provincia, String telefono, String cap, String email, String ruolo, String note, Boolean v, String cognome, String nome, String ragioneSociale, String pIva, String fax) {
+        String sql = "SELECT * FROM Fornitore where Visible='true'";
+        stmt = (PreparedStatement) con.prepareStatement(sql);
+        // Execute the query
+        rs = stmt.executeQuery(sql);
 
-                list.add(fornitore);
-            }}
+        // Define the resource list
+        while (rs.next()) {
+            Fornitore fornitore = new Fornitore(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17));
+            // Integer idUtente, String username, String password, String città, String ruol, String provincia, String telefono, String cap, String email, String ruolo, String note, Boolean v, String cognome, String nome, String ragioneSociale, String pIva, String fax) {
 
-        catch (SQLException se) {
-            System.out.println("errore nella visualizzazione dell'elenco");
+            list.add(fornitore);
+        }
 
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
-        }return list;
-      }
+        rs.close();
+        stmt.close();
+        ConnectionPool.releaseConnection(con);
 
+        return list;
+    }
 
-     /** Metodo che permette la ricerca di un Fornitore
-      * @param cognome
-      * cognome del Fornitore da ricercare
-      * @param ruolo
-      * ruolo che il Fornitore ricopre all'interno dell'azienda
-      * @return la lista dei Fornitori che corrispondono ai criteri di ricerca
-      * @throws java.sql.SQLException*/
- 
-     public  ArrayList<Fornitore> ricercaFornitore(String cognome, String ruolo)throws SQLException{
+    /** Metodo che permette la ricerca di un Fornitore
+     * @param cognome
+     * cognome del Fornitore da ricercare
+     * @param ruolo
+     * ruolo che il Fornitore ricopre all'interno dell'azienda
+     * @return la lista dei Fornitori che corrispondono ai criteri di ricerca
+     * @throws java.sql.SQLException*/
+    public ArrayList<Fornitore> ricercaFornitore(String cognome, String ruolo) throws SQLException {
 
         ArrayList<Fornitore> list = this.elencaFornitore();
 
         return list;
-      
-      }
+
+    }
+
+    /** Metodo che permette di eliminare un Fornitore già esistente
+     * @param user
+     * user del Fornitore da eliminare
+     * @throws java.sql.SQLException*/
+    public void elimina(Fornitore user) throws SQLException {
+
+        PreparedStatement stmt = null;
 
 
-     /** Metodo che permette di eliminare un Fornitore già esistente
-      * @param user
-      * user del Fornitore da eliminare
-      * @throws java.sql.SQLException*/
- 
-     public void elimina(Fornitore user)throws SQLException{
+        String sql = "DELETE * FROM Fornitore" + "where username =" + user;
 
-           PreparedStatement stmt = null;
+        // Create a statement
+        stmt = (PreparedStatement) con.prepareStatement(sql);
+        stmt.setString(1, user.getUsername());
+        // Execute the query
+        stmt.executeQuery(sql);
 
-            try {
-            String sql ="DELETE * FROM Fornitore"
-                                    + "where username ="+ user;
+        stmt.close();
+        ConnectionPool.releaseConnection(con);
+    }
 
-             // Create a statement
-            stmt = (PreparedStatement) con.prepareStatement(sql);
-            stmt.setString(1, user.getUsername());
-            // Execute the query
-            stmt.executeQuery(sql);
-
-            }catch (SQLException se) {
-            System.out.println("errore nell'eliminazione del personale");
+    /** Nasconde l'utente eliminato al sistema senza l'eliminazione fisica
+     * @param user
+     * user del Fornitore da eliminare
+     * @throws java.sql.SQLException*/
+    public void eliminazioneLogica(Fornitore user) throws SQLException {
+        PreparedStatement stmt = null;
 
 
-            
-        } finally {
-            
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
-        }
+        String sql = "UPDATE Fornitore SET Visible='false'" + "where username =" + user;
 
-      }
+        // Create a statement
+        stmt = (PreparedStatement) con.prepareStatement(sql);
+
+        // Execute the query
+        stmt.executeQuery();
+
+        stmt.close();
+        ConnectionPool.releaseConnection(con);
 
 
-     /** Nasconde l'utente eliminato al sistema senza l'eliminazione fisica
-      * @param user
-      * user del Fornitore da eliminare
-      * @throws java.sql.SQLException*/
-
-     public void eliminazioneLogica(Fornitore user)throws SQLException{
-         PreparedStatement stmt = null;
-
-            try {
-            
-            String sql ="UPDATE Fornitore SET Visible='false'"
-                                    + "where username ="+ user;
-
-             // Create a statement
-            stmt = (PreparedStatement) con.prepareStatement(sql);
-
-            // Execute the query
-            stmt.executeQuery();
-
-            } catch (SQLException se) {
-            System.out.println("errore nell'eliminazione logica dell'utente");
-
-
-           
-        } finally {
-            // Release the resources
-            
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
-        }
-      
-      }
-
+    }
 
     /** Metodo per inserire un nuovo Fornitore
      * @param user
      * user del Fornitore da inserire
      * @throws java.sql.SQLException*/
-
-    public void inserisci(Fornitore user)throws SQLException,DatiDuplicatiEx{
+    public void inserisci(Fornitore user) throws SQLException, DatiDuplicatiEx {
 
         PreparedStatement stmt = null;
-        try {
-            Statement stmt1 = con.createStatement();
-            String sqlTest = "SELECT * FROM Fornitore WHERE nome='" + user.getPIva() + "' ";
-            ResultSet rs = stmt1.executeQuery(sqlTest);
+        Statement stmt1 = con.createStatement();
+        String sqlTest = "SELECT * FROM Fornitore WHERE nome='" + user.getPIva() + "' ";
+        ResultSet rs = stmt1.executeQuery(sqlTest);
 
-          if (rs.next()) {
-                throw new DatiDuplicatiEx("utente già esistente nel database");
-            } else {
-                String sql = "INSERT INTO Fornitore (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        if (rs.next()) {
+            throw new DatiDuplicatiEx("utente già esistente nel database");
+        } else {
+            String sql = "INSERT INTO Fornitore (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
             stmt.setInt(1, user.getIdUtente());
             stmt.setString(2, user.getUsername());
@@ -207,135 +158,96 @@ public class OpFornitore extends OpExtraAzienda {
             stmt.setString(16, user.getPIva());
             stmt.setString(17, user.getFax());
 
-             stmt.execute();
-            }
-        } catch (SQLException se) {
-            System.out.println("errore di inserimento del personale");
-
-        } finally {
-            // Release the resources
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
+            stmt.execute();
         }
-      }
+        stmt.close();
+        ConnectionPool.releaseConnection(con);
 
+    }
 
     /** Metodo che permette la modifica di un Fornitore presente nel sistema
      * @param user
      * user del Fornitore da modificare
      * @return lo stesso oggetto modificato
      * @throws java.sql.SQLException*/
-
-    public Fornitore modifica(Fornitore user)throws SQLException, DatiErratiEx, DatiDuplicatiEx {
+    public Fornitore modifica(Fornitore user) throws SQLException, DatiErratiEx, DatiDuplicatiEx {
         PreparedStatement stmt = null;
         Fornitore fornitore = null;
 
-        
-            try {
-            Statement stmt1 = con.createStatement();
-            String sqlTest =  "SELECT * FROM Fornitore WHERE nome='" + user.getPIva() + "' ";
-            ResultSet rs = stmt1.executeQuery(sqlTest);
 
-            if (rs.next()) {
-                throw new DatiDuplicatiEx("utente già esistente nel database");
-            } else {
+        Statement stmt1 = con.createStatement();
+        String sqlTest = "SELECT * FROM Fornitore WHERE nome='" + user.getPIva() + "' ";
+        ResultSet rs = stmt1.executeQuery(sqlTest);
 
-            }
-
-            // Create a statement
-           stmt = (PreparedStatement) con.prepareStatement("UPDATE Fornitore VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )"  +"where idUtente="+ user.getIdUtente());
-
-            stmt.setInt(1, user.getIdUtente());
-            stmt.setString(2, user.getUsername());
-            stmt.setString(3, user.getPassword());
-            stmt.setString(4, user.getCitta());
-            stmt.setString(5, user.getRuolo());
-            stmt.setString(6, user.getProvincia());
-            stmt.setString(7, user.getTelefono());
-            stmt.setString(8, user.getCap());
-            stmt.setString(9, user.getEmail());
-            stmt.setString(10, user.getRuolo());
-            stmt.setString(11, user.getNote());
-            stmt.setBoolean(12, user.getVisible());
-          
-            stmt.setString(13, user.getCognome());
-            stmt.setString(14, user.getNome());
-            stmt.setString(15, user.getRagioneSociale());
-            stmt.setString(16, user.getPIva());
-            stmt.setString(17, user.getFax());
-           
-            
-
-            stmt.execute();
-             
-            fornitore= (Fornitore) this.visualizza(user.getIdFornitore());
-
-        } // Force the commit
-        catch (SQLException se) {
-            System.out.println("Errore nella modifica");
-
-
-        }finally {
-            // Release the resources
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
+        if (rs.next()) {
+            throw new DatiDuplicatiEx("utente già esistente nel database");
+        } else {
         }
-      return fornitore;
 
-     }
+        // Create a statement
+        stmt = (PreparedStatement) con.prepareStatement("UPDATE Fornitore VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )" + "where idUtente=" + user.getIdUtente());
+
+        stmt.setInt(1, user.getIdUtente());
+        stmt.setString(2, user.getUsername());
+        stmt.setString(3, user.getPassword());
+        stmt.setString(4, user.getCitta());
+        stmt.setString(5, user.getRuolo());
+        stmt.setString(6, user.getProvincia());
+        stmt.setString(7, user.getTelefono());
+        stmt.setString(8, user.getCap());
+        stmt.setString(9, user.getEmail());
+        stmt.setString(10, user.getRuolo());
+        stmt.setString(11, user.getNote());
+        stmt.setBoolean(12, user.getVisible());
+
+        stmt.setString(13, user.getCognome());
+        stmt.setString(14, user.getNome());
+        stmt.setString(15, user.getRagioneSociale());
+        stmt.setString(16, user.getPIva());
+        stmt.setString(17, user.getFax());
+
+
+
+        stmt.execute();
+
+        fornitore = (Fornitore) this.visualizza(user.getIdFornitore());
+
+        stmt.close();
+        ConnectionPool.releaseConnection(con);
+
+        return fornitore;
+
+    }
 
     /** Metodo che permette la visualizzazione dei dettagli di un Fornitore
      * @param id
      * id del Fornitore
      * @return il bean con i dettagli del Fornitore
      * @throws java.sql.SQLException*/
+    public Fornitore visualizzaDati(Integer id) throws SQLException {
 
-    public Fornitore visualizzaDati(Integer id) throws SQLException{
 
-        
         PreparedStatement stmt = null;
         ResultSet rs = null;
         Fornitore fornitore = null;
 
-        try {
-            
-            String sql = "SELECT * FROM Fornitore" +
-                    "where idUtente= " + id;
 
-            stmt = (PreparedStatement) con.prepareStatement(sql);
-            stmt.setString(1, id.toString());
-            // Execute the query
-            rs = stmt.executeQuery(sql);
+        String sql = "SELECT * FROM Fornitore" +
+                "where idUtente= " + id;
 
-            // Define the resource list
-            while (rs.next()) {
-            fornitore = new Fornitore(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17) );
+        stmt = (PreparedStatement) con.prepareStatement(sql);
+        stmt.setString(1, id.toString());
+        // Execute the query
+        rs = stmt.executeQuery(sql);
 
-            }
-        } catch (SQLException se) {
-            System.out.println("errore di visualizzazione");
+        // Define the resource list
+        while (rs.next()) {
+            fornitore = new Fornitore(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17));
 
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
         }
-
+        rs.close();
+        stmt.close();
+        ConnectionPool.releaseConnection(con);
         return fornitore;
-    } 
+    }
 }
