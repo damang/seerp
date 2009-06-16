@@ -28,6 +28,7 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
      * metodo che si occupa di inserire un nuovo servizio nel database
      * @param se il unovo servizio da inserire
      * @throws java.sql.SQLException
+     * @throws DatiErratiEx eccezione lanciata se si inseriscono dati errati
      */
     public void inserimento(Servizio serv) throws SQLException, DatiErratiEx {
 
@@ -46,8 +47,6 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
         stmt.setString(7, serv.getNote());
 
         stmt.executeUpdate();
-
-
 
         stmt.close();
         ConnectionPool.releaseConnection(conn);
@@ -76,8 +75,7 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
 
         PreparedStatement stmt = null;
         String query="UPDATE Servizio(descrizione,disponibilità,quantità,tipo,prezzo,iva,note)" +
-                " SET (?, ?, ?, ?, ?, ?)" +
-                "where idServizio=" + servizio.getIdServizio();
+                " SET (?, ?, ?, ?, ?, ?) WHERE idServizio=" + servizio.getIdServizio();
         stmt = (PreparedStatement) conn.prepareStatement(query);
 
         stmt.setString(1, servizio.getDescrizione());
@@ -131,7 +129,7 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
 
     /**
      * metodo che si occupa di ricercare un servizio in base all'identificativo
-     * @param nome identificativo del servizio e parametro di ricerca
+     * @param id identificativo del servizio e parametro di ricerca
      * @return servizio che corrisponde a quell'identificativo
      * @throws java.sql.SQLException
      */
@@ -143,7 +141,7 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
 
 
         String query = "SELECT idServizio,descrizione,disponibilita,quantita,tipo,prezzo,iva,note" +
-                " FROM Servizio WHERE servizio.idServizio= ?";
+                       "FROM Servizio WHERE servizio.idServizio= ?";
         stmt = (PreparedStatement) conn.prepareStatement(query);
         stmt.setInt(1, id);
 
