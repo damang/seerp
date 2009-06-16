@@ -45,7 +45,8 @@ public class OpResponsabile extends OpeUtente {
        
             String sql = "SELECT idUtente,username,password,citta,provincia," +
                     "telefono,cap,email,note,tipo,cognome,nome,codiceFiscale," +
-                    "ruolo,visible FROM Responsabile WHERE Visible='true'";
+                    "ruolo,visible FROM Responsabile,Utente,Personale WHERE Visible='true' and idPersonale=idUtente " +
+                    "and idPersonale=idResponsabile";
             stmt = (PreparedStatement) con.prepareStatement(sql);
             // Execute the query
             rs = stmt.executeQuery(sql);
@@ -89,25 +90,18 @@ public class OpResponsabile extends OpeUtente {
      * @throws java.sql.SQLException*/
     public void elimina(Responsabile user) throws SQLException {
         PreparedStatement stmt = null;
-        try {
+    
             String sql = "DELETE * FROM Responsabile where username =?";
             // Create a statement
             stmt = (PreparedStatement) con.prepareStatement(sql);
             stmt.setString(1, user.getUsername());
             // Execute the query
             stmt.executeQuery(sql);
-        } catch (SQLException se) {
-            System.out.println("errore nell'eliminazione del personale");
-
-        } finally {
-            // Release the resources
-            if (stmt != null) {
+       
                 stmt.close();
-            }
-            if (con != null) {
+          
                 ConnectionPool.releaseConnection(con);
-            }
-        }
+            
 
     }
 
@@ -118,30 +112,18 @@ public class OpResponsabile extends OpeUtente {
     public void eliminazioneLogica(Responsabile user) throws SQLException {
 
         PreparedStatement stmt = null;
-        try {
-            String sql = "UPDATE Responsabile(visible) SET Visible='false' where username = ?";
+                   String sql = "UPDATE Utente,Pesonale,Responsabile(visible) SET Visible='false' where username = ? " +
+                    "and idUtente=idPersonale and idPersonale=idResponsabile";
             // Create a statement
             stmt = (PreparedStatement) con.prepareStatement(sql);
 
             // Execute the query
             stmt.executeQuery();
-        } catch (SQLException se) {
-            System.out.println("errore nell'eliminazione logica dell'utente");
-
-        } finally {
-            // Release the resources
-
-            if (stmt != null) {
+     
                 stmt.close();
-            }
-            if (con != null) {
+          
                 ConnectionPool.releaseConnection(con);
-            }
-        }
-
-
-
-    }
+             }
 
     /** Metodo per inserire un nuovo responsabile
      * @param user
@@ -153,46 +135,53 @@ public class OpResponsabile extends OpeUtente {
 
 
         PreparedStatement stmt = null;
-        try {
-
+        PreparedStatement stmtP = null;
+        PreparedStatement stmtR = null;
+        
             Statement stmt1 = con.createStatement();
-            String sqlTest = "SELECT * FROM Responsabile WHERE codiceFiscale='" + user.getCodiceFiscale() + "' ";
+            String sqlTest = "SELECT * FROM Utente,Personale,Responsabile WHERE codiceFiscale='" + user.getCodiceFiscale() + "' and idUtente=idPersonale" +
+                    "idPersonale=idResponsabile ";
             ResultSet rs = stmt1.executeQuery(sqlTest);
 
             if (rs.next()) {
                 throw new DatiDuplicatiEx("responsabile già esistente nel database");
             } else {
-                String sql = "INSERT INTO Responsabile (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                try{
+                    con.setAutoCommit(false);
+                String sqlu = "INSERT INTO Utente(idUtente,username,password,email,citta,prov,telefono" +
+                        "CAP,note,tipo,visibilita) VALUES(LAST_INSERT_ID()+1,?,?,?,?,?,?,?,?,?,?)";
+                String sqlp = "INSERT INTO Personale(idPersonale,nome,cognome,codicefiscale,ruolo)" +
+                        "VALUES(LAST_INSERT_ID(),?,?,?,?)";
+                String sqlr = "INSERT INTO Responsabile (idResponsabile)" +
+                        "VALUES(LAST_INSERT_ID())";
 
-                stmt = (PreparedStatement) con.prepareStatement(sql);
-                stmt.setInt(1, user.getIdUtente());
-                stmt.setString(2, user.getUsername());
-                stmt.setString(3, user.getPassword());
+                stmt = (PreparedStatement) con.prepareStatement(sqlu);
+                stmt.setString(1, user.getUsername());
+                stmt.setString(2, user.getPassword());
+                stmt.setString(3, user.getEmail());
                 stmt.setString(4, user.getCitta());
                 stmt.setString(5, user.getProvincia());
                 stmt.setString(6, user.getTelefono());
                 stmt.setString(7, user.getCap());
-                stmt.setString(8, user.getEmail());
-                stmt.setString(9, user.getNote());
-                stmt.setString(10, user.getRuolo().getNome());
-                stmt.setString(12, user.getCognome());
-                stmt.setString(13, user.getNome());
-                stmt.setString(14, user.getCodiceFiscale());
-                stmt.setString(15, user.getTipo());
-                stmt.setBoolean(16, user.getVisible());
+                stmt.setString(8, user.getNote());
+                stmt.setString(9, user.getTipo());
+                stmt.setString(10, user.getVisible().toString());
+                stmtP = (PreparedStatement) con.prepareStatement(sqlp);
+                stmt.setString(1, user.getNome());
+                stmt.setString(2, user.getCognome());
+                stmt.setString(3, user.getCodiceFiscale());
+                stmt.setString(4, user.getRuolo().getNome());
+                stmtR= (PreparedStatement) con.prepareStatement(sqlr);
                 stmt.execute();
-            }
-        } catch (SQLException se) {
-            System.out.println("errore di inserimento del responsabile");
-
-        } finally {
-            // Release the resources
-            if (stmt != null) {
+                stmtP.execute();
+                stmtR.execute();
+                con.commit();
+            }catch(SQLException e){
+                 con.rollback();}
+                  
                 stmt.close();
-            }
-            if (con != null) {
                 ConnectionPool.releaseConnection(con);
-            }
+            
         }
     }
 
@@ -209,10 +198,9 @@ public class OpResponsabile extends OpeUtente {
         PreparedStatement stmt = null;
         Responsabile responsabile = null;
 
-        try {
-
             Statement stmt1 = con.createStatement();
-            String sqlTest = "SELECT * FROM Responsabile WHERE codiceFiscale='" + user.getCodiceFiscale() + "' ";
+            String sqlTest = "SELECT * FROM Utente,Personale,Responsabile WHERE codiceFiscale='" + user.getCodiceFiscale() + "'" +
+                    "and idPersonale=idUtente and idPersonale=idResponsabile ";
             ResultSet rs = stmt1.executeQuery(sqlTest);
 
             if (rs.next()) {
@@ -220,7 +208,8 @@ public class OpResponsabile extends OpeUtente {
             } else {
 
                 // Create a statement
-                stmt = (PreparedStatement) con.prepareStatement("UPDATE Responsabile VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )" + "where idUtente=" + user.getIdUtente());
+                stmt = (PreparedStatement) con.prepareStatement("UPDATE Utente,Personale Responsabile VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )" + "where " +
+                        "idPersonale=idUtente and idPersonale=idResponsabile and idUtente=" + user.getIdUtente());
 
                 /*
                  * Integer idUtente1, String username2, String password3,
@@ -247,21 +236,14 @@ public class OpResponsabile extends OpeUtente {
 
                 stmt.execute();
 
-                responsabile = (Responsabile) this.visualizzaDati(user.getIdUtente());
+               
 
             }
-        } catch (SQLException se) {
-            System.out.println("errore nella modifica");
-
-        } finally {
-            // Release the resources
-            if (stmt != null) {
+       
                 stmt.close();
-            }
-            if (con != null) {
+           
                 ConnectionPool.releaseConnection(con);
-            }
-        }
+       
         return responsabile;
 
     }
@@ -278,8 +260,7 @@ public class OpResponsabile extends OpeUtente {
         ResultSet rs = null;
 
 
-        try {
-            String sql = "SELECT * FROM Responbile where idResponsabile= ? ";
+            String sql = "SELECT * FROM Utente,Personale,Responbile where idPersonale=idUtente and idPersonale=idResponsabile and idResponsabile= ? ";
             // Create a statement
             stmt = (PreparedStatement) con.prepareStatement(sql);
             stmt.setString(1, id.toString());
@@ -299,22 +280,13 @@ public class OpResponsabile extends OpeUtente {
                          new Ruolo(rs.getString(14)), rs.getBoolean(15));
 
                 }
-            }
-         catch (SQLException se) {
-            System.out.println("errore di visualizzazione");
-
-        } finally {
-            // Release the resources
-            if (rs != null) {
+          
                 rs.close();
-            }
-            if (stmt != null) {
+           
                 stmt.close();
-            }
-            if (con != null) {
+            
                 ConnectionPool.releaseConnection(con);
-            }
-        }
+      
 
         return responsabile;
 
