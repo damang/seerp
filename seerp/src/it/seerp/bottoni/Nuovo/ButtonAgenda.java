@@ -17,9 +17,9 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Vector;
 import javax.swing.JTabbedPane;
-import us.k5n.ui.calendar.CalendarDataRepository;
-import us.k5n.ui.calendar.CalendarPanel;
-import us.k5n.ui.calendar.Event;
+import it.seerp.Gui.Gestione.agenda.CalendarDataRepository;
+import it.seerp.Gui.Gestione.agenda.CalendarPanel;
+import it.seerp.Gui.Gestione.agenda.Event;
 
 
 
