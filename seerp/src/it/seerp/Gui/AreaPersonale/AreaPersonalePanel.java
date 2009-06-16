@@ -12,8 +12,6 @@ package it.seerp.Gui.AreaPersonale;
 
 import configurazioni.CommandInterface;
 import it.seerp.Gui.frame.ObservableJPanel;
-import it.seerp.application.Exception.DatiErrati;
-import it.seerp.application.applicazione.AppGestioneUtente;
 import it.seerp.application.bean.BeanGuiUtente;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -41,10 +39,6 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         this.tell.setEditable(flag);
         this.mail.setEditable(flag);
         this.user.setEditable(flag);
-        if(jTabbedPane1.getSelectedIndex()==1){
-            flag=true;
-        this.pwd1.setEditable(flag);
-        this.pwd2.setEditable(flag);}
 
     }
 
@@ -91,8 +85,8 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         pwd1 = new javax.swing.JPasswordField();
         jPanel13 = new javax.swing.JPanel();
         pwd2 = new javax.swing.JPasswordField();
-        buttonSalva1 = new it.seerp.Gui.BottoniGenerici.ButtonSalva();
-        buttonElimina1 = new it.seerp.Gui.BottoniGenerici.ButtonElimina();
+        modifica = new it.seerp.Gui.BottoniGenerici.ButtonSalva();
+        buttonSalva2 = new it.seerp.Gui.BottoniGenerici.ButtonSalva();
         jXLabel2 = new org.jdesktop.swingx.JXLabel();
 
         setBackground(new java.awt.Color(0, 51, 102));
@@ -226,13 +220,13 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -258,7 +252,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
                                 .addGap(14, 14, 14)
                                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(198, 198, 198)))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -267,7 +261,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -304,8 +298,15 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel2.add(jPanel11);
+
         jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder("Password"));
         jPanel12.setName("jPanel12"); // NOI18N
+        jPanel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel12MouseClicked(evt);
+            }
+        });
 
         pwd1.setText("jPasswordField1");
         pwd1.setName("Password"); // NOI18N
@@ -325,6 +326,8 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
                 .addComponent(pwd1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jPanel2.add(jPanel12);
 
         jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder("Conferma Password"));
         jPanel13.setName("jPanel13"); // NOI18N
@@ -348,53 +351,24 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        buttonSalva1.setName("buttonSalva1"); // NOI18N
-        buttonSalva1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel2.add(jPanel13);
+
+        modifica.setText("Modifica");
+        modifica.setName("modifica"); // NOI18N
+        modifica.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buttonSalva1MouseClicked(evt);
+                modificaMouseClicked(evt);
             }
         });
+        jPanel2.add(modifica);
 
-        buttonElimina1.setText("Annulla");
-        buttonElimina1.setName("buttonElimina1"); // NOI18N
-        buttonElimina1.addMouseListener(new java.awt.event.MouseAdapter() {
+        buttonSalva2.setName("buttonSalva2"); // NOI18N
+        buttonSalva2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buttonElimina1MouseClicked(evt);
+                buttonSalva2MouseClicked(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(buttonSalva1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonElimina1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(156, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(buttonSalva1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(buttonElimina1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(341, Short.MAX_VALUE))
-        );
+        jPanel2.add(buttonSalva2);
 
         jTabbedPane1.addTab("Modifica Password", jPanel2);
 
@@ -424,24 +398,34 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonSalva1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSalva1MouseClicked
-       try{
-        AppGestioneUtente gestUt= new AppGestioneUtente();
-       gestUt.modifica(utente);
-      }
-       catch(DatiErrati e){JOptionPane.showMessageDialog(null, "non e stato possibile effettuare la modifica");}
-       this.pwd1.setEnabled(false);
-        this.pwd2.setEnabled(false);
-    }//GEN-LAST:event_buttonSalva1MouseClicked
+    private void modificaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificaMouseClicked
+        this.pwd1.setText("");
+        this.pwd2.setText("");
+        this.pwd1.setEnabled(true);
+        this.pwd2.setEnabled(true);
+        this.buttonSalva2.setEnabled(true);
+        this.modifica.setEnabled(false);
+}//GEN-LAST:event_modificaMouseClicked
 
-    private void buttonElimina1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonElimina1MouseClicked
-    JOptionPane.showMessageDialog(null, "operazione annulata");
-        jTabbedPane1.setSelectedComponent(jPanel1);
-    }//GEN-LAST:event_buttonElimina1MouseClicked
+    private void jPanel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel12MouseClicked
+    }//GEN-LAST:event_jPanel12MouseClicked
+
+    private void buttonSalva2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSalva2MouseClicked
+        // AppGestioneUtente gestUt = new AppGestioneUtente();
+        //   gestUt.modifica(utente);
+        this.pwd1.setEnabled(false);
+        this.pwd2.setEnabled(false);
+        this.buttonSalva2.setEnabled(true);
+        this.modifica.setEnabled(true);
+
+    }//GEN-LAST:event_buttonSalva2MouseClicked
+
+    private void modificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modificaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private it.seerp.Gui.BottoniGenerici.ButtonElimina buttonElimina1;
-    private it.seerp.Gui.BottoniGenerici.ButtonSalva buttonSalva1;
+    private it.seerp.Gui.BottoniGenerici.ButtonSalva buttonSalva2;
     private javax.swing.JTextField citta;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -459,6 +443,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
     private javax.swing.JTextArea jTextArea1;
     private org.jdesktop.swingx.JXLabel jXLabel2;
     private javax.swing.JTextField mail;
+    private it.seerp.Gui.BottoniGenerici.ButtonSalva modifica;
     private javax.swing.JTextField nm;
     private javax.swing.JTextField provincia;
     private javax.swing.JPasswordField pwd1;
