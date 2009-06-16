@@ -23,21 +23,25 @@ public class OpAzienda {
     public void inserimento(Azienda az) throws SQLException, DatiErratiEx {
         PreparedStatement stmt = null;
 
-        String query = "INSERT INTO Azienda VALUES (?, ?, ?, ?, ?, ?, ?, ?, ? )";
+        String query = "INSERT INTO Azienda(citta,email,fax,indirizzo,nazione,PIVA,RagioneSociale,telefono)" +
+                " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         stmt = (PreparedStatement) conn.prepareStatement(query);
 
-        stmt.setInt(1, az.getIdAzienda());
-        stmt.setString(2, az.getCitta());
-        stmt.setString(3, az.getEmail());
-        stmt.setString(4, az.getFax());
-        stmt.setString(5, az.getIndirizzo());
-        stmt.setString(6, az.getNazione());
-        stmt.setString(7, az.getPIVA());
-        stmt.setString(8, az.getRagioneSociale());
-        stmt.setString(9, az.getTelefono());
+
+        stmt.setString(1, az.getCitta());
+        stmt.setString(2, az.getEmail());
+        stmt.setString(3, az.getFax());
+        stmt.setString(4, az.getIndirizzo());
+        stmt.setString(5, az.getNazione());
+        stmt.setString(6, az.getPIVA());
+        stmt.setString(7, az.getRagioneSociale());
+        stmt.setString(8, az.getTelefono());
 
         stmt.execute();
+        stmt.close();
+
+        ConnectionPool.releaseConnection(conn);
 
 
     }
@@ -45,21 +49,22 @@ public class OpAzienda {
     public Azienda modifica(Azienda az) throws SQLException, DatiErratiEx {
 
         PreparedStatement stmt = null;
+        String query = "UPDATE Azienda(citta,email,fax,indirizzo,nazione,PIVA,RagioneSociale,telefono)" +
+                " SET (?, ?, ?, ?, ?, ?, ?, ?)";
+        stmt = (PreparedStatement) conn.prepareStatement(query);
 
-        stmt = (PreparedStatement) conn.prepareStatement("UPDATE Azienda SET (?, ?, ?, ?, ?, ?,?,?,?)");
-
-        stmt.setInt(1, az.getIdAzienda());
-        stmt.setString(2, az.getCitta());
-        stmt.setString(3, az.getEmail());
-        stmt.setString(4, az.getFax());
-        stmt.setString(5, az.getIndirizzo());
-        stmt.setString(6, az.getNazione());
-        stmt.setString(7, az.getPIVA());
-        stmt.setString(8, az.getRagioneSociale());
-        stmt.setString(9, az.getTelefono());
+        stmt.setString(1, az.getCitta());
+        stmt.setString(2, az.getEmail());
+        stmt.setString(3, az.getFax());
+        stmt.setString(4, az.getIndirizzo());
+        stmt.setString(5, az.getNazione());
+        stmt.setString(6, az.getPIVA());
+        stmt.setString(7, az.getRagioneSociale());
+        stmt.setString(8, az.getTelefono());
 
         stmt.execute();
-
+        stmt.close();
+        ConnectionPool.releaseConnection(conn);
         return az;
     }
 
@@ -70,7 +75,8 @@ public class OpAzienda {
         Azienda az = null;
 
 
-        String sql = "SELECT * FROM Azienda WHERE idAzienda= ?";
+        String sql = "SELECT idAzienda,citta,email,fax,indirizzo,nazione,piva,ragioneSociale,telefono" +
+                " FROM Azienda WHERE idAzienda= ?";
         stmt = (PreparedStatement) conn.prepareStatement(sql);
 
         stmt.setInt(1, id);
@@ -85,6 +91,9 @@ public class OpAzienda {
                     rs.getString(8), rs.getInt(9));
 
         }
+        stmt.close();
+        rs.close();
+        ConnectionPool.releaseConnection(conn);
 
         return az;
     }
