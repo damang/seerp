@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 
 import it.configurazioni.pattern.command.CommandInterface;
-import it.seerp.Gui.AreaPersonale.AreaPersonalePanel;
+import it.seerp.Gui.Gestione.AreaPersonale.AreaPersonalePanel;
 import it.seerp.Gui.Gestione.Ruoli.GestioneRuoli;
 import it.seerp.Gui.Gestione.Utenti.AreaUtentePanel;
 import it.seerp.Gui.Gestione.Contratti.GestioneContratti;

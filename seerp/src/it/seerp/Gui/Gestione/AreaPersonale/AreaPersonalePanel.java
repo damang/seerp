@@ -8,7 +8,7 @@
  *
  * Created on 28-mag-2009, 17.59.24
  */
-package it.seerp.Gui.AreaPersonale;
+package it.seerp.Gui.Gestione.AreaPersonale;
 
 import it.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
