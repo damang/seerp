@@ -5,7 +5,7 @@ import it.seerp.application.Exception.DatiErrati;
 import java.util.ArrayList;
 
 /**
- *
+ * Interfaccia applicazione per la Gestione Servizi
  * @author Luisa - Tommaso Cattolico
  */
 public interface GestioneServizi<E, U> {

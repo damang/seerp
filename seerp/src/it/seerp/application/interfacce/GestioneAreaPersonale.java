@@ -4,7 +4,7 @@ import it.seerp.application.bean.BeanGuiUtente;
 import it.seerp.application.Exception.DatiErrati;
 
 /**
- *
+ * Interfaccia applicazione per la Gestione Area Personale
  * @author matteo - Tommaso Cattolico
  */
 public interface GestioneAreaPersonale<U extends BeanGuiUtente> {

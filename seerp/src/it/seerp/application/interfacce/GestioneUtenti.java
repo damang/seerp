@@ -8,8 +8,8 @@ import it.seerp.storage.ejb.Utente;
 import java.util.ArrayList;
 
 /**
- *
- * @author matteo
+ * Interfaccia applicazione per la Gestione Utenti
+ * @author matteo - Tommaso Cattolico
  */
 public interface GestioneUtenti<E extends Utente, U extends BeanGuiUtente> {
 
