@@ -12,8 +12,10 @@ package it.seerp.Gui.Menu;
 
 import configurazioni.CommandInterface;
 import it.seerp.Gui.GestioneServizi.GestioneServizi;
+import it.seerp.Gui.InfoAzienda.InfoAzienda;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 
 /**
  *
@@ -21,18 +23,21 @@ import java.awt.event.ActionListener;
  */
 public class MenuInfoAzienda extends javax.swing.JPanel implements ActionListener {
 
-    GestioneServizi pannello = null;
+    InfoAzienda pannello = null;
 
     /** Creates new form Preventivi */
     public MenuInfoAzienda() {
         initComponents();
     }
 
-    public void setPannello(GestioneServizi pannello) {
-
-        this.pannello = pannello;
+    public void setPannello(InfoAzienda infoAzienda) {
+        this.pannello = infoAzienda;
+        pannello.setMenu(this);
         this.modificaButtonInfoAzienda1.setnIfoAzienda(pannello);
-    
+    }
+
+    public JButton getModifica() {
+        return modificaButtonInfoAzienda1;
     }
 
     /** This method is called from within the constructor to
@@ -44,7 +49,7 @@ public class MenuInfoAzienda extends javax.swing.JPanel implements ActionListene
     private void initComponents() {
 
         jXTaskPane1 = new org.jdesktop.swingx.JXTaskPane();
-        modificaButtonInfoAzienda1 = new it.seerp.Gui.Menu.ModificaButtonInfoAzienda();
+        modificaButtonInfoAzienda1 = new it.seerp.Gui.Menu.ModificaButtonInfoAzienda(this);
 
         jXTaskPane1.setName("jXTaskPane1"); // NOI18N
 

@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package it.seerp.Gui.Menu;
 
 import configurazioni.CommandInterface;
@@ -16,8 +15,9 @@ import javax.swing.JButton;
  *
  * @author Andrea
  */
-public class ModificaButtonInfoAzienda extends JButton  implements CommandInterface {
-InfoAzienda areaContr=null;
+public class ModificaButtonInfoAzienda extends JButton implements CommandInterface {
+
+    InfoAzienda azienda = null;
 
     public ModificaButtonInfoAzienda() {
         super();
@@ -28,13 +28,15 @@ InfoAzienda areaContr=null;
         this.addActionListener(l);
     }
 
-
-  void setnIfoAzienda(GestioneServizi pannello) {
-         this.areaContr =  areaContr;
-    }
-    public void execute() {  
+    void setnIfoAzienda(InfoAzienda pannello) {
+        this.azienda = pannello;
     }
 
-   
-  
+    public void execute() {
+         this.setEnabled(false);
+        azienda.setEnabled(true);
+        azienda.getSalva().setEnabled(true);
+        azienda.getAnnulla().setEnabled(true);
+
+    }
 }

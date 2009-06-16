@@ -33,7 +33,7 @@ GestioneContratti areaContr=null;
         this.areaContr =  areaContr;
     }
     public void execute() {
-      areaContr.editabilePagamento(true);
-     areaContr.getSalva().setEnabled(true);
-    areaContr.getAnnulla().setEnabled(true);}
+       
+      JOptionPane.showMessageDialog(null, "funzionalità non abilitata");
+    }
 }

@@ -14,6 +14,7 @@ import configurazioni.CommandInterface;
 import it.seerp.Gui.GestioneServizi.GestioneServizi;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 
 /**
  *
@@ -31,6 +32,7 @@ public class MenuServizi extends javax.swing.JPanel implements ActionListener {
     public void setPannello(GestioneServizi pannello) {
 
         this.pannello = pannello;
+        pannello.setMenu(this);
         this.modificaButtonServizi1.setAreaServizi(pannello);
         this.aggiungiButtonServizi1.setServizi(pannello);
         this.eiminaButtonServizi1.setAreaServ(pannello);
@@ -112,6 +114,15 @@ public class MenuServizi extends javax.swing.JPanel implements ActionListener {
     private it.seerp.Gui.Menu.ModificaButtonServizi modificaButtonServizi1;
     // End of variables declaration//GEN-END:variables
 
+
+
+        public JButton getModifica() {
+        return modificaButtonServizi1;
+    }
+
+    public JButton getAggiungi() {
+        return aggiungiButtonServizi1;
+    }
     public void actionPerformed(ActionEvent e) {
         CommandInterface cmd = (CommandInterface) e.getSource();
         cmd.execute();

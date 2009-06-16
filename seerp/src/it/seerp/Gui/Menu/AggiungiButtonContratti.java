@@ -32,6 +32,7 @@ public class AggiungiButtonContratti extends JButton implements CommandInterface
     }
 
     public void execute() {
+        this.setEnabled(false);
         areaContr.inizializza("");
         areaContr.getSalva().setEnabled(true);
         areaContr.getAnnulla().setEnabled(true);

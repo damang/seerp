@@ -12,6 +12,7 @@ package it.seerp.Gui.Menu;
 import configurazioni.CommandInterface;
 import it.seerp.Gui.Gestione.Ruoli.GestioneRuoli;
 import it.seerp.Gui.GestioneServizi.GestioneServizi;
+import it.seerp.Gui.InfoAzienda.InfoAzienda;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -36,6 +37,7 @@ public class MenuRuoli extends javax.swing.JPanel implements ActionListener {
         this.eiminaButtonServizi1.setAreaServ(pannello);*/
 
     }
+
 
     /** This method is called from within the constructor to
      * initialize the form.

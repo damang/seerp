@@ -33,6 +33,7 @@ public class AggiungiButtonRuoli extends JButton implements CommandInterface {
     }
 
     public void execute() {
+         this.setEnabled(false);
        
     }
 }
