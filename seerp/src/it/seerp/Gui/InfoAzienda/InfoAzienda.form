@@ -160,6 +160,9 @@
                 <Property name="name" type="java.lang.String" value="nm" noResource="true"/>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nmActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
