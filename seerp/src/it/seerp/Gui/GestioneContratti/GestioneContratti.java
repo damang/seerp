@@ -13,18 +13,16 @@ package it.seerp.Gui.GestioneContratti;
 import configurazioni.CommandInterface;
 import it.seerp.Gui.BottoniGenerici.ButtonAnnulla;
 import it.seerp.Gui.BottoniGenerici.ButtonSalva;
+import it.seerp.Gui.Menu.MenuContratti;
 import it.seerp.Gui.frame.ObservableJPanel;
 import it.seerp.Gui.tabella.ContrattoTm;
 import it.seerp.application.applicazione.AppContratti;
 import it.seerp.application.bean.BeanGuiContratto;
-import it.seerp.application.bean.BeanGuiFornitore;
 import it.seerp.application.bean.BeanGuiPagamento;
 import it.seerp.application.bean.BeanGuiServizio;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -36,29 +34,23 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
     BeanGuiContratto contratto;
     BeanGuiPagamento pagamento;
     BeanGuiServizio servizio;
-    BeanGuiFornitore extraAzienda;
+    String tipoOp = null;
+    MenuContratti menu;
+
+    public void setMenu(MenuContratti menu) {
+        this.menu = menu;
+    }
 
     /** Creates new form GestioneContratti */
     public GestioneContratti() {
         initComponents();
+
         editabile(false);
         contratto = new BeanGuiContratto(this);
         pagamento = new BeanGuiPagamento();
         servizio = new BeanGuiServizio(this);
-        extraAzienda = new BeanGuiFornitore(this);
 
-    }
-
-    public void setBeanGuiContratto() {
-        contratto.setDurata(durata);
-    }
-
-    public void editabilePagamento(Boolean flag) {
-        this.dataScadenza.setEditable(flag);
-        this.importo.setEditable(flag);
-        this.descrizione.setEditable(flag);
-        this.statoPag.setEditable(flag);
-        this.modalitaPag.setEditable(flag);
+        legameBean();
     }
 
     public void editabile(Boolean flag) {
@@ -77,11 +69,6 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
         this.prz.setEditable(flag);
         this.disponibilita.setEditable(flag);
         this.tipo.setEditable(flag);
-        this.dataScadenza.setEditable(flag);
-        this.importo.setEditable(flag);
-        this.descrizione.setEditable(flag);
-        this.statoPag.setEditable(flag);
-        this.modalitaPag.setEditable(flag);
         this.cittafor.setEditable(flag);
         this.iva.setEditable(flag);
 
@@ -91,11 +78,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
     public void legameBean() {
         contratto.setData(data);
         contratto.setDurata(durata);
-        pagamento.setDataScadenza(dataScadenza);
-        pagamento.setImporto(importo);
-        pagamento.setDescrizione(descrizione);
-        pagamento.setStato(statoPag);
-        //JcomboBox pagamento.setModalitaPagamento(modalitaPag);
+
         //JcomboBox contratto.setStato(stato);
         //creare data JtextField contratto.setDataScadenza(dataScad);
         servizio.setDisponibilita(disponibilita);
@@ -103,15 +86,11 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
         servizio.setPrezzo(prz);
         servizio.setQuantita(qnt);
         servizio.setTipo(tipo);
-        servizio.setDescrizione(descrizione);
-        extraAzienda.setTxtCitta(cittafor);
-        //extraAzienda.setTxtNome(azienda);
-        //extraAzienda.setTxtPIva(piva);
-        extraAzienda.setTxtProvincia(provincia);
-        extraAzienda.setTxtEmail(mail);
-        //contratto.setBeanGuiFornitore(extraAzienda);
-     //   contratto.addServizio(servizio);
-        contratto.addPagamento(pagamento);
+        //   contratto.getExtraAzienda().setTxtPIva(piva);
+        contratto.getExtraAzienda().setTxtProvincia(provincia);
+        contratto.getExtraAzienda().setTxtEmail(mail);
+
+
     }
 
     public void inizializza(String s) {
@@ -127,11 +106,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
         qnt.setText(s);
         prz.setText(s);
         disponibilita.setText(s);
-        tipo.setText(s);
-        this.dataScadenza.setText(s);
-        this.importo.setText(s);
-        this.descrizione.setText(s);
-        this.statoPag.setText(s);
+
         this.cittafor.setText(s);
         this.iva.setText(s);
 
@@ -185,16 +160,6 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
         jPanel18 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
-        jPanel11 = new javax.swing.JPanel();
-        jPanel28 = new javax.swing.JPanel();
-        importo = new javax.swing.JTextField();
-        jPanel34 = new javax.swing.JPanel();
-        dataScadenza = new javax.swing.JTextField();
-        jPanel33 = new javax.swing.JPanel();
-        descrizione = new javax.swing.JTextField();
-        jPanel35 = new javax.swing.JPanel();
-        statoPag = new javax.swing.JTextField();
-        modalitaPag = new javax.swing.JComboBox();
         jPanel6 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         descrizioneServizio = new javax.swing.JTextField();
@@ -216,7 +181,6 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
         jXSearchPanel1 = new org.jdesktop.swingx.JXSearchPanel();
         buttonSalva1 = new it.seerp.Gui.BottoniGenerici.ButtonSalva();
         buttonAnnulla1 = new it.seerp.Gui.BottoniGenerici.ButtonAnnulla();
-        buttonSalva2 = new it.seerp.Gui.BottoniGenerici.ButtonSalva();
 
         setBackground(new java.awt.Color(255, 255, 102));
 
@@ -280,7 +244,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(dataScad, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                .addComponent(dataScad, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -357,7 +321,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(165, 165, 165)
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(292, Short.MAX_VALUE))
+                .addContainerGap(232, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -369,7 +333,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -390,7 +354,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(azienda, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                .addComponent(azienda, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
@@ -412,7 +376,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(piva, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                .addComponent(piva, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
@@ -434,7 +398,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(mail, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                .addComponent(mail, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel14Layout.setVerticalGroup(
@@ -524,14 +488,15 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
         jPanel18.setLayout(jPanel18Layout);
         jPanel18Layout.setHorizontalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 744, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
+                .addGap(126, 126, 126)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -582,131 +547,6 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
         );
 
         jTabbedPane1.addTab("Dati Fornitore", jPanel2);
-
-        jPanel11.setName("jPanel11"); // NOI18N
-
-        jPanel28.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome Servizio"));
-        jPanel28.setName("jPanel28"); // NOI18N
-
-        importo.setText("Nome Servizio");
-        importo.setName("importo"); // NOI18N
-
-        javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
-        jPanel28.setLayout(jPanel28Layout);
-        jPanel28Layout.setHorizontalGroup(
-            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel28Layout.createSequentialGroup()
-                .addContainerGap(110, Short.MAX_VALUE)
-                .addComponent(importo, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel28Layout.setVerticalGroup(
-            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(importo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        jPanel34.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome Servizio"));
-        jPanel34.setName("jPanel34"); // NOI18N
-
-        dataScadenza.setText("Nome Servizio");
-        dataScadenza.setName("dataScadenza"); // NOI18N
-
-        javax.swing.GroupLayout jPanel34Layout = new javax.swing.GroupLayout(jPanel34);
-        jPanel34.setLayout(jPanel34Layout);
-        jPanel34Layout.setHorizontalGroup(
-            jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel34Layout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
-                .addComponent(dataScadenza, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel34Layout.setVerticalGroup(
-            jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dataScadenza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        jPanel33.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome Servizio"));
-        jPanel33.setName("jPanel33"); // NOI18N
-
-        descrizione.setText("Nome Servizio");
-        descrizione.setName("descrizione"); // NOI18N
-
-        javax.swing.GroupLayout jPanel33Layout = new javax.swing.GroupLayout(jPanel33);
-        jPanel33.setLayout(jPanel33Layout);
-        jPanel33Layout.setHorizontalGroup(
-            jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel33Layout.createSequentialGroup()
-                .addContainerGap(74, Short.MAX_VALUE)
-                .addComponent(descrizione, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel33Layout.setVerticalGroup(
-            jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(descrizione, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        jPanel35.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome Servizio"));
-        jPanel35.setName("jPanel35"); // NOI18N
-
-        statoPag.setText("Nome Servizio");
-        statoPag.setName("statoPag"); // NOI18N
-
-        javax.swing.GroupLayout jPanel35Layout = new javax.swing.GroupLayout(jPanel35);
-        jPanel35.setLayout(jPanel35Layout);
-        jPanel35Layout.setHorizontalGroup(
-            jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel35Layout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
-                .addComponent(statoPag, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel35Layout.setVerticalGroup(
-            jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(statoPag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        modalitaPag.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        modalitaPag.setName("modalitaPag"); // NOI18N
-
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel11Layout.createSequentialGroup()
-                                .addComponent(jPanel34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel11Layout.createSequentialGroup()
-                                .addComponent(jPanel33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33)
-                                .addComponent(jPanel35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(modalitaPag, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(348, Short.MAX_VALUE))
-        );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addComponent(modalitaPag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(452, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Dati Pagamenti ", jPanel11);
 
         jPanel6.setName("jPanel6"); // NOI18N
 
@@ -792,7 +632,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
         jPanel25Layout.setVerticalGroup(
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel25Layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(prz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -856,7 +696,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(231, Short.MAX_VALUE))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -915,7 +755,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
             .addGroup(jXPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jXPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
                     .addComponent(jLabel1)
                     .addComponent(jXSearchPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -946,13 +786,6 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
             }
         });
 
-        buttonSalva2.setName("buttonSalva2"); // NOI18N
-        buttonSalva2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buttonSalva2MouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -961,15 +794,14 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jXLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jXLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+                        .addGap(94, 94, 94)
                         .addComponent(buttonSalva1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonSalva2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(17, 17, 17))
                     .addComponent(jXPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 791, Short.MAX_VALUE)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 738, Short.MAX_VALUE)
                     .addComponent(buttonAnnulla1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -977,76 +809,75 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonSalva1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonAnnulla1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonSalva2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(buttonSalva1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonAnnulla1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jXLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE)
-                    .addComponent(jXPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 521, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jXPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(132, 132, 132)))
                 .addContainerGap())
         );
 
         buttonSalva1.setEnabled(false);
         buttonAnnulla1.setEnabled(false);
-        buttonSalva1.setEnabled(false);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jXTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jXTable1MouseClicked
- try{
-       String id=(String)jXTable1.getValueAt(jXTable1.getSelectedRow(),0);
-       AppContratti operazione= new AppContratti();
-       legameBean();
-       // cambiare application operazione.visualizzaContratto(id, contratto);
-       editabile(false);
- }
- catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "validator ro cazz");}
+
+        //  String id = (String) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0);
+        AppContratti operazione = new AppContratti();
+        // cambiare application operazione.visualizzaContratto(id, contratto);
+        JOptionPane.showMessageDialog(null, "luisa");
+        editabile(false);
+
+
     }//GEN-LAST:event_jXTable1MouseClicked
 
-    private void buttonSalva1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSalva1MouseClicked
-        try {
-            legameBean();
-            AppContratti op = new AppContratti();
-            op.inserisci(contratto);
-            editabile(false);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "validator ro cazz");
-        }
-
-    }//GEN-LAST:event_buttonSalva1MouseClicked
-
     private void buttonAnnulla1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonAnnulla1MouseClicked
+        menu.getAggiungi().setEnabled(true);
+        menu.getModifica().setEnabled(true);
         JOptionPane.showMessageDialog(null, "operazione annulata");
         jTabbedPane1.setSelectedComponent(jPanel1);
-        editabile(false);
+
     }//GEN-LAST:event_buttonAnnulla1MouseClicked
 
-    private void buttonSalva2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSalva2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonSalva2MouseClicked
+    private void buttonSalva1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSalva1MouseClicked
+
+        menu.getAggiungi().setEnabled(true);
+        menu.getModifica().setEnabled(true);
+
+
+        AppContratti op = new AppContratti();
+        op.inserisci(contratto);
+        //Contratto contr=Conversione(contratto);
+        // ((ContrattoTm)jXTable1.getModel()).addNewData(contr);
+        editabile(false);
+
+
+
+
+
+    }//GEN-LAST:event_buttonSalva1MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField azienda;
     private it.seerp.Gui.BottoniGenerici.ButtonAnnulla buttonAnnulla1;
     private it.seerp.Gui.BottoniGenerici.ButtonSalva buttonSalva1;
-    private it.seerp.Gui.BottoniGenerici.ButtonSalva buttonSalva2;
     private javax.swing.JTextField cittafor;
     private javax.swing.JTextField data;
     private javax.swing.JTextField dataScad;
-    private javax.swing.JTextField dataScadenza;
-    private javax.swing.JTextField descrizione;
     private javax.swing.JTextField descrizioneServizio;
     private javax.swing.JTextField disponibilita;
     private javax.swing.JTextField durata;
-    private javax.swing.JTextField importo;
     private javax.swing.JTextField iva;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
@@ -1060,11 +891,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
     private javax.swing.JPanel jPanel25;
     private javax.swing.JPanel jPanel26;
     private javax.swing.JPanel jPanel27;
-    private javax.swing.JPanel jPanel28;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel33;
-    private javax.swing.JPanel jPanel34;
-    private javax.swing.JPanel jPanel35;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
@@ -1081,13 +908,11 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
     private org.jdesktop.swingx.JXSearchPanel jXSearchPanel1;
     private org.jdesktop.swingx.JXTable jXTable1;
     private javax.swing.JTextField mail;
-    private javax.swing.JComboBox modalitaPag;
     private javax.swing.JTextField piva;
     private javax.swing.JTextField provincia;
     private javax.swing.JTextField prz;
     private javax.swing.JTextField qnt;
     private javax.swing.JComboBox stato;
-    private javax.swing.JTextField statoPag;
     private javax.swing.JTextField tell;
     private javax.swing.JTextField tipo;
     // End of variables declaration//GEN-END:variables
