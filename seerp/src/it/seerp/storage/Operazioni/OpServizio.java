@@ -34,7 +34,7 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
 
         PreparedStatement stmt = null;
         
-        String query = "INSERT INTO Servizio(descrizione,disponibilita,quantita,tipo,prezzo,iva,note)" +
+        String query = "INSERT INTO servizio(descrizione,disponibilita,quantita,tipo,prezzo,iva,note)" +
                           " VALUES (?,?,?,?,?,?,?)";
         stmt = (PreparedStatement) conn.prepareStatement(query);
         
@@ -74,7 +74,7 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
     public Servizio modifica(Servizio servizio) throws SQLException, DatiErratiEx {
 
         PreparedStatement stmt = null;
-        String query="UPDATE Servizio(descrizione,disponibilità,quantità,tipo,prezzo,iva,note)" +
+        String query="UPDATE servizio(descrizione,disponibilità,quantità,tipo,prezzo,iva,note)" +
                 " SET (?, ?, ?, ?, ?, ?) WHERE idServizio=" + servizio.getIdServizio();
         stmt = (PreparedStatement) conn.prepareStatement(query);
 
@@ -108,7 +108,7 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
 
 
         String query = "SELECT idServizio,descrizione,disponibilita,quantita,tipo,prezzo,iva,note" +
-                        " FROM Servizio ";
+                        " FROM servizio ";
         stmt = (PreparedStatement) conn.prepareStatement(query);
 
         rs = stmt.executeQuery(query);
@@ -141,7 +141,7 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
 
 
         String query = "SELECT idServizio,descrizione,disponibilita,quantita,tipo,prezzo,iva,note" +
-                       "FROM Servizio WHERE servizio.idServizio= ?";
+                       "FROM servizio WHERE servizio.idServizio= ?";
         stmt = (PreparedStatement) conn.prepareStatement(query);
         stmt.setInt(1, id);
 
