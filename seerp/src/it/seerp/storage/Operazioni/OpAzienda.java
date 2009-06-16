@@ -23,7 +23,7 @@ public class OpAzienda {
     public void inserimento(Azienda az) throws SQLException, DatiErratiEx {
         PreparedStatement stmt = null;
 
-        String query = "INSERT INTO Azienda(citta,email,fax,indirizzo,nazione,PIVA,RagioneSociale,telefono)" +
+        String query = "INSERT INTO azienda(citta,email,fax,indirizzo,nazione,PIVA,RagioneSociale,telefono)" +
                 " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         stmt = (PreparedStatement) conn.prepareStatement(query);
@@ -47,7 +47,7 @@ public class OpAzienda {
     public Azienda modifica(Azienda az) throws SQLException, DatiErratiEx {
 
         PreparedStatement stmt = null;
-        String query = "UPDATE Azienda(citta,email,fax,indirizzo,nazione,PIVA,RagioneSociale,telefono)" +
+        String query = "UPDATE azienda(citta,email,fax,indirizzo,nazione,PIVA,RagioneSociale,telefono)" +
                 " SET (?, ?, ?, ?, ?, ?, ?, ?)";
         stmt = (PreparedStatement) conn.prepareStatement(query);
 
@@ -73,7 +73,7 @@ public class OpAzienda {
         Azienda az = null;
 
         String sql = "SELECT idAzienda,citta,email,fax,indirizzo,nazione,piva,ragioneSociale,telefono" +
-                " FROM Azienda WHERE idAzienda= ?";
+                " FROM azienda WHERE idAzienda= ?";
         stmt = (PreparedStatement) conn.prepareStatement(sql);
 
         stmt.setInt(1, id);
