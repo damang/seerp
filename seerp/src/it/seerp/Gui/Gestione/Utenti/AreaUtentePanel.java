@@ -16,22 +16,43 @@ import it.seerp.Gui.tabella.DipendenteTm;
 import it.seerp.Gui.tabella.FornitoreTm;
 import it.seerp.Gui.tabella.Generica;
 import it.seerp.Gui.tabella.ResponsabileTm;
-import it.seerp.application.bean.BeanGuiExtraAzienda;
+import it.seerp.application.bean.BeanGuiFornitore;
 import it.seerp.application.bean.BeanGuiPersonale;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import it.seerp.Gui.Menu.*;
+import it.seerp.application.applicazione.AppGestioneExtraAzienda;
+import it.seerp.application.applicazione.AppGestionePersonale;
+
+import it.seerp.application.bean.BeanGuiCliente;
+import it.seerp.application.bean.BeanGuiDipendente;
+
+import it.seerp.application.bean.BeanGuiResponsabile;
 
 /**
  *
  * @author Andrea
  */
 public class AreaUtentePanel extends ObservableJPanel implements ActionListener {
-  BeanGuiExtraAzienda extraAzienda;
-    BeanGuiPersonale personale;
+
+    BeanGuiFornitore fornitore;
+    BeanGuiCliente cliente;
+    BeanGuiResponsabile responsabile;
+    BeanGuiDipendente dipendente;
     ConfigurazioneUtente.TIPO_UTENTE_CONST tipoUtente;
-     Generica tModel;
+    Generica tModel;
+    MenuUtente menu;
+    String tipoOp;
+
+    public void setTipoOp(String tipoOp) {
+        this.tipoOp = tipoOp;
+    }
+
+    public void setMenu(MenuUtente menu) {
+        this.menu = menu;
+    }
 
     /** Creates new form AreaPersonalePanel */
     public AreaUtentePanel() {
@@ -39,12 +60,16 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
     }
 
     public AreaUtentePanel(ConfigurazioneUtente.TIPO_UTENTE_CONST tipoUtente) throws SQLException {
-         this.tipoUtente = tipoUtente;
+        this.tipoUtente = tipoUtente;
         this.settaTableModel();
 
         initComponents();
-        personale= new BeanGuiPersonale(this);
-         this.extraAzienda= new BeanGuiExtraAzienda(this);
+        responsabile = new BeanGuiResponsabile(this);
+        dipendente = new BeanGuiDipendente(this);
+        this.fornitore = new BeanGuiFornitore(this);
+        this.cliente = new BeanGuiCliente(this);
+        this.user.setEditable(false);
+        this.pwd.setEditable(false);
         editabile(false);
     }
 
@@ -79,10 +104,10 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel13 = new javax.swing.JPanel();
         ruolo = new javax.swing.JComboBox();
         jPanel27 = new javax.swing.JPanel();
-        jPanel28 = new javax.swing.JPanel();
-        jTextField8 = new javax.swing.JTextField();
+        panel28 = new javax.swing.JPanel();
+        user = new javax.swing.JTextField();
         jPanel29 = new javax.swing.JPanel();
-        jTextField16 = new javax.swing.JTextField();
+        pwd = new javax.swing.JTextField();
         jXLabel2 = new org.jdesktop.swingx.JXLabel();
         jXPanel1 = new org.jdesktop.swingx.JXPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -103,11 +128,6 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
         nm.setText("Nome");
         nm.setName("Nome"); // NOI18N
-        nm.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nmActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -174,11 +194,6 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
         mail.setText("E-mail");
         mail.setName("E-mail"); // NOI18N
-        mail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mailActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -222,11 +237,6 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
         citta.setText("Città");
         citta.setName("Citta"); // NOI18N
-        citta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cittaActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -282,7 +292,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
@@ -364,33 +374,33 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
         jPanel27.setName("jPanel27"); // NOI18N
 
-        jPanel28.setBorder(javax.swing.BorderFactory.createTitledBorder("Username"));
-        jPanel28.setName("jPanel28"); // NOI18N
+        panel28.setBorder(javax.swing.BorderFactory.createTitledBorder("Username"));
+        panel28.setName("panel28"); // NOI18N
 
-        jTextField8.setText("Username");
-        jTextField8.setName("Username"); // NOI18N
+        user.setText("Username");
+        user.setName("Username"); // NOI18N
 
-        javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
-        jPanel28.setLayout(jPanel28Layout);
-        jPanel28Layout.setHorizontalGroup(
-            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel28Layout.createSequentialGroup()
+        javax.swing.GroupLayout panel28Layout = new javax.swing.GroupLayout(panel28);
+        panel28.setLayout(panel28Layout);
+        panel28Layout.setHorizontalGroup(
+            panel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel28Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                .addComponent(user, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel28Layout.setVerticalGroup(
-            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel28Layout.createSequentialGroup()
-                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        panel28Layout.setVerticalGroup(
+            panel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel28Layout.createSequentialGroup()
+                .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel29.setBorder(javax.swing.BorderFactory.createTitledBorder("Password"));
         jPanel29.setName("jPanel29"); // NOI18N
 
-        jTextField16.setText("Password");
-        jTextField16.setName("Password"); // NOI18N
+        pwd.setText("Password");
+        pwd.setName("Password"); // NOI18N
 
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
         jPanel29.setLayout(jPanel29Layout);
@@ -398,13 +408,13 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel29Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pwd, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel29Layout.setVerticalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel29Layout.createSequentialGroup()
-                .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -414,7 +424,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel27Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(451, 451, 451))
@@ -424,9 +434,9 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             .addGroup(jPanel27Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel28, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panel28, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel29, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(365, Short.MAX_VALUE))
+                .addContainerGap(362, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Dati LogIn", jPanel27);
@@ -484,8 +494,18 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         );
 
         buttonAnnulla1.setName("buttonAnnulla1"); // NOI18N
+        buttonAnnulla1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonAnnulla1MouseClicked(evt);
+            }
+        });
 
         buttonSalva1.setName("buttonSalva1"); // NOI18N
+        buttonSalva1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonSalva1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -496,8 +516,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jXPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jXLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -520,7 +539,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
-                    .addComponent(jXPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jXPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -529,20 +548,144 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
     }// </editor-fold>//GEN-END:initComponents
 
     private void jXTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jXTable1MouseClicked
-       JOptionPane.showMessageDialog(null, "luii");
+        if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
+            //  String id = (String) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0);
+            AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
+        // cambiare application operazione.visualizzaCliente(id, cliente);
+
+        } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
+            //  String id = (String) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0);
+            AppGestionePersonale operazione = new AppGestionePersonale();
+        // cambiare application operazione.visualizzaDipendente(id, dipendente);
+
+        } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
+            //  String id = (String) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0);
+            AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
+        // cambiare application operazione.visualizzaFornitore(id, fornitore);
+
+        } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
+            //  String id = (String) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0);
+            AppGestionePersonale operazione = new AppGestionePersonale();
+        // cambiare application operazione.visualizzaResponsabile(id, responsabile);
+
+
+        }
+
+        editabile(false);
+
     }//GEN-LAST:event_jXTable1MouseClicked
 
     private void nmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nmActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_nmActionPerformed
 
     private void cittaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cittaActionPerformed
-        // TODO add your handling code here:
 }//GEN-LAST:event_cittaActionPerformed
 
     private void mailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mailActionPerformed
         // TODO add your handling code here:
 }//GEN-LAST:event_mailActionPerformed
+
+    private void buttonSalva1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSalva1MouseClicked
+        menu.getAggiungi().setEnabled(true);
+        menu.getModifica().setEnabled(true);
+        if (tipoOp.compareToIgnoreCase("inserisci") == 0) {
+            if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
+                JOptionPane.showMessageDialog(null, "INS CLIII");
+            //  AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
+            //operazione.inserisci(cliente);
+            /* Iterator<Cliente> it = op.visualizzaTabbellaClienti().iterator();
+            while (it.hasNext()) {
+            this.addNewData(it.next());
+            }*/
+
+            } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
+
+                AppGestionePersonale operazione = new AppGestionePersonale();
+            // operazione.inserisciDipendente(dipendente);
+            /* Iterator<Dipendenti> it = op.visualizzaDipendenti().iterator();
+            while (it.hasNext()) {
+            this.addNewData(it.next());
+            }*/
+
+            } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
+
+                AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
+            //operazione.inserisci(fornitore);
+            /* Iterator<Fornitore> it = op.visualizzaTabbellaFornitore().iterator();
+            while (it.hasNext()) {
+            this.addNewData(it.next());
+            }*/
+
+            } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
+
+                AppGestionePersonale operazione = new AppGestionePersonale();
+            //operazione.inserisciResponsabile(responsabile);
+            /* Iterator<Responsabile> it = op.visualizzaTabellaResponsabile().iterator();
+            while (it.hasNext()) {
+            this.addNewData(it.next());
+            }*/
+            }
+        }
+        if (tipoOp.compareToIgnoreCase("modifica") == 0) {
+            if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
+
+
+
+                AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
+            //operazione.modifica(cliente);
+            /* Iterator<Cliente> it = op.visualizzaTabbellaClienti().iterator();
+            while (it.hasNext()) {
+            this.addNewData(it.next());
+            }*/
+
+            } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
+
+                AppGestionePersonale operazione = new AppGestionePersonale();
+            //   operazione.modificaDipendente(responsabile);
+            /* Iterator<Dipendente> it = op.visualizzaTabellaDipendente().iterator();
+            while (it.hasNext()) {
+            this.addNewData(it.next());
+            }*/
+
+            } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
+
+
+                AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
+            //  operazione.modifica(fornitore);
+            /* Iterator<Fornitore> it = op.visualizzaTabbellaFornitore().iterator();
+            while (it.hasNext()) {
+            this.addNewData(it.next());
+            }*/
+
+
+            } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
+
+
+
+                AppGestionePersonale operazione = new AppGestionePersonale();
+            //   operazione.modificaResponsabile(responsabile);
+            /* Iterator<Responsabile> it = op.visualizzaTabellaResponsabile().iterator();
+            while (it.hasNext()) {
+            this.addNewData(it.next());
+            }*/
+
+            }
+
+        }
+        editabile(false);
+        this.buttonAnnulla1.setEnabled(false);
+        this.buttonSalva1.setEnabled(false);
+    }//GEN-LAST:event_buttonSalva1MouseClicked
+
+    private void buttonAnnulla1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonAnnulla1MouseClicked
+        menu.getAggiungi().setEnabled(true);
+        menu.getModifica().setEnabled(true);
+        JOptionPane.showMessageDialog(null, "operazione annulata");
+        jTabbedPane1.setSelectedComponent(jPanel1);
+        editabile(false);
+        this.buttonAnnulla1.setEnabled(false);
+        this.buttonSalva1.setEnabled(false);
+    }//GEN-LAST:event_buttonAnnulla1MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private it.seerp.Gui.BottoniGenerici.ButtonAnnulla buttonAnnulla1;
@@ -555,7 +698,6 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel27;
-    private javax.swing.JPanel jPanel28;
     private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -568,24 +710,69 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField8;
     private org.jdesktop.swingx.JXLabel jXLabel2;
     private org.jdesktop.swingx.JXPanel jXPanel1;
     private org.jdesktop.swingx.JXSearchPanel jXSearchPanel1;
     private org.jdesktop.swingx.JXTable jXTable1;
     private javax.swing.JTextField mail;
     private javax.swing.JTextField nm;
+    private javax.swing.JPanel panel28;
     private javax.swing.JTextField provincia;
+    private javax.swing.JTextField pwd;
     private javax.swing.JComboBox ruolo;
     private javax.swing.JTextField tell;
+    private javax.swing.JTextField user;
     // End of variables declaration//GEN-END:variables
-  
+
+    public void elmina() {
+        if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
+            JOptionPane.showMessageDialog(null, "INS CLIII");
+        //  AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
+        //operazione.elimina(cliente);
+            /* Iterator<Cliente> it = op.visualizzaTabbellaClienti().iterator();
+        while (it.hasNext()) {
+        this.addNewData(it.next());
+        }*/
+
+        } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
+
+            AppGestionePersonale operazione = new AppGestionePersonale();
+        // operazione.eliminaDipendente(dipendente);
+            /* Iterator<Dipendenti> it = op.visualizzaDipendenti().iterator();
+        while (it.hasNext()) {
+        this.addNewData(it.next());
+        }*/
+
+        } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
+
+            AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
+        // operazione.eliminafornitore);
+            /* Iterator<Fornitore> it = op.visualizzaTabbellaFornitore().iterator();
+        while (it.hasNext()) {
+        this.addNewData(it.next());
+        }*/
+
+        } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
+
+            AppGestionePersonale operazione = new AppGestionePersonale();
+        //operazione.eliminaResponsabile(responsabile);
+            /* Iterator<Responsabile> it = op.visualizzaTabellaResponsabile().iterator();
+        while (it.hasNext()) {
+        this.addNewData(it.next());
+        }*/
+        }
+
+        editabile(false);
+        this.buttonAnnulla1.setEnabled(false);
+        this.buttonSalva1.setEnabled(false);
+    }
+
     public void actionPerformed(ActionEvent e) {
         CommandInterface cmd = (CommandInterface) e.getSource();
         cmd.execute();
     }
- public ButtonSalva getSalva() {
+
+    public ButtonSalva getSalva() {
         return this.buttonSalva1;
     }
 
@@ -604,30 +791,46 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         this.codFisc.setText(s);
     }
 
-      public void legameBeanPersonale(){
-       personale.setNome(nm);
-       personale.setCognome(cog);
-       personale.setCodiceFiscale(codFisc);
-       //personale.setRuolo(cog);
+    public void legameBeanPersonale() {
+        responsabile.setNome(nm);
+        responsabile.setCognome(cog);
+        responsabile.setCodiceFiscale(codFisc);
+        //personale.setRuolo(cog);
+
+        responsabile.setTxtCitta(citta);
+        responsabile.setTxtEmail(mail);
+        responsabile.setTxtTelefono(tell);
+        responsabile.setTxtProvincia(provincia);
 
 
-       personale.setTxtEmail(mail);
-       //personale.setTxtCitta(citta);
-       personale.setTxtTelefono(tell);
-       personale.setTxtProvincia(provincia);
+        dipendente.setNome(nm);
+        dipendente.setCognome(cog);
+        dipendente.setCodiceFiscale(codFisc);
+        //personale.setRuolo(cog);
 
-      }
+        dipendente.setTxtCitta(citta);
+        dipendente.setTxtEmail(mail);
+        dipendente.setTxtTelefono(tell);
+        dipendente.setTxtProvincia(provincia);
 
-      public void lrgameBeanExtraAzienda()
+    }
 
-      {
-          //extraAzienda.setCap(cap);
-          //extraAzienda.setTxtNome(nm);
-          //extraAzienda.setTxtPIva(codFisc);
+    public void lrgameBeanExtraAzienda() {
 
-          extraAzienda.setTxtProvincia(provincia);
-          extraAzienda.setTxtEmail(mail);
-      }
+        fornitore.setTxtProvincia(provincia);
+        fornitore.setTxtCitta(citta);
+        fornitore.setTxtEmail(mail);
+        fornitore.setPIva(codFisc);
+        fornitore.setRagioneSociale(nm);
+        fornitore.setTxtTelefono(tell);
+        cliente.setTxtProvincia(provincia);
+        cliente.setTxtCitta(citta);
+        cliente.setTxtEmail(mail);
+        cliente.setPIva(codFisc);
+        cliente.setRagioneSociale(nm);
+        cliente.setTxtTelefono(tell);
+    }
+
     public void editabile(boolean flag) {
         this.nm.setEditable(flag);
         this.cog.setEditable(flag);
@@ -646,10 +849,9 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
             tModel = new DipendenteTm();
         } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
-            tModel=new FornitoreTm();
+            tModel = new FornitoreTm();
         } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
-           tModel=new ResponsabileTm();
+            tModel = new ResponsabileTm();
         }
     }
-
 }
