@@ -1013,7 +1013,7 @@ public class Conversione {
         return agenda1;
     }
 
-    private static Azienda conversioneAzienda(BeanGuiAzienda azienda) throws Exception {
+    public static Azienda conversioneAzienda(BeanGuiAzienda azienda) throws Exception {
         Azienda azienda1= new Azienda();
         azienda1.setCitta(azienda.getCitta().getText());
         azienda1.setEmail(azienda.getEmail().getText());
@@ -1048,7 +1048,7 @@ public class Conversione {
         return sa;
     }
 
-    private static BeanGuiAzienda conversioneAzienda(Azienda a, BeanGuiAzienda bga) {
+    public static BeanGuiAzienda conversioneAzienda(Azienda a, BeanGuiAzienda bga) {
 
         JTextField c = new JTextField();
         c.setText(a.getCitta().toString());
