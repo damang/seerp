@@ -10,22 +10,13 @@
  */
 package it.seerp.Gui.Gestione.Ruoli;
 
-import it.seerp.Gui.Gestione.Utenti.*;
 import it.configurazioni.pattern.command.CommandInterface;
-import it.configurazioni.Gui.ConfigurazioneUtente;
-import it.seerp.Gui.AreaPersonale.*;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
-import it.seerp.Gui.tabella.ClienteTm;
-import it.seerp.Gui.tabella.DipendenteTm;
-import it.seerp.Gui.tabella.FornitoreTm;
-import it.seerp.Gui.tabella.Generica;
-import it.seerp.Gui.tabella.ResponsabileTm;
 import it.seerp.Gui.tabella.RuoloTm;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 /**
