@@ -139,6 +139,10 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto, Contrat
         return beanGuiContratto;
     }
 
+    /**
+     * Metodo che passa la lista di bean utilizzando l'operazioni del lato storage
+     * @return lista dei bean
+     */
     public ArrayList<Contratto> visualizzaTabella() {
         ArrayList<Contratto> list = new ArrayList<Contratto>();
         try {
