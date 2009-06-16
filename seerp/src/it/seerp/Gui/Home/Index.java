@@ -170,7 +170,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
 
             jXPanel1.setName("jXPanel1"); // NOI18N
 
-            jXLabel1.setText("mes di benvenuto");
+            jXLabel1.setText("Benvenuto "+ ut_sub.getPrincipals().iterator().next().getName());
             jXLabel1.setName("jXLabel1"); // NOI18N
 
             javax.swing.GroupLayout jXPanel1Layout = new javax.swing.GroupLayout(jXPanel1);
