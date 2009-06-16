@@ -39,7 +39,9 @@ public class OpAreaPersonale extends OpPersonale {
      * di un membro del personale nella propria area personale
      * @param u il bean di utente
      * @return il bean con i dettagli del membro del personale
-     * @throws java.sql.SQLException*/
+     * @throws java.sql.SQLException
+     * @throws DatiErratiEx se si modifica con una password errata
+     */
     public Utente modificaPassword(Utente u) throws SQLException, DatiErratiEx {
 
         PreparedStatement stmt = null;
