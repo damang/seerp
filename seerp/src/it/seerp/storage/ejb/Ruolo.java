@@ -12,6 +12,7 @@ public class Ruolo {
      private PermessoCollection listPermesso;
      private String nome;
      private ArrayList<Personale> listPersonale;
+     private boolean perm_syncro;
 
      /**
       * costruttore per la classe Ruolo
@@ -22,6 +23,11 @@ public class Ruolo {
         this.listPermesso=null;
         this.nome = nome;
         this.listPersonale= null;
+        perm_syncro=true;
+    }
+
+    public void setListPersonale(ArrayList<Personale> listPersonale) {
+        this.listPersonale = listPersonale;
     }
 
      /**
@@ -38,7 +44,9 @@ public class Ruolo {
      * @return la lista degli incarichi
      */
     public PermessoCollection getListPermesso() {
-        return PermissionRoleDBAdapter.getPermissionsUt(nome);
+        if (perm_syncro)
+            return PermissionRoleDBAdapter.getPermissionsUt(nome);
+        else return listPermesso;
     }
 
    
@@ -62,7 +70,7 @@ public class Ruolo {
      * metodo che permette di rimuovere un incarico dalla lista degli incarichi
      * @param c rappresenta l'incarico da eliminare
      */
- /*   public void removePermesso(Permesso c){
+    public void removePermesso(Permesso c){
      listPermesso.remove(c);
     }
 
@@ -70,8 +78,14 @@ public class Ruolo {
      * metodo che permette di aggiungere un incarico alla lista degli incarichi
      * @param c rappresenta l'incarico da inserire
      */
- /*   public void addPermesso(Permesso c){
+    public void addPermesso(Permesso c){
       listPermesso.add(c);
-    */
+    }
+    public void setPermSyncro(boolean b) {
+        perm_syncro=b;
+        if(perm_syncro==false) {
+            listPermesso=new PermessoCollection();
+        }
+    }
 
 }
