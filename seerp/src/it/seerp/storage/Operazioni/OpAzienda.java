@@ -28,7 +28,6 @@ public class OpAzienda {
 
         stmt = (PreparedStatement) conn.prepareStatement(query);
 
-
         stmt.setString(1, az.getCitta());
         stmt.setString(2, az.getEmail());
         stmt.setString(3, az.getFax());
@@ -42,7 +41,6 @@ public class OpAzienda {
         stmt.close();
 
         ConnectionPool.releaseConnection(conn);
-
 
     }
 
@@ -74,7 +72,6 @@ public class OpAzienda {
         ResultSet rs = null;
         Azienda az = null;
 
-
         String sql = "SELECT idAzienda,citta,email,fax,indirizzo,nazione,piva,ragioneSociale,telefono" +
                 " FROM Azienda WHERE idAzienda= ?";
         stmt = (PreparedStatement) conn.prepareStatement(sql);
@@ -85,11 +82,9 @@ public class OpAzienda {
         // Define the resource list
         while (rs.next()) {
 
-
             az = new Azienda(rs.getString(1), rs.getString(2), rs.getString(3),
                     rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),
                     rs.getString(8), rs.getInt(9));
-
         }
         stmt.close();
         rs.close();
