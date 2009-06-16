@@ -612,7 +612,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
 
        personale.setTxtEmail(mail);
-       personale.setTxtCitta(citta);
+       //personale.setTxtCitta(citta);
        personale.setTxtTelefono(tell);
        personale.setTxtProvincia(provincia);
 
@@ -621,7 +621,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
       public void lrgameBeanExtraAzienda()
 
       {
-          extraAzienda.setTxtCitta(citta);
+          //extraAzienda.setCap(cap);
           //extraAzienda.setTxtNome(nm);
           //extraAzienda.setTxtPIva(codFisc);
 

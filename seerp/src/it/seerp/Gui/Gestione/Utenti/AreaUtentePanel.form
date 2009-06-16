@@ -176,9 +176,6 @@
                     <Property name="text" type="java.lang.String" value="Nome"/>
                     <Property name="name" type="java.lang.String" value="Nome" noResource="true"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nmActionPerformed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -292,9 +289,6 @@
                     <Property name="text" type="java.lang.String" value="E-mail"/>
                     <Property name="name" type="java.lang.String" value="E-mail" noResource="true"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mailActionPerformed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -371,9 +365,6 @@
                     <Property name="text" type="java.lang.String" value="Citt&#xe0;"/>
                     <Property name="name" type="java.lang.String" value="Citta" noResource="true"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cittaActionPerformed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -545,7 +536,7 @@
                           <Component id="jPanel28" alignment="0" min="-2" max="-2" attributes="1"/>
                           <Component id="jPanel29" alignment="0" min="-2" max="-2" attributes="1"/>
                       </Group>
-                      <EmptySpace pref="365" max="32767" attributes="0"/>
+                      <EmptySpace pref="405" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -566,7 +557,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField8" pref="133" max="32767" attributes="0"/>
+                          <Component id="user" pref="133" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -574,14 +565,14 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jTextField8" min="-2" max="-2" attributes="0"/>
+                          <Component id="user" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JTextField" name="jTextField8">
+                <Component class="javax.swing.JTextField" name="user">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Username"/>
                     <Property name="name" type="java.lang.String" value="Username" noResource="true"/>
@@ -604,7 +595,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField16" min="-2" pref="133" max="-2" attributes="0"/>
+                          <Component id="pwd" min="-2" pref="133" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="3"/>
                       </Group>
                   </Group>
@@ -612,14 +603,14 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jTextField16" min="-2" max="-2" attributes="0"/>
+                          <Component id="pwd" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="1"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JTextField" name="jTextField16">
+                <Component class="javax.swing.JTextField" name="pwd">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Password"/>
                     <Property name="name" type="java.lang.String" value="Password" noResource="true"/>
@@ -724,6 +715,9 @@
       <Properties>
         <Property name="name" type="java.lang.String" value="buttonAnnulla1" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonAnnulla1MouseClicked"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="buttonAnnulla1.setEnabled(false);"/>
       </AuxValues>
@@ -732,6 +726,9 @@
       <Properties>
         <Property name="name" type="java.lang.String" value="buttonSalva1" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonSalva1MouseClicked"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="buttonSalva1.setEnabled(false);"/>
       </AuxValues>
