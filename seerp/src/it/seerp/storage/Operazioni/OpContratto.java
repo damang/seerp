@@ -33,6 +33,7 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
 
     /**
      * metodo che inserisce i dati del contratto
+     * @param contratto il contratto da inserire
      * @throws java.sql.SQLException
      * @throws DatiErratiEx se si inseriscono dati errati
      */
@@ -73,7 +74,7 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
 
     /**
      * metodo che ricerca tutti i contratti
-     * @return una lista dei contratti ricercati  in base all'identificativo del dipendente
+     * @return una lista dei contratti ricercati in base all'identificativo del dipendente
      * @throws java.sql.SQLException
      */
     public ArrayList<Contratto> visualizzaElenco() throws SQLException {
