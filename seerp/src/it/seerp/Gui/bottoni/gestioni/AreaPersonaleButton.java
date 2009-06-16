@@ -1,7 +1,7 @@
 
 package it.seerp.Gui.bottoni.gestioni;
 
-import it.seerp.configurazioni.pattern.command.CommandInterface;
+import it.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.AreaPersonale.AreaPersonalePanel;
 import it.seerp.Gui.command.ObserverButton;
 import java.awt.event.ActionListener;
