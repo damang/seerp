@@ -488,6 +488,14 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="it.seerp.Gui.BottoniGenerici.ButtonSalva" name="buttonSalva2">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="buttonSalva2" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonSalva2MouseClicked"/>
+              </Events>
+            </Component>
             <Component class="it.seerp.Gui.BottoniGenerici.ButtonSalva" name="modifica">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Modifica"/>
@@ -495,14 +503,6 @@
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="modificaMouseClicked"/>
-              </Events>
-            </Component>
-            <Component class="it.seerp.Gui.BottoniGenerici.ButtonSalva" name="buttonSalva2">
-              <Properties>
-                <Property name="name" type="java.lang.String" value="buttonSalva2" noResource="true"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonSalva2MouseClicked"/>
               </Events>
             </Component>
           </SubComponents>
