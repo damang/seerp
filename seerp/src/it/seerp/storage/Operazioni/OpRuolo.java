@@ -29,7 +29,7 @@ public class OpRuolo implements OpeEntity<Ruolo,String>{
     }
 
     public void inserimento(Ruolo bean) throws SQLException {
-        ArrayList<Ruolo> list = new ArrayList<Ruolo>();
+        
         PreparedStatement stmt = null;
         ResultSet rs = null;
         String sql = "INSERT INTO Ruolo Values (?);";
@@ -50,6 +50,15 @@ public class OpRuolo implements OpeEntity<Ruolo,String>{
     }
 
     public ArrayList<Ruolo> visualizzaElenco() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet.");
+        ArrayList<Ruolo> r= new ArrayList<Ruolo>();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        String sql = "SELECT * FROM Ruolo;";
+        stmt = (PreparedStatement) conn.prepareStatement(sql);
+             // Execute the query
+        rs=stmt.executeQuery();
+        while (rs.next())
+            r.add(new Ruolo(rs.getString(1)));
+        return r;
     }
 }
