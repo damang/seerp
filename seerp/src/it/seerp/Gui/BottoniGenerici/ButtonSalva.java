@@ -11,7 +11,7 @@
 
 package it.seerp.Gui.BottoniGenerici;
 
-import configurazioni.CommandInterface;
+import it.seerp.configurazioni.pattern.command.CommandInterface;
 import javax.swing.JButton;
 
 /**

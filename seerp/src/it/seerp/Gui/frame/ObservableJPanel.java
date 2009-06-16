@@ -1,17 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * ObservableJPanel.java
- *
- * Created on 9-giu-2009, 14.48.50
- */
 
 package it.seerp.Gui.frame;
 
-import configurazioni.pattern.observer.*;
+import it.seerp.configurazioni.pattern.observer.Observable;
+import it.seerp.configurazioni.pattern.observer.Observer;
 import java.util.Iterator;
 import java.util.Vector;
 import org.jdesktop.swingx.JXPanel;

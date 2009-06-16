@@ -5,7 +5,7 @@
 
 package it.seerp.bottoni.Nuovo;
 
-import configurazioni.CommandInterface;
+import it.seerp.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.Ruoli.GestioneRuoli;
 import it.seerp.Gui.Home.Index;
 import it.seerp.Gui.InfoAzienda.InfoAzienda;

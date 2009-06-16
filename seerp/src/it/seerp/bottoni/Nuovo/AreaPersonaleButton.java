@@ -4,7 +4,7 @@
  */
 package it.seerp.bottoni.Nuovo;
 
-import configurazioni.CommandInterface;
+import it.seerp.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.AreaPersonale.AreaPersonalePanel;
 import it.seerp.Gui.Menu.MenuAreaPersonale;
 import it.seerp.Gui.Menu.MenuUtente;
