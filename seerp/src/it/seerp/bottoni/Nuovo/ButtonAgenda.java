@@ -72,9 +72,9 @@ public class ButtonAgenda extends ObserverButton implements CommandInterface{
                     }
                        
                         for (Evento evento : e) {
-                            System.out.println(year + "/"+month + "/"+day + " " + evento.getData().getTimeInMillis() + " nuobo: " +
-                                   new GregorianCalendar(year, month, day).getTimeInMillis()
-                                    );
+                          //  System.out.println(year + "/"+month + "/"+day + " " + evento.getData().getTimeInMillis() + " nuobo: " +
+                             //      new GregorianCalendar(year, month, day).getTimeInMillis()
+                               //     );
                             if(evento.getData().get(GregorianCalendar.YEAR)==year && evento.getData().get(GregorianCalendar.MONTH)==month-1 && evento.getData().get(GregorianCalendar.DAY_OF_MONTH)==day)
                                     {
                                 System.out.println("ok ci sto: " + evento.toString());
