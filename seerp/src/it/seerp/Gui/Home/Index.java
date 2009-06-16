@@ -7,11 +7,12 @@ import java.sql.SQLException;
 import configurazioni.CommandInterface;
 import configurazioni.Screen;
 import it.seerp.Gui.AreaPersonale.AreaPersonalePanel;
+import it.seerp.Gui.Gestione.Ruoli.GestioneRuoli;
 import it.seerp.Gui.Gestione.Utenti.AreaUtentePanel;
 import it.seerp.Gui.GestioneContratti.GestioneContratti;
 import it.seerp.Gui.GestioneServizi.GestioneServizi;
+import it.seerp.Gui.InfoAzienda.InfoAzienda;
 import it.seerp.Gui.frame.ObservableJPanel;
-import it.seerp.Gui.frame.ObservervableJTabbedPanel;
 import it.seerp.jaas.AuthPolicy;
 import it.seerp.jaas.AuthPrincipal;
 import it.seerp.jaas.JaasUtil;
@@ -39,15 +40,13 @@ import org.jdesktop.swingx.auth.LoginEvent;
  */
 public class Index extends javax.swing.JFrame implements ActionListener {
 
-    ObservervableJTabbedPanel areaPersonaleFrame;
-
     /** Creates new form Index */
     public Index(Subject sub) {
         ut_sub=sub;
-        areaPersonaleFrame = new ObservervableJTabbedPanel();
+
         
         initComponents();
-        areaPersonaleFrame.register(areaPersonaleButton1);
+
       //  GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
        // setSize(ge.getMaximumWindowBounds().width,ge.getMaximumWindowBounds().height);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -165,6 +164,8 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             this.menuContratti1.setVisible(false);
             menuServizi1.setVisible(false);
             menuAreaPersonale2.setVisible(false);
+            menuRuoli1.setVisible(false);
+            this.menuInfoAzienda1.setVisible(false);
 
             jXTaskPaneContainer1.setName("jXTaskPaneContainer1"); // NOI18N
 
@@ -481,7 +482,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.DEFAULT_SIZE, 1894, Short.MAX_VALUE)
+                        .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.DEFAULT_SIZE, 1918, Short.MAX_VALUE)
                         .addGap(10, 10, 10))))
         );
         layout.setVerticalGroup(
@@ -491,7 +492,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, 943, Short.MAX_VALUE)
+            .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, 946, Short.MAX_VALUE)
         );
 
         pack();
@@ -534,32 +535,57 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                 this.menuAreaPersonale2.setVisible(false);
                 this.menuServizi1.setVisible(false);
                 this.menuUtente1.setVisible(true);
+                this.menuInfoAzienda1.setVisible(false);
+                this.menuRuoli1.setVisible(false);
                 this.menuUtente1.setPannello((AreaUtentePanel) p);
             } else if (p.getClass().equals(GestioneContratti.class)) {
                 this.menuUtente1.setVisible(false);
                 this.menuAreaPersonale2.setVisible(false);
                 this.menuServizi1.setVisible(false);
+                this.menuInfoAzienda1.setVisible(false);
+                this.menuRuoli1.setVisible(false);
                 this.menuContratti1.setVisible(true);
-                this.menuContratti1.setPannello((GestioneContratti)p);
+                this.menuContratti1.setPannello((GestioneContratti) p);
             } else if (p.getClass().equals(GestioneServizi.class)) {
-                this.menuContratti1.setVisible(false);
-                this.menuAreaPersonale2.setVisible(false);
                 this.menuUtente1.setVisible(false);
+                this.menuAreaPersonale2.setVisible(false);
+                this.menuInfoAzienda1.setVisible(false);
+                this.menuRuoli1.setVisible(false);
+                this.menuContratti1.setVisible(false);
                 this.menuServizi1.setVisible(true);
-                this.menuServizi1.setPannello((GestioneServizi)p);
+                this.menuServizi1.setPannello((GestioneServizi) p);
             } else if (p.getClass().equals(AreaPersonalePanel.class)) {
                 this.menuContratti1.setVisible(false);
                 this.menuUtente1.setVisible(false);
                 this.menuServizi1.setVisible(false);
+                this.menuInfoAzienda1.setVisible(false);
+                this.menuRuoli1.setVisible(false);
                 this.menuAreaPersonale2.setVisible(true);
-            }}
-            else
-            {
+            } else if (p.getClass().equals(GestioneRuoli.class)) {
+                this.menuUtente1.setVisible(false);
+                this.menuAreaPersonale2.setVisible(false);
+                this.menuServizi1.setVisible(false);
+                this.menuInfoAzienda1.setVisible(false);
+                this.menuContratti1.setVisible(false);
+                this.menuRuoli1.setVisible(true);
+            //  this.menuRuoli1.setPannello((GestioneRuoli)p);
+            } else if (p.getClass().equals(InfoAzienda.class)) {
+                this.menuUtente1.setVisible(false);
+                this.menuAreaPersonale2.setVisible(false);
+                this.menuServizi1.setVisible(false);
+                this.menuRuoli1.setVisible(false);
+                this.menuContratti1.setVisible(false);
+                this.menuInfoAzienda1.setVisible(true);
+                this.menuInfoAzienda1.setPannello((InfoAzienda) p);
+            } else {
                 this.menuContratti1.setVisible(false);
                 this.menuAreaPersonale2.setVisible(false);
                 this.menuUtente1.setVisible(false);
-                this.menuServizi1.setVisible(false);}
-        
+                this.menuServizi1.setVisible(false);
+                this.menuInfoAzienda1.setVisible(false);
+                this.menuRuoli1.setVisible(false);
+            }
+        }
     }//GEN-LAST:event_jTabbedPanePrincipaleStateChanged
 
     private void areaPersonaleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areaPersonaleButton1ActionPerformed

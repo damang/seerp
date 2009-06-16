@@ -109,7 +109,7 @@
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="menu" max="32767" attributes="2"/>
                   <Group type="102" attributes="0">
-                      <Component id="jTabbedPanePrincipale" pref="1894" max="32767" attributes="2"/>
+                      <Component id="jTabbedPanePrincipale" pref="1918" max="32767" attributes="2"/>
                       <EmptySpace min="10" pref="10" max="10" attributes="0"/>
                   </Group>
               </Group>
@@ -124,7 +124,7 @@
               <Component id="jTabbedPanePrincipale" pref="820" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
-          <Component id="jXTaskPaneContainer1" alignment="0" pref="943" max="32767" attributes="0"/>
+          <Component id="jXTaskPaneContainer1" alignment="0" pref="946" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -217,11 +217,17 @@
           <Properties>
             <Property name="name" type="java.lang.String" value="menuRuoli1" noResource="true"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="menuRuoli1.setVisible(false);"/>
+          </AuxValues>
         </Component>
         <Component class="it.seerp.Gui.Menu.MenuInfoAzienda" name="menuInfoAzienda1">
           <Properties>
             <Property name="name" type="java.lang.String" value="menuInfoAzienda1" noResource="true"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="this.menuInfoAzienda1.setVisible(false);"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
