@@ -31,11 +31,11 @@ public class ModificaButtonUtente extends JButton implements CommandInterface {
     }
 
     public void execute() {
-        areaUt.setTipoOP("modifica");
+        areaUt.setTipoOp("modifica");
         this.setEnabled(false);
         areaUt.editabile(true);
         areaUt.getSalva().setEnabled(true);
         areaUt.getAnnulla().setEnabled(true);
-      
+
     }
 }
