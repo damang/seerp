@@ -88,7 +88,7 @@
                               <EmptySpace min="-2" pref="198" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="73" max="32767" attributes="0"/>
+                      <EmptySpace pref="61" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -100,7 +100,7 @@
                           <Component id="jPanel6" max="32767" attributes="1"/>
                           <Component id="jPanel3" alignment="0" max="32767" attributes="1"/>
                       </Group>
-                      <EmptySpace pref="17" max="32767" attributes="0"/>
+                      <EmptySpace pref="13" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jPanel9" alignment="0" min="-2" max="-2" attributes="2"/>
                           <Component id="jPanel8" alignment="0" min="-2" max="-2" attributes="1"/>
@@ -318,7 +318,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" pref="659" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="667" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -326,7 +326,7 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jScrollPane1" pref="257" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="252" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -368,46 +368,7 @@
             </Constraint>
           </Constraints>
 
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel11" min="-2" max="-2" attributes="2"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jPanel13" alignment="0" max="32767" attributes="1"/>
-                          <Component id="jPanel12" alignment="0" max="32767" attributes="1"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="buttonSalva1" min="-2" max="-2" attributes="1"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="buttonElimina1" min="-2" max="-2" attributes="1"/>
-                      <EmptySpace pref="156" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                              <Component id="buttonSalva1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="buttonElimina1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jPanel12" alignment="0" max="32767" attributes="1"/>
-                              <Component id="jPanel11" alignment="0" max="32767" attributes="1"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel13" min="-2" max="-2" attributes="1"/>
-                      <EmptySpace pref="341" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
           <SubComponents>
             <Container class="javax.swing.JPanel" name="jPanel11">
               <Properties>
@@ -457,6 +418,9 @@
                 </Property>
                 <Property name="name" type="java.lang.String" value="jPanel12" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel12MouseClicked"/>
+              </Events>
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -524,21 +488,21 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="it.seerp.Gui.BottoniGenerici.ButtonSalva" name="buttonSalva1">
+            <Component class="it.seerp.Gui.BottoniGenerici.ButtonSalva" name="modifica">
               <Properties>
-                <Property name="name" type="java.lang.String" value="buttonSalva1" noResource="true"/>
+                <Property name="text" type="java.lang.String" value="Modifica"/>
+                <Property name="name" type="java.lang.String" value="modifica" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonSalva1MouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="modificaMouseClicked"/>
               </Events>
             </Component>
-            <Component class="it.seerp.Gui.BottoniGenerici.ButtonElimina" name="buttonElimina1">
+            <Component class="it.seerp.Gui.BottoniGenerici.ButtonSalva" name="buttonSalva2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Annulla"/>
-                <Property name="name" type="java.lang.String" value="buttonElimina1" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="buttonSalva2" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonElimina1MouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonSalva2MouseClicked"/>
               </Events>
             </Component>
           </SubComponents>
