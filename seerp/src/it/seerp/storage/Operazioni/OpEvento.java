@@ -33,8 +33,8 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
     /** crea la query per inserire l'evento e nel database
      * @param e l'evento da inserire
      * @throws SQLException
-     * @throws DatiErrati
-     * @throws DatiDuplicati
+     * @throws DatiErratiEx eccezione lanciata se si inseriscono dati errati
+     * @throws DatiDuplicatiEx eccezione lanciata se esiste già un evento con lo stesso nome
      */
     public void inserimento(Evento e) throws DatiDuplicatiEx, DatiErratiEx, SQLException {
 
@@ -63,12 +63,10 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
             stmt.setString(7, e.getNote());
             stmt.setBoolean(8, e.getNotifica());
 
-
             stmt.execute();
             stmt.close();
             rs.close();
             ConnectionPool.releaseConnection(conn);
-
         }
     }
 
@@ -146,7 +144,6 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
                     rs.getString(4), date, time, rs.getInt(7),
                     rs.getBoolean(8));
 
-
         }
         stmt.close();
         rs.close();
@@ -176,7 +173,6 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
         stmt = (PreparedStatement) conn.prepareStatement(query);
         rs = stmt.executeQuery(query);
 
-
         while (rs.next()) {
             GregorianCalendar date = new GregorianCalendar();
             date.setTimeInMillis(rs.getDate(2).getTime());
@@ -196,9 +192,9 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
     }
 
     /**
-     * Crea la query per ricercare gli eventi conformi al parametro 'nome'
+     * Crea la query per ricercare un evento
      * e restituisce la lista degli eventi risultante.
-     * @param nome	Il nome dell'evento da ricercare
+     * @param nome Il nome dell'evento da ricercare
      * @return	La lista degli eventi ricercata
      * @throws SQLException
      */
@@ -208,14 +204,6 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
         return b;
     }
 
-    /**
-     * Crea la query per ricercare gli eventi conformi al parametro 'tema'
-     * e restituisce la lista degli eventi risultante.
-     * @param tema	Il tema dell'evento da ricercare
-     * @return	La lista degli eventi ricercata
-     * @throws SQLException
-     * @throws ClassNotFoundException
-     */
     /**
      * Crea la query per cancellare l'evento e dal database
      * @param e l'evento da cancellare
@@ -232,14 +220,18 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
 
         ConnectionPool.releaseConnection(conn);
     }
-    /*crea la query per settare il campo notifica a true*/
-
+   
+    /**
+     * crea la query per settare il campo notifica a true
+     * @param e l'evento da notificare
+     * @throws SQLException
+     */
     public void notificaEvento(Evento e) throws SQLException {
 
         PreparedStatement stmt = null;
 
 
-        String query = "UPDATE Evento(notifica) SET (?) " +
+        String query = "UPDATE Evento(notifica) SET (true) " +
                 "WHERE idEvento='" + e.getIdEvento() + "'";
         stmt.setBoolean(1, e.getNotifica());
         stmt = (PreparedStatement) conn.prepareStatement(query);
@@ -250,6 +242,11 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
         ConnectionPool.releaseConnection(conn);
     }
 
+     /**
+     * crea la query per mostrare gli eventi che devono essere notificati all'utente
+     * @param data il giorno da cui il sistema deve notificare l'evento
+     * @throws SQLException
+     */
     public ArrayList<Evento> eventiNotificati(GregorianCalendar data) throws SQLException {
 
         PreparedStatement stmt = null;
