@@ -41,7 +41,7 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
 
         PreparedStatement stmt = null;
 
-        String query = "INSERT INTO Contratto(durata,stato,tipo,extrazienda,dipendente,data,note)" +
+        String query = "INSERT INTO contratto(durata,stato,tipo,extrazienda,dipendente,data,note)" +
                 " VALUES (?, ?, ?, ?, ?, ?, ? )" + "where idContratto=" + contratto.getIdContratto();
 
         stmt = (PreparedStatement) conn.prepareStatement(query);
@@ -85,7 +85,7 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
         ResultSet rs = null;
         Contratto contratto = null;
 
-        String sql = "SELECT idContratto,durata,stato,tipo,extrazienda,dipendente,data,note FROM Contratto";
+        String sql = "SELECT idContratto,durata,stato,tipo,extrazienda,dipendente,data,note FROM contratto";
         stmt = (PreparedStatement) conn.prepareStatement(sql);
 
         // Execute the query
@@ -123,7 +123,7 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
 
 
         String sql = "SELECT idContratto,durata,stato,tipo,extrazienda,dipendente,data,note " +
-                "FROM Contratto WHERE idContratto= ?";
+                "FROM contratto WHERE idContratto= ?";
         stmt = (PreparedStatement) conn.prepareStatement(sql);
 
         stmt.setInt(1, id);
