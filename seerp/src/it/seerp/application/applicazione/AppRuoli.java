@@ -51,5 +51,9 @@ public class AppRuoli implements GestioneRuoli<BeanGuiRuolo> {
         return null;
     }
 
+    public ArrayList<BeanGuiRuolo> getElenco(ArrayList<BeanGuiRuolo> list) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
 
 }
