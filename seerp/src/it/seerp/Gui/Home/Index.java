@@ -5,7 +5,6 @@ import java.sql.SQLException;
 
 
 import configurazioni.CommandInterface;
-import configurazioni.Screen;
 import it.seerp.Gui.AreaPersonale.AreaPersonalePanel;
 import it.seerp.Gui.Gestione.Ruoli.GestioneRuoli;
 import it.seerp.Gui.Gestione.Utenti.AreaUtentePanel;
@@ -15,24 +14,14 @@ import it.seerp.Gui.InfoAzienda.InfoAzienda;
 import it.seerp.Gui.frame.ObservableJPanel;
 import it.seerp.jaas.AuthPolicy;
 import it.seerp.jaas.AuthPrincipal;
-import it.seerp.jaas.JaasUtil;
-import java.awt.GraphicsEnvironment;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.security.Policy;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.security.auth.Subject;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import org.jdesktop.swingx.JXLoginPane;
-import org.jdesktop.swingx.auth.LoginAdapter;
-import org.jdesktop.swingx.auth.LoginEvent;
 
 /**
  *
@@ -82,7 +71,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             areaPersonaleButton1 = new it.seerp.bottoni.Nuovo.AreaPersonaleButton(this.jTabbedPanePrincipale, this.menuAreaPersonale2, this);
             buttonRuoli1 = new it.seerp.bottoni.Nuovo.ButtonRuoli(this.jTabbedPanePrincipale, this.menuRuoli1, this);
             buttonInfoAzienda1 = new it.seerp.bottoni.Nuovo.ButtonInfoAzienda(this.jTabbedPanePrincipale, this.menuInfoAzienda1, this);
-            buttonAgenda1 = new it.seerp.bottoni.Nuovo.ButtonAgenda(this.jTabbedPanePrincipale, this.menuRuoli1, this);
+            buttonAgenda1 = new it.seerp.bottoni.Nuovo.ButtonAgenda(this.jTabbedPanePrincipale, this.menuAppuntamento1, this);
             jXMonthView1 = new org.jdesktop.swingx.JXMonthView();
             jXTitledPanel1 = new org.jdesktop.swingx.JXTitledPanel();
             menuUtente1 = new it.seerp.Gui.Menu.MenuUtente();
@@ -91,6 +80,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             menuServizi1 = new it.seerp.Gui.Menu.MenuServizi();
             menuInfoAzienda1 = new it.seerp.Gui.Menu.MenuInfoAzienda();
             menuAreaPersonale2 = new it.seerp.Gui.Menu.MenuAreaPersonale();
+            menuAppuntamento1 = new it.seerp.Gui.Menu.MenuAppuntamento();
             menuBar = new javax.swing.JMenuBar();
             fileMenu = new javax.swing.JMenu();
             openMenuItem = new javax.swing.JMenuItem();
@@ -122,7 +112,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             jXLabel1.setForeground(new java.awt.Color(0, 0, 204));
             jXLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/home.png"))); // NOI18N
             jXLabel1.setText("Benvenuto "+ ut_sub.getPrincipals().iterator().next().getName());
-            jXLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+            jXLabel1.setFont(new java.awt.Font("Tahoma", 1, 14));
             jXLabel1.setName("jXLabel1"); // NOI18N
 
             javax.swing.GroupLayout jXPanel1Layout = new javax.swing.GroupLayout(jXPanel1);
@@ -359,7 +349,10 @@ public class Index extends javax.swing.JFrame implements ActionListener {
         buttonInfoAzienda1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         buttonInfoAzienda1.setName("buttonInfoAzienda1"); // NOI18N
 
-        buttonAgenda1.setText("buttonAgenda1");
+        buttonAgenda1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/addressbook-32x32.png"))); // NOI18N
+        buttonAgenda1.setText("Agenda");
+        buttonAgenda1.setContentAreaFilled(false);
+        buttonAgenda1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         buttonAgenda1.setName("buttonAgenda1"); // NOI18N
         buttonAgenda1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -401,6 +394,11 @@ public class Index extends javax.swing.JFrame implements ActionListener {
         jXMonthView1.setTodayBackground(java.awt.Color.blue);
         jXMonthView1.setTraversable(true);
         jXMonthView1.setZoomable(true);
+        jXMonthView1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jXMonthView1ActionPerformed(evt);
+            }
+        });
         jXTaskPaneContainer1.add(jXMonthView1);
 
         jXTitledPanel1.setName("jXTitledPanel1"); // NOI18N
@@ -416,6 +414,8 @@ public class Index extends javax.swing.JFrame implements ActionListener {
         menuInfoAzienda1.setName("menuInfoAzienda1"); // NOI18N
 
         menuAreaPersonale2.setName("menuAreaPersonale2"); // NOI18N
+
+        menuAppuntamento1.setName("menuAppuntamento1"); // NOI18N
 
         javax.swing.GroupLayout jXTitledPanel1Layout = new javax.swing.GroupLayout(jXTitledPanel1.getContentContainer());
         jXTitledPanel1.getContentContainer().setLayout(jXTitledPanel1Layout);
@@ -433,17 +433,22 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                 .addComponent(menuAreaPersonale2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(menuInfoAzienda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(242, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(menuAppuntamento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jXTitledPanel1Layout.setVerticalGroup(
             jXTitledPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jXTitledPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(menuUtente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(menuRuoli1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(menuContratti1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(menuServizi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(menuAreaPersonale2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(menuInfoAzienda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jXTitledPanel1Layout.createSequentialGroup()
+                .addGroup(jXTitledPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(menuUtente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(menuRuoli1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(menuContratti1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(menuServizi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(menuAreaPersonale2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(menuInfoAzienda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(menuAppuntamento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         this.menuUtente1.setVisible(false);
@@ -509,18 +514,20 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.DEFAULT_SIZE, 1314, Short.MAX_VALUE)
-                    .addComponent(jXTitledPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jXTitledPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.DEFAULT_SIZE, 1317, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jXTitledPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                .addComponent(jXTitledPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.PREFERRED_SIZE, 854, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, 999, Short.MAX_VALUE)
+            .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, 1008, Short.MAX_VALUE)
         );
 
         pack();
@@ -663,6 +670,10 @@ public class Index extends javax.swing.JFrame implements ActionListener {
     private void buttonAgenda1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgenda1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonAgenda1ActionPerformed
+
+    private void jXMonthView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXMonthView1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jXMonthView1ActionPerformed
  
     
     /**
@@ -744,6 +755,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
     private org.jdesktop.swingx.JXTaskPane jXTaskPane3;
     private org.jdesktop.swingx.JXTaskPaneContainer jXTaskPaneContainer1;
     private org.jdesktop.swingx.JXTitledPanel jXTitledPanel1;
+    private it.seerp.Gui.Menu.MenuAppuntamento menuAppuntamento1;
     private it.seerp.Gui.Menu.MenuAreaPersonale menuAreaPersonale2;
     private javax.swing.JMenuBar menuBar;
     private it.seerp.Gui.Menu.MenuContratti menuContratti1;
