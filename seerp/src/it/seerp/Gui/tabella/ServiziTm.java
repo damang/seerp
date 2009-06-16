@@ -26,6 +26,7 @@ public class ServiziTm extends Generica<Servizio> {
 
         super.setColumnIdentifiers(list);
         super.setColumnCount(4);
+      
 
     // AppGestioneExtraAzienda op = new AppGestioneExtraAzienda();
        /* Iterator<Cliente> it = op.visualizzaClienti().iterator();
@@ -68,6 +69,7 @@ public class ServiziTm extends Generica<Servizio> {
     @Override
     protected Vector creaArrayObjectData(Servizio o) {
         Vector c = new Vector();
+        c.add(o.getIdServizio());
         c.add(o.getDisponibilita());
         c.add(o.getPrezzo());
         c.add(o.getQuantita());
