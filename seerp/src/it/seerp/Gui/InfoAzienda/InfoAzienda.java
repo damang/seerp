@@ -43,8 +43,7 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
     
         mail.setEditable(flag);
         piva.setEditable(flag);
-        citta.setEditable(flag);
-        piva.setEditable(flag);
+             piva.setEditable(flag);
         nm.setEditable(flag);
         naz.setEditable(flag);
 
@@ -56,7 +55,7 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
         azienda.setInidirizzo(via);
         azienda.setRagioneSociale(nm);
         azienda.setNote(naz);
-        azienda.setCitta(citta);
+      
     }
 
     /** Creates new form NewJPanel */
@@ -158,7 +157,7 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
         );
 
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Città"));
-        jPanel10.setName("jPanel10"); // NOI18N
+        jPanel10.setName("citta"); // NOI18N
 
         via1.setFocusCycleRoot(true);
         via1.setName("citta"); // NOI18N
@@ -227,7 +226,7 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
         jPanel13.setName("jPanel13"); // NOI18N
 
         piva.setFocusCycleRoot(true);
-        piva.setName("piva"); // NOI18N
+        piva.setName("e-mail"); // NOI18N
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
