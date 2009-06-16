@@ -150,8 +150,8 @@ public class OpFornitore extends OpExtraAzienda {
         if (rs.next()) {
             throw new DatiDuplicatiEx("contatto già esistente nel database");
         } else {
-           try{
-                    con.setAutoCommit(false);
+            try {
+                con.setAutoCommit(false);
                 String sqlu = "INSERT INTO utente(idUtente,username,password,email,citta,prov,telefono" +
                         "CAP,note,tipo,visibilita) VALUES(LAST_INSERT_ID()+1,?,?,?,?,?,?,?,?,?,?)";
                 String sqle = "INSERT INTO extraazienda(idExtraAzienda,nome,cognome,fax,piva,ragioneSociale,Ruolo,codiceFiscale)" +
@@ -174,18 +174,19 @@ public class OpFornitore extends OpExtraAzienda {
                 stmt.setString(2, user.getCognome());
                 stmt.setString(3, user.getFax());
                 stmt.setString(4, user.getPIva());
-                stmt.setString(5,user.getRagioneSociale());
+                stmt.setString(5, user.getRagioneSociale());
 
                 stmt.execute();
                 stmte.execute();
 
                 con.commit();
-            }catch(SQLException e){
-                 con.rollback();}
+            } catch (SQLException e) {
+                con.rollback();
+            }
 
-                stmt.close();
-                ConnectionPool.releaseConnection(con);
-    }
+            stmt.close();
+            ConnectionPool.releaseConnection(con);
+        }
 
 
     }
@@ -273,7 +274,7 @@ public class OpFornitore extends OpExtraAzienda {
 
         // Define the resource list
         while (rs.next()) {
-            fornitore = new Fornitore(rs.getInt(1), rs.getString(2), 
+            fornitore = new Fornitore(rs.getInt(1), rs.getString(2),
                     rs.getString(3), rs.getString(4), rs.getString(5),
                     rs.getString(6), rs.getString(7), rs.getString(8),
                     rs.getString(9), rs.getString(10), rs.getString(11),
