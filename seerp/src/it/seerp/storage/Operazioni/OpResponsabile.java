@@ -43,7 +43,9 @@ public class OpResponsabile extends OpeUtente {
         ResultSet rs = null;
 
        
-            String sql = "SELECT * FROM Responsabile where Visible='true'";
+            String sql = "SELECT idUtente,username,password,citta,provincia," +
+                    "telefono,cap,email,note,tipo,cognome,nome,codiceFiscale," +
+                    "ruolo,visible FROM Responsabile WHERE Visible='true'";
             stmt = (PreparedStatement) con.prepareStatement(sql);
             // Execute the query
             rs = stmt.executeQuery(sql);
@@ -117,7 +119,7 @@ public class OpResponsabile extends OpeUtente {
 
         PreparedStatement stmt = null;
         try {
-            String sql = "UPDATE Responsabile SET Visible='false' where username = ?";
+            String sql = "UPDATE Responsabile(visible) SET Visible='false' where username = ?";
             // Create a statement
             stmt = (PreparedStatement) con.prepareStatement(sql);
 
