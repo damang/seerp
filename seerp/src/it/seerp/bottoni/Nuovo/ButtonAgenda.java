@@ -5,7 +5,7 @@
 
 package it.seerp.bottoni.Nuovo;
 
-import configurazioni.CommandInterface;
+import it.seerp.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Menu.MenuAppuntamento;
 import it.seerp.Gui.Menu.MenuRuoli;
 import it.seerp.Gui.command.ObserverButton;

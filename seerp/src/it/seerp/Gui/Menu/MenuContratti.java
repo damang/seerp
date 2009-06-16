@@ -5,7 +5,7 @@
  */
 package it.seerp.Gui.Menu;
 
-import configurazioni.CommandInterface;
+import it.seerp.configurazioni.pattern.command.CommandInterface;
 
 import it.seerp.Gui.GestioneContratti.GestioneContratti;
 import java.awt.event.ActionEvent;

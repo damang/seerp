@@ -4,7 +4,7 @@
  */
 package it.seerp.bottoni.Nuovo;
 
-import configurazioni.CommandInterface;
+import it.seerp.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.GestioneServizi.GestioneServizi;
 import it.seerp.Gui.command.ObserverButton;
 import java.awt.event.ActionListener;
