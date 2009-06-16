@@ -31,20 +31,24 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
     public void inserimento(Servizio serv) throws SQLException, DatiErratiEx {
 
         PreparedStatement stmt = null;
-        
 
-            String query = "INSERT INTO Servizio VALUE (?,?,?,?,?,?,?)";
-            stmt = (PreparedStatement) conn.prepareStatement(query);
 
-            stmt.setString(2, serv.getDescrizione());
-            stmt.setBoolean(3, serv.getDisponibilita());
-            stmt.setInt(4, serv.getQuantita());
-            stmt.setString(5, serv.getTipo());
-            stmt.setDouble(6, serv.getPrezzo());
-            stmt.setInt(7, serv.getIva());
-            stmt.setString(8, serv.getNote());
+        String query = "INSERT INTO Servizio(descrizione,disponibilita,quantita,tipo,prezzo,iva,note)" +
+                " VALUE (?,?,?,?,?,?,?)";
+        stmt = (PreparedStatement) conn.prepareStatement(query);
 
-            stmt.executeUpdate();
+        stmt.setString(1, serv.getDescrizione());
+        stmt.setBoolean(2, serv.getDisponibilita());
+        stmt.setInt(3, serv.getQuantita());
+        stmt.setString(4, serv.getTipo());
+        stmt.setDouble(5, serv.getPrezzo());
+        stmt.setInt(6, serv.getIva());
+        stmt.setString(7, serv.getNote());
+
+        stmt.executeUpdate();
+
+        stmt.close();
+        ConnectionPool.releaseConnection(conn);
 
     }
 
@@ -69,19 +73,23 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
     public Servizio modifica(Servizio servizio) throws SQLException, DatiErratiEx {
 
         PreparedStatement stmt = null;
+        String query="UPDATE Servizio(descrizione,disponibilità,quantità,tipo,prezzo,iva,note)" +
+                " SET (?, ?, ?, ?, ?, ?)" +
+                "where idServizio=" + servizio.getIdServizio();
+        stmt = (PreparedStatement) conn.prepareStatement(query);
 
-            stmt = (PreparedStatement) conn.prepareStatement
-                    ("UPDATE Servizio SET (?, ?, ?, ?, ?, ?)" +
-                    "where idServizio=" + servizio.getIdServizio());
-            stmt.setString(2, servizio.getDescrizione());
-            stmt.setBoolean(3, servizio.getDisponibilita());
-            stmt.setInt(4, servizio.getQuantita());
-            stmt.setString(5, servizio.getTipo());
-            stmt.setDouble(6, servizio.getPrezzo());
-            stmt.setInt(7, servizio.getIva());
-            stmt.setString(8, servizio.getNote());
+        stmt.setString(1, servizio.getDescrizione());
+        stmt.setBoolean(2, servizio.getDisponibilita());
+        stmt.setInt(3, servizio.getQuantita());
+        stmt.setString(4, servizio.getTipo());
+        stmt.setDouble(5, servizio.getPrezzo());
+        stmt.setInt(6, servizio.getIva());
+        stmt.setString(7, servizio.getNote());
 
-            stmt.execute();
+        stmt.execute();
+
+        stmt.close();
+        ConnectionPool.releaseConnection(conn);
 
         return servizio;
     }
@@ -98,21 +106,24 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
 
         ArrayList<Servizio> lista = new ArrayList<Servizio>();
 
-        
-            String query = "SELECT * FROM Servizio ";
-            stmt = (PreparedStatement) conn.prepareStatement(query);
 
-            rs = stmt.executeQuery(query);
+        String query = "SELECT idServizio,descrizione,disponibilita,quantita,tipo,prezzo,iva,note" +
+                " FROM Servizio ";
+        stmt = (PreparedStatement) conn.prepareStatement(query);
 
-            while (rs.next()) {
+        rs = stmt.executeQuery(query);
 
-                Servizio e = new Servizio(rs.getInt(1), rs.getString(1), rs.getBoolean(2),
-                        rs.getInt(3), rs.getString(4), rs.getDouble(5),
-                        rs.getInt(6), rs.getString(7));
+        while (rs.next()) {
 
-                lista.add(e);
-            }
-        
+            Servizio e = new Servizio(rs.getInt(1), rs.getString(2), rs.getBoolean(3),
+                    rs.getInt(4), rs.getString(5), rs.getDouble(6),
+                    rs.getInt(7), rs.getString(8));
+
+            lista.add(e);
+        }
+        stmt.close();
+        rs.close();
+        ConnectionPool.releaseConnection(conn);
         return lista;
     }
 
@@ -128,21 +139,25 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
         ResultSet rs = null;
         Servizio serv = null;
 
-        
-            String query = "SELECT * FROM Servizio WHERE servizio.idServizio= ?";
-            stmt = (PreparedStatement) conn.prepareStatement(query);
-            stmt.setInt(1, id);
 
-            rs = stmt.executeQuery(query);
+        String query = "SELECT idServizio,descrizione,disponibilita,quantita,tipo,prezzo,iva,note" +
+                " FROM Servizio WHERE servizio.idServizio= ?";
+        stmt = (PreparedStatement) conn.prepareStatement(query);
+        stmt.setInt(1, id);
 
-            // Define the resource list
-            while (rs.next()) {
-                serv = new Servizio(rs.getInt(1), rs.getString(1), rs.getBoolean(2),
-                        rs.getInt(3), rs.getString(4), rs.getDouble(5),
-                        rs.getInt(6), rs.getString(7));
+        rs = stmt.executeQuery(query);
 
-            }
-  
+        // Define the resource list
+        while (rs.next()) {
+            serv = new Servizio(rs.getInt(1), rs.getString(2), rs.getBoolean(3),
+                    rs.getInt(4), rs.getString(5), rs.getDouble(6),
+                    rs.getInt(7), rs.getString(8));
+
+        }
+        stmt.close();
+        rs.close();
+        ConnectionPool.releaseConnection(conn);
+
         return serv;
     }
 }
