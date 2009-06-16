@@ -170,7 +170,7 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
-        String query = "SELECT idEvento,data, ora,luogo,nome,tema,note,notifica" +
+        String query = "SELECT idEvento,data, ora,luogo,nome,tema,evento.note,notifica" +
                 " FROM Evento, Agenda, Utente " +
                 "WHERE agenda=idAgenda and idAgenda=idUtente ";
         stmt = (PreparedStatement) conn.prepareStatement(query);
