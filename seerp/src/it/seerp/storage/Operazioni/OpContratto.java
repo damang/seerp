@@ -147,8 +147,8 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
             PreparedStatement stmt2;
             String sql3 = "SELECT idUtente,username,password,citta,provincia,telefono," +
                     "cap,email,note,tipo,cognome,nome,codicefiscale,ruolo,visible" +
-                    " FROM contratto,dipendente,personale,utente" +
-                    "  WHERE contratto.dipendente=dipendente.idDipendente " +
+                    "FROM contratto,dipendente,personale,utente" +
+                    "WHERE contratto.dipendente=dipendente.idDipendente " +
                     "AND dipendente.idDipendente=Personale.idPersonale " +
                     "AND Personale.idPersonale=Utente.idUtente" +
                     "AND dipendente=?";
