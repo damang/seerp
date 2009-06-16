@@ -1,6 +1,6 @@
 package it.seerp.application.conversioni;
 
-import it.configurazioni.PermessiDefault;
+import it.seerp.configurazioni.PermessiDefault;
 import it.seerp.application.bean.BeanGuiAgenda;
 import it.seerp.application.bean.BeanGuiAmministratore;
 import it.seerp.application.bean.BeanGuiAppuntamento;

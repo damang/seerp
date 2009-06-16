@@ -1,7 +1,7 @@
 package it.seerp.application.bean;
 
-import it.configurazioni.PermessiDefault;
-import it.configurazioni.PermessiDefault.Categoria_Permesso;
+import it.seerp.configurazioni.PermessiDefault;
+import it.seerp.configurazioni.PermessiDefault.Categoria_Permesso;
 import it.seerp.application.validation.NotEmptyValidator;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;

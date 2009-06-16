@@ -1,4 +1,4 @@
-package it.configurazioni.pattern.observer;
+package it.seerp.configurazioni.pattern.observer;
 
 
 /**

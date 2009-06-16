@@ -10,7 +10,7 @@
  */
 package it.seerp.Gui.Gestione.InfoAzienda;
 
-import it.configurazioni.pattern.command.CommandInterface;
+import it.seerp.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.BottoniGenerici.ButtonAnnulla;
 import it.seerp.Gui.BottoniGenerici.ButtonSalva;
 import it.seerp.Gui.Menu.MenuInfoAzienda;

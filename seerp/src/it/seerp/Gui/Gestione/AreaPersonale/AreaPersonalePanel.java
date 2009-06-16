@@ -10,7 +10,7 @@
  */
 package it.seerp.Gui.Gestione.AreaPersonale;
 
-import it.configurazioni.pattern.command.CommandInterface;
+import it.seerp.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
 import it.seerp.application.bean.BeanGuiUtente;
 import java.awt.event.ActionEvent;

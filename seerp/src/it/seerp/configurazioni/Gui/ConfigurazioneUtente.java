@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.configurazioni.Gui;
+package it.seerp.configurazioni.Gui;
 
 import it.seerp.application.bean.BeanGuiCliente;
 import it.seerp.application.bean.BeanGuiDipendente;

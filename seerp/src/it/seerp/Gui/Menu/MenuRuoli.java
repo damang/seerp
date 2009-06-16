@@ -9,7 +9,7 @@
  */
 package it.seerp.Gui.Menu;
 
-import it.configurazioni.pattern.command.CommandInterface;
+import it.seerp.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.Ruoli.GestioneRuoli;
 import it.seerp.Gui.Gestione.Servizi.GestioneServizi;
 import it.seerp.Gui.Gestione.InfoAzienda.InfoAzienda;

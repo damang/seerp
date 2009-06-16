@@ -1,5 +1,5 @@
 
-package it.configurazioni.pattern.command;
+package it.seerp.configurazioni.pattern.command;
 
 /**
  *

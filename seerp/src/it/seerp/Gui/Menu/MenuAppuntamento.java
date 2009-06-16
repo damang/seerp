@@ -9,7 +9,7 @@
  */
 package it.seerp.Gui.Menu;
 
-import it.configurazioni.pattern.command.CommandInterface;
+import it.seerp.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.Ruoli.GestioneRuoli;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

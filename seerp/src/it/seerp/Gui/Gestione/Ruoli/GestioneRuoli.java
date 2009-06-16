@@ -10,7 +10,7 @@
  */
 package it.seerp.Gui.Gestione.Ruoli;
 
-import it.configurazioni.pattern.command.CommandInterface;
+import it.seerp.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
 import it.seerp.Gui.tabella.RuoloTm;
 import java.awt.event.ActionEvent;
