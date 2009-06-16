@@ -6,7 +6,7 @@ import it.seerp.application.Exception.DatiErrati;
 import java.util.ArrayList;
 
 /**
- *
+ * Interfaccia applicazione per la Gestione Agenda
  * @author Luisa - Tommaso Cattolico
  */
 public interface GestioneAgenda<E, U> {

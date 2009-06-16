@@ -5,8 +5,7 @@ import it.seerp.application.Exception.DatiErrati;
 import java.util.ArrayList;
 
 /**
- *
- *
+ * Interfaccia applicazione per la Gestione Contratti
  * @author Luisa - Tommaso Cattolico
  */
 public interface GestioneContratti<E, U> {
