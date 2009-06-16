@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Connection;
+import it.seerp.storage.ejb.Dipendente;
+import it.seerp.storage.ejb.Ruolo;
 import it.seerp.storage.ejb.ServizioAssociato;
 
 /**
@@ -33,20 +35,24 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
 
         PreparedStatement stmt = null;
 
-        String query = "INSERT INTO Contratto VALUES (?, ?, ?, ?, ?, ?, ? )" + "where idContratto=" + contratto.getIdContratto();
+        String query = "INSERT INTO Contratto(durata,stato,tipo,extrazienda,dipendente,data,note)" +
+                " VALUES (?, ?, ?, ?, ?, ?, ? )" + "where idContratto=" + contratto.getIdContratto();
 
         stmt = (PreparedStatement) conn.prepareStatement(query);
 
-        stmt.setInt(2, contratto.getDurata());
-        stmt.setString(3, contratto.getStato());
-        stmt.setString(4, contratto.getTipo());
-        stmt.setInt(5, contratto.getExtraAzienda().getIdUtente());
-        stmt.setInt(6, contratto.getDipendente().getIdUtente());
+        stmt.setInt(1, contratto.getDurata());
+        stmt.setString(2, contratto.getStato());
+        stmt.setString(3, contratto.getTipo());
+        stmt.setInt(4, contratto.getExtraAzienda().getIdUtente());
+        stmt.setInt(5, contratto.getDipendente().getIdUtente());
         java.sql.Date sqlDate = new java.sql.Date(new java.util.Date().getTime());
-        stmt.setDate(7, sqlDate);
-        stmt.setString(8, contratto.getNote());
+        stmt.setDate(6, sqlDate);
+        stmt.setString(7, contratto.getNote());
 
         stmt.execute();
+
+        stmt.close();
+        ConnectionPool.releaseConnection(conn);
     }
 
     /**
@@ -73,7 +79,7 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
         ResultSet rs = null;
         Contratto contratto = null;
 
-        String sql = "SELECT * FROM Contratto";
+        String sql = "SELECT idContratto,durata,stato,tipo,extrazienda,dipendente,data,note FROM Contratto";
         stmt = (PreparedStatement) conn.prepareStatement(sql);
 
         // Execute the query
@@ -87,10 +93,12 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
             contratto = new Contratto(rs.getString(1), date,
                     rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getString(6));
 
-
             lista.add(contratto);
 
         }
+        stmt.close();
+        rs.close();
+        ConnectionPool.releaseConnection(conn);
         return lista;
 
     }
@@ -108,7 +116,8 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
         Contratto contratto = null;
 
 
-        String sql = "SELECT * FROM Contratto WHERE idContratto= ?";
+        String sql = "SELECT idContratto,durata,stato,tipo,extrazienda,dipendente,data,note " +
+                "FROM Contratto WHERE idContratto= ?";
         stmt = (PreparedStatement) conn.prepareStatement(sql);
 
         stmt.setInt(1, id);
@@ -123,17 +132,42 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
                     rs.getString(3), rs.getInt(2), rs.getString(8));
 
             PreparedStatement stmt1;
-            String sql2 = "SELECT * FROM contratto,serviziassociati " +
+            String sql2 = "SELECT contratto,quantita,prezzoUnitario,servizio FROM contratto,serviziassociati " +
                     "WHERE contratto.idContratto=serviziassociati.contratto AND idContratto=?";
             stmt1 = (PreparedStatement) conn.prepareStatement(sql2);
-            stmt1.setInt(1, contratto.getIdContratto());
+            stmt1.setInt(1, id);
             ResultSet rs2 = stmt1.executeQuery();
+
+            PreparedStatement stmt2;
+            String sql3 = "SELECT idUtente,username,password,citta,provincia,telefono," +
+                    "cap,email,note,tipo,cognome,nome,codicefiscale,ruolo,visible" +
+                    " FROM contratto,dipendente,personale,utente" +
+                    "  WHERE contratto.dipendente=dipendente.idDipendente " +
+                    "AND dipendente.idDipendente=Personale.idPersonale " +
+                    "AND Personale.idPersonale=Utente.idUtente" +
+                    "AND dipendente=?";
+            stmt2 = (PreparedStatement) conn.prepareStatement(sql3);
+            stmt2.setInt(1, contratto.getDipendente().getIdUtente());
+            ResultSet rs3 = stmt2.executeQuery();
+
+
             while (rs2.next()) {
-                /*Integer quantita, Double prezzoUnitario, String note*/
+
                 ServizioAssociato sa = new ServizioAssociato(rs.getInt(2), rs.getDouble(3), rs.getString(4));
                 contratto.addServizio(sa);
             }
+
+            while (rs3.next()) {
+                Dipendente dip = new Dipendente(rs.getInt(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),
+                        rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11),
+                        rs.getString(12), rs.getString(13), new Ruolo(rs.getString(14)),
+                        rs.getBoolean(15));
+            }
         }
+        stmt.close();
+        rs.close();
+        ConnectionPool.releaseConnection(conn);
 
         return contratto;
     }
@@ -149,11 +183,12 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
         ArrayList<Servizio> list = new ArrayList<Servizio>();
         PreparedStatement stmt = null;
         ResultSet rs = null;
+        Servizio servizio = null;
 
-
-        String sql = "SELECT * FROM contratto, serviziAssociati, servizio " +
+        String sql = "SELECT idServizio,descrizione,disponibilita,quantita,tipo,prezzo,iva,note" +
+                " FROM contratto, serviziAssociati, servizio " +
                 "WHERE contratto.idContratto=serviziAssociati.contratto AND" +
-                " serviziAssociati.servizio=servizio.idServizio AND idContratto= ?";
+                "serviziAssociati.servizio=servizio.idServizio AND idContratto= ?";
         // Create a statement
         stmt = (PreparedStatement) conn.prepareStatement(sql);
         stmt.setInt(1, id);
@@ -162,13 +197,15 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
 
         while (rs.next()) {
 
-            Servizio servizio = new Servizio(rs.getInt(1), rs.getString(2), rs.getBoolean(2),
+            servizio = new Servizio(rs.getInt(1), rs.getString(2), rs.getBoolean(2),
                     rs.getInt(3), rs.getString(4), rs.getDouble(5),
                     rs.getInt(6), rs.getString(8));
 
             list.add(servizio);
         }
-
+        stmt.close();
+        rs.close();
+        ConnectionPool.releaseConnection(conn);
         return list;
     }
 
