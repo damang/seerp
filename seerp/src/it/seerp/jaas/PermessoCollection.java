@@ -60,6 +60,9 @@ public class PermessoCollection extends PermissionCollection
     public void remove (Permesso c) {
         _perms.remove(c);
     }
+    public Iterator<Permesso> iterator () {
+        return _perms.iterator();
+    }
 
 
 }
