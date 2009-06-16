@@ -1,8 +1,8 @@
 
 package it.seerp.Gui.frame;
 
-import it.seerp.configurazioni.pattern.observer.Observable;
-import it.seerp.configurazioni.pattern.observer.Observer;
+import it.configurazioni.pattern.observer.Observable;
+import it.configurazioni.pattern.observer.Observer;
 import java.util.Iterator;
 import java.util.Vector;
 import org.jdesktop.swingx.JXPanel;
