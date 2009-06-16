@@ -38,7 +38,7 @@ public class OpCliente extends OpExtraAzienda {
 
         String sql = "SELECT idUtente,username,password,città,ruol," +
                    "provincia,telefono,cap,email,ruolo,note,v,cognome,nome," +
-                   "ragioneSociale,pIva,fax FROM Cliente where Visible='true'";
+                   "ragioneSociale,pIva,fax FROM cliente where Visible='true'";
         stmt = (PreparedStatement) con.prepareStatement(sql);
         // Execute the query
         rs = stmt.executeQuery(sql);
@@ -86,7 +86,7 @@ public class OpCliente extends OpExtraAzienda {
 
         String sql = "DELETE idUtente,username,password,città,ruol,provincia," +
                 "telefono,cap,email,ruolo,note,v,cognome,nome,ragioneSociale," +
-                "pIva,fax FROM Cliente" + "where username =" + user;
+                "pIva,fax FROM cliente" + "where username =" + user;
 
         // Create a statement
         stmt = (PreparedStatement) con.prepareStatement(sql);
@@ -109,7 +109,7 @@ public class OpCliente extends OpExtraAzienda {
 
         PreparedStatement stmt = null;
 
-        String sql = "UPDATE Cliente(visible) SET Visible='false' where username =" + user;
+        String sql = "UPDATE cliente(visible) SET Visible='false' where username =" + user;
         // Create a statement
         stmt = (PreparedStatement) con.prepareStatement(sql);
 
@@ -135,13 +135,13 @@ public class OpCliente extends OpExtraAzienda {
         Statement stmt1 = con.createStatement();
         String sqlTest = "SELECT idUtente,username,password,città,ruol,provincia," +
                 "telefono,cap,email,ruolo,note,v,cognome,nome,ragioneSociale," +
-                "pIva,fax FROM Cliente WHERE nome='" + user.getPIva();
+                "pIva,fax FROM cliente WHERE nome='" + user.getPIva();
         ResultSet rs = stmt1.executeQuery(sqlTest);
 
         if (rs.next()) {
             throw new DatiDuplicatiEx("utente già esistente nel database");
         } else {
-            String sql = "INSERT INTO Cliente (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO cliente (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
             stmt.setInt(1, user.getIdUtente());
             stmt.setString(2, user.getUsername());
@@ -184,7 +184,7 @@ public class OpCliente extends OpExtraAzienda {
         Statement stmt1 = con.createStatement();
         String sqlTest = "SELECT idUtente,username,password,città,ruol,provincia," +
                 "telefono,cap,email,ruolo,note,v,cognome,nome,ragioneSociale,pIva" +
-                "fax FROM Cliente WHERE nome='" + user.getPIva() + "' ";
+                "fax FROM cliente WHERE nome='" + user.getPIva() + "' ";
         ResultSet rs = stmt1.executeQuery(sqlTest);
 
         if (rs.next()) {
@@ -192,7 +192,7 @@ public class OpCliente extends OpExtraAzienda {
         } else {
         }
         // Create a statement
-        stmt = (PreparedStatement) con.prepareStatement("UPDATE Cliente(idUtente,username,password,città,ruol,provincia," +
+        stmt = (PreparedStatement) con.prepareStatement("UPDATE cliente(idUtente,username,password,città,ruol,provincia," +
                 "telefono,cap,email,ruolo,note,v,cognome,nome,ragioneSociale,pIva," +
                 "fax) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )" + "where idUtente=" + user.getIdUtente());
 
@@ -239,7 +239,7 @@ public class OpCliente extends OpExtraAzienda {
 
         String sql = "SELECT idUtente,username,password,città,ruol,provincia," +
                 "telefono,cap,email,ruolo,note,v,cognome,nome,ragioneSociale," +
-                "pIva,fax FROM Cliente" +
+                "pIva,fax FROM cliente" +
                 "where idUtente= " + id;
         // String sql = "SELECT * FROM ExtraAzienda where idUtente= ? ";
 
