@@ -33,10 +33,14 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
         this.menu = menu;
         azienda = new BeanGuiAzienda();
         legameBean();
+        //AppAzienda operazione= new   AppAzienda();
+        //operazione.visualizza(azienda);
+        legameBean();
         editabile(false);
     }
 
     public void editabile(boolean flag) {
+    
         mail.setEditable(flag);
         piva.setEditable(flag);
         citta.setEditable(flag);
@@ -49,7 +53,7 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
     public void legameBean() {
         azienda.setEmail(mail);
         azienda.setPIVA(piva);
-        azienda.setCittà(citta);
+        azienda.setCitta(citta);
         azienda.setInidirizzo(via);
         azienda.setRagioneSociale(nm);
         azienda.setNote(naz);
@@ -62,6 +66,7 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
 
     public ButtonSalva getSalva() {
         return this.buttonSalva1;
+
     }
 
     public ButtonAnnulla getAnnulla() {
@@ -109,6 +114,11 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
         nm.setFocusCycleRoot(true);
         nm.setName("nm"); // NOI18N
         nm.setOpaque(false);
+        nm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nmActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -328,13 +338,29 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
 
     private void buttonSalva1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSalva1MouseClicked
         menu.getModifica().setEnabled(true);
+        editabile(false);
+          //AppAzienda operazione= new   AppAzienda();
+        //   operazione.modifica(azienda);
+         /* Iterator<Azienda> it = op.visualizzaTabellaResponsabile().iterator();
+        while (it.hasNext()) {
+        this.addNewData(it.next());
+        }*/
+        this.buttonAnnulla1.setEnabled(false);
+        this.buttonSalva1.setEnabled(false);
     }//GEN-LAST:event_buttonSalva1MouseClicked
 
     private void buttonAnnulla1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonAnnulla1MouseClicked
         menu.getModifica().setEnabled(true);
         JOptionPane.showMessageDialog(null, "operazione annulata");
         editabile(false);
+        this.buttonAnnulla1.setEnabled(false);
+        this.buttonSalva1.setEnabled(false);
     }//GEN-LAST:event_buttonAnnulla1MouseClicked
+
+    private void nmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nmActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private it.seerp.Gui.BottoniGenerici.ButtonAnnulla buttonAnnulla1;
     private it.seerp.Gui.BottoniGenerici.ButtonSalva buttonSalva1;
