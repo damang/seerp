@@ -125,8 +125,8 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
         Evento ev = null;
 
         String query = "SELECT idEvento,data, ora,luogo,nome,tema,note,notifica" +
-                " FROM Evento, Agenda" +
-                "where Evento.idAgenda=Agenda.idAgenda and idAgenda=?";
+                " FROM evento, agenda" +
+                "where evento.idAgenda=agenda.idAgenda and idAgenda=?";
 
         stmt = (PreparedStatement) conn.prepareStatement(query);
         stmt.setInt(1, id);
@@ -168,8 +168,8 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
         ResultSet rs = null;
 
         String query = "SELECT idEvento,data, ora,luogo,nome,tema,evento.note,notifica" +
-                " FROM Evento, Agenda, Utente " +
-                "WHERE agenda=idAgenda and idAgenda=idUtente ";
+                " FROM evento, agenda, utente " +
+                "WHERE evento.agenda=agenda.idAgenda and agenda.idAgenda=utente.idUtente ";
         stmt = (PreparedStatement) conn.prepareStatement(query);
         rs = stmt.executeQuery(query);
 
@@ -231,7 +231,7 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
         PreparedStatement stmt = null;
 
 
-        String query = "UPDATE Evento(notifica) SET (true) " +
+        String query = "UPDATE evento(notifica) SET (true) " +
                 "WHERE idEvento='" + e.getIdEvento() + "'";
         stmt.setBoolean(1, e.getNotifica());
         stmt = (PreparedStatement) conn.prepareStatement(query);
@@ -254,7 +254,7 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
 
         GregorianCalendar gc = new GregorianCalendar();
         Date a = new Date(gc.getTimeInMillis());
-        String query = "SELECT nome,tema,data FROM Evento" +
+        String query = "SELECT nome,tema,data FROM evento" +
                 " WHERE notifica=true and data<='" + a.toString() + "'";
         ResultSet rs = stmt.executeQuery(query);
 
