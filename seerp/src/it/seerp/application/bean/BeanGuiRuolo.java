@@ -2,7 +2,8 @@ package it.seerp.application.bean;
 
 import it.seerp.application.validation.StartWithValidator;
 import java.util.ArrayList;
-import java.util.Hashtable;
+import java.util.HashMap;
+
 import javax.swing.JTextField;
 import org.jdesktop.swingx.JXPanel;
 
@@ -13,7 +14,7 @@ import org.jdesktop.swingx.JXPanel;
 public class BeanGuiRuolo {
 
     private ArrayList<BeanGuiPersonale> listPersonale;
-    private Hashtable<String, ArrayList<BeanGuiPermesso>> listPermessi;
+    private HashMap<String, ArrayList<BeanGuiPermesso>> listPermessi;
     private JTextField nome;
     private JXPanel grafica;
     private StartWithValidator valStartW;
@@ -67,7 +68,7 @@ public class BeanGuiRuolo {
      *
      * @return
      */
-    public Hashtable<String, ArrayList<BeanGuiPermesso>> getListPermessi() {
+    public HashMap<String, ArrayList<BeanGuiPermesso>> getListPermessi() {
         return listPermessi;
     }
 
@@ -83,7 +84,7 @@ public class BeanGuiRuolo {
      * 
      * @param listPermessi
      */
-    public void setListPermessi(Hashtable<String, ArrayList<BeanGuiPermesso>> listPermessi) {
+    public void setListPermessi(HashMap<String, ArrayList<BeanGuiPermesso>> listPermessi) {
         this.listPermessi = listPermessi;
     }
 
