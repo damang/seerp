@@ -32,6 +32,7 @@ public class ModificaButtonRuoli extends JButton implements CommandInterface {
     }
 
     public void execute() {
+         this.setEnabled(false);
         
     }
 }

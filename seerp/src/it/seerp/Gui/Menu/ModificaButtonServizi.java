@@ -1,4 +1,3 @@
-
 package it.seerp.Gui.Menu;
 
 import configurazioni.CommandInterface;
@@ -29,8 +28,10 @@ public class ModificaButtonServizi extends JButton implements CommandInterface {
     }
 
     public void execute() {
-
+        this.setEnabled(false);
+        areaServ.setTipoOP("modifica");
         areaServ.getSalva().setEnabled(true);
         areaServ.getAnnulla().setEnabled(true);
-        areaServ.editabile (true);}
+        areaServ.editabile(true);
+    }
 }

@@ -8,13 +8,14 @@ import configurazioni.CommandInterface;
 import it.seerp.Gui.Gestione.Utenti.AreaUtentePanel;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 
 /**
  *
  * @author Andrea
  */
 public class AggiungiButtonUtenti extends JButton implements CommandInterface {
-
+    
     AreaUtentePanel areaUt;
 
     public AggiungiButtonUtenti() {
@@ -32,9 +33,12 @@ public class AggiungiButtonUtenti extends JButton implements CommandInterface {
     }
 
     public void execute() {
+        this.setEnabled(false);
+        areaUt.setTipoOP("inserisci");
         areaUt.inizializzazione("");
         areaUt.editabile(true);
         areaUt.getSalva().setEnabled(true);
-        areaUt.getAnnulla().setEnabled(true);
-    }
+        areaUt.getAnnulla().setEnabled(true);}
+
+   
 }

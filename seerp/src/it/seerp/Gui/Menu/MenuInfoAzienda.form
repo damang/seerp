@@ -56,6 +56,9 @@
         <Property name="toolTipText" type="java.lang.String" value="Modifica"/>
         <Property name="name" type="java.lang.String" value="modificaButtonInfoAzienda1" noResource="true"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Menu.ModificaButtonInfoAzienda(this)"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

@@ -12,12 +12,10 @@
 package it.seerp.Gui.Menu;
 
 import configurazioni.CommandInterface;
-import it.seerp.Gui.AreaPersonale.AreaPersonalePanel;
 import it.seerp.Gui.Gestione.Utenti.AreaUtentePanel;
-import it.seerp.Gui.frame.ObservableJPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JPanel;
+import javax.swing.JButton;
 
 /**
  *
@@ -39,6 +37,7 @@ public class MenuUtente extends javax.swing.JPanel implements ActionListener {
     }
     public void setPannello(AreaUtentePanel pannello){
         this.pannello = pannello;
+        pannello.setMenu(this);
         this.aggiungiButton1.setAreaUt(pannello);
         this.modificaButtonUtente1.setAreaUt(pannello);
         this.eliminaButton1.setAreaUt(pannello);
@@ -59,7 +58,7 @@ public class MenuUtente extends javax.swing.JPanel implements ActionListener {
 
         aggiungiButton1 = new it.seerp.Gui.Menu.AggiungiButtonUtenti(this);
         eliminaButton1 = new it.seerp.Gui.Menu.EliminaButtonUtente(this);
-        modificaButtonUtente1 = new it.seerp.Gui.Menu.ModificaButtonUtente();
+        modificaButtonUtente1 = new it.seerp.Gui.Menu.ModificaButtonUtente(this);
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gestione", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_BOTTOM));
 
@@ -74,11 +73,6 @@ public class MenuUtente extends javax.swing.JPanel implements ActionListener {
         modificaButtonUtente1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/application_edit.png"))); // NOI18N
         modificaButtonUtente1.setToolTipText("Modifica");
         modificaButtonUtente1.setName("modificaButtonUtente1"); // NOI18N
-        modificaButtonUtente1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modificaButtonUtente1ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -105,16 +99,18 @@ public class MenuUtente extends javax.swing.JPanel implements ActionListener {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void modificaButtonUtente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificaButtonUtente1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_modificaButtonUtente1ActionPerformed
-
     public void actionPerformed(ActionEvent e) {
        CommandInterface cmd = (CommandInterface) e.getSource();
        cmd.execute();
     }
 
+  public JButton getModifica(){
+      return modificaButtonUtente1;
+  }
 
+   public JButton getAggiungi(){
+      return aggiungiButton1;
+  }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private it.seerp.Gui.Menu.AggiungiButtonUtenti aggiungiButton1;
     private it.seerp.Gui.Menu.EliminaButtonUtente eliminaButton1;
