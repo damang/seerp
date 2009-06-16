@@ -7,7 +7,7 @@
 package it.seerp.Gui.Gestione.Utenti;
 
 import it.seerp.configurazioni.pattern.command.CommandInterface;
-import it.seerp.configurazioni.Gui.ConfigurazioneUtente;
+import it.configurazioni.Gui.ConfigurazioneUtente;
 import it.seerp.Gui.BottoniGenerici.ButtonAnnulla;
 import it.seerp.Gui.BottoniGenerici.ButtonSalva;
 import it.seerp.Gui.frame.ObservableJPanel;
