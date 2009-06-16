@@ -208,7 +208,7 @@
                 <TitledBorder title="Citt&#xe0;"/>
               </Border>
             </Property>
-            <Property name="name" type="java.lang.String" value="jPanel10" noResource="true"/>
+            <Property name="name" type="java.lang.String" value="citta" noResource="true"/>
           </Properties>
 
           <Layout>
@@ -348,7 +348,7 @@
             <Component class="javax.swing.JTextField" name="piva">
               <Properties>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
-                <Property name="name" type="java.lang.String" value="piva" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="e-mail" noResource="true"/>
               </Properties>
             </Component>
           </SubComponents>
