@@ -190,6 +190,10 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
         return beanGui;
     }
 
+    /**
+     * Metodo che passa la lista di bean utilizzando l'operazioni del lato storage
+     * @return lista dei bean
+     */
     public ArrayList<Utente> visualizzaTabella() {
         ArrayList<Utente> list = new ArrayList<Utente>();
         try {

@@ -11,6 +11,7 @@ import it.seerp.storage.ejb.Cliente;
 import it.seerp.storage.ejb.Contatto;
 import it.seerp.storage.ejb.Fornitore;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -140,5 +141,37 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
         return forn;
+    }
+
+    /**
+     * Metodo che passa la lista di bean utilizzando l'operazioni del lato storage
+     * @return lista dei bean
+     */
+    public ArrayList<Cliente> visualizzaTabellaCliente() {
+        ArrayList<Cliente> list = new ArrayList<Cliente>();
+        try {
+            OpCliente ope = new OpCliente();
+            list = ope.elencaCliente();
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        }
+        return list;
+    }
+
+    /**
+     * Metodo che passa la lista di bean utilizzando l'operazioni del lato storage
+     * @return lista dei bean
+     */
+    public ArrayList<Fornitore> visualizzaTabellaFornitore() {
+        ArrayList<Fornitore> list = new ArrayList<Fornitore>();
+        try {
+            OpFornitore ope = new OpFornitore();
+            list = ope.elencaFornitore();
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        }
+        return list;
     }
 }

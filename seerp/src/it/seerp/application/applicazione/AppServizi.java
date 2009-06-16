@@ -135,6 +135,10 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio> {
         return beanGui;
     }
 
+    /**
+     * Metodo che passa la lista di bean utilizzando l'operazioni del lato storage
+     * @return lista dei bean
+     */
     public ArrayList<Servizio> visualizzaTabella() {
         ArrayList<Servizio> list = new ArrayList<Servizio>();
         try {

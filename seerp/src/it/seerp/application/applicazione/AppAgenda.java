@@ -228,8 +228,6 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
      * Bean Gui dell'evento da eliminare
      * @throws it.seerp.application.Exception.CancellazioneFallita
      * nel caso in cui il sistema fallisca nell'eliminazione dell'evento
-     * @throws it.seerp.application.Exception.RicercaFallita
-     * nel caso in cui la ricerca non produca risultati
      */
     public void cancellaEvento(BeanGuiEvento beanGui) throws CancellazioneFallita {
         try {
@@ -245,6 +243,10 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
         }
     }
 
+    /**
+     * Metodo che passa la lista di bean utilizzando l'operazioni del lato storage
+     * @return lista dei bean
+     */
     public ArrayList<Evento> visualizzaTabella() {
         ArrayList<Evento> list = new ArrayList<Evento>();
         try {
