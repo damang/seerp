@@ -1,5 +1,6 @@
 package it.seerp.application.validation;
 
+import java.util.regex.Pattern;
 import javax.swing.JComponent;
 import javax.swing.JTextField;
 import org.jdesktop.swingx.JXPanel;
@@ -17,6 +18,9 @@ public class NotNumericValidator extends AbstractValidator {
 
     @Override
     protected boolean validationCriteria(JComponent c) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (!(Pattern.matches("[[0-9.-]", ((JTextField) c).getText()))) {
+            return false;
+        }
+        return true;
     }
 }
