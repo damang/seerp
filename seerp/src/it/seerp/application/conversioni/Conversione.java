@@ -1,5 +1,6 @@
 package it.seerp.application.conversioni;
 
+import configurazioni.PermessiDefault;
 import it.seerp.application.bean.BeanGuiAgenda;
 import it.seerp.application.bean.BeanGuiAmministratore;
 import it.seerp.application.bean.BeanGuiAppuntamento;
@@ -19,6 +20,7 @@ import it.seerp.application.bean.BeanGuiRuolo;
 import it.seerp.application.bean.BeanGuiServizio;
 import it.seerp.application.bean.BeanGuiServizioAssociato;
 import it.seerp.application.bean.BeanGuiUtente;
+import it.seerp.jaas.PermessoCollection;
 import it.seerp.storage.ejb.Agenda;
 import it.seerp.storage.ejb.Amministratore;
 import it.seerp.storage.ejb.Appuntamento;
@@ -42,6 +44,14 @@ import it.seerp.storage.ejb.ServizioAssociato;
 import it.seerp.storage.ejb.Utente;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.Map;
+
+import java.util.Set;
+import java.util.Vector;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -965,7 +975,9 @@ public class Conversione {
      * @return il Bean convertito
      */
     public static Permesso conversionePermesso(BeanGuiPermesso b) throws Exception {
-       throw new UnsupportedOperationException("Not yet implemented");
+
+        Permesso p= new Permesso(b.getIdPermesso(),b.getCat(),b.getAct().getText());
+        return p;
     }
 
     /**
@@ -975,8 +987,10 @@ public class Conversione {
      * @return il Bean Gui convertito
      */
     public static BeanGuiPermesso conversionePermesso(Permesso b, BeanGuiPermesso p) {
-    throw new UnsupportedOperationException("Not yet implemented");
-
+           p.setIdPermesso(b.getId());
+           p.setAct(new JCheckBox(b.getActions()));
+           p.setCat(b.getName());
+           return p;
     }
 
     /**
@@ -986,7 +1000,18 @@ public class Conversione {
      * @return il Bean convertito
      */
     public static Ruolo conversioneRuolo(BeanGuiRuolo b) throws Exception {
-        throw new UnsupportedOperationException("Not yet implemented");
+        Ruolo r = new Ruolo(b.getNome().getText());
+        r.setPermSyncro(false);
+       Iterator it = b.getListPermessi().entrySet().iterator();
+       Map.Entry entry;
+        while (it.hasNext()) {
+          entry = (Map.Entry) it.next();
+          ArrayList<BeanGuiPermesso> e= (ArrayList<BeanGuiPermesso>) entry.getValue();
+            for (BeanGuiPermesso bean : e) {
+                r.addPermesso(conversionePermesso(bean));
+            }
+        }
+        return r;
     }
 
     /**
@@ -996,8 +1021,27 @@ public class Conversione {
      * @return il Bean Gui convertito
      */
     public static BeanGuiRuolo conversioneRuolo(Ruolo b, BeanGuiRuolo r) {
+        r.setNome(new JTextField(b.getNome()));
+        HashMap<String, ArrayList<BeanGuiPermesso>> lipi = new HashMap<String, ArrayList<BeanGuiPermesso>>();
+        PermessoCollection p = b.getListPermesso();
+        Iterator<Permesso> it=p.iterator();
+        Permesso f=null;
+        while (it.hasNext())
+            f=it.next();
+            if(lipi.containsKey(f.getName())){
+                lipi.get(f.getName()).add(new BeanGuiPermesso(new JCheckBox(f.getActions()), f.getId(), f.getName()));
+            }
+          /*  else {
+                lipi.put(key, value)
+            }*/
 
-       throw new UnsupportedOperationException("Not yet implemented");
+
+            r.setListPermessi(lipi);
+
+
+
+        return r;
+      
     }
 
     private static Agenda conversioneAgenda(BeanGuiAgenda agenda) throws Exception {
