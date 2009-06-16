@@ -6,7 +6,7 @@ package it.seerp.Gui.Menu;
 
 import it.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.Ruoli.GestioneRuoli;
-import it.seerp.Gui.GestioneContratti.GestioneContratti;
+import it.seerp.Gui.Gestione.Contratti.GestioneContratti;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 

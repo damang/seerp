@@ -1,6 +1,6 @@
 package it.seerp.Gui.Gestione.agenda;
 
-import it.seerp.Gui.frame.ObservableJPanel;
+import it.seerp.Gui.observablePanel.ObservableJPanel;
 import java.awt.AlphaComposite;
 import java.awt.BorderLayout;
 import java.awt.Color;

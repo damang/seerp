@@ -11,7 +11,7 @@
 package it.seerp.Gui.Menu;
 
 import it.configurazioni.pattern.command.CommandInterface;
-import it.seerp.Gui.GestioneServizi.GestioneServizi;
+import it.seerp.Gui.Gestione.Servizi.GestioneServizi;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;

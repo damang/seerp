@@ -5,9 +5,9 @@
 package it.seerp.Gui.Menu;
 
 import it.configurazioni.pattern.command.CommandInterface;
-import it.seerp.Gui.GestioneContratti.GestioneContratti;
-import it.seerp.Gui.GestioneServizi.GestioneServizi;
-import it.seerp.Gui.InfoAzienda.InfoAzienda;
+import it.seerp.Gui.Gestione.Contratti.GestioneContratti;
+import it.seerp.Gui.Gestione.Servizi.GestioneServizi;
+import it.seerp.Gui.Gestione.InfoAzienda.InfoAzienda;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 

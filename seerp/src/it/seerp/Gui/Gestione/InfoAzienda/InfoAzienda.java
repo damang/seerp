@@ -8,13 +8,13 @@
  *
  * Created on 15-giu-2009, 16.59.23
  */
-package it.seerp.Gui.InfoAzienda;
+package it.seerp.Gui.Gestione.InfoAzienda;
 
 import it.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.BottoniGenerici.ButtonAnnulla;
 import it.seerp.Gui.BottoniGenerici.ButtonSalva;
 import it.seerp.Gui.Menu.MenuInfoAzienda;
-import it.seerp.Gui.frame.ObservableJPanel;
+import it.seerp.Gui.observablePanel.ObservableJPanel;
 import it.seerp.application.bean.BeanGuiAzienda;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

@@ -11,7 +11,7 @@
 package it.seerp.Gui.AreaPersonale;
 
 import it.configurazioni.pattern.command.CommandInterface;
-import it.seerp.Gui.frame.ObservableJPanel;
+import it.seerp.Gui.observablePanel.ObservableJPanel;
 import it.seerp.application.bean.BeanGuiUtente;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
