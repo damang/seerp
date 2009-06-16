@@ -31,6 +31,11 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
         conn = (Connection) ConnectionPool.getConnection();
     }
 
+    /**
+     * metodo che inserisce i dati del contratto
+     * @throws java.sql.SQLException
+     * @throws DatiErratiEx se si inseriscono dati errati
+     */
     public void inserimento(Contratto contratto) throws SQLException, DatiErratiEx {
 
         PreparedStatement stmt = null;
@@ -105,7 +110,7 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
 
     /**
      * ricerca il contratto con quell'identificativo
-     * @param bean
+     * @param id l'id del contratto
      * @return un contratto con identificativo uguale al paramtero nome
      * @throws java.sql.SQLException
      */
