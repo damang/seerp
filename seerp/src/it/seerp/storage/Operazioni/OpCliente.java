@@ -8,8 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import it.seerp.storage.Exception.DatiDuplicatiEx;
 import it.seerp.storage.Exception.DatiErratiEx;
-import it.seerp.storage.ejb.Appuntamento;
-import it.seerp.storage.ejb.Contratto;
 import it.seerp.storage.db.ConnectionPool;
 import java.sql.Connection;
 
@@ -38,15 +36,22 @@ public class OpCliente extends OpExtraAzienda {
         Statement stmt = null;
         ResultSet rs = null;
 
-        String sql = "SELECT * FROM Cliente where Visible='true'";
+        String sql = "SELECT idUtente,username,password,città,ruol," +
+                   "provincia,telefono,cap,email,ruolo,note,v,cognome,nome," +
+                   "ragioneSociale,pIva,fax FROM Cliente where Visible='true'";
         stmt = (PreparedStatement) con.prepareStatement(sql);
         // Execute the query
         rs = stmt.executeQuery(sql);
 
         // Define the resource list
         while (rs.next()) {
-            Cliente cliente = new Cliente(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17));
-//Integer idUtente, String username, String password, String città, String ruol 5, String provincia, String telefono, String cap, String email, String ruolo 10, String note, Boolean v, String cognome, String nome, String ragioneSociale 15, String pIva, String fax) {
+            Cliente cliente = new Cliente(rs.getInt(1), rs.getString(2), 
+                    rs.getString(3), rs.getString(4), rs.getString(5),
+                    rs.getString(6), rs.getString(7), rs.getString(8),
+                    rs.getString(9), rs.getString(10), rs.getString(11),
+                    rs.getBoolean(12), rs.getString(13), rs.getString(14),
+                    rs.getString(15), rs.getString(16), rs.getString(17));
+            //Integer idUtente, String username, String password, String città, String ruol 5, String provincia, String telefono, String cap, String email, String ruolo 10, String note, Boolean v, String cognome, String nome, String ragioneSociale 15, String pIva, String fax) {
 
             list.add(cliente);
         }
@@ -79,7 +84,9 @@ public class OpCliente extends OpExtraAzienda {
 
         PreparedStatement stmt = null;
 
-        String sql = "DELETE * FROM Cliente" + "where username =" + user;
+        String sql = "DELETE idUtente,username,password,città,ruol,provincia," +
+                "telefono,cap,email,ruolo,note,v,cognome,nome,ragioneSociale," +
+                "pIva,fax FROM Cliente" + "where username =" + user;
 
         // Create a statement
         stmt = (PreparedStatement) con.prepareStatement(sql);
@@ -98,11 +105,11 @@ public class OpCliente extends OpExtraAzienda {
      * @param user
      * user del Cliente da eliminare
      * @throws java.sql.SQLException*/
-    public void eliminazioneLogica(Cliente user) throws SQLException {
+    private void eliminazioneLogica(Cliente user) throws SQLException {
 
         PreparedStatement stmt = null;
 
-        String sql = "UPDATE cliente SET Visible='false' where username = ?";
+        String sql = "UPDATE Cliente(visible) SET Visible='false' where username =" + user;
         // Create a statement
         stmt = (PreparedStatement) con.prepareStatement(sql);
 
@@ -126,7 +133,9 @@ public class OpCliente extends OpExtraAzienda {
         PreparedStatement stmt = null;
 
         Statement stmt1 = con.createStatement();
-        String sqlTest = "SELECT * FROM Cliente WHERE nome='" + user.getPIva() + "' ";
+        String sqlTest = "SELECT idUtente,username,password,città,ruol,provincia," +
+                "telefono,cap,email,ruolo,note,v,cognome,nome,ragioneSociale," +
+                "pIva,fax FROM Cliente WHERE nome='" + user.getPIva();
         ResultSet rs = stmt1.executeQuery(sqlTest);
 
         if (rs.next()) {
@@ -173,7 +182,9 @@ public class OpCliente extends OpExtraAzienda {
         Cliente cliente = null;
 
         Statement stmt1 = con.createStatement();
-        String sqlTest = "SELECT * FROM Cliente WHERE nome='" + user.getPIva() + "' ";
+        String sqlTest = "SELECT idUtente,username,password,città,ruol,provincia," +
+                "telefono,cap,email,ruolo,note,v,cognome,nome,ragioneSociale,pIva" +
+                "fax FROM Cliente WHERE nome='" + user.getPIva() + "' ";
         ResultSet rs = stmt1.executeQuery(sqlTest);
 
         if (rs.next()) {
@@ -181,7 +192,9 @@ public class OpCliente extends OpExtraAzienda {
         } else {
         }
         // Create a statement
-        stmt = (PreparedStatement) con.prepareStatement("UPDATE Cliente VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )" + "where idUtente=" + user.getIdUtente());
+        stmt = (PreparedStatement) con.prepareStatement("UPDATE Cliente(idUtente,username,password,città,ruol,provincia," +
+                "telefono,cap,email,ruolo,note,v,cognome,nome,ragioneSociale,pIva," +
+                "fax) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )" + "where idUtente=" + user.getIdUtente());
 
         stmt.setInt(1, user.getIdUtente());
         stmt.setString(2, user.getUsername());
@@ -224,7 +237,9 @@ public class OpCliente extends OpExtraAzienda {
 
 
 
-        String sql = "SELECT * FROM Cliente" +
+        String sql = "SELECT idUtente,username,password,città,ruol,provincia," +
+                "telefono,cap,email,ruolo,note,v,cognome,nome,ragioneSociale," +
+                "pIva,fax FROM Cliente" +
                 "where idUtente= " + id;
         // String sql = "SELECT * FROM ExtraAzienda where idUtente= ? ";
 
@@ -236,9 +251,12 @@ public class OpCliente extends OpExtraAzienda {
 
         // Define the resource list
         while (rs.next()) {
-            cliente = new Cliente(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17));
-
-
+            cliente = new Cliente(rs.getInt(1), rs.getString(2), rs.getString(3),
+                    rs.getString(4), rs.getString(5), rs.getString(6),
+                    rs.getString(7), rs.getString(8), rs.getString(9),
+                    rs.getString(10), rs.getString(11), rs.getBoolean(12),
+                    rs.getString(13), rs.getString(14), rs.getString(15),
+                    rs.getString(16), rs.getString(17));
 
         }
         rs.close();
