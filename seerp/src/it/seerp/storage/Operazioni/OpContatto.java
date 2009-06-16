@@ -37,7 +37,9 @@ public class OpContatto extends OpExtraAzienda {
         Statement stmt = null;
         ResultSet rs = null;
 
-        String sql = "SELECT * FROM Personale where Visible='true'";
+        String sql = "SELECT idUtente,username,password,città,ruol,provincia," +
+                "telefono,cap,email,ruolo,note,v,cognome,nome,ragioneSociale," +
+                "pIva,fax FROM Contatto where Visible='true'";
         stmt = (PreparedStatement) con.prepareStatement(sql);
         // Execute the query
         rs = stmt.executeQuery(sql);
@@ -45,7 +47,13 @@ public class OpContatto extends OpExtraAzienda {
 
         // Define the resource list
         while (rs.next()) {
-            Contatto contatto = new Contatto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getInt(18));
+            Contatto contatto = new Contatto(rs.getInt(1), rs.getString(2),
+                    rs.getString(3), rs.getString(4), rs.getString(5),
+                    rs.getString(6), rs.getString(7), rs.getString(8),
+                    rs.getString(9), rs.getString(10), rs.getString(11),
+                    rs.getBoolean(12), rs.getString(13), rs.getString(14),
+                    rs.getString(15), rs.getString(16), rs.getString(17),
+                    rs.getInt(18));
             // Integer idUtente, String username, String password, String città, String ruol 5 , String provincia, String telefono, String cap, String email, String ruolo 10, String note, Boolean v, String cognome, String nome, String ragioneSociale 15, String pIva, String fax, Integer feedback) {
 
             list.add(contatto);
@@ -78,7 +86,9 @@ public class OpContatto extends OpExtraAzienda {
 
         PreparedStatement stmt = null;
 
-        String sql = "DELETE * FROM Contatto" + "where username =" + user;
+        String sql = "DELETE idUtente,username,password,città,ruol,provincia," +
+                "telefono,cap,email,ruolo,note,v,cognome,nome,ragioneSociale," +
+                "pIva,fax FROM Contatto" + "where username =" + user;
 
         // Create a statement
         stmt = (PreparedStatement) con.prepareStatement(sql);
@@ -98,7 +108,9 @@ public class OpContatto extends OpExtraAzienda {
 
         PreparedStatement stmt = null;
         Statement stmt1 = con.createStatement();
-        String sqlTest = "SELECT * FROM Contatto WHERE partitaiva='" + user.getPIva() + "' ";
+        String sqlTest = "SELECT idUtente,username,password,città,ruol,provincia," +
+                "telefono,cap,email,ruolo,note,v,cognome,nome,ragioneSociale,pIva," +
+                "fax FROM Contatto WHERE partitaiva='" + user.getPIva();
         ResultSet rs = stmt1.executeQuery(sqlTest);
 
         if (rs.next()) {
@@ -143,7 +155,9 @@ public class OpContatto extends OpExtraAzienda {
         PreparedStatement stmt = null;
         Contatto contatto = null;
         Statement stmt1 = con.createStatement();
-        String sqlTest = "SELECT * FROM Contatto WHERE PIva='" + user.getPIva() + "' ";
+        String sqlTest = "SELECT idUtente,username,password,città,ruol,provincia," +
+                "telefono,cap,email,ruolo,note,v,cognome,nome,ragioneSociale,pIva," +
+                "fax FROM Contatto WHERE PIva='" + user.getPIva();
         ResultSet rs = stmt1.executeQuery(sqlTest);
 
         if (rs.next()) {
@@ -152,7 +166,9 @@ public class OpContatto extends OpExtraAzienda {
 
 
             // Create a statement
-            stmt = (PreparedStatement) con.prepareStatement("UPDATE Personale VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )" + "where idUtente=" + user.getIdUtente());
+            stmt = (PreparedStatement) con.prepareStatement("UPDATE Personale(idUtente,username,password,città,ruol,provincia," +
+                "telefono,cap,email,ruolo,note,v,cognome,nome,ragioneSociale,pIva," +
+                "fax) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )" + "where idUtente=" + user.getIdUtente());
 
             stmt.setInt(1, user.getIdUtente());
             stmt.setString(2, user.getUsername());
@@ -200,7 +216,9 @@ public class OpContatto extends OpExtraAzienda {
 
 
 
-        String sql = "SELECT * FROM Contatto" + "where idUtente= " + id;
+        String sql = "SELECT idUtente,username,password,città,ruol,provincia," +
+                "telefono,cap,email,ruolo,note,v,cognome,nome,ragioneSociale,pIva," +
+                "fax FROM Contatto" + "where idUtente= " + id;
 
         // Create a statement
         stmt = (PreparedStatement) con.prepareStatement(sql);
@@ -211,7 +229,13 @@ public class OpContatto extends OpExtraAzienda {
         // Define the resource list
         while (rs.next()) {
 
-            contatto = new Contatto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getInt(18));
+            contatto = new Contatto(rs.getInt(1), rs.getString(2),
+                    rs.getString(3), rs.getString(4), rs.getString(5),
+                    rs.getString(6), rs.getString(7), rs.getString(8),
+                    rs.getString(9), rs.getString(10), rs.getString(11),
+                    rs.getBoolean(12), rs.getString(13), rs.getString(14),
+                    rs.getString(15), rs.getString(16), rs.getString(17),
+                    rs.getInt(18));
         // Integer idUtente, String username, String password, String città, String ruol 5, String provincia, String telefono, String cap, String email, String ruolo 10, String note, Boolean v, Integer idExtraAzienda, String cognome, String nome 15, String ragioneSociale, String pIva, String fax, Integer idContatto, Integer feedback) {
 
         }
