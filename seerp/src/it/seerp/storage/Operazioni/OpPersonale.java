@@ -106,7 +106,7 @@ public class OpPersonale extends OpeUtente {
      * user dell'utente da eliminare
      * @throws java.sql.SQLException*/
     public void elimina(Personale user) throws SQLException {
-        PreparedStatement stmt = null;
+      /* PreparedStatement stmt = null;
         String sql = "DELETE * FROM Personale where username =?";
         // Create a statement
         stmt = (PreparedStatement) con.prepareStatement(sql);
@@ -115,7 +115,7 @@ public class OpPersonale extends OpeUtente {
         stmt.executeQuery(sql);
         stmt.close();
         ConnectionPool.releaseConnection(con);
-
+    */
     }
 
     /** Nasconde l'utente eliminato al sistema senza l'eliminazione fisica
@@ -123,7 +123,7 @@ public class OpPersonale extends OpeUtente {
      * user dell'utente da eliminare
      * @throws java.sql.SQLException*/
     public void eliminazioneLogica(Personale user) throws SQLException {
-
+        /*
         PreparedStatement stmt = null;
         String sql = "UPDATE Personale SET Visible='false' where username = ?";
         // Create a statement
@@ -133,6 +133,7 @@ public class OpPersonale extends OpeUtente {
         stmt.executeQuery();
         stmt.close();
         ConnectionPool.releaseConnection(con);
+        */
     }
 
     /** Metodo per inserire un nuovo membro del personale
@@ -140,7 +141,7 @@ public class OpPersonale extends OpeUtente {
      * user dell'utente da inserire
      * @throws java.sql.SQLException*/
     public void inserisci(Personale user) throws SQLException {
-
+        /*
 
         PreparedStatement stmt = null;
         Statement stmt1 = con.createStatement();
@@ -151,11 +152,7 @@ public class OpPersonale extends OpeUtente {
             throw new DatiDuplicatiEx("personale già esistente nel database");
         } else {
             String sql = "INSERT INTO Personale (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-            /*
-             * Integer idUtente1, String username2, String password3, String città4,
-            String provincia5, String telefono6,String cap7, String email8, String note9,
-            String tipo10, String cognome11, String nome12, String codiceFiscale13, Boolean v14, String ruolo15
-             */
+            
             stmt = (PreparedStatement) con.prepareStatement(sql);
             stmt.setInt(1, user.getIdUtente());
             stmt.setString(2, user.getUsername());
@@ -177,6 +174,7 @@ public class OpPersonale extends OpeUtente {
         }
         stmt.close();
         ConnectionPool.releaseConnection(con);
+         */
     }
 
     /** Metodo che permette la modifica di un membro del personale presente nel sistema
@@ -185,7 +183,7 @@ public class OpPersonale extends OpeUtente {
      * @return lo stesso oggetto modificato
      * @throws java.sql.SQLException*/
     public Personale modifica(Personale user) throws SQLException, DatiErratiEx, DatiDuplicatiEx {
-
+        /*
         PreparedStatement stmt = null;
         Personale personale = null;
         Statement stmt1 = con.createStatement();
@@ -218,8 +216,8 @@ public class OpPersonale extends OpeUtente {
             stmt.execute();
         }
         stmt.close();
-        ConnectionPool.releaseConnection(con);
-        return personale;
+        ConnectionPool.releaseConnection(con);*/
+        return null;
 
     }
 

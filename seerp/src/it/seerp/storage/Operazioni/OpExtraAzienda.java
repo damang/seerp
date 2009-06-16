@@ -84,7 +84,7 @@ public class OpExtraAzienda extends OpeUtente {
      * user dell'utente da eliminare
      * @throws java.sql.SQLException*/
     public void elimina(ExtraAzienda user) throws SQLException {
-
+        /*
         PreparedStatement stmt = null;
 
 
@@ -101,6 +101,7 @@ public class OpExtraAzienda extends OpeUtente {
 
         stmt.close();
         ConnectionPool.releaseConnection(con);
+         */
     }
 
     /** Nasconde l'utente eliminato al sistema senza l'eliminazione fisica
@@ -108,7 +109,7 @@ public class OpExtraAzienda extends OpeUtente {
      * user dell'utente da eliminare
      * @throws java.sql.SQLException*/
     private void eliminazioneLogica(ExtraAzienda user) throws SQLException {
-
+        /*
         PreparedStatement stmt = null;
 
 
@@ -120,7 +121,7 @@ public class OpExtraAzienda extends OpeUtente {
         stmt.executeQuery();
 
         stmt.close();
-        ConnectionPool.releaseConnection(con);
+        ConnectionPool.releaseConnection(con);*/
     }
 
     /** Metodo per inserire un nuovo membro del personale ExtraAzienda
@@ -128,7 +129,7 @@ public class OpExtraAzienda extends OpeUtente {
      * user dell'utente da inserire
      * @throws java.sql.SQLException*/
     public void inserisci(ExtraAzienda user) throws SQLException, DatiDuplicatiEx {
-        PreparedStatement stmt = null;
+        /*PreparedStatement stmt = null;
         Statement stmt1 = con.createStatement();
         String sqlTest = "SELECT idUtente,username,password,città,ruol,provincia," +
                 "telefono,cap,email,ruolo,note,v,cognome,nome,ragioneSociale,pIva," +
@@ -164,7 +165,7 @@ public class OpExtraAzienda extends OpeUtente {
         }
         stmt.close();
         ConnectionPool.releaseConnection(con);
-
+           */
     }
 
     /** Metodo che permette la modifica di un membro del personale ExtraAzienda presente nel sistema
@@ -173,7 +174,7 @@ public class OpExtraAzienda extends OpeUtente {
      * @return lo stesso oggetto modificato
      * @throws java.sql.SQLException*/
     public ExtraAzienda modifica(ExtraAzienda user) throws SQLException, DatiErratiEx, DatiDuplicatiEx {
-        PreparedStatement stmt = null;
+      /*  PreparedStatement stmt = null;
         ExtraAzienda extraazienda = null;
 
 
@@ -216,8 +217,8 @@ public class OpExtraAzienda extends OpeUtente {
         }
         stmt.close();
         ConnectionPool.releaseConnection(con);
-
-        return extraazienda;
+        */
+        return null;
 
     }
 

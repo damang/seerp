@@ -61,7 +61,7 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
      * @throws DatiErratiEx
      */
     public Utente modifica(Utente utente) throws SQLException, DatiErratiEx {
-
+        /*
         PreparedStatement stmt;
         // Create a statement
         String sql = "UPDATE Utente VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -80,8 +80,8 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
         stmt.execute();
 
         ConnectionPool.releaseConnection(conn);
-
-        return utente;
+            */
+        return null;
     }
 
     /*
@@ -90,8 +90,10 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
      * @throws SQLException
      * @throws DatiErratiEx
      */
+
     public void inserimento(Utente bean) throws SQLException {
 
+    /*
         String sql = "INSERT INTO Utente VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement stmt = (PreparedStatement) conn.prepareStatement(sql);
 
@@ -110,11 +112,11 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
         stmt.execute();
 
 
-        ConnectionPool.releaseConnection(conn);
+        ConnectionPool.releaseConnection(conn);*/
 
     }
 
-    /*
+    /**
      * metodo che permette di visualizzare i dati di un utente
      * @return Utente l'utente visualizzato
      * @throws SQLException
@@ -129,6 +131,7 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
         String sql = "SELECT * FROM Utente WHERE idUtente = ?";
         stmt = (PreparedStatement) conn.prepareStatement(sql);
         stmt.setInt(1, id);
+        
         rs = stmt.executeQuery(sql);
 
         while (rs.next()) {
@@ -163,7 +166,7 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
      * @throws java.sql.SQLException
      */
     public void eliminaLogica(Utente ut) throws SQLException {
-
+/*
         PreparedStatement stmt = null;
 
         String sql = "UPDATE Utente SET Visible='false' where username = ?";
@@ -173,7 +176,7 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
         // Execute the query
         stmt.executeQuery();
         stmt.close();
-        ConnectionPool.releaseConnection(conn);
+        ConnectionPool.releaseConnection(conn);*/
     }
 
     /**
@@ -182,7 +185,7 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
      * @throws java.sql.SQLException
      */
     public void elimina(Utente ut) throws SQLException {
-        PreparedStatement stmt = null;
+        /*PreparedStatement stmt = null;
         String sql = "DELETE * FROM Utente where username =?";
         // Create a statement
         stmt = (PreparedStatement) conn.prepareStatement(sql);
@@ -192,7 +195,7 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
 
         stmt.close();
 
-        ConnectionPool.releaseConnection(conn);
+        ConnectionPool.releaseConnection(conn);*/
     }
 }
 
