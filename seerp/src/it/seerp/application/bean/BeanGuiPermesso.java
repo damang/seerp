@@ -1,6 +1,7 @@
 package it.seerp.application.bean;
 
 import it.seerp.application.validation.NotEmptyValidator;
+import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 import org.jdesktop.swingx.JXPanel;
 
@@ -10,9 +11,8 @@ import org.jdesktop.swingx.JXPanel;
  */
 public class BeanGuiPermesso {
 
-    private JTextField idPermesso;
-    private JTextField action;
-    private JTextField path;
+    private JCheckBox path;
+    private int idPermesso;
     private JXPanel grafica;
     private NotEmptyValidator val;
 
@@ -30,17 +30,16 @@ public class BeanGuiPermesso {
     public BeanGuiPermesso() {
     }
 
-    public BeanGuiPermesso(JTextField idPermesso, JTextField action, JTextField path) {
-        this.idPermesso = idPermesso;
-        this.action = action;
+    public BeanGuiPermesso(JCheckBox path, int id) {
         this.path = path;
+        this.idPermesso=id;
     }
 
     /**
      *
      * @return
      */
-    public JTextField getIdPermesso() throws Exception {
+    public  int getIdPermesso() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
             throw new Exception("Errore nella grafica!");
         }
@@ -51,32 +50,17 @@ public class BeanGuiPermesso {
      *
      * @param pidPermesso
      */
-    public void setIdPermesso(JTextField pidPermesso) {
+    public void setIdPermesso(int pidPermesso) {
         this.idPermesso = pidPermesso;
-        val = new NotEmptyValidator(grafica, idPermesso, "Il campo non può essere vuoto.");
-        grafica.setInputVerifier(val);
     }
 
-    public void setAction(JTextField paction) {
-        this.action = paction;
-        val = new NotEmptyValidator(grafica, action, "Il campo non può essere vuoto.");
-        grafica.setInputVerifier(val);
-    }
-
-    public void setPath(JTextField ppath) {
+    public void setPath(JCheckBox ppath) {
         this.path = ppath;
-        val = new NotEmptyValidator(grafica, path, "Il campo non può eseere vuoto.");
-        grafica.setInputVerifier(val);
+    //    val = new NotEmptyValidator(grafica, path, "Il campo non può eseere vuoto.");
+      //  grafica.setInputVerifier(val);
     }
 
-    public JTextField getAction() throws Exception {
-        if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
-        }
-        return action;
-    }
-
-    public JTextField getPath() throws Exception {
+   public JCheckBox getPath() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
             throw new Exception("Errore nella grafica!");
         }

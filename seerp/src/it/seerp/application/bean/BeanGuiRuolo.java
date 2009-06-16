@@ -13,7 +13,7 @@ import org.jdesktop.swingx.JXPanel;
 public class BeanGuiRuolo {
 
     private ArrayList<BeanGuiPersonale> listPersonale;
-    private Hashtable<String, ArrayList<String>> listPermessi;
+    private Hashtable<String, ArrayList<BeanGuiPermesso>> listPermessi;
     private JTextField nome;
     private JXPanel grafica;
     private StartWithValidator valStartW;
@@ -67,7 +67,7 @@ public class BeanGuiRuolo {
      *
      * @return
      */
-    public Hashtable<String, ArrayList<String>> getListPermessi() {
+    public Hashtable<String, ArrayList<BeanGuiPermesso>> getListPermessi() {
         return listPermessi;
     }
 
@@ -83,7 +83,7 @@ public class BeanGuiRuolo {
      * 
      * @param listPermessi
      */
-    public void setListPermessi(Hashtable<String, ArrayList<String>> listPermessi) {
+    public void setListPermessi(Hashtable<String, ArrayList<BeanGuiPermesso>> listPermessi) {
         this.listPermessi = listPermessi;
     }
 
