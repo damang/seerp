@@ -37,40 +37,27 @@ public class OpPersonale extends OpeUtente {
         ArrayList<Personale> list = new ArrayList<Personale>();
         PreparedStatement stmt = null;
         ResultSet rs = null;
+        String sql = "SELECT * FROM Personale where Visible='true'";
+        stmt = (PreparedStatement) con.prepareStatement(sql);
+        // Execute the query
+        rs = stmt.executeQuery(sql);
 
-        try {
-            String sql = "SELECT * FROM Personale where Visible='true'";
-            stmt = (PreparedStatement) con.prepareStatement(sql);
-            // Execute the query
-            rs = stmt.executeQuery(sql);
-
-            // Define the resource list
-            while (rs.next()) {
-    /*
-     * Integer idUtente1, String username2, String password3, String città4,
-       String provincia5, String telefono6,String cap7, String email8, String note9,
-       String tipo10, String cognome11, String nome12, String codiceFiscale13, Boolean v14, String ruolo15
-     */
-         Personale personale = new Personale(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-         rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),rs.getString(11), rs.getString(12),
-         rs.getString(13), rs.getBoolean(14), new Ruolo(rs.getString(15)));
-                list.add(personale);
-            }
-        } catch (SQLException se) {
-            System.out.println("errore nella visualizzazione dell'elenco");
-
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
+        // Define the resource list
+        while (rs.next()) {
+            /*
+             * Integer idUtente1, String username2, String password3, String città4,
+            String provincia5, String telefono6,String cap7, String email8, String note9,
+            String tipo10, String cognome11, String nome12, String codiceFiscale13, Boolean v14, String ruolo15
+             */
+            Personale personale = new Personale(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+                    rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12),
+                    rs.getString(13), rs.getBoolean(14), new Ruolo(rs.getString(15)));
+            list.add(personale);
         }
+        rs.close();
+        stmt.close();
+        ConnectionPool.releaseConnection(con);
+
         return list;
     }
 
@@ -81,45 +68,31 @@ public class OpPersonale extends OpeUtente {
      * ruolo che il membro del personale ricopre all'interno dell'azienda
      * @return la lista dei membri del personale che corrispondono ai criteri di ricerca
      * @throws java.sql.SQLException*/
-
-    public ArrayList<Personale> elencaPersonalePerRuolo(Ruolo ruolo) throws SQLException{
+    public ArrayList<Personale> elencaPersonalePerRuolo(Ruolo ruolo) throws SQLException {
         ArrayList<Personale> list = new ArrayList<Personale>();
         PreparedStatement stmt = null;
         ResultSet rs = null;
+        String sql = "SELECT * FROM Personale WHERE Ruolo=?";
+        stmt = (PreparedStatement) con.prepareStatement(sql);
+        stmt.setString(1, ruolo.getNome());
+        rs = stmt.executeQuery(sql);
 
-        try {
-            String sql = "SELECT * FROM Personale WHERE Ruolo=?";
-            stmt = (PreparedStatement) con.prepareStatement(sql);
-             stmt.setString(1, ruolo.getNome());
-            rs = stmt.executeQuery(sql);
-
-            // Define the resource list
-            while (rs.next()) {
-    /*
-     * Integer idUtente1, String username2, String password3, String città4,
-       String provincia5, String telefono6,String cap7, String email8, String note9,
-       String tipo10, String cognome11, String nome12, String codiceFiscale13, Boolean v14, String ruolo15
-     */
-         Personale personale = new Personale(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-         rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),rs.getString(11), rs.getString(12),
-         rs.getString(13), rs.getBoolean(14), new Ruolo(rs.getString(15)));
-                list.add(personale);
-            }
-        } catch (SQLException se) {
-            System.out.println("errore nella visualizzazione dell'elenco");
-
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
+        // Define the resource list
+        while (rs.next()) {
+            /*
+             * Integer idUtente1, String username2, String password3, String città4,
+            String provincia5, String telefono6,String cap7, String email8, String note9,
+            String tipo10, String cognome11, String nome12, String codiceFiscale13, Boolean v14, String ruolo15
+             */
+            Personale personale = new Personale(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+                    rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12),
+                    rs.getString(13), rs.getBoolean(14), new Ruolo(rs.getString(15)));
+            list.add(personale);
         }
+        rs.close();
+        stmt.close();
+        ConnectionPool.releaseConnection(con);
+
         return list;
     }
 
@@ -134,25 +107,14 @@ public class OpPersonale extends OpeUtente {
      * @throws java.sql.SQLException*/
     public void elimina(Personale user) throws SQLException {
         PreparedStatement stmt = null;
-        try {
-            String sql = "DELETE * FROM Personale where username =?";
-            // Create a statement
-            stmt = (PreparedStatement) con.prepareStatement(sql);
-            stmt.setString(1, user.getUsername());
-            // Execute the query
-            stmt.executeQuery(sql);
-        } catch (SQLException se) {
-            System.out.println("errore nell'eliminazione del personale");
-
-        } finally {
-            // Release the resources
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
-        }
+        String sql = "DELETE * FROM Personale where username =?";
+        // Create a statement
+        stmt = (PreparedStatement) con.prepareStatement(sql);
+        stmt.setString(1, user.getUsername());
+        // Execute the query
+        stmt.executeQuery(sql);
+        stmt.close();
+        ConnectionPool.releaseConnection(con);
 
     }
 
@@ -163,29 +125,14 @@ public class OpPersonale extends OpeUtente {
     public void eliminazioneLogica(Personale user) throws SQLException {
 
         PreparedStatement stmt = null;
-        try {
-            String sql = "UPDATE Personale SET Visible='false' where username = ?";
-            // Create a statement
-            stmt = (PreparedStatement) con.prepareStatement(sql);
+        String sql = "UPDATE Personale SET Visible='false' where username = ?";
+        // Create a statement
+        stmt = (PreparedStatement) con.prepareStatement(sql);
 
-            // Execute the query
-            stmt.executeQuery();
-        } catch (SQLException se) {
-            System.out.println("errore nell'eliminazione logica dell'utente");
-
-        } finally {
-            // Release the resources
-
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
-        }
-
-
-
+        // Execute the query
+        stmt.executeQuery();
+        stmt.close();
+        ConnectionPool.releaseConnection(con);
     }
 
     /** Metodo per inserire un nuovo membro del personale
@@ -196,52 +143,40 @@ public class OpPersonale extends OpeUtente {
 
 
         PreparedStatement stmt = null;
-        try {
+        Statement stmt1 = con.createStatement();
+        String sqlTest = "SELECT * FROM Personale WHERE codiceFiscale='" + user.getCodiceFiscale() + "' ";
+        ResultSet rs = stmt1.executeQuery(sqlTest);
 
-            Statement stmt1 = con.createStatement();
-            String sqlTest = "SELECT * FROM Personale WHERE codiceFiscale='" + user.getCodiceFiscale() + "' ";
-            ResultSet rs = stmt1.executeQuery(sqlTest);
+        if (rs.next()) {
+            throw new DatiDuplicatiEx("personale già esistente nel database");
+        } else {
+            String sql = "INSERT INTO Personale (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            /*
+             * Integer idUtente1, String username2, String password3, String città4,
+            String provincia5, String telefono6,String cap7, String email8, String note9,
+            String tipo10, String cognome11, String nome12, String codiceFiscale13, Boolean v14, String ruolo15
+             */
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+            stmt.setInt(1, user.getIdUtente());
+            stmt.setString(2, user.getUsername());
+            stmt.setString(3, user.getPassword());
+            stmt.setString(4, user.getCitta());
+            stmt.setString(5, user.getProvincia());
+            stmt.setString(6, user.getTelefono());
+            stmt.setString(7, user.getCap());
+            stmt.setString(8, user.getEmail());
+            stmt.setString(9, user.getNote());
+            stmt.setString(10, user.getTipo());
+            stmt.setString(11, user.getCognome());
+            stmt.setString(12, user.getNome());
+            stmt.setString(13, user.getCodiceFiscale());
+            stmt.setBoolean(14, user.getVisible());
+            stmt.setString(15, user.getRuolo().getNome());
 
-            if (rs.next()) {
-                throw new DatiDuplicatiEx("personale già esistente nel database");
-            } else {
-                String sql = "INSERT INTO Personale (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
- /*
-     * Integer idUtente1, String username2, String password3, String città4,
-       String provincia5, String telefono6,String cap7, String email8, String note9,
-       String tipo10, String cognome11, String nome12, String codiceFiscale13, Boolean v14, String ruolo15
-     */
-                stmt = (PreparedStatement) con.prepareStatement(sql);
-                stmt.setInt(1, user.getIdUtente());
-                stmt.setString(2, user.getUsername());
-                stmt.setString(3, user.getPassword());
-                stmt.setString(4, user.getCitta());
-                stmt.setString(5, user.getProvincia());
-                stmt.setString(6, user.getTelefono());
-                stmt.setString(7, user.getCap());
-                stmt.setString(8, user.getEmail());
-                stmt.setString(9, user.getNote());
-                stmt.setString(10, user.getTipo());
-                stmt.setString(11, user.getCognome());
-                stmt.setString(12, user.getNome());
-                stmt.setString(13, user.getCodiceFiscale());
-                stmt.setBoolean(14, user.getVisible());
-                stmt.setString(15, user.getRuolo().getNome());
-
-                stmt.execute();
-            }
-        } catch (SQLException se) {
-            System.out.println("errore di inserimento del personale");
-
-        } finally {
-            // Release the resources
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
+            stmt.execute();
         }
+        stmt.close();
+        ConnectionPool.releaseConnection(con);
     }
 
     /** Metodo che permette la modifica di un membro del personale presente nel sistema
@@ -253,53 +188,37 @@ public class OpPersonale extends OpeUtente {
 
         PreparedStatement stmt = null;
         Personale personale = null;
+        Statement stmt1 = con.createStatement();
+        String sqlTest = "SELECT * FROM Personale WHERE codiceFiscale='" + user.getCodiceFiscale() + "' ";
+        ResultSet rs = stmt1.executeQuery(sqlTest);
 
-        try {
+        if (rs.next()) {
+            throw new DatiDuplicatiEx("personale già esistente nel database");
+        } else {
 
-            Statement stmt1 = con.createStatement();
-            String sqlTest = "SELECT * FROM Personale WHERE codiceFiscale='" + user.getCodiceFiscale() + "' ";
-            ResultSet rs = stmt1.executeQuery(sqlTest);
+            // Create a statement
+            stmt = (PreparedStatement) con.prepareStatement("UPDATE Personale VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )" + "where idUtente=" + user.getIdUtente());
 
-            if (rs.next()) {
-                throw new DatiDuplicatiEx("personale già esistente nel database");
-            } else {
+            stmt.setInt(1, user.getIdUtente());
+            stmt.setString(2, user.getUsername());
+            stmt.setString(3, user.getPassword());
+            stmt.setString(4, user.getCitta());
+            stmt.setString(5, user.getProvincia());
+            stmt.setString(6, user.getTelefono());
+            stmt.setString(7, user.getCap());
+            stmt.setString(8, user.getEmail());
+            stmt.setString(9, user.getNote());
+            stmt.setString(10, user.getTipo());
+            stmt.setString(11, user.getCognome());
+            stmt.setString(12, user.getNome());
+            stmt.setString(13, user.getCodiceFiscale());
+            stmt.setBoolean(14, user.getVisible());
+            stmt.setString(15, user.getRuolo().getNome());
 
-                // Create a statement
-                stmt = (PreparedStatement) con.prepareStatement("UPDATE Personale VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )" + "where idUtente=" + user.getIdUtente());
-
-               stmt.setInt(1, user.getIdUtente());
-                stmt.setString(2, user.getUsername());
-                stmt.setString(3, user.getPassword());
-                stmt.setString(4, user.getCitta());
-                stmt.setString(5, user.getProvincia());
-                stmt.setString(6, user.getTelefono());
-                stmt.setString(7, user.getCap());
-                stmt.setString(8, user.getEmail());
-                stmt.setString(9, user.getNote());
-                stmt.setString(10, user.getTipo());
-                stmt.setString(11, user.getCognome());
-                stmt.setString(12, user.getNome());
-                stmt.setString(13, user.getCodiceFiscale());
-                stmt.setBoolean(14,user.getVisible());
-                stmt.setString(15, user.getRuolo().getNome());
-
-                stmt.execute();
-
-                personale = this.visualizzaDati(user.getIdUtente());
-
-            }
-        } catch (SQLException se) {
-            System.out.println("errore nella modifica");
-
-        } finally {
-            // Release the resources
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
+            stmt.execute();
         }
+        stmt.close();
+        ConnectionPool.releaseConnection(con);
         return personale;
 
     }
@@ -308,44 +227,32 @@ public class OpPersonale extends OpeUtente {
      * @param id
      * id del membro del personale
      * @return il bean con i dettagli del membro del personale*/
-
     public Personale visualizzaDati(Integer id) throws SQLException {
         Personale personale = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
 
-        try {
-            String sql = "SELECT * FROM Personale where idUtente= ? ";
-            // Create a statement
-            stmt = (PreparedStatement) con.prepareStatement(sql);
-            stmt.setString(1, id.toString());
-            // Execute the query
-            rs = stmt.executeQuery();
 
-            // Define the resource list
-            while (rs.next()) {
-                personale = new Personale(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-         rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),rs.getString(11), rs.getString(12),
-         rs.getString(13), rs.getBoolean(14), new Ruolo(rs.getString(15)));
+        String sql = "SELECT * FROM Personale where idUtente= ? ";
+        // Create a statement
+        stmt = (PreparedStatement) con.prepareStatement(sql);
+        stmt.setString(1, id.toString());
+        // Execute the query
+        rs = stmt.executeQuery();
 
-                }
-            }
-         catch (SQLException se) {
-            System.out.println("errore di visualizzazione");
+        // Define the resource list
+        while (rs.next()) {
+            personale = new Personale(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+                    rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12),
+                    rs.getString(13), rs.getBoolean(14), new Ruolo(rs.getString(15)));
 
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
         }
+        rs.close();
+        stmt.close();
+        ConnectionPool.releaseConnection(con);
+
+
 
         return personale;
 
@@ -358,33 +265,20 @@ public class OpPersonale extends OpeUtente {
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
-        try {
-            String sql = "Select nome From Ruolo,Personale where idRuolo=ruolo and idPersonale = ?";
-            // Create a statement
-            stmt = (PreparedStatement) con.prepareStatement(sql);
-            stmt.setInt(1, id);
-            // Execute the query
-            rs = stmt.executeQuery();
+        String sql = "Select nome From Ruolo,Personale where idRuolo=ruolo and idPersonale = ?";
+        // Create a statement
+        stmt = (PreparedStatement) con.prepareStatement(sql);
+        stmt.setInt(1, id);
+        // Execute the query
+        rs = stmt.executeQuery();
 
-            while (rs.next()) {
-                Ruolo ruolo = new Ruolo(rs.getString(1));
-                list.add(ruolo);
-            }
-        } catch (SQLException se) {
-            System.out.println("errore nella visualizzazione dei permessi");
-
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
+        while (rs.next()) {
+            Ruolo ruolo = new Ruolo(rs.getString(1));
+            list.add(ruolo);
         }
+        rs.close();
+        stmt.close();
+        ConnectionPool.releaseConnection(con);
         return list;
     }
 }
