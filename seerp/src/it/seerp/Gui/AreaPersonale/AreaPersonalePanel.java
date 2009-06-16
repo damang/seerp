@@ -415,7 +415,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         //   gestUt.modifica(utente);
         this.pwd1.setEnabled(false);
         this.pwd2.setEnabled(false);
-        this.buttonSalva2.setEnabled(true);
+        this.buttonSalva2.setEnabled(false);
         this.modifica.setEnabled(true);
 
     }//GEN-LAST:event_buttonSalva2MouseClicked
