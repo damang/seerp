@@ -27,7 +27,7 @@ public class ClienteTm extends Generica <Cliente>{
         };
 
         super.setColumnIdentifiers(list);
-        super.setColumnCount(4);
+      //  super.setColumnCount(5);
 
        // AppGestioneExtraAzienda op = new AppGestioneExtraAzienda();
        /* Iterator<Cliente> it = op.visualizzaClienti().iterator();
