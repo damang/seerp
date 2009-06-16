@@ -19,6 +19,7 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
 
     private Connection conn;
 
+
     public OpServizio() throws SQLException {
         conn = (Connection) ConnectionPool.getConnection();
     }
@@ -31,12 +32,11 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
     public void inserimento(Servizio serv) throws SQLException, DatiErratiEx {
 
         PreparedStatement stmt = null;
-
-
+        
         String query = "INSERT INTO Servizio(descrizione,disponibilita,quantita,tipo,prezzo,iva,note)" +
-                " VALUE (?,?,?,?,?,?,?)";
+                          " VALUES (?,?,?,?,?,?,?)";
         stmt = (PreparedStatement) conn.prepareStatement(query);
-
+        
         stmt.setString(1, serv.getDescrizione());
         stmt.setBoolean(2, serv.getDisponibilita());
         stmt.setInt(3, serv.getQuantita());
@@ -46,6 +46,8 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
         stmt.setString(7, serv.getNote());
 
         stmt.executeUpdate();
+
+
 
         stmt.close();
         ConnectionPool.releaseConnection(conn);
@@ -108,7 +110,7 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
 
 
         String query = "SELECT idServizio,descrizione,disponibilita,quantita,tipo,prezzo,iva,note" +
-                " FROM Servizio ";
+                        " FROM Servizio ";
         stmt = (PreparedStatement) conn.prepareStatement(query);
 
         rs = stmt.executeQuery(query);
