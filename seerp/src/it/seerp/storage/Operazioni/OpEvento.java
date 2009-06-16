@@ -40,31 +40,36 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
 
         PreparedStatement stmt = null;
         Statement stmt1 = null;
-        String query = "INSERT INTO evento(luogo, tema, nome, note,data, ora) VALUE (?,?,?,?,?,?)";
+        String query = "INSERT INTO evento(data, ora,agenda,luogo,nome,tema,note,notifica)" +
+                " VALUE (?,?,?,?,?,?,?,?)";
         //da controllare campi
         String sqlTest = "SELECT * FROM evento WHERE nome='" + e.getNome() + "' ";
-        
-            stmt1 = conn.createStatement();
-            stmt = (PreparedStatement) conn.prepareStatement(query);
-            ResultSet rs = stmt1.executeQuery(sqlTest);
 
-            if (rs.next()) {
-                throw new DatiDuplicatiEx("evento già esistente nel database");
-            } else {
+        stmt1 = conn.createStatement();
+        stmt = (PreparedStatement) conn.prepareStatement(query);
+        ResultSet rs = stmt1.executeQuery(sqlTest);
 
-                //controllare campi
-                stmt.setString(3, e.getLuogo());
-                stmt.setString(5, e.getTema());
-                stmt.setString(4, e.getNome());
-                stmt.setString(6, e.getNote());
-                java.sql.Date sqlDate = new java.sql.Date(new java.util.Date().getTime());
-                stmt.setDate(1, sqlDate);
-                java.sql.Date sqlTime = new java.sql.Date(new java.util.Date().getTime());
-                stmt.setDate(2, sqlTime);
+        if (rs.next()) {
+            throw new DatiDuplicatiEx("evento già esistente nel database");
+        } else {
+            java.sql.Date sqlDate = new java.sql.Date(new java.util.Date().getTime());
+            stmt.setDate(1, sqlDate);
+            java.sql.Date sqlTime = new java.sql.Date(new java.util.Date().getTime());
+            stmt.setDate(2, sqlTime);
+            stmt.setInt(3, e.getAgenda().getIdAgenda());
+            stmt.setString(4, e.getLuogo());
+            stmt.setString(5, e.getNome());
+            stmt.setString(6, e.getTema());
+            stmt.setString(7, e.getNote());
+            stmt.setBoolean(8, e.getNotifica());
 
-                stmt.execute();
 
-            }
+            stmt.execute();
+            stmt.close();
+            rs.close();
+            ConnectionPool.releaseConnection(conn);
+
+        }
     }
 
     /** crea la query per modificare un evento nel database
@@ -77,34 +82,38 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
 
         PreparedStatement stmt = null;
         Statement stmt1 = null;
-        String query = "UPDATE evento(luogo, tema, nome, note,data, ora) VALUE (?,?,?,?,?,?)";
+        String query = "UPDATE evento(data, ora,luogo,nome,tema,note,notifica) VALUE (?,?,?,?,?,?,?)";
         //da controllare campi
         String sqlTest = "SELECT * FROM evento WHERE nome='" + e.getNome() + "' ";
-        
-            stmt1 = conn.createStatement();
-            stmt = (PreparedStatement) conn.prepareStatement(query);
-            ResultSet rs = stmt1.executeQuery(sqlTest);
 
-            if (rs.next()) {
-                throw new DatiDuplicatiEx("evento già esistente nel database");
-            } else {
+        stmt1 = conn.createStatement();
+        stmt = (PreparedStatement) conn.prepareStatement(query);
+        ResultSet rs = stmt1.executeQuery(sqlTest);
 
-                //controllare campi
-                stmt.setString(3, e.getLuogo());
-                stmt.setString(5, e.getTema());
-                stmt.setString(4, e.getNome());
-                stmt.setString(6, e.getNote());
-                java.sql.Date sqlDate = new java.sql.Date(new java.util.Date().getTime());
-                stmt.setDate(1, sqlDate);
-                java.sql.Date sqlTime = new java.sql.Date(new java.util.Date().getTime());
-                stmt.setDate(2, sqlTime);
+        if (rs.next()) {
+            throw new DatiDuplicatiEx("evento già esistente nel database");
+        } else {
 
-                stmt.execute();
+            java.sql.Date sqlDate = new java.sql.Date(new java.util.Date().getTime());
+            stmt.setDate(1, sqlDate);
+            java.sql.Date sqlTime = new java.sql.Date(new java.util.Date().getTime());
+            stmt.setDate(2, sqlTime);
+            stmt.setString(3, e.getLuogo());
+            stmt.setString(4, e.getNome());
+            stmt.setString(5, e.getTema());
+            stmt.setString(6, e.getNote());
+            stmt.setBoolean(7, e.getNotifica());
 
-            }
-        
-            return e;
+            stmt.execute();
+
         }
+        stmt.close();
+        rs.close();
+        ConnectionPool.releaseConnection(conn);
+
+        return e;
+    }
+
     /** crea la query per visualizzare i dettagli
      * di un evento presente nel database
      * @return i dettagli dell'evento
@@ -117,30 +126,31 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
         ResultSet rs = null;
         Evento ev = null;
 
-            String query = "SELECT * FROM Evento, Agenda" +
-                    "where Evento.idAgenda=Agenda.idAgenda and idAgenda=?";
+        String query = "SELECT idEvento,data, ora,luogo,nome,tema,note,notifica" +
+                " FROM Evento, Agenda" +
+                "where Evento.idAgenda=Agenda.idAgenda and idAgenda=?";
 
-            stmt = (PreparedStatement) conn.prepareStatement(query);
-            stmt.setInt(1, id);
-            // Execute the query
-            rs = stmt.executeQuery(query);
+        stmt = (PreparedStatement) conn.prepareStatement(query);
+        stmt.setInt(1, id);
+        // Execute the query
+        rs = stmt.executeQuery(query);
 
-            // Define the resource list
-            while (rs.next()) {
-                GregorianCalendar date = new GregorianCalendar();
-                date.setTimeInMillis(rs.getDate(5).getTime());
+        while (rs.next()) {
+            GregorianCalendar date = new GregorianCalendar();
+            date.setTimeInMillis(rs.getDate(2).getTime());
 
-                GregorianCalendar time = new GregorianCalendar();
-                time.setTimeInMillis(rs.getTime(6).getTime());
-                /*String luogo, String tema, String nome, String note,
-                GregorianCalendar data, GregorianCalendar ora, int idEvento, Boolean not*/
-                ev = new Evento(rs.getString(1), rs.getString(2), rs.getString(3),
-                        rs.getString(4), date, time, rs.getInt(7),
-                        rs.getBoolean(8));
+            GregorianCalendar time = new GregorianCalendar();
+            time.setTimeInMillis(rs.getTime(3).getTime());
+
+            ev = new Evento(rs.getString(1), rs.getString(2), rs.getString(3),
+                    rs.getString(4), date, time, rs.getInt(7),
+                    rs.getBoolean(8));
 
 
-            }
-       
+        }
+        stmt.close();
+        rs.close();
+        ConnectionPool.releaseConnection(conn);
 
         return ev;
 
@@ -160,26 +170,28 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
-            String query = "SELECT * FROM Evento, Agenda, Utente " +
-                    "WHERE agenda=idAgenda and idAgenda=idUtente ";
-            stmt = (PreparedStatement) conn.prepareStatement(query);
-            rs = stmt.executeQuery(query);
+        String query = "SELECT idEvento,data, ora,luogo,nome,tema,note,notifica" +
+                " FROM Evento, Agenda, Utente " +
+                "WHERE agenda=idAgenda and idAgenda=idUtente ";
+        stmt = (PreparedStatement) conn.prepareStatement(query);
+        rs = stmt.executeQuery(query);
 
 
-            while (rs.next()) {
-                GregorianCalendar date = new GregorianCalendar();
-                date.setTimeInMillis(rs.getDate("data").getTime());
+        while (rs.next()) {
+            GregorianCalendar date = new GregorianCalendar();
+            date.setTimeInMillis(rs.getDate(2).getTime());
 
-                GregorianCalendar time = new GregorianCalendar();
-                time.setTimeInMillis(rs.getTime("ora").getTime());
+            GregorianCalendar time = new GregorianCalendar();
+            time.setTimeInMillis(rs.getTime(3).getTime());
 
-                Evento ev = new Evento(rs.getString(1), rs.getString(2), rs.getString(3),
-                        rs.getString(4), date, time, rs.getInt(7),
-                        rs.getBoolean(8));
+            Evento ev = new Evento(rs.getString(1), rs.getString(2), rs.getString(3),
+                    rs.getString(4), date, time, rs.getInt(7), rs.getBoolean(8));
 
-                lista.add(ev);
-            }
-       
+            lista.add(ev);
+        }
+        stmt.close();
+        rs.close();
+        ConnectionPool.releaseConnection(conn);
         return lista;
     }
 
@@ -213,50 +225,62 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
 
         PreparedStatement stmt = null;
 
-            String query = "DELETE FROM evento WHERE idEvento='" + e.getIdEvento() + "'";
-            stmt = (PreparedStatement) conn.prepareStatement(query);
-            stmt.executeUpdate();
-         }
+        String query = "DELETE FROM evento WHERE idEvento='" + e.getIdEvento() + "'";
+        stmt = (PreparedStatement) conn.prepareStatement(query);
+        stmt.executeUpdate();
+        stmt.close();
+
+        ConnectionPool.releaseConnection(conn);
+    }
     /*crea la query per settare il campo notifica a true*/
 
     public void notificaEvento(Evento e) throws SQLException {
 
         PreparedStatement stmt = null;
 
-       
-            String query = "UPDATE Evento(notifica) SET (?) " +
-                    "WHERE idEvento='" + e.getIdEvento() + "'";
-            stmt.setBoolean(1, e.getNotifica());
-            stmt = (PreparedStatement) conn.prepareStatement(query);
-            stmt.executeUpdate();   
-        }
+
+        String query = "UPDATE Evento(notifica) SET (?) " +
+                "WHERE idEvento='" + e.getIdEvento() + "'";
+        stmt.setBoolean(1, e.getNotifica());
+        stmt = (PreparedStatement) conn.prepareStatement(query);
+        stmt.executeUpdate();
+
+        stmt.close();
+
+        ConnectionPool.releaseConnection(conn);
+    }
 
     public ArrayList<Evento> eventiNotificati(GregorianCalendar data) throws SQLException {
 
         PreparedStatement stmt = null;
         ArrayList<Evento> evNotificati = new ArrayList<Evento>();
 
-            GregorianCalendar gc = new GregorianCalendar();
-            Date a = new Date(gc.getTimeInMillis());
-            String query = "SELECT nome,tema,data FROM Evento" +
-                    " WHERE notifica=true and data<='" + a.toString() + "'";
-            ResultSet rs = stmt.executeQuery(query);
+        GregorianCalendar gc = new GregorianCalendar();
+        Date a = new Date(gc.getTimeInMillis());
+        String query = "SELECT nome,tema,data FROM Evento" +
+                " WHERE notifica=true and data<='" + a.toString() + "'";
+        ResultSet rs = stmt.executeQuery(query);
 
-            while (rs.next()) {
-                Evento e = new Evento();
+        while (rs.next()) {
+            Evento e = new Evento();
 
-                GregorianCalendar g = new GregorianCalendar();
-                g.setTimeInMillis(rs.getDate("data").getTime());
-                e.setData(g);
-                e.setNome(rs.getString("Nome"));
-                e.setTema(rs.getString("Tema"));
+            GregorianCalendar g = new GregorianCalendar();
 
-                evNotificati.add(e);
-                stmt = (PreparedStatement) conn.prepareStatement(query);
-                stmt.executeUpdate();
+            e.setNome(rs.getString(1));
+            e.setTema(rs.getString(2));
+            g.setTimeInMillis(rs.getDate(3).getTime());
+            e.setData(g);
 
-            }
-        
+
+            evNotificati.add(e);
+            stmt = (PreparedStatement) conn.prepareStatement(query);
+            stmt.executeUpdate();
+
+        }
+        stmt.close();
+        rs.close();
+        ConnectionPool.releaseConnection(conn);
+
         return evNotificati;
 
     }
