@@ -17,7 +17,6 @@ import it.seerp.Gui.tabella.FornitoreTm;
 import it.seerp.Gui.tabella.Generica;
 import it.seerp.Gui.tabella.ResponsabileTm;
 import it.seerp.application.bean.BeanGuiFornitore;
-import it.seerp.application.bean.BeanGuiPersonale;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
