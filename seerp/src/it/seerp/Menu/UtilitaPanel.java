@@ -32,7 +32,7 @@ public class UtilitaPanel extends javax.swing.JPanel implements ActionListener {
         BottoneStampa = new javax.swing.JButton();
         BottoneCerca = new javax.swing.JButton();
 
-        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Utilit‡", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_BOTTOM));
+        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Utilit√†", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_BOTTOM));
 
         BottoneStampa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/printer.png"))); // NOI18N
         BottoneStampa.setToolTipText("Stamoa");
@@ -75,6 +75,8 @@ public class UtilitaPanel extends javax.swing.JPanel implements ActionListener {
 
         BottoneStampa.addActionListener(this);
         BottoneCerca.addActionListener(this);
+
+        getAccessibleContext().setAccessibleName("Utilita");
     }// </editor-fold>//GEN-END:initComponents
 
 
