@@ -41,8 +41,8 @@ public class OpDipendente extends OpPersonale {
         ResultSet rs = null;
 
         String sql = "SELECT idUtente,username,password,citta,provincia,telefono," +
-                "cap,email,note,tipo,cognome,nome,codiceFiscale,ruolo,visible " +
-                "FROM Dipendente where Visible='true'";
+                "cap,email,note,tipo,cognome,nome,codiceFiscale,ruolo,visibilita " +
+                "FROM Dipendente,Utente,Personale where Visible='true' and idUtente=idpersonale and idPersonale=idDipendente";
         stmt = (PreparedStatement) con.prepareStatement(sql);
         // Execute the query
         rs = stmt.executeQuery(sql);
@@ -122,50 +122,63 @@ public class OpDipendente extends OpPersonale {
      * @throws java.sql.SQLException
      * @throws DatiDuplicatiEx
      */
-    public void inserisci(Dipendente user) throws SQLException, DatiDuplicatiEx {
+        public void inserisci(Dipendente user) throws SQLException, DatiDuplicatiEx {
 
         PreparedStatement stmt = null;
+        PreparedStatement stmtp = null;
+        PreparedStatement stmtd = null;
+
         Statement stmt1 = con.createStatement();
         String sqlTest = "SELECT idUtente,username,password,citta,provincia,telefono," +
-                "cap,email,note,tipo,cognome,nome,codiceFiscale,ruolo,visible" +
-                " FROM Dipendente WHERE codiceFiscale='" + user.getCodiceFiscale() + "' ";
+                "cap,email,note,tipo,cognome,nome,codiceFiscale,ruolo,visibilita" +
+                " FROM Dipendente,Personale,Utente WHERE codiceFiscale='" + user.getCodiceFiscale() + "' and idUtente=idPersonale" +
+                "and idPersonale=idDipendente";
         ResultSet rs = stmt1.executeQuery(sqlTest);
 
         if (rs.next()) {
-            throw new DatiDuplicatiEx("dipendente già esistente nel database");
-        } else {
-            String sql = "INSERT INTO Dipendente (idUtente,username,password,citta,provincia,telefono," +
-                "cap,email,note,tipo,cognome,nome,codiceFiscale,ruolo,visible) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                throw new DatiDuplicatiEx("responsabile già esistente nel database");
+            } else {
+                try{
+                    con.setAutoCommit(false);
+                String sqlu = "INSERT INTO Utente(idUtente,username,password,email,citta,prov,telefono" +
+                        "CAP,note,tipo,visibilita) VALUES(LAST_INSERT_ID()+1,?,?,?,?,?,?,?,?,?,?)";
+                String sqlp = "INSERT INTO Personale(idPersonale,nome,cognome,codicefiscale,ruolo)" +
+                        "VALUES(LAST_INSERT_ID(),?,?,?,?)";
+                String sqlr = "INSERT INTO Dipendente (idDipendente)" +
+                        "VALUES(LAST_INSERT_ID())";
 
-            /*
-             * Integer idUtente1, String username2, String password3, String città4,
-            String provincia5, String telefono6, String cap7, String email8, String note9,
-            String tipo10, String cognome11, String nome12, String codiceFiscale13, Ruolo ruolo14, Boolean v15
-             */
+                stmt = (PreparedStatement) con.prepareStatement(sqlu);
+                stmt.setString(1, user.getUsername());
+                stmt.setString(2, user.getPassword());
+                stmt.setString(3, user.getEmail());
+                stmt.setString(4, user.getCitta());
+                stmt.setString(5, user.getProvincia());
+                stmt.setString(6, user.getTelefono());
+                stmt.setString(7, user.getCap());
+                stmt.setString(8, user.getNote());
+                stmt.setString(9, user.getTipo());
+                stmt.setString(10, user.getVisible().toString());
+                stmtp = (PreparedStatement) con.prepareStatement(sqlp);
+                stmt.setString(1, user.getNome());
+                stmt.setString(2, user.getCognome());
+                stmt.setString(3, user.getCodiceFiscale());
+                stmt.setString(4, user.getRuolo().getNome());
+                stmtd= (PreparedStatement) con.prepareStatement(sqlr);
+                stmt.execute();
+                stmtp.execute();
+                stmtd.execute();
+                con.commit();
+            }catch(SQLException e){
+                 con.rollback();}
 
-            stmt = (PreparedStatement) con.prepareStatement(sql);
+                stmt.close();
+                ConnectionPool.releaseConnection(con);
 
-            stmt.setInt(1, user.getIdUtente());
-            stmt.setString(2, user.getUsername());
-            stmt.setString(3, user.getPassword());
-            stmt.setString(4, user.getCitta());
-            stmt.setString(5, user.getProvincia());
-            stmt.setString(6, user.getTelefono());
-            stmt.setString(7, user.getCap());
-            stmt.setString(8, user.getEmail());
-            stmt.setString(9, user.getNote());
-            stmt.setString(10, user.getTipo());
-            stmt.setString(11, user.getCognome());
-            stmt.setString(12, user.getNome());
-            stmt.setString(13, user.getCodiceFiscale());
-            stmt.setString(14, user.getRuolo().getNome());
-            stmt.setBoolean(15, user.getVisible());
-            stmt.execute();
         }
-        stmt.close();
-        ConnectionPool.releaseConnection(con);
+        }
+       
 
-    }
+    
 
     /** Metodo che permette la modifica di un membro dei dipendenti presente nel sistema
      * @param user
@@ -183,7 +196,8 @@ public class OpDipendente extends OpPersonale {
 
         Statement stmt1 = con.createStatement();
         String sqlTest = "SELECT idUtente,username,password,citta,provincia,telefono," +
-                "cap,email,note,tipo,cognome,nome,codiceFiscale,ruolo,visible FROM Dipendente WHERE codiceFiscale='" + user.getCodiceFiscale() + "' ";
+                "cap,email,note,tipo,cognome,nome,codiceFiscale,ruolo,visibilita FROM Dipendente WHERE codiceFiscale='" + user.getCodiceFiscale() + "'" +
+                "and idUtente=idPersonale and idPersonale=idDipendente ";
         ResultSet rs = stmt1.executeQuery(sqlTest);
 
         if (rs.next()) {
@@ -191,10 +205,11 @@ public class OpDipendente extends OpPersonale {
         } else {
 
             // Create a statement
-            stmt = (PreparedStatement) con.prepareStatement("UPDATE Dipendente" +
+            stmt = (PreparedStatement) con.prepareStatement("UPDATE Dipendente,Personale,Dipendente" +
                     "(username,password,citta,provincia,telefono," +
-                "cap,email,note,tipo,cognome,nome,codiceFiscale,ruolo,visible)" +
-                    "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)" + "where idUtente=" + user.getIdUtente());
+                "cap,email,note,tipo,cognome,nome,codiceFiscale,ruolo,visibilita)" +
+                    "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)" + "where idUtente=IdPersonale and idPersonale=idDipendente and" +
+                    "idUtente=" + user.getIdUtente());
 
             
             stmt.setString(1, user.getUsername());
@@ -236,8 +251,8 @@ public class OpDipendente extends OpPersonale {
 
 
         String sql = "SELECT idUtente,username,password,citta,provincia,telefono," +
-                "cap,email,note,tipo,cognome,nome,codiceFiscale,ruolo,visible" +
-                " FROM Dipendente where idDipendente= ? ";
+                "cap,email,note,tipo,cognome,nome,codiceFiscale,ruolo,visibilita" +
+                " FROM Dipendente where idUtente=idPersonale and idPersonale=idDipendente and idDipendente= ? ";
         // Create a statement
         stmt = (PreparedStatement) con.prepareStatement(sql);
         stmt.setString(1, id.toString());
