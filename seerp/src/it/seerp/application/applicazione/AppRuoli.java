@@ -8,6 +8,7 @@ import it.seerp.application.interfacce.GestioneRuoli;
 import it.seerp.storage.Operazioni.OpRuolo;
 import it.seerp.storage.ejb.Ruolo;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -38,4 +39,17 @@ public class AppRuoli implements GestioneRuoli<BeanGuiRuolo> {
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
     }
+
+    public BeanGuiRuolo modifica(BeanGuiRuolo bean) {
+        return null;
+    }
+
+    public BeanGuiRuolo elimina(BeanGuiRuolo r) {
+        return null;
+    }
+    public ArrayList<BeanGuiRuolo> getElenco() {
+        return null;
+    }
+
+
 }
