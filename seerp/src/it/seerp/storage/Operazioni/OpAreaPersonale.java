@@ -46,7 +46,7 @@ public class OpAreaPersonale extends OpPersonale {
 
         PreparedStatement stmt = null;
 
-        String sql = "UPDATE Utente (password) SET (?) where idUtente=" + u.getIdUtente();
+        String sql = "UPDATE utente (password) SET (?) where idUtente=" + u.getIdUtente();
         stmt = (PreparedStatement) conn.prepareStatement(sql);
         stmt.setString(1, u.getPassword());
 
