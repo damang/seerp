@@ -1,16 +1,24 @@
 package it.seerp.application.applicazione;
 
+import it.seerp.application.Exception.CancellazioneFallita;
 import it.seerp.application.bean.BeanGuiAmministratore;
+import it.seerp.application.bean.BeanGuiCliente;
 import it.seerp.application.bean.BeanGuiDipendente;
+import it.seerp.application.bean.BeanGuiFornitore;
 import it.seerp.application.bean.BeanGuiResponsabile;
 import it.seerp.application.conversioni.Conversione;
 import it.seerp.storage.Operazioni.OpAmministratore;
+import it.seerp.storage.Operazioni.OpCliente;
 import it.seerp.storage.Operazioni.OpDipendente;
+import it.seerp.storage.Operazioni.OpFornitore;
 import it.seerp.storage.Operazioni.OpResponsabile;
 import it.seerp.storage.ejb.Amministratore;
+import it.seerp.storage.ejb.Cliente;
 import it.seerp.storage.ejb.Dipendente;
+import it.seerp.storage.ejb.Fornitore;
 import it.seerp.storage.ejb.Responsabile;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -129,5 +137,79 @@ public class AppGestionePersonale extends AppGestioneUtente {
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
         return user;
+    }
+
+    /**
+     * Metodo che passa la lista di bean utilizzando l'operazioni del lato storage
+     * @return lista dei bean
+     */
+    public ArrayList<Cliente> visualizzaTabellaCliente() {
+        ArrayList<Cliente> list = new ArrayList<Cliente>();
+        try {
+            OpCliente ope = new OpCliente();
+            list = ope.elencaCliente();
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        }
+        return list;
+    }
+
+    /**
+     * Metodo che passa la lista di bean utilizzando l'operazioni del lato storage
+     * @return lista dei bean
+     */
+    public ArrayList<Fornitore> visualizzaTabellaFornitore() {
+        ArrayList<Fornitore> list = new ArrayList<Fornitore>();
+        try {
+            OpFornitore ope = new OpFornitore();
+            list = ope.elencaFornitore();
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        }
+        return list;
+    }
+
+    /**
+     * Metodo che permette la cancellazione di un cliente
+     * @param beanGui
+     * Bean Gui del cliente da eliminare
+     * @throws it.seerp.application.Exception.CancellazioneFallita
+     * nel caso in cui il sistema fallisca nell'eliminazione
+     */
+    public void eliminaCliente(BeanGuiCliente beanGui) throws CancellazioneFallita {
+        try {
+            OpCliente ope = new OpCliente();
+            Cliente cli = Conversione.conversioneCliente(beanGui);
+            ope.elimina(cli);
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
+        }
+    }
+
+    /**
+     * Metodo che permette la cancellazione di un fornitore
+     * @param beanGui
+     * Bean Gui del fornitore da eliminare
+     * @throws it.seerp.application.Exception.CancellazioneFallita
+     * nel caso in cui il sistema fallisca nell'eliminazione
+     */
+    public void eliminaaaaa(BeanGuiFornitore beanGui) throws CancellazioneFallita {
+        try {
+            OpFornitore ope = new OpFornitore();
+            Fornitore forn = Conversione.conversioneFornitore(beanGui);
+            ope.elimina(forn);
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
+        }
     }
 }
