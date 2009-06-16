@@ -13,6 +13,7 @@ package it.seerp.Gui.GestioneServizi;
 import configurazioni.CommandInterface;
 import it.seerp.Gui.BottoniGenerici.ButtonAnnulla;
 import it.seerp.Gui.BottoniGenerici.ButtonSalva;
+import it.seerp.Gui.Menu.MenuServizi;
 import it.seerp.Gui.frame.ObservableJPanel;
 import it.seerp.Gui.tabella.ServiziTm;
 import it.seerp.application.bean.BeanGuiServizio;
@@ -28,6 +29,15 @@ import javax.swing.JOptionPane;
  */
 public class GestioneServizi extends ObservableJPanel implements ActionListener {
 BeanGuiServizio servizio;
+
+   String tipoOP;
+  MenuServizi menu;
+   public void setMenu(MenuServizi menu) {
+        this.menu = menu;
+    }
+    public void setTipoOP(String TipoOP) {
+        this.tipoOP = TipoOP;
+    }
     /** Creates new form GestioneContratti */
     public GestioneServizi() {
         initComponents();
@@ -649,6 +659,11 @@ BeanGuiServizio servizio;
         });
 
         buttonSalva1.setName("buttonSalva1"); // NOI18N
+        buttonSalva1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonSalva1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -695,9 +710,19 @@ BeanGuiServizio servizio;
 }//GEN-LAST:event_tipoActionPerformed
 
     private void buttonAnnulla1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonAnnulla1MouseClicked
-    JOptionPane.showMessageDialog(null, "operazione annulata");
+  menu.getAggiungi().setEnabled(true);
+        menu.getModifica().setEnabled(true);
+        JOptionPane.showMessageDialog(null, "operazione annulata");
         jTabbedPane1.setSelectedComponent(jPanel1);
     }//GEN-LAST:event_buttonAnnulla1MouseClicked
+
+    private void buttonSalva1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSalva1MouseClicked
+
+        menu.getAggiungi().setEnabled(true);
+        menu.getModifica().setEnabled(true);
+        if(tipoOP.compareToIgnoreCase("modifica")==0){JOptionPane.showMessageDialog(null,"mod");}
+        if(tipoOP.compareToIgnoreCase("inserisci")==0){JOptionPane.showMessageDialog(null, "ins");}
+    }//GEN-LAST:event_buttonSalva1MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private it.seerp.Gui.BottoniGenerici.ButtonAnnulla buttonAnnulla1;
