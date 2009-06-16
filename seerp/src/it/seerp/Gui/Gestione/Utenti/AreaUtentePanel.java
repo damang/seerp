@@ -112,7 +112,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jXTable1 = new org.jdesktop.swingx.JXTable();
-        jXFindBar1 = new org.jdesktop.swingx.JXFindBar();
+        jXFindBar1 = new org.jdesktop.swingx.JXFindBar(jXTable1.getSearchable());
         buttonAnnulla1 = new it.seerp.Gui.BottoniGenerici.ButtonAnnulla();
         buttonSalva1 = new it.seerp.Gui.BottoniGenerici.ButtonSalva();
 
@@ -435,7 +435,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(panel28, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel29, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(365, Short.MAX_VALUE))
+                .addContainerGap(362, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Dati LogIn", jPanel27);
@@ -471,13 +471,13 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
                 .addGroup(jXPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jXPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jXFindBar1, 0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jXPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jLabel1))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jXPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jXPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jXFindBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
         jXPanel1Layout.setVerticalGroup(
@@ -837,7 +837,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         this.provincia.setEditable(flag);
         this.tell.setEditable(flag);
         this.mail.setEditable(flag);
-        this.ruolo.setEditable(flag);
+        this.ruolo.setEnabled(flag);
         this.codFisc.setEditable(flag);
     }
 
