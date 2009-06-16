@@ -5,8 +5,8 @@
 
 package it.seerp.Gui.bottoni.gestioni;
 
-import it.configurazioni.pattern.command.CommandInterface;
-import it.configurazioni.Gui.ConfigurazioneUtente.TIPO_UTENTE_CONST;
+import it.seerp.configurazioni.pattern.command.CommandInterface;
+import it.seerp.configurazioni.Gui.ConfigurazioneUtente.TIPO_UTENTE_CONST;
 import it.seerp.Gui.Gestione.Utenti.AreaUtentePanel;
 import it.seerp.Gui.Gestione.Ruoli.GestioneRuoli;
 import it.seerp.Gui.Menu.MenuRuoli;
