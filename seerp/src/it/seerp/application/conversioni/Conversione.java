@@ -49,7 +49,6 @@ import java.util.GregorianCalendar;
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import sun.util.calendar.Gregorian;
 
 /**
  * Classe che permette la conversione tra diversi tipi di Bean e Bean Gui
