@@ -40,7 +40,9 @@ public class OpDipendente extends OpPersonale {
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
-        String sql = "SELECT * FROM Dipendente where Visible='true'";
+        String sql = "SELECT idUtente,username,password,citta,provincia,telefono," +
+                "cap,email,note,tipo,cognome,nome,codiceFiscale,ruolo,visible " +
+                "FROM Dipendente where Visible='true'";
         stmt = (PreparedStatement) con.prepareStatement(sql);
         // Execute the query
         rs = stmt.executeQuery(sql);
@@ -103,7 +105,8 @@ public class OpDipendente extends OpPersonale {
 
         PreparedStatement stmt = null;
 
-        String sql = "UPDATE Dipendente SET Visible='false' where username = ?";
+        String sql = "UPDATE Dipendente (visible)" +
+                " SET Visible='false' where username = ?";
         // Create a statement
         stmt = (PreparedStatement) con.prepareStatement(sql);
 
@@ -123,13 +126,16 @@ public class OpDipendente extends OpPersonale {
 
         PreparedStatement stmt = null;
         Statement stmt1 = con.createStatement();
-        String sqlTest = "SELECT * FROM Dipendente WHERE codiceFiscale='" + user.getCodiceFiscale() + "' ";
+        String sqlTest = "SELECT idUtente,username,password,citta,provincia,telefono," +
+                "cap,email,note,tipo,cognome,nome,codiceFiscale,ruolo,visible" +
+                " FROM Dipendente WHERE codiceFiscale='" + user.getCodiceFiscale() + "' ";
         ResultSet rs = stmt1.executeQuery(sqlTest);
 
         if (rs.next()) {
             throw new DatiDuplicatiEx("dipendente già esistente nel database");
         } else {
-            String sql = "INSERT INTO Dipendente (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO Dipendente (idUtente,username,password,citta,provincia,telefono," +
+                "cap,email,note,tipo,cognome,nome,codiceFiscale,ruolo,visible) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
             /*
              * Integer idUtente1, String username2, String password3, String città4,
@@ -176,7 +182,8 @@ public class OpDipendente extends OpPersonale {
 
 
         Statement stmt1 = con.createStatement();
-        String sqlTest = "SELECT * FROM Dipendente WHERE codiceFiscale='" + user.getCodiceFiscale() + "' ";
+        String sqlTest = "SELECT idUtente,username,password,citta,provincia,telefono," +
+                "cap,email,note,tipo,cognome,nome,codiceFiscale,ruolo,visible FROM Dipendente WHERE codiceFiscale='" + user.getCodiceFiscale() + "' ";
         ResultSet rs = stmt1.executeQuery(sqlTest);
 
         if (rs.next()) {
@@ -184,23 +191,26 @@ public class OpDipendente extends OpPersonale {
         } else {
 
             // Create a statement
-            stmt = (PreparedStatement) con.prepareStatement("UPDATE Dipendente VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )" + "where idUtente=" + user.getIdUtente());
+            stmt = (PreparedStatement) con.prepareStatement("UPDATE Dipendente" +
+                    "(username,password,citta,provincia,telefono," +
+                "cap,email,note,tipo,cognome,nome,codiceFiscale,ruolo,visible)" +
+                    "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)" + "where idUtente=" + user.getIdUtente());
 
-            stmt.setInt(1, user.getIdUtente());
-            stmt.setString(2, user.getUsername());
-            stmt.setString(3, user.getPassword());
-            stmt.setString(4, user.getCitta());
-            stmt.setString(5, user.getProvincia());
-            stmt.setString(6, user.getTelefono());
-            stmt.setString(7, user.getCap());
-            stmt.setString(8, user.getEmail());
-            stmt.setString(9, user.getNote());
-            stmt.setString(10, user.getTipo());
-            stmt.setString(11, user.getCognome());
-            stmt.setString(12, user.getNome());
-            stmt.setString(13, user.getCodiceFiscale());
-            stmt.setString(14, user.getRuolo().getNome());
-            stmt.setBoolean(15, user.getVisible());
+            
+            stmt.setString(1, user.getUsername());
+            stmt.setString(2, user.getPassword());
+            stmt.setString(3, user.getCitta());
+            stmt.setString(4, user.getProvincia());
+            stmt.setString(5, user.getTelefono());
+            stmt.setString(6, user.getCap());
+            stmt.setString(7, user.getEmail());
+            stmt.setString(8, user.getNote());
+            stmt.setString(9, user.getTipo());
+            stmt.setString(10, user.getCognome());
+            stmt.setString(11, user.getNome());
+            stmt.setString(12, user.getCodiceFiscale());
+            stmt.setString(13, user.getRuolo().getNome());
+            stmt.setBoolean(14, user.getVisible());
 
             stmt.execute();
 
@@ -225,7 +235,9 @@ public class OpDipendente extends OpPersonale {
         ResultSet rs = null;
 
 
-        String sql = "SELECT * FROM Dipendente where idDipendente= ? ";
+        String sql = "SELECT idUtente,username,password,citta,provincia,telefono," +
+                "cap,email,note,tipo,cognome,nome,codiceFiscale,ruolo,visible" +
+                " FROM Dipendente where idDipendente= ? ";
         // Create a statement
         stmt = (PreparedStatement) con.prepareStatement(sql);
         stmt.setString(1, id.toString());
