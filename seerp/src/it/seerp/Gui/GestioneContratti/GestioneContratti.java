@@ -64,13 +64,9 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
         this.tell.setEditable(flag);
         this.provincia.setEditable(flag);
         this.piva.setEditable(flag);
-        this.descrizioneServizio.setEditable(flag);
-        this.qnt.setEditable(flag);
-        this.prz.setEditable(flag);
-        this.disponibilita.setEditable(flag);
-        this.tipo.setEditable(flag);
+      
         this.cittafor.setEditable(flag);
-        this.iva.setEditable(flag);
+        
 
 
     }
@@ -81,14 +77,10 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
 
         //JcomboBox contratto.setStato(stato);
         //creare data JtextField contratto.setDataScadenza(dataScad);
-        servizio.setDisponibilita(disponibilita);
-        servizio.setIva(piva);
-        servizio.setPrezzo(prz);
-        servizio.setQuantita(qnt);
-        servizio.setTipo(tipo);
+   
         //   contratto.getExtraAzienda().setTxtPIva(piva);
-        contratto.getExtraAzienda().setTxtProvincia(provincia);
-        contratto.getExtraAzienda().setTxtEmail(mail);
+       // contratto.getExtraAzienda()
+      //  contratto.getExtraAzienda().setTxtEmail(mail);
 
 
     }
@@ -102,13 +94,10 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
         this.tell.setText(s);
         this.provincia.setText(s);
         this.piva.setText(s);
-        descrizioneServizio.setText(s);
-        qnt.setText(s);
-        prz.setText(s);
-        disponibilita.setText(s);
+      
 
         this.cittafor.setText(s);
-        this.iva.setText(s);
+    
 
 
 
@@ -160,19 +149,6 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
         jPanel18 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
-        jPanel6 = new javax.swing.JPanel();
-        jPanel13 = new javax.swing.JPanel();
-        descrizioneServizio = new javax.swing.JTextField();
-        jPanel23 = new javax.swing.JPanel();
-        qnt = new javax.swing.JTextField();
-        jPanel24 = new javax.swing.JPanel();
-        disponibilita = new javax.swing.JTextField();
-        jPanel25 = new javax.swing.JPanel();
-        prz = new javax.swing.JTextField();
-        jPanel26 = new javax.swing.JPanel();
-        iva = new javax.swing.JTextField();
-        jPanel27 = new javax.swing.JPanel();
-        tipo = new javax.swing.JTextField();
         jXLabel2 = new org.jdesktop.swingx.JXLabel();
         jXPanel1 = new org.jdesktop.swingx.JXPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -548,180 +524,6 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
 
         jTabbedPane1.addTab("Dati Fornitore", jPanel2);
 
-        jPanel6.setName("jPanel6"); // NOI18N
-
-        jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome Servizio"));
-        jPanel13.setName("jPanel13"); // NOI18N
-
-        descrizioneServizio.setText("Nome Servizio");
-        descrizioneServizio.setName("descrizioneServizio"); // NOI18N
-
-        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
-        jPanel13.setLayout(jPanel13Layout);
-        jPanel13Layout.setHorizontalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(descrizioneServizio, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
-        );
-        jPanel13Layout.setVerticalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
-                .addComponent(descrizioneServizio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel23.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome Servizio"));
-        jPanel23.setName("jPanel23"); // NOI18N
-
-        qnt.setText("Nome Servizio");
-        qnt.setName("qnt"); // NOI18N
-
-        javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
-        jPanel23.setLayout(jPanel23Layout);
-        jPanel23Layout.setHorizontalGroup(
-            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
-                .addComponent(qnt, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel23Layout.setVerticalGroup(
-            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel23Layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
-                .addComponent(qnt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel24.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome Servizio"));
-        jPanel24.setName("jPanel24"); // NOI18N
-
-        disponibilita.setText("Nome Servizio");
-        disponibilita.setName("disponibilita"); // NOI18N
-
-        javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
-        jPanel24.setLayout(jPanel24Layout);
-        jPanel24Layout.setHorizontalGroup(
-            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel24Layout.createSequentialGroup()
-                .addContainerGap(82, Short.MAX_VALUE)
-                .addComponent(disponibilita, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel24Layout.setVerticalGroup(
-            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(disponibilita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        jPanel25.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome Servizio"));
-        jPanel25.setName("jPanel25"); // NOI18N
-
-        prz.setText("Nome Servizio");
-        prz.setName("prz"); // NOI18N
-
-        javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
-        jPanel25.setLayout(jPanel25Layout);
-        jPanel25Layout.setHorizontalGroup(
-            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel25Layout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
-                .addComponent(prz, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel25Layout.setVerticalGroup(
-            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel25Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(prz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel26.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome Servizio"));
-        jPanel26.setName("jPanel26"); // NOI18N
-
-        iva.setText("Nome Servizio");
-        iva.setName("iva"); // NOI18N
-
-        javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
-        jPanel26.setLayout(jPanel26Layout);
-        jPanel26Layout.setHorizontalGroup(
-            jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel26Layout.createSequentialGroup()
-                .addContainerGap(74, Short.MAX_VALUE)
-                .addComponent(iva, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel26Layout.setVerticalGroup(
-            jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(iva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        jPanel27.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome Servizio"));
-        jPanel27.setName("jPanel27"); // NOI18N
-
-        tipo.setText("Nome Servizio");
-        tipo.setName("tipo"); // NOI18N
-
-        javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
-        jPanel27.setLayout(jPanel27Layout);
-        jPanel27Layout.setHorizontalGroup(
-            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel27Layout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
-                .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel27Layout.setVerticalGroup(
-            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(166, Short.MAX_VALUE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel26, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel23, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(jPanel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(387, 387, 387))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
-        );
-
-        jTabbedPane1.addTab("Dati Servizi", jPanel6);
-
         jXLabel2.setForeground(new java.awt.Color(0, 204, 0));
         jXLabel2.setText("Gestione Contratti");
         jXLabel2.setFont(new java.awt.Font("Tahoma", 1, 24));
@@ -818,7 +620,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jXPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jXPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 521, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(132, 132, 132)))
                 .addContainerGap())
         );
@@ -832,7 +634,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
         //  String id = (String) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0);
         AppContratti operazione = new AppContratti();
         // cambiare application operazione.visualizzaContratto(id, contratto);
-        JOptionPane.showMessageDialog(null, "luisa");
+
         editabile(false);
 
 
@@ -843,6 +645,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
         menu.getModifica().setEnabled(true);
         JOptionPane.showMessageDialog(null, "operazione annulata");
         jTabbedPane1.setSelectedComponent(jPanel1);
+        editabile(false);
 
     }//GEN-LAST:event_buttonAnnulla1MouseClicked
 
@@ -852,11 +655,16 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
         menu.getModifica().setEnabled(true);
 
 
-        AppContratti op = new AppContratti();
-        op.inserisci(contratto);
-        //Contratto contr=Conversione(contratto);
-        // ((ContrattoTm)jXTable1.getModel()).addNewData(contr);
+        //  AppContratti op = new AppContratti();
+        //op.inserisci(contratto);
+
+        /* Iterator<Contratto> it = op.visualizzaTabella().iterator();
+        while (it.hasNext()) {
+        this.addNewData(it.next());
+        }*/
         editabile(false);
+        this.buttonAnnulla1.setEnabled(false);
+        this.buttonSalva1.setEnabled(false);
 
 
 
@@ -871,30 +679,20 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
     private javax.swing.JTextField cittafor;
     private javax.swing.JTextField data;
     private javax.swing.JTextField dataScad;
-    private javax.swing.JTextField descrizioneServizio;
-    private javax.swing.JTextField disponibilita;
     private javax.swing.JTextField durata;
-    private javax.swing.JTextField iva;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel23;
-    private javax.swing.JPanel jPanel24;
-    private javax.swing.JPanel jPanel25;
-    private javax.swing.JPanel jPanel26;
-    private javax.swing.JPanel jPanel27;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
@@ -910,11 +708,8 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
     private javax.swing.JTextField mail;
     private javax.swing.JTextField piva;
     private javax.swing.JTextField provincia;
-    private javax.swing.JTextField prz;
-    private javax.swing.JTextField qnt;
     private javax.swing.JComboBox stato;
     private javax.swing.JTextField tell;
-    private javax.swing.JTextField tipo;
     // End of variables declaration//GEN-END:variables
 
     public void actionPerformed(ActionEvent e) {
