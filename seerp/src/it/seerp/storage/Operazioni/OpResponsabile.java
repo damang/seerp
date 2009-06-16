@@ -42,7 +42,7 @@ public class OpResponsabile extends OpeUtente {
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
-        try {
+       
             String sql = "SELECT * FROM Responsabile where Visible='true'";
             stmt = (PreparedStatement) con.prepareStatement(sql);
             // Execute the query
@@ -64,24 +64,14 @@ public class OpResponsabile extends OpeUtente {
               rs.getBoolean(15));
 
       list.add(responsabile);
-            }
-        } catch (SQLException se) {
-            System.out.println("errore nella visualizzazione dell'elenco");
-
-        } finally {
-            // Release the resources
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                ConnectionPool.releaseConnection(con);
-            }
+       rs.close();
+       stmt.close();
+       ConnectionPool.releaseConnection(con);
+       
         }
         return list;
     }
+
 
     /** Metodo che permette la ricerca di un membro dei responsabili
      * @return la lista dei membri dei responsabili che corrispondono ai criteri di ricerca
