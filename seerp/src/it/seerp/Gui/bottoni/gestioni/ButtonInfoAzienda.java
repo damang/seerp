@@ -8,7 +8,7 @@ package it.seerp.Gui.bottoni.gestioni;
 import it.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.Ruoli.GestioneRuoli;
 import it.seerp.Gui.Home.Index;
-import it.seerp.Gui.InfoAzienda.InfoAzienda;
+import it.seerp.Gui.Gestione.InfoAzienda.InfoAzienda;
 import it.seerp.Gui.Menu.MenuInfoAzienda;
 import it.seerp.Gui.Menu.MenuRuoli;
 import it.seerp.Gui.observerButton.ObserverButton;

@@ -5,7 +5,7 @@
 package it.seerp.Gui.bottoni.gestioni;
 
 import it.configurazioni.pattern.command.CommandInterface;
-import it.seerp.Gui.GestioneServizi.GestioneServizi;
+import it.seerp.Gui.Gestione.Servizi.GestioneServizi;
 import it.seerp.Gui.observerButton.ObserverButton;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;

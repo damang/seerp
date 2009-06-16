@@ -6,7 +6,7 @@
 package it.seerp.Gui.BottoniGenerici;
 
 import it.configurazioni.pattern.command.CommandInterface;
-import it.seerp.Gui.GestioneServizi.FrameServizi;
+import it.seerp.Gui.Gestione.Servizi.FrameServizi;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;

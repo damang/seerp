@@ -1,6 +1,6 @@
 package it.seerp.Gui.bottoni.gestioni;
 
-import it.seerp.Gui.frame.ObservableJPanel;
+import it.seerp.Gui.observablePanel.ObservableJPanel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.*;

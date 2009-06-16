@@ -11,7 +11,7 @@
 
 package it.seerp.Gui.panel;
 
-import it.seerp.Gui.frame.ObservervableJTabbedPanel;
+import it.seerp.Gui.observablePanel.ObservervableJTabbedPanel;
 
 /**
  *

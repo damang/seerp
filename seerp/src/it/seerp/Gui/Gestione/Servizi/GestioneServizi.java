@@ -8,13 +8,13 @@
  *
  * Created on 9-giu-2009, 12.45.47
  */
-package it.seerp.Gui.GestioneServizi;
+package it.seerp.Gui.Gestione.Servizi;
 
 import it.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.BottoniGenerici.ButtonAnnulla;
 import it.seerp.Gui.BottoniGenerici.ButtonSalva;
 import it.seerp.Gui.Menu.MenuServizi;
-import it.seerp.Gui.frame.ObservableJPanel;
+import it.seerp.Gui.observablePanel.ObservableJPanel;
 import it.seerp.Gui.tabella.ServiziTm;
 import it.seerp.application.applicazione.AppServizi;
 import it.seerp.application.bean.BeanGuiServizio;

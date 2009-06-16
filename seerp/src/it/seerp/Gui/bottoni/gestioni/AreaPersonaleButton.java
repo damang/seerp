@@ -3,7 +3,7 @@ package it.seerp.Gui.bottoni.gestioni;
 
 import it.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.AreaPersonale.AreaPersonalePanel;
-import it.seerp.Gui.command.ObserverButton;
+import it.seerp.Gui.observerButton.ObserverButton;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;

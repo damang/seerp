@@ -9,7 +9,7 @@
  * Created on 16-giu-2009, 16.01.44
  */
 
-package it.seerp.Gui.GestioneServizi;
+package it.seerp.Gui.Gestione.Servizi;
 
 /**
  *

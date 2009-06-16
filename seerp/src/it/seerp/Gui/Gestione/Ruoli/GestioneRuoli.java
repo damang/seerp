@@ -14,7 +14,7 @@ import it.seerp.Gui.Gestione.Utenti.*;
 import it.configurazioni.pattern.command.CommandInterface;
 import it.configurazioni.Gui.ConfigurazioneUtente;
 import it.seerp.Gui.AreaPersonale.*;
-import it.seerp.Gui.frame.ObservableJPanel;
+import it.seerp.Gui.observablePanel.ObservableJPanel;
 import it.seerp.Gui.tabella.ClienteTm;
 import it.seerp.Gui.tabella.DipendenteTm;
 import it.seerp.Gui.tabella.FornitoreTm;
