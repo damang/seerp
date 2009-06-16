@@ -1,14 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package it.seerp.bottoni.Nuovo;
+
+package it.seerp.Gui.bottoni.gestioni;
 
 import it.seerp.configurazioni.pattern.command.CommandInterface;
-import it.seerp.Gui.GestioneServizi.GestioneServizi;
+import it.seerp.Gui.AreaPersonale.AreaPersonalePanel;
 import it.seerp.Gui.command.ObserverButton;
 import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
@@ -16,54 +12,49 @@ import javax.swing.JTabbedPane;
  *
  * @author Andrea
  */
-public class ButtonServizi extends ObserverButton implements CommandInterface {
+public class AreaPersonaleButton extends ObserverButton implements CommandInterface {
 
     protected JTabbedPane tabbedPane;
     private JPanel menu;
-    GestioneServizi panel;
+    AreaPersonalePanel panel;
 
     /**
      *
      * @param gruppoFinestreUpdate
      * @param aThis
      */
-    public ButtonServizi(JTabbedPane pan, JPanel menu, ActionListener act) {
+    public AreaPersonaleButton(JTabbedPane pan, JPanel menu, ActionListener act) {
         this.tabbedPane = pan;
         this.menu = menu;
-
-        this.panel = new GestioneServizi();
+        this.panel = new AreaPersonalePanel();
         this.addActionListener(act);
         panel.register(this);
     }
 
-    public ButtonServizi() {
+    public AreaPersonaleButton() {
         super();
     }
 
     public void execute() {
 
-        JOptionPane.showMessageDialog(null, isPresente);
-
         if (!isPresente) {
 
             isPresente = true;
 
-
-
             panel.repaint();
-            this.tabbedPane.addTab("Servizi", panel);
+            this.tabbedPane.addTab("Area Personale", panel);
 
             ButtonTabComponent button = new ButtonTabComponent(this.tabbedPane, this.panel, this.menu);
             this.tabbedPane.setTabComponentAt(this.tabbedPane.getTabCount() - 1, button);
             this.tabbedPane.setSelectedComponent(panel);
             panel.setVisible(true);
-        //    menu.setVisible(true);
-           this.setEnabled(false);
+            this.setEnabled(false);
 
             panel.repaint();
 
-
         }
+
+
 
 
     }
