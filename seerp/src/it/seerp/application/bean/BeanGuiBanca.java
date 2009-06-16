@@ -178,7 +178,7 @@ public class BeanGuiBanca {
      * metodo che setta il campo contenente la città della Banca
      * @param città che rapprensenta il campo città da inserire
      */
-    public void setCittà(JTextField citta) {
+    public void setCitta(JTextField citta) {
         this.citta = citta;
     }
 
