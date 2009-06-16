@@ -16,6 +16,7 @@ import it.seerp.Gui.BottoniGenerici.ButtonSalva;
 import it.seerp.Gui.Menu.MenuServizi;
 import it.seerp.Gui.frame.ObservableJPanel;
 import it.seerp.Gui.tabella.ServiziTm;
+import it.seerp.application.applicazione.AppServizi;
 import it.seerp.application.bean.BeanGuiServizio;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,26 +29,29 @@ import javax.swing.JOptionPane;
  * @author Andrea
  */
 public class GestioneServizi extends ObservableJPanel implements ActionListener {
-BeanGuiServizio servizio;
 
-   String tipoOP;
-  MenuServizi menu;
-   public void setMenu(MenuServizi menu) {
+    BeanGuiServizio servizio;
+    String tipoOP;
+    MenuServizi menu;
+
+    public void setMenu(MenuServizi menu) {
         this.menu = menu;
     }
+
     public void setTipoOP(String TipoOP) {
         this.tipoOP = TipoOP;
     }
+
     /** Creates new form GestioneContratti */
     public GestioneServizi() {
         initComponents();
         editabile(false);
-        this.servizio= new BeanGuiServizio(this);
+        this.servizio = new BeanGuiServizio(this);
     }
 
     public void editabile(boolean flag) {
 
-      
+
         qnt.setEditable(flag);
         prz.setEditable(flag);
         disponibilita.setEditable(flag);
@@ -58,7 +62,7 @@ BeanGuiServizio servizio;
     }
 
     public void inizializza(String s) {
-       
+
         qnt.setText(s);
         prz.setText(s);
         disponibilita.setText(s);
@@ -73,7 +77,7 @@ BeanGuiServizio servizio;
         servizio.setTipo(tipo);
         servizio.setPrezzo(prz);
         servizio.setQuantita(qnt);
-       servizio.setDescrizione(descrizione);
+        servizio.setDescrizione(descrizione);
         servizio.setIva(iva);
 
     }
@@ -128,9 +132,6 @@ BeanGuiServizio servizio;
         jPanel18 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
-        jPanel13 = new javax.swing.JPanel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        jXTable3 = new org.jdesktop.swingx.JXTable();
         jXLabel2 = new org.jdesktop.swingx.JXLabel();
         jXPanel1 = new org.jdesktop.swingx.JXPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -518,45 +519,6 @@ BeanGuiServizio servizio;
                 .addContainerGap())
         );
 
-        jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista Contratti"));
-        jPanel13.setName("jPanel13"); // NOI18N
-
-        jScrollPane6.setName("jScrollPane6"); // NOI18N
-
-        jXTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jXTable3.setName("jXTable3"); // NOI18N
-        jScrollPane6.setViewportView(jXTable3);
-
-        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
-        jPanel13.setLayout(jPanel13Layout);
-        jPanel13Layout.setHorizontalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 578, Short.MAX_VALUE)
-            .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel13Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
-                    .addContainerGap()))
-        );
-        jPanel13Layout.setVerticalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 134, Short.MAX_VALUE)
-            .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel13Layout.createSequentialGroup()
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                    .addContainerGap()))
-        );
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -565,7 +527,6 @@ BeanGuiServizio servizio;
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
@@ -597,9 +558,7 @@ BeanGuiServizio servizio;
                         .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(176, 176, 176)
                 .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(59, Short.MAX_VALUE))
         );
@@ -623,6 +582,11 @@ BeanGuiServizio servizio;
         }
         catch (SQLException e){}
         jXTable1.setName("jXTable1"); // NOI18N
+        jXTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jXTable1MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jXTable1);
 
         jXSearchPanel1.setName("jXSearchPanel1"); // NOI18N
@@ -710,7 +674,7 @@ BeanGuiServizio servizio;
 }//GEN-LAST:event_tipoActionPerformed
 
     private void buttonAnnulla1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonAnnulla1MouseClicked
-  menu.getAggiungi().setEnabled(true);
+        menu.getAggiungi().setEnabled(true);
         menu.getModifica().setEnabled(true);
         JOptionPane.showMessageDialog(null, "operazione annulata");
         jTabbedPane1.setSelectedComponent(jPanel1);
@@ -720,9 +684,30 @@ BeanGuiServizio servizio;
 
         menu.getAggiungi().setEnabled(true);
         menu.getModifica().setEnabled(true);
-        if(tipoOP.compareToIgnoreCase("modifica")==0){JOptionPane.showMessageDialog(null,"mod");}
-        if(tipoOP.compareToIgnoreCase("inserisci")==0){JOptionPane.showMessageDialog(null, "ins");}
+        if (tipoOP.compareToIgnoreCase("modifica") == 0) {
+            AppServizi operazione = new AppServizi();
+           // operazione.inserisci(servizio);
+
+        /* Iterator<Servizio> it = op.visualizzaTabella().iterator();
+        while (it.hasNext()) {
+        this.addNewData(it.next());
+        }*/
+        }
+        if (tipoOP.compareToIgnoreCase("inserisci") == 0) {
+            JOptionPane.showMessageDialog(null, "ins");
+                  AppServizi operazione = new AppServizi();
+          //  operazione.modifica(servizio);
+
+        /* Iterator<Servizio> it = op.visualizzaTabella().iterator();
+        while (it.hasNext()) {
+        this.addNewData(it.next());
+        }*/
+        }
     }//GEN-LAST:event_buttonSalva1MouseClicked
+
+    private void jXTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jXTable1MouseClicked
+
+    }//GEN-LAST:event_jXTable1MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private it.seerp.Gui.BottoniGenerici.ButtonAnnulla buttonAnnulla1;
@@ -735,7 +720,6 @@ BeanGuiServizio servizio;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
@@ -751,7 +735,6 @@ BeanGuiServizio servizio;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
@@ -765,11 +748,12 @@ BeanGuiServizio servizio;
     private org.jdesktop.swingx.JXPanel jXPanel1;
     private org.jdesktop.swingx.JXSearchPanel jXSearchPanel1;
     private org.jdesktop.swingx.JXTable jXTable1;
-    private org.jdesktop.swingx.JXTable jXTable3;
     private javax.swing.JTextField prz;
     private javax.swing.JTextField qnt;
     private javax.swing.JTextField tipo;
     // End of variables declaration//GEN-END:variables
+
+
 
     public void actionPerformed(ActionEvent e) {
         CommandInterface cmd = (CommandInterface) e.getSource();
