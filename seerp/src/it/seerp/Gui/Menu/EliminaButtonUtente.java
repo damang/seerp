@@ -32,8 +32,7 @@ public class EliminaButtonUtente extends JButton  implements CommandInterface {
     }
 
     public void execute() {
-       JOptionPane.showMessageDialog(null, "luu");
-       //areaUt.elimina();
+     areaUt.elmina();
     }
 
 

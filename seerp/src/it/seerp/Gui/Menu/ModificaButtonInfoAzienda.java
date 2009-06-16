@@ -34,7 +34,7 @@ public class ModificaButtonInfoAzienda extends JButton implements CommandInterfa
 
     public void execute() {
          this.setEnabled(false);
-        azienda.setEnabled(true);
+        azienda.editabile(true);
         azienda.getSalva().setEnabled(true);
         azienda.getAnnulla().setEnabled(true);
 
