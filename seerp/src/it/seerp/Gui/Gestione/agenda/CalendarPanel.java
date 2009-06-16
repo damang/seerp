@@ -1,4 +1,4 @@
-package us.k5n.ui.calendar;
+package it.seerp.Gui.Gestione.agenda;
 
 import it.seerp.Gui.frame.ObservableJPanel;
 import java.awt.AlphaComposite;

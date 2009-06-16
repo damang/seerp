@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package us.k5n.ui.calendar;
+package it.seerp.Gui.Gestione.agenda;
 
 import java.awt.Color;
 

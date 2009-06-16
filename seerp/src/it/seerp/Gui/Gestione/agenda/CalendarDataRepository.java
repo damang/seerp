@@ -1,4 +1,4 @@
-package us.k5n.ui.calendar;
+package it.seerp.Gui.Gestione.agenda;
 
 import java.util.Vector;
 
