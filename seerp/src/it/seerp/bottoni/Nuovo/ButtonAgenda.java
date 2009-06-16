@@ -6,6 +6,7 @@
 package it.seerp.bottoni.Nuovo;
 
 import configurazioni.CommandInterface;
+import it.seerp.Gui.Menu.MenuAppuntamento;
 import it.seerp.Gui.Menu.MenuRuoli;
 import it.seerp.Gui.command.ObserverButton;
 import it.seerp.storage.ejb.Evento;
@@ -15,7 +16,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Vector;
-import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 import us.k5n.ui.calendar.CalendarDataRepository;
 import us.k5n.ui.calendar.CalendarPanel;
@@ -30,7 +30,7 @@ import us.k5n.ui.calendar.Event;
 public class ButtonAgenda extends ObserverButton implements CommandInterface{
 
     protected JTabbedPane tabbedPane;
-    private MenuRuoli menu;
+    private MenuAppuntamento menu;
     CalendarPanel panel;
     String s = "Agenda";
 
@@ -39,7 +39,7 @@ public class ButtonAgenda extends ObserverButton implements CommandInterface{
      * @param gruppoFinestreUpdate
      * @param aThis
      */
-    public ButtonAgenda(JTabbedPane pan, MenuRuoli menu, ActionListener act) throws SQLException {
+    public ButtonAgenda(JTabbedPane pan, MenuAppuntamento menu, ActionListener act) throws SQLException {
         this.tabbedPane = pan;
         this.menu = menu;
         //this.panel = new AreaUtentePanel(TIPO_UTENTE_CONST.CLIENTE);
