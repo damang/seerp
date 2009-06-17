@@ -23,6 +23,10 @@ import javax.security.auth.callback.*;
 import javax.swing.JOptionPane;
 
 
+/**
+ *
+ * @author LesAnge
+ */
 public class AuthLoginModule implements LoginModule
 {
 	private Subject _subject;
@@ -53,7 +57,8 @@ public class AuthLoginModule implements LoginModule
 	}
 
 	/**
-	 * @see javax.security.auth.spi.LoginModule#login()
+     * @throws LoginException
+     * @see javax.security.auth.spi.LoginModule#login()
 	 */
 	public boolean login() throws LoginException
 	{
@@ -111,7 +116,8 @@ public class AuthLoginModule implements LoginModule
 	}
 
 	/**
-	 * @see javax.security.auth.spi.LoginModule#commit()
+     * @throws LoginException
+     * @see javax.security.auth.spi.LoginModule#commit()
 	 */
 	public boolean commit() throws LoginException
 	{
@@ -132,7 +138,8 @@ public class AuthLoginModule implements LoginModule
 	}
 
 	/**
-	 * @see javax.security.auth.spi.LoginModule#abort()
+     * @throws LoginException
+     * @see javax.security.auth.spi.LoginModule#abort()
 	 */
 	public boolean abort() throws LoginException
 	{
@@ -157,7 +164,8 @@ public class AuthLoginModule implements LoginModule
 	}
 
 	/**
-	 * @see javax.security.auth.spi.LoginModule#logout()
+     * @throws LoginException
+     * @see javax.security.auth.spi.LoginModule#logout()
 	 */
 	public boolean logout() throws LoginException
 	{

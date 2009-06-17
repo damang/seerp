@@ -29,6 +29,10 @@ public class MenuServizi extends javax.swing.JPanel implements ActionListener {
         initComponents();
     }
 
+    /**
+     *
+     * @param pannello
+     */
     public void setPannello(GestioneServizi pannello) {
 
         this.pannello = pannello;
@@ -98,11 +102,19 @@ public class MenuServizi extends javax.swing.JPanel implements ActionListener {
 
 
 
-        public JButton getModifica() {
+    /**
+     *
+     * @return
+     */
+    public JButton getModifica() {
         return modificaButtonServizi1;
     }
 
-    public JButton getAggiungi() {
+        /**
+         *
+         * @return
+         */
+        public JButton getAggiungi() {
         return aggiungiButtonServizi1;
     }
     public void actionPerformed(ActionEvent e) {

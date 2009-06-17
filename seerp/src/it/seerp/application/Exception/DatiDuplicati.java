@@ -10,7 +10,11 @@ package it.seerp.application.Exception;
  * @author Luisa
  */
 public class DatiDuplicati extends RuntimeException{
-	public DatiDuplicati(String  c){
+    /**
+     *
+     * @param c
+     */
+    public DatiDuplicati(String  c){
     super(c);
     }
 }

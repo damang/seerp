@@ -191,7 +191,7 @@ public class Pagamento {
 
     /**
      *  metodo che setta la modalità di pagamento
-     * @param modalitàPagamento la modalità di pagamento
+     * @param modalitaPagamento
      */
     public void setModalitaPagamento(String modalitaPagamento) {
         this.modalitaPagamento = modalitaPagamento;

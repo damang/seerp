@@ -19,6 +19,12 @@ public class BeanGuiServizioAssociato {
     private BeanGuiServizio servizio;
     private JTextArea note;
 
+    /**
+     *
+     * @param quantita
+     * @param prezzoUnitario
+     * @param note
+     */
     public BeanGuiServizioAssociato(JTextField quantita, JTextField prezzoUnitario, JTextArea note) {
         this.quantita = quantita;
         this.prezzoUnitario = prezzoUnitario;

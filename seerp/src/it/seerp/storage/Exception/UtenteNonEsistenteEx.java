@@ -9,9 +9,16 @@ package it.seerp.storage.Exception;
  * esistente nel database
  */
 public class UtenteNonEsistenteEx extends RuntimeException{
+    /**
+     *
+     */
     public UtenteNonEsistenteEx() {
     }
 
+    /**
+     *
+     * @param msg
+     */
     public UtenteNonEsistenteEx(String msg) {
         super(msg);
     }

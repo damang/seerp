@@ -18,6 +18,19 @@ public class FatturaEmessa extends Fattura {
     private ArrayList<DDT> listDDT;
     private ArrayList<NotaDiCredito> listNC;
 
+    /**
+     *
+     * @param data
+     * @param idFattura
+     * @param imponibile
+     * @param importo
+     * @param iva
+     * @param tipo
+     * @param note
+     * @param idFatturaEmessa
+     * @param numeroProgressivo
+     * @param ivaDebito
+     */
     public FatturaEmessa(GregorianCalendar data, Integer idFattura, Double imponibile, Double importo, Double iva, String tipo, String note, Integer idFatturaEmessa, Integer numeroProgressivo, Double ivaDebito) {
         super(data, idFattura, imponibile, importo, iva, tipo, note);
         this.idFatturaEmessa = idFatturaEmessa;

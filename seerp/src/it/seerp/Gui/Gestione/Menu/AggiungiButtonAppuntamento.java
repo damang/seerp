@@ -17,16 +17,27 @@ public class AggiungiButtonAppuntamento extends JButton implements CommandInterf
 
     GestioneContratti areaContr;
 
+    /**
+     *
+     */
     public AggiungiButtonAppuntamento() {
         super();
     }
 
+    /**
+     *
+     * @param l
+     */
     public AggiungiButtonAppuntamento(ActionListener l) {
         super();
         this.addActionListener(l);
 
     }
 
+    /**
+     *
+     * @param areaContr
+     */
     public void setAreaContratti(GestioneContratti areaContr) {
         this.areaContr = areaContr;
     }

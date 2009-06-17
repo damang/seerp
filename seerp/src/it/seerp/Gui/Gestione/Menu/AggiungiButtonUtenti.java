@@ -18,16 +18,27 @@ public class AggiungiButtonUtenti extends JButton implements CommandInterface {
     
     AreaUtentePanel areaUt;
 
+    /**
+     *
+     */
     public AggiungiButtonUtenti() {
         super();
     }
 
+    /**
+     *
+     * @param l
+     */
     public AggiungiButtonUtenti(ActionListener l) {
         super();
         this.addActionListener(l);
 
     }
 
+    /**
+     *
+     * @param areaUt
+     */
     public void setAreaUt(AreaUtentePanel areaUt) {
         this.areaUt = areaUt;
     }

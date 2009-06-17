@@ -18,7 +18,12 @@ import javax.swing.JTable;
 public class ResponsabileTm extends Generica <Responsabile>{
  private JTable table;
 
-    public ResponsabileTm() throws SQLException, SQLException {
+ /**
+  *
+  * @throws java.sql.SQLException
+  * @throws java.sql.SQLException
+  */
+ public ResponsabileTm() throws SQLException, SQLException {
         Object[] list = new Object[]{
             "id",
             "nome",
@@ -40,6 +45,7 @@ public class ResponsabileTm extends Generica <Responsabile>{
     /**
      *
      * @param table
+     * @throws SQLException
      */
     public ResponsabileTm(JTable table) throws SQLException {
         this.table = table;

@@ -18,6 +18,12 @@ public class ButtonTabComponent extends JPanel  {
     ObservableJPanel panel;
     JPanel menu;
 
+    /**
+     *
+     * @param pane
+     * @param panel
+     * @param menu
+     */
     public ButtonTabComponent(final JTabbedPane pane, ObservableJPanel panel, JPanel menu) {
 
         //unset default FlowLayout' gaps

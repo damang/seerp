@@ -32,9 +32,16 @@ import org.jdesktop.swingx.auth.LoginService;
 
 
 
+/**
+ *
+ * @author LesAnge
+ */
 public class JaasUtil extends LoginService
 {
-	public static final String LOGINCONTEXT_NAME = "JaasUtil";
+    /**
+     *
+     */
+    public static final String LOGINCONTEXT_NAME = "JaasUtil";
 	private static final String USERAUTH_KEY_CONFIGFILE = "file_config\\jaasutil_config.properties";
 	private String _name;
 	private String _userId;
@@ -61,12 +68,23 @@ public class JaasUtil extends LoginService
 	}*/
 
 	//the name used as the index into the Configuration. for LoginContext
-	public void setLoginContextName (String name)
+    /**
+     *
+     * @param name
+     */
+    public void setLoginContextName(String name)
 	{
 		_name = name;
 	}
 
-	public boolean authenticate (String userID, char[] password, String contextName)
+    /**
+     *
+     * @param userID
+     * @param password
+     * @param contextName
+     * @return
+     */
+    public boolean authenticate(String userID, char[] password, String contextName)
 	{
 		 _userId = userID;
 		_password = password;
@@ -111,7 +129,11 @@ public class JaasUtil extends LoginService
 		return true;
 	}
 
-	public Subject getSubject ()
+    /**
+     *
+     * @return
+     */
+    public Subject getSubject()
 	{
 		if (_loginContext != null)
 			return _loginContext.getSubject();
@@ -119,7 +141,10 @@ public class JaasUtil extends LoginService
 			return null;
 	}
 
-	public void logout ()
+    /**
+     *
+     */
+    public void logout()
 	{
 		if (_loginContext != null)
 		{
@@ -133,7 +158,13 @@ public class JaasUtil extends LoginService
 		}
 	}
 
-	public static boolean checkPermission (Subject subject, final Permission perm)
+    /**
+     *
+     * @param subject
+     * @param perm
+     * @return
+     */
+    public static boolean checkPermission(Subject subject, final Permission perm)
 	{
 		if (Debug.DEBUG)
 			Debug.trace("UserAuth::check permission...");
@@ -176,7 +207,11 @@ public class JaasUtil extends LoginService
 	}
 
 
-	public static void setConfigFile (String strFile)
+    /**
+     *
+     * @param strFile
+     */
+    public static void setConfigFile(String strFile)
 	{
 		if (_config == null)
 			_config = AuthConfig.getInstance();
@@ -193,7 +228,11 @@ public class JaasUtil extends LoginService
 		}
 	}
 
-	public static void setConfigFile (InputStream in)
+    /**
+     *
+     * @param in
+     */
+    public static void setConfigFile(InputStream in)
 	{
 		if (_config == null)
 			_config = AuthConfig.getInstance();

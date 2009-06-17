@@ -45,10 +45,18 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
     MenuUtente menu;
     String tipoOp;
 
+    /**
+     *
+     * @param tipoOp
+     */
     public void setTipoOp(String tipoOp) {
         this.tipoOp = tipoOp;
     }
 
+    /**
+     *
+     * @param menu
+     */
     public void setMenu(MenuUtente menu) {
         this.menu = menu;
     }
@@ -58,6 +66,11 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         initComponents();
     }
 
+    /**
+     *
+     * @param tipoUtente
+     * @throws java.sql.SQLException
+     */
     public AreaUtentePanel(ConfigurazioneUtente.TIPO_UTENTE_CONST tipoUtente) throws SQLException {
         this.tipoUtente = tipoUtente;
         this.settaTableModel();
@@ -723,6 +736,9 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
     private javax.swing.JTextField user;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void elmina() {
         if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
             JOptionPane.showMessageDialog(null, "INS CLIII");
@@ -771,14 +787,26 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         cmd.execute();
     }
 
+    /**
+     *
+     * @return
+     */
     public ButtonSalva getSalva() {
         return this.buttonSalva1;
     }
 
+    /**
+     *
+     * @return
+     */
     public ButtonAnnulla getAnnulla() {
         return this.buttonAnnulla1;
     }
 
+    /**
+     *
+     * @param s
+     */
     public void inizializzazione(String s) {
         this.nm.setText(s);
         this.cog.setText(s);
@@ -790,6 +818,9 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         this.codFisc.setText(s);
     }
 
+    /**
+     *
+     */
     public void legameBeanPersonale() {
         responsabile.setNome(nm);
         responsabile.setCognome(cog);
@@ -814,6 +845,9 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
     }
 
+    /**
+     *
+     */
     public void lrgameBeanExtraAzienda() {
 
         fornitore.setTxtProvincia(provincia);
@@ -830,6 +864,10 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         cliente.setTxtTelefono(tell);
     }
 
+    /**
+     *
+     * @param flag
+     */
     public void editabile(boolean flag) {
         this.nm.setEditable(flag);
         this.cog.setEditable(flag);

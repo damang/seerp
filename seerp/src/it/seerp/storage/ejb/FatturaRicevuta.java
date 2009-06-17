@@ -15,6 +15,19 @@ public class FatturaRicevuta extends Fattura {
     private Integer numeroProgressivo;
     private Double ivaCredito;
 
+    /**
+     *
+     * @param data
+     * @param idFattura
+     * @param imponibile
+     * @param importo
+     * @param iva
+     * @param tipo
+     * @param note
+     * @param idFatturaRicevuta
+     * @param numeroProgressivo
+     * @param ivaCredito
+     */
     public FatturaRicevuta(GregorianCalendar data, Integer idFattura, Double imponibile, Double importo, Double iva, String tipo, String note, Integer idFatturaRicevuta, Integer numeroProgressivo, Double ivaCredito) {
         super(data, idFattura, imponibile, importo, iva, tipo, note);
         this.idFatturaRicevuta = idFatturaRicevuta;

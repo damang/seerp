@@ -16,11 +16,38 @@ import java.security.Principal;
 import java.security.CodeSource;
 import java.security.ProtectionDomain;
 
+/**
+ *
+ * @author LesAnge
+ */
 public interface PermissionAdapter
 {
-	public void initialize (Hashtable initParams);
-	public PermissionCollection getPermissions (Principal[] principals, CodeSource codeSource);
-	public PermissionCollection getPermissions (CodeSource codeSource);
-	public PermissionCollection getPermissions (ProtectionDomain domain);
-	public void terminate ();
+    /**
+     *
+     * @param initParams
+     */
+    public void initialize(Hashtable initParams);
+    /**
+     *
+     * @param principals
+     * @param codeSource
+     * @return
+     */
+    public PermissionCollection getPermissions(Principal[] principals, CodeSource codeSource);
+    /**
+     *
+     * @param codeSource
+     * @return
+     */
+    public PermissionCollection getPermissions(CodeSource codeSource);
+    /**
+     *
+     * @param domain
+     * @return
+     */
+    public PermissionCollection getPermissions(ProtectionDomain domain);
+    /**
+     *
+     */
+    public void terminate();
 }

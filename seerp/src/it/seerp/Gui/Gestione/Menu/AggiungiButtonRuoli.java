@@ -18,16 +18,27 @@ public class AggiungiButtonRuoli extends JButton implements CommandInterface {
 
     GestioneRuoli areaContr;
 
+    /**
+     *
+     */
     public AggiungiButtonRuoli() {
         super();
     }
 
+    /**
+     *
+     * @param l
+     */
     public AggiungiButtonRuoli(ActionListener l) {
         super();
         this.addActionListener(l);
 
     }
 
+    /**
+     *
+     * @param areaContr
+     */
     public void setAreaContratti(GestioneRuoli areaContr) {
         this.areaContr = areaContr;
     }

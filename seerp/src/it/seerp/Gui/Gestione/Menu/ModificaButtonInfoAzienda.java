@@ -19,10 +19,17 @@ public class ModificaButtonInfoAzienda extends JButton implements CommandInterfa
 
     InfoAzienda azienda = null;
 
+    /**
+     *
+     */
     public ModificaButtonInfoAzienda() {
         super();
     }
 
+    /**
+     *
+     * @param l
+     */
     public ModificaButtonInfoAzienda(ActionListener l) {
         super();
         this.addActionListener(l);

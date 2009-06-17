@@ -18,6 +18,10 @@ import java.util.Enumeration;
 import java.util.Vector;
 import java.util.Iterator;
 
+/**
+ *
+ * @author LesAnge
+ */
 public class PermessoCollection extends PermissionCollection
 {
 	private Vector _perms = new Vector ();
@@ -54,13 +58,25 @@ public class PermessoCollection extends PermissionCollection
 	{
 		return _perms.elements();
 	}
+    /**
+     *
+     * @return
+     */
     public int size() {
         return _perms.size();
     }
-    public void remove (Permesso c) {
+    /**
+     *
+     * @param c
+     */
+    public void remove(Permesso c) {
         _perms.remove(c);
     }
-    public Iterator<Permesso> iterator () {
+    /**
+     *
+     * @return
+     */
+    public Iterator<Permesso> iterator() {
         return _perms.iterator();
     }
 

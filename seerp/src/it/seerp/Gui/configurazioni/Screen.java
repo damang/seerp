@@ -40,7 +40,11 @@ public class Screen {
         }
         com.setLocation((screenSize.width - comSize.width) / 2, (screenSize.height - comSize.height) / 2);
     }
-     static public void settaFinestra(Component com) {
+    /**
+     *
+     * @param com
+     */
+    static public void settaFinestra(Component com) {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
        /* Dimension comSize = com.getSize();
         if (comSize.height > screenSize.height) {

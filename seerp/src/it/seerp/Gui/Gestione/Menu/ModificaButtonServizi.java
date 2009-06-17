@@ -14,15 +14,26 @@ public class ModificaButtonServizi extends JButton implements CommandInterface {
 
     GestioneServizi areaServ = null;
 
+    /**
+     *
+     */
     public ModificaButtonServizi() {
         super();
     }
 
+    /**
+     *
+     * @param l
+     */
     public ModificaButtonServizi(ActionListener l) {
         super();
         this.addActionListener(l);
     }
 
+    /**
+     *
+     * @param areaServ
+     */
     public void setAreaServizi(GestioneServizi areaServ) {
         this.areaServ = areaServ;
     }

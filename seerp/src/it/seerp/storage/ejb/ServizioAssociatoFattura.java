@@ -18,6 +18,15 @@ public class ServizioAssociatoFattura {
     private String note;
     private ArrayList<DDT> listDDT;
 
+    /**
+     *
+     * @param quantita
+     * @param servizio
+     * @param fattura
+     * @param contratto
+     * @param note
+     * @param listDDT
+     */
     public ServizioAssociatoFattura(Integer quantita, Integer servizio, Integer fattura, Integer contratto, String note, ArrayList<DDT> listDDT) {
         this.quantita = quantita;
         this.note = note;
@@ -106,10 +115,18 @@ public class ServizioAssociatoFattura {
         this.quantita = quantita;
     }
 
+    /**
+     *
+     * @param c
+     */
     public void removeDDT(DDT c) {
         listDDT.remove(c);
     }
 
+    /**
+     *
+     * @param c
+     */
     public void addDDT(DDT c) {
         listDDT.add(c);
     }

@@ -12,6 +12,9 @@ import java.util.ArrayList;
  */
 public class Cliente extends ExtraAzienda {
 
+    /**
+     *
+     */
     public Cliente() {
         
     }
@@ -23,7 +26,7 @@ public class Cliente extends ExtraAzienda {
      * @param idUtente
      * @param username
      * @param password
-     * @param città
+     * @param citta
      * @param ruol
      * @param provincia
      * @param telefono

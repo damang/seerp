@@ -33,6 +33,7 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
     /**
      * Costruttore a cui viene passato un componente grafico necessario alla
      * validazione del campo
+     * @param c
      */
     public BeanGuiExtraAzienda(JXPanel c) {
         grafica = c;
@@ -44,6 +45,26 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
     public BeanGuiExtraAzienda() {
     }
 
+    /**
+     *
+     * @param idUtenteTxt
+     * @param txtUsername
+     * @param txtPassword
+     * @param txtCitta
+     * @param txtProvincia
+     * @param txtTelefono
+     * @param txtEmail
+     * @param txtNote
+     * @param txtNotifica
+     * @param tipo
+     * @param visible
+     * @param cognome
+     * @param nome
+     * @param ragioneSociale
+     * @param pIva
+     * @param fax
+     * @param ruolo
+     */
     public BeanGuiExtraAzienda(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCitta, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField txtNotifica, JTextField tipo, JTextField visible, JTextField cognome, JTextField nome, JTextField ragioneSociale, JTextField pIva, JTextField fax, JTextField ruolo) {
         super(idUtenteTxt, txtUsername, txtPassword, txtCitta, txtProvincia, txtTelefono, txtEmail, txtNote, txtNotifica, tipo, visible);
         this.cognome = cognome;
@@ -54,6 +75,10 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
         this.ruolo = ruolo;
     }
 
+    /**
+     *
+     * @param ragioneSociale
+     */
     public void setRagioneSociale(JTextField ragioneSociale) {
         this.ragioneSociale = ragioneSociale;
     }
@@ -94,7 +119,7 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
 
     /**
      * metodo che setta il campo contenente il ruolo dell'ExtraAzienda
-     * @param cmbRuolo rappresenta il campo ruolo da inserire
+     * @param ruolo
      */
     public void setRuolo(JTextField ruolo) {
         this.ruolo = ruolo;
@@ -137,7 +162,7 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
 
     /**
      *metodo che setta il campo contenente la partita iva dell'ExtraAzienda
-     * @param ptxtPIva rappresenta il campo partita iva da inserire
+     * @param pIva
      */
     public void setPIva(JTextField pIva) {
         this.pIva = pIva;
@@ -169,6 +194,7 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
     /**
      * metodo che restituisce il campo contenente il cognome dell'ExtraAzienda
      * @return il campo cognome dell'ExtraAzienda
+     * @throws Exception
      */
     public JTextField getCognome() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
@@ -183,6 +209,7 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
     /**
      * metodo che restituisce il campo contenente il nome dell'ExtraAzienda
      * @return il campo nome dell'ExtraAzieda
+     * @throws Exception
      */
     public JTextField getNome() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
@@ -197,6 +224,7 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
     /**
      * metodo che restituisce il campo contenente il fax dell'ExtraAzienda
      * @return il campo fax dell'extraAzienda
+     * @throws Exception
      */
     public JTextField getFax() throws Exception {
         if (!valMinLen.shouldYieldFocus(grafica)) {
@@ -208,6 +236,7 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
     /**
      * metodo che restituisce il campo contenente la partita iva dell'ExtraAzienda
      * @return il campo partita iva dell'extraAzienda
+     * @throws Exception
      */
     public JTextField getPIva() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
@@ -221,6 +250,7 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
     /**
      * metodo che restituisce il campo contenente la ragione sociale dell'ExtraAzienda
      * @return il campo ragione sociale dell'extraAzienda
+     * @throws Exception
      */
     public JTextField getRagioneSociale() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {

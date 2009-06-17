@@ -40,17 +40,36 @@ public class AppRuoli implements GestioneRuoli<BeanGuiRuolo> {
         }
     }
 
+    /**
+     *
+     * @param bean
+     * @return
+     */
     public BeanGuiRuolo modifica(BeanGuiRuolo bean) {
         return null;
     }
 
+    /**
+     *
+     * @param r
+     * @return
+     */
     public BeanGuiRuolo elimina(BeanGuiRuolo r) {
         return null;
     }
+    /**
+     *
+     * @return
+     */
     public ArrayList<BeanGuiRuolo> getElenco() {
         return null;
     }
 
+    /**
+     *
+     * @param list
+     * @return
+     */
     public ArrayList<BeanGuiRuolo> getElenco(ArrayList<BeanGuiRuolo> list) {
         throw new UnsupportedOperationException("Not supported yet.");
     }

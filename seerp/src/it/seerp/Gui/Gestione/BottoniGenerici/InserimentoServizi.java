@@ -24,7 +24,11 @@ public class InserimentoServizi extends JButton implements CommandInterface {
     }
 
     
-     public InserimentoServizi(ActionListener listner) {
+    /**
+     *
+     * @param listner
+     */
+    public InserimentoServizi(ActionListener listner) {
         super();
         this.addActionListener(listner);
     }

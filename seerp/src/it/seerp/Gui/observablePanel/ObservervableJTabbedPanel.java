@@ -86,6 +86,11 @@ public class ObservervableJTabbedPanel extends JPanel implements Observable {
         obs.removeElement(o);
     }
 
+    /**
+     *
+     * @param messaggio
+     * @param pan
+     */
     public void addTab(String messaggio, JPanel pan) {
         // System.out.println(this.jTabbedPane2);
         this.jTabbedPane2.addTab(messaggio, pan);
@@ -93,6 +98,10 @@ public class ObservervableJTabbedPanel extends JPanel implements Observable {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public JTabbedPane getTabbedPane(){
         return this.jTabbedPane2;
     }

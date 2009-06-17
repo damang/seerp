@@ -26,7 +26,9 @@ import javax.swing.table.TableModel;
 public class GestioneRuoli extends ObservableJPanel implements ActionListener {
     private TableModel tModel;
 
-        /** Creates new form AreaPersonalePanel */
+    /** Creates new form AreaPersonalePanel
+     * @throws SQLException
+     */
     public GestioneRuoli() throws SQLException {
         tModel=new RuoloTm();
         initComponents();

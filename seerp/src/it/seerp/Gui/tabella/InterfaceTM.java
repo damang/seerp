@@ -9,6 +9,7 @@ import java.util.Vector;
 
 /**
  *
+ * @param <E>
  * @author Luisa
  */
 public interface InterfaceTM <E> {

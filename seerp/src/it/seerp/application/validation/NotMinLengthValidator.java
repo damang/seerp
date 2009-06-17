@@ -13,6 +13,13 @@ public class NotMinLengthValidator extends AbstractValidator {
 
     private int length;
 
+    /**
+     *
+     * @param parent
+     * @param c
+     * @param message
+     * @param length
+     */
     public NotMinLengthValidator(JXPanel parent, JTextField c, String message, int length) {
         super(parent, c, message);
         this.length = length;

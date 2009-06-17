@@ -31,17 +31,33 @@ import java.util.Enumeration;
 import java.util.Set;
 
 
+/**
+ *
+ * @author LesAnge
+ */
 public class AuthPolicy extends java.security.Policy
 //java.security.Policy//javax.security.auth.Policy
 {
-	protected PermissionAdapter _handler;
+    /**
+     *
+     */
+    protected PermissionAdapter _handler;
 
-	public AuthPolicy()
+    /**
+     *
+     */
+    public AuthPolicy()
 	{
 		super ();
 	}
 
-	public PermissionCollection getPermissions(Subject subject, CodeSource cs)
+    /**
+     *
+     * @param subject
+     * @param cs
+     * @return
+     */
+    public PermissionCollection getPermissions(Subject subject, CodeSource cs)
 	{
 		if (Debug.DEBUG)
 			Debug.trace("getPermissions(Subject subject, CodeSource cs)");

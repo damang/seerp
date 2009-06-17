@@ -12,6 +12,12 @@ import org.jdesktop.swingx.JXPanel;
  */
 public class EmailValidator extends AbstractValidator {
 
+    /**
+     *
+     * @param parent
+     * @param c
+     * @param message
+     */
     public EmailValidator(JXPanel parent, JTextField c, String message) {
         super(parent, c, message);
     }

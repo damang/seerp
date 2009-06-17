@@ -21,6 +21,15 @@ public class BeanGuiServizioAssociatoFattura {
     private JTextArea note;
     private ArrayList<BeanGuiDDT> listDDT;
 
+    /**
+     *
+     * @param quantita
+     * @param servizio
+     * @param fattura
+     * @param contratto
+     * @param note
+     * @param listDDT
+     */
     public BeanGuiServizioAssociatoFattura(JTextField quantita, JTextField servizio, JTextField fattura, JTextField contratto, JTextArea note, ArrayList<BeanGuiDDT> listDDT) {
         this.quantita = quantita;
         this.servizio = servizio;
@@ -30,10 +39,18 @@ public class BeanGuiServizioAssociatoFattura {
         this.listDDT = listDDT;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<BeanGuiDDT> getListDDT() {
         return listDDT;
     }
 
+    /**
+     *
+     * @param listDDT
+     */
     public void setListDDT(ArrayList<BeanGuiDDT> listDDT) {
         this.listDDT = listDDT;
     }

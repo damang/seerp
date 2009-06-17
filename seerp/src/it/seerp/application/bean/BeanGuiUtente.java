@@ -28,12 +28,33 @@ public class BeanGuiUtente {
     private JTextField txtNotifica;
     private JTextField tipo;
     private JTextField visible;
+    /**
+     *
+     */
     protected JXPanel grafica;
+    /**
+     *
+     */
     protected NotEmptyValidator val;
+    /**
+     *
+     */
     protected NotEqualLengthValidator valEqLen;
+    /**
+     *
+     */
     protected NotMinLengthValidator valMinLen;
+    /**
+     *
+     */
     protected NotMaxLengthValidator valMaxLen;
+    /**
+     *
+     */
     protected EmailValidator valEma;
+    /**
+     *
+     */
     protected NotAlphabeticValidator valApha;
 
     /**
@@ -56,13 +77,13 @@ public class BeanGuiUtente {
      * @param idUtenteTxt
      * @param txtUsername
      * @param txtPassword
-     * @param txtCittà
+     * @param txtCitta
      * @param txtProvincia
      * @param txtTelefono
      * @param txtEmail
      * @param txtNote
      * @param txtNotifica
-     * @param Ruolo
+     * @param tipo
      * @param visible
      */
     public BeanGuiUtente(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCitta, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField txtNotifica, JTextField tipo,JTextField visible) {
@@ -93,7 +114,7 @@ public class BeanGuiUtente {
 
     /**
      *
-     * @param pruolo
+     * @param ptipo
      */
     public void setTipo(JTextField ptipo) {
         this.tipo = ptipo;
@@ -277,7 +298,7 @@ public class BeanGuiUtente {
 
     /**
      *
-     * @param ptxtCittà
+     * @param ptxtCitta
      */
     public void setTxtCitta(JTextField ptxtCitta) {
         this.txtCitta = ptxtCitta;

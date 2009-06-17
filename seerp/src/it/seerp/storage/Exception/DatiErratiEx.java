@@ -9,7 +9,11 @@ package it.seerp.storage.Exception;
  * utente,servizio,evento,contratti fornitore
  */
 public class DatiErratiEx extends java.lang.RuntimeException {
-	public DatiErratiEx(String  msg){
+    /**
+     *
+     * @param msg
+     */
+    public DatiErratiEx(String  msg){
     super(msg);
     }
 }

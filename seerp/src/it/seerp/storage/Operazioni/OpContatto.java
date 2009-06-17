@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import it.seerp.storage.Exception.DatiDuplicatiEx;
 import it.seerp.storage.Exception.DatiErratiEx;
-import it.seerp.storage.ejb.Ruolo;
 import it.seerp.storage.db.ConnectionPool;
 import java.sql.Connection;
 
@@ -20,11 +19,13 @@ import java.sql.Statement;
  */
 public class OpContatto extends OpExtraAzienda {
 
-    Connection con = null;
 
+    /**
+     *
+     * @throws java.sql.SQLException
+     */
     public OpContatto() throws SQLException {
         super();
-        con = ConnectionPool.getConnection();
     }
 
     /** Metodo che permette la visualizzazione della lista dei Contatti
@@ -65,10 +66,8 @@ public class OpContatto extends OpExtraAzienda {
     }
 
     /** Metodo che permette la ricerca di un Contatto
-     * @param cognome
-     * cognome del Contatto da ricercare
-     * @param ruolo
-     * ruolo che il Contatto ricopre all'interno dell'azienda
+     * @param id
+     * @param user
      * @return la lista dei Contatti che corrispondono ai criteri di ricerca
      * @throws java.sql.SQLException*/
     public ArrayList<Contatto> ricercaContatto(Integer id, String user) throws SQLException {
@@ -159,7 +158,10 @@ public class OpContatto extends OpExtraAzienda {
      * @param user
      * user del Contatto da modificare
      * @return lo stesso oggetto modificato
-     * @throws java.sql.SQLException*/
+     * @throws java.sql.SQLException
+     * @throws DatiErratiEx
+     * @throws DatiDuplicatiEx
+     */
     public Contatto modifica(Contatto user) throws SQLException, DatiErratiEx, DatiDuplicatiEx {
 
         PreparedStatement stmt = null;

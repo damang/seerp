@@ -32,6 +32,10 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         utente = new BeanGuiUtente(this);
     }
 
+    /**
+     *
+     * @param flag
+     */
     public void editabile(boolean flag) {
         this.nm.setEditable(flag);
         this.citta.setEditable(flag);
@@ -42,6 +46,9 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
 
     }
 
+    /**
+     *
+     */
     public void legameBean() {
         utente.setTxtProvincia(provincia);
         utente.setTxtTelefono(tell);

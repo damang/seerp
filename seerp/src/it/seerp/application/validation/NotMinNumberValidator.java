@@ -13,6 +13,13 @@ public class NotMinNumberValidator extends AbstractValidator {
 
     int number;
 
+    /**
+     *
+     * @param parent
+     * @param c
+     * @param message
+     * @param n
+     */
     public NotMinNumberValidator(JXPanel parent, JTextField c, String message, int n) {
         super(parent, c, message);
         number = n;

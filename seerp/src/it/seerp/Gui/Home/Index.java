@@ -29,7 +29,9 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class Index extends javax.swing.JFrame implements ActionListener {
 
-    /** Creates new form Index */
+    /** Creates new form Index
+     * @param sub
+     */
     public Index(Subject sub) {
         ut_sub=sub;
 

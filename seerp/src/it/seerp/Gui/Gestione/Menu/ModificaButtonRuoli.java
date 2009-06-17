@@ -18,15 +18,26 @@ public class ModificaButtonRuoli extends JButton implements CommandInterface {
 
     GestioneRuoli areaUt = null;
 
+    /**
+     *
+     */
     public ModificaButtonRuoli() {
         super();
     }
 
+    /**
+     *
+     * @param l
+     */
     public ModificaButtonRuoli(ActionListener l) {
         super();
         this.addActionListener(l);
     }
 
+    /**
+     *
+     * @param areaUt
+     */
     public void setAreaUt(GestioneRuoli areaUt) {
         this.areaUt = areaUt;
     }

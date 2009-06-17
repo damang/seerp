@@ -21,6 +21,7 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
 
     /**
      * Metodo che permette di visualizzare la lista degli utenti
+     * @param listGui
      * @return la lista di tutti gli utenti
      */
     public ArrayList<BeanGuiUtente> elenca(ArrayList<BeanGuiUtente> listGui) {
@@ -44,10 +45,6 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
 
     /**
      * Metodo che permette di ricercare un utente del sistema
-     * @param cognome
-     * il cognome dell'utente
-     * @param ruolo
-     * il ruolo dell'utente
      * @param list
      * la lista di tutti gli utenti
      * @return l'utente se è trovato
@@ -169,8 +166,7 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
      * Metodo che permette di visualizzare i dati di un utente
      * @param user
      * l'username dell'utente
-     * @param list
-     * la lista di tutti gli utenti
+     * @param beanGui
      * @return tutti i dati di un utente
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui i dati inseriti sono errati

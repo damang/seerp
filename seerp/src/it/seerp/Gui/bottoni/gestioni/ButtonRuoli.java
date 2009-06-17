@@ -25,6 +25,9 @@ import javax.swing.JTabbedPane;
  */
 public class ButtonRuoli extends ObserverButton implements CommandInterface{
 
+    /**
+     *
+     */
     protected JTabbedPane tabbedPane;
     private MenuRuoli menu;
     GestioneRuoli panel;
@@ -32,8 +35,10 @@ public class ButtonRuoli extends ObserverButton implements CommandInterface{
 
     /**
      *
-     * @param gruppoFinestreUpdate
-     * @param aThis
+     * @param pan
+     * @param menu
+     * @param act
+     * @throws SQLException
      */
     public ButtonRuoli(JTabbedPane pan, MenuRuoli menu, ActionListener act) throws SQLException {
         this.tabbedPane = pan;
@@ -46,6 +51,9 @@ public class ButtonRuoli extends ObserverButton implements CommandInterface{
 
     }
 
+    /**
+     *
+     */
     public ButtonRuoli() {
         super();
     }

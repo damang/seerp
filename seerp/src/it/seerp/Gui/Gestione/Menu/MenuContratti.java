@@ -25,6 +25,10 @@ public class MenuContratti extends javax.swing.JPanel implements ActionListener 
         initComponents();
     }
 
+    /**
+     *
+     * @param contratti
+     */
     public void setPannello(GestioneContratti contratti) {
         this.contratti = contratti;
         contratti.setMenu(this);
@@ -33,10 +37,18 @@ public class MenuContratti extends javax.swing.JPanel implements ActionListener 
 
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton getModifica() {
         return modificaButtonContratti1;
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton getAggiungi() {
         return aggiungiButtonContratti1;
     }

@@ -2,8 +2,6 @@ package it.seerp.storage.operazioni;
 
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Connection;
-import it.seerp.application.Exception.DatiDuplicati;
-import it.seerp.application.Exception.DatiErrati;
 import it.seerp.storage.Exception.DatiDuplicatiEx;
 import it.seerp.storage.Exception.DatiErratiEx;
 import it.seerp.storage.ejb.Evento;
@@ -25,6 +23,10 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
 
     private Connection conn;
 
+    /**
+     *
+     * @throws java.sql.SQLException
+     */
     public OpEvento() throws SQLException {
 
         conn = (Connection) ConnectionPool.getConnection();
@@ -73,8 +75,9 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
     /** crea la query per modificare un evento nel database
      * @return
      * @param e l'evento da modificare
+     * @throws DatiDuplicatiEx
+     * @throws DatiErratiEx
      * @throws SQLException
-     * @throws Dati Errati
      */
     public Evento modifica(Evento e) throws DatiDuplicatiEx, DatiErratiEx, SQLException {
 
@@ -115,7 +118,7 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
     /** crea la query per visualizzare i dettagli
      * di un evento presente nel database
      * @return i dettagli dell'evento
-     * @param nome è il nome dell'evento da visualizzare
+     * @param id
      * @throws SQLException
      */
     public Evento visualizza(Integer id) throws SQLException {
@@ -158,7 +161,6 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
      * corrispondenti ad un id Agenda
      * @return	La lista degli eventi
      * @throws SQLException
-     * @throws ClassNotFoundException
      */
     public ArrayList<Evento> visualizzaElenco() throws SQLException {
 
@@ -194,7 +196,6 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
     /**
      * Crea la query per ricercare un evento
      * e restituisce la lista degli eventi risultante.
-     * @param nome Il nome dell'evento da ricercare
      * @return	La lista degli eventi ricercata
      * @throws SQLException
      */
@@ -245,7 +246,8 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
      /**
      * crea la query per mostrare gli eventi che devono essere notificati all'utente
      * @param data il giorno da cui il sistema deve notificare l'evento
-     * @throws SQLException
+      * @return
+      * @throws SQLException
      */
     public ArrayList<Evento> eventiNotificati(GregorianCalendar data) throws SQLException {
 

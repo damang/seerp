@@ -37,7 +37,7 @@ public class BeanGuiContatto extends BeanGuiExtraAzienda {
      * @param idUtenteTxt
      * @param txtUsername
      * @param txtPassword
-     * @param txtCittà
+     * @param txtCitta
      * @param txtProvincia
      * @param txtTelefono
      * @param txtEmail

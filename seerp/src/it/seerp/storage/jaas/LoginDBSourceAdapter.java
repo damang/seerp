@@ -18,6 +18,10 @@ import java.sql.*;
 import javax.security.auth.login.LoginException;
 
 
+/**
+ *
+ * @author LesAnge
+ */
 public class LoginDBSourceAdapter implements LoginSourceAdapter
 {
 //	private Hashtable _htConnProp;
@@ -25,16 +29,29 @@ public class LoginDBSourceAdapter implements LoginSourceAdapter
 	private String _group;
     boolean bOK = false;
 
-	public LoginDBSourceAdapter ()
+    /**
+     *
+     */
+    public LoginDBSourceAdapter()
 	{
 	}
 
-	public void initialize (Hashtable htProperty)
+    /**
+     *
+     * @param htProperty
+     */
+    public void initialize(Hashtable htProperty)
 	{
 		//_htConnProp = htProperty;
 	}
 
-	public boolean authenticate (String userID, char[] password)
+    /**
+     *
+     * @param userID
+     * @param password
+     * @return
+     */
+    public boolean authenticate(String userID, char[] password)
 	{
 		Connection conn=null;
         try {
@@ -101,14 +118,22 @@ public class LoginDBSourceAdapter implements LoginSourceAdapter
 
 	}
 
-	public String getGroupName() throws LoginException
+    /**
+     *
+     * @return
+     * @throws javax.security.auth.login.LoginException
+     */
+    public String getGroupName() throws LoginException
 	{
 		if(bOK == true)
             return _group;
         throw new LoginException();
 	}
 
-	public void terminate ()
+    /**
+     *
+     */
+    public void terminate()
 	{
         try
 		{

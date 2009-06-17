@@ -17,22 +17,42 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 
 
+/**
+ *
+ * @author LesAnge
+ */
 public class Debug
 {
-	public static boolean DEBUG =false;//true;
+    /**
+     *
+     */
+    public static boolean DEBUG =false;//true;
 	
-	public static void trace (String text)
+    /**
+     *
+     * @param text
+     */
+    public static void trace(String text)
 	{
 		if (DEBUG)
 			System.out.println(text);
 	}
 	
-	public static void log (Throwable ex)
+    /**
+     *
+     * @param ex
+     */
+    public static void log(Throwable ex)
 	{
 		System.out.println(getExceptionString(ex));		
 	}
 	
-	public static String getExceptionString (Throwable except)
+    /**
+     *
+     * @param except
+     * @return
+     */
+    public static String getExceptionString(Throwable except)
 	{
 		StringWriter sw = new StringWriter ();
 		PrintWriter pw = new PrintWriter (sw);

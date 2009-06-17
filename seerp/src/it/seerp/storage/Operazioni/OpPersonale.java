@@ -23,6 +23,10 @@ public class OpPersonale extends OpeUtente {
 
     Connection con = null;
 
+    /**
+     *
+     * @throws java.sql.SQLException
+     */
     public OpPersonale() throws SQLException {
         super();
         con = (Connection) ConnectionPool.getConnection();
@@ -62,8 +66,6 @@ public class OpPersonale extends OpeUtente {
     }
 
     /** Metodo che permette la ricerca di un membro del personale
-     * @param cognome
-     * cognome del membro del personale da ricercare
      * @param ruolo
      * ruolo che il membro del personale ricopre all'interno dell'azienda
      * @return la lista dei membri del personale che corrispondono ai criteri di ricerca
@@ -96,6 +98,11 @@ public class OpPersonale extends OpeUtente {
         return list;
     }
 
+    /**
+     *
+     * @return
+     * @throws java.sql.SQLException
+     */
     public ArrayList<Personale> ricercaPersonale() throws SQLException {
         ArrayList<Personale> list = this.elencaPersonale();
         return list;
@@ -181,7 +188,10 @@ public class OpPersonale extends OpeUtente {
      * @param user
      * user del membro del personale da modificare
      * @return lo stesso oggetto modificato
-     * @throws java.sql.SQLException*/
+     * @throws java.sql.SQLException
+     * @throws DatiErratiEx
+     * @throws DatiDuplicatiEx
+     */
     public Personale modifica(Personale user) throws SQLException, DatiErratiEx, DatiDuplicatiEx {
         /*
         PreparedStatement stmt = null;
@@ -224,7 +234,9 @@ public class OpPersonale extends OpeUtente {
     /** Metodo che permette la visualizzazione dei dettagli di un membro del personale
      * @param id
      * id del membro del personale
-     * @return il bean con i dettagli del membro del personale*/
+     * @return il bean con i dettagli del membro del personale
+     * @throws SQLException
+     */
     public Personale visualizzaDati(Integer id) throws SQLException {
         Personale personale = null;
         PreparedStatement stmt = null;
@@ -256,6 +268,12 @@ public class OpPersonale extends OpeUtente {
 
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     * @throws java.sql.SQLException
+     */
     public ArrayList<Ruolo> getRuoloPersonale(Integer id) throws SQLException {
 
         ArrayList<Ruolo> list = new ArrayList<Ruolo>();

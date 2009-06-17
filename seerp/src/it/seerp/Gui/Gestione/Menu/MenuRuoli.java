@@ -29,6 +29,10 @@ public class MenuRuoli extends javax.swing.JPanel implements ActionListener {
         initComponents();
     }
 
+    /**
+     *
+     * @param pannello
+     */
     public void setPannello(GestioneRuoli pannello) {
 
         this.pannello = pannello;

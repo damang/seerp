@@ -11,9 +11,16 @@ package it.seerp.storage.Exception;
  */
 public class EventoNonEsistenteEx extends RuntimeException{
 
+    /**
+     *
+     */
     public EventoNonEsistenteEx() {
     }
 
+    /**
+     *
+     * @param msg
+     */
     public EventoNonEsistenteEx(String msg) {
         super(msg);
     }

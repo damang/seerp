@@ -12,6 +12,9 @@ public class Contatto extends ExtraAzienda {
 
     private Integer feedback;
 
+    /**
+     *
+     */
     public Contatto() {
         
     }
@@ -21,23 +24,20 @@ public class Contatto extends ExtraAzienda {
      * @param idUtente
      * @param username
      * @param password
-     * @param città
+     * @param citta
      * @param provincia
      * @param telefono
      * @param email
+     * @param cap
      * @param ruol
      * @param note
      * @param v
-     * @param idExtraAzienda
      * @param cognome
      * @param nome
      * @param ragioneSociale
      * @param pIva
      * @param fax
      * @param ruolo
-     * @param listAppuntamenti
-     * @param listContratti
-     * @param idContatto
      * @param feedback
      */
     public Contatto(Integer idUtente, String username, String password, String citta, String ruol, String provincia, String telefono, String cap, String email, String ruolo, String note, Boolean v, String cognome, String nome, String ragioneSociale, String pIva, String fax, Integer feedback) {

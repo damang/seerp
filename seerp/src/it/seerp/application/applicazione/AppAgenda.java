@@ -21,6 +21,7 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
 
     /**
      * Metodo che permette la visualizzazione della lista degli eventi
+     * @param listGui
      * @return  Array List contenente la lista degli eventi
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui vi siano dati errati
@@ -47,11 +48,10 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
 
     /**
      * Metodo che permette la visualizzazione dei dettagli di un singolo evento
-     * @param nome
-     * nome dell'evento
-     * @param list
-     * lista di tutti gli eventi
+     * @param id
+     * @param gui 
      * @return Bean Gui dell'evento
+     * @throws DatiErrati
      */
     public BeanGuiEvento visualizzaDettagli(String id, BeanGuiEvento gui) throws DatiErrati {
         try {
@@ -70,8 +70,7 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
 
     /**
      * Metodo che permette la gestione delle notifiche
-     * @param beanGuiEventi
-     * Bean Gui dell'evento da visualizzare
+     * @param beanGui
      */
     public void notificaEventi(BeanGuiEvento beanGui) {
         try {
@@ -90,8 +89,7 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
 
     /**
      * Metodo che permette l'inserimento di un nuovo evento
-     * @param beanGuiEventi
-     * Bean Gui dell'evento da inserire
+     * @param beanGui
      * @throws it.seerp.application.Exception.DatiErrati
      * in caso di inserimento di dati errati
      * @throws it.seerp.application.Exception.DatiDuplicati
@@ -113,8 +111,7 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
 
     /**
      * Metodo che permette la modifica di un evento
-     * @param beanGuiEventi
-     * Bean Gui dell'evento da modificare
+     * @param beanGui
      * @return
      * Bean Gui dell'evento modificato
      * @throws it.seerp.application.Exception.DatiErrati
@@ -138,6 +135,7 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
 
     /**
      * Metodo che permette la ricerca di un evento
+     * @param listGui
      * @para list
      * lista di tutti gli eventi
      * @return la lista degli eventi che corrispondono ai criteri di ricerca
@@ -166,13 +164,7 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
 
     /**
      * Metodo che permette la ricerca per nome di un evento
-     * @param nome
-     * nome dell'evento da ricercare
-     * @param list
-     * lista di tutti gli eventi
-     * @return lista degli eventi che corrispondono al giorno inserito
-     * @throws it.seerp.application.Exception.DatiErrati
-     * nel caso in cui si inseriscano dati errati
+     * @param beanGui
      * @throws it.seerp.application.Exception.RicercaFallita
      * nel caso in cui la ricerca non produca risultati
 
@@ -195,37 +187,8 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
 
     /**
      * Metodo che permette la ricerca per giorno di un evento
-     * @param giorno
-     * giorno dell'evento da ricercare
-     * @param list
-     * lista di tutti gli eventi
-     * @return lista degli eventi che corrispondono al giorno inserito
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si inseriscano dati errati
-     * @throws it.seerp.application.Exception.RicercaFallita
-     * nel caso in cui la ricerca non produca risultati
-
-    public ArrayList<BeanGuiEvento> ricercaPerGiorno(JTextField giorno, ArrayList<BeanGuiEvento> listGui) throws DatiErrati, RicercaFallita {
-    try {
-    OpEvento ope = new OpEvento();
-    ArrayList<Evento> list = ope.ricercaPerGiorno(giorno.getText());
-    for (Evento eve : list) {
-    BeanGuiEvento eveGui = new BeanGuiEvento();
-    eveGui = Conversione.conversioneEvento(eve, eveGui);
-    listGui.add(eveGui);
-    }
-
-    } catch (SQLException se) {
-    se.printStackTrace();
-    JOptionPane.showMessageDialog(null, "Errore nel database!");
-    }
-    return listGui;
-    }
-
-    /**
-     * Metodo che permette la cancellazione di un evento già esistente
-     * @param beanGuiEventi
-     * Bean Gui dell'evento da eliminare
      * @throws it.seerp.application.Exception.CancellazioneFallita
      * nel caso in cui il sistema fallisca nell'eliminazione dell'evento
      */

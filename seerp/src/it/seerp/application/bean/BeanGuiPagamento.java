@@ -39,7 +39,6 @@ public class BeanGuiPagamento {
      * @param stato
      * @param altreInformazioni
      * @param idPagamento
-     * @param contratto
      * @param banca
      */
     public BeanGuiPagamento(JTextArea note, JTextField dataScadenza, JTextField descrizione, JTextField importo, JTextField modalitaPagamento, JTextField stato, JTextField altreInformazioni, JTextField idPagamento, JTextField banca) {

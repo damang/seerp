@@ -24,6 +24,10 @@ public class OpExtraAzienda extends OpeUtente {
 
     Connection con = null;
 
+    /**
+     *
+     * @throws java.sql.SQLException
+     */
     public OpExtraAzienda() throws SQLException {
         super();
         con = ConnectionPool.getConnection();
@@ -127,7 +131,9 @@ public class OpExtraAzienda extends OpeUtente {
     /** Metodo per inserire un nuovo membro del personale ExtraAzienda
      * @param user
      * user dell'utente da inserire
-     * @throws java.sql.SQLException*/
+     * @throws java.sql.SQLException
+     * @throws DatiDuplicatiEx
+     */
     public void inserisci(ExtraAzienda user) throws SQLException, DatiDuplicatiEx {
         /*PreparedStatement stmt = null;
         Statement stmt1 = con.createStatement();
@@ -172,7 +178,10 @@ public class OpExtraAzienda extends OpeUtente {
      * @param user
      * user del membro del personale da modificare
      * @return lo stesso oggetto modificato
-     * @throws java.sql.SQLException*/
+     * @throws java.sql.SQLException
+     * @throws DatiErratiEx
+     * @throws DatiDuplicatiEx
+     */
     public ExtraAzienda modifica(ExtraAzienda user) throws SQLException, DatiErratiEx, DatiDuplicatiEx {
       /*  PreparedStatement stmt = null;
         ExtraAzienda extraazienda = null;

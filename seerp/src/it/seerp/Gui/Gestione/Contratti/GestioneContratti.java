@@ -37,6 +37,10 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
     String tipoOp = null;
     MenuContratti menu;
 
+    /**
+     *
+     * @param menu
+     */
     public void setMenu(MenuContratti menu) {
         this.menu = menu;
     }
@@ -53,6 +57,10 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
         legameBean();
     }
 
+    /**
+     *
+     * @param flag
+     */
     public void editabile(Boolean flag) {
 
         this.data.setEditable(flag);
@@ -71,6 +79,9 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
 
     }
 
+    /**
+     *
+     */
     public void legameBean() {
         contratto.setData(data);
         contratto.setDurata(durata);
@@ -84,6 +95,10 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
 
     }
 
+    /**
+     *
+     * @param s
+     */
     public void inizializza(String s) {
         this.data.setText(s);
         this.durata.setText(s);
@@ -101,10 +116,18 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
 
     }
 
+    /**
+     *
+     * @return
+     */
     public ButtonSalva getSalva() {
         return this.buttonSalva1;
     }
 
+    /**
+     *
+     * @return
+     */
     public ButtonAnnulla getAnnulla() {
         return this.buttonAnnulla1;
     }

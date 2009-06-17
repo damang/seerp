@@ -16,10 +16,20 @@ public class OpAzienda {
 
     private Connection conn;
 
+    /**
+     *
+     * @throws java.sql.SQLException
+     */
     public OpAzienda() throws SQLException {
         conn = (Connection) ConnectionPool.getConnection();
     }
 
+    /**
+     *
+     * @param az
+     * @throws java.sql.SQLException
+     * @throws it.seerp.storage.Exception.DatiErratiEx
+     */
     public void inserimento(Azienda az) throws SQLException, DatiErratiEx {
         PreparedStatement stmt = null;
 
@@ -44,6 +54,13 @@ public class OpAzienda {
 
     }
 
+    /**
+     *
+     * @param az
+     * @return
+     * @throws java.sql.SQLException
+     * @throws it.seerp.storage.Exception.DatiErratiEx
+     */
     public Azienda modifica(Azienda az) throws SQLException, DatiErratiEx {
 
         PreparedStatement stmt = null;
@@ -66,6 +83,12 @@ public class OpAzienda {
         return az;
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     * @throws java.sql.SQLException
+     */
     public Azienda visualizza(Integer id) throws SQLException {
 
         PreparedStatement stmt = null;

@@ -17,15 +17,26 @@ public class ModificaButtonUtente extends JButton implements CommandInterface {
 
     AreaUtentePanel areaUt = null;
 
+    /**
+     *
+     */
     public ModificaButtonUtente() {
         super();
     }
 
+    /**
+     *
+     * @param l
+     */
     public ModificaButtonUtente(ActionListener l) {
         super();
         this.addActionListener(l);
     }
 
+    /**
+     *
+     * @param areaUt
+     */
     public void setAreaUt(AreaUtentePanel areaUt) {
         this.areaUt = areaUt;
     }

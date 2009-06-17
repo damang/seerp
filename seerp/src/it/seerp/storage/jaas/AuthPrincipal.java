@@ -27,7 +27,12 @@ public class AuthPrincipal implements Principal
     private String _type;
    	private String _name;
 
-	public AuthPrincipal (String name,String type)
+    /**
+     *
+     * @param name
+     * @param type
+     */
+    public AuthPrincipal(String name,String type)
 	{
 		_name = name;
         _type=type;

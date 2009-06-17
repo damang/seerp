@@ -9,15 +9,41 @@ import it.seerp.storage.jaas.PermissionRoleDBAdapter;
  */
 public class PermessiDefault {
    
+    /**
+     *
+     */
     public static enum Categoria_Permesso {
+        /**
+         *
+         */
         GestioneRuoli,
+        /**
+         *
+         */
         GestioneDipendenti,
+        /**
+         *
+         */
         GestioneClienti,
+        /**
+         *
+         */
         GestioneFornitori,
+        /**
+         *
+         */
         GestioneContratti,
+        /**
+         *
+         */
         GestioneServizi
     }
 
+    /**
+     *
+     * @param con
+     * @return
+     */
     public static String valueOf(Categoria_Permesso con) {
         if (con.equals(Categoria_Permesso.GestioneRuoli)) {
             return "gestione_ruoli";
@@ -35,15 +61,41 @@ public class PermessiDefault {
         return null;
     }
     
+    /**
+     *
+     */
     public static enum Operazione_Permesso {
+        /**
+         *
+         */
         AGGIUNGI,
+        /**
+         *
+         */
         ELIMINA,
+        /**
+         *
+         */
         MODIFICA,
+        /**
+         *
+         */
         RICERCA,
+        /**
+         *
+         */
         ELENCA,
+        /**
+         *
+         */
         VISUALIZZA
     }
 
+    /**
+     *
+     * @param con
+     * @return
+     */
     public static String valueOf(Operazione_Permesso con) {
         if (con.equals(Operazione_Permesso.AGGIUNGI)) {
             return "aggiungi";
@@ -68,6 +120,9 @@ public class PermessiDefault {
 
  //   private PermessiDefault perms;
 
+    /**
+     *
+     */
     public static void init(){
         dipendente=PermissionRoleDBAdapter.getPermissionsUt("dipendente");
         responsabile=PermissionRoleDBAdapter.getPermissionsUt("responsabile");
@@ -94,7 +149,11 @@ public class PermessiDefault {
         return responsabile;
     }
 
-    public static PermessoCollection getPermessiDipendete () {
+    /**
+     *
+     * @return
+     */
+    public static PermessoCollection getPermessiDipendete() {
         return dipendente;
     }
 

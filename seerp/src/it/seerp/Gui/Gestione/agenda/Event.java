@@ -19,16 +19,48 @@ public class Event implements EventInstance {
 		Color[] colors = { Color.blue, Color.red, Color.orange, Color.pink,
 		    Color.gray, Color.green, Color.yellow, Color.cyan, Color.magenta };
 
-		public Event(String title, String description, int Y, int M, int D) {
+        /**
+         *
+         * @param title
+         * @param description
+         * @param Y
+         * @param M
+         * @param D
+         */
+        public Event(String title, String description, int Y, int M, int D) {
 			this ( title, description, Y, M, D, 0, 0, 0, false, false );
 		}
 
-		public Event(String title, String description, int Y, int M, int D, int h,
+        /**
+         *
+         * @param title
+         * @param description
+         * @param Y
+         * @param M
+         * @param D
+         * @param h
+         * @param m
+         * @param s
+         */
+        public Event(String title, String description, int Y, int M, int D, int h,
 		    int m, int s) {
 			this ( title, description, Y, M, D, h, m, s, true, false );
 		}
 
-		public Event(String title, String description, int Y, int M, int D, int h,
+        /**
+         *
+         * @param title
+         * @param description
+         * @param Y
+         * @param M
+         * @param D
+         * @param h
+         * @param m
+         * @param s
+         * @param hasTime
+         * @param allDay
+         */
+        public Event(String title, String description, int Y, int M, int D, int h,
 		    int m, int s, boolean hasTime, boolean allDay) {
 			this.title = title;
 			this.description = description;
