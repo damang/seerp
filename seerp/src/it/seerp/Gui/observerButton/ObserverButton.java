@@ -5,8 +5,8 @@
 
 package it.seerp.Gui.observerButton;
 
-import it.seerp.configurazioni.pattern.observer.Observable;
-import it.seerp.configurazioni.pattern.observer.Observer;
+import it.seerp.Gui.configurazioni.pattern.observer.Observable;
+import it.seerp.Gui.configurazioni.pattern.observer.Observer;
 import javax.swing.JButton;
 
 /**

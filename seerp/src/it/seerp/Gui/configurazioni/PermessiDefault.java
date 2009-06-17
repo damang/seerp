@@ -1,4 +1,4 @@
-package it.seerp.configurazioni;
+package it.seerp.Gui.configurazioni;
 
 import it.seerp.storage.jaas.PermessoCollection;
 import it.seerp.storage.jaas.PermissionRoleDBAdapter;

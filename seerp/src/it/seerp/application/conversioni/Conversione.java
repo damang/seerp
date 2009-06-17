@@ -1,6 +1,5 @@
 package it.seerp.application.conversioni;
 
-import it.seerp.configurazioni.PermessiDefault;
 import it.seerp.application.bean.BeanGuiAgenda;
 import it.seerp.application.bean.BeanGuiAmministratore;
 import it.seerp.application.bean.BeanGuiAppuntamento;
@@ -45,12 +44,9 @@ import it.seerp.storage.ejb.Utente;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Map;
 
-import java.util.Set;
-import java.util.Vector;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;

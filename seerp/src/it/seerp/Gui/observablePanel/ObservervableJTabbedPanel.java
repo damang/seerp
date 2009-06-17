@@ -10,8 +10,8 @@
  */
 package it.seerp.Gui.observablePanel;
 
-import it.seerp.configurazioni.pattern.observer.Observable;
-import it.seerp.configurazioni.pattern.observer.Observer;
+import it.seerp.Gui.configurazioni.pattern.observer.Observable;
+import it.seerp.Gui.configurazioni.pattern.observer.Observer;
 import java.util.Iterator;
 import java.util.Vector;
 import javax.swing.JPanel;

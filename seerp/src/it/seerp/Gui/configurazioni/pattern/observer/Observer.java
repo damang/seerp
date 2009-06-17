@@ -1,4 +1,4 @@
-package it.seerp.configurazioni.pattern.observer;
+package it.seerp.Gui.configurazioni.pattern.observer;
 
 /**
  * Interfaccia da implementare per monitorare gli eventi generati dall'oggetto osservato

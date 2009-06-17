@@ -10,7 +10,7 @@
  */
 package it.seerp.Gui.Gestione.Servizi;
 
-import it.seerp.configurazioni.pattern.command.CommandInterface;
+import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla;
 import it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva;
 import it.seerp.Gui.Gestione.Menu.MenuServizi;
