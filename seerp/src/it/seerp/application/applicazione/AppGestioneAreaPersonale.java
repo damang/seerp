@@ -5,7 +5,7 @@ import it.seerp.application.bean.BeanGuiUtente;
 import it.seerp.application.conversioni.Conversione;
 import it.seerp.application.interfacce.GestioneAreaPersonale;
 import it.seerp.storage.ejb.Utente;
-import it.seerp.storage.operazioni.OpAreaPersonale;
+import it.seerp.storage.Operazioni.OpAreaPersonale;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 

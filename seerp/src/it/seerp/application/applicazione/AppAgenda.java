@@ -10,7 +10,7 @@ import it.seerp.storage.ejb.Evento;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import it.seerp.application.conversioni.Conversione;
-import it.seerp.storage.operazioni.OpEvento;
+import it.seerp.storage.Operazioni.OpEvento;
 import javax.swing.JOptionPane;
 
 /**
