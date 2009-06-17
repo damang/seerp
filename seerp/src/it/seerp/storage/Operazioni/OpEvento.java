@@ -1,4 +1,4 @@
-package it.seerp.storage.operazioni;
+﻿package it.seerp.storage.Operazioni;
 
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Connection;

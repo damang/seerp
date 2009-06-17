@@ -1,4 +1,4 @@
-package it.seerp.storage.operazioni;
+package it.seerp.storage.Operazioni;
 
 import it.seerp.storage.Exception.DatiErratiEx;
 import it.seerp.storage.Operazioni.OpPersonale;
