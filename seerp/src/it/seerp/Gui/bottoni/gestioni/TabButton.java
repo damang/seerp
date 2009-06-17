@@ -69,7 +69,7 @@ public class TabButton extends JButton implements ActionListener {
     //paint the cross
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        super.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/16x16/remove.png")));
+        super.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico16x16/remove.png")));
     /* Graphics2D g2 = (Graphics2D) g.create();
     //shift the image for pressed buttons
     if (getModel().isPressed()) {
