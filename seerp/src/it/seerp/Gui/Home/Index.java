@@ -158,7 +158,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
         areaUtenteButton1.setName("areaUtenteButton1"); // NOI18N
 
         areaUtenteButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/user.png"))); // NOI18N
-        areaUtenteButton2.setText("Dipendente");
+        areaUtenteButton2.setText("Dipendenti");
         areaUtenteButton2.setContentAreaFilled(false);
         areaUtenteButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         areaUtenteButton2.setName("areaUtenteButton2"); // NOI18N
