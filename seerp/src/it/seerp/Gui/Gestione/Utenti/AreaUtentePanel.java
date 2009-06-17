@@ -8,8 +8,8 @@ package it.seerp.Gui.Gestione.Utenti;
 
 import it.seerp.configurazioni.pattern.command.CommandInterface;
 import it.seerp.configurazioni.Gui.ConfigurazioneUtente;
-import it.seerp.Gui.BottoniGenerici.ButtonAnnulla;
-import it.seerp.Gui.BottoniGenerici.ButtonSalva;
+import it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla;
+import it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
 import it.seerp.Gui.tabella.ClienteTm;
 import it.seerp.Gui.tabella.DipendenteTm;
@@ -21,7 +21,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import it.seerp.Gui.Menu.*;
+import it.seerp.Gui.Gestione.Menu.*;
 import it.seerp.application.applicazione.AppGestioneExtraAzienda;
 import it.seerp.application.applicazione.AppGestionePersonale;
 
@@ -113,8 +113,8 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jScrollPane2 = new javax.swing.JScrollPane();
         jXTable1 = new org.jdesktop.swingx.JXTable();
         jXFindBar1 = new org.jdesktop.swingx.JXFindBar(jXTable1.getSearchable());
-        buttonAnnulla1 = new it.seerp.Gui.BottoniGenerici.ButtonAnnulla();
-        buttonSalva1 = new it.seerp.Gui.BottoniGenerici.ButtonSalva();
+        buttonAnnulla1 = new it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla();
+        buttonSalva1 = new it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva();
 
         setBackground(new java.awt.Color(0, 153, 204));
 
@@ -687,8 +687,8 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
     }//GEN-LAST:event_buttonAnnulla1MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private it.seerp.Gui.BottoniGenerici.ButtonAnnulla buttonAnnulla1;
-    private it.seerp.Gui.BottoniGenerici.ButtonSalva buttonSalva1;
+    private it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla buttonAnnulla1;
+    private it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva buttonSalva1;
     private javax.swing.JTextField citta;
     private javax.swing.JTextField codFisc;
     private javax.swing.JTextField cog;

@@ -11,9 +11,9 @@
 package it.seerp.Gui.Gestione.Servizi;
 
 import it.seerp.configurazioni.pattern.command.CommandInterface;
-import it.seerp.Gui.BottoniGenerici.ButtonAnnulla;
-import it.seerp.Gui.BottoniGenerici.ButtonSalva;
-import it.seerp.Gui.Menu.MenuServizi;
+import it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla;
+import it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva;
+import it.seerp.Gui.Gestione.Menu.MenuServizi;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
 import it.seerp.Gui.tabella.ServiziTm;
 import it.seerp.application.applicazione.AppServizi;
@@ -138,8 +138,8 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         jScrollPane2 = new javax.swing.JScrollPane();
         jXTable1 = new org.jdesktop.swingx.JXTable();
         jXFindBar1 = new JXFindBar(this.jXTable1.getSearchable());
-        buttonAnnulla1 = new it.seerp.Gui.BottoniGenerici.ButtonAnnulla();
-        buttonSalva1 = new it.seerp.Gui.BottoniGenerici.ButtonSalva();
+        buttonAnnulla1 = new it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla();
+        buttonSalva1 = new it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva();
 
         setBackground(new java.awt.Color(255, 255, 102));
         setPreferredSize(new java.awt.Dimension(800, 600));
@@ -710,8 +710,8 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
     }//GEN-LAST:event_jXTable1MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private it.seerp.Gui.BottoniGenerici.ButtonAnnulla buttonAnnulla1;
-    private it.seerp.Gui.BottoniGenerici.ButtonSalva buttonSalva1;
+    private it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla buttonAnnulla1;
+    private it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva buttonSalva1;
     private javax.swing.JTextField descrizione;
     private javax.swing.JTextField disponibilita;
     private javax.swing.JTextField iva;

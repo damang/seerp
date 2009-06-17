@@ -11,9 +11,9 @@
 package it.seerp.Gui.Gestione.InfoAzienda;
 
 import it.seerp.configurazioni.pattern.command.CommandInterface;
-import it.seerp.Gui.BottoniGenerici.ButtonAnnulla;
-import it.seerp.Gui.BottoniGenerici.ButtonSalva;
-import it.seerp.Gui.Menu.MenuInfoAzienda;
+import it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla;
+import it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva;
+import it.seerp.Gui.Gestione.Menu.MenuInfoAzienda;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
 import it.seerp.application.bean.BeanGuiAzienda;
 import java.awt.event.ActionEvent;
@@ -95,8 +95,8 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
         mail = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         piva = new javax.swing.JTextField();
-        buttonAnnulla1 = new it.seerp.Gui.BottoniGenerici.ButtonAnnulla();
-        buttonSalva1 = new it.seerp.Gui.BottoniGenerici.ButtonSalva();
+        buttonAnnulla1 = new it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla();
+        buttonSalva1 = new it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva();
 
         setBackground(new java.awt.Color(0, 102, 102));
 
@@ -353,8 +353,8 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
     }//GEN-LAST:event_nmActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private it.seerp.Gui.BottoniGenerici.ButtonAnnulla buttonAnnulla1;
-    private it.seerp.Gui.BottoniGenerici.ButtonSalva buttonSalva1;
+    private it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla buttonAnnulla1;
+    private it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva buttonSalva1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;

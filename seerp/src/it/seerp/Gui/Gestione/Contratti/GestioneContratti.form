@@ -304,13 +304,13 @@
                 </Container>
               </SubComponents>
             </Container>
-            <Component class="it.seerp.Gui.BottoniGenerici.InserimentoServizi" name="inserimentoServizi1">
+            <Component class="it.seerp.Gui.Gestione.BottoniGenerici.InserimentoServizi" name="inserimentoServizi1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="inserimentoServizi1"/>
                 <Property name="name" type="java.lang.String" value="inserimentoServizi1" noResource="true"/>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.BottoniGenerici.InserimentoServizi(this)"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.BottoniGenerici.InserimentoServizi(this)"/>
               </AuxValues>
             </Component>
           </SubComponents>
@@ -754,7 +754,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="it.seerp.Gui.BottoniGenerici.ButtonSalva" name="buttonSalva1">
+    <Component class="it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva" name="buttonSalva1">
       <Properties>
         <Property name="name" type="java.lang.String" value="buttonSalva1" noResource="true"/>
       </Properties>
@@ -765,7 +765,7 @@
         <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="buttonSalva1.setEnabled(false);"/>
       </AuxValues>
     </Component>
-    <Component class="it.seerp.Gui.BottoniGenerici.ButtonAnnulla" name="buttonAnnulla1">
+    <Component class="it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla" name="buttonAnnulla1">
       <Properties>
         <Property name="name" type="java.lang.String" value="buttonAnnulla1" noResource="true"/>
       </Properties>

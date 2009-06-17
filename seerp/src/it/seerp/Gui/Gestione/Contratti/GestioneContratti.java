@@ -11,9 +11,9 @@
 package it.seerp.Gui.Gestione.Contratti;
 
 import it.seerp.configurazioni.pattern.command.CommandInterface;
-import it.seerp.Gui.BottoniGenerici.ButtonAnnulla;
-import it.seerp.Gui.BottoniGenerici.ButtonSalva;
-import it.seerp.Gui.Menu.MenuContratti;
+import it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla;
+import it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva;
+import it.seerp.Gui.Gestione.Menu.MenuContratti;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
 import it.seerp.Gui.tabella.ContrattoTm;
 import it.seerp.application.applicazione.AppContratti;
@@ -129,7 +129,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
         jPanel10 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        inserimentoServizi1 = new it.seerp.Gui.BottoniGenerici.InserimentoServizi(this);
+        inserimentoServizi1 = new it.seerp.Gui.Gestione.BottoniGenerici.InserimentoServizi(this);
         jPanel2 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         azienda = new javax.swing.JTextField();
@@ -152,8 +152,8 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
         jScrollPane2 = new javax.swing.JScrollPane();
         jXTable1 = new org.jdesktop.swingx.JXTable();
         jXFindBar1 = new org.jdesktop.swingx.JXFindBar(this.jXTable1.getSearchable());
-        buttonSalva1 = new it.seerp.Gui.BottoniGenerici.ButtonSalva();
-        buttonAnnulla1 = new it.seerp.Gui.BottoniGenerici.ButtonAnnulla();
+        buttonSalva1 = new it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva();
+        buttonAnnulla1 = new it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla();
 
         setBackground(new java.awt.Color(255, 255, 102));
 
@@ -651,12 +651,12 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField azienda;
-    private it.seerp.Gui.BottoniGenerici.ButtonAnnulla buttonAnnulla1;
-    private it.seerp.Gui.BottoniGenerici.ButtonSalva buttonSalva1;
+    private it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla buttonAnnulla1;
+    private it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva buttonSalva1;
     private javax.swing.JTextField cittafor;
     private javax.swing.JTextField data;
     private javax.swing.JTextField durata;
-    private it.seerp.Gui.BottoniGenerici.InserimentoServizi inserimentoServizi1;
+    private it.seerp.Gui.Gestione.BottoniGenerici.InserimentoServizi inserimentoServizi1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;

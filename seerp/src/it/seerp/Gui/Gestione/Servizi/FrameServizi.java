@@ -47,8 +47,8 @@ public class FrameServizi extends javax.swing.JFrame {
         descrizione = new javax.swing.JTextField();
         jPanel20 = new javax.swing.JPanel();
         iva = new javax.swing.JTextField();
-        buttonSalva1 = new it.seerp.Gui.BottoniGenerici.ButtonSalva();
-        buttonAnnulla1 = new it.seerp.Gui.BottoniGenerici.ButtonAnnulla();
+        buttonSalva1 = new it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva();
+        buttonAnnulla1 = new it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -328,8 +328,8 @@ public class FrameServizi extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private it.seerp.Gui.BottoniGenerici.ButtonAnnulla buttonAnnulla1;
-    private it.seerp.Gui.BottoniGenerici.ButtonSalva buttonSalva1;
+    private it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla buttonAnnulla1;
+    private it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva buttonSalva1;
     private javax.swing.JTextField descrizione;
     private javax.swing.JTextField disponibilita;
     private javax.swing.JTextField iva;

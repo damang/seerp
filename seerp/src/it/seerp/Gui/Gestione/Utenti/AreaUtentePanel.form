@@ -715,7 +715,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="it.seerp.Gui.BottoniGenerici.ButtonAnnulla" name="buttonAnnulla1">
+    <Component class="it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla" name="buttonAnnulla1">
       <Properties>
         <Property name="name" type="java.lang.String" value="buttonAnnulla1" noResource="true"/>
       </Properties>
@@ -726,7 +726,7 @@
         <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="buttonAnnulla1.setEnabled(false);"/>
       </AuxValues>
     </Component>
-    <Component class="it.seerp.Gui.BottoniGenerici.ButtonSalva" name="buttonSalva1">
+    <Component class="it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva" name="buttonSalva1">
       <Properties>
         <Property name="name" type="java.lang.String" value="buttonSalva1" noResource="true"/>
       </Properties>
