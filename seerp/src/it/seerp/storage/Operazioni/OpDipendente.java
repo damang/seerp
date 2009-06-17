@@ -83,15 +83,35 @@ public class OpDipendente extends OpPersonale {
      * @throws java.sql.SQLException
      */
     public void elimina(Dipendente user) throws SQLException {
+       
         PreparedStatement stmt = null;
+        PreparedStatement stmt1 = null;
+        PreparedStatement stmt2 = null;
 
-        String sql = "DELETE * FROM Dipendente where username =?";
-        // Create a statement
-        stmt = (PreparedStatement) con.prepareStatement(sql);
-        stmt.setString(1, user.getUsername());
-        // Execute the query
-        stmt.executeQuery(sql);
+        try{
+            con.setAutoCommit(false);
+             String sql = "DELETE * FROM utente where username = ?";
+             String sql1 ="DELETE * FROM personale where idPersonale=?";
+             String sql2 = "DELETE * FROM dipendente where idDipendente=?";
+            // Create a statement
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+            stmt1= (PreparedStatement) con.prepareStatement(sql1);
+            stmt2= (PreparedStatement) con.prepareStatement(sql2);
+            stmt.setString(1, user.getUsername());
+            stmt1.setInt(1,user.getIdUtente());
+            stmt2.setInt(1,user.getIdUtente());
+            // Execute the query
+            stmt.executeQuery(sql);
+            stmt1.executeQuery(sql1);
+            stmt2.executeQuery(sql2);
+            con.commit();
+        }
+        catch(SQLException se){
+            con.rollback();
+            System.out.println("eliminazione fallita");}
         stmt.close();
+        stmt1.close();
+        stmt2.close();
         ConnectionPool.releaseConnection(con);
 
     }
@@ -105,8 +125,8 @@ public class OpDipendente extends OpPersonale {
 
         PreparedStatement stmt = null;
 
-        String sql = "UPDATE Dipendente (visible)" +
-                " SET Visible='false' where username = ?";
+        String sql = "UPDATE Dipendente (visibilita)" +
+                " SET visibilita='false' where username = ?";
         // Create a statement
         stmt = (PreparedStatement) con.prepareStatement(sql);
 
@@ -131,20 +151,20 @@ public class OpDipendente extends OpPersonale {
         Statement stmt1 = con.createStatement();
         String sqlTest = "SELECT idUtente,username,password,citta,provincia,telefono," +
                 "cap,email,note,tipo,cognome,nome,codiceFiscale,ruolo,visibilita" +
-                " FROM Dipendente,Personale,Utente WHERE codiceFiscale='" + user.getCodiceFiscale() + "' and idUtente=idPersonale" +
+                " FROM dipendente,personale,utente WHERE codiceFiscale='" + user.getCodiceFiscale() + "' and idUtente=idPersonale" +
                 "and idPersonale=idDipendente";
         ResultSet rs = stmt1.executeQuery(sqlTest);
 
         if (rs.next()) {
-                throw new DatiDuplicatiEx("responsabile già esistente nel database");
+                throw new DatiDuplicatiEx("dipendente già esistente nel database");
             } else {
                 try{
                     con.setAutoCommit(false);
-                String sqlu = "INSERT INTO Utente(idUtente,username,password,email,citta,prov,telefono" +
+                String sqlu = "INSERT INTO utente(idUtente,username,password,email,citta,prov,telefono" +
                         "CAP,note,tipo,visibilita) VALUES(LAST_INSERT_ID()+1,?,?,?,?,?,?,?,?,?,?)";
-                String sqlp = "INSERT INTO Personale(idPersonale,nome,cognome,codicefiscale,ruolo)" +
+                String sqlp = "INSERT INTO personale(idPersonale,nome,cognome,codicefiscale,ruolo)" +
                         "VALUES(LAST_INSERT_ID(),?,?,?,?)";
-                String sqlr = "INSERT INTO Dipendente (idDipendente)" +
+                String sqlr = "INSERT INTO dipendente (idDipendente)" +
                         "VALUES(LAST_INSERT_ID())";
 
                 stmt = (PreparedStatement) con.prepareStatement(sqlu);
@@ -191,7 +211,7 @@ public class OpDipendente extends OpPersonale {
     public Dipendente modifica(Dipendente user) throws SQLException, DatiErratiEx, DatiDuplicatiEx {
 
         PreparedStatement stmt = null;
-        Dipendente dipendente = null;
+        PreparedStatement stmtP = null;
 
 
         Statement stmt1 = con.createStatement();
@@ -202,40 +222,38 @@ public class OpDipendente extends OpPersonale {
 
         if (rs.next()) {
             throw new DatiDuplicatiEx("dipendete già esistente nel database");
-        } else {
+        } else {try{
+                    con.setAutoCommit(false);
+                String sqlu = "UPDATE Utente(username,password,email,citta,prov,telefono" +
+                        "CAP,note,tipo,visibilita) SET username=?,,password=?,email=?,citta=?,prov=?," +
+                        "telefono=?,CAP=?,note=?,tipo=?,visibilita=?";
+                String sqlp = "UPDATE Personale(nome,cognome,codicefiscale,ruolo)" +
+                        "SET nome=?,cognome=?,codicefiscale=?,ruolo=? ";
 
-            // Create a statement
-            stmt = (PreparedStatement) con.prepareStatement("UPDATE Dipendente,Personale,Dipendente" +
-                    "(username,password,citta,provincia,telefono," +
-                "cap,email,note,tipo,cognome,nome,codiceFiscale,ruolo,visibilita)" +
-                    "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)" + "where idUtente=IdPersonale and idPersonale=idDipendente and" +
-                    "idUtente=" + user.getIdUtente());
-
-            
-            stmt.setString(1, user.getUsername());
-            stmt.setString(2, user.getPassword());
-            stmt.setString(3, user.getCitta());
-            stmt.setString(4, user.getProvincia());
-            stmt.setString(5, user.getTelefono());
-            stmt.setString(6, user.getCap());
-            stmt.setString(7, user.getEmail());
-            stmt.setString(8, user.getNote());
-            stmt.setString(9, user.getTipo());
-            stmt.setString(10, user.getCognome());
-            stmt.setString(11, user.getNome());
-            stmt.setString(12, user.getCodiceFiscale());
-            stmt.setString(13, user.getRuolo().getNome());
-            stmt.setBoolean(14, user.getVisible());
-
-            stmt.execute();
-
-            dipendente = this.visualizzaDati(dipendente.getIdUtente());
-
+                stmt = (PreparedStatement) con.prepareStatement(sqlu);
+                stmt.setString(1, user.getUsername());
+                stmt.setString(2, user.getPassword());
+                stmt.setString(3, user.getEmail());
+                stmt.setString(4, user.getCitta());
+                stmt.setString(5, user.getProvincia());
+                stmt.setString(6, user.getTelefono());
+                stmt.setString(7, user.getCap());
+                stmt.setString(8, user.getNote());
+                stmt.setString(9, user.getTipo());
+                stmt.setString(10, user.getVisible().toString());
+                stmtP = (PreparedStatement) con.prepareStatement(sqlp);
+                stmtP.setString(1, user.getNome());
+                stmtP.setString(2, user.getCognome());
+                stmtP.setString(3, user.getCodiceFiscale());
+                stmtP.setString(4, user.getRuolo().getNome());
+                stmt.execute();
+                stmtP.execute();
+                con.commit();
+            }catch(SQLException e){
+                 con.rollback();
+                  System.out.println("modifica fallita");  }
         }
-        stmt.close();
-        ConnectionPool.releaseConnection(con);
-        return dipendente;
-
+        return user;
     }
 
     /** Metodo che permette la visualizzazione dei dettagli di un membro dei dipendendenti
