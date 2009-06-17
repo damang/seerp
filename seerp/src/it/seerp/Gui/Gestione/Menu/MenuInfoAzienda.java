@@ -63,7 +63,7 @@ public class MenuInfoAzienda extends javax.swing.JPanel implements ActionListene
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Azienda", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_BOTTOM));
 
-        modificaButtonInfoAzienda1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/application_edit.png"))); // NOI18N
+        modificaButtonInfoAzienda1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/commercial-building-32x32.png"))); // NOI18N
         modificaButtonInfoAzienda1.setToolTipText("Modifica");
         modificaButtonInfoAzienda1.setName("modificaButtonInfoAzienda1"); // NOI18N
 
@@ -74,7 +74,7 @@ public class MenuInfoAzienda extends javax.swing.JPanel implements ActionListene
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(modificaButtonInfoAzienda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

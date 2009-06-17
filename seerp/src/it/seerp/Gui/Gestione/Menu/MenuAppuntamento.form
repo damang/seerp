@@ -52,7 +52,7 @@
     <Component class="it.seerp.Gui.Gestione.Menu.AggiungiButtonAppuntamento" name="aggiungiButtonAppuntamento1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/it/seerp/icone/32x32/add.png"/>
+          <Image iconType="3" name="/it/seerp/Gui/icone/ico32x32/add.png"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Aggiungi"/>
         <Property name="name" type="java.lang.String" value="aggiungiButtonAppuntamento1" noResource="true"/>
@@ -61,7 +61,7 @@
     <Component class="it.seerp.Gui.Gestione.Menu.EiminaButtonAppuntamento" name="eiminaButtonAppuntamento1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/it/seerp/icone/32x32/remove.png"/>
+          <Image iconType="3" name="/it/seerp/Gui/icone/ico32x32/remove.png"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Elimina"/>
         <Property name="name" type="java.lang.String" value="eiminaButtonAppuntamento1" noResource="true"/>
@@ -70,7 +70,7 @@
     <Component class="it.seerp.Gui.Gestione.Menu.ModificaButtonAppuntamento" name="modificaButtonAppuntamento1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/it/seerp/icone/32x32/application_edit.png"/>
+          <Image iconType="3" name="/it/seerp/Gui/icone/ico32x32/application_edit.png"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Modifica"/>
         <Property name="name" type="java.lang.String" value="modificaButtonAppuntamento1" noResource="true"/>

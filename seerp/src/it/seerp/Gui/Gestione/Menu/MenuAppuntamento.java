@@ -55,15 +55,15 @@ public class MenuAppuntamento extends javax.swing.JPanel implements ActionListen
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Appuntamenti", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_BOTTOM));
 
-        aggiungiButtonAppuntamento1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/add.png"))); // NOI18N
+        aggiungiButtonAppuntamento1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/add.png"))); // NOI18N
         aggiungiButtonAppuntamento1.setToolTipText("Aggiungi");
         aggiungiButtonAppuntamento1.setName("aggiungiButtonAppuntamento1"); // NOI18N
 
-        eiminaButtonAppuntamento1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/remove.png"))); // NOI18N
+        eiminaButtonAppuntamento1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/remove.png"))); // NOI18N
         eiminaButtonAppuntamento1.setToolTipText("Elimina");
         eiminaButtonAppuntamento1.setName("eiminaButtonAppuntamento1"); // NOI18N
 
-        modificaButtonAppuntamento1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/application_edit.png"))); // NOI18N
+        modificaButtonAppuntamento1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/application_edit.png"))); // NOI18N
         modificaButtonAppuntamento1.setToolTipText("Modifica");
         modificaButtonAppuntamento1.setName("modificaButtonAppuntamento1"); // NOI18N
 

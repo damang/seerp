@@ -57,15 +57,15 @@ public class MenuRuoli extends javax.swing.JPanel implements ActionListener {
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ruoli", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_BOTTOM));
 
-        aggiungiButtonRuoli1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/add.png"))); // NOI18N
+        aggiungiButtonRuoli1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/add.png"))); // NOI18N
         aggiungiButtonRuoli1.setToolTipText("Aggiungi");
         aggiungiButtonRuoli1.setName("aggiungiButtonRuoli1"); // NOI18N
 
-        eiminaButtonRuoli1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/remove.png"))); // NOI18N
+        eiminaButtonRuoli1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/remove.png"))); // NOI18N
         eiminaButtonRuoli1.setToolTipText("Elimina");
         eiminaButtonRuoli1.setName("eiminaButtonRuoli1"); // NOI18N
 
-        modificaButtonRuoli1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/application_edit.png"))); // NOI18N
+        modificaButtonRuoli1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/application_edit.png"))); // NOI18N
         modificaButtonRuoli1.setToolTipText("Modifica");
         modificaButtonRuoli1.setName("modificaButtonRuoli1"); // NOI18N
 

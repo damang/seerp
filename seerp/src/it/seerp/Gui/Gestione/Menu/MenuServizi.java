@@ -56,7 +56,7 @@ public class MenuServizi extends javax.swing.JPanel implements ActionListener {
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Servizi", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_BOTTOM));
 
-        aggiungiButtonServizi1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/shopping_cart_down.png"))); // NOI18N
+        aggiungiButtonServizi1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/shopping_cart_down.png"))); // NOI18N
         aggiungiButtonServizi1.setToolTipText("Aggiungi");
         aggiungiButtonServizi1.setName("aggiungiButtonServizi1"); // NOI18N
         aggiungiButtonServizi1.addActionListener(new java.awt.event.ActionListener() {
@@ -65,7 +65,7 @@ public class MenuServizi extends javax.swing.JPanel implements ActionListener {
             }
         });
 
-        modificaButtonServizi1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/application_edit.png"))); // NOI18N
+        modificaButtonServizi1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/window_edit.png"))); // NOI18N
         modificaButtonServizi1.setToolTipText("Modifica");
         modificaButtonServizi1.setName("modificaButtonServizi1"); // NOI18N
 
@@ -77,7 +77,7 @@ public class MenuServizi extends javax.swing.JPanel implements ActionListener {
                 .addContainerGap()
                 .addComponent(aggiungiButtonServizi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(modificaButtonServizi1, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+                .addComponent(modificaButtonServizi1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -85,7 +85,7 @@ public class MenuServizi extends javax.swing.JPanel implements ActionListener {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(modificaButtonServizi1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(modificaButtonServizi1, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
                     .addComponent(aggiungiButtonServizi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
