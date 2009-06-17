@@ -36,7 +36,7 @@ public class ButtonSalva extends JButton implements CommandInterface {
 
         setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         setForeground(new java.awt.Color(0, 204, 0));
-        setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/accept.png"))); // NOI18N
+        setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/accept.png"))); // NOI18N
         setText("Salva");
     }// </editor-fold>//GEN-END:initComponents
 
