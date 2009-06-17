@@ -112,6 +112,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             jXPanel1.setName("jXPanel1"); // NOI18N
 
             jXLabel1.setForeground(new java.awt.Color(0, 0, 204));
+            jXLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/home.png"))); // NOI18N
             jXLabel1.setText("Benvenuto "+ ut_sub.getPrincipals().iterator().next().getName());
             jXLabel1.setFont(new java.awt.Font("Tahoma", 1, 14));
             jXLabel1.setName("jXLabel1"); // NOI18N
@@ -136,7 +137,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             jXTaskPaneContainer1.add(jXPanel1);
 
             jXTaskPane1.setCollapsed(true);
-            jXTaskPane1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/24x24/community_users.png"))); // NOI18N
+            jXTaskPane1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico24x24/community_users.png"))); // NOI18N
             jXTaskPane1.setTitle("Gestione Utenti");
             jXTaskPane1.setName("jXTaskPane1"); // NOI18N
             jXTaskPane1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -149,16 +150,34 @@ public class Index extends javax.swing.JFrame implements ActionListener {
 
         }
         catch(SQLException e){}
-        areaUtenteButton1.setText("areaUtenteButton1");
+        areaUtenteButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/User-32x32.png"))); // NOI18N
+        areaUtenteButton1.setText("Responsabili");
+        areaUtenteButton1.setToolTipText("");
+        areaUtenteButton1.setContentAreaFilled(false);
+        areaUtenteButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         areaUtenteButton1.setName("areaUtenteButton1"); // NOI18N
 
-        areaUtenteButton2.setText("areaUtenteButton2");
+        areaUtenteButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/user.png"))); // NOI18N
+        areaUtenteButton2.setText("Dipendente");
+        areaUtenteButton2.setContentAreaFilled(false);
+        areaUtenteButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         areaUtenteButton2.setName("areaUtenteButton2"); // NOI18N
+        areaUtenteButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                areaUtenteButton2ActionPerformed(evt);
+            }
+        });
 
-        areaUtenteButton3.setText("areaUtenteButton3");
+        areaUtenteButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/TruckYellow-32x32.png"))); // NOI18N
+        areaUtenteButton3.setText("Fornitori");
+        areaUtenteButton3.setContentAreaFilled(false);
+        areaUtenteButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         areaUtenteButton3.setName("areaUtenteButton3"); // NOI18N
 
-        areaUtenteButton4.setText("areaUtenteButton4");
+        areaUtenteButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/users.png"))); // NOI18N
+        areaUtenteButton4.setText("Clienti");
+        areaUtenteButton4.setContentAreaFilled(false);
+        areaUtenteButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         areaUtenteButton4.setName("areaUtenteButton4"); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -167,11 +186,19 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(areaUtenteButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(areaUtenteButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(areaUtenteButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(areaUtenteButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(62, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(areaUtenteButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(areaUtenteButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(areaUtenteButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(areaUtenteButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,11 +206,11 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                 .addComponent(areaUtenteButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(areaUtenteButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(areaUtenteButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(areaUtenteButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jXTaskPane1.getContentPane().add(jPanel1);
@@ -191,7 +218,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
         jXTaskPaneContainer1.add(jXTaskPane1);
 
         jXTaskPane2.setCollapsed(true);
-        jXTaskPane2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/24x24/calculator.png"))); // NOI18N
+        jXTaskPane2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico24x24/calculator.png"))); // NOI18N
         jXTaskPane2.setTitle("Contabilità");
         jXTaskPane2.setName("jXTaskPane2"); // NOI18N
         jXTaskPane2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -202,7 +229,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
 
         jXPanel2.setName("jXPanel2"); // NOI18N
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/page.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/page.png"))); // NOI18N
         jButton1.setText("Fatture");
         jButton1.setContentAreaFilled(false);
         jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -213,7 +240,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/note_edit.png"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/note_edit.png"))); // NOI18N
         jButton2.setText("Preventivi");
         jButton2.setContentAreaFilled(false);
         jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -224,10 +251,16 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             }
         });
 
-        buttonContratti1.setText("buttonContratti1");
+        buttonContratti1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/application.png"))); // NOI18N
+        buttonContratti1.setText("Contratti");
+        buttonContratti1.setContentAreaFilled(false);
+        buttonContratti1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         buttonContratti1.setName("buttonContratti1"); // NOI18N
 
-        buttonServizi1.setText("buttonServizi1");
+        buttonServizi1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/shopping_cart.png"))); // NOI18N
+        buttonServizi1.setText("Servizi");
+        buttonServizi1.setContentAreaFilled(false);
+        buttonServizi1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         buttonServizi1.setName("buttonServizi1"); // NOI18N
 
         javax.swing.GroupLayout jXPanel2Layout = new javax.swing.GroupLayout(jXPanel2);
@@ -236,15 +269,17 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             jXPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jXPanel2Layout.createSequentialGroup()
                 .addGroup(jXPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jXPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jXPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
                     .addGroup(jXPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jXPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jXPanel2Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(buttonServizi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(buttonContratti1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(buttonServizi1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                            .addComponent(buttonContratti1, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jXPanel2Layout.setVerticalGroup(
@@ -265,7 +300,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
         jXTaskPaneContainer1.add(jXTaskPane2);
 
         jXTaskPane3.setCollapsed(true);
-        jXTaskPane3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/24x24/lock.png"))); // NOI18N
+        jXTaskPane3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico24x24/lock.png"))); // NOI18N
         jXTaskPane3.setTitle("Utilità");
         jXTaskPane3.setName("jXTaskPane3"); // NOI18N
         jXTaskPane3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -276,16 +311,28 @@ public class Index extends javax.swing.JFrame implements ActionListener {
 
         jXPanel3.setName("jXPanel3"); // NOI18N
 
-        buttonRuoli1.setText("buttonRuoli1");
+        buttonRuoli1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/attachment.png"))); // NOI18N
+        buttonRuoli1.setText("Ruoli");
+        buttonRuoli1.setContentAreaFilled(false);
+        buttonRuoli1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         buttonRuoli1.setName("buttonRuoli1"); // NOI18N
 
-        buttonInfoAzienda1.setText("buttonInfoAzienda1");
+        buttonInfoAzienda1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/commercial-building-32x32.png"))); // NOI18N
+        buttonInfoAzienda1.setText("Info Azienda");
+        buttonInfoAzienda1.setContentAreaFilled(false);
+        buttonInfoAzienda1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         buttonInfoAzienda1.setName("buttonInfoAzienda1"); // NOI18N
 
+        buttonAgenda1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/addressbook-32x32.png"))); // NOI18N
         buttonAgenda1.setText("buttonAgenda1");
+        buttonAgenda1.setContentAreaFilled(false);
+        buttonAgenda1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         buttonAgenda1.setName("buttonAgenda1"); // NOI18N
 
-        areaPersonaleButton5.setText("areaPersonaleButton5");
+        areaPersonaleButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/HP-Control-32x32.png"))); // NOI18N
+        areaPersonaleButton5.setText("Area Personale");
+        areaPersonaleButton5.setContentAreaFilled(false);
+        areaPersonaleButton5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         areaPersonaleButton5.setName("areaPersonaleButton5"); // NOI18N
 
         javax.swing.GroupLayout jXPanel3Layout = new javax.swing.GroupLayout(jXPanel3);
@@ -295,11 +342,11 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             .addGroup(jXPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jXPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonInfoAzienda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonRuoli1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonAgenda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(areaPersonaleButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(38, Short.MAX_VALUE))
+                    .addComponent(buttonInfoAzienda1, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                    .addComponent(areaPersonaleButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                    .addComponent(buttonAgenda1, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                    .addComponent(buttonRuoli1, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jXPanel3Layout.setVerticalGroup(
             jXPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
