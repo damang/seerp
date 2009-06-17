@@ -41,38 +41,73 @@ public class AppRuoli implements GestioneRuoli<BeanGuiRuolo> {
     }
 
     /**
-     *
-     * @param bean
+     * Metodo che permette la modifica di un ruolo
+     * @param beanGuiEventi
+     * Bean Gui del ruolo da modificare
      * @return
+     * Bean Gui del ruolo modificato
+     * @throws it.seerp.application.Exception.DatiErrati
+     * nel caso in cui si inseriscano dati errati
      */
-    public BeanGuiRuolo modifica(BeanGuiRuolo bean) {
-        return null;
+    public BeanGuiRuolo modifica(BeanGuiRuolo beanGui) throws DatiErrati {
+        try {
+            OpRuolo ope = new OpRuolo();
+            Ruolo ruo = Conversione.conversioneRuolo(beanGui);
+            ruo = ope.modifica(ruo);
+            beanGui = Conversione.conversioneRuolo(ruo, beanGui);
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
+        }
+        return beanGui;
     }
 
     /**
      *
      * @param r
      * @return
-     */
-    public BeanGuiRuolo elimina(BeanGuiRuolo r) {
-        return null;
-    }
-    /**
-     *
-     * @return
-     */
-    public ArrayList<BeanGuiRuolo> getElenco() {
-        return null;
-    }
-
-    /**
-     *
-     * @param list
-     * @return
-     */
-    public ArrayList<BeanGuiRuolo> getElenco(ArrayList<BeanGuiRuolo> list) {
-        throw new UnsupportedOperationException("Not supported yet.");
+     
+    public void elimina(BeanGuiRuolo r) {
+        try {
+            OpRuolo ope = new OpRuolo();
+            Ruolo ruo = Conversione.conversioneRuolo(r);
+            ope.elimina(ruo);
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
+        }
     }
 
+    /**
+     * Metodo che permette la visualizzazione della lista dei ruoli
+     * @return  Array List contenente la lista dei ruoli
+     * @throws it.seerp.application.Exception.DatiErrati
+     * nel caso in cui vi siano dati errati
+     */
+    public ArrayList<BeanGuiRuolo> getElenco(ArrayList<BeanGuiRuolo> listGui) {
+        ArrayList<Ruolo> list;
+        try {
+            OpRuolo ope = new OpRuolo();
+            list = ope.visualizzaElenco();
+            for (Ruolo eve : list) {
+                BeanGuiRuolo eveGui = new BeanGuiRuolo();
+                eveGui = Conversione.conversioneRuolo(eve, eveGui);
+                listGui.add(eveGui);
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
+        }
+        return listGui;
+    }
 
 }
