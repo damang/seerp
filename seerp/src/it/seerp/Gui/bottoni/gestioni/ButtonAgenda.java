@@ -10,7 +10,7 @@ import it.seerp.Gui.Gestione.Menu.MenuAppuntamento;
 import it.seerp.Gui.Gestione.Menu.MenuRuoli;
 import it.seerp.Gui.observerButton.ObserverButton;
 import it.seerp.storage.ejb.Evento;
-import it.seerp.storage.operazioni.OpEvento;
+import it.seerp.storage.Operazioni.OpEvento;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
