@@ -85,8 +85,8 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         pwd1 = new javax.swing.JPasswordField();
         jPanel13 = new javax.swing.JPanel();
         pwd2 = new javax.swing.JPasswordField();
-        buttonSalva2 = new it.seerp.Gui.BottoniGenerici.ButtonSalva();
-        modifica = new it.seerp.Gui.BottoniGenerici.ButtonSalva();
+        buttonSalva2 = new it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva();
+        modifica = new it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva();
         jXLabel2 = new org.jdesktop.swingx.JXLabel();
 
         setBackground(new java.awt.Color(0, 51, 102));
@@ -425,7 +425,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
     }//GEN-LAST:event_modificaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private it.seerp.Gui.BottoniGenerici.ButtonSalva buttonSalva2;
+    private it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva buttonSalva2;
     private javax.swing.JTextField citta;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -443,7 +443,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
     private javax.swing.JTextArea jTextArea1;
     private org.jdesktop.swingx.JXLabel jXLabel2;
     private javax.swing.JTextField mail;
-    private it.seerp.Gui.BottoniGenerici.ButtonSalva modifica;
+    private it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva modifica;
     private javax.swing.JTextField nm;
     private javax.swing.JTextField provincia;
     private javax.swing.JPasswordField pwd1;

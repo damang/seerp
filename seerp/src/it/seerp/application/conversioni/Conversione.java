@@ -20,7 +20,7 @@ import it.seerp.application.bean.BeanGuiRuolo;
 import it.seerp.application.bean.BeanGuiServizio;
 import it.seerp.application.bean.BeanGuiServizioAssociato;
 import it.seerp.application.bean.BeanGuiUtente;
-import it.seerp.jaas.PermessoCollection;
+import it.seerp.storage.jaas.PermessoCollection;
 import it.seerp.storage.ejb.Agenda;
 import it.seerp.storage.ejb.Amministratore;
 import it.seerp.storage.ejb.Appuntamento;

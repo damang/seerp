@@ -1,7 +1,7 @@
 package it.seerp.configurazioni;
 
-import it.seerp.jaas.PermessoCollection;
-import it.seerp.jaas.PermissionRoleDBAdapter;
+import it.seerp.storage.jaas.PermessoCollection;
+import it.seerp.storage.jaas.PermissionRoleDBAdapter;
 
 /**
  *

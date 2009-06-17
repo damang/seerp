@@ -6,8 +6,8 @@
 package it.seerp.Gui.bottoni.gestioni;
 
 import it.seerp.configurazioni.pattern.command.CommandInterface;
-import it.seerp.Gui.Menu.MenuAppuntamento;
-import it.seerp.Gui.Menu.MenuRuoli;
+import it.seerp.Gui.Gestione.Menu.MenuAppuntamento;
+import it.seerp.Gui.Gestione.Menu.MenuRuoli;
 import it.seerp.Gui.observerButton.ObserverButton;
 import it.seerp.storage.ejb.Evento;
 import it.seerp.storage.operazioni.OpEvento;
