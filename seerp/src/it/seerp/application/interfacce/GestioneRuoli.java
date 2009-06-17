@@ -29,9 +29,8 @@ public interface GestioneRuoli<E> {
     /**
      *
      * @param r
-     * @return
-     */
-    public E elimina(E r);
+     
+    public void elimina(E r);
 
     /**
      *
