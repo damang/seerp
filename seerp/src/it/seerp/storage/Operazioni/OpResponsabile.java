@@ -45,7 +45,7 @@ public class OpResponsabile extends OpeUtente {
        
             String sql = "SELECT idUtente,username,password,citta,provincia," +
                     "telefono,cap,email,note,tipo,cognome,nome,codiceFiscale," +
-                    "ruolo,visible FROM Responsabile,Utente,Personale WHERE Visible='true' and idPersonale=idUtente " +
+                    "ruolo,visible FROM responsabile,utente,personale WHERE Visible='true' and idPersonale=idUtente " +
                     "and idPersonale=idResponsabile";
             stmt = (PreparedStatement) con.prepareStatement(sql);
             // Execute the query
@@ -90,14 +90,31 @@ public class OpResponsabile extends OpeUtente {
      * @throws java.sql.SQLException*/
     public void elimina(Responsabile user) throws SQLException {
         PreparedStatement stmt = null;
-    
-            String sql = "DELETE * FROM Responsabile where username =?";
+        PreparedStatement stmt1 = null;
+        PreparedStatement stmt2 = null;
+
+        try{
+            con.setAutoCommit(false);
+             String sql = "DELETE * FROM utente where username = ?";
+             String sql1 ="DELETE * FROM personale where idPersonale=?";
+             String sql2 = "DELETE * FROM responsabile where idResponsabile=?";
             // Create a statement
             stmt = (PreparedStatement) con.prepareStatement(sql);
+            stmt1= (PreparedStatement) con.prepareStatement(sql1);
+            stmt2= (PreparedStatement) con.prepareStatement(sql2);
             stmt.setString(1, user.getUsername());
+            stmt1.setInt(1,user.getIdUtente());
+            stmt2.setInt(1,user.getIdUtente());
             // Execute the query
             stmt.executeQuery(sql);
-       
+            stmt1.executeQuery(sql1);
+            stmt2.executeQuery(sql2);
+            con.commit();
+        }
+        catch(SQLException se){
+            con.rollback();
+            System.out.println("eliminazione fallita");}
+    
                 stmt.close();
           
                 ConnectionPool.releaseConnection(con);
@@ -112,8 +129,7 @@ public class OpResponsabile extends OpeUtente {
     public void eliminazioneLogica(Responsabile user) throws SQLException {
 
         PreparedStatement stmt = null;
-                   String sql = "UPDATE Utente,Pesonale,Responsabile(visible) SET Visible='false' where username = ? " +
-                    "and idUtente=idPersonale and idPersonale=idResponsabile";
+                   String sql = "UPDATE utente(visibilita) SET visibilita='false' where username = ? ";
             // Create a statement
             stmt = (PreparedStatement) con.prepareStatement(sql);
 
@@ -139,7 +155,7 @@ public class OpResponsabile extends OpeUtente {
         PreparedStatement stmtR = null;
         
             Statement stmt1 = con.createStatement();
-            String sqlTest = "SELECT * FROM Utente,Personale,Responsabile WHERE codiceFiscale='" + user.getCodiceFiscale() + "' and idUtente=idPersonale" +
+            String sqlTest = "SELECT * FROM utente,personale,responsabile WHERE codiceFiscale='" + user.getCodiceFiscale() + "' and idUtente=idPersonale" +
                     "idPersonale=idResponsabile ";
             ResultSet rs = stmt1.executeQuery(sqlTest);
 
@@ -148,11 +164,11 @@ public class OpResponsabile extends OpeUtente {
             } else {
                 try{
                     con.setAutoCommit(false);
-                String sqlu = "INSERT INTO Utente(idUtente,username,password,email,citta,prov,telefono" +
+                String sqlu = "INSERT INTO utente(idUtente,username,password,email,citta,prov,telefono" +
                         "CAP,note,tipo,visibilita) VALUES(LAST_INSERT_ID()+1,?,?,?,?,?,?,?,?,?,?)";
-                String sqlp = "INSERT INTO Personale(idPersonale,nome,cognome,codicefiscale,ruolo)" +
+                String sqlp = "INSERT INTO personale(idPersonale,nome,cognome,codicefiscale,ruolo)" +
                         "VALUES(LAST_INSERT_ID(),?,?,?,?)";
-                String sqlr = "INSERT INTO Responsabile (idResponsabile)" +
+                String sqlr = "INSERT INTO responsabile (idResponsabile)" +
                         "VALUES(LAST_INSERT_ID())";
 
                 stmt = (PreparedStatement) con.prepareStatement(sqlu);
@@ -167,17 +183,18 @@ public class OpResponsabile extends OpeUtente {
                 stmt.setString(9, user.getTipo());
                 stmt.setString(10, user.getVisible().toString());
                 stmtP = (PreparedStatement) con.prepareStatement(sqlp);
-                stmt.setString(1, user.getNome());
-                stmt.setString(2, user.getCognome());
-                stmt.setString(3, user.getCodiceFiscale());
-                stmt.setString(4, user.getRuolo().getNome());
+                stmtP.setString(1, user.getNome());
+                stmtP.setString(2, user.getCognome());
+                stmtP.setString(3, user.getCodiceFiscale());
+                stmtP.setString(4, user.getRuolo().getNome());
                 stmtR= (PreparedStatement) con.prepareStatement(sqlr);
-                stmt.execute();
+                stmtR.execute();
                 stmtP.execute();
                 stmtR.execute();
                 con.commit();
             }catch(SQLException e){
-                 con.rollback();}
+                 con.rollback();
+                 System.out.println("inserimento fallito");}
                   
                 stmt.close();
                 ConnectionPool.releaseConnection(con);
@@ -196,47 +213,46 @@ public class OpResponsabile extends OpeUtente {
     public Responsabile modifica(Responsabile user) throws SQLException, DatiErratiEx, DatiDuplicatiEx {
 
         PreparedStatement stmt = null;
-        Responsabile responsabile = null;
-
+        PreparedStatement stmtP = null;
+        
             Statement stmt1 = con.createStatement();
-            String sqlTest = "SELECT * FROM Utente,Personale,Responsabile WHERE codiceFiscale='" + user.getCodiceFiscale() + "'" +
+            String sqlTest = "SELECT * FROM utente,personale,responsabile WHERE codiceFiscale='" + user.getCodiceFiscale() + "'" +
                     "and idPersonale=idUtente and idPersonale=idResponsabile ";
             ResultSet rs = stmt1.executeQuery(sqlTest);
 
             if (rs.next()) {
-                throw new DatiDuplicatiEx("responsabile già esistente nel database");
+                throw new DatiDuplicatiEx("dipendente già esistente nel database");
             } else {
+ try{
+                    con.setAutoCommit(false);
+                String sqlu = "UPDATE utente(username,password,email,citta,prov,telefono" +
+                        "CAP,note,tipo,visibilita) SET username=?,,password=?,email=?,citta=?,prov=?," +
+                        "telefono=?,CAP=?,note=?,tipo=?,visibilita=?";
+                String sqlp = "UPDATE personale(nome,cognome,codicefiscale,ruolo)" +
+                        "SET nome=?,cognome=?,codicefiscale=?,ruolo=? ";
 
-                // Create a statement
-                stmt = (PreparedStatement) con.prepareStatement("UPDATE Utente,Personale Responsabile VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )" + "where " +
-                        "idPersonale=idUtente and idPersonale=idResponsabile and idUtente=" + user.getIdUtente());
-
-                /*
-                 * Integer idUtente1, String username2, String password3,
-            String città4, String provincia5, String telefono6, String cap7, String email8,
-            String note9, String tipo10, String cognome11, String nome12, String
-            codiceFiscale13, String ruolo14, Boolean v15
-                 */
-
-                stmt.setInt(1, user.getIdUtente());
-                stmt.setString(2, user.getUsername());
-                stmt.setString(3, user.getPassword());
+                stmt = (PreparedStatement) con.prepareStatement(sqlu);
+                stmt.setString(1, user.getUsername());
+                stmt.setString(2, user.getPassword());
+                stmt.setString(3, user.getEmail());
                 stmt.setString(4, user.getCitta());
                 stmt.setString(5, user.getProvincia());
                 stmt.setString(6, user.getTelefono());
                 stmt.setString(7, user.getCap());
-                stmt.setString(8, user.getEmail());
-                stmt.setString(9, user.getNote());
-                stmt.setString(10, user.getTipo());
-                stmt.setString(11, user.getCognome());
-                stmt.setString(12, user.getNome());
-                stmt.setString(13, user.getCodiceFiscale());
-                stmt.setString(14, user.getRuolo().getNome());
-                stmt.setBoolean(15, user.getVisible());
-
+                stmt.setString(8, user.getNote());
+                stmt.setString(9, user.getTipo());
+                stmt.setString(10, user.getVisible().toString());
+                stmtP = (PreparedStatement) con.prepareStatement(sqlp);
+                stmtP.setString(1, user.getNome());
+                stmtP.setString(2, user.getCognome());
+                stmtP.setString(3, user.getCodiceFiscale());
+                stmtP.setString(4, user.getRuolo().getNome());
                 stmt.execute();
-
-               
+                stmtP.execute();
+                con.commit();
+            }catch(SQLException e){
+                 con.rollback();
+                  System.out.println("modifica fallita");  }
 
             }
        
@@ -244,7 +260,7 @@ public class OpResponsabile extends OpeUtente {
            
                 ConnectionPool.releaseConnection(con);
        
-        return responsabile;
+        return user;
 
     }
 
@@ -260,7 +276,7 @@ public class OpResponsabile extends OpeUtente {
         ResultSet rs = null;
 
 
-            String sql = "SELECT * FROM Utente,Personale,Responbile where idPersonale=idUtente and idPersonale=idResponsabile and idResponsabile= ? ";
+            String sql = "SELECT * FROM utente,personale,responbile where idPersonale=idUtente and idPersonale=idResponsabile and idResponsabile= ? ";
             // Create a statement
             stmt = (PreparedStatement) con.prepareStatement(sql);
             stmt.setString(1, id.toString());

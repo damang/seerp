@@ -87,17 +87,23 @@ public class OpCliente extends OpExtraAzienda {
     public void elimina(Cliente user) throws SQLException {
 
         PreparedStatement stmt = null;
+        PreparedStatement stmt1 = null;
+ try {
+                con.setAutoCommit(false);
+                String sqlu = "Delete * from utente where username=?";
+                String sqle = "Delete * extraazienda where idExtraAzienda=?";
+                stmt = (PreparedStatement) con.prepareStatement(sqlu);
+                stmt1= (PreparedStatement) con.prepareStatement(sqle);
+                stmt.setString(1, user.getUsername());
+                stmt1.setInt(1,user.getIdUtente());
 
-        String sql = "DELETE idUtente,username,password,città,ruol,provincia," +
-                "telefono,cap,email,ruolo,note,v,cognome,nome,ragioneSociale," +
-                "pIva,fax FROM cliente,utente,extraazienda" + "where idUtente=idExtraAzienda and idExtraAzienda=idContatto and username =" + user;
+                stmt.execute();
+                stmt1.execute();
 
-        // Create a statement
-        stmt = (PreparedStatement) con.prepareStatement(sql);
-        stmt.setString(1, user.getUsername());
-        // Execute the query
-        stmt.executeQuery(sql);
-
+                con.commit();
+            } catch (SQLException e) {
+                con.rollback();
+            }
         stmt.close();
         ConnectionPool.releaseConnection(con);
 
@@ -113,7 +119,7 @@ public class OpCliente extends OpExtraAzienda {
 
         PreparedStatement stmt = null;
 
-        String sql = "UPDATE cliente,utente,extraazienda(visible) SET visible='false' where  idUtente=idExtraAzienda and idExtraAzienda=idContatto and username =" + user;
+        String sql = "UPDATE utente(visibilita) SET visible='false'";
         // Create a statement
         stmt = (PreparedStatement) con.prepareStatement(sql);
 
@@ -197,8 +203,7 @@ public class OpCliente extends OpExtraAzienda {
      */
     public Cliente modifica(Cliente user) throws SQLException, DatiErratiEx, DatiDuplicatiEx {
         PreparedStatement stmt = null;
-
-        Cliente cliente = null;
+        PreparedStatement stmte = null;
 
         Statement stmt1 = con.createStatement();
         String sqlTest = "SELECT idUtente,username,password,città,ruol,provincia," +
@@ -209,36 +214,45 @@ public class OpCliente extends OpExtraAzienda {
         if (rs.next()) {
             throw new DatiDuplicatiEx("utente già esistente nel database");
         } else {
+ try {
+                con.setAutoCommit(false);
+                String sqlu = "UPDATE utente(username,password,email,citta,prov,telefono" +
+                        "CAP,note,tipo,visibilita) SET username=?,password=?,email=?,citta=?,prov=?," +
+                        "telefono=?,CAP=?,note=?,tipo=?,visibilita=?";
+                String sqle = "UPDATE extraazienda(nome,cognome,fax,piva,ragioneSociale,codiceFiscale)" +
+                        "SET nome=?,cognome=?,fax=?,piva=?,ragioneSociale=?,codiceFiscale=?";
+
+
+                stmt = (PreparedStatement) con.prepareStatement(sqlu);
+                stmt.setString(1, user.getUsername());
+                stmt.setString(2, user.getPassword());
+                stmt.setString(3, user.getEmail());
+                stmt.setString(4, user.getCitta());
+                stmt.setString(5, user.getProvincia());
+                stmt.setString(6, user.getTelefono());
+                stmt.setString(7, user.getCap());
+                stmt.setString(8, user.getNote());
+                stmt.setString(9, user.getTipo());
+                stmt.setString(10, user.getVisible().toString());
+                stmte = (PreparedStatement) con.prepareStatement(sqle);
+                stmte.setString(1, user.getNome());
+                stmte.setString(2, user.getCognome());
+                stmte.setString(3, user.getFax());
+                stmte.setString(4, user.getPIva());
+                stmte.setString(5, user.getRagioneSociale());
+
+                stmt.execute();
+                stmte.execute();
+
+                con.commit();
+            } catch (SQLException e) {
+                con.rollback();
+            }
         }
-        // Create a statement
-        stmt = (PreparedStatement) con.prepareStatement("UPDATE cliente,utente,extraazienda(idUtente,username,password,città,ruol,provincia," +
-                "telefono,cap,email,ruolo,note,v,cognome,nome,ragioneSociale,pIva," +
-                "fax) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )" + "where  idUtente=idExtraAzienda and idExtraAzienda=idContatto and idUtente=" + user.getIdUtente());
-
-        stmt.setInt(1, user.getIdUtente());
-        stmt.setString(2, user.getUsername());
-        stmt.setString(3, user.getPassword());
-        stmt.setString(4, user.getCitta());
-        stmt.setString(5, user.getRuolo());
-        stmt.setString(6, user.getProvincia());
-        stmt.setString(7, user.getTelefono());
-        stmt.setString(8, user.getCap());
-        stmt.setString(9, user.getEmail());
-        stmt.setString(10, user.getRuolo());
-        stmt.setString(11, user.getNote());
-        stmt.setBoolean(12, user.getVisible());
-        stmt.setString(13, user.getCognome());
-        stmt.setString(14, user.getNome());
-        stmt.setString(15, user.getRagioneSociale());
-        stmt.setString(16, user.getPIva());
-        stmt.setString(17, user.getFax());
-
-        stmt.execute();
-        cliente = (Cliente) this.visualizzaDati(user.getIdUtente());
 
         stmt.close();
         ConnectionPool.releaseConnection(con);
-        return cliente;
+        return user;
 
 
     }
