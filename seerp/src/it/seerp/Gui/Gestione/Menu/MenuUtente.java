@@ -11,7 +11,7 @@
 
 package it.seerp.Gui.Gestione.Menu;
 
-import it.seerp.configurazioni.pattern.command.CommandInterface;
+import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.Utenti.AreaUtentePanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

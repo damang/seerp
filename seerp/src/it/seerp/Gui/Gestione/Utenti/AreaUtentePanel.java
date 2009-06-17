@@ -6,8 +6,8 @@
  */
 package it.seerp.Gui.Gestione.Utenti;
 
-import it.seerp.configurazioni.pattern.command.CommandInterface;
-import it.seerp.configurazioni.Gui.ConfigurazioneUtente;
+import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
+import it.seerp.Gui.configurazioni.Gui.ConfigurazioneUtente;
 import it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla;
 import it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva;
 import it.seerp.Gui.observablePanel.ObservableJPanel;

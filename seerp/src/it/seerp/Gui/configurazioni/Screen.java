@@ -1,4 +1,4 @@
-package it.seerp.configurazioni;
+package it.seerp.Gui.configurazioni;
 
 import java.awt.*;
 
