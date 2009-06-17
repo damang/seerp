@@ -118,6 +118,7 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
 
     /**
      * metodo che permette di visualizzare i dati di un utente
+     * @param id
      * @return Utente l'utente visualizzato
      * @throws SQLException
      * @throws DatiErratiEx

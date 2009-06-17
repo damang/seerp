@@ -28,7 +28,10 @@ public class AuthCallbackHandler implements CallbackHandler
 	private char[] _password;
 	/**
 	 * Constructor for UserAuthCallbackHandler.
-	 */
+     *
+     * @param userID
+     * @param password
+     */
 	public AuthCallbackHandler(String userID, char[] password)
 	{
 		super();

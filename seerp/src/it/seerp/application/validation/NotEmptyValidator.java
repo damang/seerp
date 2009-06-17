@@ -11,6 +11,12 @@ import org.jdesktop.swingx.JXPanel;
  */
 public class NotEmptyValidator extends AbstractValidator {
 
+    /**
+     *
+     * @param parent
+     * @param c
+     * @param message
+     */
     public NotEmptyValidator(JXPanel parent, JTextField c, String message) {
         super(parent, c, message);
     }

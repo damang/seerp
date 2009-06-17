@@ -13,7 +13,11 @@ import java.util.regex.Pattern;
  * @author peppe
  */
 public class NewClass {
-    public static void main (String[] args)
+    /**
+     *
+     * @param args
+     */
+    public static void main(String[] args)
     {
        // PermessiDefault.init();
        /* JFrame f = new JFrame();

@@ -21,6 +21,9 @@ import javax.swing.JTabbedPane;
  */
 public class AreaUtenteButton extends ObserverButton implements CommandInterface {
 
+    /**
+     *
+     */
     protected JTabbedPane tabbedPane;
     private MenuUtente menu;
     AreaUtentePanel panel;
@@ -28,8 +31,10 @@ public class AreaUtenteButton extends ObserverButton implements CommandInterface
 
     /**
      *
-     * @param gruppoFinestreUpdate
-     * @param aThis
+     * @param pan
+     * @param menu
+     * @param act
+     * @throws SQLException
      */
     public AreaUtenteButton(JTabbedPane pan, MenuUtente menu, ActionListener act) throws SQLException {
         this.tabbedPane = pan;
@@ -40,6 +45,9 @@ public class AreaUtenteButton extends ObserverButton implements CommandInterface
 
     }
 
+    /**
+     *
+     */
     public AreaUtenteButton() {
         super();
     }

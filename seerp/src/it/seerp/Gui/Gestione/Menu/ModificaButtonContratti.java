@@ -18,10 +18,17 @@ import javax.swing.JOptionPane;
 public class ModificaButtonContratti extends JButton  implements CommandInterface {
 GestioneContratti areaContr=null;
 
-    public ModificaButtonContratti() {
+/**
+ *
+ */
+public ModificaButtonContratti() {
         super();
     }
 
+    /**
+     *
+     * @param l
+     */
     public ModificaButtonContratti(ActionListener l) {
         super();
         this.addActionListener(l);
@@ -29,6 +36,10 @@ GestioneContratti areaContr=null;
 
 
 
+    /**
+     *
+     * @param areaContr
+     */
     public void setAreaContratti(GestioneContratti areaContr) {
         this.areaContr =  areaContr;
     }

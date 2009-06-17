@@ -34,10 +34,18 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
     String tipoOP;
     MenuServizi menu;
 
+    /**
+     *
+     * @param menu
+     */
     public void setMenu(MenuServizi menu) {
         this.menu = menu;
     }
 
+    /**
+     *
+     * @param TipoOP
+     */
     public void setTipoOP(String TipoOP) {
         this.tipoOP = TipoOP;
     }
@@ -49,6 +57,10 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         this.servizio = new BeanGuiServizio(this);
     }
 
+    /**
+     *
+     * @param flag
+     */
     public void editabile(boolean flag) {
 
 
@@ -61,6 +73,10 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
 
     }
 
+    /**
+     *
+     * @param s
+     */
     public void inizializza(String s) {
 
         qnt.setText(s);
@@ -72,6 +88,9 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
 
     }
 
+    /**
+     *
+     */
     public void legameBeans() {
         servizio.setDisponibilita(disponibilita);
         servizio.setTipo(tipo);
@@ -82,10 +101,18 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
 
     }
 
+    /**
+     *
+     * @return
+     */
     public ButtonSalva getSalva() {
         return this.buttonSalva1;
     }
 
+    /**
+     *
+     * @return
+     */
     public ButtonAnnulla getAnnulla() {
         return this.buttonAnnulla1;
     }

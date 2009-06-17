@@ -22,8 +22,6 @@ public interface OpeEntity<E, G> {
     public void inserimento(E bean) throws SQLException;
 
     /**
-     * @param Bean imetodo che modifica la tupla delle informazioni contenute
-     * nel bean nella tabella opportuna
      * @param bean
      * @return bean modificato
      * @throws java.sql.SQLException
@@ -33,7 +31,7 @@ public interface OpeEntity<E, G> {
 
     /**
      * metodo che ricerca nel database l'enity con quel parametro in input
-     * @param nome parametro di ricerca
+     * @param id
      * @return bean ricercato
      * @throws java.sql.SQLException
      * nel caso in cui ci siano problemi legati alla visualizzazione nel database

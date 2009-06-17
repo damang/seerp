@@ -30,12 +30,20 @@ public class MenuInfoAzienda extends javax.swing.JPanel implements ActionListene
         initComponents();
     }
 
+    /**
+     *
+     * @param infoAzienda
+     */
     public void setPannello(InfoAzienda infoAzienda) {
         this.pannello = infoAzienda;
         pannello.setMenu(this);
         this.modificaButtonInfoAzienda1.setnIfoAzienda(pannello);
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton getModifica() {
         return modificaButtonInfoAzienda1;
     }

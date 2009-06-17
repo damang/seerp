@@ -12,22 +12,43 @@ package it.seerp.storage.jaas;
 import javax.swing.JOptionPane;
 
 
+/**
+ *
+ * @author LesAnge
+ */
 public class PermissionAdapterFactory
 {
-	protected PermissionAdapter _adapter;
-	protected boolean _bOK = false;
-	protected boolean _bFirst = true;
+    /**
+     *
+     */
+    protected PermissionAdapter _adapter;
+    /**
+     *
+     */
+    protected boolean _bOK = false;
+    /**
+     *
+     */
+    protected boolean _bFirst = true;
 	
 	private static PermissionAdapterFactory _instance;
 	
-	public static PermissionAdapterFactory getInstance ()
+    /**
+     *
+     * @return
+     */
+    public static PermissionAdapterFactory getInstance()
 	{
 		if (_instance == null)
 			_instance = new PermissionAdapterFactory ();
 		return _instance;
 	}
 	
-	public static PermissionAdapter getAdapter ()
+    /**
+     *
+     * @return
+     */
+    public static PermissionAdapter getAdapter()
 	{
             
 		PermissionAdapterFactory me = getInstance();
@@ -38,16 +59,27 @@ public class PermissionAdapterFactory
 	}
 
 	
-	public PermissionAdapterFactory()
+    /**
+     *
+     */
+    public PermissionAdapterFactory()
 	{
 	}
 	
-	protected PermissionAdapter getHandlerInternal ()
+    /**
+     *
+     * @return
+     */
+    protected PermissionAdapter getHandlerInternal()
 	{
 		return _adapter;
 	}
 	
-	public boolean prepare ()
+    /**
+     *
+     * @return
+     */
+    public boolean prepare()
 	{
 		if (Debug.DEBUG)
 			Debug.trace("PermissionAdapterFactory::prepare");
@@ -61,7 +93,11 @@ public class PermissionAdapterFactory
 		return _bOK;
 	}
 	
-	public PermissionAdapter instantiateAdapter ()
+    /**
+     *
+     * @return
+     */
+    public PermissionAdapter instantiateAdapter()
 	{
 		if (Debug.DEBUG)
 			Debug.trace("PermissionAdapterFactory::instantiateAdapter");

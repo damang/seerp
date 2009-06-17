@@ -79,6 +79,7 @@ public class Evento {
    
     /**
      * metodo che setta l'identificativo dell'agenda associata a quell'evento
+     * @param a
      */
     public void setAgenda(Agenda a) {
         this.agd = a;

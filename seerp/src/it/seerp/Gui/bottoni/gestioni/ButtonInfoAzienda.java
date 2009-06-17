@@ -23,6 +23,9 @@ import javax.swing.JTabbedPane;
  */
 public class ButtonInfoAzienda  extends ObserverButton implements CommandInterface{
 
+    /**
+     *
+     */
     protected JTabbedPane tabbedPane;
     private MenuInfoAzienda menu;
     InfoAzienda panel;
@@ -31,8 +34,10 @@ public class ButtonInfoAzienda  extends ObserverButton implements CommandInterfa
 
     /**
      *
-     * @param gruppoFinestreUpdate
-     * @param aThis
+     * @param pan
+     * @param menu
+     * @param act
+     * @throws SQLException
      */
     public ButtonInfoAzienda(JTabbedPane pan, MenuInfoAzienda menu, ActionListener act) throws SQLException {
         this.tabbedPane = pan;
@@ -45,6 +50,9 @@ public class ButtonInfoAzienda  extends ObserverButton implements CommandInterfa
 
     }
 
+    /**
+     *
+     */
     public ButtonInfoAzienda() {
         super();
     }

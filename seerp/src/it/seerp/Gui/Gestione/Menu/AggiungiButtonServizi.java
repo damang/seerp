@@ -17,16 +17,27 @@ public class AggiungiButtonServizi extends JButton implements CommandInterface {
 
     GestioneServizi areaSer;
 
+    /**
+     *
+     */
     public AggiungiButtonServizi() {
         super();
     }
 
+    /**
+     *
+     * @param l
+     */
     public AggiungiButtonServizi(ActionListener l) {
         super();
         this.addActionListener(l);
     //   areaUt=panel;
     }
 
+    /**
+     *
+     * @param areaSer
+     */
     public void setServizi(GestioneServizi areaSer) {
         this.areaSer = areaSer;
     }

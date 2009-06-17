@@ -22,6 +22,10 @@ public class OpCliente extends OpExtraAzienda {
 
     Connection con = null;
 
+    /**
+     *
+     * @throws java.sql.SQLException
+     */
     public OpCliente() throws SQLException {
         super();
         con = ConnectionPool.getConnection();
@@ -127,7 +131,9 @@ public class OpCliente extends OpExtraAzienda {
     /** Metodo per inserire un nuovo Cliente
      * @param user
      * user del Cliente da inserire
-     * @throws java.sql.SQLException*/
+     * @throws java.sql.SQLException
+     * @throws DatiDuplicatiEx
+     */
     public void inserisci(Cliente user) throws SQLException, DatiDuplicatiEx {
 
 
@@ -185,7 +191,10 @@ public class OpCliente extends OpExtraAzienda {
      * @param user
      * user del Cliente da modificare
      * @return lo stesso oggetto modificato
-     * @throws java.sql.SQLException*/
+     * @throws java.sql.SQLException
+     * @throws DatiErratiEx
+     * @throws DatiDuplicatiEx
+     */
     public Cliente modifica(Cliente user) throws SQLException, DatiErratiEx, DatiDuplicatiEx {
         PreparedStatement stmt = null;
 

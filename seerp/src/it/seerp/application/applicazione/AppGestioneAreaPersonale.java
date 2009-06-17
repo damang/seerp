@@ -18,7 +18,7 @@ public class AppGestioneAreaPersonale implements GestioneAreaPersonale<BeanGuiUt
 
     /**
      * Metodo che permette di visualizzare tutti i dati relativi ad un utente
-     * @param utente rappresenta il Bean grafico dell'utente che si vuole visualizzare
+     * @param beanGui
      * @return il Bean Grafico contenente i dati dell'utente
      */
     public BeanGuiUtente visualizzaDati(BeanGuiUtente beanGui) {
@@ -39,7 +39,7 @@ public class AppGestioneAreaPersonale implements GestioneAreaPersonale<BeanGuiUt
 
     /**
      * Metodo che permette di modificare la password di un utente
-     * @param utente rappresenta il Bean grafico dell'utente interessato
+     * @param beanGui
      * @return il Bean grafico modificato
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui i dati inseriti sono errati

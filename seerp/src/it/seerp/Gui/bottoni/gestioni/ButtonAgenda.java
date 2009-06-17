@@ -29,6 +29,9 @@ import it.seerp.Gui.Gestione.agenda.Event;
  */
 public class ButtonAgenda extends ObserverButton implements CommandInterface{
 
+    /**
+     *
+     */
     protected JTabbedPane tabbedPane;
     private MenuAppuntamento menu;
     CalendarPanel panel;
@@ -36,8 +39,10 @@ public class ButtonAgenda extends ObserverButton implements CommandInterface{
 
     /**
      *
-     * @param gruppoFinestreUpdate
-     * @param aThis
+     * @param pan
+     * @param menu
+     * @param act
+     * @throws SQLException
      */
     public ButtonAgenda(JTabbedPane pan, MenuAppuntamento menu, ActionListener act) throws SQLException {
         this.tabbedPane = pan;
@@ -50,6 +55,9 @@ public class ButtonAgenda extends ObserverButton implements CommandInterface{
 
     }
 
+    /**
+     *
+     */
     public ButtonAgenda() {
         super();
     }

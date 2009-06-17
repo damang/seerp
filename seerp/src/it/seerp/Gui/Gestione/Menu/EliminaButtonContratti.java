@@ -18,14 +18,25 @@ import javax.swing.JOptionPane;
 public class EliminaButtonContratti extends JButton  implements CommandInterface {
    GestioneContratti areaContr;
 
-    public void setAreaContr(GestioneContratti areaContr) {
+   /**
+    *
+    * @param areaContr
+    */
+   public void setAreaContr(GestioneContratti areaContr) {
         this.areaContr = areaContr;
     }
 
+    /**
+     *
+     */
     public EliminaButtonContratti() {
         super();
     }
 
+    /**
+     *
+     * @param l
+     */
     public EliminaButtonContratti(ActionListener l) {
         super();
         this.addActionListener(l);

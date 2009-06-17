@@ -14,6 +14,10 @@ import java.io.*;
 import java.util.*;
 
 
+/**
+ *
+ * @author LesAnge
+ */
 public class AuthConfig implements Serializable
 {
 	
@@ -26,7 +30,11 @@ public class AuthConfig implements Serializable
 
 	private static AuthConfig _instance;
 
-	public static AuthConfig getInstance ()
+    /**
+     *
+     * @return
+     */
+    public static AuthConfig getInstance()
 	{
 		if (_instance == null)
 			_instance = new AuthConfig();
@@ -38,56 +46,99 @@ public class AuthConfig implements Serializable
 
 	}
 
-	public void setLoginHandlerClassName (String handler)
+    /**
+     *
+     * @param handler
+     */
+    public void setLoginHandlerClassName(String handler)
 	{
 		_loginHandlerClass = handler;
 	}
 
-	public String getLoginHandlerClassName ()
+    /**
+     *
+     * @return
+     */
+    public String getLoginHandlerClassName()
 	{
 		return _loginHandlerClass;
 	}
 
-	public void addLoginInitParam (String key, Object value)
+    /**
+     *
+     * @param key
+     * @param value
+     */
+    public void addLoginInitParam(String key, Object value)
 	{
 		if (_htLoginInitParam == null)
 			_htLoginInitParam = new Hashtable ();
 		_htLoginInitParam.put(key, value);
 	}
 
-	public Hashtable getLoginInitParam ()
+    /**
+     *
+     * @return
+     */
+    public Hashtable getLoginInitParam()
 	{
 		return _htLoginInitParam;
 	}
 
-	public void setAuthznHandlerClassName (String handler)
+    /**
+     *
+     * @param handler
+     */
+    public void setAuthznHandlerClassName(String handler)
 	{
 		_authznHandlerClass = handler;
 	}
 
-	public String getAuthznHandlerClassName ()
+    /**
+     *
+     * @return
+     */
+    public String getAuthznHandlerClassName()
 	{
 		return _authznHandlerClass;
 	}
 
-	public void addAuthznInitParam (String key, Object value)
+    /**
+     *
+     * @param key
+     * @param value
+     */
+    public void addAuthznInitParam(String key, Object value)
 	{
 		if (_htAuthznInitParam == null)
 			_htAuthznInitParam = new Hashtable();
 		_htAuthznInitParam.put (key, value);
 	}
 
-	public Hashtable getAuthznInitParam ()
+    /**
+     *
+     * @return
+     */
+    public Hashtable getAuthznInitParam()
 	{
 		return _htAuthznInitParam;
 	}
 
-	public boolean isLoaded ()
+    /**
+     *
+     * @return
+     */
+    public boolean isLoaded()
 	{
 		return _bLoaded;
 	}
 
-	public void load(String file) throws IOException
+    /**
+     *
+     * @param file
+     * @throws java.io.IOException
+     */
+    public void load(String file) throws IOException
 	{
 		
 		//System.out.println("load config:" + file);
@@ -95,7 +146,12 @@ public class AuthConfig implements Serializable
 		load (in);
 	}
 
-	public void load (InputStream in) throws IOException
+    /**
+     *
+     * @param in
+     * @throws java.io.IOException
+     */
+    public void load(InputStream in) throws IOException
 	{
 		try
 		{

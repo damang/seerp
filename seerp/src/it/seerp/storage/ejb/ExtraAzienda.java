@@ -17,6 +17,9 @@ public class ExtraAzienda extends Utente {
     private ArrayList<Appuntamento> listAppuntamenti;
     private ArrayList<Contratto> listContratti;
 
+    /**
+     *
+     */
     public ExtraAzienda() {
         
     }
@@ -27,12 +30,13 @@ public class ExtraAzienda extends Utente {
      * @param idUtente
      * @param username
      * @param password
-     * @param città
+     * @param citta 
+     * @param tipo
      * @param provincia
      * @param telefono
+     * @param cap
      * @param email
      * @param note
-     * @param idExtraAzienda
      * @param cognome
      * @param nome
      * @param ragioneSociale
@@ -75,7 +79,7 @@ public class ExtraAzienda extends Utente {
 
     /**
      * restuisce la lista di appuntamenti associatia d un extraazienda
-     * @param listAppuntamenti lista di appuntamenti associatia d un extraazienda
+     * @return
      */
     public ArrayList<Appuntamento> getListAppuntamenti() {
         return listAppuntamenti;
@@ -188,7 +192,7 @@ public class ExtraAzienda extends Utente {
     }
     /**
      *  * metodo che rimuove un appuntamento alla lista contratti
-      * @param c appuntamento di un extraazienda da eliminare dalla lista
+     * @param p
      */
     public void removeAppuntamento(Appuntamento p){
      listAppuntamenti.remove(p);}

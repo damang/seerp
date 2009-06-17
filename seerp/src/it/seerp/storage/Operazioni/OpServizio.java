@@ -20,13 +20,17 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
     private Connection conn;
 
 
+    /**
+     *
+     * @throws java.sql.SQLException
+     */
     public OpServizio() throws SQLException {
         conn = (Connection) ConnectionPool.getConnection();
     }
 
     /**
      * metodo che si occupa di inserire un nuovo servizio nel database
-     * @param se il unovo servizio da inserire
+     * @param serv
      * @throws java.sql.SQLException
      * @throws DatiErratiEx eccezione lanciata se si inseriscono dati errati
      */
@@ -55,7 +59,6 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
 
     /**
      * metodo che si occupa di ricercare un servizio in base all'id
-     * @param nome del servizio
      * @return lista di servizi che rispettano i parametri di ricerca
      * @throws java.sql.SQLException
      */
@@ -70,6 +73,7 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
      * @param servizio parametro che contiene le informazioni da modificare
      * @return servizio modificato
      * @throws java.sql.SQLException
+     * @throws DatiErratiEx
      */
     public Servizio modifica(Servizio servizio) throws SQLException, DatiErratiEx {
 

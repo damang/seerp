@@ -59,6 +59,7 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
      * Questo metodo è chiamato da java quando un componente deve essere validato e non deve essere chiamato
      * direttamente. Non fare l'override del metodo se non si vuole veramente cambiare il comportamento della
      * validazione. Implementare validationCriteria()
+     * @param c
      */
     public boolean verify(JComponent c) {
         if (!validationCriteria(c)) {
@@ -98,6 +99,7 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
     }
 
     /**
+     * @param e
      * @see KeyListener
      */
     public void keyPressed(KeyEvent e) {
@@ -105,12 +107,14 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
     }
 
     /**
+     * @param e
      * @see KeyListener
      */
     public void keyTyped(KeyEvent e) {
     }
 
     /**
+     * @param e
      * @see KeyListener
      */
     public void keyReleased(KeyEvent e) {

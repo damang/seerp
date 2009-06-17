@@ -19,6 +19,7 @@ public class Permesso extends Permission implements Serializable {
 
     /**
      *
+     * @param id
      * @param name nome del permesso
      * @param action azione eseguibile
      */
@@ -28,6 +29,11 @@ public class Permesso extends Permission implements Serializable {
         _action = action;
         _id=id;
     }
+    /**
+     *
+     * @param name
+     * @param action
+     */
     public Permesso(String name, String action) {
         super(name);
         getPath(name);
@@ -83,7 +89,6 @@ public class Permesso extends Permission implements Serializable {
      * Questo metodo serve per confrontare due action
      * @param action action con cui confrontare
      * @return true il risultato del confronto
-     * @return false ddddd
      */
     protected boolean compareAction(String action) {
         if (_action.equals(action)) {
@@ -106,6 +111,10 @@ public class Permesso extends Permission implements Serializable {
             return _path.equals(path);
         }
     }
+    /**
+     *
+     * @return
+     */
     public int getId() {
         return _id;
     }

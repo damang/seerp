@@ -18,14 +18,18 @@ import javax.swing.JTabbedPane;
  */
 public class ButtonContratti extends ObserverButton implements CommandInterface {
 
+    /**
+     *
+     */
     protected JTabbedPane tabbedPane;
     private JPanel menu;
     GestioneContratti panel;
 
     /**
      *
-     * @param gruppoFinestreUpdate
-     * @param aThis
+     * @param pan
+     * @param act 
+     * @param menu
      */
     public ButtonContratti(JTabbedPane pan, JPanel menu, ActionListener act) {
         this.tabbedPane = pan;
@@ -36,6 +40,9 @@ public class ButtonContratti extends ObserverButton implements CommandInterface 
         panel.register(this);
     }
 
+    /**
+     *
+     */
     public ButtonContratti() {
         super();
     }

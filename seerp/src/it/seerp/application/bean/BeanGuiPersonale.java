@@ -27,6 +27,7 @@ public class BeanGuiPersonale extends BeanGuiUtente {
     /**
      * Costruttore a cui viene passato un componente grafico necessario alla
      * validazione del campo
+     * @param c
      */
     public BeanGuiPersonale(JXPanel c) {
         grafica = c;
@@ -38,6 +39,24 @@ public class BeanGuiPersonale extends BeanGuiUtente {
     public BeanGuiPersonale() {
     }
 
+    /**
+     *
+     * @param idUtenteTxt
+     * @param txtUsername
+     * @param txtPassword
+     * @param txtCitta
+     * @param txtProvincia
+     * @param txtTelefono
+     * @param txtEmail
+     * @param txtNote
+     * @param txtNotifica
+     * @param tipo
+     * @param visible
+     * @param cognome
+     * @param nome
+     * @param codiceFiscale
+     * @param ruolo
+     */
     public BeanGuiPersonale(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCitta, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField txtNotifica, JTextField tipo, JTextField visible, JTextField cognome, JTextField nome, JTextField codiceFiscale, JTextField ruolo) {
         super(idUtenteTxt, txtUsername, txtPassword, txtCitta, txtProvincia, txtTelefono, txtEmail, txtNote, txtNotifica, tipo, visible);
         this.cognome = cognome;
@@ -51,10 +70,18 @@ public class BeanGuiPersonale extends BeanGuiUtente {
 
 
 
+    /**
+     *
+     * @return
+     */
     public JTextField getRuolo() {
         return ruolo;
     }
 
+    /**
+     *
+     * @param ruolo
+     */
     public void setRuolo(JTextField ruolo) {
         this.ruolo = ruolo;
     }
@@ -62,6 +89,7 @@ public class BeanGuiPersonale extends BeanGuiUtente {
     /**
      *
      * @return
+     * @throws Exception
      */
     public JTextField getCodiceFiscale() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
@@ -76,6 +104,7 @@ public class BeanGuiPersonale extends BeanGuiUtente {
     /**
      *
      * @return
+     * @throws Exception
      */
     public JTextField getCognome() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
@@ -88,6 +117,11 @@ public class BeanGuiPersonale extends BeanGuiUtente {
     }
    
 
+    /**
+     *
+     * @return
+     * @throws java.lang.Exception
+     */
     public JTextField getNome() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
             throw new Exception("Errore nella grafica!");

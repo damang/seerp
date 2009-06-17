@@ -27,6 +27,10 @@ public class MenuAppuntamento extends javax.swing.JPanel implements ActionListen
         initComponents();
     }
 
+    /**
+     *
+     * @param pannello
+     */
     public void setPannello(GestioneRuoli pannello) {
 
         this.pannello = pannello;

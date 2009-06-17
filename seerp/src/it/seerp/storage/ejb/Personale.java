@@ -14,6 +14,9 @@ public class Personale extends Utente {
     private String tipo;
     private Ruolo ruolo;
 
+    /**
+     *
+     */
     public Personale() {
         
     }
@@ -24,10 +27,11 @@ public class Personale extends Utente {
      * @param idUtente
      * @param username
      * @param password
-     * @param città
+     * @param citta
      * @param provincia
      * @param telefono
      * @param email
+     * @param cap
      * @param note
      * @param ruolo
      * @param cognome
@@ -54,7 +58,7 @@ public class Personale extends Utente {
 
     /**
      * metodo che permette di settare la liste dei ruoli del personale
-     * @param listRuoli rappresenta la lista dei ruoli
+     * @param ruolo
      */
     public void setRuolo(Ruolo ruolo) {
         this.ruolo = ruolo;

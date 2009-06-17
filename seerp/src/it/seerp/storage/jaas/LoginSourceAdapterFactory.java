@@ -14,9 +14,17 @@
 package it.seerp.storage.jaas;
 
 
+/**
+ *
+ * @author LesAnge
+ */
 public class LoginSourceAdapterFactory
 {
-	public static LoginSourceAdapter getLoginAdapter ()
+    /**
+     *
+     * @return
+     */
+    public static LoginSourceAdapter getLoginAdapter()
 	{
 		AuthConfig cfg = AuthConfig.getInstance();
 		String cName = cfg.getLoginHandlerClassName();

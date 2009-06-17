@@ -63,6 +63,7 @@ public class Conversione {
      * @param pGui
      * Il Bean Gui Contratto da convertire
      * @return Il Bean Contratto convertito
+     * @throws Exception
      */
     public static Contratto conversioneContratto(BeanGuiContratto pGui) throws Exception {
         ArrayList<Pagamento> listPag = new ArrayList<Pagamento>();
@@ -102,6 +103,7 @@ public class Conversione {
      * @param c il Bean Contratto da convertire
      * @param gui il Bean Grafico che deve essere modificato
      * @return Il Bean Gui Contratto convertito
+     * @throws Exception
      */
     public static BeanGuiContratto conversioneContratto(Contratto c, BeanGuiContratto gui) throws Exception {
         JTextField field = new JTextField();
@@ -132,6 +134,7 @@ public class Conversione {
      * @param pGui
      * Il Bean Gui Evento da convertire
      * @return Il Bean Evento convertito
+     * @throws Exception
      */
     public static Evento conversioneEvento(BeanGuiEvento pGui) throws Exception {
         Evento evento= new Evento();
@@ -187,6 +190,7 @@ public class Conversione {
      * @param pGui
      * Il Bean Gui Servizio da convertire
      * @return Il Bean Servizio convertito
+     * @throws Exception
      */
     public static Servizio conversioneServizio(BeanGuiServizio pGui) throws Exception {
         ArrayList<ServizioAssociato> list = new ArrayList<ServizioAssociato>();
@@ -245,6 +249,7 @@ public class Conversione {
      * @param p
      * Il Bean Gui Pagamento da convertire
      * @return Il Bean Pagamento convertito
+     * @throws Exception
      */
     public static Pagamento conversionePagamento(BeanGuiPagamento p) throws Exception {
        throw new UnsupportedOperationException("Not yet implemented");
@@ -255,6 +260,7 @@ public class Conversione {
      * @param p il Bean Pagamento da convertire
      * @param pagamento il Bean Grafico che deve essere modificato
      * @return Il Bean Gui Pagamento convertito
+     * @throws Exception
      */
     public static BeanGuiPagamento conversionePagamento(Pagamento p, BeanGuiPagamento pagamento) throws Exception {
         throw new UnsupportedOperationException("Not yet implemented");
@@ -265,6 +271,7 @@ public class Conversione {
      * @param bUtente
      * Il Bean Gui da convertire
      * @return il Bean convertito
+     * @throws Exception
      */
     public static Utente conversioneUtente(BeanGuiUtente bUtente) throws Exception {
         Utente utente = new Utente();
@@ -316,6 +323,7 @@ public class Conversione {
      * @param bp
      * Il Bean Gui da convertire
      * @return il Bean convertito
+     * @throws Exception
      */
     public static Personale conversionePersonale(BeanGuiPersonale bp) throws Exception {
         
@@ -380,6 +388,7 @@ public class Conversione {
      * @param e
      * Il Bean Gui da convertire
      * @return il Bean convertito
+     * @throws Exception
      */
     public static ExtraAzienda conversioneExtraAzienda(BeanGuiExtraAzienda e) throws Exception {
 
@@ -424,6 +433,7 @@ public class Conversione {
      * @param e il Bean da convertire
      * @param extra il Bean Grafico che deve essere modificato
      * @return il Bean Gui convertito
+     * @throws Exception
      */
     public static BeanGuiExtraAzienda conversazioneExtraAzienda(ExtraAzienda e, BeanGuiExtraAzienda extra) throws Exception {
 
@@ -469,6 +479,7 @@ public class Conversione {
      * @param r
      * Il Bean Gui da convertire
      * @return il Bean convertito
+     * @throws Exception
      */
     public static Responsabile conversioneResponsabile(BeanGuiResponsabile r) throws Exception {
 
@@ -533,6 +544,7 @@ public class Conversione {
      * @param r
      * Il Bean Gui da convertire
      * @return il Bean convertito
+     * @throws Exception
      */
     public static Dipendente conversioneDipendente(BeanGuiDipendente r) throws Exception {
 
@@ -612,7 +624,7 @@ public class Conversione {
     /**
      * Metodo che converte un Bean Amministratore in un Bean Gui Amministratore
      * @param e il Bean da convertire
-     * @param br il Bean Grafico che deve essere modificato
+     * @param ba
      * @return il Bean Gui convertito
      */
     public static BeanGuiAmministratore conversioneAmministratore(Amministratore e, BeanGuiAmministratore ba) {
@@ -648,9 +660,9 @@ public class Conversione {
 
     /**
      * Metodo che converte un Bean Gui Amministratore in un normale Bean Amministratore
-     * @param e
-     * Il Bean Gui da convertire
+     * @param r
      * @return il Bean convertito
+     * @throws Exception
      */
     public static Amministratore conversioneAmministratore(BeanGuiAmministratore r) throws Exception {
 
@@ -679,6 +691,7 @@ public class Conversione {
      * @param e
      * Il Bean Gui da convertire
      * @return il Bean convertito
+     * @throws Exception
      */
     public static Contatto conversioneContatto(BeanGuiContatto e) throws Exception {
 
@@ -723,6 +736,7 @@ public class Conversione {
      * @param e il Bean da convertire
      * @param cont il Bean Grafico che deve essere modificato
      * @return il Bean Gui convertito
+     * @throws Exception
      */
     public static BeanGuiContatto conversioneContatto(Contatto e, BeanGuiContatto cont) throws Exception {
 
@@ -770,6 +784,7 @@ public class Conversione {
      * @param e
      * Il Bean Gui da convertire
      * @return il Bean convertito
+     * @throws Exception
      */
     public static Cliente conversioneCliente(BeanGuiCliente e) throws Exception {
         ArrayList<Appuntamento> a = new ArrayList<Appuntamento>();
@@ -814,6 +829,7 @@ public class Conversione {
      * @param e il Bean da convertire
      * @param cl il Bean Grafico che deve essere modificato
      * @return il Bean Gui convertito
+     * @throws Exception
      */
     public static BeanGuiCliente conversioneCliente(Cliente e, BeanGuiCliente cl) throws Exception {
 
@@ -860,6 +876,7 @@ public class Conversione {
      * @param e
      * Il Bean Gui da convertire
      * @return il Bean convertito
+     * @throws Exception
      */
     public static Fornitore conversioneFornitore(BeanGuiFornitore e) throws Exception {
         ArrayList<Appuntamento> a = new ArrayList<Appuntamento>();
@@ -969,6 +986,7 @@ public class Conversione {
      * @param b
      * Il Bean Gui da convertire
      * @return il Bean convertito
+     * @throws Exception
      */
     public static Permesso conversionePermesso(BeanGuiPermesso b) throws Exception {
 
@@ -994,6 +1012,7 @@ public class Conversione {
      * @param b
      * Il Bean Gui da convertire
      * @return il Bean convertito
+     * @throws Exception
      */
     public static Ruolo conversioneRuolo(BeanGuiRuolo b) throws Exception {
         Ruolo r = new Ruolo(b.getNome().getText());
@@ -1013,6 +1032,7 @@ public class Conversione {
     /**
      * Metodo che converte un Bean Ruolo in un Bean Gui Ruolo
      * @param b il Bean da convertire
+     * @param r
      * @para r il Bean Grafico che deve essere modificato
      * @return il Bean Gui convertito
      */
@@ -1053,6 +1073,12 @@ public class Conversione {
         return agenda1;
     }
 
+    /**
+     *
+     * @param azienda
+     * @return
+     * @throws java.lang.Exception
+     */
     public static Azienda conversioneAzienda(BeanGuiAzienda azienda) throws Exception {
         Azienda azienda1= new Azienda();
         azienda1.setCitta(azienda.getCitta().getText());
@@ -1088,6 +1114,12 @@ public class Conversione {
         return sa;
     }
 
+    /**
+     *
+     * @param a
+     * @param bga
+     * @return
+     */
     public static BeanGuiAzienda conversioneAzienda(Azienda a, BeanGuiAzienda bga) {
 
         JTextField c = new JTextField();

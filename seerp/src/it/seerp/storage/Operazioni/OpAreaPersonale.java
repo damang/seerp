@@ -17,6 +17,10 @@ public class OpAreaPersonale extends OpPersonale {
 
     private Connection conn;
 
+    /**
+     *
+     * @throws java.sql.SQLException
+     */
     public OpAreaPersonale() throws SQLException {
 
         conn = (Connection) ConnectionPool.getConnection();

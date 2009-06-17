@@ -11,9 +11,16 @@ package it.seerp.storage.Exception;
  */
 public class UsernameNonValidoEx extends java.lang.Exception{
 
+    /**
+     *
+     */
     public UsernameNonValidoEx() {
     }
 
+    /**
+     *
+     * @param msg
+     */
     public UsernameNonValidoEx(String msg) {
         super(msg);
     }

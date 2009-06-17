@@ -16,7 +16,6 @@ public class Ruolo {
 
      /**
       * costruttore per la classe Ruolo
-      * @param idRuolo
       * @param nome
       */
      public Ruolo(String nome) {
@@ -26,7 +25,11 @@ public class Ruolo {
         perm_syncro=true;
     }
 
-    public void setListPersonale(ArrayList<Personale> listPersonale) {
+     /**
+      *
+      * @param listPersonale
+      */
+     public void setListPersonale(ArrayList<Personale> listPersonale) {
         this.listPersonale = listPersonale;
     }
 
@@ -81,6 +84,10 @@ public class Ruolo {
     public void addPermesso(Permesso c){
       listPermesso.add(c);
     }
+    /**
+     *
+     * @param b
+     */
     public void setPermSyncro(boolean b) {
         perm_syncro=b;
         if(perm_syncro==false) {

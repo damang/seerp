@@ -22,6 +22,12 @@ public class TabButton extends JButton implements ActionListener {
     JPanel menu;
   
 
+    /**
+     *
+     * @param pane
+     * @param panel
+     * @param menu
+     */
     public TabButton(JTabbedPane pane, ObservableJPanel panel, JPanel menu) {
         this.pane = pane;
         this.pannel = panel;

@@ -14,14 +14,18 @@ import javax.swing.JTabbedPane;
  */
 public class AreaPersonaleButton extends ObserverButton implements CommandInterface {
 
+    /**
+     *
+     */
     protected JTabbedPane tabbedPane;
     private JPanel menu;
     AreaPersonalePanel panel;
 
     /**
      *
-     * @param gruppoFinestreUpdate
-     * @param aThis
+     * @param pan 
+     * @param menu
+     * @param act
      */
     public AreaPersonaleButton(JTabbedPane pan, JPanel menu, ActionListener act) {
         this.tabbedPane = pan;
@@ -31,6 +35,9 @@ public class AreaPersonaleButton extends ObserverButton implements CommandInterf
         panel.register(this);
     }
 
+    /**
+     *
+     */
     public AreaPersonaleButton() {
         super();
     }

@@ -29,6 +29,10 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
     BeanGuiAzienda azienda;
     MenuInfoAzienda menu;
 
+    /**
+     *
+     * @param menu
+     */
     public void setMenu(MenuInfoAzienda menu) {
         this.menu = menu;
         azienda = new BeanGuiAzienda();
@@ -39,6 +43,10 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
         editabile(false);
     }
 
+    /**
+     *
+     * @param flag
+     */
     public void editabile(boolean flag) {
     
         mail.setEditable(flag);
@@ -49,6 +57,9 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
 
     }
 
+    /**
+     *
+     */
     public void legameBean() {
         azienda.setEmail(mail);
         azienda.setPIVA(piva);
@@ -63,11 +74,19 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
         initComponents();
     }
 
+    /**
+     *
+     * @return
+     */
     public ButtonSalva getSalva() {
         return this.buttonSalva1;
 
     }
 
+    /**
+     *
+     * @return
+     */
     public ButtonAnnulla getAnnulla() {
         return this.buttonAnnulla1;
     }

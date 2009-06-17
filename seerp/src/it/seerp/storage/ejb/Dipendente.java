@@ -15,6 +15,9 @@ public class Dipendente extends Personale {
     private ArrayList<Appuntamento> listAppuntamenti;
     private ArrayList<Contratto> listContratti;
 
+    /**
+     *
+     */
     public Dipendente() {
         
     }
@@ -24,13 +27,13 @@ public class Dipendente extends Personale {
      * @param idUtente
      * @param username
      * @param password
-     * @param città
-     * @param provincia
+      * @param citta
+      * @param provincia
      * @param telefono
      * @param email
-     * @param note
+      * @param cap
+      * @param note
      * @param ruolo
-     * @param idPersonale
      * @param cognome
      * @param nome
      * @param codiceFiscale
@@ -84,7 +87,7 @@ public class Dipendente extends Personale {
 
     /**
      *  * metodo che rimuove un appuntamento alla lista contratti
-     * @param c appuntamento di un extraazienda da eliminare dalla lista
+     * @param p
      */
     public void removeAppuntamento(Appuntamento p) {
         listAppuntamenti.remove(p);

@@ -33,6 +33,7 @@ public class BeanGuiContratto {
     /**
      * Costruttore a cui viene passato un componente grafico necessario alla
      * validazione del campo
+     * @param c
      */
     public BeanGuiContratto(JXPanel c) {
         grafica = c;
@@ -52,8 +53,6 @@ public class BeanGuiContratto {
      * @param tipo
      * @param idContratto
      * @param note
-     * @param dipendente
-     * @param extraAzienda
      */
     public BeanGuiContratto(JTextField stato, JTextField data, JTextField durata, JTextField tipo, JTextField idContratto, JTextArea note) {
         this.stato = stato;
@@ -117,12 +116,21 @@ public class BeanGuiContratto {
     }
 
   
+    /**
+     *
+     * @return
+     * @throws java.lang.Exception
+     */
     public BeanGuiDipendente getDipendente() throws Exception {
       
         return dipendente;
     }
 
   
+    /**
+     *
+     * @param pdipendente
+     */
     public void setDipendente(BeanGuiDipendente pdipendente) {
         this.dipendente = pdipendente;
       
@@ -131,6 +139,7 @@ public class BeanGuiContratto {
     /**
      * metodo che restituisce il campo contenente la durata di un Contratto
      * @return il campo durata del Contratto
+     * @throws Exception
      */
     public JTextField getDurata() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
@@ -150,10 +159,18 @@ public class BeanGuiContratto {
     }
 
    
+    /**
+     *
+     * @return
+     */
     public BeanGuiExtraAzienda getExtraAzienda() {
         return extraAzienda;
     }
 
+    /**
+     *
+     * @param extraAzienda
+     */
     public void setExtraAzienda(BeanGuiExtraAzienda extraAzienda) {
         this.extraAzienda = extraAzienda;
     }
@@ -209,6 +226,7 @@ public class BeanGuiContratto {
     /**
      * metodo che restituisce il campo contente il tipo di Contratto
      * @return il campo tipo
+     * @throws Exception
      */
     public JTextField getTipo() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
@@ -251,29 +269,53 @@ public class BeanGuiContratto {
     
 
    
+    /**
+     *
+     * @param s
+     */
     public void addServizio(BeanGuiServizioAssociato s) {
         listServizio.add(s);
     }
 
 
+    /**
+     *
+     * @param s
+     */
     public void removeServizio(BeanGuiServizioAssociato s) {
         listServizio.remove(s);
     }
 
 
+    /**
+     *
+     * @param s
+     */
     public void addFattura(BeanGuiFattura s) {
         listFatture.add(s);
     }
 
 
+    /**
+     *
+     * @param s
+     */
     public void removeFattura(BeanGuiFattura s) {
         listFatture.remove(s);
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<BeanGuiFattura> getListFatture() {
         return listFatture;
     }
 
+    /**
+     *
+     * @param listFatture
+     */
     public void setListFatture(ArrayList<BeanGuiFattura> listFatture) {
         this.listFatture = listFatture;
     }

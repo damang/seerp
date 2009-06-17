@@ -19,6 +19,7 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto, Contrat
 
     /**
      * Metodo che permette la visualizzazione della lista dei contratti
+     * @param listGui
      * @return ArrayList dei contratti presenti nel sistema
      */
     public ArrayList<BeanGuiContratto> elenca(ArrayList<BeanGuiContratto> listGui) {
@@ -42,11 +43,10 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto, Contrat
 
     /**
      * Metodo che permette la visualizzazione di un singolo contratto
-     * @param nome
-     * criterio di visualizzazione del contratto
-     * @param list
-     * lista di tutti i contratti
+     * @param id 
+     * @param gui
      * @return Bean Gui del contratto che è stato selezionato
+     * @throws DatiErrati
      */
     public BeanGuiContratto visualizzaContratto(String id, BeanGuiContratto gui) throws DatiErrati {
         try {
@@ -65,10 +65,7 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto, Contrat
 
     /**
      * Metodo che permette la ricerca per dipendente
-     * @param nomeDipendente
-     * nome del dipendente
-     * @param list
-     * lista di tutti i contratti
+     * @param listGui
      * @return ArrayList contentente tutti i Bean Gui dei contratti appartenenti al dipendente immesso
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si inseriscano dati errati
@@ -94,8 +91,7 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto, Contrat
 
     /**
      * Metodo che permette l'inserimento di un contratto
-     * @param BeanGuiContratto
-     * Bean Gui del contratto da inserire
+     * @param beanGuiContratto
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si inseriscano dati errati
      * @throws it.seerp.application.Exception.DatiDuplicati
@@ -117,8 +113,7 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto, Contrat
 
     /**
      * Metodo che permette la modifica di un contratto
-     * @param BeanGuiContratto
-     * Bean Gui del contratto da modificare
+     * @param beanGuiContratto
      * @return il Bean Gui del contratto modificato
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si immettano dati errati

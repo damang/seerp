@@ -19,6 +19,9 @@ public class ServizioAssociato {
     private String note;
     ArrayList<ServizioAssociatoFattura> listServizioAssociatoFattura;
 
+    /**
+     *
+     */
     public ServizioAssociato() {
         
     }
@@ -28,8 +31,6 @@ public class ServizioAssociato {
      * costruttore
      * @param quantita
      * @param prezzoUnitario
-     * @param contratto
-     * @param servizio
      * @param note
      */
     public ServizioAssociato(Integer quantita, Double prezzoUnitario, String note) {

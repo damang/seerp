@@ -11,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
+ * @param <E>
  * @author Luisa
  */
 public abstract class Generica<E> extends DefaultTableModel implements InterfaceTM<E> {

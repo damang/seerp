@@ -8,6 +8,10 @@ import java.sql.SQLException;
  */
 public class OpAmministratore extends OpPersonale{
 
+    /**
+     *
+     * @throws java.sql.SQLException
+     */
     public OpAmministratore() throws SQLException{
     super();
     }

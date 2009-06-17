@@ -18,14 +18,25 @@ import javax.swing.JOptionPane;
 public class EliminaButtonUtente extends JButton  implements CommandInterface {
      AreaUtentePanel areaUt;
 
-    public void setAreaUt(AreaUtentePanel areaUt) {
+     /**
+      *
+      * @param areaUt
+      */
+     public void setAreaUt(AreaUtentePanel areaUt) {
         this.areaUt = areaUt;
     }
 
+    /**
+     *
+     */
     public EliminaButtonUtente() {
         super();
     }
 
+    /**
+     *
+     * @param l
+     */
     public EliminaButtonUtente(ActionListener l) {
         super();
         this.addActionListener(l);

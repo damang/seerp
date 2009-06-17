@@ -38,7 +38,7 @@ public class Utente {
      * @param telefono
      * @param cap
      * @param email
-     * @param tipo
+     * @param ruolo
      * @param note
      * @param v
      */
@@ -171,7 +171,7 @@ public class Utente {
 
     /**
      * setta il ruolo dell'utente
-     * @param ruolo di tipo stringa
+     * @param tipo
      */
     public void setTipo(String tipo) {
         this.tipo = tipo;

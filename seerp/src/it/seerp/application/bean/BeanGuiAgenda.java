@@ -17,6 +17,9 @@ public class BeanGuiAgenda {
     private JXPanel grafica;
     private NotEmptyValidator val;
 
+    /**
+     *
+     */
     public BeanGuiAgenda() {
         
     }
@@ -24,6 +27,7 @@ public class BeanGuiAgenda {
     /**
      * Costruttore a cui viene passato un componente grafico necessario alla
      * validazione del campo
+     * @param c
      */
     public BeanGuiAgenda(JXPanel c) {
         grafica = c;
@@ -73,6 +77,7 @@ public class BeanGuiAgenda {
     /**
      * metodo che restituisce l'id dell'agenda del campo associato
      * @return l'id dell'agenda
+     * @throws Exception
      */
     public JTextField getIdAgenda() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {

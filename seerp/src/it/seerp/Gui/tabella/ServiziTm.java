@@ -38,6 +38,7 @@ public class ServiziTm extends Generica<Servizio> {
     /**
      *
      * @param table
+     * @throws SQLException
      */
     public ServiziTm(JTable table) throws SQLException {
         this.table = table;

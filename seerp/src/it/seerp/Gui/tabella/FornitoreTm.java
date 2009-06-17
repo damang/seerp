@@ -20,7 +20,11 @@ import javax.swing.JTable;
 public class FornitoreTm extends Generica <Fornitore>{
  private JTable table;
 
-    public FornitoreTm() throws SQLException {
+ /**
+  *
+  * @throws java.sql.SQLException
+  */
+ public FornitoreTm() throws SQLException {
         Object[] list = new Object[]{
             "id",
             "p.iva",
@@ -42,6 +46,7 @@ public class FornitoreTm extends Generica <Fornitore>{
     /**
      *
      * @param table
+     * @throws SQLException
      */
     public FornitoreTm(JTable table) throws SQLException {
         this.table = table;

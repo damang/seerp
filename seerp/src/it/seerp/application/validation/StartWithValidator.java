@@ -11,6 +11,12 @@ import org.jdesktop.swingx.JXPanel;
  */
 public class StartWithValidator extends AbstractValidator {
 
+    /**
+     *
+     * @param parent
+     * @param c
+     * @param message
+     */
     public StartWithValidator(JXPanel parent, JTextField c, String message) {
         super(parent, c, message);
     }

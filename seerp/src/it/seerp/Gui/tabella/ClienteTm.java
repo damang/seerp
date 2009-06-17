@@ -17,7 +17,11 @@ import javax.swing.JTable;
 public class ClienteTm extends Generica <Cliente>{
  private JTable table;
 
-    public ClienteTm() throws SQLException {
+ /**
+  *
+  * @throws java.sql.SQLException
+  */
+ public ClienteTm() throws SQLException {
         Object[] list = new Object[]{
             "id",
             "ragione Sociale",
@@ -39,6 +43,7 @@ public class ClienteTm extends Generica <Cliente>{
     /**
      *
      * @param table
+     * @throws SQLException
      */
     public ClienteTm(JTable table) throws SQLException {
         this.table = table;

@@ -26,7 +26,6 @@ public class DisponibilitaLiquide {
      * @param note
      * @param idDisponibilitaLiquide
      * @param idPagamento
-     * @param listPagamento
      */
     public DisponibilitaLiquide(Double importo, String tipo, String note, Integer idDisponibilitaLiquide, Integer idPagamento) {
         this.importo = importo;

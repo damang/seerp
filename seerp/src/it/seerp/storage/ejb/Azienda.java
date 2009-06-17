@@ -18,16 +18,19 @@ public class Azienda {
     private String note;
     private Amministratore amministratore;
 
+    /**
+     *
+     */
     public Azienda() {
         
     }
 
     /**
      * costruttore per la classe Azienda
-     * @param città
+     * @param citta
      * @param email
+     * @param inidirizzo
      * @param fax
-     * @param indirizzo
      * @param nazione
      * @param pIVA
      * @param ragioneSociale
@@ -107,7 +110,7 @@ public class Azienda {
 
     /**
      * il metodo che setta la città dell'Azienda
-     * @param città
+     * @param citta
      */
     public void setCitta(String citta) {
         this.citta = citta;
@@ -173,7 +176,7 @@ public class Azienda {
 
     /**
      *il metodo che setta l'indirizzo dell'Azienda
-     * @param inidirizzo
+     * @param indirizzo
      */
     public void setIndirizzo(String indirizzo) {
         this.indirizzo = indirizzo;

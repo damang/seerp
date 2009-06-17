@@ -15,6 +15,9 @@ import it.seerp.application.bean.BeanGuiUtente;
  */
 public class ConfigurazioneUtente {
 
+    /**
+     *
+     */
     public static enum TIPO_UTENTE_CONST {
 
         /**
@@ -40,6 +43,11 @@ public class ConfigurazioneUtente {
 
     };
 
+    /**
+     *
+     * @param tipo
+     * @return
+     */
     public static BeanGuiUtente istanziaBean(TIPO_UTENTE_CONST tipo) {
 
         if (tipo.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {

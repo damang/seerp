@@ -23,6 +23,10 @@ import java.util.ArrayList;
 public class OpRuolo implements OpeEntity<Ruolo,String>{
     private Connection conn;
 
+    /**
+     *
+     * @throws java.sql.SQLException
+     */
     public OpRuolo() throws SQLException {
 
         conn = (Connection) ConnectionPool.getConnection();

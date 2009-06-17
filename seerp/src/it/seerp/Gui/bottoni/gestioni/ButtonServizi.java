@@ -18,14 +18,18 @@ import javax.swing.JTabbedPane;
  */
 public class ButtonServizi extends ObserverButton implements CommandInterface {
 
+    /**
+     *
+     */
     protected JTabbedPane tabbedPane;
     private JPanel menu;
     GestioneServizi panel;
 
     /**
      *
-     * @param gruppoFinestreUpdate
-     * @param aThis
+     * @param pan
+     * @param menu
+     * @param act
      */
     public ButtonServizi(JTabbedPane pan, JPanel menu, ActionListener act) {
         this.tabbedPane = pan;
@@ -36,6 +40,9 @@ public class ButtonServizi extends ObserverButton implements CommandInterface {
         panel.register(this);
     }
 
+    /**
+     *
+     */
     public ButtonServizi() {
         super();
     }

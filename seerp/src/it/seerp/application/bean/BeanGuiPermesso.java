@@ -22,6 +22,7 @@ public class BeanGuiPermesso {
     /**
      * Costruttore a cui viene passato un componente grafico necessario alla
      * validazione del campo
+     * @param c
      */
     public BeanGuiPermesso(JXPanel c) {
         grafica = c;
@@ -33,6 +34,12 @@ public class BeanGuiPermesso {
     public BeanGuiPermesso() {
     }
 
+    /**
+     *
+     * @param path
+     * @param id
+     * @param cat
+     */
     public BeanGuiPermesso(JCheckBox path, int id, String cat) {
         this.act = path;
         this.idPermesso=id;
@@ -42,6 +49,7 @@ public class BeanGuiPermesso {
     /**
      *
      * @return
+     * @throws Exception
      */
     public  int getIdPermesso() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
@@ -58,21 +66,38 @@ public class BeanGuiPermesso {
         this.idPermesso = pidPermesso;
     }
 
+    /**
+     *
+     * @param ppath
+     */
     public void setAct(JCheckBox ppath) {
         this.act = ppath;
     //    val = new NotEmptyValidator(grafica, path, "Il campo non può eseere vuoto.");
       //  grafica.setInputVerifier(val);
     }
 
-   public JCheckBox getAct() throws Exception {
+    /**
+     *
+     * @return
+     * @throws java.lang.Exception
+     */
+    public JCheckBox getAct() throws Exception {
         if (!val.shouldYieldFocus(grafica)) {
             throw new Exception("Errore nella grafica!");
         }
         return act;
     }
-   public String getCat() {
+    /**
+     *
+     * @return
+     */
+    public String getCat() {
         return cat;
     }
+   /**
+    *
+    * @param c
+    */
    public void setCat(String c) {
         cat=c;
     }

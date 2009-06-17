@@ -10,7 +10,11 @@ package it.seerp.application.Exception;
  * @author Luisa
  */
 public class CancellazioneFallita extends RuntimeException{
-	public CancellazioneFallita (String  c){
+    /**
+     *
+     * @param c
+     */
+    public CancellazioneFallita(String  c){
     super(c);
     }
 }

@@ -12,10 +12,32 @@ package it.seerp.storage.jaas;
 import java.util.Hashtable;
 import javax.security.auth.login.LoginException;
 
+/**
+ *
+ * @author LesAnge
+ */
 public interface LoginSourceAdapter
 {
-	public void initialize (Hashtable htProperty);
-	public boolean authenticate (String userID, char[] password);
-	public String getGroupName () throws LoginException;
-	public void terminate ();
+    /**
+     *
+     * @param htProperty
+     */
+    public void initialize(Hashtable htProperty);
+    /**
+     *
+     * @param userID
+     * @param password
+     * @return
+     */
+    public boolean authenticate(String userID, char[] password);
+    /**
+     *
+     * @return
+     * @throws javax.security.auth.login.LoginException
+     */
+    public String getGroupName() throws LoginException;
+    /**
+     *
+     */
+    public void terminate();
 }

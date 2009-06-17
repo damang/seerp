@@ -19,16 +19,27 @@ import javax.swing.JOptionPane;
 public class EiminaButtonRuoli extends JButton implements CommandInterface{
      GestioneRuoli areaServ;
 
-    public void setAreaServ(GestioneRuoli areaServ) {
+     /**
+      *
+      * @param areaServ
+      */
+     public void setAreaServ(GestioneRuoli areaServ) {
         this.areaServ = areaServ;
     }
 
 
 
-    public EiminaButtonRuoli() {
+     /**
+      *
+      */
+     public EiminaButtonRuoli() {
         super();
     }
 
+    /**
+     *
+     * @param l
+     */
     public EiminaButtonRuoli(ActionListener l) {
         super();
         this.addActionListener(l);

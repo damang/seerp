@@ -32,8 +32,6 @@ public class BeanGuiAppuntamento {
       * @param ora
       * @param idAppuntamento
       * @param note
-      * @param dipendente
-      * @param extraAzienda
       * @param notifica
       */
      public BeanGuiAppuntamento(JTextField data, JTextField ora, JTextField idAppuntamento, JTextArea note,JTextField notifica) {
@@ -70,11 +68,19 @@ public class BeanGuiAppuntamento {
     }
 
     
+    /**
+     *
+     * @return
+     */
     public BeanGuiDipendente getDipendente() {
         return dipendente;
     }
 
     
+    /**
+     *
+     * @return
+     */
     public BeanGuiExtraAzienda getExtraAzienda() {
         return extraAzienda;
     }
@@ -112,11 +118,19 @@ public class BeanGuiAppuntamento {
     }
 
    
+    /**
+     *
+     * @param dipendente
+     */
     public void setDipendente(BeanGuiDipendente dipendente) {
         this.dipendente = dipendente;
     }
 
    
+    /**
+     *
+     * @param extraAzienda
+     */
     public void setExtraAzienda(BeanGuiExtraAzienda extraAzienda) {
         this.extraAzienda = extraAzienda;
     }

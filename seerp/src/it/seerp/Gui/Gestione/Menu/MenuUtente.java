@@ -24,17 +24,26 @@ import javax.swing.JButton;
 public class MenuUtente extends javax.swing.JPanel implements ActionListener {
 
     AreaUtentePanel pannello=null;
-     public MenuUtente() {
+    /**
+     *
+     */
+    public MenuUtente() {
          initComponents();
        }
 
-    /** Creates new form MenuUtente */
+    /** Creates new form MenuUtente
+     * @param pannello
+     */
     public MenuUtente(AreaUtentePanel pannello) {
 
        // initComponents();
        // this.pannello = pannello;
         
     }
+    /**
+     *
+     * @param pannello
+     */
     public void setPannello(AreaUtentePanel pannello){
         this.pannello = pannello;
         pannello.setMenu(this);
@@ -43,6 +52,10 @@ public class MenuUtente extends javax.swing.JPanel implements ActionListener {
         this.eliminaButton1.setAreaUt(pannello);
     }
 
+    /**
+     *
+     * @return
+     */
     public AreaUtentePanel getPannello() {
         return pannello;
     }
@@ -104,11 +117,19 @@ public class MenuUtente extends javax.swing.JPanel implements ActionListener {
        cmd.execute();
     }
 
-  public JButton getModifica(){
+    /**
+     *
+     * @return
+     */
+    public JButton getModifica(){
       return modificaButtonUtente1;
   }
 
-   public JButton getAggiungi(){
+    /**
+     *
+     * @return
+     */
+    public JButton getAggiungi(){
       return aggiungiButton1;
   }
     // Variables declaration - do not modify//GEN-BEGIN:variables

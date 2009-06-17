@@ -17,6 +17,10 @@ public class ContrattoTm extends Generica<Contratto> {
 
     private JTable table;
 
+    /**
+     *
+     * @throws java.sql.SQLException
+     */
     public ContrattoTm() throws SQLException {
         Object[] list = new Object[]{
             "id",
@@ -36,6 +40,7 @@ public class ContrattoTm extends Generica<Contratto> {
     /**
      *
      * @param table
+     * @throws SQLException
      */
     public ContrattoTm(JTable table) throws SQLException {
         this.table = table;

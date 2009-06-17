@@ -21,7 +21,11 @@ import javax.swing.JTable;
 public class DipendenteTm extends Generica <Dipendente>{
  private JTable table;
 
-    public DipendenteTm() throws SQLException {
+ /**
+  *
+  * @throws java.sql.SQLException
+  */
+ public DipendenteTm() throws SQLException {
         Object[] list = new Object[]{
             "id",
             "nome",
@@ -43,6 +47,7 @@ public class DipendenteTm extends Generica <Dipendente>{
     /**
      *
      * @param table
+     * @throws SQLException
      */
     public DipendenteTm(JTable table) throws SQLException {
         this.table = table;

@@ -19,6 +19,7 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio> {
 
     /**
      * Metodo che permette di visualizzare l'elenco dei servizi
+     * @param listGui
      * @return ArrayList contenente i servizi
      */
     public ArrayList<BeanGuiServizio> elenca(ArrayList<BeanGuiServizio> listGui) {
@@ -71,10 +72,10 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio> {
 
     /**
      * Metodo che permette l'inserimento di un nuovo servizio
-     * @param BeansGuiServizio
-     * Bean Gui del servizio da inserire
+     * @param beanGui
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si immettano dati errati
+     * @throws DatiDuplicati
      */
     public void inserisci(BeanGuiServizio beanGui) throws DatiErrati, DatiDuplicati {
         try {
@@ -94,6 +95,7 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio> {
      * Metodo che permette la visualizzazione di un servizio
      * @param nome
      * nome del servizio
+     * @param beanGui
      * @return Bean Gui del servizio da visualizzare
      */
     public BeanGuiServizio visualizza(String nome, BeanGuiServizio beanGui) {
@@ -113,8 +115,7 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio> {
 
     /**
      * Metodo che permette la modifica di un servizio
-     * @param BeansGuiServizio
-     * Bean Gui del Servizio da mofidicare
+     * @param beanGui
      * @return Bean Gui del servizio modificato
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si immettano dati errati durante la modifica

@@ -12,6 +12,12 @@ import org.jdesktop.swingx.JXPanel;
  */
 public class NotNumericValidator extends AbstractValidator {
 
+    /**
+     *
+     * @param parent
+     * @param c
+     * @param message
+     */
     public NotNumericValidator(JXPanel parent, JTextField c, String message) {
         super(parent, c, message);
     }

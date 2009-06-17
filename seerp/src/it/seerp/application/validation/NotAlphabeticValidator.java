@@ -12,6 +12,12 @@ import org.jdesktop.swingx.JXPanel;
  */
 public class NotAlphabeticValidator extends AbstractValidator {
 
+    /**
+     *
+     * @param parent
+     * @param c
+     * @param message
+     */
     public NotAlphabeticValidator(JXPanel parent, JTextField c, String message) {
         super(parent, c, message);
     }

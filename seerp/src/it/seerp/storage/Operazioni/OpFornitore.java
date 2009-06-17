@@ -29,6 +29,10 @@ public class OpFornitore extends OpExtraAzienda {
 
     Connection con = null;
 
+    /**
+     *
+     * @throws java.sql.SQLException
+     */
     public OpFornitore() throws SQLException {
         super();
         con = ConnectionPool.getConnection();
@@ -135,7 +139,9 @@ public class OpFornitore extends OpExtraAzienda {
     /** Metodo per inserire un nuovo Fornitore
      * @param user
      * user del Fornitore da inserire
-     * @throws java.sql.SQLException*/
+     * @throws java.sql.SQLException
+     * @throws DatiDuplicatiEx
+     */
     public void inserisci(Fornitore user) throws SQLException, DatiDuplicatiEx {
 
 
@@ -195,7 +201,10 @@ public class OpFornitore extends OpExtraAzienda {
      * @param user
      * user del Fornitore da modificare
      * @return lo stesso oggetto modificato
-     * @throws java.sql.SQLException*/
+     * @throws java.sql.SQLException
+     * @throws DatiErratiEx
+     * @throws DatiDuplicatiEx
+     */
     public Fornitore modifica(Fornitore user) throws SQLException, DatiErratiEx, DatiDuplicatiEx {
         PreparedStatement stmt = null;
         Fornitore fornitore = null;

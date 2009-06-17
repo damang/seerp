@@ -17,7 +17,11 @@ import javax.swing.JTable;
 public class RuoloTm extends Generica<Ruolo> {
  private JTable table;
 
-    public RuoloTm() throws SQLException {
+ /**
+  *
+  * @throws java.sql.SQLException
+  */
+ public RuoloTm() throws SQLException {
         Object[] list = new Object[]{ "nome" };
 
         super.setColumnIdentifiers(list);
@@ -33,6 +37,7 @@ public class RuoloTm extends Generica<Ruolo> {
     /**
      *
      * @param table
+     * @throws SQLException
      */
     public RuoloTm(JTable table) throws SQLException {
         this();
