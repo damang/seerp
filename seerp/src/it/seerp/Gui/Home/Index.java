@@ -67,13 +67,13 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             jButton1 = new javax.swing.JButton();
             jButton2 = new javax.swing.JButton();
             buttonContratti1 = new it.seerp.Gui.bottoni.gestioni.ButtonContratti(this.jTabbedPanePrincipale,this.menuContratti1,this);
-            buttonServizi1 = new it.seerp.Gui.bottoni.gestioni.ButtonServizi(this.jTabbedPanePrincipale,this.menuUtente1,this);
+            buttonServizi1 = new it.seerp.Gui.bottoni.gestioni.ButtonServizi(this.jTabbedPanePrincipale,this.menuServizi1,this);
             jXTaskPane3 = new org.jdesktop.swingx.JXTaskPane();
             jXPanel3 = new org.jdesktop.swingx.JXPanel();
-            areaPersonaleButton1 = new it.seerp.Gui.bottoni.gestioni.AreaPersonaleButton(this.jTabbedPanePrincipale, this.menuAreaPersonale2, this);
-            buttonRuoli1 = new it.seerp.Gui.bottoni.gestioni.ButtonRuoli(this.jTabbedPanePrincipale, this.menuRuoli1, this);
-            buttonInfoAzienda1 = new it.seerp.Gui.bottoni.gestioni.ButtonInfoAzienda(this.jTabbedPanePrincipale, this.menuInfoAzienda1, this);
-            buttonAgenda1 = new it.seerp.Gui.bottoni.gestioni.ButtonAgenda(this.jTabbedPanePrincipale, this.menuAppuntamento1, this);
+            buttonRuoli1 = new it.seerp.Gui.bottoni.gestioni.ButtonRuoli(this.jTabbedPanePrincipale,this.menuRuoli1,this);
+            buttonInfoAzienda1 = new it.seerp.Gui.bottoni.gestioni.ButtonInfoAzienda(this.jTabbedPanePrincipale,this.menuInfoAzienda1,this);
+            buttonAgenda1 = new it.seerp.Gui.bottoni.gestioni.ButtonAgenda(this.jTabbedPanePrincipale,this.menuAppuntamento1,this);
+            areaPersonaleButton5 = new it.seerp.Gui.bottoni.gestioni.AreaPersonaleButton(this.jTabbedPanePrincipale,this.menuAreaPersonale2,this);
             jXMonthView1 = new org.jdesktop.swingx.JXMonthView();
             jXTitledPanel1 = new org.jdesktop.swingx.JXTitledPanel();
             menuUtente1 = new it.seerp.Gui.Gestione.Menu.MenuUtente();
@@ -112,7 +112,6 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             jXPanel1.setName("jXPanel1"); // NOI18N
 
             jXLabel1.setForeground(new java.awt.Color(0, 0, 204));
-            jXLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/home.png"))); // NOI18N
             jXLabel1.setText("Benvenuto "+ ut_sub.getPrincipals().iterator().next().getName());
             jXLabel1.setFont(new java.awt.Font("Tahoma", 1, 14));
             jXLabel1.setName("jXLabel1"); // NOI18N
@@ -149,46 +148,18 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             jPanel1.setName("jPanel1"); // NOI18N
 
         }
-        catch (SQLException e){ JOptionPane.showMessageDialog(null, "problemi di connessione");}
-        areaUtenteButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/User-32x32.png"))); // NOI18N
-        areaUtenteButton1.setText("Responsabili");
-        areaUtenteButton1.setContentAreaFilled(false);
-        areaUtenteButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        catch(SQLException e){}
+        areaUtenteButton1.setText("areaUtenteButton1");
         areaUtenteButton1.setName("areaUtenteButton1"); // NOI18N
-        areaUtenteButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                areaUtenteButton1ActionPerformed(evt);
-            }
-        });
 
-        areaUtenteButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/users.png"))); // NOI18N
-        areaUtenteButton2.setText("Dipendenti");
-        areaUtenteButton2.setContentAreaFilled(false);
-        areaUtenteButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        areaUtenteButton2.setText("areaUtenteButton2");
         areaUtenteButton2.setName("areaUtenteButton2"); // NOI18N
-        areaUtenteButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                areaUtenteButton2ActionPerformed(evt);
-            }
-        });
 
-        areaUtenteButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/TruckYellow-32x32.png"))); // NOI18N
-        areaUtenteButton3.setText("Fornitori");
-        areaUtenteButton3.setContentAreaFilled(false);
-        areaUtenteButton3.setFocusable(false);
-        areaUtenteButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        areaUtenteButton3.setText("areaUtenteButton3");
         areaUtenteButton3.setName("areaUtenteButton3"); // NOI18N
 
-        areaUtenteButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/community_users.png"))); // NOI18N
-        areaUtenteButton4.setText("Clienti");
-        areaUtenteButton4.setContentAreaFilled(false);
-        areaUtenteButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        areaUtenteButton4.setText("areaUtenteButton4");
         areaUtenteButton4.setName("areaUtenteButton4"); // NOI18N
-        areaUtenteButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                areaUtenteButton4ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -196,24 +167,23 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(areaUtenteButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                    .addComponent(areaUtenteButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                    .addComponent(areaUtenteButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                    .addComponent(areaUtenteButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(areaUtenteButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(areaUtenteButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(areaUtenteButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(areaUtenteButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(areaUtenteButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(areaUtenteButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(1, 1, 1)
                 .addComponent(areaUtenteButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(areaUtenteButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         jXTaskPane1.getContentPane().add(jPanel1);
@@ -254,43 +224,27 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             }
         });
 
-        buttonContratti1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/page.png"))); // NOI18N
-        buttonContratti1.setText("Contratti");
-        buttonContratti1.setContentAreaFilled(false);
-        buttonContratti1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        buttonContratti1.setText("buttonContratti1");
         buttonContratti1.setName("buttonContratti1"); // NOI18N
-        buttonContratti1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonContratti1ActionPerformed(evt);
-            }
-        });
 
-        buttonServizi1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/shopping_cart.png"))); // NOI18N
-        buttonServizi1.setText("Servizi");
-        buttonServizi1.setContentAreaFilled(false);
-        buttonServizi1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        buttonServizi1.setText("buttonServizi1");
         buttonServizi1.setName("buttonServizi1"); // NOI18N
-        buttonServizi1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonServizi1ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jXPanel2Layout = new javax.swing.GroupLayout(jXPanel2);
         jXPanel2.setLayout(jXPanel2Layout);
         jXPanel2Layout.setHorizontalGroup(
             jXPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jXPanel2Layout.createSequentialGroup()
-                .addComponent(buttonServizi1, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                .addGap(20, 20, 20))
-            .addGroup(jXPanel2Layout.createSequentialGroup()
-                .addComponent(buttonContratti1, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jXPanel2Layout.createSequentialGroup()
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jXPanel2Layout.createSequentialGroup()
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                .addGroup(jXPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                    .addGroup(jXPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jXPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jXPanel2Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(buttonServizi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(buttonContratti1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jXPanel2Layout.setVerticalGroup(
@@ -302,9 +256,8 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonContratti1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonServizi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonServizi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jXTaskPane2.getContentPane().add(jXPanel2);
@@ -323,65 +276,39 @@ public class Index extends javax.swing.JFrame implements ActionListener {
 
         jXPanel3.setName("jXPanel3"); // NOI18N
 
-        areaPersonaleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/HP-Control-32x32.png"))); // NOI18N
-        areaPersonaleButton1.setText("Area Personale"); // NOI18N
-        areaPersonaleButton1.setContentAreaFilled(false);
-        areaPersonaleButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        areaPersonaleButton1.setName("areaPersonaleButton1"); // NOI18N
-        areaPersonaleButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                areaPersonaleButton1ActionPerformed(evt);
-            }
-        });
-
-        buttonRuoli1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/attachment.png"))); // NOI18N
-        buttonRuoli1.setText("Gestione Ruoli");
-        buttonRuoli1.setContentAreaFilled(false);
-        buttonRuoli1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        buttonRuoli1.setText("buttonRuoli1");
         buttonRuoli1.setName("buttonRuoli1"); // NOI18N
-        buttonRuoli1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRuoli1ActionPerformed(evt);
-            }
-        });
 
-        buttonInfoAzienda1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/commercial-building-32x32.png"))); // NOI18N
-        buttonInfoAzienda1.setText("Info Azienda");
-        buttonInfoAzienda1.setContentAreaFilled(false);
-        buttonInfoAzienda1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        buttonInfoAzienda1.setText("buttonInfoAzienda1");
         buttonInfoAzienda1.setName("buttonInfoAzienda1"); // NOI18N
 
-        buttonAgenda1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/addressbook-32x32.png"))); // NOI18N
-        buttonAgenda1.setText("Agenda");
-        buttonAgenda1.setContentAreaFilled(false);
-        buttonAgenda1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        buttonAgenda1.setText("buttonAgenda1");
         buttonAgenda1.setName("buttonAgenda1"); // NOI18N
-        buttonAgenda1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAgenda1ActionPerformed(evt);
-            }
-        });
+
+        areaPersonaleButton5.setText("areaPersonaleButton5");
+        areaPersonaleButton5.setName("areaPersonaleButton5"); // NOI18N
 
         javax.swing.GroupLayout jXPanel3Layout = new javax.swing.GroupLayout(jXPanel3);
         jXPanel3.setLayout(jXPanel3Layout);
         jXPanel3Layout.setHorizontalGroup(
             jXPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jXPanel3Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jXPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonInfoAzienda1, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                    .addComponent(areaPersonaleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonRuoli1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-            .addComponent(buttonAgenda1, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                    .addComponent(buttonInfoAzienda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonRuoli1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonAgenda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(areaPersonaleButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         jXPanel3Layout.setVerticalGroup(
             jXPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jXPanel3Layout.createSequentialGroup()
-                .addComponent(buttonRuoli1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonInfoAzienda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(areaPersonaleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonRuoli1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(areaPersonaleButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(buttonAgenda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -519,7 +446,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jXTitledPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.DEFAULT_SIZE, 1317, Short.MAX_VALUE)
+                        .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.DEFAULT_SIZE, 1319, Short.MAX_VALUE)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -529,7 +456,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.PREFERRED_SIZE, 854, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, 1008, Short.MAX_VALUE)
+            .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, 1011, Short.MAX_VALUE)
         );
 
         pack();
@@ -725,7 +652,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
-    private it.seerp.Gui.bottoni.gestioni.AreaPersonaleButton areaPersonaleButton1;
+    private it.seerp.Gui.bottoni.gestioni.AreaPersonaleButton areaPersonaleButton5;
     private it.seerp.Gui.bottoni.gestioni.AreaUtenteButton areaUtenteButton1;
     private it.seerp.Gui.bottoni.gestioni.AreaUtenteButton areaUtenteButton2;
     private it.seerp.Gui.bottoni.gestioni.AreaUtenteButton areaUtenteButton3;
