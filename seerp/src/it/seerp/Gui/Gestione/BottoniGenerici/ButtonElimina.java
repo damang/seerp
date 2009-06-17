@@ -36,7 +36,7 @@ public class ButtonElimina extends JButton implements CommandInterface {
 
         setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         setForeground(new java.awt.Color(255, 0, 0));
-        setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/icone/32x32/remove.png"))); // NOI18N
+        setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/remove.png"))); // NOI18N
         setText("Elimina");
     }// </editor-fold>//GEN-END:initComponents
 
