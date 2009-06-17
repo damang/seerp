@@ -53,17 +53,18 @@ public class AreaUtenteButton extends ObserverButton implements CommandInterface
     }
 
     public void execute() {
-
+          
         if (!isPresente) {
             try {
                 this.setAreaUtente();
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "problemi di comunicazione col DBMS");
             }
-
+            System.out.println("luisa");
 
             isPresente = true;
             this.tabbedPane.addTab(s, panel);
+          
             System.out.println(this.tabbedPane.getTabCount() - 1);
             ButtonTabComponent button = new ButtonTabComponent(this.tabbedPane, this.panel, this.menu);
             this.tabbedPane.setTabComponentAt(this.tabbedPane.getTabCount() - 1, button);
@@ -79,7 +80,7 @@ public class AreaUtenteButton extends ObserverButton implements CommandInterface
     private void setAreaUtente() throws SQLException {
 
         String tipoUtente = (this.getText());
-        System.out.println("testo" + this.getText());
+        
         if (tipoUtente.compareToIgnoreCase("Clienti") == 0) {
             this.panel = new AreaUtentePanel(TIPO_UTENTE_CONST.CLIENTE);
             s = "Area Clienti";
