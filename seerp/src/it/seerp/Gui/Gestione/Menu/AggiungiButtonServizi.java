@@ -6,6 +6,7 @@ package it.seerp.Gui.Gestione.Menu;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.Servizi.GestioneServizi;
+import it.seerp.Gui.configurazioni.Gui.ConfigurazioneOperazioni;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
@@ -44,7 +45,7 @@ public class AggiungiButtonServizi extends JButton implements CommandInterface {
 
     public void execute() {
         this.setEnabled(false);
-        areaSer.setTipoOP("inserisci");
+        areaSer.setTipoOP(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI);
         areaSer.getSalva().setEnabled(true);
         areaSer.getAnnulla().setEnabled(true);
         areaSer.editabile(true);
