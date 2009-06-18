@@ -42,16 +42,20 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
+        jXLabel2 = new org.jdesktop.swingx.JXLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
         jPanel11 = new javax.swing.JPanel();
         jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
         jCheckBox3 = new javax.swing.JCheckBox();
         jCheckBox16 = new javax.swing.JCheckBox();
         jCheckBox21 = new javax.swing.JCheckBox();
         jCheckBox31 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
         jPanel14 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jCheckBox4 = new javax.swing.JCheckBox();
@@ -92,9 +96,6 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         jPanel17 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
-        jPanel3 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jXLabel2 = new org.jdesktop.swingx.JXLabel();
         jXPanel1 = new org.jdesktop.swingx.JXPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -102,416 +103,30 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         jXFindBar3 = new org.jdesktop.swingx.JXFindBar();
 
         setBackground(new java.awt.Color(0, 204, 0));
+        setMinimumSize(new java.awt.Dimension(1082, 532));
+        setLayout(new java.awt.GridBagLayout());
 
+        jXLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jXLabel2.setText("Gestione Ruoli");
+        jXLabel2.setFont(new java.awt.Font("Tahoma", 1, 24));
+        jXLabel2.setName("jXLabel2"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        add(jXLabel2, gridBagConstraints);
+
+        jTabbedPane1.setMinimumSize(new java.awt.Dimension(700, 500));
         jTabbedPane1.setName("jTabbedPane1"); // NOI18N
+        jTabbedPane1.setPreferredSize(new java.awt.Dimension(1000, 564));
 
+        jPanel2.setMaximumSize(new java.awt.Dimension(800, 500));
+        jPanel2.setMinimumSize(new java.awt.Dimension(626, 302));
         jPanel2.setName("jPanel2"); // NOI18N
-
-        jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestioni"));
-        jPanel11.setName("jPanel11"); // NOI18N
-
-        jCheckBox1.setText("Gestione Clienti");
-        jCheckBox1.setName("GestioneClienti"); // NOI18N
-
-        jCheckBox2.setText("Gestione Contratti");
-        jCheckBox2.setName("GestioneContratti"); // NOI18N
-
-        jCheckBox3.setText("Gestione Fornitori");
-        jCheckBox3.setName("GestioneFornitori"); // NOI18N
-
-        jCheckBox16.setText("Gestione Servizi");
-        jCheckBox16.setName("GestioneServizi"); // NOI18N
-
-        jCheckBox21.setText("Gestione Dipendenti");
-        jCheckBox21.setName("jCheckBox21"); // NOI18N
-
-        jCheckBox31.setText("Gestione Ruoli");
-        jCheckBox31.setName("jCheckBox31"); // NOI18N
-
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jCheckBox2)
-                    .addComponent(jCheckBox3))
-                .addGap(22, 22, 22)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox16)
-                    .addComponent(jCheckBox21)
-                    .addComponent(jCheckBox31))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(jCheckBox1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCheckBox3)
-                            .addComponent(jCheckBox31)))
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(jCheckBox16)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox21)))
-                .addContainerGap(8, Short.MAX_VALUE))
-        );
-
-        jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder("Permessi"));
-        jPanel14.setName("jPanel14"); // NOI18N
-
-        jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestione Clienti"));
-        jPanel12.setName("jPanel12"); // NOI18N
-
-        jCheckBox4.setText("Modifica");
-        jCheckBox4.setName("GestioneClientiModifica"); // NOI18N
-
-        jCheckBox5.setText("Elimina");
-        jCheckBox5.setName("GestioneClientiElimina"); // NOI18N
-
-        jCheckBox6.setText("Elenca");
-        jCheckBox6.setName("GestioneClientiElenca"); // NOI18N
-
-        jCheckBox7.setText("Ricerca");
-        jCheckBox7.setName("GestioneClientiRicerca"); // NOI18N
-
-        jCheckBox26.setText("Aggiungi");
-        jCheckBox26.setName("GestioneClientiAggiungi"); // NOI18N
-
-        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
-        jPanel12.setLayout(jPanel12Layout);
-        jPanel12Layout.setHorizontalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox4)
-                    .addComponent(jCheckBox5)
-                    .addComponent(jCheckBox6)
-                    .addComponent(jCheckBox7)
-                    .addComponent(jCheckBox26))
-                .addContainerGap(41, Short.MAX_VALUE))
-        );
-        jPanel12Layout.setVerticalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
-                .addComponent(jCheckBox26)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jCheckBox4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox7)
-                .addGap(14, 14, 14))
-        );
-
-        jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestione Contratti"));
-        jPanel15.setName("jPanel15"); // NOI18N
-
-        jCheckBox8.setText("Modifica");
-        jCheckBox8.setName("GestioneContrttiModifica"); // NOI18N
-
-        jCheckBox9.setText("Elimina");
-        jCheckBox9.setName("GestioneContrttiElimina"); // NOI18N
-
-        jCheckBox10.setText("Elenca");
-        jCheckBox10.setName("GestioneContrttiElenca"); // NOI18N
-
-        jCheckBox11.setText("Ricerca");
-        jCheckBox11.setName("GestioneContrttiRicerca"); // NOI18N
-        jCheckBox11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox11ActionPerformed(evt);
-            }
-        });
-
-        jCheckBox27.setText("Aggiungi");
-        jCheckBox27.setName("jCheckBox27"); // NOI18N
-
-        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
-        jPanel15.setLayout(jPanel15Layout);
-        jPanel15Layout.setHorizontalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel15Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox27)
-                    .addComponent(jCheckBox8)
-                    .addComponent(jCheckBox9)
-                    .addComponent(jCheckBox10)
-                    .addComponent(jCheckBox11))
-                .addContainerGap(52, Short.MAX_VALUE))
-        );
-        jPanel15Layout.setVerticalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel15Layout.createSequentialGroup()
-                .addComponent(jCheckBox27)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox11)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestione Fornitori"));
-        jPanel16.setName("jPanel16"); // NOI18N
-
-        jCheckBox13.setText("Elimina");
-        jCheckBox13.setName("GestioneFornitoriElimina"); // NOI18N
-
-        jCheckBox14.setText("Elenca");
-        jCheckBox14.setName("GestioneFornitoriElenca"); // NOI18N
-
-        jCheckBox15.setText("Ricerca");
-        jCheckBox15.setName("GestioneFornitoriRicerca"); // NOI18N
-
-        jCheckBox12.setText("Modifica");
-        jCheckBox12.setName("GestioneFornitoriModifica"); // NOI18N
-
-        jCheckBox28.setText("Aggiungi");
-        jCheckBox28.setName("jCheckBox28"); // NOI18N
-
-        javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
-        jPanel16.setLayout(jPanel16Layout);
-        jPanel16Layout.setHorizontalGroup(
-            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel16Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox13)
-                    .addComponent(jCheckBox14)
-                    .addComponent(jCheckBox15)
-                    .addComponent(jCheckBox12)
-                    .addComponent(jCheckBox28))
-                .addContainerGap(50, Short.MAX_VALUE))
-        );
-        jPanel16Layout.setVerticalGroup(
-            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel16Layout.createSequentialGroup()
-                .addComponent(jCheckBox28)
-                .addGap(2, 2, 2)
-                .addComponent(jCheckBox12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox14)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox15)
-                .addContainerGap(5, Short.MAX_VALUE))
-        );
-
-        jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestione Servizi"));
-        jPanel18.setName("jPanel18"); // NOI18N
-
-        jCheckBox17.setText("Elimina");
-        jCheckBox17.setName("GestioneServiziElimina"); // NOI18N
-
-        jCheckBox18.setText("Elenca");
-        jCheckBox18.setName("GestioneServiziElenca"); // NOI18N
-
-        jCheckBox19.setText("Ricerca");
-        jCheckBox19.setName("GestioneServiziRicerca"); // NOI18N
-
-        jCheckBox20.setText("Modifica");
-        jCheckBox20.setName("GestioneServiziModifica"); // NOI18N
-
-        jCheckBox29.setText("Aggiungi");
-        jCheckBox29.setName("jCheckBox29"); // NOI18N
-
-        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
-        jPanel18.setLayout(jPanel18Layout);
-        jPanel18Layout.setHorizontalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox29)
-                    .addComponent(jCheckBox20)
-                    .addComponent(jCheckBox17)
-                    .addComponent(jCheckBox18)
-                    .addComponent(jCheckBox19))
-                .addContainerGap(50, Short.MAX_VALUE))
-        );
-        jPanel18Layout.setVerticalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
-                .addComponent(jCheckBox29)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox20)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox17)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox18)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox19)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestione Dipendenti"));
-        jPanel19.setName("jPanel19"); // NOI18N
-
-        jCheckBox22.setText("Elimina");
-        jCheckBox22.setName("jCheckBox22"); // NOI18N
-
-        jCheckBox23.setText("Elenca");
-        jCheckBox23.setName("jCheckBox23"); // NOI18N
-
-        jCheckBox24.setText("Ricerca");
-        jCheckBox24.setName("jCheckBox24"); // NOI18N
-
-        jCheckBox25.setText("Modifica");
-        jCheckBox25.setName("jCheckBox25"); // NOI18N
-
-        jCheckBox30.setText("Aggiungi");
-        jCheckBox30.setName("jCheckBox30"); // NOI18N
-
-        javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
-        jPanel19.setLayout(jPanel19Layout);
-        jPanel19Layout.setHorizontalGroup(
-            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel19Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox22)
-                    .addComponent(jCheckBox23)
-                    .addComponent(jCheckBox24)
-                    .addComponent(jCheckBox25)
-                    .addComponent(jCheckBox30))
-                .addContainerGap(50, Short.MAX_VALUE))
-        );
-        jPanel19Layout.setVerticalGroup(
-            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
-                .addComponent(jCheckBox30)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jCheckBox25)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox22)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox23)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox24)
-                .addContainerGap())
-        );
-
-        jPanel20.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestione Ruoli"));
-        jPanel20.setName("jPanel20"); // NOI18N
-
-        jCheckBox32.setText("Elimina");
-        jCheckBox32.setName("jCheckBox32"); // NOI18N
-
-        jCheckBox33.setText("Elenca");
-        jCheckBox33.setName("jCheckBox33"); // NOI18N
-
-        jCheckBox34.setText("Ricerca");
-        jCheckBox34.setName("jCheckBox34"); // NOI18N
-
-        jCheckBox35.setText("Modifica");
-        jCheckBox35.setName("jCheckBox35"); // NOI18N
-
-        jCheckBox36.setText("Aggiungi");
-        jCheckBox36.setName("jCheckBox36"); // NOI18N
-
-        javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
-        jPanel20.setLayout(jPanel20Layout);
-        jPanel20Layout.setHorizontalGroup(
-            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel20Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox32)
-                    .addComponent(jCheckBox33)
-                    .addComponent(jCheckBox34)
-                    .addComponent(jCheckBox35)
-                    .addComponent(jCheckBox36))
-                .addContainerGap(50, Short.MAX_VALUE))
-        );
-        jPanel20Layout.setVerticalGroup(
-            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
-                .addComponent(jCheckBox36)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jCheckBox35)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox32)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox33)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox34)
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
-        jPanel14.setLayout(jPanel14Layout);
-        jPanel14Layout.setHorizontalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel14Layout.setVerticalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jPanel19, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel16, javax.swing.GroupLayout.Alignment.LEADING, 0, 149, Short.MAX_VALUE)
-                        .addComponent(jPanel15, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
-                    .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder("Note"));
-        jPanel17.setName("jPanel17"); // NOI18N
-
-        jScrollPane4.setName("jScrollPane4"); // NOI18N
-
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jTextArea3.setName("jTextArea3"); // NOI18N
-        jScrollPane4.setViewportView(jTextArea3);
-
-        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
-        jPanel17.setLayout(jPanel17Layout);
-        jPanel17Layout.setHorizontalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel17Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 833, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel17Layout.setVerticalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel17Layout.createSequentialGroup()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        jPanel2.setPreferredSize(new java.awt.Dimension(650, 400));
+        jPanel2.setLayout(new java.awt.GridBagLayout());
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome Permesso"));
         jPanel3.setName("jPanel3"); // NOI18N
@@ -525,57 +140,415 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jTextField1)
+                .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        jPanel2.add(jPanel3, gridBagConstraints);
+
+        jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestioni"));
+        jPanel11.setName("jPanel11"); // NOI18N
+        jPanel11.setLayout(new java.awt.GridBagLayout());
+
+        jCheckBox1.setText("Gestione Clienti");
+        jCheckBox1.setName("GestioneClienti"); // NOI18N
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel11.add(jCheckBox1, gridBagConstraints);
+
+        jCheckBox3.setText("Gestione Fornitori");
+        jCheckBox3.setName("GestioneFornitori"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel11.add(jCheckBox3, gridBagConstraints);
+
+        jCheckBox16.setText("Gestione Servizi");
+        jCheckBox16.setName("GestioneServizi"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel11.add(jCheckBox16, gridBagConstraints);
+
+        jCheckBox21.setText("Gestione Dipendenti");
+        jCheckBox21.setName("jCheckBox21"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        jPanel11.add(jCheckBox21, gridBagConstraints);
+
+        jCheckBox31.setText("Gestione Ruoli");
+        jCheckBox31.setName("jCheckBox31"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel11.add(jCheckBox31, gridBagConstraints);
+
+        jCheckBox2.setText("Gestione Contratti");
+        jCheckBox2.setName("jCheckBox2"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel11.add(jCheckBox2, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 28, 0, 0);
+        jPanel2.add(jPanel11, gridBagConstraints);
+
+        jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder("Permessi"));
+        jPanel14.setMinimumSize(new java.awt.Dimension(650, 169));
+        jPanel14.setName("jPanel14"); // NOI18N
+        jPanel14.setPreferredSize(new java.awt.Dimension(650, 169));
+        jPanel14.setLayout(new javax.swing.BoxLayout(jPanel14, javax.swing.BoxLayout.LINE_AXIS));
+
+        jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestione Clienti"));
+        jPanel12.setName("jPanel12"); // NOI18N
+        jPanel12.setLayout(new java.awt.GridBagLayout());
+
+        jCheckBox4.setText("Modifica");
+        jCheckBox4.setName("GestioneClientiModifica"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel12.add(jCheckBox4, gridBagConstraints);
+
+        jCheckBox5.setText("Elimina");
+        jCheckBox5.setName("GestioneClientiElimina"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel12.add(jCheckBox5, gridBagConstraints);
+
+        jCheckBox6.setText("Elenca");
+        jCheckBox6.setName("GestioneClientiElenca"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel12.add(jCheckBox6, gridBagConstraints);
+
+        jCheckBox7.setText("Ricerca");
+        jCheckBox7.setName("GestioneClientiRicerca"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel12.add(jCheckBox7, gridBagConstraints);
+
+        jCheckBox26.setText("Aggiungi");
+        jCheckBox26.setName("GestioneClientiAggiungi"); // NOI18N
+        jPanel12.add(jCheckBox26, new java.awt.GridBagConstraints());
+
+        jPanel14.add(jPanel12);
+
+        jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestione Contratti"));
+        jPanel15.setName("jPanel15"); // NOI18N
+        jPanel15.setLayout(new java.awt.GridBagLayout());
+
+        jCheckBox8.setText("Modifica");
+        jCheckBox8.setName("GestioneContrttiModifica"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel15.add(jCheckBox8, gridBagConstraints);
+
+        jCheckBox9.setText("Elimina");
+        jCheckBox9.setName("GestioneContrttiElimina"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel15.add(jCheckBox9, gridBagConstraints);
+
+        jCheckBox10.setText("Elenca");
+        jCheckBox10.setName("GestioneContrttiElenca"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel15.add(jCheckBox10, gridBagConstraints);
+
+        jCheckBox11.setText("Ricerca");
+        jCheckBox11.setName("GestioneContrttiRicerca"); // NOI18N
+        jCheckBox11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox11ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel15.add(jCheckBox11, gridBagConstraints);
+
+        jCheckBox27.setText("Aggiungi");
+        jCheckBox27.setName("jCheckBox27"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel15.add(jCheckBox27, gridBagConstraints);
+
+        jPanel14.add(jPanel15);
+
+        jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestione Fornitori"));
+        jPanel16.setName("jPanel16"); // NOI18N
+        jPanel16.setLayout(new java.awt.GridBagLayout());
+
+        jCheckBox13.setText("Elimina");
+        jCheckBox13.setName("GestioneFornitoriElimina"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel16.add(jCheckBox13, gridBagConstraints);
+
+        jCheckBox14.setText("Elenca");
+        jCheckBox14.setName("GestioneFornitoriElenca"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel16.add(jCheckBox14, gridBagConstraints);
+
+        jCheckBox15.setText("Ricerca");
+        jCheckBox15.setName("GestioneFornitoriRicerca"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel16.add(jCheckBox15, gridBagConstraints);
+
+        jCheckBox12.setText("Modifica");
+        jCheckBox12.setName("GestioneFornitoriModifica"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel16.add(jCheckBox12, gridBagConstraints);
+
+        jCheckBox28.setText("Aggiungi");
+        jCheckBox28.setName("jCheckBox28"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel16.add(jCheckBox28, gridBagConstraints);
+
+        jPanel14.add(jPanel16);
+
+        jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestione Servizi"));
+        jPanel18.setName("jPanel18"); // NOI18N
+        jPanel18.setLayout(new java.awt.GridBagLayout());
+
+        jCheckBox17.setText("Elimina");
+        jCheckBox17.setName("GestioneServiziElimina"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel18.add(jCheckBox17, gridBagConstraints);
+
+        jCheckBox18.setText("Elenca");
+        jCheckBox18.setName("GestioneServiziElenca"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel18.add(jCheckBox18, gridBagConstraints);
+
+        jCheckBox19.setText("Ricerca");
+        jCheckBox19.setName("GestioneServiziRicerca"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel18.add(jCheckBox19, gridBagConstraints);
+
+        jCheckBox20.setText("Modifica");
+        jCheckBox20.setName("GestioneServiziModifica"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel18.add(jCheckBox20, gridBagConstraints);
+
+        jCheckBox29.setText("Aggiungi");
+        jCheckBox29.setName("jCheckBox29"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel18.add(jCheckBox29, gridBagConstraints);
+
+        jPanel14.add(jPanel18);
+
+        jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestione Dipendenti"));
+        jPanel19.setName("jPanel19"); // NOI18N
+        jPanel19.setLayout(new java.awt.GridBagLayout());
+
+        jCheckBox22.setText("Elimina");
+        jCheckBox22.setName("jCheckBox22"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel19.add(jCheckBox22, gridBagConstraints);
+
+        jCheckBox23.setText("Elenca");
+        jCheckBox23.setName("jCheckBox23"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel19.add(jCheckBox23, gridBagConstraints);
+
+        jCheckBox24.setText("Ricerca");
+        jCheckBox24.setName("jCheckBox24"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel19.add(jCheckBox24, gridBagConstraints);
+
+        jCheckBox25.setText("Modifica");
+        jCheckBox25.setName("jCheckBox25"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel19.add(jCheckBox25, gridBagConstraints);
+
+        jCheckBox30.setText("Aggiungi");
+        jCheckBox30.setName("jCheckBox30"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel19.add(jCheckBox30, gridBagConstraints);
+
+        jPanel14.add(jPanel19);
+
+        jPanel20.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestione Ruoli"));
+        jPanel20.setName("jPanel20"); // NOI18N
+        jPanel20.setLayout(new java.awt.GridBagLayout());
+
+        jCheckBox32.setText("Elimina");
+        jCheckBox32.setName("jCheckBox32"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel20.add(jCheckBox32, gridBagConstraints);
+
+        jCheckBox33.setText("Elenca");
+        jCheckBox33.setName("jCheckBox33"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel20.add(jCheckBox33, gridBagConstraints);
+
+        jCheckBox34.setText("Ricerca");
+        jCheckBox34.setName("jCheckBox34"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel20.add(jCheckBox34, gridBagConstraints);
+
+        jCheckBox35.setText("Modifica");
+        jCheckBox35.setName("jCheckBox35"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel20.add(jCheckBox35, gridBagConstraints);
+
+        jCheckBox36.setText("Aggiungi");
+        jCheckBox36.setName("jCheckBox36"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel20.add(jCheckBox36, gridBagConstraints);
+
+        jPanel14.add(jPanel20);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel2.add(jPanel14, gridBagConstraints);
+
+        jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder("Note"));
+        jPanel17.setName("jPanel17"); // NOI18N
+        jPanel17.setLayout(new java.awt.BorderLayout());
+
+        jScrollPane4.setName("jScrollPane4"); // NOI18N
+
+        jTextArea3.setColumns(20);
+        jTextArea3.setRows(5);
+        jTextArea3.setName("jTextArea3"); // NOI18N
+        jScrollPane4.setViewportView(jTextArea3);
+
+        jPanel17.add(jScrollPane4, java.awt.BorderLayout.CENTER);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel2.add(jPanel17, gridBagConstraints);
 
         jTabbedPane1.addTab("Permessi", jPanel2);
 
-        jXLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jXLabel2.setText("Gestione Ruoli");
-        jXLabel2.setFont(new java.awt.Font("Tahoma", 1, 24));
-        jXLabel2.setName("jXLabel2"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        add(jTabbedPane1, gridBagConstraints);
 
+        jXPanel1.setMinimumSize(new java.awt.Dimension(350, 324));
         jXPanel1.setName("jXPanel1"); // NOI18N
+        jXPanel1.setPreferredSize(new java.awt.Dimension(350, 324));
+        jXPanel1.setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setText("Elenco ");
         jLabel1.setName("jLabel1"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jXPanel1.add(jLabel1, gridBagConstraints);
 
+        jScrollPane2.setMinimumSize(new java.awt.Dimension(300, 300));
         jScrollPane2.setName("jScrollPane2"); // NOI18N
 
         jXTable1.setModel(tModel);
@@ -587,59 +560,27 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         });
         jScrollPane2.setViewportView(jXTable1);
 
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jXPanel1.add(jScrollPane2, gridBagConstraints);
+
+        jXFindBar3.setMinimumSize(new java.awt.Dimension(10, 100));
         jXFindBar3.setName("jXFindBar3"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jXPanel1.add(jXFindBar3, gridBagConstraints);
 
-        javax.swing.GroupLayout jXPanel1Layout = new javax.swing.GroupLayout(jXPanel1);
-        jXPanel1.setLayout(jXPanel1Layout);
-        jXPanel1Layout.setHorizontalGroup(
-            jXPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jXPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jXPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jXFindBar3, javax.swing.GroupLayout.Alignment.LEADING, 0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE))
-                .addContainerGap(46, Short.MAX_VALUE))
-        );
-        jXPanel1Layout.setVerticalGroup(
-            jXPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jXPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(11, 11, 11)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jXFindBar3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(258, 258, 258))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jXPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 882, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jXLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
-                        .addGap(894, 894, 894)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jXLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
-                    .addComponent(jXPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(22, 0, 0, 31);
+        add(jXPanel1, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jXTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jXTable1MouseClicked
@@ -649,6 +590,10 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
     private void jCheckBox11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox11ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox11ActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox jCheckBox1;
@@ -704,8 +649,6 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextField jTextField1;
-    private org.jdesktop.swingx.JXFindBar jXFindBar1;
-    private org.jdesktop.swingx.JXFindBar jXFindBar2;
     private org.jdesktop.swingx.JXFindBar jXFindBar3;
     private org.jdesktop.swingx.JXLabel jXLabel2;
     private org.jdesktop.swingx.JXPanel jXPanel1;
