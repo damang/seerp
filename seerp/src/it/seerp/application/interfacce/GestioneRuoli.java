@@ -37,5 +37,5 @@ public interface GestioneRuoli<E> {
      * @param list
      * @return
      */
-    public ArrayList<E> getElenco(ArrayList<E> list);
+    public ArrayList<E> getElenco();
 }
