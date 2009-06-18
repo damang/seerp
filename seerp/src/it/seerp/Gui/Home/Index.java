@@ -310,6 +310,11 @@ public class Index extends javax.swing.JFrame implements ActionListener {
         buttonRuoli1.setContentAreaFilled(false);
         buttonRuoli1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         buttonRuoli1.setName("buttonRuoli1"); // NOI18N
+        buttonRuoli1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRuoli1ActionPerformed(evt);
+            }
+        });
 
         buttonInfoAzienda1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/commercial-building-32x32.png"))); // NOI18N
         buttonInfoAzienda1.setText("Info Azienda");
