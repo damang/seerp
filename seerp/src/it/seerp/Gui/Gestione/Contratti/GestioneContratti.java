@@ -15,14 +15,15 @@ import it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla;
 import it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva;
 import it.seerp.Gui.Gestione.Menu.MenuContratti;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
-import it.seerp.Gui.tabella.ContrattoTm;
-import it.seerp.application.applicazione.AppContratti;
+import it.seerp.application.tabelle.ContrattoTm;
 import it.seerp.application.bean.BeanGuiContratto;
+import it.seerp.application.bean.BeanGuiExtraAzienda;
 import it.seerp.application.bean.BeanGuiPagamento;
-import it.seerp.application.bean.BeanGuiServizio;
+import it.seerp.application.bean.BeanGuiServizioAssociato;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -33,17 +34,11 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
 
     BeanGuiContratto contratto;
     BeanGuiPagamento pagamento;
-    BeanGuiServizio servizio;
+    BeanGuiServizioAssociato servizio;
+    BeanGuiExtraAzienda extraAz;
+    ArrayList<BeanGuiServizioAssociato> arr;
     String tipoOp = null;
     MenuContratti menu;
-
-    /**
-     *
-     * @param menu
-     */
-    public void setMenu(MenuContratti menu) {
-        this.menu = menu;
-    }
 
     /** Creates new form GestioneContratti */
     public GestioneContratti() {
@@ -52,9 +47,18 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
         editabile(false);
         contratto = new BeanGuiContratto(this);
         pagamento = new BeanGuiPagamento();
-        servizio = new BeanGuiServizio(this);
-
+        servizio = new BeanGuiServizioAssociato(data, provincia, jTextArea1);
+        extraAz = new BeanGuiExtraAzienda(this);
+        arr = new ArrayList<BeanGuiServizioAssociato>();
         legameBean();
+    }
+
+    /**
+     *
+     * @param menu
+     */
+    public void setMenu(MenuContratti menu) {
+        this.menu = menu;
     }
 
     /**
@@ -65,14 +69,12 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
 
         this.data.setEditable(flag);
         this.durata.setEditable(flag);
-
         this.stato.setEditable(flag);
         this.azienda.setEditable(flag);
         this.mail.setEditable(flag);
         this.tell.setEditable(flag);
         this.provincia.setEditable(flag);
         this.piva.setEditable(flag);
-
         this.cittafor.setEditable(flag);
 
 
@@ -86,13 +88,15 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
         contratto.setData(data);
         contratto.setDurata(durata);
         //JcomboBox contratto.setStato(stato);
-      /*
-        contratto.getExtraAzienda().setPIva(piva);
-        contratto.getExtraAzienda().setTxtRagioneSociale(azienda);
-        contratto.getExtraAzienda().setTxtEmail(mail);
-        contratto.getExtraAzienda().setTxtCitta(cittafor);*/
 
-
+        extraAz.setPIva(piva);
+        extraAz.setTxtRagioneSociale(azienda);
+        extraAz.setFax(data);
+        extraAz.setTxtEmail(mail);
+        extraAz.setTxtCitta(cittafor);
+        contratto.setExtraAzienda(extraAz);
+        arr.add(servizio);
+        contratto.setListServizio(arr);
     }
 
     /**
@@ -107,12 +111,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
         this.tell.setText(s);
         this.provincia.setText(s);
         this.piva.setText(s);
-
-
         this.cittafor.setText(s);
-
-
-
 
     }
 
@@ -196,7 +195,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(azienda, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                .addComponent(azienda, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
@@ -218,7 +217,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(piva, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+                .addComponent(piva)
                 .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
@@ -240,7 +239,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(mail, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                .addComponent(mail, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel14Layout.setVerticalGroup(
@@ -262,7 +261,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tell, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                .addComponent(tell, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel15Layout.setVerticalGroup(
@@ -284,7 +283,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cittafor, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                .addComponent(cittafor, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel16Layout.setVerticalGroup(
@@ -306,7 +305,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(provincia, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+                .addComponent(provincia, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel17Layout.setVerticalGroup(
@@ -364,7 +363,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
                         .addGap(193, 193, 193))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(19, Short.MAX_VALUE))))
+                        .addContainerGap(15, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -498,30 +497,27 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
                     .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(inserimentoServizi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(inserimentoServizi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(inserimentoServizi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addContainerGap(190, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Dettagli Contratti", jPanel1);
@@ -541,7 +537,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
         try{
             jXTable1.setModel(new ContrattoTm());
         }
-        catch(SQLException e){}
+        catch(SQLException e){e.printStackTrace();}
         jXTable1.setName("jXTable1"); // NOI18N
         jXTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -559,8 +555,8 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jXPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jXPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jXFindBar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                    .addComponent(jXFindBar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap())
         );
@@ -599,16 +595,15 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
                     .addComponent(jXPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jXLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jXLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(357, 357, 357)
+                        .addGap(363, 363, 363)
                         .addComponent(buttonSalva1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(buttonAnnulla1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -621,10 +616,10 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
                     .addComponent(buttonAnnulla1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jXLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTabbedPane1, 0, 0, Short.MAX_VALUE)
-                    .addComponent(jXPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jXPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTabbedPane1, 0, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         buttonSalva1.setEnabled(false);
@@ -632,14 +627,12 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
     }// </editor-fold>//GEN-END:initComponents
 
     private void jXTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jXTable1MouseClicked
-
-        //  String id = (String) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0);
+        /*
+        String id = (String) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0);
         AppContratti operazione = new AppContratti();
-        // cambiare application operazione.visualizzaContratto(id, contratto);
-
+        operazione.visualizzaContratto(id, contratto);
         editabile(false);
-
-
+         */
     }//GEN-LAST:event_jXTable1MouseClicked
 
     private void buttonAnnulla1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonAnnulla1MouseClicked
@@ -648,6 +641,8 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
         JOptionPane.showMessageDialog(null, "operazione annulata");
         jTabbedPane1.setSelectedComponent(jPanel1);
         editabile(false);
+        this.buttonAnnulla1.setEnabled(false);
+        this.buttonSalva1.setEnabled(false);
 
     }//GEN-LAST:event_buttonAnnulla1MouseClicked
 
@@ -656,14 +651,12 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
         menu.getAggiungi().setEnabled(true);
         menu.getModifica().setEnabled(true);
 
+        /*
+        AppContratti op = new AppContratti();
+        op.inserisci(contratto);
 
-        //  AppContratti op = new AppContratti();
-        //op.inserisci(contratto);
+        ((ContrattoTm) jXTable1.getModel()).refresh();*/
 
-        /* Iterator<Contratto> it = op.visualizzaTabella().iterator();
-        while (it.hasNext()) {
-        this.addNewData(it.next());
-        }*/
         editabile(false);
         this.buttonAnnulla1.setEnabled(false);
         this.buttonSalva1.setEnabled(false);
