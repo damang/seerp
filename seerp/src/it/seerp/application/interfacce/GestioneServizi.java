@@ -47,7 +47,7 @@ public interface GestioneServizi<E, U> {
      * @param beanGui
      * @return
      */
-    public E visualizza(String nome, E beanGui);
+    public E visualizza(int nome, E beanGui);
 
     /**
      *

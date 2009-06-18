@@ -98,10 +98,10 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio> {
      * @param beanGui
      * @return Bean Gui del servizio da visualizzare
      */
-    public BeanGuiServizio visualizza(String nome, BeanGuiServizio beanGui) {
+    public BeanGuiServizio visualizza(int nome, BeanGuiServizio beanGui) {
         try {
             OpServizio ope = new OpServizio();
-            Servizio serv = ope.visualizza(Integer.parseInt(nome));
+            Servizio serv = ope.visualizza(nome);
             beanGui = Conversione.conversioneServizio(serv, beanGui);
         } catch (SQLException se) {
             se.printStackTrace();
