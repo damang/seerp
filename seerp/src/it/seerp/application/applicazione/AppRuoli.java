@@ -127,5 +127,20 @@ public class AppRuoli implements GestioneRuoli<BeanGuiRuolo> {
         }
         return null;
     }
+    public void visualizzaDati(String nome, BeanGuiRuolo b) {
+
+        try {
+            OpRuolo ope = new OpRuolo();
+            Ruolo r = ope.visualizza(nome);
+            Conversione.conversioneRuolo(r, b);
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
+        }
+
+    }
 
 }

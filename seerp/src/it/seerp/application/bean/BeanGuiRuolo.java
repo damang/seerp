@@ -2,8 +2,12 @@ package it.seerp.application.bean;
 
 import it.seerp.application.validation.StartWithValidator;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 import javax.swing.JTextField;
 import org.jdesktop.swingx.JXPanel;
 
@@ -48,10 +52,22 @@ public class BeanGuiRuolo {
      * @throws Exception
      */
     public JTextField getNome() throws Exception {
-        if (!valStartW.shouldYieldFocus(grafica)) {
+      /*  if (!valStartW.shouldYieldFocus(grafica)) {
             throw new Exception("Errore nella grafica!");
-        }
+        }*/
         return nome;
+    }
+
+    public void resetCheck() throws Exception {
+        Iterator<ArrayList<BeanGuiPermesso>> l = listPermessi.values().iterator();
+        ArrayList<BeanGuiPermesso> ar;
+
+        while (l.hasNext()) {
+            ar=l.next();
+            for (int i=0;i<ar.size();i++) {
+                ar.get(i).getAct().setSelected(false);
+            }
+        }
     }
 
     /**
@@ -60,8 +76,8 @@ public class BeanGuiRuolo {
      */
     public void setNome(JTextField pnome) {
         this.nome = pnome;
-        valStartW = new StartWithValidator(grafica, nome, "Il campo non può essere vuoto.");
-        grafica.setInputVerifier(valStartW);
+//        valStartW = new StartWithValidator(grafica, nome, "Il campo non può essere vuoto.");
+  //      grafica.setInputVerifier(valStartW);
     }
 
     /**

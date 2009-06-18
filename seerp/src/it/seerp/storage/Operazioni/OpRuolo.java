@@ -35,12 +35,15 @@ public class OpRuolo implements OpeEntity<Ruolo,String>{
     public void inserimento(Ruolo bean) throws SQLException {
         
         PreparedStatement stmt = null;
-        ResultSet rs = null;
+
         String sql = "INSERT INTO Ruolo Values (?);";
         stmt = (PreparedStatement) conn.prepareStatement(sql);
         stmt.setString(1, bean.getNome());
             // Execute the query
         stmt.execute();
+
+        stmt.close();
+        ConnectionPool.releaseConnection(conn);
 
            
     }
@@ -50,7 +53,22 @@ public class OpRuolo implements OpeEntity<Ruolo,String>{
     }
 
     public Ruolo visualizza(String id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet.");
+         PreparedStatement stmt = null;
+        ResultSet rs = null;
+        String sql = "SELECT * FROM Ruolo where nome=?;";
+        stmt = (PreparedStatement) conn.prepareStatement(sql);
+             // Execute the query
+        stmt.setString(1, id);
+        rs=stmt.executeQuery();
+        Ruolo r;
+        if (rs.next()) {
+            r= new Ruolo(rs.getString(1));
+        }
+        else r=null;
+        rs.close();
+        stmt.close();
+        ConnectionPool.releaseConnection(conn);
+        return r;
     }
 
     public ArrayList<Ruolo> visualizzaElenco() throws SQLException {
@@ -63,6 +81,9 @@ public class OpRuolo implements OpeEntity<Ruolo,String>{
         rs=stmt.executeQuery();
         while (rs.next())
             r.add(new Ruolo(rs.getString(1)));
+         rs.close();
+        stmt.close();
+        ConnectionPool.releaseConnection(conn);
         return r;
     }
 }

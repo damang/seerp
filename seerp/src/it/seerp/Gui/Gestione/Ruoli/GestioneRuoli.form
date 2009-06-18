@@ -89,8 +89,11 @@
                     <TitledBorder title="Nome Permesso"/>
                   </Border>
                 </Property>
-                <Property name="name" type="java.lang.String" value="jPanel3" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="pan_nruolo" noResource="true"/>
               </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Nome Ruolo"/>
+              </AccessibilityProperties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
                   <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="11" weightX="0.0" weightY="0.0"/>
@@ -102,7 +105,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField1" min="-2" pref="187" max="-2" attributes="0"/>
+                          <Component id="txt_nruolo" min="-2" pref="187" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -110,14 +113,14 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jTextField1" max="32767" attributes="0"/>
+                          <Component id="txt_nruolo" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JTextField" name="jTextField1">
+                <Component class="javax.swing.JTextField" name="txt_nruolo">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Nome"/>
                     <Property name="name" type="java.lang.String" value="Nome Permesso" noResource="true"/>
@@ -125,14 +128,14 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jPanel11">
+            <Container class="javax.swing.JPanel" name="pan_gest">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                     <TitledBorder title="Gestioni"/>
                   </Border>
                 </Property>
-                <Property name="name" type="java.lang.String" value="jPanel11" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="pan_gestioni" noResource="true"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -142,13 +145,13 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+                <Component class="javax.swing.JCheckBox" name="gest_cli">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Gestione Clienti"/>
                     <Property name="name" type="java.lang.String" value="GestioneClienti" noResource="true"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gest_cliActionPerformed"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -156,7 +159,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="jCheckBox3">
+                <Component class="javax.swing.JCheckBox" name="gest_for">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Gestione Fornitori"/>
                     <Property name="name" type="java.lang.String" value="GestioneFornitori" noResource="true"/>
@@ -167,7 +170,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="jCheckBox16">
+                <Component class="javax.swing.JCheckBox" name="gest_ser">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Gestione Servizi"/>
                     <Property name="name" type="java.lang.String" value="GestioneServizi" noResource="true"/>
@@ -178,10 +181,10 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="jCheckBox21">
+                <Component class="javax.swing.JCheckBox" name="gest_dip">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Gestione Dipendenti"/>
-                    <Property name="name" type="java.lang.String" value="jCheckBox21" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="gest_dip" noResource="true"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -189,10 +192,10 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="jCheckBox31">
+                <Component class="javax.swing.JCheckBox" name="gest_ruo">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Gestione Ruoli"/>
-                    <Property name="name" type="java.lang.String" value="jCheckBox31" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="gest_ruo" noResource="true"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -200,10 +203,10 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="jCheckBox2">
+                <Component class="javax.swing.JCheckBox" name="gest_contr">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Gestione Contratti"/>
-                    <Property name="name" type="java.lang.String" value="jCheckBox2" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="gest_contr" noResource="true"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -236,19 +239,19 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
               <SubComponents>
-                <Container class="javax.swing.JPanel" name="jPanel12">
+                <Container class="javax.swing.JPanel" name="pan_gest_cli">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                         <TitledBorder title="Gestione Clienti"/>
                       </Border>
                     </Property>
-                    <Property name="name" type="java.lang.String" value="jPanel12" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="pan_gest_cli" noResource="true"/>
                   </Properties>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox4">
+                    <Component class="javax.swing.JCheckBox" name="cli_mod">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Modifica"/>
                         <Property name="name" type="java.lang.String" value="GestioneClientiModifica" noResource="true"/>
@@ -259,7 +262,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox5">
+                    <Component class="javax.swing.JCheckBox" name="cli_el">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Elimina"/>
                         <Property name="name" type="java.lang.String" value="GestioneClientiElimina" noResource="true"/>
@@ -270,7 +273,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox6">
+                    <Component class="javax.swing.JCheckBox" name="cli_ele">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Elenca"/>
                         <Property name="name" type="java.lang.String" value="GestioneClientiElenca" noResource="true"/>
@@ -281,7 +284,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox7">
+                    <Component class="javax.swing.JCheckBox" name="cli_ric">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Ricerca"/>
                         <Property name="name" type="java.lang.String" value="GestioneClientiRicerca" noResource="true"/>
@@ -292,7 +295,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox26">
+                    <Component class="javax.swing.JCheckBox" name="cli_agg">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Aggiungi"/>
                         <Property name="name" type="java.lang.String" value="GestioneClientiAggiungi" noResource="true"/>
@@ -305,69 +308,22 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="jPanel15">
+                <Container class="javax.swing.JPanel" name="pan_gest_con">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                         <TitledBorder title="Gestione Contratti"/>
                       </Border>
                     </Property>
-                    <Property name="name" type="java.lang.String" value="jPanel15" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="pan_gest_con" noResource="true"/>
                   </Properties>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox8">
+                    <Component class="javax.swing.JCheckBox" name="con_mod">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Modifica"/>
                         <Property name="name" type="java.lang.String" value="GestioneContrttiModifica" noResource="true"/>
-                      </Properties>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                          <GridBagConstraints gridX="0" gridY="2" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox9">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Elimina"/>
-                        <Property name="name" type="java.lang.String" value="GestioneContrttiElimina" noResource="true"/>
-                      </Properties>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                          <GridBagConstraints gridX="0" gridY="3" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox10">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Elenca"/>
-                        <Property name="name" type="java.lang.String" value="GestioneContrttiElenca" noResource="true"/>
-                      </Properties>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                          <GridBagConstraints gridX="-1" gridY="-1" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox11">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Ricerca"/>
-                        <Property name="name" type="java.lang.String" value="GestioneContrttiRicerca" noResource="true"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox11ActionPerformed"/>
-                      </Events>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                          <GridBagConstraints gridX="0" gridY="4" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox27">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Aggiungi"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox27" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -375,21 +331,68 @@
                         </Constraint>
                       </Constraints>
                     </Component>
+                    <Component class="javax.swing.JCheckBox" name="con_el">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Elimina"/>
+                        <Property name="name" type="java.lang.String" value="GestioneContrttiElimina" noResource="true"/>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                          <GridBagConstraints gridX="0" gridY="2" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="con_ele">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Elenca"/>
+                        <Property name="name" type="java.lang.String" value="GestioneContrttiElenca" noResource="true"/>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                          <GridBagConstraints gridX="0" gridY="3" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="con_ric">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Ricerca"/>
+                        <Property name="name" type="java.lang.String" value="GestioneContrttiRicerca" noResource="true"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="con_ricActionPerformed"/>
+                      </Events>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                          <GridBagConstraints gridX="0" gridY="4" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="con_agg">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Aggiungi"/>
+                        <Property name="name" type="java.lang.String" value="con_agg" noResource="true"/>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                          <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="jPanel16">
+                <Container class="javax.swing.JPanel" name="pan_gest_for">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                         <TitledBorder title="Gestione Fornitori"/>
                       </Border>
                     </Property>
-                    <Property name="name" type="java.lang.String" value="jPanel16" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="pan_gest_for" noResource="true"/>
                   </Properties>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox13">
+                    <Component class="javax.swing.JCheckBox" name="for_el">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Elimina"/>
                         <Property name="name" type="java.lang.String" value="GestioneFornitoriElimina" noResource="true"/>
@@ -400,7 +403,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox14">
+                    <Component class="javax.swing.JCheckBox" name="for_ele">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Elenca"/>
                         <Property name="name" type="java.lang.String" value="GestioneFornitoriElenca" noResource="true"/>
@@ -411,7 +414,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox15">
+                    <Component class="javax.swing.JCheckBox" name="for_ric">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Ricerca"/>
                         <Property name="name" type="java.lang.String" value="GestioneFornitoriRicerca" noResource="true"/>
@@ -422,7 +425,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox12">
+                    <Component class="javax.swing.JCheckBox" name="for_mod">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Modifica"/>
                         <Property name="name" type="java.lang.String" value="GestioneFornitoriModifica" noResource="true"/>
@@ -433,10 +436,10 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox28">
+                    <Component class="javax.swing.JCheckBox" name="for_agg">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Aggiungi"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox28" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="for_agg" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -446,19 +449,19 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="jPanel18">
+                <Container class="javax.swing.JPanel" name="pan_gest_ser">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                         <TitledBorder title="Gestione Servizi"/>
                       </Border>
                     </Property>
-                    <Property name="name" type="java.lang.String" value="jPanel18" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="pan_gest_ser" noResource="true"/>
                   </Properties>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox17">
+                    <Component class="javax.swing.JCheckBox" name="ser_el">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Elimina"/>
                         <Property name="name" type="java.lang.String" value="GestioneServiziElimina" noResource="true"/>
@@ -469,7 +472,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox18">
+                    <Component class="javax.swing.JCheckBox" name="ser_ele">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Elenca"/>
                         <Property name="name" type="java.lang.String" value="GestioneServiziElenca" noResource="true"/>
@@ -480,7 +483,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox19">
+                    <Component class="javax.swing.JCheckBox" name="ser_ric">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Ricerca"/>
                         <Property name="name" type="java.lang.String" value="GestioneServiziRicerca" noResource="true"/>
@@ -491,7 +494,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox20">
+                    <Component class="javax.swing.JCheckBox" name="ser_mod">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Modifica"/>
                         <Property name="name" type="java.lang.String" value="GestioneServiziModifica" noResource="true"/>
@@ -502,10 +505,10 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox29">
+                    <Component class="javax.swing.JCheckBox" name="ser_agg">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Aggiungi"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox29" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="ser_agg" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -515,22 +518,22 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="jPanel19">
+                <Container class="javax.swing.JPanel" name="pan_gest_dip">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                         <TitledBorder title="Gestione Dipendenti"/>
                       </Border>
                     </Property>
-                    <Property name="name" type="java.lang.String" value="jPanel19" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="pan_gest_dip" noResource="true"/>
                   </Properties>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox22">
+                    <Component class="javax.swing.JCheckBox" name="dip_el">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Elimina"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox22" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="dip_el" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -538,10 +541,10 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox23">
+                    <Component class="javax.swing.JCheckBox" name="dip_ele">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Elenca"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox23" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="dip_ele" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -549,10 +552,10 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox24">
+                    <Component class="javax.swing.JCheckBox" name="dip_ric">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Ricerca"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox24" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="dip_ric" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -560,10 +563,10 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox25">
+                    <Component class="javax.swing.JCheckBox" name="dip_mod">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Modifica"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox25" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="dip_mod" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -571,10 +574,10 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox30">
+                    <Component class="javax.swing.JCheckBox" name="dip_agg">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Aggiungi"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox30" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="dip_agg" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -584,22 +587,22 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="jPanel20">
+                <Container class="javax.swing.JPanel" name="pan_gest_ruo">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                         <TitledBorder title="Gestione Ruoli"/>
                       </Border>
                     </Property>
-                    <Property name="name" type="java.lang.String" value="jPanel20" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="pan_gest_ruo" noResource="true"/>
                   </Properties>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox32">
+                    <Component class="javax.swing.JCheckBox" name="ruo_el">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Elimina"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox32" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="ruo_el" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -607,10 +610,10 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox33">
+                    <Component class="javax.swing.JCheckBox" name="ruo_ele">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Elenca"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox33" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="ruo_ele" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -618,10 +621,10 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox34">
+                    <Component class="javax.swing.JCheckBox" name="ruo_ric">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Ricerca"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox34" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="ruo_ric" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -629,10 +632,10 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox35">
+                    <Component class="javax.swing.JCheckBox" name="ruo_mod">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Modifica"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox35" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="ruo_mod" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -640,10 +643,10 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox36">
+                    <Component class="javax.swing.JCheckBox" name="ruo_agg">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Aggiungi"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox36" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="ruo_agg" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -687,11 +690,11 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="jTextArea3">
+                    <Component class="javax.swing.JTextArea" name="txt_note">
                       <Properties>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="rows" type="int" value="5"/>
-                        <Property name="name" type="java.lang.String" value="jTextArea3" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="txt_note" noResource="true"/>
                       </Properties>
                     </Component>
                   </SubComponents>
