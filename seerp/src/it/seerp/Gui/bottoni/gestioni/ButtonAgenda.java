@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package it.seerp.Gui.bottoni.gestioni;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
@@ -21,13 +20,11 @@ import it.seerp.Gui.Gestione.agenda.CalendarDataRepository;
 import it.seerp.Gui.Gestione.agenda.CalendarPanel;
 import it.seerp.Gui.Gestione.agenda.Event;
 
-
-
 /**
  *
  * @author peppe
  */
-public class ButtonAgenda extends ObserverButton implements CommandInterface{
+public class ButtonAgenda extends ObserverButton implements CommandInterface {
 
     /**
      *
@@ -49,7 +46,7 @@ public class ButtonAgenda extends ObserverButton implements CommandInterface{
         this.menu = menu;
         //this.panel = new AreaUtentePanel(TIPO_UTENTE_CONST.CLIENTE);
 
-    //panel.register(this);
+        //panel.register(this);
         this.addActionListener(act);
 
 
@@ -65,37 +62,37 @@ public class ButtonAgenda extends ObserverButton implements CommandInterface{
     public void execute() {
 
         if (!isPresente) {
-           
-               this.panel = new CalendarPanel(new CalendarDataRepository() {
-                   public Vector getEventInstancesForDate(int year, int month, int day) {
-                        Vector ret = new Vector ();
 
-                       OpEvento op;
-                       ArrayList<Evento> e=null;
+            this.panel = new CalendarPanel(new CalendarDataRepository() {
+
+                public Vector getEventInstancesForDate(int year, int month, int day) {
+                    Vector ret = new Vector();
+
+                    OpEvento op;
+                    ArrayList<Evento> e = null;
                     try {
                         op = new OpEvento();
-                        e= op.visualizzaElenco();
+                        e = op.visualizzaElenco();
                     } catch (SQLException ex) {
                         ex.printStackTrace();
                     }
-                       
-                        for (Evento evento : e) {
-                          //  System.out.println(year + "/"+month + "/"+day + " " + evento.getData().getTimeInMillis() + " nuobo: " +
-                             //      new GregorianCalendar(year, month, day).getTimeInMillis()
-                               //     );
-                            if(evento.getData().get(GregorianCalendar.YEAR)==year && evento.getData().get(GregorianCalendar.MONTH)==month-1 && evento.getData().get(GregorianCalendar.DAY_OF_MONTH)==day)
-                                    {
-                                System.out.println("ok ci sto: " + evento.toString());
-                                ret.addElement ( new Event ( evento.getTema(),
-                evento.getLuogo(), year, month,  day, evento.getOra().get(GregorianCalendar.HOUR),
-                         evento.getOra().get(GregorianCalendar.MINUTE), evento.getOra().get(GregorianCalendar.SECOND)));
-                            }
+
+                    for (Evento evento : e) {
+                        //  System.out.println(year + "/"+month + "/"+day + " " + evento.getData().getTimeInMillis() + " nuobo: " +
+                        //      new GregorianCalendar(year, month, day).getTimeInMillis()
+                        //     );
+                        if (evento.getData().get(GregorianCalendar.YEAR) == year && evento.getData().get(GregorianCalendar.MONTH) == month - 1 && evento.getData().get(GregorianCalendar.DAY_OF_MONTH) == day) {
+                            System.out.println("ok ci sto: " + evento.toString());
+                            ret.addElement(new Event(evento.getTema(),
+                                    evento.getLuogo(), year, month, day, evento.getOra().get(GregorianCalendar.HOUR),
+                                    evento.getOra().get(GregorianCalendar.MINUTE), evento.getOra().get(GregorianCalendar.SECOND)));
                         }
-                        return ret;
                     }
-                });
-                panel.register(this);
-           
+                    return ret;
+                }
+            });
+            panel.register(this);
+
 
 
             isPresente = true;
@@ -114,5 +111,4 @@ public class ButtonAgenda extends ObserverButton implements CommandInterface{
 
         }
     }
-
 }
