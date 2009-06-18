@@ -19,6 +19,7 @@ import it.seerp.application.bean.BeanGuiAzienda;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import it.seerp.application.applicazione.AppAzienda;
 
 /**
  *
@@ -39,7 +40,7 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
         legameBean();
         //AppAzienda operazione= new   AppAzienda();
         //operazione.visualizza(azienda);
-        legameBean();
+   
         editabile(false);
     }
 
@@ -51,7 +52,8 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
     
         mail.setEditable(flag);
         piva.setEditable(flag);
-             piva.setEditable(flag);
+        tell.setEditable(flag);
+        via.setEditable(flag);
         nm.setEditable(flag);
         naz.setEditable(flag);
 
@@ -65,7 +67,8 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
         azienda.setPIVA(piva);
         azienda.setInidirizzo(via);
         azienda.setRagioneSociale(nm);
-        azienda.setNote(naz);
+        azienda.setNazione(naz);
+        azienda.setTelefono(tell);
       
     }
 
@@ -107,7 +110,7 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
         jPanel9 = new javax.swing.JPanel();
         via = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
-        via1 = new javax.swing.JTextField();
+        tell = new javax.swing.JTextField();
         jPanel11 = new javax.swing.JPanel();
         naz = new javax.swing.JTextField();
         jPanel12 = new javax.swing.JPanel();
@@ -178,8 +181,8 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Città"));
         jPanel10.setName("citta"); // NOI18N
 
-        via1.setFocusCycleRoot(true);
-        via1.setName("citta"); // NOI18N
+        tell.setFocusCycleRoot(true);
+        tell.setName("tell"); // NOI18N
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -187,13 +190,13 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(via1, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                .addComponent(tell, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addComponent(via1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tell, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -298,6 +301,8 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
                 .addContainerGap(197, Short.MAX_VALUE))
         );
 
+        jPanel13.getAccessibleContext().setAccessibleName("P.IVA"); // NOI18N
+
         buttonAnnulla1.setName("buttonAnnulla1"); // NOI18N
         buttonAnnulla1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -311,11 +316,6 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
                 buttonSalva1MouseClicked(evt);
             }
         });
-        buttonSalva1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSalva1ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -326,7 +326,7 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jXLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
                         .addComponent(buttonSalva1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonAnnulla1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -350,12 +350,10 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
     private void buttonSalva1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSalva1MouseClicked
         menu.getModifica().setEnabled(true);
         editabile(false);
-          //AppAzienda operazione= new   AppAzienda();
-        //   operazione.modifica(azienda);
-         /* Iterator<Azienda> it = op.visualizzaTabellaResponsabile().iterator();
-        while (it.hasNext()) {
-        this.addNewData(it.next());
-        }*/
+         //AppAzienda operazione= new   AppAzienda();
+        // operazione.modifica(azienda);
+        //operazione.visualizza(azienda);
+        editabile(false);
         this.buttonAnnulla1.setEnabled(false);
         this.buttonSalva1.setEnabled(false);
     }//GEN-LAST:event_buttonSalva1MouseClicked
@@ -372,10 +370,6 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
         // TODO add your handling code here:
     }//GEN-LAST:event_nmActionPerformed
 
-    private void buttonSalva1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalva1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonSalva1ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla buttonAnnulla1;
     private it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva buttonSalva1;
@@ -391,8 +385,8 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
     private javax.swing.JTextField naz;
     private javax.swing.JTextField nm;
     private javax.swing.JTextField piva;
+    private javax.swing.JTextField tell;
     private javax.swing.JTextField via;
-    private javax.swing.JTextField via1;
     // End of variables declaration//GEN-END:variables
 
     public void actionPerformed(ActionEvent e) {
