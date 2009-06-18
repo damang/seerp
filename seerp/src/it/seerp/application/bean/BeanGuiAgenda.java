@@ -1,5 +1,6 @@
 package it.seerp.application.bean;
 
+import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.validation.NotEmptyValidator;
 import java.util.ArrayList;
 import javax.swing.JTextField;
@@ -77,11 +78,11 @@ public class BeanGuiAgenda {
     /**
      * metodo che restituisce l'id dell'agenda del campo associato
      * @return l'id dell'agenda
-     * @throws Exception
+     * @throws ValidatorException
      */
-    public JTextField getIdAgenda() throws Exception {
+    public JTextField getIdAgenda() throws ValidatorException {
         if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         return idAgenda;
     }

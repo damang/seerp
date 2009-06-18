@@ -1,10 +1,9 @@
 package it.seerp.application.bean;
 
+import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.validation.NotAlphabeticValidator;
 import it.seerp.application.validation.NotEmptyValidator;
 import it.seerp.application.validation.NotEqualLengthValidator;
-import java.util.ArrayList;
-import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import org.jdesktop.swingx.JXPanel;
@@ -65,11 +64,6 @@ public class BeanGuiPersonale extends BeanGuiUtente {
         this.ruolo = ruolo;
     }
 
-   
-
-
-
-
     /**
      *
      * @return
@@ -89,14 +83,14 @@ public class BeanGuiPersonale extends BeanGuiUtente {
     /**
      *
      * @return
-     * @throws Exception
+     * @throws ValidatorException
      */
-    public JTextField getCodiceFiscale() throws Exception {
+    public JTextField getCodiceFiscale() throws ValidatorException {
         if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         if (!valEqLen.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         return codiceFiscale;
     }
@@ -104,35 +98,32 @@ public class BeanGuiPersonale extends BeanGuiUtente {
     /**
      *
      * @return
-     * @throws Exception
+     * @throws ValidatorException
      */
-    public JTextField getCognome() throws Exception {
+    public JTextField getCognome() throws ValidatorException {
         if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         if (!valApha.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         return cognome;
     }
-   
 
     /**
      *
      * @return
-     * @throws java.lang.Exception
+     * @throws ValidatorException
      */
-    public JTextField getNome() throws Exception {
+    public JTextField getNome() throws ValidatorException {
         if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         if (!valApha.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         return nome;
     }
-
-    
 
     /**
      * 
@@ -158,7 +149,6 @@ public class BeanGuiPersonale extends BeanGuiUtente {
         valApha = new NotAlphabeticValidator(grafica, cognome, "La stringa inserita deve essere alfabetica.");
         grafica.setInputVerifier(valApha);
     }
-
 
     /**
      *

@@ -1,11 +1,8 @@
 package it.seerp.application.bean;
 
-import it.seerp.application.validation.NotEmptyValidator;
 import java.util.ArrayList;
-import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import org.jdesktop.swingx.JXPanel;
 
 /**
  *
@@ -15,17 +12,6 @@ public class BeanGuiDipendente extends BeanGuiPersonale {
 
     private ArrayList<BeanGuiAppuntamento> listAppuntamenti;
     private ArrayList<BeanGuiContratto> listContratti;
-    private JXPanel grafica;
-    private NotEmptyValidator val;
-
-    /**
-     * Costruttore a cui viene passato un componente grafico necessario alla
-     * validazione del campo
-     * @param c
-     */
-    public BeanGuiDipendente(JXPanel c) {
-        grafica = c;
-    }
 
     /**
      * Costruttore vuoto per la classe Bean Gui Personale
@@ -91,30 +77,31 @@ public class BeanGuiDipendente extends BeanGuiPersonale {
      *
      * @param c
      */
-    public void removeAppuntamento(BeanGuiAppuntamento c){
-     listAppuntamenti.remove(c);}
+    public void removeAppuntamento(BeanGuiAppuntamento c) {
+        listAppuntamenti.remove(c);
+    }
 
+    /**
+     *
+     * @param c
+     */
+    public void addAppuntamento(BeanGuiAppuntamento c) {
+        listAppuntamenti.add(c);
+    }
 
-     /**
-      *
-      * @param c
-      */
-     public void addAppuntamento(BeanGuiAppuntamento c){
-     listAppuntamenti.add(c);}
+    /**
+     *
+     * @param c
+     */
+    public void removeContratto(BeanGuiContratto c) {
+        listContratti.remove(c);
+    }
 
-
-     /**
-      *
-      * @param c
-      */
-     public void removeContratto(BeanGuiContratto c){
-     listContratti.remove(c);}
-
-
-     /**
-      * 
-      * @param c
-      */
-     public void addContratto(BeanGuiContratto c){
-     listContratti.add(c);}
+    /**
+     *
+     * @param c
+     */
+    public void addContratto(BeanGuiContratto c) {
+        listContratti.add(c);
+    }
 }

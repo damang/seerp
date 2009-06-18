@@ -2,6 +2,7 @@ package it.seerp.application.applicazione;
 
 import it.seerp.application.Exception.DatiDuplicati;
 import it.seerp.application.Exception.DatiErrati;
+import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.bean.BeanGuiContratto;
 import it.seerp.application.conversioni.Conversione;
 import it.seerp.application.interfacce.GestioneContratti;
@@ -34,7 +35,7 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto, Contrat
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (Exception e) {
+        } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
@@ -56,7 +57,7 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto, Contrat
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (Exception e) {
+        } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
@@ -82,7 +83,7 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto, Contrat
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (Exception e) {
+        } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
@@ -105,7 +106,7 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto, Contrat
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (Exception e) {
+        } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
@@ -127,7 +128,7 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto, Contrat
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (Exception e) {
+        } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }

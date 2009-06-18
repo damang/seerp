@@ -4,6 +4,7 @@ import it.seerp.application.Exception.CancellazioneFallita;
 import it.seerp.application.Exception.DatiDuplicati;
 import it.seerp.application.Exception.DatiErrati;
 import it.seerp.application.Exception.RicercaFallita;
+import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.bean.BeanGuiEvento;
 import it.seerp.application.interfacce.GestioneAgenda;
 import it.seerp.storage.ejb.Evento;
@@ -39,7 +40,7 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (Exception e) {
+        } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
@@ -61,7 +62,7 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (Exception e) {
+        } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
@@ -81,7 +82,7 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (Exception e) {
+        } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
@@ -103,7 +104,7 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (Exception e) {
+        } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
@@ -126,7 +127,7 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (Exception e) {
+        } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
@@ -155,7 +156,7 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (Exception e) {
+        } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
@@ -200,7 +201,7 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (Exception e) {
+        } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }

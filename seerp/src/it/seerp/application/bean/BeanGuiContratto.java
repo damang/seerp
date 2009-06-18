@@ -1,5 +1,6 @@
 package it.seerp.application.bean;
 
+import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.validation.NotAlphabeticValidator;
 import it.seerp.application.validation.NotEmptyValidator;
 import it.seerp.application.validation.NotMinNumberValidator;
@@ -61,10 +62,10 @@ public class BeanGuiContratto {
         this.tipo = tipo;
         this.idContratto = idContratto;
         this.note = note;
-        this.listFatture= new ArrayList<BeanGuiFattura>();
-        this.listPagamento= new ArrayList<BeanGuiPagamento>();
-        this.listServizio= new ArrayList<BeanGuiServizioAssociato>();
-    
+        this.listFatture = new ArrayList<BeanGuiFattura>();
+        this.listPagamento = new ArrayList<BeanGuiPagamento>();
+        this.listServizio = new ArrayList<BeanGuiServizioAssociato>();
+
     }
 
     /**
@@ -115,35 +116,33 @@ public class BeanGuiContratto {
         this.data = data;
     }
 
-  
     /**
      *
      * @return
      * @throws java.lang.Exception
      */
-    public BeanGuiDipendente getDipendente() throws Exception {
-      
+    public BeanGuiDipendente getDipendente() {
+
         return dipendente;
     }
 
-  
     /**
      *
      * @param pdipendente
      */
     public void setDipendente(BeanGuiDipendente pdipendente) {
         this.dipendente = pdipendente;
-      
+
     }
 
     /**
      * metodo che restituisce il campo contenente la durata di un Contratto
      * @return il campo durata del Contratto
-     * @throws Exception
+     * @throws ValidatorException
      */
-    public JTextField getDurata() throws Exception {
+    public JTextField getDurata() throws ValidatorException {
         if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         return durata;
     }
@@ -158,7 +157,6 @@ public class BeanGuiContratto {
         grafica.setInputVerifier(val);
     }
 
-   
     /**
      *
      * @return
@@ -226,14 +224,14 @@ public class BeanGuiContratto {
     /**
      * metodo che restituisce il campo contente il tipo di Contratto
      * @return il campo tipo
-     * @throws Exception
+     * @throws ValidatorException
      */
-    public JTextField getTipo() throws Exception {
+    public JTextField getTipo() throws ValidatorException {
         if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         if (!valApha.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         return tipo;
     }
@@ -266,9 +264,6 @@ public class BeanGuiContratto {
         listPagamento.add(p);
     }
 
-    
-
-   
     /**
      *
      * @param s
@@ -276,7 +271,6 @@ public class BeanGuiContratto {
     public void addServizio(BeanGuiServizioAssociato s) {
         listServizio.add(s);
     }
-
 
     /**
      *
@@ -286,7 +280,6 @@ public class BeanGuiContratto {
         listServizio.remove(s);
     }
 
-
     /**
      *
      * @param s
@@ -294,7 +287,6 @@ public class BeanGuiContratto {
     public void addFattura(BeanGuiFattura s) {
         listFatture.add(s);
     }
-
 
     /**
      *
@@ -319,5 +311,4 @@ public class BeanGuiContratto {
     public void setListFatture(ArrayList<BeanGuiFattura> listFatture) {
         this.listFatture = listFatture;
     }
-    
 }
