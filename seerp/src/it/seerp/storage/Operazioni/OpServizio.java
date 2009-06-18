@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Connection;
 import it.seerp.storage.Exception.DatiErratiEx;
+import javax.sound.midi.Soundbank;
 
 /**
  * la classe storage che si occupa di interfacciarsi con il dbms e compiere operazioni sui servizi
@@ -111,8 +112,7 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
         ArrayList<Servizio> lista = new ArrayList<Servizio>();
 
 
-        String query = "SELECT idServizio,descrizione,disponibilita,quantita,tipo,prezzo,iva,note" +
-                        " FROM servizio ";
+        String query = "SELECT idServizio,descrizione,disponibilita,quantita,tipo,prezzo,iva,note FROM servizio ";
         stmt = (PreparedStatement) conn.prepareStatement(query);
 
         rs = stmt.executeQuery(query);
@@ -122,9 +122,10 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
             Servizio e = new Servizio(rs.getInt(1), rs.getString(2), rs.getBoolean(3),
                     rs.getInt(4), rs.getString(5), rs.getDouble(6),
                     rs.getInt(7), rs.getString(8));
-
+           
             lista.add(e);
         }
+        
         stmt.close();
         rs.close();
         ConnectionPool.releaseConnection(conn);
@@ -137,6 +138,7 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
      * @return servizio che corrisponde a quell'identificativo
      * @throws java.sql.SQLException
      */
+    @Override
     public Servizio visualizza(Integer id) throws SQLException {
 
         PreparedStatement stmt = null;
@@ -144,12 +146,11 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
         Servizio serv = null;
 
 
-        String query = "SELECT idServizio,descrizione,disponibilita,quantita,tipo,prezzo,iva,note" +
-                       "FROM servizio WHERE servizio.idServizio= ?";
+        String query = "SELECT idServizio,descrizione,disponibilita,quantita,tipo,prezzo,iva,note FROM servizio WHERE idServizio=?";
         stmt = (PreparedStatement) conn.prepareStatement(query);
         stmt.setInt(1, id);
 
-        rs = stmt.executeQuery(query);
+        rs = stmt.executeQuery();
 
         // Define the resource list
         while (rs.next()) {
