@@ -89,17 +89,16 @@ public class OpAzienda {
      * @return
      * @throws java.sql.SQLException
      */
-    public Azienda visualizza(Integer id) throws SQLException {
+    public Azienda visualizza() throws SQLException {
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
         Azienda az = null;
 
         String sql = "SELECT idAzienda,citta,email,fax,indirizzo,nazione,piva,ragioneSociale,telefono" +
-                " FROM azienda WHERE idAzienda= ?";
+                " FROM azienda";
         stmt = (PreparedStatement) conn.prepareStatement(sql);
 
-        stmt.setInt(1, id);
         rs = stmt.executeQuery();
 
         // Define the resource list
