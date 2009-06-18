@@ -14,8 +14,9 @@ import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla;
 import it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva;
 import it.seerp.Gui.Gestione.Menu.MenuServizi;
+import it.seerp.Gui.configurazioni.Gui.ConfigurazioneOperazioni;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
-import it.seerp.Gui.tabella.ServiziTm;
+import it.seerp.application.tabelle.ServiziTm;
 import it.seerp.application.applicazione.AppServizi;
 import it.seerp.application.bean.BeanGuiServizio;
 import java.awt.event.ActionEvent;
@@ -30,6 +31,7 @@ import javax.swing.JOptionPane;
  */
 public class GestioneServizi extends ObservableJPanel implements ActionListener {
 
+    ConfigurazioneOperazioni.TIPO_OPE_CONST tipoOp;
     BeanGuiServizio servizio;
     String tipoOP;
     MenuServizi menu;
@@ -46,15 +48,16 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
      *
      * @param TipoOP
      */
-    public void setTipoOP(String TipoOP) {
-        this.tipoOP = TipoOP;
+    public void setTipoOP(ConfigurazioneOperazioni.TIPO_OPE_CONST tipo) {
+        this.tipoOp = tipo;
     }
 
     /** Creates new form GestioneContratti */
     public GestioneServizi() {
         initComponents();
-        editabile(false);
         this.servizio = new BeanGuiServizio(this);
+        editabile(false);
+
     }
 
     /**
@@ -92,6 +95,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
      *
      */
     public void legameBeans() {
+
         servizio.setDisponibilita(disponibilita);
         servizio.setTipo(tipo);
         servizio.setPrezzo(prz);
@@ -603,7 +607,9 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         try{
             jXTable1.setModel(new ServiziTm());
         }
-        catch (SQLException e){}
+        catch (SQLException e){
+            e.printStackTrace();
+        }
         jXTable1.setName("jXTable1"); // NOI18N
         jXTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -669,7 +675,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
                             .addComponent(buttonAnnulla1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(35, 35, 35)
                             .addComponent(buttonSalva1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jXPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jXPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -703,6 +709,10 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         menu.getModifica().setEnabled(true);
         JOptionPane.showMessageDialog(null, "operazione annulata");
         jTabbedPane1.setSelectedComponent(jPanel1);
+        editabile(false);
+        buttonAnnulla1.setEnabled(false);
+        buttonSalva1.setEnabled(false);
+
     }//GEN-LAST:event_buttonAnnulla1MouseClicked
 
     private void buttonSalva1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSalva1MouseClicked
@@ -710,30 +720,32 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         menu.getAggiungi().setEnabled(true);
         menu.getModifica().setEnabled(true);
         if (tipoOP.compareToIgnoreCase("modifica") == 0) {
-            AppServizi operazione = new AppServizi();
-           // operazione.inserisci(servizio);
-
-        /* Iterator<Servizio> it = op.visualizzaTabella().iterator();
-        while (it.hasNext()) {
-        this.addNewData(it.next());
-        }*/
+            /*  AppServizi operazione = new AppServizi();
+            operazione.modifica(servizio);
+            ((ServiziTm) jXTable1.getModel()).refresh();*/
         }
         if (tipoOP.compareToIgnoreCase("inserisci") == 0) {
-            JOptionPane.showMessageDialog(null, "ins");
-                  AppServizi operazione = new AppServizi();
-          //  operazione.modifica(servizio);
-
-        /* Iterator<Servizio> it = op.visualizzaTabella().iterator();
-        while (it.hasNext()) {
-        this.addNewData(it.next());
-        }*/
+            /*  AppServizi operazione = new AppServizi();
+            operazione.inserisci(servizio);
+            ((ServiziTm) jXTable1.getModel()).refresh();*/
         }
+        editabile(false);
+        buttonAnnulla1.setEnabled(false);
+        buttonSalva1.setEnabled(false);
+
     }//GEN-LAST:event_buttonSalva1MouseClicked
 
     private void jXTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jXTable1MouseClicked
-     //  String id = (String) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0);
-            AppServizi operazione = new AppServizi();
-        // cambiare application operazione.visualizz(id, servizio);
+        int i = jXTable1.getSelectedRow();
+        if (i < 0) {
+            return;
+        }
+        Integer id = (Integer) jXTable1.getValueAt(this.jXTable1.convertRowIndexToModel(i), 0);
+        // JOptionPane.showMessageDialog(null, id);
+        AppServizi operazione = new AppServizi();
+        operazione.visualizza(id, servizio);
+       this.repaint();
+        editabile(false);
     }//GEN-LAST:event_jXTable1MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -779,8 +791,6 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
     private javax.swing.JTextField qnt;
     private javax.swing.JTextField tipo;
     // End of variables declaration//GEN-END:variables
-
-
 
     public void actionPerformed(ActionEvent e) {
         CommandInterface cmd = (CommandInterface) e.getSource();
