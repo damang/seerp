@@ -55,6 +55,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
     /** Creates new form GestioneContratti */
     public GestioneServizi() {
         initComponents();
+        legameBeans();
         this.servizio = new BeanGuiServizio(this);
         editabile(false);
 
@@ -96,7 +97,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
      */
     public void legameBeans() {
 
-        servizio.setDisponibilita(disponibilita);
+         servizio.setDisponibilita(disponibilita);
         servizio.setTipo(tipo);
         servizio.setPrezzo(prz);
         servizio.setQuantita(qnt);
@@ -719,20 +720,23 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
 
         menu.getAggiungi().setEnabled(true);
         menu.getModifica().setEnabled(true);
-        if (tipoOP.compareToIgnoreCase("modifica") == 0) {
+      //  if (tipoOP.compareToIgnoreCase("modifica") == 0) {
             /*  AppServizi operazione = new AppServizi();
             operazione.modifica(servizio);
             ((ServiziTm) jXTable1.getModel()).refresh();*/
-        }
-        if (tipoOP.compareToIgnoreCase("inserisci") == 0) {
-            /*  AppServizi operazione = new AppServizi();
-            operazione.inserisci(servizio);
-            ((ServiziTm) jXTable1.getModel()).refresh();*/
-        }
+      //  }
+        if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI)) {
+          
+            servizio.getPrezzo();
+            
+         // AppServizi operazione = new AppServizi();
+           //operazione.inserisci(servizio);
+          //  ((ServiziTm) jXTable1.getModel()).refresh();
+      //  }
         editabile(false);
         buttonAnnulla1.setEnabled(false);
         buttonSalva1.setEnabled(false);
-
+        }
     }//GEN-LAST:event_buttonSalva1MouseClicked
 
     private void jXTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jXTable1MouseClicked
