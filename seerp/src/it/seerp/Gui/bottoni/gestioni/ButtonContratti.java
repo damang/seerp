@@ -8,7 +8,6 @@ import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.Contratti.GestioneContratti;
 import it.seerp.Gui.observerButton.ObserverButton;
 import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
