@@ -143,11 +143,11 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * Metodo che passa la lista di bean utilizzando l'operazioni del lato storage
      * @return lista dei bean
      */
-    public ArrayList<Cliente> visualizzaTabellaCliente() {
-        ArrayList<Cliente> list = new ArrayList<Cliente>();
+    public ArrayList<Dipendente> visualizzaTabellaDipendenti() {
+        ArrayList<Dipendente> list = new ArrayList<Dipendente>();
         try {
-            OpCliente ope = new OpCliente();
-            list = ope.elencaCliente();
+            OpDipendente ope = new OpDipendente();
+            list = ope.elencaDipendente();
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
@@ -159,11 +159,11 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * Metodo che passa la lista di bean utilizzando l'operazioni del lato storage
      * @return lista dei bean
      */
-    public ArrayList<Fornitore> visualizzaTabellaFornitore() {
-        ArrayList<Fornitore> list = new ArrayList<Fornitore>();
+    public ArrayList<Responsabile> visualizzaTabellaResponsabili() {
+        ArrayList<Responsabile> list = new ArrayList<Responsabile>();
         try {
-            OpFornitore ope = new OpFornitore();
-            list = ope.elencaFornitore();
+            OpResponsabile ope = new OpResponsabile();
+            list = ope.elencaResponsabile();
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
