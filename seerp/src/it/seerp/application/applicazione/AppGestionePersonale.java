@@ -199,7 +199,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * @throws it.seerp.application.Exception.CancellazioneFallita
      * nel caso in cui il sistema fallisca nell'eliminazione
      */
-    public void eliminaaaaa(BeanGuiFornitore beanGui) throws CancellazioneFallita {
+    public void eliminaFornitore(BeanGuiFornitore beanGui) throws CancellazioneFallita {
         try {
             OpFornitore ope = new OpFornitore();
             Fornitore forn = Conversione.conversioneFornitore(beanGui);
