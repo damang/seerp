@@ -3,6 +3,7 @@ package it.seerp.application.bean;
 import it.seerp.Gui.configurazioni.PermessiDefault;
 import it.seerp.Gui.configurazioni.PermessiDefault.Categoria_Permesso;
 import it.seerp.application.validation.NotEmptyValidator;
+import it.seerp.storage.Operazioni.OpPermesso;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 import org.jdesktop.swingx.JXPanel;
@@ -40,9 +41,22 @@ public class BeanGuiPermesso {
      * @param id
      * @param cat
      */
+    public BeanGuiPermesso(JXPanel c, JCheckBox act, int id, String cat) {
+        this(c);
+        this.act = act;
+        this.idPermesso=id;
+        this.cat=cat;
+    }
     public BeanGuiPermesso(JCheckBox path, int id, String cat) {
+        this(null);
         this.act = path;
         this.idPermesso=id;
+        this.cat=cat;
+    }
+     public BeanGuiPermesso(JXPanel c, JCheckBox path, String cat) {
+        this(c);
+        this.act = path;
+        this.idPermesso=-1;
         this.cat=cat;
     }
 
@@ -52,9 +66,9 @@ public class BeanGuiPermesso {
      * @throws Exception
      */
     public  int getIdPermesso() throws Exception {
-        if (!val.shouldYieldFocus(grafica)) {
+     /*   if (!val.shouldYieldFocus(grafica)) {
             throw new Exception("Errore nella grafica!");
-        }
+        }*/
         return idPermesso;
     }
 
@@ -82,9 +96,9 @@ public class BeanGuiPermesso {
      * @throws java.lang.Exception
      */
     public JCheckBox getAct() throws Exception {
-        if (!val.shouldYieldFocus(grafica)) {
+   /*     if (!val.shouldYieldFocus(grafica)) {
             throw new Exception("Errore nella grafica!");
-        }
+        }*/
         return act;
     }
     /**

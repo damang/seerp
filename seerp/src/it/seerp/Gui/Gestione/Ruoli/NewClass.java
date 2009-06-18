@@ -24,7 +24,7 @@ public class NewClass {
      */
     public static void main(String[] args)
     {
-        PermessiDefault.init();
+     /*   PermessiDefault.init();
         JFrame f = new JFrame();
         try {
             f.getContentPane().add(new GestioneRuoli());
@@ -33,7 +33,10 @@ public class NewClass {
         }
        f.setSize(1000, 700);
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        f.setVisible(true);
+        f.setVisible(true);*/
       //  JOptionPane.showMessageDialog(null, PermessiDefault.getPermessiAmministratore().size());
+        String s="aggiungi";
+        String a="Aggiungi";
+        System.out.println(s.equalsIgnoreCase(a));
       }
 }

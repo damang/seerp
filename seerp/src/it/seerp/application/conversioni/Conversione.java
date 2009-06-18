@@ -1000,9 +1000,10 @@ public class Conversione {
      * @param p il Bean Grafico che deve essere modificato
      * @return il Bean Gui convertito
      */
-    public static BeanGuiPermesso conversionePermesso(Permesso b, BeanGuiPermesso p) {
+    public static BeanGuiPermesso conversionePermesso(Permesso b, BeanGuiPermesso p) throws Exception {
            p.setIdPermesso(b.getId());
-           p.setAct(new JCheckBox(b.getActions()));
+           p.getAct().setText(b.getActions());
+           //p.setAct(new JCheckBox(b.getActions()));
            p.setCat(b.getName());
            return p;
     }
@@ -1036,20 +1037,31 @@ public class Conversione {
      * @para r il Bean Grafico che deve essere modificato
      * @return il Bean Gui convertito
      */
-    public static BeanGuiRuolo conversioneRuolo(Ruolo b, BeanGuiRuolo r) {
+    public static BeanGuiRuolo conversioneRuolo(Ruolo b, BeanGuiRuolo r) throws Exception {
         r.setNome(new JTextField(b.getNome()));
-        HashMap<String, ArrayList<BeanGuiPermesso>> lipi = new HashMap<String, ArrayList<BeanGuiPermesso>>();
+        HashMap<String, ArrayList<BeanGuiPermesso>> lipi = r.getListPermessi();//new HashMap<String, ArrayList<BeanGuiPermesso>>();
         PermessoCollection p = b.getListPermesso();
         Iterator<Permesso> it=p.iterator();
         Permesso f=null;
+        ArrayList<BeanGuiPermesso> c;
+        r.resetCheck();
         while (it.hasNext()) {
             f=it.next();
-            if(!lipi.containsKey(f.getName())){
+           /* if(!lipi.containsKey(f.getName())){
                 lipi.put(f.getName(), new ArrayList<BeanGuiPermesso>());
             }
-            lipi.get(f.getName()).add(new BeanGuiPermesso(new JCheckBox(f.getActions()), f.getId(), f.getName()));
+            lipi.get(f.getName()).add(new BeanGuiPermesso(new JCheckBox(f.getActions()), f.getId(), f.getName()));*/
+            c=lipi.get(f.getName());
+            for (BeanGuiPermesso bean : c) {
+                if(bean.getAct().getText().equalsIgnoreCase(f.getActions())) {
+                    bean.getAct().setSelected(true);
+                    break;
+                }
+            }
         }
-        r.setListPermessi(lipi);
+        //r.setListPermessi(lipi);
+
+
         return r;
       
     }

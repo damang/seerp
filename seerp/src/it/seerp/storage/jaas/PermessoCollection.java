@@ -79,6 +79,9 @@ public class PermessoCollection extends PermissionCollection
     public Iterator<Permesso> iterator() {
         return _perms.iterator();
     }
+    public Permesso get(int i) {
+        return (Permesso)_perms.get(i);
+    }
 
 
 }
