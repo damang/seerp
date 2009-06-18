@@ -7,6 +7,7 @@ package it.seerp.Gui.configurazioni.Gui;
 import it.seerp.application.bean.BeanGuiCliente;
 import it.seerp.application.bean.BeanGuiDipendente;
 import it.seerp.application.bean.BeanGuiFornitore;
+import it.seerp.application.bean.BeanGuiResponsabile;
 import it.seerp.application.bean.BeanGuiUtente;
 
 /**
@@ -40,7 +41,6 @@ public class ConfigurazioneUtente {
          *
          */
         DIPENDENTE,
-
     };
 
     /**
@@ -56,8 +56,9 @@ public class ConfigurazioneUtente {
             return new BeanGuiDipendente();
         } else if (tipo.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
             return new BeanGuiFornitore();
+        } else if (tipo.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
+            return new BeanGuiResponsabile();
         }
-
 
         return null;
     }
