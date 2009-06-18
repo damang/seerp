@@ -39,4 +39,25 @@ public class AppAzienda {
         return beanGui;
     }
 
+    /**
+     * Metodo che permette la visualizzazione di una singola azienda
+     * @param gui Bean Gui dell'azienda
+     * @return Bean Gui dell'azienda
+     * @throws DatiErrati
+     * nel caso in cui vi siano dati errati
+     */
+    public BeanGuiAzienda visualizzaAzienda(BeanGuiAzienda gui) throws DatiErrati {
+        try {
+            OpAzienda ope = new OpAzienda();
+            Azienda azi = ope.visualizza();
+            gui = Conversione.conversioneAzienda(azi, gui);
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
+        }
+        return gui;
+    }
 }

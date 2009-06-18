@@ -16,4 +16,13 @@ public interface GestioneAzienda<E> {
      * @throws it.seerp.application.Exception.DatiErrati
      */
     public E modifica(E beanGui) throws DatiErrati;
+
+    /**
+     * Metodo che permette la visualizzazione di una singola azienda
+     * @param gui Bean Gui dell'azienda
+     * @return Bean Gui dell'azienda
+     * @throws DatiErrati
+     * nel caso in cui vi siano dati errati
+     */
+    public E visualizzaAzienda(E gui) throws DatiErrati;
 }
