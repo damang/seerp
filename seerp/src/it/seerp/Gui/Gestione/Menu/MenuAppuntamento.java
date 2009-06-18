@@ -11,6 +11,7 @@ package it.seerp.Gui.Gestione.Menu;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.Ruoli.GestioneRuoli;
+import it.seerp.Gui.Gestione.agenda.CalendarPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -20,7 +21,7 @@ import java.awt.event.ActionListener;
  */
 public class MenuAppuntamento extends javax.swing.JPanel implements ActionListener {
 
-    GestioneRuoli pannello = null;
+     CalendarPanel pannello = null;
 
     /** Creates new form Preventivi */
     public  MenuAppuntamento() {
@@ -31,7 +32,7 @@ public class MenuAppuntamento extends javax.swing.JPanel implements ActionListen
      *
      * @param pannello
      */
-    public void setPannello(GestioneRuoli pannello) {
+    public void setPannello( CalendarPanel pannello) {
 
         this.pannello = pannello;
    /*     this.modificaButtonServizi1.setAreaServizi(pannello);
