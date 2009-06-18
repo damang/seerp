@@ -5,8 +5,12 @@
 
 package it.seerp.Gui.tabella;
 
+import it.seerp.application.applicazione.AppRuoli;
+import it.seerp.application.bean.BeanGuiRuolo;
 import it.seerp.storage.ejb.Ruolo;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Vector;
 import javax.swing.JTable;
 
@@ -27,11 +31,12 @@ public class RuoloTm extends Generica<Ruolo> {
         super.setColumnIdentifiers(list);
         super.setColumnCount(1);
 
-       // AppGestioneExtraAzienda op = new AppGestioneExtraAzienda();
-       /* Iterator<Cliente> it = op.visualizzaClienti().iterator();
+        AppRuoli op = new AppRuoli();
+        ArrayList<Ruolo> listGui = op.visualizzaTabella();
+        Iterator<Ruolo> it = listGui.iterator();
         while (it.hasNext()) {
             this.addNewData(it.next());
-        }*/
+        }
     }
 
     /**
