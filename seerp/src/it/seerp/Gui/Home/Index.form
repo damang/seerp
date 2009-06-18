@@ -120,9 +120,9 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <Component id="jXTitledPanel1" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTabbedPanePrincipale" min="-2" pref="854" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="jTabbedPanePrincipale" pref="854" max="32767" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
           <Component id="jXTaskPaneContainer1" alignment="0" pref="1011" max="32767" attributes="0"/>
       </Group>
@@ -337,22 +337,12 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButton2" pref="167" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButton1" pref="167" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="buttonServizi1" alignment="1" pref="167" max="32767" attributes="0"/>
-                                      <Component id="buttonContratti1" alignment="0" pref="167" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="jButton2" alignment="1" pref="167" max="32767" attributes="0"/>
+                              <Component id="jButton1" alignment="1" pref="167" max="32767" attributes="0"/>
+                              <Component id="buttonServizi1" alignment="1" pref="167" max="32767" attributes="0"/>
+                              <Component id="buttonContratti1" alignment="0" pref="167" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -583,7 +573,7 @@
                   <Component id="menuInfoAzienda1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="menuAppuntamento1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="38" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -599,7 +589,7 @@
                       <Component id="menuInfoAzienda1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="menuAppuntamento1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="21" max="32767" attributes="0"/>
+                  <EmptySpace pref="24" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
