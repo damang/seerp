@@ -90,8 +90,9 @@ public class AppRuoli implements GestioneRuoli<BeanGuiRuolo> {
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui vi siano dati errati
      */
-    public ArrayList<BeanGuiRuolo> getElenco(ArrayList<BeanGuiRuolo> listGui) {
+    public ArrayList<BeanGuiRuolo> getElenco() {
         ArrayList<Ruolo> list;
+        ArrayList<BeanGuiRuolo> listGui= new ArrayList<BeanGuiRuolo>();
         try {
             OpRuolo ope = new OpRuolo();
             list = ope.visualizzaElenco();
@@ -108,6 +109,23 @@ public class AppRuoli implements GestioneRuoli<BeanGuiRuolo> {
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
         return listGui;
+    }
+
+    public ArrayList<Ruolo> visualizzaTabella() {
+        ArrayList<Ruolo> list;
+        //ArrayList<BeanGuiRuolo> listGui= new ArrayList<BeanGuiRuolo>();
+        try {
+            OpRuolo ope = new OpRuolo();
+            list = ope.visualizzaElenco();
+            return list;
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
+        }
+        return null;
     }
 
 }
