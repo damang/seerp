@@ -21,11 +21,10 @@ public class AppGestioneAreaPersonale implements GestioneAreaPersonale<BeanGuiUt
      * @param beanGui
      * @return il Bean Grafico contenente i dati dell'utente
      */
-    public BeanGuiUtente visualizzaDati(BeanGuiUtente beanGui) {
+    public BeanGuiUtente visualizzaDati(String id, BeanGuiUtente beanGui) {
         try {
             OpAreaPersonale ope = new OpAreaPersonale();
-            Utente user = Conversione.conversioneUtente(beanGui);
-            user = ope.visualizzaDati(user.getIdUtente());
+            Utente user = ope.visualizzaDati(Integer.parseInt(id));
             beanGui = it.seerp.application.conversioni.Conversione.conversioneUtente(user, beanGui);
         } catch (SQLException se) {
             se.printStackTrace();
