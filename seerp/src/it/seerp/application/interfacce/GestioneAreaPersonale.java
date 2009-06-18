@@ -15,7 +15,7 @@ public interface GestioneAreaPersonale<U extends BeanGuiUtente> {
      * @param utente
      * @return
      */
-    public U visualizzaDati(U utente);
+    public U visualizzaDati(String id, U utente);
 
     /**
      *
