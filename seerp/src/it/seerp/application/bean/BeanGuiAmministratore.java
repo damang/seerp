@@ -1,11 +1,7 @@
 package it.seerp.application.bean;
 
-import it.seerp.application.validation.NotEmptyValidator;
-import java.util.ArrayList;
-import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import org.jdesktop.swingx.JXPanel;
 
 /**
  *
@@ -13,19 +9,7 @@ import org.jdesktop.swingx.JXPanel;
  */
 public class BeanGuiAmministratore extends BeanGuiPersonale {
 
-
     private BeanGuiAzienda azienda;
-    private JXPanel grafica;
-    private NotEmptyValidator val;
-
-    /**
-     * Costruttore a cui viene passato un componente grafico necessario alla
-     * validazione del campo
-     * @param c
-     */
-    public BeanGuiAmministratore(JXPanel c) {
-        grafica = c;
-    }
 
     /**
      * costruttore vuoto per il Bean Gui Amministratore
@@ -70,6 +54,4 @@ public class BeanGuiAmministratore extends BeanGuiPersonale {
     public void setAzienda(BeanGuiAzienda azienda) {
         this.azienda = azienda;
     }
-
-
 }

@@ -1,6 +1,7 @@
 package it.seerp.application.applicazione;
 
 import it.seerp.application.Exception.CancellazioneFallita;
+import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.bean.BeanGuiAmministratore;
 import it.seerp.application.bean.BeanGuiCliente;
 import it.seerp.application.bean.BeanGuiDipendente;
@@ -47,7 +48,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (Exception e) {
+        } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
@@ -66,7 +67,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (Exception e) {
+        } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
@@ -88,7 +89,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (Exception e) {
+        } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
@@ -110,7 +111,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (Exception e) {
+        } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
@@ -132,7 +133,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (Exception e) {
+        } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
@@ -186,7 +187,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (Exception e) {
+        } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
@@ -207,7 +208,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (Exception e) {
+        } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }

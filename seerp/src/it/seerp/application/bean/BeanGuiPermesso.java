@@ -1,11 +1,6 @@
 package it.seerp.application.bean;
 
-import it.seerp.Gui.configurazioni.PermessiDefault;
-import it.seerp.Gui.configurazioni.PermessiDefault.Categoria_Permesso;
-import it.seerp.application.validation.NotEmptyValidator;
-import it.seerp.storage.Operazioni.OpPermesso;
 import javax.swing.JCheckBox;
-import javax.swing.JTextField;
 import org.jdesktop.swingx.JXPanel;
 
 /**
@@ -18,7 +13,6 @@ public class BeanGuiPermesso {
     private int idPermesso;
     private String cat;
     private JXPanel grafica;
-    private NotEmptyValidator val;
 
     /**
      * Costruttore a cui viene passato un componente grafico necessario alla
@@ -44,20 +38,22 @@ public class BeanGuiPermesso {
     public BeanGuiPermesso(JXPanel c, JCheckBox act, int id, String cat) {
         this(c);
         this.act = act;
-        this.idPermesso=id;
-        this.cat=cat;
+        this.idPermesso = id;
+        this.cat = cat;
     }
+
     public BeanGuiPermesso(JCheckBox path, int id, String cat) {
         this(null);
         this.act = path;
-        this.idPermesso=id;
-        this.cat=cat;
+        this.idPermesso = id;
+        this.cat = cat;
     }
-     public BeanGuiPermesso(JXPanel c, JCheckBox path, String cat) {
+
+    public BeanGuiPermesso(JXPanel c, JCheckBox path, String cat) {
         this(c);
         this.act = path;
-        this.idPermesso=-1;
-        this.cat=cat;
+        this.idPermesso = -1;
+        this.cat = cat;
     }
 
     /**
@@ -65,9 +61,9 @@ public class BeanGuiPermesso {
      * @return
      * @throws Exception
      */
-    public  int getIdPermesso() throws Exception {
-     /*   if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+    public int getIdPermesso() throws Exception {
+        /*   if (!val.shouldYieldFocus(grafica)) {
+        throw new Exception("Errore nella grafica!");
         }*/
         return idPermesso;
     }
@@ -87,7 +83,7 @@ public class BeanGuiPermesso {
     public void setAct(JCheckBox ppath) {
         this.act = ppath;
     //    val = new NotEmptyValidator(grafica, path, "Il campo non può eseere vuoto.");
-      //  grafica.setInputVerifier(val);
+    //  grafica.setInputVerifier(val);
     }
 
     /**
@@ -96,11 +92,12 @@ public class BeanGuiPermesso {
      * @throws java.lang.Exception
      */
     public JCheckBox getAct() throws Exception {
-   /*     if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+        /*     if (!val.shouldYieldFocus(grafica)) {
+        throw new Exception("Errore nella grafica!");
         }*/
         return act;
     }
+
     /**
      *
      * @return
@@ -108,11 +105,12 @@ public class BeanGuiPermesso {
     public String getCat() {
         return cat;
     }
-   /**
-    *
-    * @param c
-    */
-   public void setCat(String c) {
-        cat=c;
+
+    /**
+     *
+     * @param c
+     */
+    public void setCat(String c) {
+        cat = c;
     }
 }

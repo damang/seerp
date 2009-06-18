@@ -2,6 +2,7 @@ package it.seerp.application.applicazione;
 
 import it.seerp.application.Exception.DatiDuplicati;
 import it.seerp.application.Exception.DatiErrati;
+import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.bean.BeanGuiRuolo;
 import it.seerp.application.conversioni.Conversione;
 import it.seerp.application.interfacce.GestioneRuoli;
@@ -34,7 +35,7 @@ public class AppRuoli implements GestioneRuoli<BeanGuiRuolo> {
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (Exception e) {
+        } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
@@ -58,7 +59,7 @@ public class AppRuoli implements GestioneRuoli<BeanGuiRuolo> {
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (Exception e) {
+        } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
@@ -69,19 +70,19 @@ public class AppRuoli implements GestioneRuoli<BeanGuiRuolo> {
      *
      * @param r
      * @return
-     
+
     public void elimina(BeanGuiRuolo r) {
-        try {
-            OpRuolo ope = new OpRuolo();
-            Ruolo ruo = Conversione.conversioneRuolo(r);
-            ope.elimina(ruo);
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
+    try {
+    OpRuolo ope = new OpRuolo();
+    Ruolo ruo = Conversione.conversioneRuolo(r);
+    ope.elimina(ruo);
+    } catch (SQLException se) {
+    se.printStackTrace();
+    JOptionPane.showMessageDialog(null, "Errore nel database!");
+    } catch (ValidatorException e) {
+    e.printStackTrace();
+    JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
+    }
     }
 
     /**
@@ -92,7 +93,7 @@ public class AppRuoli implements GestioneRuoli<BeanGuiRuolo> {
      */
     public ArrayList<BeanGuiRuolo> getElenco() {
         ArrayList<Ruolo> list;
-        ArrayList<BeanGuiRuolo> listGui= new ArrayList<BeanGuiRuolo>();
+        ArrayList<BeanGuiRuolo> listGui = new ArrayList<BeanGuiRuolo>();
         try {
             OpRuolo ope = new OpRuolo();
             list = ope.visualizzaElenco();
@@ -104,7 +105,7 @@ public class AppRuoli implements GestioneRuoli<BeanGuiRuolo> {
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (Exception e) {
+        } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
@@ -121,12 +122,13 @@ public class AppRuoli implements GestioneRuoli<BeanGuiRuolo> {
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (Exception e) {
+        } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
         return null;
     }
+
     public void visualizzaDati(String nome, BeanGuiRuolo b) {
 
         try {
@@ -136,11 +138,10 @@ public class AppRuoli implements GestioneRuoli<BeanGuiRuolo> {
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (Exception e) {
+        } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
 
     }
-
 }

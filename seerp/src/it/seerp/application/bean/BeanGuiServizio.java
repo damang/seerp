@@ -1,5 +1,6 @@
 package it.seerp.application.bean;
 
+import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.validation.NotAlphabeticValidator;
 import it.seerp.application.validation.NotEmptyValidator;
 import it.seerp.application.validation.NotMinNumberValidator;
@@ -83,8 +84,6 @@ public class BeanGuiServizio {
         this.listServiziAssociati = listServiziAssociati;
     }
 
-   
-
     /**
      *
      * @param c
@@ -104,14 +103,14 @@ public class BeanGuiServizio {
     /**
      *
      * @return
-     * @throws Exception
+     * @throws ValidatorException
      */
-    public JTextField getDescrizione() throws Exception {
+    public JTextField getDescrizione() throws ValidatorException {
         if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         if (!valApha.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         return descrizione;
     }
@@ -163,14 +162,14 @@ public class BeanGuiServizio {
     /**
      *
      * @return
-     * @throws Exception
+     * @throws ValidatorException
      */
-    public JTextField getIva() throws Exception {
+    public JTextField getIva() throws ValidatorException {
         if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         if (!valNum.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         return iva;
     }
@@ -206,14 +205,14 @@ public class BeanGuiServizio {
     /**
      *
      * @return
-     * @throws Exception
+     * @throws ValidatorException
      */
-    public JTextField getPrezzo() throws Exception {
+    public JTextField getPrezzo() throws ValidatorException {
         if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         if (!valNum.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         return prezzo;
     }
@@ -233,14 +232,14 @@ public class BeanGuiServizio {
     /**
      *
      * @return
-     * @throws Exception
+     * @throws ValidatorException
      */
-    public JTextField getQuantita() throws Exception {
+    public JTextField getQuantita() throws ValidatorException {
         if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         if (!valMinNum.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         return quantita;
     }
@@ -260,14 +259,14 @@ public class BeanGuiServizio {
     /**
      *
      * @return
-     * @throws Exception
+     * @throws ValidatorException
      */
-    public JTextField getTipo() throws Exception {
+    public JTextField getTipo() throws ValidatorException {
         if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         if (!valApha.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         return tipo;
     }

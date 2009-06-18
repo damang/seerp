@@ -1,5 +1,6 @@
 package it.seerp.application.conversioni;
 
+import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.bean.BeanGuiAgenda;
 import it.seerp.application.bean.BeanGuiAmministratore;
 import it.seerp.application.bean.BeanGuiAppuntamento;
@@ -47,7 +48,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -65,10 +65,10 @@ public class Conversione {
      * @return Il Bean Contratto convertito
      * @throws Exception
      */
-    public static Contratto conversioneContratto(BeanGuiContratto pGui) throws Exception {
+    public static Contratto conversioneContratto(BeanGuiContratto pGui) throws ValidatorException {
         ArrayList<Pagamento> listPag = new ArrayList<Pagamento>();
         ArrayList<ServizioAssociato> listSer = new ArrayList<ServizioAssociato>();
-        ArrayList<Fattura> listFatt= new ArrayList<Fattura>();
+        ArrayList<Fattura> listFatt = new ArrayList<Fattura>();
 
         for (BeanGuiPagamento p : pGui.getListPagamento()) {
             Pagamento p1 = conversionePagamento(p);
@@ -79,7 +79,7 @@ public class Conversione {
             ServizioAssociato s1 = conversioneAssociato(s);
             listSer.add(s1);
         }
-        Contratto contratto= new Contratto();
+        Contratto contratto = new Contratto();
         String stato = pGui.getStato().getText();
         contratto.setStato(stato);
         GregorianCalendar data = null;
@@ -105,7 +105,7 @@ public class Conversione {
      * @return Il Bean Gui Contratto convertito
      * @throws Exception
      */
-    public static BeanGuiContratto conversioneContratto(Contratto c, BeanGuiContratto gui) throws Exception {
+    public static BeanGuiContratto conversioneContratto(Contratto c, BeanGuiContratto gui) throws ValidatorException {
         JTextField field = new JTextField();
         JTextArea area = new JTextArea();
 
@@ -136,8 +136,8 @@ public class Conversione {
      * @return Il Bean Evento convertito
      * @throws Exception
      */
-    public static Evento conversioneEvento(BeanGuiEvento pGui) throws Exception {
-        Evento evento= new Evento();
+    public static Evento conversioneEvento(BeanGuiEvento pGui) throws ValidatorException {
+        Evento evento = new Evento();
         evento.setLuogo(pGui.getLuogo().getText());
         evento.setTema(pGui.getTema().getText());
         evento.setNome(pGui.getNome().getText());
@@ -145,7 +145,7 @@ public class Conversione {
         GregorianCalendar data = null;
         data.setTimeInMillis(Long.parseLong(pGui.getData().getText()));
         evento.setData(data);
-        GregorianCalendar ora= null;
+        GregorianCalendar ora = null;
         ora.setTimeInMillis(Long.parseLong(pGui.getOra().getText()));
         evento.setOra(ora);
         evento.setIdEvento(Integer.parseInt(pGui.getIdEvento().getText()));
@@ -192,7 +192,7 @@ public class Conversione {
      * @return Il Bean Servizio convertito
      * @throws Exception
      */
-    public static Servizio conversioneServizio(BeanGuiServizio pGui) throws Exception {
+    public static Servizio conversioneServizio(BeanGuiServizio pGui) throws ValidatorException {
         ArrayList<ServizioAssociato> list = new ArrayList<ServizioAssociato>();
 
         for (BeanGuiServizioAssociato c : pGui.getListServiziAssociati()) {
@@ -203,7 +203,7 @@ public class Conversione {
         servizio.setDescrizione(pGui.getDescrizione().getText());
         servizio.setDisponibilita(Boolean.parseBoolean(pGui.getDisponibilita().getText()));
         servizio.setQuantita(Integer.parseInt(pGui.getQuantita().getText()));
-        servizio.setTipo( pGui.getTipo().getText());
+        servizio.setTipo(pGui.getTipo().getText());
         servizio.setPrezzo(Double.parseDouble(pGui.getPrezzo().getText()));
         servizio.setIdServizio(Integer.parseInt(pGui.getIdServizio().getText()));
         servizio.setIva(Integer.parseInt(pGui.getIva().getText()));
@@ -251,8 +251,8 @@ public class Conversione {
      * @return Il Bean Pagamento convertito
      * @throws Exception
      */
-    public static Pagamento conversionePagamento(BeanGuiPagamento p) throws Exception {
-       throw new UnsupportedOperationException("Not yet implemented");
+    public static Pagamento conversionePagamento(BeanGuiPagamento p) throws ValidatorException {
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 
     /**
@@ -262,7 +262,7 @@ public class Conversione {
      * @return Il Bean Gui Pagamento convertito
      * @throws Exception
      */
-    public static BeanGuiPagamento conversionePagamento(Pagamento p, BeanGuiPagamento pagamento) throws Exception {
+    public static BeanGuiPagamento conversionePagamento(Pagamento p, BeanGuiPagamento pagamento) throws ValidatorException {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
@@ -273,7 +273,7 @@ public class Conversione {
      * @return il Bean convertito
      * @throws Exception
      */
-    public static Utente conversioneUtente(BeanGuiUtente bUtente) throws Exception {
+    public static Utente conversioneUtente(BeanGuiUtente bUtente) throws ValidatorException {
         Utente utente = new Utente();
         utente.setIdUtente(Integer.parseInt(bUtente.getIdUtenteTxt().getText()));
         utente.setUsername(bUtente.getTxtUsername().getText());
@@ -325,8 +325,8 @@ public class Conversione {
      * @return il Bean convertito
      * @throws Exception
      */
-    public static Personale conversionePersonale(BeanGuiPersonale bp) throws Exception {
-        
+    public static Personale conversionePersonale(BeanGuiPersonale bp) throws ValidatorException {
+
 
         Personale utente = new Personale();
         utente.setIdUtente(Integer.parseInt(bp.getIdUtenteTxt().getText()));
@@ -390,7 +390,7 @@ public class Conversione {
      * @return il Bean convertito
      * @throws Exception
      */
-    public static ExtraAzienda conversioneExtraAzienda(BeanGuiExtraAzienda e) throws Exception {
+    public static ExtraAzienda conversioneExtraAzienda(BeanGuiExtraAzienda e) throws ValidatorException {
 
 
         ArrayList<Appuntamento> a = new ArrayList<Appuntamento>();
@@ -406,7 +406,7 @@ public class Conversione {
             a1.add(b1);
         }
         ExtraAzienda utente = new ExtraAzienda();
-         utente.setIdUtente(Integer.parseInt(e.getIdUtenteTxt().getText()));
+        utente.setIdUtente(Integer.parseInt(e.getIdUtenteTxt().getText()));
         utente.setUsername(e.getTxtUsername().getText());
         utente.setPassword(e.getTxtPassword().getText());
         utente.setCitta(e.getTxtCitta().getText());
@@ -435,7 +435,7 @@ public class Conversione {
      * @return il Bean Gui convertito
      * @throws Exception
      */
-    public static BeanGuiExtraAzienda conversazioneExtraAzienda(ExtraAzienda e, BeanGuiExtraAzienda extra) throws Exception {
+    public static BeanGuiExtraAzienda conversazioneExtraAzienda(ExtraAzienda e, BeanGuiExtraAzienda extra) throws ValidatorException {
 
         JTextField c = new JTextField();
         c.setText(e.getIdUtente().toString());
@@ -456,7 +456,7 @@ public class Conversione {
         extra.setCap(c);
         c.setText(e.getVisible().toString());
         extra.setTxtnotifica(c);
-        
+
         c.setText(e.getCognome().toString());
         extra.setCognome(c);
         c.setText(e.getNome().toString());
@@ -481,7 +481,7 @@ public class Conversione {
      * @return il Bean convertito
      * @throws Exception
      */
-    public static Responsabile conversioneResponsabile(BeanGuiResponsabile r) throws Exception {
+    public static Responsabile conversioneResponsabile(BeanGuiResponsabile r) throws ValidatorException {
 
         Responsabile utente = new Responsabile();
         utente.setIdUtente(Integer.parseInt(r.getIdUtenteTxt().getText()));
@@ -500,7 +500,7 @@ public class Conversione {
         utente.setCodiceFiscale(r.getCodiceFiscale().getText());
         utente.setRuolo(new Ruolo(r.getRuolo().getText()));
         return utente;
-       
+
     }
 
     /**
@@ -546,7 +546,7 @@ public class Conversione {
      * @return il Bean convertito
      * @throws Exception
      */
-    public static Dipendente conversioneDipendente(BeanGuiDipendente r) throws Exception {
+    public static Dipendente conversioneDipendente(BeanGuiDipendente r) throws ValidatorException {
 
         ArrayList<Appuntamento> a2 = new ArrayList<Appuntamento>();
         ArrayList<Contratto> a3 = new ArrayList<Contratto>();
@@ -620,7 +620,6 @@ public class Conversione {
         return bd;
     }
 
-
     /**
      * Metodo che converte un Bean Amministratore in un Bean Gui Amministratore
      * @param e il Bean da convertire
@@ -629,7 +628,7 @@ public class Conversione {
      */
     public static BeanGuiAmministratore conversioneAmministratore(Amministratore e, BeanGuiAmministratore ba) {
 
-       JTextField c = new JTextField();
+        JTextField c = new JTextField();
         c.setText(e.getIdUtente().toString());
         ba.setIdUtenteText(c);
         c.setText(e.getPassword());
@@ -664,7 +663,7 @@ public class Conversione {
      * @return il Bean convertito
      * @throws Exception
      */
-    public static Amministratore conversioneAmministratore(BeanGuiAmministratore r) throws Exception {
+    public static Amministratore conversioneAmministratore(BeanGuiAmministratore r) throws ValidatorException {
 
         Amministratore utente = new Amministratore();
         utente.setIdUtente(Integer.parseInt(r.getIdUtenteTxt().getText()));
@@ -693,7 +692,7 @@ public class Conversione {
      * @return il Bean convertito
      * @throws Exception
      */
-    public static Contatto conversioneContatto(BeanGuiContatto e) throws Exception {
+    public static Contatto conversioneContatto(BeanGuiContatto e) throws ValidatorException {
 
         ArrayList<Appuntamento> a = new ArrayList<Appuntamento>();
         ArrayList<Contratto> a1 = new ArrayList<Contratto>();
@@ -738,7 +737,7 @@ public class Conversione {
      * @return il Bean Gui convertito
      * @throws Exception
      */
-    public static BeanGuiContatto conversioneContatto(Contatto e, BeanGuiContatto cont) throws Exception {
+    public static BeanGuiContatto conversioneContatto(Contatto e, BeanGuiContatto cont) throws ValidatorException {
 
         JTextField c = new JTextField();
         c.setText(e.getIdUtente().toString());
@@ -786,7 +785,7 @@ public class Conversione {
      * @return il Bean convertito
      * @throws Exception
      */
-    public static Cliente conversioneCliente(BeanGuiCliente e) throws Exception {
+    public static Cliente conversioneCliente(BeanGuiCliente e) throws ValidatorException {
         ArrayList<Appuntamento> a = new ArrayList<Appuntamento>();
         ArrayList<Contratto> a1 = new ArrayList<Contratto>();
 
@@ -831,9 +830,9 @@ public class Conversione {
      * @return il Bean Gui convertito
      * @throws Exception
      */
-    public static BeanGuiCliente conversioneCliente(Cliente e, BeanGuiCliente cl) throws Exception {
+    public static BeanGuiCliente conversioneCliente(Cliente e, BeanGuiCliente cl) throws ValidatorException {
 
-       JTextField c = new JTextField();
+        JTextField c = new JTextField();
         c.setText(e.getIdUtente().toString());
         cl.setIdUtenteText(c);
         c.setText(e.getPassword());
@@ -878,7 +877,7 @@ public class Conversione {
      * @return il Bean convertito
      * @throws Exception
      */
-    public static Fornitore conversioneFornitore(BeanGuiFornitore e) throws Exception {
+    public static Fornitore conversioneFornitore(BeanGuiFornitore e) throws ValidatorException {
         ArrayList<Appuntamento> a = new ArrayList<Appuntamento>();
         ArrayList<Contratto> a1 = new ArrayList<Contratto>();
 
@@ -924,7 +923,7 @@ public class Conversione {
     public static BeanGuiFornitore conversioneFornitore(Fornitore e, BeanGuiFornitore fo) {
 
 
-       JTextField c = new JTextField();
+        JTextField c = new JTextField();
         c.setText(e.getIdUtente().toString());
         fo.setIdUtenteText(c);
         c.setText(e.getPassword());
@@ -990,7 +989,7 @@ public class Conversione {
      */
     public static Permesso conversionePermesso(BeanGuiPermesso b) throws Exception {
 
-        Permesso p= new Permesso(b.getIdPermesso(),b.getCat(),b.getAct().getText());
+        Permesso p = new Permesso(b.getIdPermesso(), b.getCat(), b.getAct().getText());
         return p;
     }
 
@@ -1001,11 +1000,11 @@ public class Conversione {
      * @return il Bean Gui convertito
      */
     public static BeanGuiPermesso conversionePermesso(Permesso b, BeanGuiPermesso p) throws Exception {
-           p.setIdPermesso(b.getId());
-           p.getAct().setText(b.getActions());
-           //p.setAct(new JCheckBox(b.getActions()));
-           p.setCat(b.getName());
-           return p;
+        p.setIdPermesso(b.getId());
+        p.getAct().setText(b.getActions());
+        //p.setAct(new JCheckBox(b.getActions()));
+        p.setCat(b.getName());
+        return p;
     }
 
     /**
@@ -1018,11 +1017,11 @@ public class Conversione {
     public static Ruolo conversioneRuolo(BeanGuiRuolo b) throws Exception {
         Ruolo r = new Ruolo(b.getNome().getText());
         r.setPermSyncro(false);
-       Iterator it = b.getListPermessi().entrySet().iterator();
-       Map.Entry entry;
+        Iterator it = b.getListPermessi().entrySet().iterator();
+        Map.Entry entry;
         while (it.hasNext()) {
-          entry = (Map.Entry) it.next();
-          ArrayList<BeanGuiPermesso> e= (ArrayList<BeanGuiPermesso>) entry.getValue();
+            entry = (Map.Entry) it.next();
+            ArrayList<BeanGuiPermesso> e = (ArrayList<BeanGuiPermesso>) entry.getValue();
             for (BeanGuiPermesso bean : e) {
                 r.addPermesso(conversionePermesso(bean));
             }
@@ -1041,19 +1040,19 @@ public class Conversione {
         r.setNome(new JTextField(b.getNome()));
         HashMap<String, ArrayList<BeanGuiPermesso>> lipi = r.getListPermessi();//new HashMap<String, ArrayList<BeanGuiPermesso>>();
         PermessoCollection p = b.getListPermesso();
-        Iterator<Permesso> it=p.iterator();
-        Permesso f=null;
+        Iterator<Permesso> it = p.iterator();
+        Permesso f = null;
         ArrayList<BeanGuiPermesso> c;
         r.resetCheck();
         while (it.hasNext()) {
-            f=it.next();
-           /* if(!lipi.containsKey(f.getName())){
-                lipi.put(f.getName(), new ArrayList<BeanGuiPermesso>());
+            f = it.next();
+            /*if(!lipi.containsKey(f.getName())){
+            lipi.put(f.getName(), new ArrayList<BeanGuiPermesso>());
             }
             lipi.get(f.getName()).add(new BeanGuiPermesso(new JCheckBox(f.getActions()), f.getId(), f.getName()));*/
-            c=lipi.get(f.getName());
+            c = lipi.get(f.getName());
             for (BeanGuiPermesso bean : c) {
-                if(bean.getAct().getText().equalsIgnoreCase(f.getActions())) {
+                if (bean.getAct().getText().equalsIgnoreCase(f.getActions())) {
                     bean.getAct().setSelected(true);
                     break;
                 }
@@ -1063,13 +1062,13 @@ public class Conversione {
 
 
         return r;
-      
+
     }
 
-    private static Agenda conversioneAgenda(BeanGuiAgenda agenda) throws Exception {
+    private static Agenda conversioneAgenda(BeanGuiAgenda agenda) throws ValidatorException {
         ArrayList<Evento> a = new ArrayList<Evento>();
-        for(BeanGuiEvento b : agenda.getArrEventi()){
-            Evento e= conversioneEvento(b);
+        for (BeanGuiEvento b : agenda.getArrEventi()) {
+            Evento e = conversioneEvento(b);
             a.add(e);
         }
         Agenda agenda1 = new Agenda();
@@ -1085,8 +1084,8 @@ public class Conversione {
      * @return
      * @throws java.lang.Exception
      */
-    public static Azienda conversioneAzienda(BeanGuiAzienda azienda) throws Exception {
-        Azienda azienda1= new Azienda();
+    public static Azienda conversioneAzienda(BeanGuiAzienda azienda) throws ValidatorException {
+        Azienda azienda1 = new Azienda();
         azienda1.setCitta(azienda.getCitta().getText());
         azienda1.setEmail(azienda.getEmail().getText());
         azienda1.setFax(azienda.getFax().getText());
@@ -1110,7 +1109,7 @@ public class Conversione {
         return beanGuiAgenda;
     }
 
-    private static ServizioAssociato conversioneAssociato(BeanGuiServizioAssociato c) throws Exception {
+    private static ServizioAssociato conversioneAssociato(BeanGuiServizioAssociato c) throws ValidatorException {
         ServizioAssociato sa = new ServizioAssociato();
         sa.seServizio(conversioneServizio(c.getServizio()));
         sa.setContratto(conversioneContratto(c.getContratto()));
@@ -1151,6 +1150,4 @@ public class Conversione {
 
         return bga;
     }
-
-    
 }

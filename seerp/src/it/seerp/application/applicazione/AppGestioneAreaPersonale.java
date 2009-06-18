@@ -1,6 +1,7 @@
 package it.seerp.application.applicazione;
 
 import it.seerp.application.Exception.DatiErrati;
+import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.bean.BeanGuiUtente;
 import it.seerp.application.conversioni.Conversione;
 import it.seerp.application.interfacce.GestioneAreaPersonale;
@@ -29,7 +30,7 @@ public class AppGestioneAreaPersonale implements GestioneAreaPersonale<BeanGuiUt
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (Exception e) {
+        } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
@@ -52,7 +53,7 @@ public class AppGestioneAreaPersonale implements GestioneAreaPersonale<BeanGuiUt
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (Exception e) {
+        } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }

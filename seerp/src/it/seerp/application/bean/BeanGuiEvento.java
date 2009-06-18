@@ -1,5 +1,6 @@
 package it.seerp.application.bean;
 
+import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.validation.NotEmptyValidator;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -90,9 +91,9 @@ public class BeanGuiEvento {
      * @return
      * @throws java.lang.Exception
      */
-    public BeanGuiAgenda getAgenda() throws Exception {
+    public BeanGuiAgenda getAgenda() throws ValidatorException {
         if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         return agenda;
     }
@@ -109,11 +110,11 @@ public class BeanGuiEvento {
     /**
      * metodo che restituisce il campo contenente la data dell'Evento
      * @return il campo data dell'Evento
-     * @throws Exception
+     * @throws ValidatorException
      */
-    public JTextField getData() throws Exception {
+    public JTextField getData() throws ValidatorException {
         if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         return data;
     }
@@ -131,11 +132,11 @@ public class BeanGuiEvento {
     /**
      * metodo che testituisce il campo contenente l'id dell'Evento
      * @return il campo id dell'Evento
-     * @throws Exception
+     * @throws ValidatorException
      */
-    public JTextField getIdEvento() throws Exception {
+    public JTextField getIdEvento() throws ValidatorException {
         if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         return idEvento;
     }
@@ -153,11 +154,11 @@ public class BeanGuiEvento {
     /**
      * metodo che restituisce il campo contenente il luogo dell'Evento
      * @return il campo luogo dell'Evento
-     * @throws Exception
+     * @throws ValidatorException
      */
-    public JTextField getLuogo() throws Exception {
+    public JTextField getLuogo() throws ValidatorException {
         if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         return luogo;
     }
@@ -175,11 +176,11 @@ public class BeanGuiEvento {
     /**
      * metodo che restituisce il campo contenente il nome dell'Evento
      * @return il campo nome dell'Evente
-     * @throws Exception
+     * @throws ValidatorException
      */
-    public JTextField getNome() throws Exception {
+    public JTextField getNome() throws ValidatorException {
         if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         return nome;
     }
@@ -213,11 +214,11 @@ public class BeanGuiEvento {
     /**
      * metodo che restituisce il campo contenente l'ora dell'Evento
      * @return il campo ora
-     * @throws Exception
+     * @throws ValidatorException
      */
-    public JTextField getOra() throws Exception {
+    public JTextField getOra() throws ValidatorException {
         if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         return ora;
     }
@@ -235,11 +236,11 @@ public class BeanGuiEvento {
     /**
      * metodo che restituisce il campo contentente il tema dell'Evento
      * @return il campo tema
-     * @throws Exception
+     * @throws ValidatorException
      */
-    public JTextField getTema() throws Exception {
+    public JTextField getTema() throws ValidatorException {
         if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         return tema;
     }

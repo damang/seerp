@@ -1,6 +1,7 @@
 package it.seerp.application.applicazione;
 
 import it.seerp.application.Exception.DatiErrati;
+import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.bean.BeanGuiAzienda;
 import it.seerp.application.conversioni.Conversione;
 import it.seerp.storage.Operazioni.OpAzienda;
@@ -32,7 +33,7 @@ public class AppAzienda {
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (Exception e) {
+        } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
@@ -54,7 +55,7 @@ public class AppAzienda {
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (Exception e) {
+        } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }

@@ -1,11 +1,11 @@
 package it.seerp.application.bean;
 
+import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.validation.NotAlphabeticValidator;
 import it.seerp.application.validation.NotEmptyValidator;
 import it.seerp.application.validation.NotEqualLengthValidator;
 import it.seerp.application.validation.NotMinLengthValidator;
 import java.util.ArrayList;
-import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import org.jdesktop.swingx.JXPanel;
@@ -83,8 +83,6 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
         this.ragioneSociale = ragioneSociale;
     }
 
-   
-
     /**
      * metodo che restituisce la lista degli appuntamenti di un ExtraAzienda
      * @return la lista degli appuntamenti
@@ -125,7 +123,6 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
         this.ruolo = ruolo;
     }
 
-    
     /**
      *metodo che setta il campo contenente il cognome dell'ExtraAzienda
      * @param ptxtCognome rappresenta il campo cognome da inserire
@@ -190,18 +187,17 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
         return ruolo;
     }
 
-
     /**
      * metodo che restituisce il campo contenente il cognome dell'ExtraAzienda
      * @return il campo cognome dell'ExtraAzienda
-     * @throws Exception
+     * @throws ValidatorException
      */
-    public JTextField getCognome() throws Exception {
+    public JTextField getCognome() throws ValidatorException {
         if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         if (!valApha.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         return cognome;
     }
@@ -209,14 +205,14 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
     /**
      * metodo che restituisce il campo contenente il nome dell'ExtraAzienda
      * @return il campo nome dell'ExtraAzieda
-     * @throws Exception
+     * @throws ValidatorException
      */
-    public JTextField getNome() throws Exception {
+    public JTextField getNome() throws ValidatorException {
         if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         if (!valApha.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         return nome;
     }
@@ -224,11 +220,11 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
     /**
      * metodo che restituisce il campo contenente il fax dell'ExtraAzienda
      * @return il campo fax dell'extraAzienda
-     * @throws Exception
+     * @throws ValidatorException
      */
-    public JTextField getFax() throws Exception {
+    public JTextField getFax() throws ValidatorException {
         if (!valMinLen.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         return fax;
     }
@@ -238,11 +234,11 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * @return il campo partita iva dell'extraAzienda
      * @throws Exception
      */
-    public JTextField getPIva() throws Exception {
+    public JTextField getPIva() throws ValidatorException {
         if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         } else if (!valEqLen.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         return pIva;
     }
@@ -250,11 +246,11 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
     /**
      * metodo che restituisce il campo contenente la ragione sociale dell'ExtraAzienda
      * @return il campo ragione sociale dell'extraAzienda
-     * @throws Exception
+     * @throws ValidatorException
      */
-    public JTextField getRagioneSociale() throws Exception {
+    public JTextField getRagioneSociale() throws ValidatorException {
         if (!val.shouldYieldFocus(grafica)) {
-            throw new Exception("Errore nella grafica!");
+            throw new ValidatorException("Errore nella grafica!");
         }
         return ragioneSociale;
     }
