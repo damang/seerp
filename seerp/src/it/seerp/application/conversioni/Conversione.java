@@ -1042,20 +1042,14 @@ public class Conversione {
         PermessoCollection p = b.getListPermesso();
         Iterator<Permesso> it=p.iterator();
         Permesso f=null;
-        while (it.hasNext())
+        while (it.hasNext()) {
             f=it.next();
-            if(lipi.containsKey(f.getName())){
-                lipi.get(f.getName()).add(new BeanGuiPermesso(new JCheckBox(f.getActions()), f.getId(), f.getName()));
+            if(!lipi.containsKey(f.getName())){
+                lipi.put(f.getName(), new ArrayList<BeanGuiPermesso>());
             }
-          /*  else {
-                lipi.put(key, value)
-            }*/
-
-
-            r.setListPermessi(lipi);
-
-
-
+            lipi.get(f.getName()).add(new BeanGuiPermesso(new JCheckBox(f.getActions()), f.getId(), f.getName()));
+        }
+        r.setListPermessi(lipi);
         return r;
       
     }
