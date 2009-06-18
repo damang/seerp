@@ -31,7 +31,7 @@ public class ButtonRuoli extends ObserverButton implements CommandInterface{
     protected JTabbedPane tabbedPane;
     private MenuRuoli menu;
     GestioneRuoli panel;
-    String s = "";
+    String s = "Gestione Ruoli";
 
     /**
      *
