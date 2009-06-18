@@ -109,7 +109,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jXTitledPanel1" max="32767" attributes="2"/>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jTabbedPanePrincipale" pref="1319" max="32767" attributes="2"/>
+                      <Component id="jTabbedPanePrincipale" pref="1347" max="32767" attributes="2"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -124,7 +124,7 @@
               <Component id="jTabbedPanePrincipale" pref="854" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
-          <Component id="jXTaskPaneContainer1" alignment="0" pref="1011" max="32767" attributes="0"/>
+          <Component id="jXTaskPaneContainer1" alignment="0" pref="1014" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -263,7 +263,7 @@
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.bottoni.gestioni.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this)"/>
                     <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="try{"/>
-                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="}&#xa;catch(SQLException e){}"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="}&#xa;catch(SQLException e){e.printStackTrace();}"/>
                   </AuxValues>
                 </Component>
                 <Component class="it.seerp.Gui.bottoni.gestioni.AreaUtenteButton" name="areaUtenteButton2">
@@ -650,6 +650,9 @@
           <Properties>
             <Property name="name" type="java.lang.String" value="menuAppuntamento1" noResource="true"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="menuAppuntamento1.setVisible(false);"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

@@ -11,6 +11,7 @@ import it.seerp.Gui.Gestione.Utenti.AreaUtentePanel;
 import it.seerp.Gui.Gestione.Contratti.GestioneContratti;
 import it.seerp.Gui.Gestione.Servizi.GestioneServizi;
 import it.seerp.Gui.Gestione.InfoAzienda.InfoAzienda;
+import it.seerp.Gui.Gestione.agenda.CalendarPanel;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
 import it.seerp.storage.jaas.AuthPolicy;
 import it.seerp.storage.jaas.AuthPrincipal;
@@ -19,7 +20,6 @@ import java.awt.event.ActionListener;
 import java.security.Policy;
 import javax.security.auth.Subject;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -33,13 +33,13 @@ public class Index extends javax.swing.JFrame implements ActionListener {
      * @param sub
      */
     public Index(Subject sub) {
-        ut_sub=sub;
+        ut_sub = sub;
 
-        
+
         initComponents();
 
-      //  GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-       // setSize(ge.getMaximumWindowBounds().width,ge.getMaximumWindowBounds().height);
+        //  GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        // setSize(ge.getMaximumWindowBounds().width,ge.getMaximumWindowBounds().height);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.pack();
     }
@@ -149,7 +149,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
             jPanel1.setName("jPanel1"); // NOI18N
 
         }
-        catch(SQLException e){}
+        catch(SQLException e){e.printStackTrace();}
         areaUtenteButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/User-32x32.png"))); // NOI18N
         areaUtenteButton1.setText("Responsabili");
         areaUtenteButton1.setToolTipText("");
@@ -432,6 +432,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
         menuServizi1.setVisible(false);
         this.menuInfoAzienda1.setVisible(false);
         menuAreaPersonale2.setVisible(false);
+        menuAppuntamento1.setVisible(false);
 
         fileMenu.setText("File");
 
@@ -492,7 +493,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jXTitledPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.DEFAULT_SIZE, 1319, Short.MAX_VALUE)
+                        .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.DEFAULT_SIZE, 1347, Short.MAX_VALUE)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -502,7 +503,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.DEFAULT_SIZE, 854, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, 1011, Short.MAX_VALUE)
+            .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, 1014, Short.MAX_VALUE)
         );
 
         pack();
@@ -545,6 +546,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                 this.menuAreaPersonale2.setVisible(false);
                 this.menuServizi1.setVisible(false);
                 this.menuUtente1.setVisible(true);
+                this.menuAppuntamento1.setVisible(false);
                 this.menuInfoAzienda1.setVisible(false);
                 this.menuRuoli1.setVisible(false);
                 this.menuUtente1.setPannello((AreaUtentePanel) p);
@@ -552,6 +554,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                 this.menuUtente1.setVisible(false);
                 this.menuAreaPersonale2.setVisible(false);
                 this.menuServizi1.setVisible(false);
+                this.menuAppuntamento1.setVisible(false);
                 this.menuInfoAzienda1.setVisible(false);
                 this.menuRuoli1.setVisible(false);
                 this.menuContratti1.setVisible(true);
@@ -561,6 +564,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                 this.menuAreaPersonale2.setVisible(false);
                 this.menuInfoAzienda1.setVisible(false);
                 this.menuRuoli1.setVisible(false);
+                this.menuAppuntamento1.setVisible(false);
                 this.menuContratti1.setVisible(false);
                 this.menuServizi1.setVisible(true);
                 this.menuServizi1.setPannello((GestioneServizi) p);
@@ -568,6 +572,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                 this.menuContratti1.setVisible(false);
                 this.menuUtente1.setVisible(false);
                 this.menuServizi1.setVisible(false);
+                this.menuAppuntamento1.setVisible(false);
                 this.menuInfoAzienda1.setVisible(false);
                 this.menuRuoli1.setVisible(false);
                 this.menuAreaPersonale2.setVisible(true);
@@ -577,16 +582,27 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                 this.menuServizi1.setVisible(false);
                 this.menuInfoAzienda1.setVisible(false);
                 this.menuContratti1.setVisible(false);
+                this.menuAppuntamento1.setVisible(false);
                 this.menuRuoli1.setVisible(true);
-            //  this.menuRuoli1.setPannello((GestioneRuoli)p);
+                this.menuRuoli1.setPannello((GestioneRuoli) p);
             } else if (p.getClass().equals(InfoAzienda.class)) {
                 this.menuUtente1.setVisible(false);
                 this.menuAreaPersonale2.setVisible(false);
                 this.menuServizi1.setVisible(false);
                 this.menuRuoli1.setVisible(false);
                 this.menuContratti1.setVisible(false);
+                this.menuAppuntamento1.setVisible(false);
                 this.menuInfoAzienda1.setVisible(true);
                 this.menuInfoAzienda1.setPannello((InfoAzienda) p);
+            } else if (p.getClass().equals(InfoAzienda.class)) {
+                this.menuUtente1.setVisible(false);
+                this.menuAreaPersonale2.setVisible(false);
+                this.menuServizi1.setVisible(false);
+                this.menuRuoli1.setVisible(false);
+                this.menuContratti1.setVisible(false);
+                this.menuInfoAzienda1.setVisible(false);
+                this.menuAppuntamento1.setVisible(true);
+                this.menuAppuntamento1.setPannello((CalendarPanel) p);
             } else {
                 this.menuContratti1.setVisible(false);
                 this.menuAreaPersonale2.setVisible(false);
@@ -594,6 +610,7 @@ public class Index extends javax.swing.JFrame implements ActionListener {
                 this.menuServizi1.setVisible(false);
                 this.menuInfoAzienda1.setVisible(false);
                 this.menuRuoli1.setVisible(false);
+                this.menuAppuntamento1.setVisible(false);
             }
         }
     }//GEN-LAST:event_jTabbedPanePrincipaleStateChanged
@@ -649,52 +666,52 @@ public class Index extends javax.swing.JFrame implements ActionListener {
     private void jXMonthView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXMonthView1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jXMonthView1ActionPerformed
- 
-    
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         Policy.setPolicy(new AuthPolicy());
-        System.setProperty("java.security.auth.login.config","file_config\\jaasutil.config");
+        System.setProperty("java.security.auth.login.config", "file_config\\jaasutil.config");
         try {
-          UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException ex) {
             ex.printStackTrace();
         } catch (InstantiationException ex) {
             ex.printStackTrace();
         } catch (IllegalAccessException ex) {
-           ex.printStackTrace();
+            ex.printStackTrace();
         } catch (UnsupportedLookAndFeelException ex) {
-           ex.printStackTrace();
+            ex.printStackTrace();
         }
-      /*  final JaasUtil ja = new JaasUtil();
+        /*  final JaasUtil ja = new JaasUtil();
         ja.addLoginListener(new LoginAdapter() {
-            @Override
-            public void loginSucceeded(LoginEvent source) {
-                super.loginSucceeded(source);
-                 java.awt.EventQueue.invokeLater(new Runnable() {
-                        public void run() {
-                            new Index(ja.getSubject()).setVisible(true);
-                        }
-                 });
-            }
+        @Override
+        public void loginSucceeded(LoginEvent source) {
+        super.loginSucceeded(source);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+        new Index(ja.getSubject()).setVisible(true);
+        }
+        });
+        }
         });
         JXLoginPane p = new JXLoginPane(ja);
         JXLoginPane.showLoginFrame(p).setVisible(true);*/
         final Subject _subject = new Subject();
-        _subject.getPrincipals().add(new AuthPrincipal("majinb","username"));
-        _subject.getPrincipals().add(new AuthPrincipal ("amministratore","ruolo"));
+        _subject.getPrincipals().add(new AuthPrincipal("majinb", "username"));
+        _subject.getPrincipals().add(new AuthPrincipal("amministratore", "ruolo"));
         java.awt.EventQueue.invokeLater(new Runnable() {
-                        public void run() {
-                            new Index(_subject).setVisible(true);
-                        }
-                 });
+
+            public void run() {
+                new Index(_subject).setVisible(true);
+            }
+        });
 
 
 
 
-   }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
@@ -743,9 +760,8 @@ public class Index extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JMenuItem saveAsMenuItem;
     private javax.swing.JMenuItem saveMenuItem;
     // End of variables declaration//GEN-END:variables
-
-
     private Subject ut_sub;
+
     public void actionPerformed(ActionEvent e) {
         CommandInterface cmd = (CommandInterface) e.getSource();
         cmd.execute();
