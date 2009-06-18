@@ -32,7 +32,7 @@ public interface GestioneContratti<E, U> {
      * @return
      * @throws it.seerp.application.Exception.DatiErrati
      */
-    public E visualizzaContratto(String id, E beanGuiContratto) throws DatiErrati;
+    public E visualizzaContratto(int id, E beanGuiContratto) throws DatiErrati;
 
     /**
      *

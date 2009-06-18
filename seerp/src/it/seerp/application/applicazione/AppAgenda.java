@@ -53,10 +53,10 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
      * @return Bean Gui dell'evento
      * @throws DatiErrati
      */
-    public BeanGuiEvento visualizzaDettagli(String id, BeanGuiEvento gui) throws DatiErrati {
+    public BeanGuiEvento visualizzaDettagli(int id, BeanGuiEvento gui) throws DatiErrati {
         try {
             OpEvento ope = new OpEvento();
-            Evento eve = ope.visualizza(Integer.parseInt(id));
+            Evento eve = ope.visualizza(id);
             gui = Conversione.conversioneEvento(eve, gui);
         } catch (SQLException se) {
             se.printStackTrace();

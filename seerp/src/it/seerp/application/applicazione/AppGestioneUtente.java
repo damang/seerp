@@ -171,10 +171,10 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui i dati inseriti sono errati
      */
-    public BeanGuiUtente visualizzaDati(String user, BeanGuiUtente beanGui) throws DatiErrati {
+    public BeanGuiUtente visualizzaDati(int user, BeanGuiUtente beanGui) throws DatiErrati {
         try {
             OpeUtente ope = new OpeUtente();
-            Utente utente = ope.visualizza(Integer.parseInt(user));
+            Utente utente = ope.visualizza(user);
             beanGui = it.seerp.application.conversioni.Conversione.conversioneUtente(utente, beanGui);
         } catch (SQLException se) {
             se.printStackTrace();

@@ -48,10 +48,10 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto, Contrat
      * @return Bean Gui del contratto che è stato selezionato
      * @throws DatiErrati
      */
-    public BeanGuiContratto visualizzaContratto(String id, BeanGuiContratto gui) throws DatiErrati {
+    public BeanGuiContratto visualizzaContratto(int id, BeanGuiContratto gui) throws DatiErrati {
         try {
             OpContratto ope = new OpContratto();
-            Contratto cont = ope.visualizza(Integer.parseInt(id));
+            Contratto cont = ope.visualizza(id);
             gui = Conversione.conversioneContratto(cont, gui);
         } catch (SQLException se) {
             se.printStackTrace();

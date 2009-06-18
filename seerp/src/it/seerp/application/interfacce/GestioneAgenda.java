@@ -33,7 +33,7 @@ public interface GestioneAgenda<E, U> {
      * @return
      * @throws it.seerp.application.Exception.DatiErrati
      */
-    public E visualizzaDettagli(String id, E gui) throws DatiErrati;
+    public E visualizzaDettagli(int id, E gui) throws DatiErrati;
 
     /**
      *

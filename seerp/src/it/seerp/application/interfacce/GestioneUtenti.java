@@ -73,5 +73,5 @@ public interface GestioneUtenti<E extends Utente, U extends BeanGuiUtente> {
      * @return
      * @throws it.seerp.application.Exception.DatiErrati
      */
-    public U visualizzaDati(String user, U beanGui) throws DatiErrati;
+    public U visualizzaDati(int user, U beanGui) throws DatiErrati;
 }
