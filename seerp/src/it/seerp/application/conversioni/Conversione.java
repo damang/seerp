@@ -48,7 +48,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import java.util.Map.Entry;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -193,23 +195,22 @@ public class Conversione {
      * @throws Exception
      */
     public static Servizio conversioneServizio(BeanGuiServizio pGui) throws ValidatorException {
-      /*  ArrayList<ServizioAssociato> list = new ArrayList<ServizioAssociato>();
+        ArrayList<ServizioAssociato> list = new ArrayList<ServizioAssociato>();
 
         for (BeanGuiServizioAssociato c : pGui.getListServiziAssociati()) {
             ServizioAssociato c1 = conversioneAssociato(c);
             list.add(c1);
-        }*/
+        }
         Servizio servizio = new Servizio();
-        System.out.println("descrizione"+pGui.getDescrizione().getText());
         servizio.setDescrizione(pGui.getDescrizione().getText());
         servizio.setDisponibilita(Boolean.parseBoolean(pGui.getDisponibilita().getText()));
         servizio.setQuantita(Integer.parseInt(pGui.getQuantita().getText()));
         servizio.setTipo(pGui.getTipo().getText());
         servizio.setPrezzo(Double.parseDouble(pGui.getPrezzo().getText()));
-     //   servizio.setIdServizio(Integer.parseInt(pGui.getIdServizio().getText()));
+        servizio.setIdServizio(Integer.parseInt(pGui.getIdServizio().getText()));
         servizio.setIva(Integer.parseInt(pGui.getIva().getText()));
-//        servizio.setNote(pGui.getNote().getText());
-      //  servizio.setListServiziAssociati(list);
+        servizio.setNote(pGui.getNote().getText());
+        servizio.setListServiziAssociati(list);
         return servizio;
     }
 
@@ -1038,19 +1039,16 @@ public class Conversione {
      * @return il Bean Gui convertito
      */
     public static BeanGuiRuolo conversioneRuolo(Ruolo b, BeanGuiRuolo r) throws ValidatorException, Exception {
-        r.setNome(new JTextField(b.getNome()));
+        r.getNome().setText(b.getNome());
         HashMap<String, ArrayList<BeanGuiPermesso>> lipi = r.getListPermessi();//new HashMap<String, ArrayList<BeanGuiPermesso>>();
         PermessoCollection p = b.getListPermesso();
         Iterator<Permesso> it = p.iterator();
         Permesso f = null;
         ArrayList<BeanGuiPermesso> c;
         r.resetCheck();
+ 
         while (it.hasNext()) {
-            f = it.next();
-            /*if(!lipi.containsKey(f.getName())){
-            lipi.put(f.getName(), new ArrayList<BeanGuiPermesso>());
-            }
-            lipi.get(f.getName()).add(new BeanGuiPermesso(new JCheckBox(f.getActions()), f.getId(), f.getName()));*/
+            f=it.next();
             c = lipi.get(f.getName());
             for (BeanGuiPermesso bean : c) {
                 if (bean.getAct().getText().equalsIgnoreCase(f.getActions())) {
@@ -1059,9 +1057,6 @@ public class Conversione {
                 }
             }
         }
-        //r.setListPermessi(lipi);
-
-
         return r;
 
     }
