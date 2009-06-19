@@ -29,7 +29,7 @@ public class BeanGuiPersonale extends BeanGuiUtente {
      * @param c
      */
     public BeanGuiPersonale(JXPanel c) {
-        grafica = c;
+        super(c);
     }
 
     /**
