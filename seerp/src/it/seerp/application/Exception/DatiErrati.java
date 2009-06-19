@@ -1,21 +1,16 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package it.seerp.application.Exception;
 
 /**
- *
- * @author Luisa
+ * Classe d'eccezione che viene lanciata in caso di dati errati
+ * @author Luisa - Tommaso Cattolico
  */
 public class DatiErrati extends RuntimeException {
-    /**
-     *
-     * @param c
-     */
-    public DatiErrati(String  c){
-    super(c);
-    }
 
+    /**
+     * Metodo che passa il messaggio d'errore al livello superiore
+     * @param c Stringa d'errore
+     */
+    public DatiErrati(String c) {
+        super(c);
+    }
 }

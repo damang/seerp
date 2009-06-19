@@ -1,19 +1,16 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package it.seerp.application.Exception;
 
 /**
- *
- * @author Luisa
+ * Classe d'eccezione che viene lanciata in caso di ricerca fallita
+ * @author Luisa - Tommaso Cattolico
  */
 public class RicercaFallita extends RuntimeException {
+
     /**
-     *
-     * @param c
+     * Metodo che passa il messaggio d'errore al livello superiore
+     * @param c Stringa d'errore
      */
-    public RicercaFallita(String  c){
-    super(c);
-    }}
+    public RicercaFallita(String c) {
+        super(c);
+    }
+}
