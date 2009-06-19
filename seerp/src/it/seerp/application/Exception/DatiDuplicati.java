@@ -1,20 +1,16 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package it.seerp.application.Exception;
 
 /**
- *
- * @author Luisa
+ * Classe d'eccezione che viene lanciata in caso di dati duplicati
+ * @author Luisa - Tommaso Cattolico
  */
-public class DatiDuplicati extends RuntimeException{
+public class DatiDuplicati extends RuntimeException {
+
     /**
-     *
-     * @param c
+     * Metodo che passa il messaggio d'errore al livello superiore
+     * @param c Stringa d'errore
      */
-    public DatiDuplicati(String  c){
-    super(c);
+    public DatiDuplicati(String c) {
+        super(c);
     }
 }
