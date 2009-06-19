@@ -17,11 +17,7 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import it.seerp.Gui.Gestione.Menu.*;
-import it.seerp.Gui.tabella.ClienteTm;
-import it.seerp.Gui.tabella.DipendenteTm;
-import it.seerp.Gui.tabella.FornitoreTm;
-import it.seerp.Gui.tabella.Generica;
-import it.seerp.Gui.tabella.ResponsabileTm;
+import it.seerp.application.tabelle.*;
 import it.seerp.application.applicazione.AppGestioneExtraAzienda;
 import it.seerp.application.applicazione.AppGestionePersonale;
 
@@ -76,10 +72,10 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         this.settaTableModel();
 
         initComponents();
-        responsabile = new BeanGuiResponsabile(this);
-        dipendente = new BeanGuiDipendente(this);
-        this.fornitore = new BeanGuiFornitore(this);
-        this.cliente = new BeanGuiCliente(this);
+        responsabile = new BeanGuiResponsabile();
+        dipendente = new BeanGuiDipendente();
+       // this.fornitore = new BeanGuiFornitore(this);
+        //this.cliente = new BeanGuiCliente(this);
         this.user.setEditable(false);
         this.pwd.setEditable(false);
         editabile(false);

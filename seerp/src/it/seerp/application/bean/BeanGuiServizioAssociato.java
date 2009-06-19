@@ -13,10 +13,8 @@ public class BeanGuiServizioAssociato {
     private BeanGuiContratto contratto;
     private BeanGuiServizio servizio;
     private JTextArea note;
-
-    public BeanGuiServizioAssociato() {
-        
-    }
+      public BeanGuiServizioAssociato(){}
+    
 
     /**
      *

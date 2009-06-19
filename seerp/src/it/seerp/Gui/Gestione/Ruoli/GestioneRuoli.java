@@ -13,7 +13,7 @@ package it.seerp.Gui.Gestione.Ruoli;
 import it.seerp.Gui.configurazioni.PermessiDefault;
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
-import it.seerp.Gui.tabella.RuoloTm;
+import it.seerp.application.tabelle.RuoloTm;
 import it.seerp.application.applicazione.AppRuoli;
 import it.seerp.application.bean.BeanGuiPermesso;
 import it.seerp.application.bean.BeanGuiRuolo;

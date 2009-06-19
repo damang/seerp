@@ -294,9 +294,9 @@ public class BeanGuiUtente {
      */
     public void setTxtEmail(JTextField ptxtEmail) {
         this.txtEmail = ptxtEmail;
-        val = new NotEmptyValidator(grafica, txtEmail, "Il campo non può essere vuoto.");
+        val = new NotEmptyValidator(grafica, ptxtEmail, "Il campo non può essere vuoto.");
         grafica.setInputVerifier(val);
-        valEma = new EmailValidator(grafica, txtEmail, "Formato e-mail inserito non valido.");
+        valEma = new EmailValidator(grafica, ptxtEmail, "Formato e-mail inserito non valido.");
         grafica.setInputVerifier(valEma);
     }
 

@@ -193,22 +193,23 @@ public class Conversione {
      * @throws Exception
      */
     public static Servizio conversioneServizio(BeanGuiServizio pGui) throws ValidatorException {
-        ArrayList<ServizioAssociato> list = new ArrayList<ServizioAssociato>();
+      /*  ArrayList<ServizioAssociato> list = new ArrayList<ServizioAssociato>();
 
         for (BeanGuiServizioAssociato c : pGui.getListServiziAssociati()) {
             ServizioAssociato c1 = conversioneAssociato(c);
             list.add(c1);
-        }
+        }*/
         Servizio servizio = new Servizio();
+        System.out.println("descrizione"+pGui.getDescrizione().getText());
         servizio.setDescrizione(pGui.getDescrizione().getText());
         servizio.setDisponibilita(Boolean.parseBoolean(pGui.getDisponibilita().getText()));
         servizio.setQuantita(Integer.parseInt(pGui.getQuantita().getText()));
         servizio.setTipo(pGui.getTipo().getText());
         servizio.setPrezzo(Double.parseDouble(pGui.getPrezzo().getText()));
-        servizio.setIdServizio(Integer.parseInt(pGui.getIdServizio().getText()));
+     //   servizio.setIdServizio(Integer.parseInt(pGui.getIdServizio().getText()));
         servizio.setIva(Integer.parseInt(pGui.getIva().getText()));
-        servizio.setNote(pGui.getNote().getText());
-        servizio.setListServiziAssociati(list);
+//        servizio.setNote(pGui.getNote().getText());
+      //  servizio.setListServiziAssociati(list);
         return servizio;
     }
 

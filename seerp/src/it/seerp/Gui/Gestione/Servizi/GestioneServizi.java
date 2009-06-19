@@ -814,7 +814,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
 
     public void visualizza() {
 
-      System.out.println(servi.getTipo().getText());
+      System.out.println("tpo"+servi.getTipo().getText());
        disponibilita.setText(servi.getDisponibilita().getText());
         tipo.setText(servi.getTipo().getText());
         qnt.setText(servi.getQuantita().getText());

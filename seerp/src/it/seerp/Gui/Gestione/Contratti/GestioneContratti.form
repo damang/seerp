@@ -56,7 +56,7 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jXPanel1" min="-2" pref="443" max="-2" attributes="3"/>
+                  <Component id="jXPanel1" min="-2" max="-2" attributes="3"/>
                   <Component id="jTabbedPane1" min="0" pref="0" max="32767" attributes="3"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
