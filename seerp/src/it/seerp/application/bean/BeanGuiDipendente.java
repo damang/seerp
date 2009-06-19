@@ -3,6 +3,7 @@ package it.seerp.application.bean;
 import java.util.ArrayList;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import org.jdesktop.swingx.JXPanel;
 
 /**
  *
@@ -13,10 +14,15 @@ public class BeanGuiDipendente extends BeanGuiPersonale {
     private ArrayList<BeanGuiAppuntamento> listAppuntamenti;
     private ArrayList<BeanGuiContratto> listContratti;
 
+    public BeanGuiDipendente() {
+        
+    }
+
     /**
      * Costruttore vuoto per la classe Bean Gui Personale
      */
-    public BeanGuiDipendente() {
+    public BeanGuiDipendente(JXPanel c) {
+        super(c);
     }
 
     /**

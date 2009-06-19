@@ -36,7 +36,7 @@ public class BeanGuiRuolo {
      */
     public JTextField getNome() throws Exception {
         /*  if (!valStartW.shouldYieldFocus(grafica)) {
-        throw new Exception("Errore nella grafica!");
+        throw new ValidatorException("Errore nella grafica!");
         }*/
         return nome;
     }

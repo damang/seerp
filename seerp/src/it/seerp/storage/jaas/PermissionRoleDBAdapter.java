@@ -15,19 +15,11 @@ package it.seerp.storage.jaas;
 
 import it.seerp.storage.ejb.Permesso;
 import it.seerp.storage.db.ConnectionPool;
-import java.security.CodeSource;
-import java.security.PermissionCollection;
-import java.security.Principal;
 import java.security.*;
-import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.Iterator;
 
 
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
  *

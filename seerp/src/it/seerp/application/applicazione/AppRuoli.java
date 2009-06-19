@@ -10,6 +10,8 @@ import it.seerp.storage.Operazioni.OpRuolo;
 import it.seerp.storage.ejb.Ruolo;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -32,12 +34,14 @@ public class AppRuoli implements GestioneRuoli<BeanGuiRuolo> {
             OpRuolo ope = new OpRuolo();
             Ruolo ruolo = Conversione.conversioneRuolo(beanGui);
             ope.inserimento(ruolo);
-        } catch (SQLException se) {
+        }catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
         } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
+        } catch (Exception ex) {
+            Logger.getLogger(AppRuoli.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -56,12 +60,14 @@ public class AppRuoli implements GestioneRuoli<BeanGuiRuolo> {
             Ruolo ruo = Conversione.conversioneRuolo(beanGui);
             ruo = ope.modifica(ruo);
             beanGui = Conversione.conversioneRuolo(ruo, beanGui);
-        } catch (SQLException se) {
+        }catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
         } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
+        } catch (Exception ex) {
+            Logger.getLogger(AppRuoli.class.getName()).log(Level.SEVERE, null, ex);
         }
         return beanGui;
     }
@@ -108,6 +114,8 @@ public class AppRuoli implements GestioneRuoli<BeanGuiRuolo> {
         } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
+        } catch (Exception ex) {
+            Logger.getLogger(AppRuoli.class.getName()).log(Level.SEVERE, null, ex);
         }
         return listGui;
     }
@@ -134,13 +142,17 @@ public class AppRuoli implements GestioneRuoli<BeanGuiRuolo> {
         try {
             OpRuolo ope = new OpRuolo();
             Ruolo r = ope.visualizza(nome);
+
             Conversione.conversioneRuolo(r, b);
+
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
         } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
+        } catch (Exception ex) {
+            Logger.getLogger(AppRuoli.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
