@@ -36,11 +36,10 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
      * @throws DatiErratiEx eccezione lanciata se si inseriscono dati errati
      */
     public void inserimento(Servizio serv) throws SQLException, DatiErratiEx {
-
+      
         PreparedStatement stmt = null;
         
-        String query = "INSERT INTO servizio(descrizione,disponibilita,quantita,tipo,prezzo,iva,note)" +
-                          " VALUES (?,?,?,?,?,?,?)";
+        String query = "INSERT INTO servizio(descrizione,disponibilita,quantita,tipo,prezzo,iva,note) VALUES (?,?,?,?,?,?,?)";
         stmt = (PreparedStatement) conn.prepareStatement(query);
         
         stmt.setString(1, serv.getDescrizione());
@@ -157,7 +156,7 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
             serv = new Servizio(rs.getInt(1), rs.getString(2), rs.getBoolean(3),
                     rs.getInt(4), rs.getString(5), rs.getDouble(6),
                     rs.getInt(7), rs.getString(8));
-
+            System.out.println("tipo "+serv.getIva());
         }
         stmt.close();
         rs.close();

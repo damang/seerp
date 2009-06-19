@@ -24,11 +24,7 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
     private JTextField ruolo;
     private ArrayList<BeanGuiAppuntamento> listAppuntamenti;
     private ArrayList<BeanGuiContratto> listContratti;
-    private JXPanel grafica;
-    private NotEmptyValidator val;
-    private NotEqualLengthValidator valEqLen;
-    private NotMinLengthValidator valMinLen;
-    private NotAlphabeticValidator valApha;
+
 
     /**
      * Costruttore a cui viene passato un componente grafico necessario alla
@@ -36,7 +32,7 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * @param c
      */
     public BeanGuiExtraAzienda(JXPanel c) {
-        grafica = c;
+        super(c);
     }
 
     /**

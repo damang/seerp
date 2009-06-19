@@ -11,7 +11,7 @@ import it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla;
 import it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva;
 import it.seerp.Gui.Gestione.Menu.MenuContratti;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
-import it.seerp.Gui.tabella.ContrattoTm;
+import it.seerp.application.tabelle.ContrattoTm;
 import it.seerp.application.bean.BeanGuiContratto;
 import it.seerp.application.bean.BeanGuiExtraAzienda;
 import it.seerp.application.bean.BeanGuiPagamento;

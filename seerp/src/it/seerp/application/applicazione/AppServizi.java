@@ -92,7 +92,7 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio> {
         }
     }
 
-    /**
+/**
      * Metodo che permette la visualizzazione di un servizio
      * @param nome
      * nome del servizio
@@ -109,7 +109,7 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio> {
             JOptionPane.showMessageDialog(null, "Errore nel database!");
         } catch (ValidatorException e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
+              JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
         return beanGui;
     }

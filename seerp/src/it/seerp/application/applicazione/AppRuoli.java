@@ -32,8 +32,8 @@ public class AppRuoli implements GestioneRuoli<BeanGuiRuolo> {
     public void inserimento(BeanGuiRuolo beanGui) throws DatiErrati, DatiDuplicati {
         try {
             OpRuolo ope = new OpRuolo();
-            Ruolo ruolo = Conversione.conversioneRuolo(beanGui);
-            ope.inserimento(ruolo);
+//            Ruolo ruolo = Conversione.conversioneRuolo(beanGui);
+//            ope.inserimento(ruolo);
         }catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
@@ -57,9 +57,9 @@ public class AppRuoli implements GestioneRuoli<BeanGuiRuolo> {
     public BeanGuiRuolo modifica(BeanGuiRuolo beanGui) throws DatiErrati {
         try {
             OpRuolo ope = new OpRuolo();
-            Ruolo ruo = Conversione.conversioneRuolo(beanGui);
-            ruo = ope.modifica(ruo);
-            beanGui = Conversione.conversioneRuolo(ruo, beanGui);
+         //   Ruolo ruo = Conversione.conversioneRuolo(beanGui);
+         //   ruo = ope.modifica(ruo);
+           // beanGui = Conversione.conversioneRuolo(ruo, beanGui);
         }catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
@@ -105,7 +105,7 @@ public class AppRuoli implements GestioneRuoli<BeanGuiRuolo> {
             list = ope.visualizzaElenco();
             for (Ruolo eve : list) {
                 BeanGuiRuolo eveGui = new BeanGuiRuolo();
-                eveGui = Conversione.conversioneRuolo(eve, eveGui);
+            //    eveGui = Conversione.conversioneRuolo(eve, eveGui);
                 listGui.add(eveGui);
             }
         } catch (SQLException se) {

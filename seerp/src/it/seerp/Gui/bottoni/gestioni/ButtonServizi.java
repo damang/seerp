@@ -8,6 +8,7 @@ import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.Servizi.GestioneServizi;
 import it.seerp.Gui.observerButton.ObserverButton;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
@@ -31,7 +32,7 @@ public class ButtonServizi extends ObserverButton implements CommandInterface {
      * @param menu
      * @param act
      */
-    public ButtonServizi(JTabbedPane pan, JPanel menu, ActionListener act) {
+    public ButtonServizi(JTabbedPane pan, JPanel menu, ActionListener act) throws SQLException {
         this.tabbedPane = pan;
         this.menu = menu;
 
