@@ -91,8 +91,6 @@ public class ConnectionPool {
                 ConnectionPool.dbProperties.getProperty("username"),
                 ConnectionPool.dbProperties.getProperty("password"));
 
-     //   newConnection.setAutoCommit(false);
-
         return newConnection;
     }
 
