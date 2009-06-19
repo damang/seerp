@@ -16,11 +16,14 @@ import it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva;
 import it.seerp.Gui.Gestione.Menu.MenuServizi;
 import it.seerp.Gui.configurazioni.Gui.ConfigurazioneOperazioni;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
-import it.seerp.Gui.tabella.ServiziTm;
+import it.seerp.application.tabelle.ServiziTm;
 import it.seerp.application.applicazione.AppServizi;
 import it.seerp.application.bean.BeanGuiServizio;
+import it.seerp.application.tabelle.ServiziTm;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jdesktop.swingx.*;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -32,9 +35,11 @@ import javax.swing.JOptionPane;
 public class GestioneServizi extends ObservableJPanel implements ActionListener {
 
     ConfigurazioneOperazioni.TIPO_OPE_CONST tipoOp;
-    BeanGuiServizio servizio;
+    BeanGuiServizio servi;
     String tipoOP;
     MenuServizi menu;
+    ServiziTm tableModel = new ServiziTm();
+    ;
 
     /**
      *
@@ -53,10 +58,12 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
     }
 
     /** Creates new form GestioneContratti */
-    public GestioneServizi() {
+    public GestioneServizi() throws SQLException {
         initComponents();
+
+        this.servi = new BeanGuiServizio();
+
         legameBeans();
-        this.servizio = new BeanGuiServizio(this);
         editabile(false);
 
     }
@@ -97,12 +104,12 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
      */
     public void legameBeans() {
 
-         servizio.setDisponibilita(disponibilita);
-        servizio.setTipo(tipo);
-        servizio.setPrezzo(prz);
-        servizio.setQuantita(qnt);
-        servizio.setDescrizione(descrizione);
-        servizio.setIva(iva);
+        servi.setDisponibilita(disponibilita);
+        servi.setTipo(tipo);
+        servi.setPrezzo(prz);
+        servi.setQuantita(qnt);
+        servi.setDescrizione(descrizione);
+        servi.setIva(iva);
 
     }
 
@@ -605,12 +612,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
 
         jScrollPane2.setName("jScrollPane2"); // NOI18N
 
-        try{
-            jXTable1.setModel(new ServiziTm());
-        }
-        catch (SQLException e){
-            e.printStackTrace();
-        }
+        jXTable1.setModel(tableModel);
         jXTable1.setName("jXTable1"); // NOI18N
         jXTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -720,38 +722,52 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
 
         menu.getAggiungi().setEnabled(true);
         menu.getModifica().setEnabled(true);
-      //  if (tipoOP.compareToIgnoreCase("modifica") == 0) {
+        //  if (tipoOP.compareToIgnoreCase("modifica") == 0) {
             /*  AppServizi operazione = new AppServizi();
-            operazione.modifica(servizio);
-            ((ServiziTm) jXTable1.getModel()).refresh();*/
-      //  }
+        operazione.modifica(servizio);
+        ((ServiziTm) jXTable1.getModel()).refresh();*/
+        //  }
         if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI)) {
-          
-            servizio.getPrezzo();
-            
-         // AppServizi operazione = new AppServizi();
-           //operazione.inserisci(servizio);
-          //  ((ServiziTm) jXTable1.getModel()).refresh();
-      //  }
-        editabile(false);
-        buttonAnnulla1.setEnabled(false);
-        buttonSalva1.setEnabled(false);
+
+
+
+            AppServizi operazione = new AppServizi();
+            operazione.inserisci(servi);
+            try {
+                this.tableModel = new ServiziTm();
+            } catch (SQLException ex) {
+                Logger.getLogger(GestioneServizi.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            this.jXTable1.setModel(tableModel);
+            this.jXFindBar1.setSearchable(jXTable1.getSearchable());
+            this.jXTable1.updateUI();
+
+            //  }
+            editabile(false);
+            buttonAnnulla1.setEnabled(false);
+            buttonSalva1.setEnabled(false);
         }
     }//GEN-LAST:event_buttonSalva1MouseClicked
 
     private void jXTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jXTable1MouseClicked
-        int i = jXTable1.getSelectedRow();
-        if (i < 0) {
-            return;
-        }
-        Integer id = (Integer) jXTable1.getValueAt(this.jXTable1.convertRowIndexToModel(i), 0);
-        // JOptionPane.showMessageDialog(null, id);
-        AppServizi operazione = new AppServizi();
-        operazione.visualizza(id, servizio);
-       this.repaint();
-        editabile(false);
-    }//GEN-LAST:event_jXTable1MouseClicked
 
+
+        if (evt.getClickCount() == 2) {
+            int i = jXTable1.getSelectedRow();
+            if (i < 0) {
+                return;
+            }
+            Integer id = (Integer) jXTable1.getValueAt(this.jXTable1.convertRowIndexToModel(i), 0);
+            JOptionPane.showMessageDialog(null, id);
+
+            AppServizi operazione = new AppServizi();
+
+            operazione.visualizza(id, servi);
+            visualizza();
+
+         editabile(true);
+    }//GEN-LAST:event_jXTable1MouseClicked
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla buttonAnnulla1;
     private it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva buttonSalva1;
@@ -795,6 +811,17 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
     private javax.swing.JTextField qnt;
     private javax.swing.JTextField tipo;
     // End of variables declaration//GEN-END:variables
+
+    public void visualizza() {
+
+      System.out.println(servi.getTipo().getText());
+       disponibilita.setText(servi.getDisponibilita().getText());
+        tipo.setText(servi.getTipo().getText());
+        qnt.setText(servi.getQuantita().getText());
+        descrizione.setText(servi.getDescrizione().getText());
+        iva.setText(servi.getIva().getText());
+        prz.setText(servi.getPrezzo().getText());
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
