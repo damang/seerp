@@ -41,7 +41,7 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
         
         String query = "INSERT INTO servizio(descrizione,disponibilita,quantita,tipo,prezzo,iva,note) VALUES (?,?,?,?,?,?,?)";
         stmt = (PreparedStatement) conn.prepareStatement(query);
-        
+      
         stmt.setString(1, serv.getDescrizione());
         stmt.setBoolean(2, serv.getDisponibilita());
         stmt.setInt(3, serv.getQuantita());
@@ -50,7 +50,7 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
         stmt.setInt(6, serv.getIva());
         stmt.setString(7, serv.getNote());
 
-        stmt.executeUpdate();
+        stmt.execute();
 
         stmt.close();
         ConnectionPool.releaseConnection(conn);
@@ -156,7 +156,7 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
             serv = new Servizio(rs.getInt(1), rs.getString(2), rs.getBoolean(3),
                     rs.getInt(4), rs.getString(5), rs.getDouble(6),
                     rs.getInt(7), rs.getString(8));
-            System.out.println("tipo "+serv.getIva());
+        
         }
         stmt.close();
         rs.close();
