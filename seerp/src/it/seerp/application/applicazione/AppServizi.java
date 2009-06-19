@@ -103,7 +103,11 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio> {
         try {
             OpServizio ope = new OpServizio();
             Servizio serv = ope.visualizza(nome);
-            beanGui = Conversione.conversioneServizio(serv, beanGui);
+          
+           // beanGui =
+
+                    Conversione.conversioneServizio(serv, beanGui);
+            
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
