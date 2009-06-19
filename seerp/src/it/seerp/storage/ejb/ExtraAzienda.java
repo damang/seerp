@@ -215,5 +215,41 @@ public class ExtraAzienda extends Utente {
      public void addContratto(Contratto c){
      listContratti.add(c);}
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ExtraAzienda other = (ExtraAzienda) obj;
+        if ((this.cognome == null) ? (other.cognome != null) : !this.cognome.equals(other.cognome)) {
+            return false;
+        }
+        if ((this.nome == null) ? (other.nome != null) : !this.nome.equals(other.nome)) {
+            return false;
+        }
+        if ((this.ragioneSociale == null) ? (other.ragioneSociale != null) : !this.ragioneSociale.equals(other.ragioneSociale)) {
+            return false;
+        }
+        if ((this.pIva == null) ? (other.pIva != null) : !this.pIva.equals(other.pIva)) {
+            return false;
+        }
+        if ((this.fax == null) ? (other.fax != null) : !this.fax.equals(other.fax)) {
+            return false;
+        }
+        if ((this.tipo == null) ? (other.tipo != null) : !this.tipo.equals(other.tipo)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
 
 }
