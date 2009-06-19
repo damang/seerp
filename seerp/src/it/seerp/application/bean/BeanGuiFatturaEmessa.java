@@ -6,8 +6,8 @@ import javax.swing.JTextField;
 
 
 /**
- *
- * @author Luisa
+ * Classe relativa ai componenti grafici della gestione delle Fatture emesse
+ * @author Luisa - Tommaso Cattolico
  */
 public class BeanGuiFatturaEmessa {
 private JTextArea note;

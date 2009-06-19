@@ -1,30 +1,15 @@
 package it.seerp.application.bean;
 
-import it.seerp.application.validation.NotEmptyValidator;
-import java.util.ArrayList;
-import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import org.jdesktop.swingx.JXPanel;
 
 /**
- *
+ * Classe relativa ai componenti grafici della gestione dell Contatto
  * @author matteo - Tommaso Cattolico
  */
 public class BeanGuiContatto extends BeanGuiExtraAzienda {
 
     private JTextField txtFeedback;
-    private JXPanel grafica;
-    private NotEmptyValidator val;
-
-    /**
-     * Costruttore a cui viene passato un componente grafico necessario alla
-     * validazione del campo
-     * @param c
-     */
-    public BeanGuiContatto(JXPanel c) {
-        grafica = c;
-    }
 
     /**
      * Costruttore vuoto per la classe Bean Gui Contatto
@@ -58,7 +43,6 @@ public class BeanGuiContatto extends BeanGuiExtraAzienda {
         this.txtFeedback = txtFeedback;
     }
 
-
     /**
      * metodo che restituisce il campo contenente il feedback del Contatto
      * @return il campo feedback
@@ -66,7 +50,6 @@ public class BeanGuiContatto extends BeanGuiExtraAzienda {
     public JTextField getTxtFeedback() {
         return txtFeedback;
     }
-
 
     /**
      * metodo che permette di settare il campo contenente il feedback del Contatto

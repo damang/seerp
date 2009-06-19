@@ -4,7 +4,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
- *
+ * Classe relativa ai componenti grafici della gestione dell'Amministratore
  * @author matteo - Tommaso Cattolico
  */
 public class BeanGuiAmministratore extends BeanGuiPersonale {

@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 import org.jdesktop.swingx.JXPanel;
 
 /**
- *
+ * Classe relativa ai componenti grafici della gestione Extra Azienda
  * @author matteo - Tommaso Cattolico
  */
 public class BeanGuiExtraAzienda extends BeanGuiUtente {

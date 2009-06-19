@@ -3,7 +3,7 @@ package it.seerp.application.bean;
 import javax.swing.JTextField;
 
 /**
- *
+ * Classe relativa ai componenti grafici della gestione dell'Azienda
  * @author matteo
  */
 public class BeanGuiAzienda {

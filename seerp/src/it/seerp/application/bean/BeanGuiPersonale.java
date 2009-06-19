@@ -9,7 +9,7 @@ import javax.swing.JTextField;
 import org.jdesktop.swingx.JXPanel;
 
 /**
- *
+ * Classe relativa ai componenti grafici della gestione del Personale
  * @author matteo - Tommaso Cattolico
  */
 public class BeanGuiPersonale extends BeanGuiUtente {

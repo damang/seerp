@@ -1,21 +1,17 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package it.seerp.application.bean;
 
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
- *
- * @author Luisa
+ * Classe relativa ai componenti grafici della gestione dei Pagamenti
+ * @author Luisa - Tommaso Cattolico
  */
 public class BeanGuiPagamento {
-        private JTextArea note;
+
+    private JTextArea note;
     private JTextField dataScadenza;
-      private JTextField descrizione;
+    private JTextField descrizione;
     private JTextField importo;
     private JTextField modalitaPagamento;
     private JTextField stato;
@@ -25,9 +21,10 @@ public class BeanGuiPagamento {
     private JTextField banca;
 
     /**
-     * 
+     * Costruttore vuoto per la classe Bean Gui pagamento
      */
-    public BeanGuiPagamento() {}
+    public BeanGuiPagamento() {
+    }
 
     /**
      *
@@ -50,7 +47,7 @@ public class BeanGuiPagamento {
         this.stato = stato;
         this.altreInformazioni = altreInformazioni;
         this.idPagamento = idPagamento;
-        
+
         this.banca = banca;
     }
 
@@ -213,7 +210,4 @@ public class BeanGuiPagamento {
     public void setStato(JTextField stato) {
         this.stato = stato;
     }
-  
-
-
 }

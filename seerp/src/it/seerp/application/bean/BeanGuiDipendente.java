@@ -6,7 +6,7 @@ import javax.swing.JTextField;
 import org.jdesktop.swingx.JXPanel;
 
 /**
- *
+ * Classe relativa ai componenti grafici della gestione del Dipendente
  * @author matteo - Tommaso Cattolico
  */
 public class BeanGuiDipendente extends BeanGuiPersonale {
@@ -14,13 +14,12 @@ public class BeanGuiDipendente extends BeanGuiPersonale {
     private ArrayList<BeanGuiAppuntamento> listAppuntamenti;
     private ArrayList<BeanGuiContratto> listContratti;
 
-    public BeanGuiDipendente() {
-        
-    }
-
     /**
      * Costruttore vuoto per la classe Bean Gui Personale
      */
+    public BeanGuiDipendente() {
+    }
+
     public BeanGuiDipendente(JXPanel c) {
         super(c);
     }

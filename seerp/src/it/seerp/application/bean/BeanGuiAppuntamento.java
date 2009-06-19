@@ -4,8 +4,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
- *
- * @author matteo
+ * Classe relativa ai componenti grafici della gestione dell'Appuntamento
+ * @author matteo - Tommaso Cattolico
  */
 public class BeanGuiAppuntamento {
 
