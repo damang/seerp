@@ -121,7 +121,7 @@ public class Conversione {
         gui.setIdContratto(field);
         area.setText(c.getNote());
         gui.setNote(area);
-        gui.setDipendente(conversioneDipendente(c.getDipendente(), new BeanGuiDipendente()));
+        gui.setDipendente(conversioneDipendente(c.getDipendente(), gui.getDipendente()));
         gui.setExtraAzienda(conversazioneExtraAzienda(c.getExtraAzienda(), new BeanGuiExtraAzienda()));
         gui.setListPagamento(gui.getListPagamento());
         gui.setListServizio(gui.getListServizio());
@@ -1036,7 +1036,7 @@ public class Conversione {
      * @para r il Bean Grafico che deve essere modificato
      * @return il Bean Gui convertito
      */
-    public static BeanGuiRuolo conversioneRuolo(Ruolo b, BeanGuiRuolo r) throws Exception {
+    public static BeanGuiRuolo conversioneRuolo(Ruolo b, BeanGuiRuolo r) throws ValidatorException, Exception {
         r.setNome(new JTextField(b.getNome()));
         HashMap<String, ArrayList<BeanGuiPermesso>> lipi = r.getListPermessi();//new HashMap<String, ArrayList<BeanGuiPermesso>>();
         PermessoCollection p = b.getListPermesso();

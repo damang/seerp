@@ -2,6 +2,7 @@ package it.seerp.application.bean;
 
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import org.jdesktop.swingx.JXPanel;
 
 /**
  *
@@ -9,10 +10,15 @@ import javax.swing.JTextField;
  */
 public class BeanGuiResponsabile extends BeanGuiPersonale {
 
+    public BeanGuiResponsabile() {
+        
+    }
+
     /**
      * 
      */
-    public BeanGuiResponsabile() {
+    public BeanGuiResponsabile(JXPanel c) {
+        super(c);
     }
 
     /**

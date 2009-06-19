@@ -19,6 +19,10 @@ public class BeanGuiServizioAssociato {
     private BeanGuiServizio servizio;
     private JTextArea note;
 
+    public BeanGuiServizioAssociato() {
+        
+    }
+
     /**
      *
      * @param quantita

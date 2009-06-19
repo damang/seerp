@@ -16,7 +16,7 @@ import it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva;
 import it.seerp.Gui.Gestione.Menu.MenuServizi;
 import it.seerp.Gui.configurazioni.Gui.ConfigurazioneOperazioni;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
-import it.seerp.application.tabelle.ServiziTm;
+import it.seerp.Gui.tabella.ServiziTm;
 import it.seerp.application.applicazione.AppServizi;
 import it.seerp.application.bean.BeanGuiServizio;
 import java.awt.event.ActionEvent;
@@ -796,6 +796,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
     private javax.swing.JTextField tipo;
     // End of variables declaration//GEN-END:variables
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         CommandInterface cmd = (CommandInterface) e.getSource();
         cmd.execute();
