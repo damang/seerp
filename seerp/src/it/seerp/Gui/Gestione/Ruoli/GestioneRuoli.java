@@ -598,7 +598,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
     private void jXTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jXTable1MouseClicked
         //JOptionPane.showMessageDialog(null, ));
         AppRuoli r= new AppRuoli();
-        r.visualizzaDati((String)jXTable1.getValueAt(jXTable1.getSelectedRow(), 0), be);
+        r.visualizzaDati((String)jXTable1.getValueAt(jXTable1.convertRowIndexToModel(jXTable1.getSelectedRow()), 0), be);
     }//GEN-LAST:event_jXTable1MouseClicked
 
     private void con_ricActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_con_ricActionPerformed
@@ -678,50 +678,54 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
     private void legameBean() {
         be.setNome(txt_nruolo);
         HashMap<String, ArrayList<BeanGuiPermesso>> listPermessi= new HashMap<String, ArrayList<BeanGuiPermesso>>();
-        ArrayList<BeanGuiPermesso> perm = new ArrayList<BeanGuiPermesso>();
-        perm.add(new BeanGuiPermesso(this, cli_agg,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti)));
-        perm.add(new BeanGuiPermesso(this, cli_mod,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti)));
-        perm.add(new BeanGuiPermesso(this, cli_el,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti)));
-        perm.add(new BeanGuiPermesso(this, cli_ele,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti)));
-        perm.add(new BeanGuiPermesso(this, cli_ric,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti)));
-        listPermessi.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti), perm);
-        perm.clear();
-        perm.add(new BeanGuiPermesso(this, con_agg,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti)));
-        perm.add(new BeanGuiPermesso(this, con_mod,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti)));
-        perm.add(new BeanGuiPermesso(this, con_el,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti)));
-        perm.add(new BeanGuiPermesso(this, con_ele,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti)));
-        perm.add(new BeanGuiPermesso(this, con_ric,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti)));
-        listPermessi.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti), perm);
-        perm.clear();
-        perm.add(new BeanGuiPermesso(this, for_agg,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori)));
-        perm.add(new BeanGuiPermesso(this, for_mod,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori)));
-        perm.add(new BeanGuiPermesso(this, for_el,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori)));
-        perm.add(new BeanGuiPermesso(this, for_ele,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori)));
-        perm.add(new BeanGuiPermesso(this, for_ric,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori)));
-        listPermessi.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori), perm);
-        perm.clear();
-        perm.add(new BeanGuiPermesso(this, ser_agg,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi)));
-        perm.add(new BeanGuiPermesso(this, ser_mod,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi)));
-        perm.add(new BeanGuiPermesso(this, ser_el,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi)));
-        perm.add(new BeanGuiPermesso(this, ser_ele,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi)));
-        perm.add(new BeanGuiPermesso(this, ser_ric,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi)));
-        listPermessi.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi), perm);
-        perm.clear();
-        perm.add(new BeanGuiPermesso(this, dip_agg,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti)));
-        perm.add(new BeanGuiPermesso(this, dip_mod,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti)));
-        perm.add(new BeanGuiPermesso(this, dip_el,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti)));
-        perm.add(new BeanGuiPermesso(this, dip_ele,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti)));
-        perm.add(new BeanGuiPermesso(this, dip_ric,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti)));
-        listPermessi.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti), perm);
-        perm.clear();
-        perm.add(new BeanGuiPermesso(this, ruo_agg,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli)));
-        perm.add(new BeanGuiPermesso(this, ruo_mod,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli)));
-        perm.add(new BeanGuiPermesso(this, ruo_el,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli)));
-        perm.add(new BeanGuiPermesso(this, ruo_ele,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli)));
-        perm.add(new BeanGuiPermesso(this, ruo_ric,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli)));
-        listPermessi.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli), perm);
-        //perm.clear();
+        ArrayList<BeanGuiPermesso> perm1 = new ArrayList<BeanGuiPermesso>();
+        ArrayList<BeanGuiPermesso> perm2 = new ArrayList<BeanGuiPermesso>();
+        ArrayList<BeanGuiPermesso> perm3 = new ArrayList<BeanGuiPermesso>();
+        ArrayList<BeanGuiPermesso> perm4 = new ArrayList<BeanGuiPermesso>();
+        ArrayList<BeanGuiPermesso> perm5 = new ArrayList<BeanGuiPermesso>();
+        ArrayList<BeanGuiPermesso> perm6 = new ArrayList<BeanGuiPermesso>();
+        perm1.add(new BeanGuiPermesso(this, cli_agg,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti)));
+        perm1.add(new BeanGuiPermesso(this, cli_mod,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti)));
+        perm1.add(new BeanGuiPermesso(this, cli_el,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti)));
+        perm1.add(new BeanGuiPermesso(this, cli_ele,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti)));
+        perm1.add(new BeanGuiPermesso(this, cli_ric,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti)));
+        listPermessi.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti), perm1);
+        perm2.add(new BeanGuiPermesso(this, ruo_agg,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli)));
+        perm2.add(new BeanGuiPermesso(this, ruo_mod,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli)));
+        perm2.add(new BeanGuiPermesso(this, ruo_el,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli)));
+        perm2.add(new BeanGuiPermesso(this, ruo_ele,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli)));
+        perm2.add(new BeanGuiPermesso(this, ruo_ric,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli)));
+        listPermessi.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli), perm2);
+        perm3.add(new BeanGuiPermesso(this, con_agg,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti)));
+        perm3.add(new BeanGuiPermesso(this, con_mod,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti)));
+        perm3.add(new BeanGuiPermesso(this, con_el,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti)));
+        perm3.add(new BeanGuiPermesso(this, con_ele,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti)));
+        perm3.add(new BeanGuiPermesso(this, con_ric,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti)));
+        listPermessi.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti), perm3);
+        
+        perm4.add(new BeanGuiPermesso(this, for_agg,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori)));
+        perm4.add(new BeanGuiPermesso(this, for_mod,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori)));
+        perm4.add(new BeanGuiPermesso(this, for_el,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori)));
+        perm4.add(new BeanGuiPermesso(this, for_ele,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori)));
+        perm4.add(new BeanGuiPermesso(this, for_ric,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori)));
+        listPermessi.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori), perm4);
+        perm5.add(new BeanGuiPermesso(this, ser_agg,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi)));
+        perm5.add(new BeanGuiPermesso(this, ser_mod,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi)));
+        perm5.add(new BeanGuiPermesso(this, ser_el,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi)));
+        perm5.add(new BeanGuiPermesso(this, ser_ele,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi)));
+        perm5.add(new BeanGuiPermesso(this, ser_ric,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi)));
+        listPermessi.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi), perm5);
+        
+        perm6.add(new BeanGuiPermesso(this, dip_agg,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti)));
+        perm6.add(new BeanGuiPermesso(this, dip_mod,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti)));
+        perm6.add(new BeanGuiPermesso(this, dip_el,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti)));
+        perm6.add(new BeanGuiPermesso(this, dip_ele,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti)));
+        perm6.add(new BeanGuiPermesso(this, dip_ric,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti)));
+        listPermessi.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti), perm6);
+          
         be.setListPermessi(listPermessi);
     }
+
+
 
 }
