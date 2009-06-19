@@ -7,7 +7,7 @@ import javax.swing.JTextField;
 import org.jdesktop.swingx.JXPanel;
 
 /**
- *
+ * Classe relativa ai componenti grafici della gestione degli Eventi
  * @author Luisa - Tommaso Cattolico
  */
 public class BeanGuiEvento {
@@ -63,8 +63,6 @@ public class BeanGuiEvento {
         this.grafica = grafica;
     }
 
-   
-
     /**
      * metodo che restituisce il campo contenente la notifica dell'Evento
      * @return il campo di notifica
@@ -81,11 +79,6 @@ public class BeanGuiEvento {
         this.notifica = notifica;
     }
 
-    
-
-    
-
-    
     /**
      * 
      * @return
@@ -104,7 +97,7 @@ public class BeanGuiEvento {
      */
     public void setAgenda(BeanGuiAgenda pagenda) {
         this.agenda = pagenda;
-      
+
     }
 
     /**

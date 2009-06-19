@@ -10,7 +10,7 @@ import javax.swing.JTextField;
 import org.jdesktop.swingx.JXPanel;
 
 /**
- *
+ * Classe relativa ai componenti grafici della gestione del Contratto
  * @author Luisa - Tommaso Cattolico
  */
 public class BeanGuiContratto {

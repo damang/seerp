@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 import org.jdesktop.swingx.JXPanel;
 
 /**
- *
+ * Classe relativa ai componenti grafici della gestione degli Utenti
  * @author matteo - Tommaso Cattolico
  */
 public class BeanGuiUtente {
@@ -29,33 +29,12 @@ public class BeanGuiUtente {
     private JTextField txtNotifica;
     private JTextField tipo;
     private JTextField visible;
-    /**
-     *
-     */
     protected JXPanel grafica;
-    /**
-     *
-     */
     protected NotEmptyValidator val;
-    /**
-     *
-     */
     protected NotEqualLengthValidator valEqLen;
-    /**
-     *
-     */
     protected NotMinLengthValidator valMinLen;
-    /**
-     *
-     */
     protected NotMaxLengthValidator valMaxLen;
-    /**
-     *
-     */
     protected EmailValidator valEma;
-    /**
-     *
-     */
     protected NotAlphabeticValidator valApha;
 
     /**

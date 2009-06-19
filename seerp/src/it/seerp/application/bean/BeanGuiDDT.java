@@ -1,13 +1,15 @@
 package it.seerp.application.bean;
+
 import java.util.ArrayList;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
- *
- * @author Luisa
+ * Classe relativa ai componenti grafici della gestione dei DDT
+ * @author Luisa - Tommaso Cattolico
  */
 public class BeanGuiDDT {
+
     private JTextField merce;
     private JTextField quantita;
     private JTextField data;
@@ -15,7 +17,7 @@ public class BeanGuiDDT {
     private JTextField numero;
     private JTextField fattureEmesse;
     private ArrayList<BeanGuiServizioAssociatoFattura> listServizio;
-     private JTextArea note;
+    private JTextArea note;
 
     /**
      * Costruttore per la classe Bean Gui DDT
@@ -38,8 +40,6 @@ public class BeanGuiDDT {
         this.listServizio = listServizio;
         this.note = note;
     }
-
-        
 
     /**
      * metodo che restituisce la lista dei servizi associati al DDT
@@ -169,21 +169,22 @@ public class BeanGuiDDT {
     public void setQuantita(JTextField quantita) {
         this.quantita = quantita;
     }
-   
+
     /**
      *  metodo che permette di rimuovere un servizio dalla lista dei servizi
      * associati ad un DDT
      * @param s rappresenta  il servizio che si vuole rimuovere
      */
-    public void removeServzio(BeanGuiServizioAssociatoFattura s){
-     listServizio.remove(s);
-      }
-       /**
-        * metodo che permette di inserire un servizio nella lista dei servizi
-        * associati ad un DDT
-        * @param s rappresenta  il servizio che si vuole inserire
-        */
-       public void addServizio(BeanGuiServizioAssociatoFattura s){
-     listServizio.add(s);}
+    public void removeServzio(BeanGuiServizioAssociatoFattura s) {
+        listServizio.remove(s);
+    }
 
+    /**
+     * metodo che permette di inserire un servizio nella lista dei servizi
+     * associati ad un DDT
+     * @param s rappresenta  il servizio che si vuole inserire
+     */
+    public void addServizio(BeanGuiServizioAssociatoFattura s) {
+        listServizio.add(s);
+    }
 }

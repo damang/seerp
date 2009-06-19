@@ -1,16 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package it.seerp.application.bean;
 
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
- *
- * @author Luisa
+ * Classe relativa ai componenti grafici della gestione delle Note di Credito
+ * @author Luisa - Tommaso Cattolico
  */
 public class BeanGuiNotaDiCredito {
     private JTextField motivazione;

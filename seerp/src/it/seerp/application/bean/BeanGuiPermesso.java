@@ -4,8 +4,8 @@ import javax.swing.JCheckBox;
 import org.jdesktop.swingx.JXPanel;
 
 /**
- *
- * @author matteo
+ * Classe relativa ai componenti grafici della gestione Permesso
+ * @author matteo - Tommaso Cattolico
  */
 public class BeanGuiPermesso {
 

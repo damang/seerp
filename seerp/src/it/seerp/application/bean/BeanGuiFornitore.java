@@ -1,29 +1,13 @@
 package it.seerp.application.bean;
 
-import it.seerp.application.validation.NotEmptyValidator;
-import java.util.ArrayList;
-import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import org.jdesktop.swingx.JXPanel;
 
 /**
- *
+ * Classe relativa ai componenti grafici della gestione dei Fornitori
  * @author matteo - Tommaso Cattolico
  */
 public class BeanGuiFornitore extends BeanGuiExtraAzienda {
-
-    private JXPanel grafica;
-    private NotEmptyValidator val;
-
-    /**
-     * Costruttore a cui viene passato un componente grafico necessario alla
-     * validazione del campo
-     * @param c
-     */
-    public BeanGuiFornitore(JXPanel c) {
-        grafica = c;
-    }
 
     /**
      * Costruttore per vuoto per la classe BeanGuiFornitore

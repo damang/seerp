@@ -8,8 +8,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
- * classe che gestisce i componenti grafici relativi alle disponibilita liquide
- * @author Luisa
+ * Classe relativa ai componenti grafici della gestione delle Disponibilità Liquide
+ * @author Luisa - Tommaso Cattolico
  */
 public class BeanGuiDisponibilitaLiquide {
 

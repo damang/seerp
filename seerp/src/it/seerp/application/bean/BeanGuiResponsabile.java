@@ -2,23 +2,15 @@ package it.seerp.application.bean;
 
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import org.jdesktop.swingx.JXPanel;
 
 /**
- *
+ * Classe relativa ai componenti grafici della gestione dei Responsabili
  * @author matteo - Tommaso Cattolico
  */
 public class BeanGuiResponsabile extends BeanGuiPersonale {
 
     public BeanGuiResponsabile() {
         
-    }
-
-    /**
-     * 
-     */
-    public BeanGuiResponsabile(JXPanel c) {
-        super(c);
     }
 
     /**

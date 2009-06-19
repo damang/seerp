@@ -1,15 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package it.seerp.application.bean;
 
 import javax.swing.JTextField;
 
 /**
- *
- * @author matteo
+ * Classe relativa ai componenti grafici della gestione della Banca
+ * @author matteo - Tommaso Cattolico
  */
 public class BeanGuiBanca {
 

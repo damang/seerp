@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package it.seerp.application.bean;
 
 import java.util.ArrayList;
@@ -9,7 +5,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
- * classe relativi ai componenti grafici dei servizi associatia d una fattura
+ * Classe relativa ai componenti grafici della gestione dei Servizi associati alle fatture
  * @author Luisa
  */
 public class BeanGuiServizioAssociatoFattura {
