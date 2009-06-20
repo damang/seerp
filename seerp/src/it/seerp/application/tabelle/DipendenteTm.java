@@ -41,11 +41,11 @@ public class DipendenteTm extends Generica <Dipendente>{
     }
 
    public void refresh(){
-     /*  AppGestionePersonale op = new AppGestionePersonale();
-        Iterator<Dipendente> it = op.visualizzaTabellaDipendenti.iterator();
+      AppGestionePersonale op = new AppGestionePersonale();
+        Iterator<Dipendente> it = op.visualizzaTabellaDipendenti().iterator();
         while (it.hasNext()) {
             this.addNewData(it.next());
-        }*/}
+        }}
 
     public boolean isCellEditable(int row, int column) {
         return false;
