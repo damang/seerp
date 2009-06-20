@@ -43,9 +43,9 @@ public class OpResponsabile extends OpeUtente {
         ResultSet rs = null;
 
 
-        String sql = "SELECT idUtente,username,password,citta,provincia," +
+        String sql = "SELECT idUtente,username,password,citta,prov," +
                 "telefono,cap,email,note,tipo,cognome,nome,codiceFiscale," +
-                "ruolo,visible FROM responsabile,utente,personale WHERE Visible='true' and idPersonale=idUtente " +
+                "ruolo,visibilita FROM responsabile,utente,personale WHERE idPersonale=idUtente and visibilita=true " +
                 "and idPersonale=idResponsabile";
         stmt = (PreparedStatement) con.prepareStatement(sql);
         // Execute the query
@@ -67,11 +67,12 @@ public class OpResponsabile extends OpeUtente {
                     rs.getBoolean(15));
 
             list.add(responsabile);
-            rs.close();
-            stmt.close();
-            ConnectionPool.releaseConnection(con);
-
         }
+        rs.close();
+        stmt.close();
+        ConnectionPool.releaseConnection(con);
+
+
         return list;
     }
 
@@ -190,7 +191,7 @@ public class OpResponsabile extends OpeUtente {
                 con.commit();
             } catch (SQLException se) {
                 con.rollback();
-                 System.out.println("inserimento fallito");
+                System.out.println("inserimento fallito");
             }
 
             stmt.close();
@@ -268,19 +269,19 @@ public class OpResponsabile extends OpeUtente {
      * @return il bean con i dettagli del membro del personale
      * @throws SQLException
      */
-    public Responsabile visualizzaDati(Integer id) throws SQLException {
+    public Responsabile visualizzaPersonale(Integer id) throws SQLException {
         Responsabile responsabile = null;
+
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
 
-        String sql = "SELECT * FROM utente,personale,responbile where idPersonale=idUtente and idPersonale=idResponsabile and idResponsabile= ? ";
-        // Create a statement
+        String sql = "SELECT * FROM utente,personale WHERE idUtente=idPersonale and idPersonale= ? ";
+
         stmt = (PreparedStatement) con.prepareStatement(sql);
-        stmt.setString(1, id.toString());
+        stmt.setInt(1, id);
         // Execute the query
         rs = stmt.executeQuery();
-
         // Define the resource list
         while (rs.next()) {
             /*
