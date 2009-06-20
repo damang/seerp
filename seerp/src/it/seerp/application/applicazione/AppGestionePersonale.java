@@ -40,19 +40,20 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * @param user il dipendente da inserire
      */
     public void inserisciDipendente(BeanGuiDipendente user) {
-       // super.inserisci(user);
+        // super.inserisci(user);
         try {
             OpDipendente a = new OpDipendente();
             Dipendente dip = Conversione.conversioneDipendente(user);
             a.inserisci(dip);
         } catch (SQLException se) {
-                   while (se != null) {
-	                System.out.println("State  : " + se.getSQLState());
-	                System.out.println("Message: " + se.getMessage());
-	                System.out.println("Error  : " + se.getErrorCode());
+            while (se != null) {
+                System.out.println("State  : " + se.getSQLState());
+                System.out.println("Message: " + se.getMessage());
+                System.out.println("Error  : " + se.getErrorCode());
 
-	                se = se.getNextException();}
-          
+                se = se.getNextException();
+            }
+
             JOptionPane.showMessageDialog(null, "Errore nel database!");
         } catch (ValidatorException e) {
             e.printStackTrace();
@@ -71,12 +72,13 @@ public class AppGestionePersonale extends AppGestioneUtente {
             Responsabile dip = Conversione.conversioneResponsabile(user);
             a.inserisci(dip);
         } catch (SQLException se) {
-              while (se != null) {
-	                System.out.println("State  : " + se.getSQLState());
-	                System.out.println("Message: " + se.getMessage());
-	                System.out.println("Error  : " + se.getErrorCode());
-              
-	                se = se.getNextException();}
+            while (se != null) {
+                System.out.println("State  : " + se.getSQLState());
+                System.out.println("Message: " + se.getMessage());
+                System.out.println("Error  : " + se.getErrorCode());
+
+                se = se.getNextException();
+            }
             JOptionPane.showMessageDialog(null, "Errore nel database!");
         } catch (ValidatorException e) {
             e.printStackTrace();
@@ -216,6 +218,44 @@ public class AppGestionePersonale extends AppGestioneUtente {
             OpFornitore ope = new OpFornitore();
             Fornitore forn = Conversione.conversioneFornitore(beanGui);
             ope.elimina(forn);
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (ValidatorException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
+        }
+    }
+
+    /**
+     * Metodo che permette di visualizzare i dati di un responsabile
+     * @param user codice dell'utente
+     * @param beanGui bean grafico dove inserire i dati visualizzati
+     */
+    public void visualizzaDatiResponsabile(int user, BeanGuiResponsabile beanGui) {
+        try {
+            OpResponsabile ope = new OpResponsabile();
+            Responsabile utente = ope.visualizzaDati(user);
+            beanGui = it.seerp.application.conversioni.Conversione.conversioneResponsabile(utente, beanGui);
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (ValidatorException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
+        }
+    }
+
+    /**
+     * Metodo che permette di visualizzare i dati di un dipendente
+     * @param user codice dell'utente
+     * @param beanGui bean grafico dove inserire i dati visualizzati
+     */
+    public void visualizzaDatiDipendente(int user, BeanGuiDipendente beanGui) {
+        try {
+            OpDipendente ope = new OpDipendente();
+            Dipendente utente = ope.visualizzaDati(user);
+            beanGui = it.seerp.application.conversioni.Conversione.conversioneDipendente(utente, beanGui);
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");

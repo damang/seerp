@@ -22,6 +22,7 @@ public class AppGestioneAreaPersonale implements GestioneAreaPersonale<BeanGuiUt
      * @param beanGui
      * @return il Bean Grafico contenente i dati dell'utente
      */
+    @Override
     public BeanGuiUtente visualizzaDati(int id, BeanGuiUtente beanGui) {
         try {
             OpAreaPersonale ope = new OpAreaPersonale();
@@ -44,6 +45,7 @@ public class AppGestioneAreaPersonale implements GestioneAreaPersonale<BeanGuiUt
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui i dati inseriti sono errati
      */
+    @Override
     public BeanGuiUtente modificaPassword(BeanGuiUtente beanGui) throws DatiErrati {
         try {
             OpAreaPersonale ope = new OpAreaPersonale();
