@@ -7,8 +7,10 @@ package it.seerp.Gui.Gestione.Menu;
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.Ruoli.GestioneRuoli;
 import it.seerp.Gui.Gestione.Contratti.GestioneContratti;
+import it.seerp.Gui.configurazioni.Gui.ConfigurazioneOperazioni;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,7 +18,7 @@ import javax.swing.JButton;
  */
 public class AggiungiButtonRuoli extends JButton implements CommandInterface {
 
-    GestioneRuoli areaContr;
+    GestioneRuoli area;
 
     /**
      *
@@ -39,12 +41,15 @@ public class AggiungiButtonRuoli extends JButton implements CommandInterface {
      *
      * @param areaContr
      */
-    public void setAreaContratti(GestioneRuoli areaContr) {
-        this.areaContr = areaContr;
+    public void setArea(GestioneRuoli areaContr) {
+        this.area = areaContr;
     }
 
     public void execute() {
-         this.setEnabled(false);
-       
+        // this.setEnabled(false);
+         area.setTipoOP(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI);
+         area.getSalva().setVisible(true);
+         area.getAnnulla().setVisible(true);
+         area.setEditable(true);
     }
 }
