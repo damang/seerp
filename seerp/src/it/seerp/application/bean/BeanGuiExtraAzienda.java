@@ -189,12 +189,12 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getCognome() throws ValidatorException {
-        if (!val.shouldYieldFocus(grafica)) {
+       /* if (!val.shouldYieldFocus(grafica)) {
             throw new ValidatorException("Errore nella grafica!");
         }
         if (!valApha.shouldYieldFocus(grafica)) {
             throw new ValidatorException("Errore nella grafica!");
-        }
+        }*/
         return cognome;
     }
 
@@ -204,12 +204,12 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getNome() throws ValidatorException {
-        if (!val.shouldYieldFocus(grafica)) {
+       /* if (!val.shouldYieldFocus(grafica)) {
             throw new ValidatorException("Errore nella grafica!");
         }
         if (!valApha.shouldYieldFocus(grafica)) {
             throw new ValidatorException("Errore nella grafica!");
-        }
+        }*/
         return nome;
     }
 
