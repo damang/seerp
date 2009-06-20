@@ -4,12 +4,9 @@ import java.util.GregorianCalendar;
 
 /**
  * classe utilizzata per gestire un evento
- * @author Luisa-Matteo
+ * @author Luisa-Matteo - Tommaso Cattolico
  */
 public class Evento {
-
-   
-    
 
     private String luogo;
     private String tema;
@@ -22,10 +19,10 @@ public class Evento {
     private Agenda agd;
 
     /**
-     * cotruttore vuoto
+     * Costruttore vuoto
      */
-    public Evento()
-    {}
+    public Evento() {
+    }
 
     /**
      * Costruttore per la classe Evento
@@ -38,8 +35,6 @@ public class Evento {
      * @param idEvento
      * @param not
      */
-
-
     public Evento(String luogo, String tema, String nome, String note, GregorianCalendar data, GregorianCalendar ora, int idEvento, Boolean not) {
         this.luogo = luogo;
         this.notifica = not;
@@ -49,7 +44,52 @@ public class Evento {
         this.data = data;
         this.ora = ora;
         this.idEvento = idEvento;
-        
+
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Evento other = (Evento) obj;
+        if ((this.luogo == null) ? (other.luogo != null) : !this.luogo.equals(other.luogo)) {
+            return false;
+        }
+        if ((this.tema == null) ? (other.tema != null) : !this.tema.equals(other.tema)) {
+            return false;
+        }
+        if ((this.nome == null) ? (other.nome != null) : !this.nome.equals(other.nome)) {
+            return false;
+        }
+        if ((this.note == null) ? (other.note != null) : !this.note.equals(other.note)) {
+            return false;
+        }
+        if (this.data != other.data && (this.data == null || !this.data.equals(other.data))) {
+            return false;
+        }
+        if (this.ora != other.ora && (this.ora == null || !this.ora.equals(other.ora))) {
+            return false;
+        }
+        if (this.idEvento != other.idEvento) {
+            return false;
+        }
+        if (this.notifica != other.notifica && (this.notifica == null || !this.notifica.equals(other.notifica))) {
+            return false;
+        }
+        if (this.agd != other.agd && (this.agd == null || !this.agd.equals(other.agd))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
     }
 
     /**
@@ -76,7 +116,6 @@ public class Evento {
         this.notifica = notifica;
     }
 
-   
     /**
      * metodo che setta l'identificativo dell'agenda associata a quell'evento
      * @param a
