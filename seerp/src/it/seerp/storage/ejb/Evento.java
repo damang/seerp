@@ -35,6 +35,18 @@ public class Evento {
      * @param idEvento
      * @param not
      */
+    public Evento(String luogo, String tema, String nome, String note, GregorianCalendar data, GregorianCalendar ora, int idEvento, Boolean not, Agenda agd) {
+        this.luogo = luogo;
+        this.notifica = not;
+        this.tema = tema;
+        this.nome = nome;
+        this.note = note;
+        this.data = data;
+        this.ora = ora;
+        this.idEvento = idEvento;
+        this.agd = agd;
+    }
+
     public Evento(String luogo, String tema, String nome, String note, GregorianCalendar data, GregorianCalendar ora, int idEvento, Boolean not) {
         this.luogo = luogo;
         this.notifica = not;
@@ -44,7 +56,6 @@ public class Evento {
         this.data = data;
         this.ora = ora;
         this.idEvento = idEvento;
-
     }
 
     @Override
