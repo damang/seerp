@@ -235,7 +235,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
     public void visualizzaDatiResponsabile(int user, BeanGuiResponsabile beanGui) {
         try {
             OpResponsabile ope = new OpResponsabile();
-            Responsabile utente = ope.visualizzaDati(user);
+            Responsabile utente = ope.visualizzaPersonale(user);
             beanGui = it.seerp.application.conversioni.Conversione.conversioneResponsabile(utente, beanGui);
         } catch (SQLException se) {
             se.printStackTrace();
