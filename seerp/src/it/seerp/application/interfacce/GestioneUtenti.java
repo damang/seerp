@@ -56,7 +56,7 @@ public interface GestioneUtenti<E extends Utente, U extends BeanGuiUtente> {
      * @throws it.seerp.application.Exception.DatiErrati
      * @throws it.seerp.application.Exception.DatiDuplicati
      */
-    public U inserisci(U user) throws DatiErrati, DatiDuplicati;
+    public void inserisci(U user) throws DatiErrati, DatiDuplicati;
 
     /**
      *

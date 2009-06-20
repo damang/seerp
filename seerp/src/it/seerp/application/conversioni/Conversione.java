@@ -49,6 +49,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -221,12 +222,12 @@ public class Conversione {
      */
     public static BeanGuiServizio conversioneServizio(Servizio s, BeanGuiServizio gui) {
 
-         gui.getDescrizione().setText(s.getDescrizione());
-         gui.getDisponibilita().setText(s.getDisponibilita().toString());
-         gui.getQuantita().setText(s.getQuantita().toString());
-         gui.getPrezzo().setText(s.getPrezzo().toString());
-         gui.getIva().setText(s.getIva().toString());
-         
+        gui.getDescrizione().setText(s.getDescrizione());
+        gui.getDisponibilita().setText(s.getDisponibilita().toString());
+        gui.getQuantita().setText(s.getQuantita().toString());
+        gui.getPrezzo().setText(s.getPrezzo().toString());
+        gui.getIva().setText(s.getIva().toString());
+
 
         /*gui.setDisponibilita(field);
         field.setText(s.getQuantita().toString());
@@ -278,18 +279,21 @@ public class Conversione {
      * @throws Exception
      */
     public static Utente conversioneUtente(BeanGuiUtente bUtente) throws ValidatorException {
+
         Utente utente = new Utente();
-        utente.setIdUtente(Integer.parseInt(bUtente.getIdUtenteTxt().getText()));
+
+//        utente.setIdUtente(Integer.parseInt(bUtente.getIdUtenteTxt().getText()));
         utente.setUsername(bUtente.getTxtUsername().getText());
         utente.setPassword(bUtente.getTxtPassword().getText());
         utente.setCitta(bUtente.getTxtCitta().getText());
         utente.setProvincia(bUtente.getTxtProvincia().getText());
-        utente.setCap(bUtente.getCap().getText());
+        //   utente.setCap(bUtente.getCap().getText());
         utente.setTelefono(bUtente.getTxtTelefono().getText());
         utente.setEmail(bUtente.getTxtEmail().getText());
-        utente.setNote(bUtente.getTxtNote().getText());
-        utente.setTipo(bUtente.getTipo().getText());
-        utente.setVisible(Boolean.parseBoolean(bUtente.getTxtNotifica().getText()));
+//        utente.setNote(bUtente.getTxtNote().getText());
+        //      utente.setTipo(bUtente.getTipo().getText());
+        //    utente.setVisible(Boolean.parseBoolean(bUtente.getTxtNotifica().getText()));
+
         return utente;
     }
 
@@ -488,17 +492,15 @@ public class Conversione {
     public static Responsabile conversioneResponsabile(BeanGuiResponsabile r) throws ValidatorException {
 
         Responsabile utente = new Responsabile();
-        utente.setIdUtente(Integer.parseInt(r.getIdUtenteTxt().getText()));
+        //utente.setIdUtente(Integer.parseInt(r.getIdUtenteTxt().getText()));
         utente.setUsername(r.getTxtUsername().getText());
         utente.setPassword(r.getTxtPassword().getText());
         utente.setCitta(r.getTxtCitta().getText());
         utente.setProvincia(r.getTxtProvincia().getText());
-        utente.setCap(r.getCap().getText());
         utente.setTelefono(r.getTxtTelefono().getText());
         utente.setEmail(r.getTxtEmail().getText());
-        utente.setNote(r.getTxtNote().getText());
-        utente.setTipo(r.getTipo().getText());
-        utente.setVisible(Boolean.parseBoolean(r.getTxtNotifica().getText()));
+        // utente.setNote(r.getTxtNote().getText());
+        // utente.setVisible(Boolean.parseBoolean(r.getTxtNotifica().getText()));
         utente.setCognome(r.getCognome().getText());
         utente.setNome(r.getNome().getText());
         utente.setCodiceFiscale(r.getCodiceFiscale().getText());
@@ -515,7 +517,7 @@ public class Conversione {
      */
     public static BeanGuiResponsabile conversioneResponsabile(Responsabile e, BeanGuiResponsabile br) {
 
-        JTextField c = new JTextField();
+        /*  JTextField c = new JTextField();
         c.setText(e.getIdUtente().toString());
         br.setIdUtenteText(c);
         c.setText(e.getPassword());
@@ -539,7 +541,7 @@ public class Conversione {
         c.setText(e.getRuolo().getNome());
         br.setRuolo(c);
         c.setText(e.getVisible().toString());
-        br.setTxtnotifica(c);
+        br.setTxtnotifica(c);*/
         return br;
     }
 

@@ -125,10 +125,10 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      */
     public void setCognome(JTextField ptxtCognome) {
         this.cognome = ptxtCognome;
-        val = new NotEmptyValidator(grafica, cognome, "Il campo non può essere vuoto.");
+      /*  val = new NotEmptyValidator(grafica, cognome, "Il campo non può essere vuoto.");
         grafica.setInputVerifier(val);
         valApha = new NotAlphabeticValidator(grafica, cognome, "La stringa inserita deve essere alfabetica.");
-        grafica.setInputVerifier(valApha);
+        grafica.setInputVerifier(valApha);*/
     }
 
     /**
@@ -137,10 +137,10 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      */
     public void setNome(JTextField ptxtNome) {
         this.nome = ptxtNome;
-        val = new NotEmptyValidator(grafica, nome, "Il campo non può essere vuoto.");
+      /*  val = new NotEmptyValidator(grafica, nome, "Il campo non può essere vuoto.");
         grafica.setInputVerifier(val);
         valApha = new NotAlphabeticValidator(grafica, nome, "La stringa inserita deve essere alfabetica.");
-        grafica.setInputVerifier(valApha);
+        grafica.setInputVerifier(valApha);*/
     }
 
     /**
@@ -149,8 +149,8 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      */
     public void setFax(JTextField ptxtFax) {
         this.fax = ptxtFax;
-        valMinLen = new NotMinLengthValidator(grafica, fax, "Il campo deve essere di almeno 8 caratteri", 8);
-        grafica.setInputVerifier(valMinLen);
+    /*    valMinLen = new NotMinLengthValidator(grafica, fax, "Il campo deve essere di almeno 8 caratteri", 8);
+        grafica.setInputVerifier(valMinLen);*/
     }
 
     /**
@@ -159,10 +159,10 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      */
     public void setPIva(JTextField pIva) {
         this.pIva = pIva;
-        val = new NotEmptyValidator(grafica, pIva, "Il campo non può essere vuoto.");
+     /*   val = new NotEmptyValidator(grafica, pIva, "Il campo non può essere vuoto.");
         grafica.setInputVerifier(val);
         valEqLen = new NotEqualLengthValidator(grafica, pIva, "Il campo deve essere di 11 caratteri", 11);
-        grafica.setInputVerifier(valEqLen);
+        grafica.setInputVerifier(valEqLen);*/
     }
 
     /**
@@ -171,8 +171,8 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      */
     public void setTxtRagioneSociale(JTextField ptxtRagioneSociale) {
         this.ragioneSociale = ptxtRagioneSociale;
-        val = new NotEmptyValidator(grafica, ragioneSociale, "Il campo non può essere vuoto.");
-        grafica.setInputVerifier(val);
+       /* val = new NotEmptyValidator(grafica, ragioneSociale, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);*/
     }
 
     /**
@@ -219,9 +219,9 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getFax() throws ValidatorException {
-        if (!valMinLen.shouldYieldFocus(grafica)) {
+       /* if (!valMinLen.shouldYieldFocus(grafica)) {
             throw new ValidatorException("Errore nella grafica!");
-        }
+        }*/
         return fax;
     }
 
@@ -231,11 +231,11 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * @throws Exception
      */
     public JTextField getPIva() throws ValidatorException {
-        if (!val.shouldYieldFocus(grafica)) {
+      /*  if (!val.shouldYieldFocus(grafica)) {
             throw new ValidatorException("Errore nella grafica!");
         } else if (!valEqLen.shouldYieldFocus(grafica)) {
             throw new ValidatorException("Errore nella grafica!");
-        }
+        }*/
         return pIva;
     }
 
@@ -245,9 +245,9 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getRagioneSociale() throws ValidatorException {
-        if (!val.shouldYieldFocus(grafica)) {
+       /* if (!val.shouldYieldFocus(grafica)) {
             throw new ValidatorException("Errore nella grafica!");
-        }
+        }*/
         return ragioneSociale;
     }
 

@@ -155,24 +155,21 @@ public class OpResponsabile extends OpeUtente {
         PreparedStatement stmtR = null;
         
             Statement stmt1 = con.createStatement();
-            String sqlTest = "SELECT * FROM utente,personale,responsabile WHERE codiceFiscale='" + user.getCodiceFiscale() + "' and idUtente=idPersonale" +
-                    "idPersonale=idResponsabile ";
+            String sqlTest = "SELECT * FROM utente,personale,responsabile WHERE codiceFiscale='" + user.getCodiceFiscale() + "'and idUtente=idPersonale and idPersonale=idResponsabile";
             ResultSet rs = stmt1.executeQuery(sqlTest);
 
             if (rs.next()) {
                 throw new DatiDuplicatiEx("responsabile già esistente nel database");
             } else {
-                try{
-                    con.setAutoCommit(false);
-                String sqlu = "INSERT INTO utente(idUtente,username,password,email,citta,prov,telefono" +
-                        "CAP,note,tipo,visibilita) VALUES(LAST_INSERT_ID()+1,?,?,?,?,?,?,?,?,?,?)";
-                String sqlp = "INSERT INTO personale(idPersonale,nome,cognome,codicefiscale,ruolo)" +
-                        "VALUES(LAST_INSERT_ID(),?,?,?,?)";
-                String sqlr = "INSERT INTO responsabile (idResponsabile)" +
-                        "VALUES(LAST_INSERT_ID())";
 
-                stmt = (PreparedStatement) con.prepareStatement(sqlu);
-                stmt.setString(1, user.getUsername());
+                try{
+                 con.setAutoCommit(false);
+                String sqlu = "INSERT INTO utente(username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita) VALUES(?,?,?,?,?,?,?,?,?,true)";
+                String sqlp = "INSERT INTO personale(idPersonale,nome,cognome,codicefiscale,ruolo) VALUES(LAST_INSERT_ID(),?,?,?,?)";
+                String sqlr = "INSERT INTO responsabile (idResponsabile)VALUES(LAST_INSERT_ID())";
+
+               stmt = (PreparedStatement) con.prepareStatement(sqlu);
+               stmt.setString(1, user.getUsername());
                 stmt.setString(2, user.getPassword());
                 stmt.setString(3, user.getEmail());
                 stmt.setString(4, user.getCitta());
@@ -181,19 +178,25 @@ public class OpResponsabile extends OpeUtente {
                 stmt.setString(7, user.getCap());
                 stmt.setString(8, user.getNote());
                 stmt.setString(9, user.getTipo());
-                stmt.setString(10, user.getVisible().toString());
+               // stmt.setString(10, user.getVisible().toString());
                 stmtP = (PreparedStatement) con.prepareStatement(sqlp);
                 stmtP.setString(1, user.getNome());
                 stmtP.setString(2, user.getCognome());
                 stmtP.setString(3, user.getCodiceFiscale());
                 stmtP.setString(4, user.getRuolo().getNome());
                 stmtR= (PreparedStatement) con.prepareStatement(sqlr);
-                stmtR.execute();
-                stmtP.execute();
-                stmtR.execute();
+               System.out.println( stmt.execute());
+                System.out.println(stmtP.execute());
+               System.out.println( stmtR.execute());
                 con.commit();
-            }catch(SQLException e){
+            }catch(SQLException se){
                  con.rollback();
+                   while (se != null) {
+	                System.out.println("State  : " + se.getSQLState());
+	                System.out.println("Message: " + se.getMessage());
+	                System.out.println("Error  : " + se.getErrorCode());
+
+	                se = se.getNextException();}
                  System.out.println("inserimento fallito");}
                   
                 stmt.close();
@@ -217,7 +220,7 @@ public class OpResponsabile extends OpeUtente {
         
             Statement stmt1 = con.createStatement();
             String sqlTest = "SELECT * FROM utente,personale,responsabile WHERE codiceFiscale='" + user.getCodiceFiscale() + "'" +
-                    "and idPersonale=idUtente and idPersonale=idResponsabile ";
+             "and idPersonale=idUtente and idPersonale=idResponsabile ";
             ResultSet rs = stmt1.executeQuery(sqlTest);
 
             if (rs.next()) {

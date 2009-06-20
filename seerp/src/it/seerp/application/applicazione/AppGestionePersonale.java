@@ -59,13 +59,18 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * @param user
      */
     public void inserisciResponsabile(BeanGuiResponsabile user) {
-        super.inserisci(user);
+        //super.inserisci(user);
         try {
             OpResponsabile a = new OpResponsabile();
             Responsabile dip = Conversione.conversioneResponsabile(user);
             a.inserisci(dip);
         } catch (SQLException se) {
-            se.printStackTrace();
+              while (se != null) {
+	                System.out.println("State  : " + se.getSQLState());
+	                System.out.println("Message: " + se.getMessage());
+	                System.out.println("Error  : " + se.getErrorCode());
+              
+	                se = se.getNextException();}
             JOptionPane.showMessageDialog(null, "Errore nel database!");
         } catch (ValidatorException e) {
             e.printStackTrace();

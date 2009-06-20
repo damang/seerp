@@ -122,12 +122,12 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
      * @throws it.seerp.application.Exception.DatiDuplicati
      * nel caso in cui i dati inseriti sono duplicati
      */
-    public BeanGuiUtente inserisci(BeanGuiUtente user) throws DatiErrati, DatiDuplicati {
+    public void inserisci(BeanGuiUtente user) throws DatiErrati, DatiDuplicati {
         try {
             OpeUtente a = new OpeUtente();
-            Utente serv = Conversione.conversioneUtente(user);
-            a.inserimento(serv);
-            user = Conversione.conversioneUtente(serv, user);
+            Utente utente = Conversione.conversioneUtente(user);
+            a.inserimento(utente);
+
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
@@ -135,7 +135,7 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
-        return user;
+
     }
 
     /**
