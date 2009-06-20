@@ -1,6 +1,5 @@
 package it.seerp.application.applicazione;
 
-import it.seerp.application.Exception.DatiErrati;
 import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.bean.BeanGuiCliente;
 import it.seerp.application.bean.BeanGuiContatto;
@@ -46,7 +45,7 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
      * @param clien il Cliente che si vuole inserire
      */
     public void inserisciCliente(BeanGuiCliente clien) {
-      //  super.inserisci(clien);
+        //  super.inserisci(clien);
         try {
             OpCliente a = new OpCliente();
             Cliente cl = Conversione.conversioneCliente(clien);
@@ -59,7 +58,13 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
     }
-   public void visualizzaDatiCliente(int user, BeanGuiCliente beanGui)  {
+
+    /**
+     * Metodo che permette di visualizzare i dati di un cliente
+     * @param user codice dell'utente
+     * @param beanGui bean grafico dove inserire i dati visualizzati
+     */
+    public void visualizzaDatiCliente(int user, BeanGuiCliente beanGui) {
         try {
             OpCliente ope = new OpCliente();
             Cliente utente = ope.visualizzaDati(user);
@@ -71,14 +76,33 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
-
     }
+
+    /**
+     * Metodo che permette di visualizzare i dati di un fornitore
+     * @param user codice dell'utente
+     * @param beanGui bean grafico dove inserire i dati visualizzati
+     */
+    public void visualizzaDatiFornitore(int user, BeanGuiFornitore beanGui) {
+        try {
+            OpFornitore ope = new OpFornitore();
+            Fornitore utente = ope.visualizzaDati(user);
+            beanGui = it.seerp.application.conversioni.Conversione.conversioneFornitore(utente, beanGui);
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (ValidatorException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
+        }
+    }
+
     /**
      * Metodo che permette di inserire un nuovo Fornitore
      * @param forn il Fornitore che si vuole inserire
      */
     public void inserisciFornitore(BeanGuiFornitore forn) {
-      //  super.inserisci(forn);
+        //  super.inserisci(forn);
         try {
             OpFornitore a = new OpFornitore();
             Fornitore fo = Conversione.conversioneFornitore(forn);
