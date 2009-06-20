@@ -2,9 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package it.seerp.application.tabelle;
-
 
 import it.seerp.storage.ejb.Fornitore;
 import java.sql.SQLException;
@@ -13,44 +11,43 @@ import java.util.Vector;
 import javax.swing.JTable;
 import it.seerp.application.applicazione.AppGestioneExtraAzienda;
 
-
 /**
  *
  * @author Luisa
  */
-public class FornitoreTm extends Generica <Fornitore>{
- private JTable table;
+public class FornitoreTm extends Generica<Fornitore> {
 
- /**
-  *
-  * @throws java.sql.SQLException
-  */
- public FornitoreTm() throws SQLException {
+    private JTable table;
+
+    /**
+     *
+     * @throws java.sql.SQLException
+     */
+    public FornitoreTm() throws SQLException {
         Object[] list = new Object[]{
             "Id",
             "P.iva",
             "Ragione sociale",
-            "Provincia",
-
-        };
+            "Provincia",};
 
         super.setColumnIdentifiers(list);
         super.setColumnCount(4);
 
-         refresh();
+        refresh();
     }
-public void refresh(){
-  /* AppGestioneExtraAzienda op = new AppGestioneExtraAzienda();
+
+    public void refresh() {
+        AppGestioneExtraAzienda op = new AppGestioneExtraAzienda();
         Iterator<Fornitore> it = op.visualizzaTabellaFornitore().iterator();
         while (it.hasNext()) {
             this.addNewData(it.next());
-        }*/}
+        }
+    }
 
     @Override
     public Fornitore newData() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-
 
     @Override
     protected void modifyArrayObjectData(Fornitore element, Object aValue, int column) {
@@ -66,8 +63,6 @@ public void refresh(){
         return false;
     }
 
-
-
     protected Vector creaArrayObjectData(Fornitore o) {
         Vector c = new Vector();
         c.add(o.getIdUtente());
@@ -78,12 +73,4 @@ public void refresh(){
 
         return c;
     }
-
-
-
-
-
-
-
-
 }
