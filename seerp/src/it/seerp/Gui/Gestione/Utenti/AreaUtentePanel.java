@@ -560,21 +560,21 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
     private void jXTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jXTable1MouseClicked
         if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
-            /*  String id = (String) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0);
+             Integer id = (Integer) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0);
             AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
-            operazione.visualizzaDati(id, cliente);*/
+            operazione.visualizzaDatiCliente(id, cliente);
         } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
-            /* String id = (String) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0);
+           Integer id = (Integer) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0);
             AppGestionePersonale operazione = new AppGestionePersonale();
-            operazione.visualizzaDati(id, dipendente);*/
+            operazione.visualizzaDatiDipendente(id, dipendente);
         } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
-            //  String id = (String) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0);
-            //    AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
-            //  operazione.visualizzaDati(id, fornitore);
+         Integer id = (Integer) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0);
+         AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
+             operazione.visualizzaDatiFornitore(id, fornitore);
         } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
-            //  String id = (String) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0);
-            // AppGestionePersonale operazione = new AppGestionePersonale();
-            //operazione.visualizzaDati(id, responsabile);
+           Integer id = (Integer) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0);
+            AppGestionePersonale operazione = new AppGestionePersonale();
+           operazione.visualizzaDatiResponsabile(id, responsabile);
         }
 
         editabile(false);
