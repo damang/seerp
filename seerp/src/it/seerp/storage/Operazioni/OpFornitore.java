@@ -4,7 +4,6 @@
  */
 package it.seerp.storage.Operazioni;
 
-
 import com.mysql.jdbc.PreparedStatement;
 import it.seerp.storage.ejb.Fornitore;
 import java.sql.SQLException;
@@ -39,15 +38,16 @@ public class OpFornitore extends OpExtraAzienda {
     public ArrayList<Fornitore> elencaFornitore() throws SQLException {
 
         ArrayList<Fornitore> list = new ArrayList<Fornitore>();
-        Connection con = null;
+
         Statement stmt = null;
         ResultSet rs = null;
 
 
-        String sql = "SELECT idUtente,username,password,città,ruol,provincia," +
-                "telefono,cap,email,ruolo,note,v,cognome,nome,ragioneSociale,pIva," +
-                "fax FROM fornitore,utente,extraazienda where  idUtente=idExtraAzienda and idExtraAzienda=idFornitore and visibilita='true'";
+        String sql = "SELECT idUtente,username,password,citta,ruolo,prov," +
+                "telefono,cap,email,ruolo,note,visibilita,cognome,nome,ragioneSociale,piva," +
+                "fax FROM utente,extraazienda where  idUtente=idExtraAzienda  and visibilita=true and ruolo='Fornitore'";
         stmt = (PreparedStatement) con.prepareStatement(sql);
+
         // Execute the query
         rs = stmt.executeQuery(sql);
 
@@ -94,24 +94,24 @@ public class OpFornitore extends OpExtraAzienda {
 
         PreparedStatement stmt = null;
         PreparedStatement stmt1 = null;
- try {
-                con.setAutoCommit(false);
-                String sqlu = "Delete * from utente where username=?";
-                String sqle = "Delete * extraazienda where idExtraAzienda=?";
+        try {
+            con.setAutoCommit(false);
+            String sqlu = "Delete * from utente where username=?";
+            String sqle = "Delete * extraazienda where idExtraAzienda=?";
 
 
-                stmt = (PreparedStatement) con.prepareStatement(sqlu);
-                stmt1= (PreparedStatement) con.prepareStatement(sqle);
-                stmt.setString(1, user.getUsername());
-                stmt1.setInt(1,user.getIdUtente());
+            stmt = (PreparedStatement) con.prepareStatement(sqlu);
+            stmt1 = (PreparedStatement) con.prepareStatement(sqle);
+            stmt.setString(1, user.getUsername());
+            stmt1.setInt(1, user.getIdUtente());
 
-                stmt.execute();
-                stmt1.execute();
+            stmt.execute();
+            stmt1.execute();
 
-                con.commit();
-            } catch (SQLException e) {
-                con.rollback();
-            }
+            con.commit();
+        } catch (SQLException e) {
+            con.rollback();
+        }
         stmt.close();
         ConnectionPool.releaseConnection(con);
     }
@@ -150,7 +150,7 @@ public class OpFornitore extends OpExtraAzienda {
         PreparedStatement stmt = null;
         PreparedStatement stmte = null;
         Statement stmt1 = con.createStatement();
-        String sqlTest = "SELECT piva FROM extraazienda WHERE piva= '"+ user.getPIva()+"'";
+        String sqlTest = "SELECT piva FROM extraazienda WHERE piva= '" + user.getPIva() + "'";
         ResultSet rs = stmt1.executeQuery(sqlTest);
 
         if (rs.next()) {
@@ -173,7 +173,7 @@ public class OpFornitore extends OpExtraAzienda {
                 stmt.setString(7, user.getCap());
                 stmt.setString(8, user.getNote());
                 stmt.setString(9, user.getTipo());
-               // stmt.setString(10, user.getVisible().toString());
+                // stmt.setString(10, user.getVisible().toString());
                 stmte = (PreparedStatement) con.prepareStatement(sqle);
                 stmte.setString(1, user.getNome());
                 stmte.setString(2, user.getCognome());
@@ -221,7 +221,7 @@ public class OpFornitore extends OpExtraAzienda {
         if (rs.next()) {
             throw new DatiDuplicatiEx("utente già esistente nel database");
         } else {
-             try {
+            try {
                 con.setAutoCommit(false);
                 String sqlu = "UPDATE utente(username,password,email,citta,prov,telefono" +
                         "CAP,note,tipo,visibilita) SET username=?,password=?,email=?,citta=?,prov=?," +
@@ -270,35 +270,47 @@ public class OpFornitore extends OpExtraAzienda {
      * @throws java.sql.SQLException*/
     public Fornitore visualizzaDati(Integer id) throws SQLException {
 
-
         PreparedStatement stmt = null;
         ResultSet rs = null;
         Fornitore fornitore = null;
 
 
-        String sql = "SELECT idUtente,username,password,città,ruol,provincia," +
-                "telefono,cap,email,ruolo,note,v,cognome,nome,ragioneSociale,pIva," +
-                "fax FROM utente,extraazienda,fornitore" +
-                "where  idUtente=idExtraAzienda and idExtraAzienda=idContatto and idUtente= " + id;
+
+        String sql ="SELECT idUtente,username,password,citta,prov," +
+        "telefono,cap,email,Ruolo,note,visibilita,cognome,nome,ragioneSociale," +
+        "piva,fax FROM utente,extraazienda WHERE idUtente=idExtraAzienda and idExtraAzienda=?" ;
+       // String sql = "SELECT * FROM extraazienda where idExtraAzienda= ? ";
 
         stmt = (PreparedStatement) con.prepareStatement(sql);
-        stmt.setString(1, id.toString());
+        stmt.setInt(1, id);
         // Execute the query
-        rs = stmt.executeQuery(sql);
+        rs = stmt.executeQuery();
+
 
         // Define the resource list
         while (rs.next()) {
-            fornitore = new Fornitore(rs.getInt(1), rs.getString(2),
-                    rs.getString(3), rs.getString(4), rs.getString(5),
-                    rs.getString(6), rs.getString(7), rs.getString(8),
-                    rs.getString(9), rs.getString(10), rs.getString(11),
-                    rs.getBoolean(12), rs.getString(13), rs.getString(14),
-                    rs.getString(15), rs.getString(16), rs.getString(17));
-
+            fornitore = new Fornitore();
+            fornitore.setIdUtente(rs.getInt(1));
+            fornitore.setUsername(rs.getString(2));
+            fornitore.setPassword(rs.getString(3));
+            fornitore.setCitta(rs.getString(4));
+            fornitore.setProvincia(rs.getString(5));
+            fornitore.setTelefono(rs.getString(6));
+            fornitore.setCap(rs.getString(7));
+            fornitore.setEmail(rs.getString(8));
+            fornitore.setRuolo(rs.getString(9));
+            fornitore.setNote(rs.getString(10));
+            fornitore.setVisible(rs.getBoolean(11));
+            fornitore.setCognome(rs.getString(12));
+            fornitore.setNome(rs.getString(13));
+            fornitore.setRagioneSociale(rs.getString(14));
+            fornitore.setPIva(rs.getString(15));
+            fornitore.setFax(rs.getString(16));
         }
         rs.close();
         stmt.close();
         ConnectionPool.releaseConnection(con);
         return fornitore;
+
     }
 }

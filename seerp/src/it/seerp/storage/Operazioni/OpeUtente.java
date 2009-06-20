@@ -129,7 +129,7 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        String sql = "SELECT * FROM Utente WHERE idUtente = ?";
+        String sql = "SELECT * FROM Utente WHERE idUtente = ? ";
         stmt = (PreparedStatement) conn.prepareStatement(sql);
         stmt.setInt(1, id);
         

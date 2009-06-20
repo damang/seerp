@@ -260,18 +260,18 @@ public class OpDipendente extends OpPersonale {
      * @return il bean con i dettagli del membro del personale
      * @throws SQLException
      */
+    @Override
     public Dipendente visualizzaDati(Integer id) throws SQLException {
         Dipendente dipendente = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
 
-        String sql = "SELECT idUtente,username,password,citta,provincia,telefono," +
-                "cap,email,note,tipo,cognome,nome,codiceFiscale,ruolo,visibilita" +
-                " FROM Dipendente where idUtente=idPersonale and idPersonale=idDipendente and idDipendente= ? ";
+        String sql = "SELECT idUtente,username,password,citta,prov,telefono,Cap,email,note,tipo,cognome,nome,codiceFiscale,ruolo,visibilita" +
+                " FROM utente,personale where idUtente=idPersonale and idPersonale=? ";
         // Create a statement
         stmt = (PreparedStatement) con.prepareStatement(sql);
-        stmt.setString(1, id.toString());
+        stmt.setInt(1, id);
         // Execute the query
         rs = stmt.executeQuery();
 
