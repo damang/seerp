@@ -10,13 +10,14 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author TOMMASO
+ * Classe che testa i metodi della classe Evento
+ * @author Tommaso Cattolico
  */
 public class EventoTest extends TestCase {
 
     private Agenda agd;
-    private Evento e;
+    private Evento eveGet;
+    private Evento eveSet;
     private GregorianCalendar data;
     private GregorianCalendar ora;
 
@@ -35,15 +36,17 @@ public class EventoTest extends TestCase {
     @Before
     @Override
     public void setUp() {
+        agd = new Agenda();
         data = new GregorianCalendar(2009, 7, 23);
         ora = new GregorianCalendar(2009, 7, 23, 13, 40);
-        e = new Evento("aula p13", "riunione", "InternationalSchool", "conferenza salvaguardia ambientale", data, ora, 15, true, agd);
+        eveGet = new Evento("aula p13", "riunione", "InternationalSchool", "conferenza salvaguardia ambientale", data, ora, 15, true, agd);
+        eveSet = new Evento("aula p13", "riunione", "InternationalSchool", "conferenza salvaguardia ambientale", data, ora, 15, true, agd);
     }
 
     @After
     @Override
     public void tearDown() {
-        e = null;
+        eveGet = null;
         System.gc();
     }
 
@@ -54,26 +57,9 @@ public class EventoTest extends TestCase {
     public void testEquals() {
         System.out.println("equals");
         Object obj = null;
-        Evento instance = new Evento();
         boolean expResult = false;
-        boolean result = instance.equals(obj);
+        boolean result = eveGet.equals(obj);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of hashCode method, of class Evento.
-     */
-    @Test
-    public void testHashCode() {
-        System.out.println("hashCode");
-        Evento instance = new Evento();
-        int expResult = 0;
-        int result = instance.hashCode();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -83,7 +69,7 @@ public class EventoTest extends TestCase {
     public void testGetNotifica() {
         System.out.println("getNotifica");
         Boolean expResult = true;
-        Boolean result = e.getNotifica();
+        Boolean result = eveGet.getNotifica();
         assertEquals(expResult, result);
     }
 
@@ -94,7 +80,7 @@ public class EventoTest extends TestCase {
     public void testGetAgenda() {
         System.out.println("getAgenda");
         Agenda expResult = agd;
-        Agenda result = e.getAgenda();
+        Agenda result = eveGet.getAgenda();
         assertEquals(expResult, result);
     }
 
@@ -104,11 +90,9 @@ public class EventoTest extends TestCase {
     @Test
     public void testSetNotifica() {
         System.out.println("setNotifica");
-        Boolean notifica = null;
-        Evento instance = new Evento();
-        instance.setNotifica(notifica);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Boolean notifica = false;
+        eveSet.setNotifica(notifica);
+        assertEquals(notifica, eveSet.getNotifica());
     }
 
     /**
@@ -117,11 +101,9 @@ public class EventoTest extends TestCase {
     @Test
     public void testSetAgenda() {
         System.out.println("setAgenda");
-        Agenda a = null;
-        Evento instance = new Evento();
-        instance.setAgenda(a);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Agenda a = new Agenda();
+        eveSet.setAgenda(a);
+        assertEquals(a, eveSet.getAgenda());
     }
 
     /**
@@ -131,7 +113,7 @@ public class EventoTest extends TestCase {
     public void testGetNote() {
         System.out.println("getNote");
         String expResult = "conferenza salvaguardia ambientale";
-        String result = e.getNote();
+        String result = eveGet.getNote();
         assertEquals(expResult, result);
     }
 
@@ -141,11 +123,9 @@ public class EventoTest extends TestCase {
     @Test
     public void testSetNote() {
         System.out.println("setNote");
-        String note = "";
-        Evento instance = new Evento();
-        instance.setNote(note);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String note = "nessuna nota";
+        eveSet.setNote(note);
+        assertEquals(note, eveSet.getNote());
     }
 
     /**
@@ -155,7 +135,7 @@ public class EventoTest extends TestCase {
     public void testGetIdEvento() {
         System.out.println("getIdEvento");
         int expResult = 15;
-        int result = e.getIdEvento();
+        int result = eveGet.getIdEvento();
         assertEquals(expResult, result);
     }
 
@@ -165,11 +145,9 @@ public class EventoTest extends TestCase {
     @Test
     public void testSetIdEvento() {
         System.out.println("setIdEvento");
-        int idEvento = 0;
-        Evento instance = new Evento();
-        instance.setIdEvento(idEvento);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int idEvento = 12;
+        eveSet.setIdEvento(idEvento);
+        assertEquals(idEvento, eveSet.getIdEvento());
     }
 
     /**
@@ -179,7 +157,7 @@ public class EventoTest extends TestCase {
     public void testGetData() {
         System.out.println("getData");
         GregorianCalendar expResult = new GregorianCalendar(2009, 7, 23);
-        GregorianCalendar result = e.getData();
+        GregorianCalendar result = eveGet.getData();
         assertEquals(expResult, result);
     }
 
@@ -189,11 +167,10 @@ public class EventoTest extends TestCase {
     @Test
     public void testSetData() {
         System.out.println("setData");
-        GregorianCalendar data = null;
+        GregorianCalendar dataT = new GregorianCalendar();
         Evento instance = new Evento();
-        instance.setData(data);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.setData(dataT);
+        assertEquals(dataT, eveSet.getData());
     }
 
     /**
@@ -203,7 +180,7 @@ public class EventoTest extends TestCase {
     public void testGetLuogo() {
         System.out.println("getLuogo");
         String expResult = "aula p13";
-        String result = e.getLuogo();
+        String result = eveGet.getLuogo();
         assertEquals(expResult, result);
     }
 
@@ -213,11 +190,9 @@ public class EventoTest extends TestCase {
     @Test
     public void testSetLuogo() {
         System.out.println("setLuogo");
-        String luogo = "";
-        Evento instance = new Evento();
-        instance.setLuogo(luogo);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String luogo = "Sesa lab";
+        eveSet.setLuogo(luogo);
+        assertEquals(luogo, eveSet.getLuogo());
     }
 
     /**
@@ -227,7 +202,7 @@ public class EventoTest extends TestCase {
     public void testGetNome() {
         System.out.println("getNome");
         String expResult = "InternationalSchool";
-        String result = e.getNome();
+        String result = eveGet.getNome();
         assertEquals(expResult, result);
     }
 
@@ -237,11 +212,9 @@ public class EventoTest extends TestCase {
     @Test
     public void testSetNome() {
         System.out.println("setNome");
-        String nomeEvento = "";
-        Evento instance = new Evento();
-        instance.setNome(nomeEvento);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String nomeEvento = "Appuntamento";
+        eveSet.setNome(nomeEvento);
+        assertEquals(nomeEvento, eveSet.getNome());
     }
 
     /**
@@ -251,7 +224,7 @@ public class EventoTest extends TestCase {
     public void testGetOra() {
         System.out.println("getOra");
         GregorianCalendar expResult = new GregorianCalendar(2009, 7, 23, 13, 40);
-        GregorianCalendar result = e.getOra();
+        GregorianCalendar result = eveGet.getOra();
         assertEquals(expResult, result);
     }
 
@@ -261,11 +234,9 @@ public class EventoTest extends TestCase {
     @Test
     public void testSetOra() {
         System.out.println("setOra");
-        GregorianCalendar ora = null;
-        Evento instance = new Evento();
-        instance.setOra(ora);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        GregorianCalendar oraT = new GregorianCalendar();
+        eveSet.setOra(oraT);
+        assertEquals(oraT, eveSet.getOra());
     }
 
     /**
@@ -275,7 +246,7 @@ public class EventoTest extends TestCase {
     public void testGetTema() {
         System.out.println("getTema");
         String expResult = "riunione";
-        String result = e.getTema();
+        String result = eveGet.getTema();
         assertEquals(expResult, result);
     }
 
@@ -285,10 +256,8 @@ public class EventoTest extends TestCase {
     @Test
     public void testSetTema() {
         System.out.println("setTema");
-        String tema = "";
-        Evento instance = new Evento();
-        instance.setTema(tema);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String tema = "appuntamenti";
+        eveSet.setTema(tema);
+        assertEquals(tema, eveSet.getTema());
     }
 }
