@@ -554,37 +554,37 @@ public class Conversione {
      */
     public static Dipendente conversioneDipendente(BeanGuiDipendente r) throws ValidatorException {
 
-        ArrayList<Appuntamento> a2 = new ArrayList<Appuntamento>();
+        /* ArrayList<Appuntamento> a2 = new ArrayList<Appuntamento>();
         ArrayList<Contratto> a3 = new ArrayList<Contratto>();
 
         for (BeanGuiAppuntamento b : r.getListAppuntamenti()) {
-            Appuntamento c = conversioneAppuntamento(b);
-            a2.add(c);
+        Appuntamento c = conversioneAppuntamento(b);
+        a2.add(c);
         }
 
         for (BeanGuiContratto b : r.getListContratti()) {
-            Contratto b1 = conversioneContratto(b);
-            a3.add(b1);
-        }
+        Contratto b1 = conversioneContratto(b);
+        a3.add(b1);
+        }*/
 
         Dipendente utente = new Dipendente();
-        utente.setIdUtente(Integer.parseInt(r.getIdUtenteTxt().getText()));
+        //  utente.setIdUtente(Integer.parseInt(r.getIdUtenteTxt().getText()));
         utente.setUsername(r.getTxtUsername().getText());
         utente.setPassword(r.getTxtPassword().getText());
         utente.setCitta(r.getTxtCitta().getText());
         utente.setProvincia(r.getTxtProvincia().getText());
-        utente.setCap(r.getCap().getText());
+        //  utente.setCap(r.getCap().getText());
         utente.setTelefono(r.getTxtTelefono().getText());
         utente.setEmail(r.getTxtEmail().getText());
-        utente.setNote(r.getTxtNote().getText());
-        utente.setTipo(r.getTipo().getText());
-        utente.setVisible(Boolean.parseBoolean(r.getTxtNotifica().getText()));
+//        utente.setNote(r.getTxtNote().getText());
+        //utente.setTipo(r.getTipo().getText());
+        //utente.setVisible(Boolean.parseBoolean(r.getTxtNotifica().getText()));
         utente.setCognome(r.getCognome().getText());
         utente.setNome(r.getNome().getText());
         utente.setCodiceFiscale(r.getCodiceFiscale().getText());
         utente.setRuolo(new Ruolo(r.getRuolo().getText()));
-        utente.setListAppuntamenti(a2);
-        utente.setListContratti(a3);
+        //utente.setListAppuntamenti(a2);
+        //utente.setListContratti(a3);
         return utente;
     }
 
@@ -792,40 +792,40 @@ public class Conversione {
      * @throws Exception
      */
     public static Cliente conversioneCliente(BeanGuiCliente e) throws ValidatorException {
-        ArrayList<Appuntamento> a = new ArrayList<Appuntamento>();
+        /*   ArrayList<Appuntamento> a = new ArrayList<Appuntamento>();
         ArrayList<Contratto> a1 = new ArrayList<Contratto>();
 
         for (BeanGuiAppuntamento b : e.getListAppuntamenti()) {
-            Appuntamento b1 = conversioneAppuntamento(b);
-            a.add(b1);
+        Appuntamento b1 = conversioneAppuntamento(b);
+        a.add(b1);
         }
 
         for (BeanGuiContratto b : e.getListContratti()) {
-            Contratto b1 = conversioneContratto(b);
-            a1.add(b1);
+        Contratto b1 = conversioneContratto(b);
+        a1.add(b1);
         }
-
+         */
 
         Cliente utente = new Cliente();
-        utente.setIdUtente(Integer.parseInt(e.getIdUtenteTxt().getText()));
+        //      utente.setIdUtente(Integer.parseInt(e.getIdUtenteTxt().getText()));
         utente.setUsername(e.getTxtUsername().getText());
         utente.setPassword(e.getTxtPassword().getText());
         utente.setCitta(e.getTxtCitta().getText());
         utente.setProvincia(e.getTxtProvincia().getText());
-        utente.setCap(e.getCap().getText());
+        //    utente.setCap(e.getCap().getText());
         utente.setTelefono(e.getTxtTelefono().getText());
         utente.setEmail(e.getTxtEmail().getText());
-        utente.setNote(e.getTxtNote().getText());
-        utente.setTipo(e.getTipo().getText());
-        utente.setVisible(Boolean.parseBoolean(e.getTxtNotifica().getText()));
-        utente.setCognome(e.getCognome().getText());
-        utente.setNome(e.getNome().getText());
+//        utente.setNote(e.getTxtNote().getText());
+  //      utente.setTipo(e.getTipo().getText());
+        //  utente.setVisible(Boolean.parseBoolean(e.getTxtNotifica().getText()));
+        // utente.setCognome(e.getCognome().getText());
+        // utente.setNome(e.getNome().getText());
         utente.setRagioneSociale(e.getRagioneSociale().getText());
         utente.setPIva(e.getPIva().getText());
-        utente.setFax(e.getFax().getText());
-        utente.setTipo(e.getTipo().getText());
-        utente.setListAppuntamenti(a);
-        utente.setListContratti(a1);
+        //utente.setFax(e.getFax().getText());
+        //utente.setTipo(e.getTipo().getText());
+        //utente.setListAppuntamenti(a);
+        // utente.setListContratti(a1);
         return utente;
     }
 
@@ -884,39 +884,39 @@ public class Conversione {
      * @throws Exception
      */
     public static Fornitore conversioneFornitore(BeanGuiFornitore e) throws ValidatorException {
-        ArrayList<Appuntamento> a = new ArrayList<Appuntamento>();
+        /* ArrayList<Appuntamento> a = new ArrayList<Appuntamento>();
         ArrayList<Contratto> a1 = new ArrayList<Contratto>();
 
         for (BeanGuiAppuntamento b : e.getListAppuntamenti()) {
-            Appuntamento b1 = conversioneAppuntamento(b);
-            a.add(b1);
+        Appuntamento b1 = conversioneAppuntamento(b);
+        a.add(b1);
         }
 
         for (BeanGuiContratto b : e.getListContratti()) {
-            Contratto b1 = conversioneContratto(b);
-            a1.add(b1);
+        Contratto b1 = conversioneContratto(b);
+        a1.add(b1);
         }
-
+         */
         Fornitore utente = new Fornitore();
-        utente.setIdUtente(Integer.parseInt(e.getIdUtenteTxt().getText()));
+        //  utente.setIdUtente(Integer.parseInt(e.getIdUtenteTxt().getText()));
         utente.setUsername(e.getTxtUsername().getText());
         utente.setPassword(e.getTxtPassword().getText());
         utente.setCitta(e.getTxtCitta().getText());
         utente.setProvincia(e.getTxtProvincia().getText());
-        utente.setCap(e.getCap().getText());
+        //utente.setCap(e.getCap().getText());
         utente.setTelefono(e.getTxtTelefono().getText());
         utente.setEmail(e.getTxtEmail().getText());
-        utente.setNote(e.getTxtNote().getText());
-        utente.setTipo(e.getTipo().getText());
-        utente.setVisible(Boolean.parseBoolean(e.getTxtNotifica().getText()));
-        utente.setCognome(e.getCognome().getText());
-        utente.setNome(e.getNome().getText());
+        //utente.setNote(e.getTxtNote().getText());
+        //utente.setTipo(e.getTipo().getText());
+        //utente.setVisible(Boolean.parseBoolean(e.getTxtNotifica().getText()));
+//        utente.setCognome(e.getCognome().getText());
+        // utente.setNome(e.getNome().getText());
         utente.setRagioneSociale(e.getRagioneSociale().getText());
         utente.setPIva(e.getPIva().getText());
-        utente.setFax(e.getFax().getText());
-        utente.setTipo(e.getTipo().getText());
-        utente.setListAppuntamenti(a);
-        utente.setListContratti(a1);
+        // utente.setFax(e.getFax().getText());
+        //utente.setTipo(e.getTipo().getText());
+        //utente.setListAppuntamenti(a);
+        //utente.setListContratti(a1);
         return utente;
     }
 
