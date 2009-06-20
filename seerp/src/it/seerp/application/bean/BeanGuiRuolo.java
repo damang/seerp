@@ -43,7 +43,8 @@ public class BeanGuiRuolo {
         return nome;
     }
 
-    public void resetCheck() throws Exception {
+    public void resetAll() throws Exception {
+        nome.setText("");
         Iterator<ArrayList<BeanGuiPermesso>> l = listPermessi.values().iterator();
         ArrayList<BeanGuiPermesso> ar;
 
