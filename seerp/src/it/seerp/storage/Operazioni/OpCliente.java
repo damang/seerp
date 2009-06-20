@@ -119,10 +119,10 @@ public class OpCliente extends OpExtraAzienda {
 
         PreparedStatement stmt = null;
 
-        String sql = "UPDATE utente(visibilita) SET visible='false'";
+        String sql = "UPDATE utente(visibilita) SET visible='false' where idUtente=?";
         // Create a statement
         stmt = (PreparedStatement) con.prepareStatement(sql);
-
+        stmt.setInt(1, user.getIdUtente());
         // Execute the query
         stmt.executeQuery();
 
