@@ -811,16 +811,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
     private javax.swing.JTextField tipo;
     // End of variables declaration//GEN-END:variables
 
-    public void visualizza() {
 
-    
-       disponibilita.setText(servi.getDisponibilita().getText());
-        tipo.setText(servi.getTipo().getText());
-        qnt.setText(servi.getQuantita().getText());
-        descrizione.setText(servi.getDescrizione().getText());
-        iva.setText(servi.getIva().getText());
-        prz.setText(servi.getPrezzo().getText());
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
