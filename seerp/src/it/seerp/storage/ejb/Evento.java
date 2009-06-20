@@ -97,12 +97,6 @@ public class Evento {
         return true;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        return hash;
-    }
-
     /**
      * metodo che restituisce notificazione dell'evento
      * @return notificazione dell'evento
