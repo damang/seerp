@@ -121,7 +121,7 @@
           <Group type="102" alignment="1" attributes="0">
               <Component id="jXTitledPanel1" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="jTabbedPanePrincipale" pref="854" max="32767" attributes="0"/>
+              <Component id="jTabbedPanePrincipale" pref="855" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
           <Component id="jXTaskPaneContainer1" alignment="0" pref="1014" max="32767" attributes="0"/>
@@ -576,7 +576,7 @@
                   <Component id="menuInfoAzienda1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="menuAppuntamento1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="38" max="32767" attributes="0"/>
+                  <EmptySpace pref="66" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -592,7 +592,7 @@
                       <Component id="menuInfoAzienda1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="menuAppuntamento1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="24" max="32767" attributes="0"/>
+                  <EmptySpace pref="26" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
