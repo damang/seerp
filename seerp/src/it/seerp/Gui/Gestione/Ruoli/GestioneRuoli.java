@@ -10,6 +10,7 @@
  */
 package it.seerp.Gui.Gestione.Ruoli;
 
+import it.seerp.Gui.Gestione.Menu.MenuRuoli;
 import it.seerp.Gui.configurazioni.PermessiDefault;
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
@@ -19,6 +20,8 @@ import it.seerp.application.bean.BeanGuiPermesso;
 import it.seerp.application.bean.BeanGuiRuolo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,9 +33,10 @@ import javax.swing.table.TableModel;
  *
  * @author Andrea
  */
-public class GestioneRuoli extends ObservableJPanel implements ActionListener {
+public class GestioneRuoli extends ObservableJPanel implements ActionListener, ItemListener {
     private TableModel tModel;
     private BeanGuiRuolo be;
+    private MenuRuoli m_ruo;
 
     /** Creates new form AreaPersonalePanel
      * @throws SQLException
@@ -68,11 +72,11 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         gest_contr = new javax.swing.JCheckBox();
         jPanel14 = new javax.swing.JPanel();
         pan_gest_cli = new javax.swing.JPanel();
-        cli_mod = new javax.swing.JCheckBox();
-        cli_el = new javax.swing.JCheckBox();
-        cli_ele = new javax.swing.JCheckBox();
-        cli_ric = new javax.swing.JCheckBox();
-        cli_agg = new javax.swing.JCheckBox();
+        cli_mod = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxRuoli(this);
+        cli_el = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxRuoli(this);
+        cli_ele = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxRuoli(this);
+        cli_ric = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxRuoli(this);
+        cli_agg = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxRuoli(this);
         pan_gest_con = new javax.swing.JPanel();
         con_mod = new javax.swing.JCheckBox();
         con_el = new javax.swing.JCheckBox();
@@ -779,6 +783,12 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         p_all.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli), gest_ruo);
         p_all.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi), gest_ser);
         be.setPermGen(p_all);
+    }
+
+    @Override
+    public void itemStateChanged(ItemEvent e) {
+       CommandInterface cmd = (CommandInterface) e.getSource();
+       cmd.execute();
     }
 
 

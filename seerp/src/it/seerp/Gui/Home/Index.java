@@ -1,5 +1,6 @@
 package it.seerp.Gui.Home;
 
+import java.awt.event.ItemEvent;
 import java.sql.SQLException;
 
 
@@ -17,6 +18,7 @@ import it.seerp.storage.jaas.AuthPolicy;
 import it.seerp.storage.jaas.AuthPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
 import java.security.Policy;
 import javax.security.auth.Subject;
 import javax.swing.JFrame;
@@ -27,7 +29,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author Andrea
  */
-public class Index extends javax.swing.JFrame implements ActionListener {
+public class Index extends javax.swing.JFrame implements ActionListener, ItemListener {
 
     /** Creates new form Index
      * @param sub
@@ -763,6 +765,12 @@ public class Index extends javax.swing.JFrame implements ActionListener {
     private Subject ut_sub;
 
     public void actionPerformed(ActionEvent e) {
+        CommandInterface cmd = (CommandInterface) e.getSource();
+        cmd.execute();
+    }
+
+    @Override
+    public void itemStateChanged(ItemEvent e) {
         CommandInterface cmd = (CommandInterface) e.getSource();
         cmd.execute();
     }
