@@ -1043,7 +1043,7 @@ public class Conversione {
      * @return il Bean Gui convertito
      */
     public static BeanGuiRuolo conversioneRuolo(Ruolo b, BeanGuiRuolo r) throws ValidatorException, Exception {
-        r.setNome(new JTextField(b.getNome()));
+        r.getNome().setText(b.getNome());
         HashMap<String, ArrayList<BeanGuiPermesso>> lipi = r.getListPermessi();//new HashMap<String, ArrayList<BeanGuiPermesso>>();
         PermessoCollection p = b.getListPermesso();
         Iterator<Permesso> it = p.iterator();
@@ -1052,10 +1052,6 @@ public class Conversione {
         r.resetCheck();
         while (it.hasNext()) {
             f = it.next();
-            /*if(!lipi.containsKey(f.getName())){
-            lipi.put(f.getName(), new ArrayList<BeanGuiPermesso>());
-            }
-            lipi.get(f.getName()).add(new BeanGuiPermesso(new JCheckBox(f.getActions()), f.getId(), f.getName()));*/
             c = lipi.get(f.getName());
             for (BeanGuiPermesso bean : c) {
                 if (bean.getAct().getText().equalsIgnoreCase(f.getActions())) {
@@ -1064,8 +1060,6 @@ public class Conversione {
                 }
             }
         }
-        //r.setListPermessi(lipi);
-
 
         return r;
 
