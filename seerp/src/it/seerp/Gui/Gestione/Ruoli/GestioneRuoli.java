@@ -22,6 +22,7 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 
@@ -103,8 +104,8 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         ruo_mod = new javax.swing.JCheckBox();
         ruo_agg = new javax.swing.JCheckBox();
         jPanel17 = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        txt_note = new javax.swing.JTextArea();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jXTable2 = new org.jdesktop.swingx.JXTable();
         jXPanel1 = new org.jdesktop.swingx.JXPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -112,7 +113,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         jXFindBar3 = new org.jdesktop.swingx.JXFindBar();
 
         setBackground(new java.awt.Color(0, 204, 0));
-        setMinimumSize(new java.awt.Dimension(1082, 532));
+        setMinimumSize(new java.awt.Dimension(500, 250));
         setLayout(new java.awt.GridBagLayout());
 
         jXLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -127,12 +128,12 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         add(jXLabel2, gridBagConstraints);
 
-        jTabbedPane1.setMinimumSize(new java.awt.Dimension(700, 500));
+        jTabbedPane1.setMinimumSize(new java.awt.Dimension(700, 450));
         jTabbedPane1.setName("jTabbedPane1"); // NOI18N
         jTabbedPane1.setPreferredSize(new java.awt.Dimension(1000, 564));
 
         jPanel2.setMaximumSize(new java.awt.Dimension(800, 500));
-        jPanel2.setMinimumSize(new java.awt.Dimension(626, 302));
+        jPanel2.setMinimumSize(new java.awt.Dimension(695, 403));
         jPanel2.setName("jPanel2"); // NOI18N
         jPanel2.setPreferredSize(new java.awt.Dimension(650, 400));
         jPanel2.setLayout(new java.awt.GridBagLayout());
@@ -140,7 +141,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome Permesso"));
         jPanel3.setName("pan_nruolo"); // NOI18N
 
-        txt_nruolo.setText("Nome");
+        txt_nruolo.setEnabled(false);
         txt_nruolo.setName("Nome Permesso"); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -172,6 +173,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest.setLayout(new java.awt.GridBagLayout());
 
         gest_cli.setText("Gestione Clienti");
+        gest_cli.setEnabled(false);
         gest_cli.setName("GestioneClienti"); // NOI18N
         gest_cli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,6 +187,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest.add(gest_cli, gridBagConstraints);
 
         gest_for.setText("Gestione Fornitori");
+        gest_for.setEnabled(false);
         gest_for.setName("GestioneFornitori"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -193,6 +196,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest.add(gest_for, gridBagConstraints);
 
         gest_ser.setText("Gestione Servizi");
+        gest_ser.setEnabled(false);
         gest_ser.setName("GestioneServizi"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -201,6 +205,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest.add(gest_ser, gridBagConstraints);
 
         gest_dip.setText("Gestione Dipendenti");
+        gest_dip.setEnabled(false);
         gest_dip.setName("gest_dip"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -208,6 +213,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest.add(gest_dip, gridBagConstraints);
 
         gest_ruo.setText("Gestione Ruoli");
+        gest_ruo.setEnabled(false);
         gest_ruo.setName("gest_ruo"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -216,6 +222,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest.add(gest_ruo, gridBagConstraints);
 
         gest_contr.setText("Gestione Contratti");
+        gest_contr.setEnabled(false);
         gest_contr.setName("gest_contr"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -241,6 +248,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_cli.setLayout(new java.awt.GridBagLayout());
 
         cli_mod.setText("Modifica");
+        cli_mod.setEnabled(false);
         cli_mod.setName("GestioneClientiModifica"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -249,6 +257,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_cli.add(cli_mod, gridBagConstraints);
 
         cli_el.setText("Elimina");
+        cli_el.setEnabled(false);
         cli_el.setName("GestioneClientiElimina"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -257,6 +266,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_cli.add(cli_el, gridBagConstraints);
 
         cli_ele.setText("Elenca");
+        cli_ele.setEnabled(false);
         cli_ele.setName("GestioneClientiElenca"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -265,6 +275,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_cli.add(cli_ele, gridBagConstraints);
 
         cli_ric.setText("Ricerca");
+        cli_ric.setEnabled(false);
         cli_ric.setName("GestioneClientiRicerca"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -273,6 +284,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_cli.add(cli_ric, gridBagConstraints);
 
         cli_agg.setText("Aggiungi");
+        cli_agg.setEnabled(false);
         cli_agg.setName("GestioneClientiAggiungi"); // NOI18N
         pan_gest_cli.add(cli_agg, new java.awt.GridBagConstraints());
 
@@ -283,6 +295,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_con.setLayout(new java.awt.GridBagLayout());
 
         con_mod.setText("Modifica");
+        con_mod.setEnabled(false);
         con_mod.setName("GestioneContrttiModifica"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -291,6 +304,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_con.add(con_mod, gridBagConstraints);
 
         con_el.setText("Elimina");
+        con_el.setEnabled(false);
         con_el.setName("GestioneContrttiElimina"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -299,6 +313,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_con.add(con_el, gridBagConstraints);
 
         con_ele.setText("Elenca");
+        con_ele.setEnabled(false);
         con_ele.setName("GestioneContrttiElenca"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -307,6 +322,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_con.add(con_ele, gridBagConstraints);
 
         con_ric.setText("Ricerca");
+        con_ric.setEnabled(false);
         con_ric.setName("GestioneContrttiRicerca"); // NOI18N
         con_ric.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -320,6 +336,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_con.add(con_ric, gridBagConstraints);
 
         con_agg.setText("Aggiungi");
+        con_agg.setEnabled(false);
         con_agg.setName("con_agg"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -334,6 +351,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_for.setLayout(new java.awt.GridBagLayout());
 
         for_el.setText("Elimina");
+        for_el.setEnabled(false);
         for_el.setName("GestioneFornitoriElimina"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -342,6 +360,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_for.add(for_el, gridBagConstraints);
 
         for_ele.setText("Elenca");
+        for_ele.setEnabled(false);
         for_ele.setName("GestioneFornitoriElenca"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -350,6 +369,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_for.add(for_ele, gridBagConstraints);
 
         for_ric.setText("Ricerca");
+        for_ric.setEnabled(false);
         for_ric.setName("GestioneFornitoriRicerca"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -358,6 +378,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_for.add(for_ric, gridBagConstraints);
 
         for_mod.setText("Modifica");
+        for_mod.setEnabled(false);
         for_mod.setName("GestioneFornitoriModifica"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -366,6 +387,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_for.add(for_mod, gridBagConstraints);
 
         for_agg.setText("Aggiungi");
+        for_agg.setEnabled(false);
         for_agg.setName("for_agg"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -380,6 +402,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_ser.setLayout(new java.awt.GridBagLayout());
 
         ser_el.setText("Elimina");
+        ser_el.setEnabled(false);
         ser_el.setName("GestioneServiziElimina"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -388,6 +411,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_ser.add(ser_el, gridBagConstraints);
 
         ser_ele.setText("Elenca");
+        ser_ele.setEnabled(false);
         ser_ele.setName("GestioneServiziElenca"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -396,6 +420,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_ser.add(ser_ele, gridBagConstraints);
 
         ser_ric.setText("Ricerca");
+        ser_ric.setEnabled(false);
         ser_ric.setName("GestioneServiziRicerca"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -404,6 +429,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_ser.add(ser_ric, gridBagConstraints);
 
         ser_mod.setText("Modifica");
+        ser_mod.setEnabled(false);
         ser_mod.setName("GestioneServiziModifica"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -412,6 +438,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_ser.add(ser_mod, gridBagConstraints);
 
         ser_agg.setText("Aggiungi");
+        ser_agg.setEnabled(false);
         ser_agg.setName("ser_agg"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -426,6 +453,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_dip.setLayout(new java.awt.GridBagLayout());
 
         dip_el.setText("Elimina");
+        dip_el.setEnabled(false);
         dip_el.setName("dip_el"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -434,6 +462,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_dip.add(dip_el, gridBagConstraints);
 
         dip_ele.setText("Elenca");
+        dip_ele.setEnabled(false);
         dip_ele.setName("dip_ele"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -442,6 +471,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_dip.add(dip_ele, gridBagConstraints);
 
         dip_ric.setText("Ricerca");
+        dip_ric.setEnabled(false);
         dip_ric.setName("dip_ric"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -450,6 +480,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_dip.add(dip_ric, gridBagConstraints);
 
         dip_mod.setText("Modifica");
+        dip_mod.setEnabled(false);
         dip_mod.setName("dip_mod"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -458,6 +489,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_dip.add(dip_mod, gridBagConstraints);
 
         dip_agg.setText("Aggiungi");
+        dip_agg.setEnabled(false);
         dip_agg.setName("dip_agg"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -472,6 +504,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_ruo.setLayout(new java.awt.GridBagLayout());
 
         ruo_el.setText("Elimina");
+        ruo_el.setEnabled(false);
         ruo_el.setName("ruo_el"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -480,6 +513,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_ruo.add(ruo_el, gridBagConstraints);
 
         ruo_ele.setText("Elenca");
+        ruo_ele.setEnabled(false);
         ruo_ele.setName("ruo_ele"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -488,6 +522,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_ruo.add(ruo_ele, gridBagConstraints);
 
         ruo_ric.setText("Ricerca");
+        ruo_ric.setEnabled(false);
         ruo_ric.setName("ruo_ric"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -496,6 +531,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_ruo.add(ruo_ric, gridBagConstraints);
 
         ruo_mod.setText("Modifica");
+        ruo_mod.setEnabled(false);
         ruo_mod.setName("ruo_mod"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -504,6 +540,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         pan_gest_ruo.add(ruo_mod, gridBagConstraints);
 
         ruo_agg.setText("Aggiungi");
+        ruo_agg.setEnabled(false);
         ruo_agg.setName("ruo_agg"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
@@ -519,17 +556,26 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         jPanel2.add(jPanel14, gridBagConstraints);
 
         jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder("Note"));
+        jPanel17.setMinimumSize(new java.awt.Dimension(650, 133));
         jPanel17.setName("jPanel17"); // NOI18N
         jPanel17.setLayout(new java.awt.BorderLayout());
 
-        jScrollPane4.setName("jScrollPane4"); // NOI18N
+        jScrollPane1.setName("jScrollPane1"); // NOI18N
 
-        txt_note.setColumns(20);
-        txt_note.setRows(5);
-        txt_note.setName("txt_note"); // NOI18N
-        jScrollPane4.setViewportView(txt_note);
+        jXTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        jPanel17.add(jScrollPane4, java.awt.BorderLayout.CENTER);
+            },
+            new String [] {
+                "id","Cognome", "Nome"
+            }
+        ));
+        jXTable2.setName("jXTable2"); // NOI18N
+        jXTable2.setPreferredScrollableViewportSize(new java.awt.Dimension(300, 80));
+        jXTable2.setPreferredSize(new java.awt.Dimension(300, 80));
+        jScrollPane1.setViewportView(jXTable2);
+
+        jPanel17.add(jScrollPane1, java.awt.BorderLayout.PAGE_START);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -537,6 +583,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         jPanel2.add(jPanel17, gridBagConstraints);
+        jPanel17.getAccessibleContext().setAccessibleName("Personale");
 
         jTabbedPane1.addTab("Permessi", jPanel2);
 
@@ -547,9 +594,9 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         add(jTabbedPane1, gridBagConstraints);
 
-        jXPanel1.setMinimumSize(new java.awt.Dimension(350, 324));
+        jXPanel1.setMinimumSize(new java.awt.Dimension(350, 300));
         jXPanel1.setName("jXPanel1"); // NOI18N
-        jXPanel1.setPreferredSize(new java.awt.Dimension(350, 324));
+        jXPanel1.setPreferredSize(new java.awt.Dimension(350, 300));
         jXPanel1.setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setText("Elenco ");
@@ -641,13 +688,14 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private org.jdesktop.swingx.JXFindBar jXFindBar3;
     private org.jdesktop.swingx.JXLabel jXLabel2;
     private org.jdesktop.swingx.JXPanel jXPanel1;
     private org.jdesktop.swingx.JXTable jXTable1;
+    private org.jdesktop.swingx.JXTable jXTable2;
     private javax.swing.JPanel pan_gest;
     private javax.swing.JPanel pan_gest_cli;
     private javax.swing.JPanel pan_gest_con;
@@ -665,7 +713,6 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
     private javax.swing.JCheckBox ser_ele;
     private javax.swing.JCheckBox ser_mod;
     private javax.swing.JCheckBox ser_ric;
-    private javax.swing.JTextArea txt_note;
     private javax.swing.JTextField txt_nruolo;
     // End of variables declaration//GEN-END:variables
 
@@ -724,6 +771,14 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener {
         listPermessi.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti), perm6);
           
         be.setListPermessi(listPermessi);
+        HashMap<String, JCheckBox> p_all=new HashMap<String, JCheckBox>();
+        p_all.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti), gest_dip);
+        p_all.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti), gest_cli);
+        p_all.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti), gest_contr);
+        p_all.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori), gest_for);
+        p_all.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli), gest_ruo);
+        p_all.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi), gest_ser);
+        be.setPermGen(p_all);
     }
 
 

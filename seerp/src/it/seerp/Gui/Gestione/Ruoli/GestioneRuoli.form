@@ -6,7 +6,7 @@
       <Color blue="0" green="cc" red="0" type="rgb"/>
     </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1082, 532]"/>
+      <Dimension value="[500, 250]"/>
     </Property>
   </Properties>
   <AuxValues>
@@ -19,7 +19,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,21,0,0,4,58"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,20,0,0,4,58"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
@@ -44,7 +44,7 @@
     <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
       <Properties>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[700, 500]"/>
+          <Dimension value="[700, 450]"/>
         </Property>
         <Property name="name" type="java.lang.String" value="jTabbedPane1" noResource="true"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -65,7 +65,7 @@
               <Dimension value="[800, 500]"/>
             </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[626, 302]"/>
+              <Dimension value="[695, 403]"/>
             </Property>
             <Property name="name" type="java.lang.String" value="jPanel2" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -122,7 +122,7 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="txt_nruolo">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Nome"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                     <Property name="name" type="java.lang.String" value="Nome Permesso" noResource="true"/>
                   </Properties>
                 </Component>
@@ -148,6 +148,7 @@
                 <Component class="javax.swing.JCheckBox" name="gest_cli">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Gestione Clienti"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                     <Property name="name" type="java.lang.String" value="GestioneClienti" noResource="true"/>
                   </Properties>
                   <Events>
@@ -162,6 +163,7 @@
                 <Component class="javax.swing.JCheckBox" name="gest_for">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Gestione Fornitori"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                     <Property name="name" type="java.lang.String" value="GestioneFornitori" noResource="true"/>
                   </Properties>
                   <Constraints>
@@ -173,6 +175,7 @@
                 <Component class="javax.swing.JCheckBox" name="gest_ser">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Gestione Servizi"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                     <Property name="name" type="java.lang.String" value="GestioneServizi" noResource="true"/>
                   </Properties>
                   <Constraints>
@@ -184,6 +187,7 @@
                 <Component class="javax.swing.JCheckBox" name="gest_dip">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Gestione Dipendenti"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                     <Property name="name" type="java.lang.String" value="gest_dip" noResource="true"/>
                   </Properties>
                   <Constraints>
@@ -195,6 +199,7 @@
                 <Component class="javax.swing.JCheckBox" name="gest_ruo">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Gestione Ruoli"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                     <Property name="name" type="java.lang.String" value="gest_ruo" noResource="true"/>
                   </Properties>
                   <Constraints>
@@ -206,6 +211,7 @@
                 <Component class="javax.swing.JCheckBox" name="gest_contr">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Gestione Contratti"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                     <Property name="name" type="java.lang.String" value="gest_contr" noResource="true"/>
                   </Properties>
                   <Constraints>
@@ -254,6 +260,7 @@
                     <Component class="javax.swing.JCheckBox" name="cli_mod">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Modifica"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="GestioneClientiModifica" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -265,6 +272,7 @@
                     <Component class="javax.swing.JCheckBox" name="cli_el">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Elimina"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="GestioneClientiElimina" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -276,6 +284,7 @@
                     <Component class="javax.swing.JCheckBox" name="cli_ele">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Elenca"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="GestioneClientiElenca" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -287,6 +296,7 @@
                     <Component class="javax.swing.JCheckBox" name="cli_ric">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Ricerca"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="GestioneClientiRicerca" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -298,6 +308,7 @@
                     <Component class="javax.swing.JCheckBox" name="cli_agg">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Aggiungi"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="GestioneClientiAggiungi" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -323,6 +334,7 @@
                     <Component class="javax.swing.JCheckBox" name="con_mod">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Modifica"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="GestioneContrttiModifica" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -334,6 +346,7 @@
                     <Component class="javax.swing.JCheckBox" name="con_el">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Elimina"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="GestioneContrttiElimina" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -345,6 +358,7 @@
                     <Component class="javax.swing.JCheckBox" name="con_ele">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Elenca"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="GestioneContrttiElenca" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -356,6 +370,7 @@
                     <Component class="javax.swing.JCheckBox" name="con_ric">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Ricerca"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="GestioneContrttiRicerca" noResource="true"/>
                       </Properties>
                       <Events>
@@ -370,6 +385,7 @@
                     <Component class="javax.swing.JCheckBox" name="con_agg">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Aggiungi"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="con_agg" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -395,6 +411,7 @@
                     <Component class="javax.swing.JCheckBox" name="for_el">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Elimina"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="GestioneFornitoriElimina" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -406,6 +423,7 @@
                     <Component class="javax.swing.JCheckBox" name="for_ele">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Elenca"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="GestioneFornitoriElenca" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -417,6 +435,7 @@
                     <Component class="javax.swing.JCheckBox" name="for_ric">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Ricerca"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="GestioneFornitoriRicerca" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -428,6 +447,7 @@
                     <Component class="javax.swing.JCheckBox" name="for_mod">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Modifica"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="GestioneFornitoriModifica" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -439,6 +459,7 @@
                     <Component class="javax.swing.JCheckBox" name="for_agg">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Aggiungi"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="for_agg" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -464,6 +485,7 @@
                     <Component class="javax.swing.JCheckBox" name="ser_el">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Elimina"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="GestioneServiziElimina" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -475,6 +497,7 @@
                     <Component class="javax.swing.JCheckBox" name="ser_ele">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Elenca"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="GestioneServiziElenca" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -486,6 +509,7 @@
                     <Component class="javax.swing.JCheckBox" name="ser_ric">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Ricerca"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="GestioneServiziRicerca" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -497,6 +521,7 @@
                     <Component class="javax.swing.JCheckBox" name="ser_mod">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Modifica"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="GestioneServiziModifica" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -508,6 +533,7 @@
                     <Component class="javax.swing.JCheckBox" name="ser_agg">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Aggiungi"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="ser_agg" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -533,6 +559,7 @@
                     <Component class="javax.swing.JCheckBox" name="dip_el">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Elimina"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="dip_el" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -544,6 +571,7 @@
                     <Component class="javax.swing.JCheckBox" name="dip_ele">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Elenca"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="dip_ele" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -555,6 +583,7 @@
                     <Component class="javax.swing.JCheckBox" name="dip_ric">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Ricerca"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="dip_ric" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -566,6 +595,7 @@
                     <Component class="javax.swing.JCheckBox" name="dip_mod">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Modifica"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="dip_mod" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -577,6 +607,7 @@
                     <Component class="javax.swing.JCheckBox" name="dip_agg">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Aggiungi"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="dip_agg" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -602,6 +633,7 @@
                     <Component class="javax.swing.JCheckBox" name="ruo_el">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Elimina"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="ruo_el" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -613,6 +645,7 @@
                     <Component class="javax.swing.JCheckBox" name="ruo_ele">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Elenca"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="ruo_ele" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -624,6 +657,7 @@
                     <Component class="javax.swing.JCheckBox" name="ruo_ric">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Ricerca"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="ruo_ric" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -635,6 +669,7 @@
                     <Component class="javax.swing.JCheckBox" name="ruo_mod">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Modifica"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="ruo_mod" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -646,6 +681,7 @@
                     <Component class="javax.swing.JCheckBox" name="ruo_agg">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Aggiungi"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="ruo_agg" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -665,8 +701,14 @@
                     <TitledBorder title="Note"/>
                   </Border>
                 </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[650, 133]"/>
+                </Property>
                 <Property name="name" type="java.lang.String" value="jPanel17" noResource="true"/>
               </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Personale"/>
+              </AccessibilityProperties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
                   <GridBagConstraints gridX="0" gridY="2" gridWidth="5" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
@@ -675,26 +717,33 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
               <SubComponents>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane4">
+                <Container class="javax.swing.JScrollPane" name="jScrollPane1">
                   <Properties>
-                    <Property name="name" type="java.lang.String" value="jScrollPane4" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="jScrollPane1" noResource="true"/>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                   </AuxValues>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-                      <BorderConstraints direction="Center"/>
+                      <BorderConstraints direction="First"/>
                     </Constraint>
                   </Constraints>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="txt_note">
+                    <Component class="org.jdesktop.swingx.JXTable" name="jXTable2">
                       <Properties>
-                        <Property name="columns" type="int" value="20"/>
-                        <Property name="rows" type="int" value="5"/>
-                        <Property name="name" type="java.lang.String" value="txt_note" noResource="true"/>
+                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        &#xa;    },&#xa;    new String [] {&#xa;        &quot;id&quot;,&quot;Cognome&quot;, &quot;Nome&quot;&#xa;    }&#xa;)" type="code"/>
+                        </Property>
+                        <Property name="name" type="java.lang.String" value="jXTable2" noResource="true"/>
+                        <Property name="preferredScrollableViewportSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[300, 80]"/>
+                        </Property>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[300, 80]"/>
+                        </Property>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -708,11 +757,11 @@
     <Container class="org.jdesktop.swingx.JXPanel" name="jXPanel1">
       <Properties>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[350, 324]"/>
+          <Dimension value="[350, 300]"/>
         </Property>
         <Property name="name" type="java.lang.String" value="jXPanel1" noResource="true"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[350, 324]"/>
+          <Dimension value="[350, 300]"/>
         </Property>
       </Properties>
       <Constraints>
