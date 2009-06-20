@@ -185,9 +185,9 @@ public class OpResponsabile extends OpeUtente {
                 stmtP.setString(3, user.getCodiceFiscale());
                 stmtP.setString(4, user.getRuolo().getNome());
                 stmtR= (PreparedStatement) con.prepareStatement(sqlr);
-               System.out.println( stmt.execute());
-                System.out.println(stmtP.execute());
-               System.out.println( stmtR.execute());
+               stmt.execute();
+         stmtP.execute();
+            stmtR.execute();
                 con.commit();
             }catch(SQLException se){
                  con.rollback();
