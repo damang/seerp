@@ -60,7 +60,7 @@ public class AreaUtenteButton extends ObserverButton implements CommandInterface
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "problemi di comunicazione col DBMS");
             }
-            System.out.println("luisa");
+           // System.out.println("luisa");
 
             isPresente = true;
             this.tabbedPane.addTab(s, panel);
