@@ -40,11 +40,11 @@ public class FornitoreTm extends Generica <Fornitore>{
          refresh();
     }
 public void refresh(){
-   AppGestioneExtraAzienda op = new AppGestioneExtraAzienda();
+  /* AppGestioneExtraAzienda op = new AppGestioneExtraAzienda();
         Iterator<Fornitore> it = op.visualizzaTabellaFornitore().iterator();
         while (it.hasNext()) {
             this.addNewData(it.next());
-        }}
+        }*/}
 
     @Override
     public Fornitore newData() {

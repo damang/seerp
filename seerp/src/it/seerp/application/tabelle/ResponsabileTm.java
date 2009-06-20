@@ -40,8 +40,8 @@ public class ResponsabileTm extends Generica <Responsabile>{
 
     }
  public void refresh(){
-       //  AppGestionePersonale op = new AppGestionePersonale();
-        /*Iterator<Responsabile> it = op.visualizzaTabellaResponsabili().iterator();
+      /*  AppGestionePersonale op = new AppGestionePersonale();
+        Iterator<Responsabile> it = op.visualizzaTabellaResponsabili().iterator();
         while (it.hasNext()) {
             this.addNewData(it.next());
         }*/}

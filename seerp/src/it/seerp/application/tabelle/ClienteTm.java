@@ -36,11 +36,12 @@ public class ClienteTm extends Generica<Cliente> {
     }
 
     public void refresh() {
-      /*  AppGestioneExtraAzienda op = new AppGestioneExtraAzienda();
+    AppGestioneExtraAzienda op = new AppGestioneExtraAzienda();
         Iterator<Cliente> it = op.visualizzaTabellaCliente().iterator();
-        while (it.hasNext()) {
+       while (it.hasNext()) {
+          
             this.addNewData(it.next());
-        }*/
+        }
     }
 
 
