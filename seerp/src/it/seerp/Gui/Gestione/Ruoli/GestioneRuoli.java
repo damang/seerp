@@ -64,49 +64,49 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
         jPanel3 = new javax.swing.JPanel();
         txt_nruolo = new javax.swing.JTextField();
         pan_gest = new javax.swing.JPanel();
-        gest_cli = new javax.swing.JCheckBox();
-        gest_for = new javax.swing.JCheckBox();
-        gest_ser = new javax.swing.JCheckBox();
-        gest_dip = new javax.swing.JCheckBox();
-        gest_ruo = new javax.swing.JCheckBox();
-        gest_contr = new javax.swing.JCheckBox();
+        gest_cli = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxGestione(this);
+        gest_for = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxGestione(this);
+        gest_ser = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxGestione(this);
+        gest_dip = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxGestione(this);
+        gest_ruo = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxGestione(this);
+        gest_contr = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxGestione(this);
         jPanel14 = new javax.swing.JPanel();
         pan_gest_cli = new javax.swing.JPanel();
-        cli_mod = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxRuoli(this);
-        cli_el = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxRuoli(this);
-        cli_ele = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxRuoli(this);
-        cli_ric = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxRuoli(this);
-        cli_agg = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxRuoli(this);
+        cli_mod = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
+        cli_el = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
+        cli_ele = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
+        cli_ric = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
+        cli_agg = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
         pan_gest_con = new javax.swing.JPanel();
-        con_mod = new javax.swing.JCheckBox();
-        con_el = new javax.swing.JCheckBox();
-        con_ele = new javax.swing.JCheckBox();
-        con_ric = new javax.swing.JCheckBox();
-        con_agg = new javax.swing.JCheckBox();
+        con_mod = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
+        con_el = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
+        con_ele = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
+        con_ric = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
+        con_agg = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
         pan_gest_for = new javax.swing.JPanel();
-        for_el = new javax.swing.JCheckBox();
-        for_ele = new javax.swing.JCheckBox();
-        for_ric = new javax.swing.JCheckBox();
-        for_mod = new javax.swing.JCheckBox();
-        for_agg = new javax.swing.JCheckBox();
+        for_el = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
+        for_ele = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
+        for_ric = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
+        for_mod = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
+        for_agg = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
         pan_gest_ser = new javax.swing.JPanel();
-        ser_el = new javax.swing.JCheckBox();
-        ser_ele = new javax.swing.JCheckBox();
-        ser_ric = new javax.swing.JCheckBox();
-        ser_mod = new javax.swing.JCheckBox();
-        ser_agg = new javax.swing.JCheckBox();
+        ser_el = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
+        ser_ele = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
+        ser_ric = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
+        ser_mod = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
+        ser_agg = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
         pan_gest_dip = new javax.swing.JPanel();
-        dip_el = new javax.swing.JCheckBox();
-        dip_ele = new javax.swing.JCheckBox();
-        dip_ric = new javax.swing.JCheckBox();
-        dip_mod = new javax.swing.JCheckBox();
-        dip_agg = new javax.swing.JCheckBox();
+        dip_el = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
+        dip_ele = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
+        dip_ric = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
+        dip_mod = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
+        dip_agg = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
         pan_gest_ruo = new javax.swing.JPanel();
-        ruo_el = new javax.swing.JCheckBox();
-        ruo_ele = new javax.swing.JCheckBox();
-        ruo_ric = new javax.swing.JCheckBox();
-        ruo_mod = new javax.swing.JCheckBox();
-        ruo_agg = new javax.swing.JCheckBox();
+        ruo_el = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
+        ruo_ele = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
+        ruo_ric = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
+        ruo_mod = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
+        ruo_agg = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
         jPanel17 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jXTable2 = new org.jdesktop.swingx.JXTable();
@@ -178,7 +178,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
 
         gest_cli.setText("Gestione Clienti");
         gest_cli.setEnabled(false);
-        gest_cli.setName("GestioneClienti"); // NOI18N
+        gest_cli.setName(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti));
         gest_cli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gest_cliActionPerformed(evt);
@@ -192,7 +192,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
 
         gest_for.setText("Gestione Fornitori");
         gest_for.setEnabled(false);
-        gest_for.setName("GestioneFornitori"); // NOI18N
+        gest_for.setName(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -201,7 +201,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
 
         gest_ser.setText("Gestione Servizi");
         gest_ser.setEnabled(false);
-        gest_ser.setName("GestioneServizi"); // NOI18N
+        gest_ser.setName(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -209,8 +209,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
         pan_gest.add(gest_ser, gridBagConstraints);
 
         gest_dip.setText("Gestione Dipendenti");
-        gest_dip.setEnabled(false);
-        gest_dip.setName("gest_dip"); // NOI18N
+        gest_dip.setName(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -218,7 +217,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
 
         gest_ruo.setText("Gestione Ruoli");
         gest_ruo.setEnabled(false);
-        gest_ruo.setName("gest_ruo"); // NOI18N
+        gest_ruo.setName(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -227,7 +226,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
 
         gest_contr.setText("Gestione Contratti");
         gest_contr.setEnabled(false);
-        gest_contr.setName("gest_contr"); // NOI18N
+        gest_contr.setName(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -248,7 +247,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
         jPanel14.setLayout(new javax.swing.BoxLayout(jPanel14, javax.swing.BoxLayout.LINE_AXIS));
 
         pan_gest_cli.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestione Clienti"));
-        pan_gest_cli.setName("pan_gest_cli"); // NOI18N
+        pan_gest_cli.setName(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti));
         pan_gest_cli.setLayout(new java.awt.GridBagLayout());
 
         cli_mod.setText("Modifica");
@@ -295,7 +294,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
         jPanel14.add(pan_gest_cli);
 
         pan_gest_con.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestione Contratti"));
-        pan_gest_con.setName("pan_gest_con"); // NOI18N
+        pan_gest_con.setName(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti));
         pan_gest_con.setLayout(new java.awt.GridBagLayout());
 
         con_mod.setText("Modifica");
@@ -351,7 +350,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
         jPanel14.add(pan_gest_con);
 
         pan_gest_for.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestione Fornitori"));
-        pan_gest_for.setName("pan_gest_for"); // NOI18N
+        pan_gest_for.setName(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori));
         pan_gest_for.setLayout(new java.awt.GridBagLayout());
 
         for_el.setText("Elimina");
@@ -402,7 +401,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
         jPanel14.add(pan_gest_for);
 
         pan_gest_ser.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestione Servizi"));
-        pan_gest_ser.setName("pan_gest_ser"); // NOI18N
+        pan_gest_ser.setName(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi));
         pan_gest_ser.setLayout(new java.awt.GridBagLayout());
 
         ser_el.setText("Elimina");
@@ -453,7 +452,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
         jPanel14.add(pan_gest_ser);
 
         pan_gest_dip.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestione Dipendenti"));
-        pan_gest_dip.setName("pan_gest_dip"); // NOI18N
+        pan_gest_dip.setName(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti));
         pan_gest_dip.setLayout(new java.awt.GridBagLayout());
 
         dip_el.setText("Elimina");
@@ -504,7 +503,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
         jPanel14.add(pan_gest_dip);
 
         pan_gest_ruo.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestione Ruoli"));
-        pan_gest_ruo.setName("pan_gest_ruo"); // NOI18N
+        pan_gest_ruo.setName(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli));
         pan_gest_ruo.setLayout(new java.awt.GridBagLayout());
 
         ruo_el.setText("Elimina");
@@ -789,6 +788,9 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
     public void itemStateChanged(ItemEvent e) {
        CommandInterface cmd = (CommandInterface) e.getSource();
        cmd.execute();
+    }
+    public BeanGuiRuolo getBeanGuiRuolo() {
+        return be;
     }
 
 
