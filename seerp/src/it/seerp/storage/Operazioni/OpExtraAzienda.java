@@ -42,7 +42,7 @@ public class OpExtraAzienda extends OpeUtente {
         Connection con = null;
         Statement stmt = null;
         ResultSet rs = null;
-        String sql = "SELECT idUtente,username,password,città,ruol,provincia," +
+        String sql = "SELECT idUtente,username,password,città,ruol,prov," +
                 "telefono,cap,email,ruolo,note,v,cognome,nome,ragioneSociale,pIva," +
                 "fax FROM ExtraAzienda where Visible='true'";
         stmt = (PreparedStatement) con.prepareStatement(sql);
