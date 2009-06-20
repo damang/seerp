@@ -1043,13 +1043,13 @@ public class Conversione {
      * @return il Bean Gui convertito
      */
     public static BeanGuiRuolo conversioneRuolo(Ruolo b, BeanGuiRuolo r) throws ValidatorException, Exception {
+        r.resetAll();
         r.getNome().setText(b.getNome());
         HashMap<String, ArrayList<BeanGuiPermesso>> lipi = r.getListPermessi();//new HashMap<String, ArrayList<BeanGuiPermesso>>();
         PermessoCollection p = b.getListPermesso();
         Iterator<Permesso> it = p.iterator();
         Permesso f = null;
         ArrayList<BeanGuiPermesso> c;
-        r.resetCheck();
         while (it.hasNext()) {
             f = it.next();
             c = lipi.get(f.getName());
