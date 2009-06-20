@@ -74,11 +74,13 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
         initComponents();
         responsabile = new BeanGuiResponsabile();
-      //  dipendente = new BeanGuiDipendente();
-       // this.fornitore = new BeanGuiFornitore(this);
-        //this.cliente = new BeanGuiCliente(this);
-       legameBeanPersonale();
-        
+        dipendente = new BeanGuiDipendente();
+        this.fornitore = new BeanGuiFornitore();
+        this.cliente = new BeanGuiCliente();
+        legameBeanResponsabile();
+        legameBeanDipendente();
+        legameBeanFornitore();
+        legameBeanCliente();
         editabile(false);
     }
 
@@ -594,33 +596,57 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         menu.getModifica().setEnabled(true);
         if (tipoOp.compareToIgnoreCase("inserisci") == 0) {
             if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
-                //  AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
-                // ((ClienteTm) jXTable1.getModel()).refresh();
+                AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
+                operazione.inserisciCliente(cliente);
+
+                try {
+                    this.tModel = new ClienteTm();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+                this.jXTable1.setModel(tModel);
+                this.jXFindBar1.setSearchable(jXTable1.getSearchable());
+                this.jXTable1.updateUI();
             } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
 
                 AppGestionePersonale operazione = new AppGestionePersonale();
-            // operazione.inserisciDipendente(dipendente);
-            //((DipendenteTm) jXTable1.getModel()).refresh();
+                operazione.inserisciDipendente(dipendente);
+                try {
+                    this.tModel = new DipendenteTm();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+                this.jXTable1.setModel(tModel);
+                this.jXFindBar1.setSearchable(jXTable1.getSearchable());
+                this.jXTable1.updateUI();
+
 
             } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
 
                 AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
-            //operazione.inserisci(fornitore);
-            //((FornitoreTm) jXTable1.getModel()).refresh();
+                operazione.inserisciFornitore(fornitore);
+                try {
+                    this.tModel = new FornitoreTm();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+                this.jXTable1.setModel(tModel);
+                this.jXFindBar1.setSearchable(jXTable1.getSearchable());
+                this.jXTable1.updateUI();
 
             } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
 
                 AppGestionePersonale operazione = new AppGestionePersonale();
                 operazione.inserisciResponsabile(responsabile);
-            try {
-                this.tModel = new ServiziTm();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
-            this.jXTable1.setModel(tModel);
-            this.jXFindBar1.setSearchable(jXTable1.getSearchable());
-            this.jXTable1.updateUI();
-            
+                try {
+                    this.tModel = new ResponsabileTm();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+                this.jXTable1.setModel(tModel);
+                this.jXFindBar1.setSearchable(jXTable1.getSearchable());
+                this.jXTable1.updateUI();
+
             }
         }
         if (tipoOp.compareToIgnoreCase("modifica") == 0) {
@@ -671,6 +697,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         editabile(false);
         this.buttonAnnulla1.setEnabled(false);
         this.buttonSalva1.setEnabled(false);
+      
     }//GEN-LAST:event_buttonAnnulla1MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -715,11 +742,9 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
      */
     public void elmina() {
         if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
-            JOptionPane.showMessageDialog(null, "INS CLIII");
-        //  AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
-        //operazione.elimina(cliente);
-        // ((ClienteTm) jXTable1.getModel()).refresh();
-
+            //  AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
+            //operazione.elimina(cliente);
+            // ((ClienteTm) jXTable1.getModel()).refresh();
         } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
 
             AppGestionePersonale operazione = new AppGestionePersonale();
@@ -784,11 +809,10 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
     /**
      *
      */
-    public void legameBeanPersonale() {
+    public void legameBeanResponsabile() {
         responsabile.setNome(nm);
         responsabile.setCognome(cog);
         responsabile.setCodiceFiscale(codFisc);
-        //personale.setRuolo(cog);
         responsabile.setTxtPassword(pwd);
         responsabile.setTxtUsername(user);
         responsabile.setTxtCitta(citta);
@@ -796,23 +820,26 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         responsabile.setTxtTelefono(tell);
         responsabile.setTxtProvincia(provincia);
         responsabile.setRuolo(ruolo);
+    }
 
-   /*     dipendente.setNome(nm);
+    public void legameBeanDipendente() {
+        dipendente.setNome(nm);
         dipendente.setCognome(cog);
         dipendente.setCodiceFiscale(codFisc);
-        //personale.setRuolo(cog);
-
+        dipendente.setRuolo(ruolo);
+        dipendente.setTxtPassword(pwd);
+        dipendente.setTxtUsername(user);
         dipendente.setTxtCitta(citta);
         dipendente.setTxtEmail(mail);
         dipendente.setTxtTelefono(tell);
-        dipendente.setTxtProvincia(provincia);*/
+        dipendente.setTxtProvincia(provincia);
 
     }
 
     /**
      *
      */
-    public void lrgameBeanExtraAzienda() {
+    public void legameBeanFornitore() {
 
         fornitore.setTxtProvincia(provincia);
         fornitore.setTxtCitta(citta);
@@ -820,12 +847,19 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         fornitore.setPIva(codFisc);
         fornitore.setRagioneSociale(nm);
         fornitore.setTxtTelefono(tell);
+        fornitore.setTxtUsername(user);
+        fornitore.setTxtPassword(pwd);
+    }
+
+    public void legameBeanCliente() {
         cliente.setTxtProvincia(provincia);
         cliente.setTxtCitta(citta);
         cliente.setTxtEmail(mail);
         cliente.setPIva(codFisc);
         cliente.setRagioneSociale(nm);
         cliente.setTxtTelefono(tell);
+        cliente.setTxtUsername(user);
+        cliente.setTxtPassword(pwd);
     }
 
     /**
