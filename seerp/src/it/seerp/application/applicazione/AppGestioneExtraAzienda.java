@@ -1,5 +1,6 @@
 package it.seerp.application.applicazione;
 
+import it.seerp.application.Exception.DatiErrati;
 import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.bean.BeanGuiCliente;
 import it.seerp.application.bean.BeanGuiContatto;
@@ -58,7 +59,20 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
     }
+   public void visualizzaDatiCliente(int user, BeanGuiCliente beanGui)  {
+        try {
+            OpCliente ope = new OpCliente();
+            Cliente utente = ope.visualizzaDati(user);
+            beanGui = it.seerp.application.conversioni.Conversione.conversioneCliente(utente, beanGui);
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (ValidatorException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
+        }
 
+    }
     /**
      * Metodo che permette di inserire un nuovo Fornitore
      * @param forn il Fornitore che si vuole inserire
