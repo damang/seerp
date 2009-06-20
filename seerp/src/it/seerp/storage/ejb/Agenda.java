@@ -4,9 +4,10 @@ import java.util.ArrayList;
 
 /**
  * classe che gestisce le informazioni sugli eventi di un agenda
- * @author Luisa-Matteo
+ * @author Luisa-Matteo - Tommaso Cattolico
  */
 public class Agenda {
+
     private ArrayList<Evento> listEventi;
     private Integer idAgenda;
     private Utente utente;
@@ -15,17 +16,42 @@ public class Agenda {
      *
      */
     public Agenda() {
-        
     }
 
-
-   /**
+    /**
      *  costruttore classe
      * @param idAgenda
      */
     public Agenda(Integer idAgenda) {
         this.idAgenda = idAgenda;
-        listEventi= new ArrayList<Evento>();
+        listEventi = new ArrayList<Evento>();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Agenda other = (Agenda) obj;
+        if (this.listEventi != other.listEventi && (this.listEventi == null || !this.listEventi.equals(other.listEventi))) {
+            return false;
+        }
+        if (this.idAgenda != other.idAgenda && (this.idAgenda == null || !this.idAgenda.equals(other.idAgenda))) {
+            return false;
+        }
+        if (this.utente != other.utente && (this.utente == null || !this.utente.equals(other.utente))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
     }
 
     /**
@@ -35,15 +61,15 @@ public class Agenda {
     public ArrayList<Evento> getListEventi() {
         return listEventi;
     }
-    
+
     /**
      * metodo che permette di settare la lista degli eventi associati all'agenda
      * @param listEventi rappresenta la lista degli eventi
      */
-     public void setListEventi(ArrayList<Evento> listEventi) {
+    public void setListEventi(ArrayList<Evento> listEventi) {
         this.listEventi = listEventi;
     }
-  
+
     /**
      *  metoco che permette di restituire la informazioni dell'utente associato
      * all'agenda
@@ -53,7 +79,7 @@ public class Agenda {
         return utente;
     }
 
-   /**
+    /**
      * metodo che permette di settare le informazioni relative
      * all'utente associato all'agenda
      * @param utente rappresenta l'utente
@@ -93,17 +119,20 @@ public class Agenda {
     public void setIdAgenda(Integer idAgenda) {
         this.idAgenda = idAgenda;
     }
+
     /**
      * metodo che elemina un evento dalla lista degli eventi
      * @param c
      */
-    public void removeEvento(Evento c){
-     listEventi.remove(c);}
+    public void removeEvento(Evento c) {
+        listEventi.remove(c);
+    }
+
     /**
      * metodo che restituisce un evento dalla lista degli eventi
      * @param c
      */
-    public void addEvento(Evento c){
-     listEventi.add(c);}
-
+    public void addEvento(Evento c) {
+        listEventi.add(c);
+    }
 }
