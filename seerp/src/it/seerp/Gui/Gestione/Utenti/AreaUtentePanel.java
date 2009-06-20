@@ -742,8 +742,8 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
      */
     public void elmina() {
         if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
-            //  AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
-            //operazione.elimina(cliente);
+             AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
+            operazione.elimina(cliente);
             // ((ClienteTm) jXTable1.getModel()).refresh();
         } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
 
