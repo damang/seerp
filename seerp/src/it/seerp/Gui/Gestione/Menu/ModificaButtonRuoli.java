@@ -16,7 +16,7 @@ import javax.swing.JButton;
  */
 public class ModificaButtonRuoli extends JButton implements CommandInterface {
 
-    GestioneRuoli areaUt = null;
+    GestioneRuoli area = null;
 
     /**
      *
@@ -38,8 +38,8 @@ public class ModificaButtonRuoli extends JButton implements CommandInterface {
      *
      * @param areaUt
      */
-    public void setAreaUt(GestioneRuoli areaUt) {
-        this.areaUt = areaUt;
+    public void setArea(GestioneRuoli areaUt) {
+        this.area = areaUt;
     }
 
     public void execute() {

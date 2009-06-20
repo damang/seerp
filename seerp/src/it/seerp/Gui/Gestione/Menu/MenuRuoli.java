@@ -36,9 +36,10 @@ public class MenuRuoli extends javax.swing.JPanel implements ActionListener {
     public void setPannello(GestioneRuoli pannello) {
 
         this.pannello = pannello;
-   /*     this.modificaButtonServizi1.setAreaServizi(pannello);
-        this.aggiungiButtonServizi1.setServizi(pannello);
-        this.eiminaButtonServizi1.setAreaServ(pannello);*/
+        pannello.setMenu(this);
+        this.modificaButtonRuoli1.setArea(pannello);
+        this.aggiungiButtonRuoli1.setArea(pannello);
+        this.eliminaButtonRuoli1.setArea(pannello);
 
     }
 
@@ -51,9 +52,9 @@ public class MenuRuoli extends javax.swing.JPanel implements ActionListener {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        aggiungiButtonRuoli1 = new it.seerp.Gui.Gestione.Menu.AggiungiButtonRuoli();
-        eiminaButtonRuoli1 = new it.seerp.Gui.Gestione.Menu.EiminaButtonRuoli();
-        modificaButtonRuoli1 = new it.seerp.Gui.Gestione.Menu.ModificaButtonRuoli();
+        aggiungiButtonRuoli1 = new it.seerp.Gui.Gestione.Menu.AggiungiButtonRuoli(this);
+        eliminaButtonRuoli1 = new it.seerp.Gui.Gestione.Menu.EiminaButtonRuoli(this);
+        modificaButtonRuoli1 = new it.seerp.Gui.Gestione.Menu.ModificaButtonRuoli(this);
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ruoli", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_BOTTOM));
 
@@ -61,9 +62,9 @@ public class MenuRuoli extends javax.swing.JPanel implements ActionListener {
         aggiungiButtonRuoli1.setToolTipText("Aggiungi");
         aggiungiButtonRuoli1.setName("aggiungiButtonRuoli1"); // NOI18N
 
-        eiminaButtonRuoli1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/remove.png"))); // NOI18N
-        eiminaButtonRuoli1.setToolTipText("Elimina");
-        eiminaButtonRuoli1.setName("eiminaButtonRuoli1"); // NOI18N
+        eliminaButtonRuoli1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/remove.png"))); // NOI18N
+        eliminaButtonRuoli1.setToolTipText("Elimina");
+        eliminaButtonRuoli1.setName("eliminaButtonRuoli1"); // NOI18N
 
         modificaButtonRuoli1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/application_edit.png"))); // NOI18N
         modificaButtonRuoli1.setToolTipText("Modifica");
@@ -77,7 +78,7 @@ public class MenuRuoli extends javax.swing.JPanel implements ActionListener {
                 .addContainerGap()
                 .addComponent(aggiungiButtonRuoli1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(eiminaButtonRuoli1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(eliminaButtonRuoli1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(modificaButtonRuoli1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -88,7 +89,7 @@ public class MenuRuoli extends javax.swing.JPanel implements ActionListener {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(modificaButtonRuoli1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eiminaButtonRuoli1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(eliminaButtonRuoli1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(aggiungiButtonRuoli1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -96,12 +97,18 @@ public class MenuRuoli extends javax.swing.JPanel implements ActionListener {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private it.seerp.Gui.Gestione.Menu.AggiungiButtonRuoli aggiungiButtonRuoli1;
-    private it.seerp.Gui.Gestione.Menu.EiminaButtonRuoli eiminaButtonRuoli1;
+    private it.seerp.Gui.Gestione.Menu.EiminaButtonRuoli eliminaButtonRuoli1;
     private it.seerp.Gui.Gestione.Menu.ModificaButtonRuoli modificaButtonRuoli1;
     // End of variables declaration//GEN-END:variables
 
     public void actionPerformed(ActionEvent e) {
         CommandInterface cmd = (CommandInterface) e.getSource();
+        setButtonEnabled(false);
         cmd.execute();
+    }
+    public void setButtonEnabled (boolean b) {
+        this.modificaButtonRuoli1.setEnabled(b);
+        this.aggiungiButtonRuoli1.setEnabled(b);
+        this.eliminaButtonRuoli1.setEnabled(b);
     }
 }

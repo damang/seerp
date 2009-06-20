@@ -17,14 +17,14 @@ import javax.swing.JOptionPane;
  * @author Luisa
  */
 public class EiminaButtonRuoli extends JButton implements CommandInterface{
-     GestioneRuoli areaServ;
+     GestioneRuoli area;
 
      /**
       *
       * @param areaServ
       */
-     public void setAreaServ(GestioneRuoli areaServ) {
-        this.areaServ = areaServ;
+     public void setArea(GestioneRuoli areaServ) {
+        this.area = areaServ;
     }
 
 
@@ -46,7 +46,7 @@ public class EiminaButtonRuoli extends JButton implements CommandInterface{
     }
 
     public void execute() {
-       JOptionPane.showMessageDialog(null, "luu");
+       
     }
 
 
