@@ -150,9 +150,7 @@ public class OpFornitore extends OpExtraAzienda {
         PreparedStatement stmt = null;
         PreparedStatement stmte = null;
         Statement stmt1 = con.createStatement();
-        String sqlTest = "SELECT idUtente,username,password,città,ruol,provincia," +
-                "telefono,cap,email,ruolo,note,v,cognome,nome,ragioneSociale,pIva," +
-                "fax FROM cliente,extraazienda,utente WHERE idUtebte=idExtraAzienda and idExtraAzienda=idFornitore and partitaiva='" + user.getPIva();
+        String sqlTest = "SELECT piva FROM extraazienda WHERE piva= '"+ user.getPIva()+"'";
         ResultSet rs = stmt1.executeQuery(sqlTest);
 
         if (rs.next()) {
@@ -160,10 +158,9 @@ public class OpFornitore extends OpExtraAzienda {
         } else {
             try {
                 con.setAutoCommit(false);
-                String sqlu = "INSERT INTO utente(idUtente,username,password,email,citta,prov,telefono" +
-                        "CAP,note,tipo,visibilita) VALUES(LAST_INSERT_ID()+1,?,?,?,?,?,?,?,?,?,?)";
-                String sqle = "INSERT INTO extraazienda(idExtraAzienda,nome,cognome,fax,piva,ragioneSociale,Ruolo,codiceFiscale)" +
-                        "VALUES(LAST_INSERT_ID(),?,?,?,?,'Fornitore',?)";
+                String sqlu = "INSERT INTO utente(username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita) VALUES(?,?,?,?,?,?,?,?,?,true)";
+                String sqle = "INSERT INTO extraazienda(idExtraAzienda,nome,cognome,fax,piva,ragioneSociale,Ruolo)" +
+                        "VALUES(LAST_INSERT_ID(),?,?,?,?,?,'Fornitore')";
 
 
                 stmt = (PreparedStatement) con.prepareStatement(sqlu);
@@ -176,7 +173,7 @@ public class OpFornitore extends OpExtraAzienda {
                 stmt.setString(7, user.getCap());
                 stmt.setString(8, user.getNote());
                 stmt.setString(9, user.getTipo());
-                stmt.setString(10, user.getVisible().toString());
+               // stmt.setString(10, user.getVisible().toString());
                 stmte = (PreparedStatement) con.prepareStatement(sqle);
                 stmte.setString(1, user.getNome());
                 stmte.setString(2, user.getCognome());
@@ -184,11 +181,13 @@ public class OpFornitore extends OpExtraAzienda {
                 stmte.setString(4, user.getPIva());
                 stmte.setString(5, user.getRagioneSociale());
 
+
                 stmt.execute();
                 stmte.execute();
 
                 con.commit();
             } catch (SQLException e) {
+                e.printStackTrace();
                 con.rollback();
             }
 

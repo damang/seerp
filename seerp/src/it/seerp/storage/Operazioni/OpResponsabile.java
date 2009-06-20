@@ -42,39 +42,38 @@ public class OpResponsabile extends OpeUtente {
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
-       
-            String sql = "SELECT idUtente,username,password,citta,provincia," +
-                    "telefono,cap,email,note,tipo,cognome,nome,codiceFiscale," +
-                    "ruolo,visible FROM responsabile,utente,personale WHERE Visible='true' and idPersonale=idUtente " +
-                    "and idPersonale=idResponsabile";
-            stmt = (PreparedStatement) con.prepareStatement(sql);
-            // Execute the query
-            rs = stmt.executeQuery(sql);
 
-            // Define the resource list
-            while (rs.next()) {
+        String sql = "SELECT idUtente,username,password,citta,provincia," +
+                "telefono,cap,email,note,tipo,cognome,nome,codiceFiscale," +
+                "ruolo,visible FROM responsabile,utente,personale WHERE Visible='true' and idPersonale=idUtente " +
+                "and idPersonale=idResponsabile";
+        stmt = (PreparedStatement) con.prepareStatement(sql);
+        // Execute the query
+        rs = stmt.executeQuery(sql);
 
-                /*
-                 * Integer idUtente1, String username2, String password3,
+        // Define the resource list
+        while (rs.next()) {
+
+            /*
+             * Integer idUtente1, String username2, String password3,
             String città4, String provincia5, String telefono6, String cap7, String email8,
             String note9, String tipo10, String cognome11, String nome12, String
             codiceFiscale13, String ruolo14, Boolean v15
-                 */
-      Responsabile responsabile = new Responsabile(rs.getInt(1), rs.getString(2),
-              rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),
-              rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
-              rs.getString(11),rs.getString(12),rs.getString(13), new Ruolo(rs.getString(14)),
-              rs.getBoolean(15));
+             */
+            Responsabile responsabile = new Responsabile(rs.getInt(1), rs.getString(2),
+                    rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),
+                    rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
+                    rs.getString(11), rs.getString(12), rs.getString(13), new Ruolo(rs.getString(14)),
+                    rs.getBoolean(15));
 
-      list.add(responsabile);
-       rs.close();
-       stmt.close();
-       ConnectionPool.releaseConnection(con);
-       
+            list.add(responsabile);
+            rs.close();
+            stmt.close();
+            ConnectionPool.releaseConnection(con);
+
         }
         return list;
     }
-
 
     /** Metodo che permette la ricerca di un membro dei responsabili
      * @return la lista dei membri dei responsabili che corrispondono ai criteri di ricerca
@@ -93,32 +92,32 @@ public class OpResponsabile extends OpeUtente {
         PreparedStatement stmt1 = null;
         PreparedStatement stmt2 = null;
 
-        try{
+        try {
             con.setAutoCommit(false);
-             String sql = "DELETE * FROM utente where username = ?";
-             String sql1 ="DELETE * FROM personale where idPersonale=?";
-             String sql2 = "DELETE * FROM responsabile where idResponsabile=?";
+            String sql = "DELETE * FROM utente where username = ?";
+            String sql1 = "DELETE * FROM personale where idPersonale=?";
+            String sql2 = "DELETE * FROM responsabile where idResponsabile=?";
             // Create a statement
             stmt = (PreparedStatement) con.prepareStatement(sql);
-            stmt1= (PreparedStatement) con.prepareStatement(sql1);
-            stmt2= (PreparedStatement) con.prepareStatement(sql2);
+            stmt1 = (PreparedStatement) con.prepareStatement(sql1);
+            stmt2 = (PreparedStatement) con.prepareStatement(sql2);
             stmt.setString(1, user.getUsername());
-            stmt1.setInt(1,user.getIdUtente());
-            stmt2.setInt(1,user.getIdUtente());
+            stmt1.setInt(1, user.getIdUtente());
+            stmt2.setInt(1, user.getIdUtente());
             // Execute the query
             stmt.executeQuery(sql);
             stmt1.executeQuery(sql1);
             stmt2.executeQuery(sql2);
             con.commit();
-        }
-        catch(SQLException se){
+        } catch (SQLException se) {
             con.rollback();
-            System.out.println("eliminazione fallita");}
-    
-                stmt.close();
-          
-                ConnectionPool.releaseConnection(con);
-            
+            System.out.println("eliminazione fallita");
+        }
+
+        stmt.close();
+
+        ConnectionPool.releaseConnection(con);
+
 
     }
 
@@ -129,17 +128,17 @@ public class OpResponsabile extends OpeUtente {
     public void eliminazioneLogica(Responsabile user) throws SQLException {
 
         PreparedStatement stmt = null;
-                   String sql = "UPDATE utente(visibilita) SET visibilita='false' where username = ? ";
-            // Create a statement
-            stmt = (PreparedStatement) con.prepareStatement(sql);
+        String sql = "UPDATE utente(visibilita) SET visibilita='false' where username = ? ";
+        // Create a statement
+        stmt = (PreparedStatement) con.prepareStatement(sql);
 
-            // Execute the query
-            stmt.executeQuery();
-     
-                stmt.close();
-          
-                ConnectionPool.releaseConnection(con);
-             }
+        // Execute the query
+        stmt.executeQuery();
+
+        stmt.close();
+
+        ConnectionPool.releaseConnection(con);
+    }
 
     /** Metodo per inserire un nuovo responsabile
      * @param user
@@ -153,23 +152,23 @@ public class OpResponsabile extends OpeUtente {
         PreparedStatement stmt = null;
         PreparedStatement stmtP = null;
         PreparedStatement stmtR = null;
-        
-            Statement stmt1 = con.createStatement();
-            String sqlTest = "SELECT * FROM utente,personale,responsabile WHERE codiceFiscale='" + user.getCodiceFiscale() + "'and idUtente=idPersonale and idPersonale=idResponsabile";
-            ResultSet rs = stmt1.executeQuery(sqlTest);
 
-            if (rs.next()) {
-                throw new DatiDuplicatiEx("responsabile già esistente nel database");
-            } else {
+        Statement stmt1 = con.createStatement();
+        String sqlTest = "SELECT * FROM utente,personale,responsabile WHERE codiceFiscale='" + user.getCodiceFiscale() + "'and idUtente=idPersonale and idPersonale=idResponsabile";
+        ResultSet rs = stmt1.executeQuery(sqlTest);
 
-                try{
-                 con.setAutoCommit(false);
+        if (rs.next()) {
+            throw new DatiDuplicatiEx("responsabile già esistente nel database");
+        } else {
+
+            try {
+                con.setAutoCommit(false);
                 String sqlu = "INSERT INTO utente(username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita) VALUES(?,?,?,?,?,?,?,?,?,true)";
                 String sqlp = "INSERT INTO personale(idPersonale,nome,cognome,codicefiscale,ruolo) VALUES(LAST_INSERT_ID(),?,?,?,?)";
                 String sqlr = "INSERT INTO responsabile (idResponsabile)VALUES(LAST_INSERT_ID())";
 
-               stmt = (PreparedStatement) con.prepareStatement(sqlu);
-               stmt.setString(1, user.getUsername());
+                stmt = (PreparedStatement) con.prepareStatement(sqlu);
+                stmt.setString(1, user.getUsername());
                 stmt.setString(2, user.getPassword());
                 stmt.setString(3, user.getEmail());
                 stmt.setString(4, user.getCitta());
@@ -178,30 +177,25 @@ public class OpResponsabile extends OpeUtente {
                 stmt.setString(7, user.getCap());
                 stmt.setString(8, user.getNote());
                 stmt.setString(9, user.getTipo());
-               // stmt.setString(10, user.getVisible().toString());
+                // stmt.setString(10, user.getVisible().toString());
                 stmtP = (PreparedStatement) con.prepareStatement(sqlp);
                 stmtP.setString(1, user.getNome());
                 stmtP.setString(2, user.getCognome());
                 stmtP.setString(3, user.getCodiceFiscale());
                 stmtP.setString(4, user.getRuolo().getNome());
-                stmtR= (PreparedStatement) con.prepareStatement(sqlr);
-               stmt.execute();
-         stmtP.execute();
-            stmtR.execute();
+                stmtR = (PreparedStatement) con.prepareStatement(sqlr);
+                stmt.execute();
+                stmtP.execute();
+                stmtR.execute();
                 con.commit();
-            }catch(SQLException se){
-                 con.rollback();
-                   while (se != null) {
-	                System.out.println("State  : " + se.getSQLState());
-	                System.out.println("Message: " + se.getMessage());
-	                System.out.println("Error  : " + se.getErrorCode());
+            } catch (SQLException se) {
+                con.rollback();
+                 System.out.println("inserimento fallito");
+            }
 
-	                se = se.getNextException();}
-                 System.out.println("inserimento fallito");}
-                  
-                stmt.close();
-                ConnectionPool.releaseConnection(con);
-            
+            stmt.close();
+            ConnectionPool.releaseConnection(con);
+
         }
     }
 
@@ -217,17 +211,17 @@ public class OpResponsabile extends OpeUtente {
 
         PreparedStatement stmt = null;
         PreparedStatement stmtP = null;
-        
-            Statement stmt1 = con.createStatement();
-            String sqlTest = "SELECT * FROM utente,personale,responsabile WHERE codiceFiscale='" + user.getCodiceFiscale() + "'" +
-             "and idPersonale=idUtente and idPersonale=idResponsabile ";
-            ResultSet rs = stmt1.executeQuery(sqlTest);
 
-            if (rs.next()) {
-                throw new DatiDuplicatiEx("dipendente già esistente nel database");
-            } else {
- try{
-                    con.setAutoCommit(false);
+        Statement stmt1 = con.createStatement();
+        String sqlTest = "SELECT * FROM utente,personale,responsabile WHERE codiceFiscale='" + user.getCodiceFiscale() + "'" +
+                "and idPersonale=idUtente and idPersonale=idResponsabile ";
+        ResultSet rs = stmt1.executeQuery(sqlTest);
+
+        if (rs.next()) {
+            throw new DatiDuplicatiEx("dipendente già esistente nel database");
+        } else {
+            try {
+                con.setAutoCommit(false);
                 String sqlu = "UPDATE utente(username,password,email,citta,prov,telefono" +
                         "CAP,note,tipo,visibilita) SET username=?,,password=?,email=?,citta=?,prov=?," +
                         "telefono=?,CAP=?,note=?,tipo=?,visibilita=?";
@@ -253,16 +247,17 @@ public class OpResponsabile extends OpeUtente {
                 stmt.execute();
                 stmtP.execute();
                 con.commit();
-            }catch(SQLException e){
-                 con.rollback();
-                  System.out.println("modifica fallita");  }
-
+            } catch (SQLException e) {
+                con.rollback();
+                System.out.println("modifica fallita");
             }
-       
-                stmt.close();
-           
-                ConnectionPool.releaseConnection(con);
-       
+
+        }
+
+        stmt.close();
+
+        ConnectionPool.releaseConnection(con);
+
         return user;
 
     }
@@ -279,33 +274,33 @@ public class OpResponsabile extends OpeUtente {
         ResultSet rs = null;
 
 
-            String sql = "SELECT * FROM utente,personale,responbile where idPersonale=idUtente and idPersonale=idResponsabile and idResponsabile= ? ";
-            // Create a statement
-            stmt = (PreparedStatement) con.prepareStatement(sql);
-            stmt.setString(1, id.toString());
-            // Execute the query
-            rs = stmt.executeQuery();
+        String sql = "SELECT * FROM utente,personale,responbile where idPersonale=idUtente and idPersonale=idResponsabile and idResponsabile= ? ";
+        // Create a statement
+        stmt = (PreparedStatement) con.prepareStatement(sql);
+        stmt.setString(1, id.toString());
+        // Execute the query
+        rs = stmt.executeQuery();
 
-            // Define the resource list
-            while (rs.next()) {
-                /*
-                 * Integer idUtente1, String username2, String password3, String città4, String provincia5,
-                 String telefono6, String cap7, String email8, String note9, String tipo10, String cognome11,
-                 String nome12, String codiceFiscale13, Ruolo ruolo14, Boolean v15
-                 */
-                responsabile = new Responsabile(rs.getInt(1), rs.getString(2), rs.getString(3),
-                        rs.getString(4), rs.getString(5),rs.getString(6), rs.getString(7), rs.getString(8),
-                        rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13),
-                         new Ruolo(rs.getString(14)), rs.getBoolean(15));
+        // Define the resource list
+        while (rs.next()) {
+            /*
+             * Integer idUtente1, String username2, String password3, String città4, String provincia5,
+            String telefono6, String cap7, String email8, String note9, String tipo10, String cognome11,
+            String nome12, String codiceFiscale13, Ruolo ruolo14, Boolean v15
+             */
+            responsabile = new Responsabile(rs.getInt(1), rs.getString(2), rs.getString(3),
+                    rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8),
+                    rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13),
+                    new Ruolo(rs.getString(14)), rs.getBoolean(15));
 
-                }
-          
-                rs.close();
-           
-                stmt.close();
-            
-                ConnectionPool.releaseConnection(con);
-      
+        }
+
+        rs.close();
+
+        stmt.close();
+
+        ConnectionPool.releaseConnection(con);
+
 
         return responsabile;
 
