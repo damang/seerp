@@ -1,11 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package it.seerp.storage.ejb;
 
 import java.util.GregorianCalendar;
+import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,9 +13,15 @@ import static org.junit.Assert.*;
  *
  * @author TOMMASO
  */
-public class EventoTest {
+public class EventoTest extends TestCase {
 
-    public EventoTest() {
+    private Agenda agd;
+    private Evento e;
+    private GregorianCalendar data;
+    private GregorianCalendar ora;
+
+    public EventoTest(String name) {
+        super(name);
     }
 
     @BeforeClass
@@ -31,11 +33,18 @@ public class EventoTest {
     }
 
     @Before
+    @Override
     public void setUp() {
+        data = new GregorianCalendar(2009, 7, 23);
+        ora = new GregorianCalendar(2009, 7, 23, 13, 40);
+        e = new Evento("aula p13", "riunione", "InternationalSchool", "conferenza salvaguardia ambientale", data, ora, 15, true, agd);
     }
 
     @After
+    @Override
     public void tearDown() {
+        e = null;
+        System.gc();
     }
 
     /**
@@ -73,12 +82,9 @@ public class EventoTest {
     @Test
     public void testGetNotifica() {
         System.out.println("getNotifica");
-        Evento instance = new Evento();
-        Boolean expResult = null;
-        Boolean result = instance.getNotifica();
+        Boolean expResult = true;
+        Boolean result = e.getNotifica();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -87,12 +93,9 @@ public class EventoTest {
     @Test
     public void testGetAgenda() {
         System.out.println("getAgenda");
-        Evento instance = new Evento();
-        Agenda expResult = null;
-        Agenda result = instance.getAgenda();
+        Agenda expResult = agd;
+        Agenda result = e.getAgenda();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -127,12 +130,9 @@ public class EventoTest {
     @Test
     public void testGetNote() {
         System.out.println("getNote");
-        Evento instance = new Evento();
-        String expResult = "";
-        String result = instance.getNote();
+        String expResult = "conferenza salvaguardia ambientale";
+        String result = e.getNote();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -154,12 +154,9 @@ public class EventoTest {
     @Test
     public void testGetIdEvento() {
         System.out.println("getIdEvento");
-        Evento instance = new Evento();
-        int expResult = 0;
-        int result = instance.getIdEvento();
+        int expResult = 15;
+        int result = e.getIdEvento();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -181,12 +178,9 @@ public class EventoTest {
     @Test
     public void testGetData() {
         System.out.println("getData");
-        Evento instance = new Evento();
-        GregorianCalendar expResult = null;
-        GregorianCalendar result = instance.getData();
+        GregorianCalendar expResult = new GregorianCalendar(2009, 7, 23);
+        GregorianCalendar result = e.getData();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -208,12 +202,9 @@ public class EventoTest {
     @Test
     public void testGetLuogo() {
         System.out.println("getLuogo");
-        Evento instance = new Evento();
-        String expResult = "";
-        String result = instance.getLuogo();
+        String expResult = "aula p13";
+        String result = e.getLuogo();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -235,12 +226,9 @@ public class EventoTest {
     @Test
     public void testGetNome() {
         System.out.println("getNome");
-        Evento instance = new Evento();
-        String expResult = "";
-        String result = instance.getNome();
+        String expResult = "InternationalSchool";
+        String result = e.getNome();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -262,12 +250,9 @@ public class EventoTest {
     @Test
     public void testGetOra() {
         System.out.println("getOra");
-        Evento instance = new Evento();
-        GregorianCalendar expResult = null;
-        GregorianCalendar result = instance.getOra();
+        GregorianCalendar expResult = new GregorianCalendar(2009, 7, 23, 13, 40);
+        GregorianCalendar result = e.getOra();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -289,12 +274,9 @@ public class EventoTest {
     @Test
     public void testGetTema() {
         System.out.println("getTema");
-        Evento instance = new Evento();
-        String expResult = "";
-        String result = instance.getTema();
+        String expResult = "riunione";
+        String result = e.getTema();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -309,5 +291,4 @@ public class EventoTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-
 }
