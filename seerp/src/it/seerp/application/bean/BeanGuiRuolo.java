@@ -3,6 +3,7 @@ package it.seerp.application.bean;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 
 /**
@@ -14,6 +15,7 @@ public class BeanGuiRuolo {
     private ArrayList<BeanGuiPersonale> listPersonale;
     private HashMap<String, ArrayList<BeanGuiPermesso>> listPermessi;
     private JTextField nome;
+    private HashMap<String,JCheckBox> perm_all;
 
     /**
      *
@@ -93,5 +95,11 @@ public class BeanGuiRuolo {
      */
     public void setListPersonale(ArrayList<BeanGuiPersonale> listPersonale) {
         this.listPersonale = listPersonale;
+    }
+    public HashMap<String, JCheckBox> getPermGen() {
+        return perm_all;
+    }
+    public void setPermGen(HashMap<String, JCheckBox> p) {
+        perm_all=p;
     }
 }
