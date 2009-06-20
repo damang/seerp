@@ -40,13 +40,19 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * @param user il dipendente da inserire
      */
     public void inserisciDipendente(BeanGuiDipendente user) {
-        super.inserisci(user);
+       // super.inserisci(user);
         try {
             OpDipendente a = new OpDipendente();
             Dipendente dip = Conversione.conversioneDipendente(user);
             a.inserisci(dip);
         } catch (SQLException se) {
-            se.printStackTrace();
+                   while (se != null) {
+	                System.out.println("State  : " + se.getSQLState());
+	                System.out.println("Message: " + se.getMessage());
+	                System.out.println("Error  : " + se.getErrorCode());
+
+	                se = se.getNextException();}
+          
             JOptionPane.showMessageDialog(null, "Errore nel database!");
         } catch (ValidatorException e) {
             e.printStackTrace();

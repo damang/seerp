@@ -45,7 +45,7 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
      * @param clien il Cliente che si vuole inserire
      */
     public void inserisciCliente(BeanGuiCliente clien) {
-        super.inserisci(clien);
+      //  super.inserisci(clien);
         try {
             OpCliente a = new OpCliente();
             Cliente cl = Conversione.conversioneCliente(clien);
@@ -64,7 +64,7 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
      * @param forn il Fornitore che si vuole inserire
      */
     public void inserisciFornitore(BeanGuiFornitore forn) {
-        super.inserisci(forn);
+      //  super.inserisci(forn);
         try {
             OpFornitore a = new OpFornitore();
             Fornitore fo = Conversione.conversioneFornitore(forn);
