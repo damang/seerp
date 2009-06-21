@@ -9,22 +9,19 @@ import it.seerp.storage.ejb.Utente;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
+
 
 /**
  *
  * @author matteo
  */
-public class OpeUtente implements OpeEntity<Utente, Integer> {
-
-    private Connection conn;
-
+public  class OpeUtente implements OpeEntity<Utente, Integer> {
+   Connection conn=null;
     /**
      *
      * @throws java.sql.SQLException
      */
     public OpeUtente() throws SQLException {
-        conn = (Connection) ConnectionPool.getConnection();
     }
 
     public Utente visualizza(String user) throws SQLException {
@@ -66,13 +63,13 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
      * @throws SQLException
      */
     public ArrayList<Utente> visualizzaElenco() throws SQLException {
-
+        conn = (Connection) ConnectionPool.getConnection();
         ArrayList<Utente> list = new ArrayList<Utente>();
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
         // Create a statement
-        String sql = "SELECT * FROM Utente where Visible='true'";
+        String sql = "SELECT * FROM Utente where visible='true'";
         stmt = (PreparedStatement) conn.prepareStatement(sql);
         // Execute the query
         rs = stmt.executeQuery();
@@ -97,17 +94,8 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
     public Utente modifica(Utente user) throws SQLException, DatiErratiEx {
         conn = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
-  
 
-        /* Statement stmt1 = con.createStatement();
-        String sqlTest = "SELECT idUtente,username,password,citta,ruol,provincia," +
-        "telefono,cap,email,ruolo,note,visibilita,cognome,nome,ragioneSociale,pIva" +
-        "fax FROM utente,extraazienda WHERE  idUtente=idExtraAzienda and nome='" + user.getPIva() + "' ";
-        ResultSet rs = stmt1.executeQuery(sqlTest);
 
-        if (rs.next()) {
-        throw new DatiDuplicatiEx("utente già esistente nel database");
-        } else {*/
 
         String sqlu = "UPDATE utente SET username=?,password=?,email=?,citta=?,prov=?," +
                 "telefono=? WHERE idUtente=?";/*mettere visibilita tipo e cap*/
@@ -124,7 +112,7 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
         //stmt.setString(8, user.getNote());
         //   stmt.setString(9, user.getTipo());
         stmt.setInt(7, user.getIdUtente());
-//                stmt.setString(10, user.getVisible().toString());
+       //  stmt.setString(10, user.getVisible().toString());
 
 
         stmt.execute();
@@ -144,39 +132,7 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
      * @throws SQLException
      * @throws DatiErratiEx
      */
-    public void inserimento(Utente user) throws SQLException {
-
-        PreparedStatement stmt = null;
-
-
-
-
-               String sqlu = "INSERT INTO utente(username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita) VALUES(?,?,?,?,?,?,?,?,?,true)";
-
-
-
-                stmt = (PreparedStatement) conn.prepareStatement(sqlu);
-                stmt.setString(1, user.getUsername());
-                stmt.setString(2, user.getPassword());
-                stmt.setString(3, user.getEmail());
-                stmt.setString(4, user.getCitta());
-                stmt.setString(5, user.getProvincia());
-                stmt.setString(6, user.getTelefono());
-                stmt.setString(7, user.getCap());
-                stmt.setString(8, user.getNote());
-                stmt.setString(9, user.getTipo());
-               // stmt.setString(10, user.getVisible().toString());
-
-
-               System.out.println(stmt.execute());
-
-
-
-
-                stmt.close();
-                ConnectionPool.releaseConnection(conn);
-    }
-
+    public void inserimento(Utente user) throws SQLException{};
 
     /**
      * metodo che permette di visualizzare i dati di un utente
@@ -185,17 +141,18 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
      * @throws SQLException
      * @throws DatiErratiEx
      */
-    public Utente visualizza(Integer id) throws SQLException {
-
+    public Utente visualizza( Integer id) throws SQLException {
+         conn = (Connection) ConnectionPool.getConnection();
         Utente utente = new Utente();
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
         String sql = "SELECT * FROM Utente WHERE idUtente = ? ";
-        stmt = (PreparedStatement) conn.prepareStatement(sql);
+        stmt =(PreparedStatement) conn.prepareStatement(sql);
+
         stmt.setInt(1, id);
 
-        rs = stmt.executeQuery(sql);
+        rs =  stmt.executeQuery(sql);
 
         while (rs.next()) {
 
@@ -216,9 +173,10 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
      * metodo che permette di visualizzare i dati degli utenti per effettuare una ricerca
      * @return ArrayList<Utente> la lista degli utenti per effetturare la ricerca
      * @throws java.sql.SQLException
-     */
+     
     public ArrayList<Utente> ricerca() throws SQLException {
-        ArrayList<Utente> list = this.visualizzaElenco();
+
+           ArrayList<Utente> list = this.visualizzaElenco();
 
         return list;
     }
@@ -247,19 +205,8 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
      * @param ut
      * @throws java.sql.SQLException
      */
-    public void elimina(Utente ut) throws SQLException {
-        /*PreparedStatement stmt = null;
-        String sql = "DELETE * FROM Utente where username =?";
-        // Create a statement
-        stmt = (PreparedStatement) conn.prepareStatement(sql);
-        stmt.setString(1, ut.getUsername());
-        // Execute the query
-        stmt.executeQuery(sql);
-
-        stmt.close();
-
-        ConnectionPool.releaseConnection(conn);*/
-    }
+    public void elimina(Utente ut) throws SQLException {};
+  
 }
 
 
