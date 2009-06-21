@@ -60,28 +60,48 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
      * @throws SQLException
      * @throws DatiErratiEx
      */
-    public Utente modifica(Utente utente) throws SQLException, DatiErratiEx {
-        /*
-        PreparedStatement stmt;
-        // Create a statement
-        String sql = "UPDATE Utente VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        stmt = (PreparedStatement) conn.prepareStatement(sql);
-        stmt.setString(1, utente.getUsername());
-        stmt.setString(2, utente.getPassword());
-        stmt.setString(3, utente.getEmail());
-        stmt.setString(4, utente.getCitta());
-        stmt.setString(5, utente.getProvincia());
-        stmt.setString(6, utente.getTelefono());
-        stmt.setString(7, utente.getCap());
-        stmt.setString(8, utente.getNote());
-        stmt.setString(9, utente.getTipo());
-        stmt.setBoolean(10, utente.getVisible());
+    public Utente modifica(Utente user) throws SQLException, DatiErratiEx {
+        conn = (Connection) ConnectionPool.getConnection();
+        PreparedStatement stmt = null;
+        PreparedStatement stmte = null;
+
+        /* Statement stmt1 = con.createStatement();
+        String sqlTest = "SELECT idUtente,username,password,citta,ruol,provincia," +
+        "telefono,cap,email,ruolo,note,visibilita,cognome,nome,ragioneSociale,pIva" +
+        "fax FROM utente,extraazienda WHERE  idUtente=idExtraAzienda and nome='" + user.getPIva() + "' ";
+        ResultSet rs = stmt1.executeQuery(sqlTest);
+
+        if (rs.next()) {
+        throw new DatiDuplicatiEx("utente già esistente nel database");
+        } else {*/
+
+        String sqlu = "UPDATE utente SET username=?,password=?,email=?,citta=?,prov=?," +
+                "telefono=? WHERE idUtente=?";/*mettere visibilita tipo e cap*/
+
+
+        stmt = (PreparedStatement) conn.prepareStatement(sqlu);
+        stmt.setString(1, user.getUsername());
+        stmt.setString(2, user.getPassword());
+        stmt.setString(3, user.getEmail());
+        stmt.setString(4, user.getCitta());
+        stmt.setString(5, user.getProvincia());
+        stmt.setString(6, user.getTelefono());
+        //  stmt.setString(7, user.getCap());
+        //stmt.setString(8, user.getNote());
+        //   stmt.setString(9, user.getTipo());
+        stmt.setInt(7, user.getIdUtente());
+//                stmt.setString(10, user.getVisible().toString());
+
 
         stmt.execute();
 
+
+
+
+
+        stmt.close();
         ConnectionPool.releaseConnection(conn);
-            */
-        return null;
+        return user;
     }
 
     /*
@@ -90,10 +110,9 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
      * @throws SQLException
      * @throws DatiErratiEx
      */
-
     public void inserimento(Utente bean) throws SQLException {
 
-    /*
+        /*
         String sql = "INSERT INTO Utente VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement stmt = (PreparedStatement) conn.prepareStatement(sql);
 
@@ -113,7 +132,6 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
 
 
         ConnectionPool.releaseConnection(conn);*/
-
     }
 
     /**
@@ -132,7 +150,7 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
         String sql = "SELECT * FROM Utente WHERE idUtente = ? ";
         stmt = (PreparedStatement) conn.prepareStatement(sql);
         stmt.setInt(1, id);
-        
+
         rs = stmt.executeQuery(sql);
 
         while (rs.next()) {
@@ -167,7 +185,7 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
      * @throws java.sql.SQLException
      */
     public void eliminaLogica(Utente ut) throws SQLException {
-/*
+        /*
         PreparedStatement stmt = null;
 
         String sql = "UPDATE Utente SET Visible='false' where username = ?";

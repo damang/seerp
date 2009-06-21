@@ -216,23 +216,24 @@ public class OpExtraAzienda extends OpeUtente {
  try {
 
                 con.setAutoCommit(false);
-                String sqlu = "UPDATE utente SET username=?,password=?,email=?,citta=?,prov=?," +
+                super.modifica(user);
+               /* String sqlu = "UPDATE utente SET username=?,password=?,email=?,citta=?,prov=?," +
                         "telefono=? WHERE idUtente=?";/*mettere visibilita tipo e cap*/
                 String sqle = "UPDATE extraazienda SET piva=?,ragioneSociale=?"+
                         "WHERE idExtraAzienda=?";/*nome,cognome=?,fax=?,codiceFiscale=?*/
 
 
-                stmt = (PreparedStatement) con.prepareStatement(sqlu);
+/*                stmt = (PreparedStatement) con.prepareStatement(sqlu);
                 stmt.setString(1, user.getUsername());
                 stmt.setString(2, user.getPassword());
                 stmt.setString(3, user.getEmail());
                 stmt.setString(4, user.getCitta());
                 stmt.setString(5, user.getProvincia());
-                stmt.setString(6, user.getTelefono());
+                stmt.setString(6, user.getTelefono());*/
               //  stmt.setString(7, user.getCap());
                 //stmt.setString(8, user.getNote());
              //   stmt.setString(9, user.getTipo());
-                stmt.setInt(7, user.getIdUtente());
+             //   stmt.setInt(7, user.getIdUtente());
 //                stmt.setString(10, user.getVisible().toString());
                 stmte = (PreparedStatement) con.prepareStatement(sqle);
               //  stmte.setString(1, user.getNome());
@@ -242,7 +243,7 @@ public class OpExtraAzienda extends OpeUtente {
                 stmte.setString(2, user.getRagioneSociale());
                 stmte.setInt(3, user.getIdUtente());
 
-                stmt.execute();
+             //   stmt.execute();
                 stmte.execute();
 
                 con.commit();
