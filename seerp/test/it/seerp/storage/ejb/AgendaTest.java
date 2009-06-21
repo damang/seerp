@@ -1,6 +1,9 @@
 package it.seerp.storage.ejb;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
+import java.util.Iterator;
+import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -9,12 +12,20 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author TOMMASO
+ * Classe Test per l'Agenda
+ * @author Tommaso Cattolico
  */
-public class AgendaTest {
+public class AgendaTest extends TestCase {
 
-    public AgendaTest() {
+    private Agenda agdGet;
+    private Agenda agdSet;
+    private Utente user;
+    private ArrayList<Evento> list;
+    private ArrayList<Evento> listSet;
+    private Evento eve;
+
+    public AgendaTest(String name) {
+        super(name);
     }
 
     @BeforeClass
@@ -26,11 +37,25 @@ public class AgendaTest {
     }
 
     @Before
+    @Override
     public void setUp() {
+        eve = new Evento();
+        user = new Utente();
+        list = new ArrayList<Evento>();
+        listSet = new ArrayList<Evento>();
+        agdGet = new Agenda(12, user);
+        agdSet = new Agenda(12, user);
+        agdGet.addEvento(eve);
+        list.add(eve);
+        listSet.add(new Evento("napoli", "convegno", "IT Tecnologie", "N/D", new GregorianCalendar(), new GregorianCalendar(), 21, true));
     }
 
     @After
+    @Override
     public void tearDown() {
+        agdGet = null;
+        agdSet = null;
+        System.gc();
     }
 
     /**
@@ -40,26 +65,9 @@ public class AgendaTest {
     public void testEquals() {
         System.out.println("equals");
         Object obj = null;
-        Agenda instance = new Agenda();
         boolean expResult = false;
-        boolean result = instance.equals(obj);
+        boolean result = agdGet.equals(obj);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of hashCode method, of class Agenda.
-     */
-    @Test
-    public void testHashCode() {
-        System.out.println("hashCode");
-        Agenda instance = new Agenda();
-        int expResult = 0;
-        int result = instance.hashCode();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -68,12 +76,15 @@ public class AgendaTest {
     @Test
     public void testGetListEventi() {
         System.out.println("getListEventi");
-        Agenda instance = new Agenda();
-        ArrayList<Evento> expResult = null;
-        ArrayList<Evento> result = instance.getListEventi();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ArrayList<Evento> expResult = list;
+        ArrayList<Evento> result = agdGet.getListEventi();
+        Iterator<Evento> it = expResult.iterator();
+        int i = 0;
+        while (it.hasNext()) {
+            Evento temp = it.next();
+            assertEquals(temp, result.get(i));
+            i++;
+        }
     }
 
     /**
@@ -82,11 +93,15 @@ public class AgendaTest {
     @Test
     public void testSetListEventi() {
         System.out.println("setListEventi");
-        ArrayList<Evento> listEventi = null;
-        Agenda instance = new Agenda();
-        instance.setListEventi(listEventi);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ArrayList<Evento> expResult = listSet;
+        agdSet.setListEventi(expResult);
+        Iterator<Evento> it = expResult.iterator();
+        int i = 0;
+        while (it.hasNext()) {
+            Evento temp = it.next();
+            assertEquals(temp, agdSet.getListEventi().get(i));
+            i++;
+        }
     }
 
     /**
@@ -95,12 +110,9 @@ public class AgendaTest {
     @Test
     public void testGetUtente() {
         System.out.println("getUtente");
-        Agenda instance = new Agenda();
-        Utente expResult = null;
-        Utente result = instance.getUtente();
+        Utente expResult = user;
+        Utente result = agdGet.getUtente();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -110,37 +122,8 @@ public class AgendaTest {
     public void testSetUtente() {
         System.out.println("setUtente");
         Utente utente = null;
-        Agenda instance = new Agenda();
-        instance.setUtente(utente);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getAgenda method, of class Agenda.
-     */
-    @Test
-    public void testGetAgenda() {
-        System.out.println("getAgenda");
-        Agenda instance = new Agenda();
-        ArrayList<Evento> expResult = null;
-        ArrayList<Evento> result = instance.getAgenda();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setAgenda method, of class Agenda.
-     */
-    @Test
-    public void testSetAgenda() {
-        System.out.println("setAgenda");
-        ArrayList<Evento> agenda = null;
-        Agenda instance = new Agenda();
-        instance.setAgenda(agenda);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        agdSet.setUtente(utente);
+        assertEquals(utente, agdSet.getUtente());
     }
 
     /**
@@ -149,12 +132,9 @@ public class AgendaTest {
     @Test
     public void testGetIdAgenda() {
         System.out.println("getIdAgenda");
-        Agenda instance = new Agenda();
-        Integer expResult = null;
-        Integer result = instance.getIdAgenda();
+        Integer expResult = 12;
+        Integer result = agdGet.getIdAgenda();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -163,11 +143,9 @@ public class AgendaTest {
     @Test
     public void testSetIdAgenda() {
         System.out.println("setIdAgenda");
-        Integer idAgenda = null;
-        Agenda instance = new Agenda();
-        instance.setIdAgenda(idAgenda);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Integer idAgenda = 34;
+        agdSet.setIdAgenda(idAgenda);
+        assertEquals(idAgenda, agdSet.getIdAgenda());
     }
 
     /**
@@ -176,11 +154,9 @@ public class AgendaTest {
     @Test
     public void testRemoveEvento() {
         System.out.println("removeEvento");
-        Evento c = null;
-        Agenda instance = new Agenda();
-        instance.removeEvento(c);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int size = agdGet.getListEventi().size();
+        agdGet.removeEvento(eve);
+        assertEquals(size - 1, agdGet.getListEventi().size());
     }
 
     /**
@@ -189,11 +165,9 @@ public class AgendaTest {
     @Test
     public void testAddEvento() {
         System.out.println("addEvento");
-        Evento c = null;
-        Agenda instance = new Agenda();
-        instance.addEvento(c);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int size = agdSet.getListEventi().size();
+        agdSet.addEvento(eve);
+        assertEquals(size + 1, agdSet.getListEventi().size());
+        assertEquals(agdSet.getListEventi().get(0), list.get(0));
     }
-
 }
