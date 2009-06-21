@@ -47,6 +47,7 @@ public class EventoTest extends TestCase {
     @Override
     public void tearDown() {
         eveGet = null;
+        eveSet = null;
         System.gc();
     }
 
