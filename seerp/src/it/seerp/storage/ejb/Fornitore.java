@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author matteo
  */
 public class Fornitore extends ExtraAzienda {
-      private Integer idFornitore;
+
 
       /**
        *
@@ -43,7 +43,7 @@ public class Fornitore extends ExtraAzienda {
      */
     public Fornitore(Integer idUtente, String username, String password, String citta, String ruol, String provincia, String telefono, String cap, String email, String ruolo, String note, Boolean v, String cognome, String nome, String ragioneSociale, String pIva, String fax) {
         super(idUtente, username, password, citta, ruol, provincia, telefono, cap, email, ruolo, note, v, cognome, nome, ragioneSociale, pIva, fax);
-        this.idFornitore = idFornitore;
+       
     }
 
    
@@ -54,20 +54,5 @@ public class Fornitore extends ExtraAzienda {
 
    
 
-    /**
-     * restituisce il codice identificativo del Fornitore
-     * @return un intero che rappresenta l'identificativo
-     */
-    public Integer getIdFornitore() {
-        return idFornitore;
-    }
-
-    /**
-     * setta il codice identificativo del Fornitore
-     * @param idFornitore di tipo int
-     */
-    public void setIdFornitore(Integer idFornitore) {
-        this.idFornitore = idFornitore;
-    }
-
+    
 }
