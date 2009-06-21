@@ -21,8 +21,11 @@ public class ClienteTest extends TestCase {
 
     private Cliente c;
     private Boolean v;
+    private Integer id;
 
-    public ClienteTest() {
+    public ClienteTest(String name) {
+
+        super(name);
     }
 
     @BeforeClass
@@ -36,8 +39,8 @@ public class ClienteTest extends TestCase {
     @Before
     public void setUp() {
 
-        Integer idUtente = 0002;
-
+        c = new Cliente(id, "marros", "123456", "Salerno", "ruolo","sa", "089345678", "84100", "rossi@email.it", "ruolo", "note", v , "Rossi", "Mario", "x y z.srl", "12345678901C", "089232323" );
+                  
     }
 
     @After
