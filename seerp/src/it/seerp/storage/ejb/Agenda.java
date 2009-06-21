@@ -27,6 +27,17 @@ public class Agenda {
         listEventi = new ArrayList<Evento>();
     }
 
+    /**
+     * Costruttore di classe
+     * @param idAgenda
+     * @param user
+     */
+    public Agenda(Integer idAgenda, Utente user) {
+        this.idAgenda = idAgenda;
+        listEventi = new ArrayList<Evento>();
+        this.utente = user;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -80,22 +91,6 @@ public class Agenda {
      */
     public void setUtente(Utente utente) {
         this.utente = utente;
-    }
-
-    /**
-     *  metodo che restituisce una lista di eventi
-     * @return : lista di eventi
-     */
-    public ArrayList<Evento> getAgenda() {
-        return listEventi;
-    }
-
-    /**
-     *  metodo che setta una lisat di eventi
-     * @param agenda lista di eventi
-     */
-    public void setAgenda(ArrayList<Evento> agenda) {
-        this.listEventi = agenda;
     }
 
     /**
