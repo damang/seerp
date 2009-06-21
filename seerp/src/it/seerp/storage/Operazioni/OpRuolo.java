@@ -9,12 +9,15 @@ package it.seerp.storage.Operazioni;
 import com.mysql.jdbc.Statement;
 import it.seerp.storage.db.ConnectionPool;
 import it.seerp.storage.db.OpeEntity;
+import it.seerp.storage.ejb.Permesso;
 import it.seerp.storage.ejb.Ruolo;
+import it.seerp.storage.jaas.PermessoCollection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -29,11 +32,11 @@ public class OpRuolo implements OpeEntity<Ruolo,String>{
      */
     public OpRuolo() throws SQLException {
 
-        conn = (Connection) ConnectionPool.getConnection();
+        
     }
 
     public void inserimento(Ruolo bean) throws SQLException {
-        
+        conn = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
 
         String sql = "INSERT INTO Ruolo Values (?);";
@@ -42,6 +45,18 @@ public class OpRuolo implements OpeEntity<Ruolo,String>{
             // Execute the query
         stmt.execute();
 
+        sql = "insert into incarico set ruolo=?, permesso= (SELECT idPermesso from permesso where task=? and `action`=?);";
+        stmt = (PreparedStatement) conn.prepareStatement(sql);
+        PermessoCollection b = bean.getListPermesso();
+            stmt.setString(1, bean.getNome());
+        for (int i = 0; i < b.size(); i++) {
+            stmt.setString(2, b.get(i).getName());
+            stmt.setString(3, b.get(i).getActions());
+            stmt.execute();
+        }
+        
+            // Execute the query
+       
         stmt.close();
         ConnectionPool.releaseConnection(conn);
 
@@ -53,7 +68,8 @@ public class OpRuolo implements OpeEntity<Ruolo,String>{
     }
 
     public Ruolo visualizza(String id) throws SQLException {
-         PreparedStatement stmt = null;
+        conn = (Connection) ConnectionPool.getConnection();
+        PreparedStatement stmt = null;
         ResultSet rs = null;
         String sql = "SELECT * FROM Ruolo where nome=?;";
         stmt = (PreparedStatement) conn.prepareStatement(sql);
@@ -72,6 +88,7 @@ public class OpRuolo implements OpeEntity<Ruolo,String>{
     }
 
     public ArrayList<Ruolo> visualizzaElenco() throws SQLException {
+        conn = (Connection) ConnectionPool.getConnection();
         ArrayList<Ruolo> r= new ArrayList<Ruolo>();
         PreparedStatement stmt = null;
         ResultSet rs = null;

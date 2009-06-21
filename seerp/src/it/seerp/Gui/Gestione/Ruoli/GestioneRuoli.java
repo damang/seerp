@@ -625,6 +625,11 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
         add(jXPanel1, gridBagConstraints);
 
         buttonSalva1.setName("buttonSalva1"); // NOI18N
+        buttonSalva1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSalva1ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -665,15 +670,28 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
 
     private void buttonAnnulla1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAnnulla1ActionPerformed
         setEditable(false);
-        try {
-            be.resetAll();
-        } catch (Exception ex) {
-            Logger.getLogger(GestioneRuoli.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        be.resetAll();
         menu.setButtonEnabled(true);
         buttonSalva1.setVisible(false);
         buttonAnnulla1.setVisible(false);
     }//GEN-LAST:event_buttonAnnulla1ActionPerformed
+
+    private void buttonSalva1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalva1ActionPerformed
+       AppRuoli r= new AppRuoli();
+       r.inserimento(be);
+       menu.setButtonEnabled(true);
+       buttonSalva1.setVisible(false);
+       buttonAnnulla1.setVisible(false);
+       be.resetAll();
+       setEditable(false);
+        try {
+            tModel = new RuoloTm();
+            jXTable1.setModel(tModel);
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "Errore con il database");
+        }
+
+    }//GEN-LAST:event_buttonSalva1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla buttonAnnulla1;

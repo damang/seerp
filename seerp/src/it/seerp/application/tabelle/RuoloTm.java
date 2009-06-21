@@ -34,8 +34,10 @@ public class RuoloTm extends Generica<Ruolo> {
 public void refresh(){
  AppRuoli  op = new AppRuoli();
         Iterator <Ruolo> it = op.visualizzaTabella().iterator();
+        this.getDataCollection().removeAllElements();
         while (it.hasNext()) {
-            this.addNewData(it.next());}}
+            this.addNewData(it.next());}
+}
     /**
      *
      * @param table

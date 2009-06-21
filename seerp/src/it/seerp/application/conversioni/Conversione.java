@@ -829,7 +829,7 @@ public class Conversione {
      * @return il Bean convertito
      * @throws Exception
      */
-    public static Permesso conversionePermesso(BeanGuiPermesso b) throws Exception {
+    public static Permesso conversionePermesso(BeanGuiPermesso b) {
 
         Permesso p = new Permesso(b.getIdPermesso(), b.getCat(), b.getAct().getText());
         return p;
@@ -856,7 +856,7 @@ public class Conversione {
      * @return il Bean convertito
      * @throws Exception
      */
-    public static Ruolo conversioneRuolo(BeanGuiRuolo b) throws Exception {
+    public static Ruolo conversioneRuolo(BeanGuiRuolo b) {
         Ruolo r = new Ruolo(b.getNome().getText());
         r.setPermSyncro(false);
         Iterator it = b.getListPermessi().entrySet().iterator();
@@ -865,7 +865,8 @@ public class Conversione {
             entry = (Map.Entry) it.next();
             ArrayList<BeanGuiPermesso> e = (ArrayList<BeanGuiPermesso>) entry.getValue();
             for (BeanGuiPermesso bean : e) {
-                r.addPermesso(conversionePermesso(bean));
+                if (bean.getAct().isSelected())
+                    r.addPermesso(conversionePermesso(bean));
             }
         }
         return r;

@@ -47,7 +47,7 @@ public class Ruolo {
      * @return la lista degli incarichi
      */
     public PermessoCollection getListPermesso() {
-        if (perm_syncro)
+        if (perm_syncro==true)
             return PermissionRoleDBAdapter.getPermissionsUt(nome);
         else return listPermesso;
     }
@@ -93,6 +93,9 @@ public class Ruolo {
         if(perm_syncro==false) {
             listPermesso=new PermessoCollection();
         }
+    }
+    public boolean isPermSyncro() {
+        return perm_syncro;
     }
 
 }
