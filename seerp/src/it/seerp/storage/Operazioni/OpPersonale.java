@@ -71,14 +71,15 @@ public class OpPersonale extends OpeUtente {
      * @return la lista dei membri del personale che corrispondono ai criteri di ricerca
      * @throws java.sql.SQLException*/
     public ArrayList<Personale> elencaPersonalePerRuolo(Ruolo ruolo) throws SQLException {
+        con = (Connection) ConnectionPool.getConnection();
         ArrayList<Personale> list = new ArrayList<Personale>();
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        String sql = "SELECT * FROM Personale WHERE Ruolo=?";
+        String sql = "SELECT * FROM personale join utente on idPersonale=idUtente WHERE ruolo=? and visibilita=true";
         stmt = (PreparedStatement) con.prepareStatement(sql);
         stmt.setString(1, ruolo.getNome());
-        rs = stmt.executeQuery(sql);
-
+        rs = stmt.executeQuery();
+        Personale p;
         // Define the resource list
         while (rs.next()) {
             /*
@@ -86,10 +87,22 @@ public class OpPersonale extends OpeUtente {
             String provincia5, String telefono6,String cap7, String email8, String note9,
             String tipo10, String cognome11, String nome12, String codiceFiscale13, Boolean v14, String ruolo15
              */
-            Personale personale = new Personale(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-                    rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12),
-                    rs.getString(13), rs.getBoolean(14), new Ruolo(rs.getString(15)));
-            list.add(personale);
+            p = new Personale();
+            p.setIdUtente(rs.getInt("idPersonale"));
+            p.setUsername(rs.getString("username"));
+            p.setPassword(rs.getString("password"));
+            p.setCap(rs.getString("cap"));
+            p.setCitta(rs.getString("citta"));
+            p.setCodiceFiscale(rs.getString("codicefiscale"));
+            p.setCognome(rs.getString("cognome"));
+            p.setEmail(rs.getString("email"));
+            p.setNome(rs.getString("note"));
+            p.setProvincia(rs.getString("prov"));
+            p.setRuolo(new Ruolo(rs.getString("ruolo")));
+            p.setTelefono(rs.getString("telefono"));
+            p.setTipo(rs.getString("tipo"));
+            p.setVisible(rs.getBoolean("visibilita"));
+            list.add(p);
         }
         rs.close();
         stmt.close();
