@@ -19,12 +19,12 @@ import java.awt.event.ActionListener;
  *
  * @author Andrea
  */
-public class MenuAppuntamento extends javax.swing.JPanel implements ActionListener {
+public class MenuAgenda extends javax.swing.JPanel implements ActionListener {
 
      CalendarPanel pannello = null;
 
     /** Creates new form Preventivi */
-    public  MenuAppuntamento() {
+    public  MenuAgenda() {
         initComponents();
     }
 
