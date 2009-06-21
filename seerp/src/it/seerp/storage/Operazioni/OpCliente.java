@@ -154,7 +154,9 @@ public class OpCliente extends OpExtraAzienda {
         } else {
            try{
                 con.setAutoCommit(false);
-                String sqlu = "INSERT INTO utente(username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita) VALUES(?,?,?,?,?,?,?,?,?,true)";
+               String sqlu = "INSERT INTO utente(username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita) VALUES(?,?,?,?,?,?,?,?,?,true)";
+              super.inserimento(user);
+               
                 String sqle = "INSERT INTO extraazienda(idExtraAzienda,nome,cognome,fax,piva,ragioneSociale,Ruolo)" +
                         "VALUES(LAST_INSERT_ID(),?,?,?,?,?,'Cliente')";
 
@@ -177,7 +179,7 @@ public class OpCliente extends OpExtraAzienda {
                 stmte.setString(4, user.getPIva());
                 stmte.setString(5,user.getRagioneSociale());
 
-               System.out.println(stmt.execute());
+              System.out.println(stmt.execute());
                 System.out.println(stmte.execute());
 
                 con.commit();
