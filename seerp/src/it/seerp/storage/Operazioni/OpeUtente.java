@@ -9,6 +9,7 @@ import it.seerp.storage.ejb.Utente;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -63,7 +64,7 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
     public Utente modifica(Utente user) throws SQLException, DatiErratiEx {
         conn = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
-        PreparedStatement stmte = null;
+  
 
         /* Statement stmt1 = con.createStatement();
         String sqlTest = "SELECT idUtente,username,password,citta,ruol,provincia," +
@@ -110,29 +111,39 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
      * @throws SQLException
      * @throws DatiErratiEx
      */
-    public void inserimento(Utente bean) throws SQLException {
+    public void inserimento(Utente user) throws SQLException {
 
-        /*
-        String sql = "INSERT INTO Utente VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        PreparedStatement stmt = (PreparedStatement) conn.prepareStatement(sql);
-
-        stmt = (PreparedStatement) conn.prepareStatement(sql);
-        stmt.setString(1, bean.getUsername());
-        stmt.setString(2, bean.getPassword());
-        stmt.setString(3, bean.getEmail());
-        stmt.setString(4, bean.getCitta());
-        stmt.setString(5, bean.getProvincia());
-        stmt.setString(6, bean.getTelefono());
-        stmt.setString(7, bean.getCap());
-        stmt.setString(8, bean.getNote());
-        stmt.setString(9, bean.getTipo());
-        stmt.setBoolean(10, bean.getVisible());
-
-        stmt.execute();
+        PreparedStatement stmt = null;
 
 
-        ConnectionPool.releaseConnection(conn);*/
+
+
+               String sqlu = "INSERT INTO utente(username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita) VALUES(?,?,?,?,?,?,?,?,?,true)";
+
+
+
+                stmt = (PreparedStatement) conn.prepareStatement(sqlu);
+                stmt.setString(1, user.getUsername());
+                stmt.setString(2, user.getPassword());
+                stmt.setString(3, user.getEmail());
+                stmt.setString(4, user.getCitta());
+                stmt.setString(5, user.getProvincia());
+                stmt.setString(6, user.getTelefono());
+                stmt.setString(7, user.getCap());
+                stmt.setString(8, user.getNote());
+                stmt.setString(9, user.getTipo());
+               // stmt.setString(10, user.getVisible().toString());
+
+
+               System.out.println(stmt.execute());
+
+
+
+
+                stmt.close();
+                ConnectionPool.releaseConnection(conn);
     }
+
 
     /**
      * metodo che permette di visualizzare i dati di un utente
