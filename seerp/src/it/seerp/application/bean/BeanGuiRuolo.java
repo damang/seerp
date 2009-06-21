@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
+import org.jdesktop.swingx.JXTable;
 
 /**
  *
@@ -16,6 +17,7 @@ public class BeanGuiRuolo {
     private HashMap<String, ArrayList<BeanGuiPermesso>> listPermessi;
     private JTextField nome;
     private HashMap<String,JCheckBox> perm_all;
+    private JXTable tabRuo;
 
     /**
      *
@@ -36,14 +38,14 @@ public class BeanGuiRuolo {
      * @return
      * @throws Exception
      */
-    public JTextField getNome() throws Exception {
+    public JTextField getNome() {
         /*  if (!valStartW.shouldYieldFocus(grafica)) {
         throw new ValidatorException("Errore nella grafica!");
         }*/
         return nome;
     }
 
-    public void resetAll() throws Exception {
+    public void resetAll() {
         nome.setText("");
         Iterator<ArrayList<BeanGuiPermesso>> l = listPermessi.values().iterator();
         ArrayList<BeanGuiPermesso> ar;
@@ -102,5 +104,11 @@ public class BeanGuiRuolo {
     }
     public void setPermGen(HashMap<String, JCheckBox> p) {
         perm_all=p;
+    }
+    public JXTable getTabUt() {
+        return  tabRuo;
+    }
+    public void setTabUt(JXTable t) {
+        tabRuo=t;
     }
 }

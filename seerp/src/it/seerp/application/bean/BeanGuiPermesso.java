@@ -61,7 +61,7 @@ public class BeanGuiPermesso {
      * @return
      * @throws Exception
      */
-    public int getIdPermesso() throws Exception {
+    public int getIdPermesso() {
         /*   if (!val.shouldYieldFocus(grafica)) {
         throw new Exception("Errore nella grafica!");
         }*/
@@ -91,7 +91,7 @@ public class BeanGuiPermesso {
      * @return
      * @throws java.lang.Exception
      */
-    public JCheckBox getAct() throws Exception {
+    public JCheckBox getAct() {
         /*     if (!val.shouldYieldFocus(grafica)) {
         throw new Exception("Errore nella grafica!");
         }*/
