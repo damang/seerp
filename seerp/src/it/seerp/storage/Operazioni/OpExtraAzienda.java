@@ -88,25 +88,43 @@ public class OpExtraAzienda extends OpeUtente {
      * user dell'utente da eliminare
      * @throws java.sql.SQLException*/
     public void elimina(ExtraAzienda user) throws SQLException {
-        /*
+
+
+
+
         PreparedStatement stmt = null;
+        PreparedStatement stmt1 = null;
 
+        try {
+            con.setAutoCommit(false);
+            String sql = "DELETE  FROM utente where username = ?";
+            String sql1 = "DELETE  FROM extraazienda where idExtraAzienda=?";
 
+            // Create a statement
+            stmt = (PreparedStatement) con.prepareStatement(sql);
+            stmt1 = (PreparedStatement) con.prepareStatement(sql1);
 
-        String sql = "DELETE idUtente,username,password,città,ruol,provincia," +
-                "telefono,cap,email,ruolo,note,v,cognome,nome,ragioneSociale,pIva," +
-                "fax FROM ExtraAzienda where username =" + user;
-        // Create a statement
-        stmt = (PreparedStatement) con.prepareStatement(sql);
-        stmt.setString(1, user.getUsername());
-        // Execute the query
-        stmt.executeQuery(sql);
+            stmt.setString(1, user.getUsername());
+            stmt1.setInt(1, user.getIdUtente());
 
+            // Execute the query
+            System.out.println(   stmt.execute());
+            System.out.println( stmt1.execute());
 
+            con.commit();
+        } catch (SQLException se) {
+            con.rollback();
+            se.printStackTrace();
+            System.out.println("eliminazione fallita");
+        }
         stmt.close();
+        stmt1.close();
+
         ConnectionPool.releaseConnection(con);
-         */
+
     }
+
+      
 
     /** Nasconde l'utente eliminato al sistema senza l'eliminazione fisica
      * @param user
@@ -183,51 +201,63 @@ public class OpExtraAzienda extends OpeUtente {
      * @throws DatiDuplicatiEx
      */
     public ExtraAzienda modifica(ExtraAzienda user) throws SQLException, DatiErratiEx, DatiDuplicatiEx {
-      /*  PreparedStatement stmt = null;
-        ExtraAzienda extraazienda = null;
+      PreparedStatement stmt = null;
+        PreparedStatement stmte = null;
 
-
-
-        Statement stmt1 = con.createStatement();
-        String sqlTest = "SELECT idUtente,username,password,città,ruol,provincia," +
-                "telefono,cap,email,ruolo,note,v,cognome,nome,ragioneSociale,pIva," +
-                "fax FROM ExtraAzienda WHERE nome='" + user.getPIva();
+       /* Statement stmt1 = con.createStatement();
+        String sqlTest = "SELECT idUtente,username,password,citta,ruol,provincia," +
+                "telefono,cap,email,ruolo,note,visibilita,cognome,nome,ragioneSociale,pIva" +
+                "fax FROM utente,extraazienda WHERE  idUtente=idExtraAzienda and nome='" + user.getPIva() + "' ";
         ResultSet rs = stmt1.executeQuery(sqlTest);
 
         if (rs.next()) {
             throw new DatiDuplicatiEx("utente già esistente nel database");
-        } else {
+        } else {*/
+ try {
 
-            // Create a statement
-            stmt = (PreparedStatement) con.prepareStatement("UPDATE ExtraAzienda(idUtente,username,password,città,ruol,provincia," +
-                "telefono,cap,email,ruolo,note,v,cognome,nome,ragioneSociale,pIva," +
-                "fax) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )" + "where idUtente=" + user.getIdUtente());
+                con.setAutoCommit(false);
+                String sqlu = "UPDATE utente SET username=?,password=?,email=?,citta=?,prov=?," +
+                        "telefono=? WHERE idUtente=?";/*mettere visibilita tipo e cap*/
+                String sqle = "UPDATE extraazienda SET piva=?,ragioneSociale=?"+
+                        "WHERE idExtraAzienda=?";/*nome,cognome=?,fax=?,codiceFiscale=?*/
 
-            stmt.setInt(1, user.getIdUtente());
-            stmt.setString(2, user.getUsername());
-            stmt.setString(3, user.getPassword());
-            stmt.setString(4, user.getCitta());
-            stmt.setString(5, user.getTipo());
-            stmt.setString(6, user.getProvincia());
-            stmt.setString(7, user.getTelefono());
-            stmt.setString(8, user.getCap());
-            stmt.setString(9, user.getEmail());
-            stmt.setString(10, user.getRuolo());
-            stmt.setString(11, user.getNote());
-            stmt.setBoolean(12, user.getVisible());
-            stmt.setString(13, user.getCognome());
-            stmt.setString(14, user.getNome());
-            stmt.setString(15, user.getRagioneSociale());
-            stmt.setString(16, user.getPIva());
-            stmt.setString(17, user.getFax());
 
-            stmt.execute();
+                stmt = (PreparedStatement) con.prepareStatement(sqlu);
+                stmt.setString(1, user.getUsername());
+                stmt.setString(2, user.getPassword());
+                stmt.setString(3, user.getEmail());
+                stmt.setString(4, user.getCitta());
+                stmt.setString(5, user.getProvincia());
+                stmt.setString(6, user.getTelefono());
+              //  stmt.setString(7, user.getCap());
+                //stmt.setString(8, user.getNote());
+             //   stmt.setString(9, user.getTipo());
+                stmt.setInt(7, user.getIdUtente());
+//                stmt.setString(10, user.getVisible().toString());
+                stmte = (PreparedStatement) con.prepareStatement(sqle);
+              //  stmte.setString(1, user.getNome());
+                //stmte.setString(2, user.getCognome());
+               // stmte.setString(3, user.getFax());
+                stmte.setString(1, user.getPIva());
+                stmte.setString(2, user.getRagioneSociale());
+                stmte.setInt(3, user.getIdUtente());
 
-        }
+                stmt.execute();
+                stmte.execute();
+
+                con.commit();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                con.rollback();
+            }
+
+
         stmt.close();
         ConnectionPool.releaseConnection(con);
-        */
-        return null;
+        return user;
+
+
+        
 
     }
 
