@@ -1,7 +1,9 @@
 package it.seerp.storage.ejb;
 
+import it.seerp.storage.Operazioni.OpPersonale;
 import it.seerp.storage.jaas.PermessoCollection;
 import it.seerp.storage.jaas.PermissionRoleDBAdapter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -29,17 +31,18 @@ public class Ruolo {
       *
       * @param listPersonale
       */
-     public void setListPersonale(ArrayList<Personale> listPersonale) {
+   /*stPersonale(ArrayList<Personale> listPersonale) {
         this.listPersonale = listPersonale;
-    }
+    }*/
 
      /**
       * motodo che permette di restituire le informazioni relative al personale
       * associato al ruolo
       * @return le informazioni del personale
       */
-     public ArrayList<Personale> getPersonale() {
-        return listPersonale;
+     public ArrayList<Personale> getListPersonale() throws SQLException {
+        OpPersonale p = new OpPersonale();
+        return p.elencaPersonalePerRuolo(this);
     }
 
      /**

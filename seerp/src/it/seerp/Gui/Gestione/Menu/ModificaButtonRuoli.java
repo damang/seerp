@@ -7,6 +7,7 @@ package it.seerp.Gui.Gestione.Menu;
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.Ruoli.GestioneRuoli;
 import it.seerp.Gui.Gestione.Utenti.AreaUtentePanel;
+import it.seerp.Gui.configurazioni.Gui.ConfigurazioneOperazioni;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
@@ -43,7 +44,11 @@ public class ModificaButtonRuoli extends JButton implements CommandInterface {
     }
 
     public void execute() {
-         this.setEnabled(false);
-        
+          area.getMenu().setButtonEnabled(false);
+          area.setTipoOP(ConfigurazioneOperazioni.TIPO_OPE_CONST.MODIFICA);
+          area.getSalva().setVisible(true);
+          area.getAnnulla().setVisible(true);
+          area.setEditable(true);
+          area.getBeanGuiRuolo().getNome().setEnabled(false);
     }
 }

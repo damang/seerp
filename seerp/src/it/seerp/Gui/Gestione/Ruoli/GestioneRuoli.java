@@ -15,6 +15,8 @@ import it.seerp.Gui.configurazioni.Gui.ConfigurazioneOperazioni;
 import it.seerp.Gui.configurazioni.PermessiDefault;
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
+import it.seerp.application.Exception.DatiDuplicati;
+import it.seerp.application.Exception.DatiErrati;
 import it.seerp.application.tabelle.RuoloTm;
 import it.seerp.application.applicazione.AppRuoli;
 import it.seerp.application.bean.BeanGuiPermesso;
@@ -40,6 +42,7 @@ import javax.swing.table.TableModel;
  * @author Andrea
  */
 public class GestioneRuoli extends ObservableJPanel implements ActionListener, ItemListener {
+
     private TableModel tModel;
     private BeanGuiRuolo be;
     private MenuRuoli menu;
@@ -49,11 +52,33 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
      * @throws SQLException
      */
     public GestioneRuoli() throws SQLException {
-        tModel=new RuoloTm();
-        be=new BeanGuiRuolo();
+        tModel = new RuoloTm();
+        be = new BeanGuiRuolo();
         initComponents();
         legameBean();
         setEditable(false);
+    }
+
+    public void eliminaSelected() {
+
+        if (jXTable1.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(null, "Non hai selezionato nessun ruolo");
+        } else {
+            AppRuoli a = new AppRuoli();
+            String r=(String) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0);
+            if (r.equalsIgnoreCase("amministratore") || r.equalsIgnoreCase("responsabile") || r.equalsIgnoreCase("dipendente")) {
+                JOptionPane.showMessageDialog(null, "Non puoi eliminare un ruolo base","Errore",JOptionPane.ERROR_MESSAGE);
+            }
+            else {
+                a.elimina(r);
+                be.resetAll();
+                try {
+                    be.resetTableUt();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Errore con il database");
+                }
+            }
+        }
     }
 
     /** This method is called from within the constructor to
@@ -122,7 +147,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jXTable1 = new org.jdesktop.swingx.JXTable();
-        jXFindBar3 = new org.jdesktop.swingx.JXFindBar();
+        jXFindBar3 = new org.jdesktop.swingx.JXFindBar(jXTable1.getSearchable());
         buttonSalva1 = new it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva();
         buttonAnnulla1 = new it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla();
 
@@ -549,7 +574,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
 
             },
             new String [] {
-                "id","Cognome", "Nome"
+                "id","Cognome", "Nome","Ruolo"
             }
         ));
         jXTable2.setName("jXTable2"); // NOI18N
@@ -610,6 +635,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
 
         jXFindBar3.setMinimumSize(new java.awt.Dimension(10, 100));
         jXFindBar3.setName("jXFindBar3"); // NOI18N
+        jXFindBar3.setSearchable(jXTable1.getSearchable());
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -652,8 +678,8 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
 
     private void jXTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jXTable1MouseClicked
         //JOptionPane.showMessageDialog(null, ));
-        AppRuoli r= new AppRuoli();
-        r.visualizzaDati((String)jXTable1.getValueAt(jXTable1.getSelectedRow(), 0), be);
+        AppRuoli r = new AppRuoli();
+        r.visualizzaDati((String) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0), be);
     }//GEN-LAST:event_jXTable1MouseClicked
 
     private void con_ricActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_con_ricActionPerformed
@@ -665,30 +691,47 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
 }//GEN-LAST:event_gest_cliActionPerformed
 
     private void cli_aggActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cli_aggActionPerformed
-
     }//GEN-LAST:event_cli_aggActionPerformed
 
     private void buttonAnnulla1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAnnulla1ActionPerformed
+        if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI)) {
+            be.resetAll();
+        } else {
+            jXTable1MouseClicked(null);
+        }
         setEditable(false);
-        be.resetAll();
         menu.setButtonEnabled(true);
         buttonSalva1.setVisible(false);
         buttonAnnulla1.setVisible(false);
     }//GEN-LAST:event_buttonAnnulla1ActionPerformed
 
     private void buttonSalva1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalva1ActionPerformed
-       AppRuoli r= new AppRuoli();
-       r.inserimento(be);
-       menu.setButtonEnabled(true);
-       buttonSalva1.setVisible(false);
-       buttonAnnulla1.setVisible(false);
-       be.resetAll();
-       setEditable(false);
         try {
-            tModel = new RuoloTm();
-            jXTable1.setModel(tModel);
+            AppRuoli r = new AppRuoli();
+            if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI)) {
+                r.inserimento(be);
+                be.resetAll();
+                be.resetTableUt();
+            } else {
+                r.modifica(be);
+            }
+            menu.setButtonEnabled(true);
+            buttonSalva1.setVisible(false);
+            buttonAnnulla1.setVisible(false);
+            setEditable(false);
         } catch (SQLException ex) {
-           JOptionPane.showMessageDialog(null, "Errore con il database");
+            switch (ex.getErrorCode()) {
+                case 1062:
+                    JOptionPane.showMessageDialog(null, "Ruolo già presente nel database");
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Errore nel database!");
+                    break;
+            }
+        } catch (DatiErrati ex) {
+            JOptionPane.showMessageDialog(null, "Dati errati");
+        } catch (DatiDuplicati ex) {
+            JOptionPane.showMessageDialog(null, "Dati duplicati");
         }
 
     }//GEN-LAST:event_buttonSalva1ActionPerformed
@@ -755,7 +798,6 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
     private javax.swing.JTextField txt_nruolo;
     // End of variables declaration//GEN-END:variables
 
-
     public void actionPerformed(ActionEvent e) {
         CommandInterface cmd = (CommandInterface) e.getSource();
         cmd.execute();
@@ -763,54 +805,54 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
 
     private void legameBean() {
         be.setNome(txt_nruolo);
-        HashMap<String, ArrayList<BeanGuiPermesso>> listPermessi= new HashMap<String, ArrayList<BeanGuiPermesso>>();
+        HashMap<String, ArrayList<BeanGuiPermesso>> listPermessi = new HashMap<String, ArrayList<BeanGuiPermesso>>();
         ArrayList<BeanGuiPermesso> perm1 = new ArrayList<BeanGuiPermesso>();
         ArrayList<BeanGuiPermesso> perm2 = new ArrayList<BeanGuiPermesso>();
         ArrayList<BeanGuiPermesso> perm3 = new ArrayList<BeanGuiPermesso>();
         ArrayList<BeanGuiPermesso> perm4 = new ArrayList<BeanGuiPermesso>();
         ArrayList<BeanGuiPermesso> perm5 = new ArrayList<BeanGuiPermesso>();
         ArrayList<BeanGuiPermesso> perm6 = new ArrayList<BeanGuiPermesso>();
-        perm1.add(new BeanGuiPermesso(this, cli_agg,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti)));
-        perm1.add(new BeanGuiPermesso(this, cli_mod,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti)));
-        perm1.add(new BeanGuiPermesso(this, cli_el,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti)));
-        perm1.add(new BeanGuiPermesso(this, cli_ele,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti)));
-        perm1.add(new BeanGuiPermesso(this, cli_ric,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti)));
+        perm1.add(new BeanGuiPermesso(this, cli_agg, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti)));
+        perm1.add(new BeanGuiPermesso(this, cli_mod, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti)));
+        perm1.add(new BeanGuiPermesso(this, cli_el, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti)));
+        perm1.add(new BeanGuiPermesso(this, cli_ele, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti)));
+        perm1.add(new BeanGuiPermesso(this, cli_ric, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti)));
         listPermessi.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti), perm1);
-        perm2.add(new BeanGuiPermesso(this, ruo_agg,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli)));
-        perm2.add(new BeanGuiPermesso(this, ruo_mod,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli)));
-        perm2.add(new BeanGuiPermesso(this, ruo_el,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli)));
-        perm2.add(new BeanGuiPermesso(this, ruo_ele,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli)));
-        perm2.add(new BeanGuiPermesso(this, ruo_ric,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli)));
+        perm2.add(new BeanGuiPermesso(this, ruo_agg, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli)));
+        perm2.add(new BeanGuiPermesso(this, ruo_mod, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli)));
+        perm2.add(new BeanGuiPermesso(this, ruo_el, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli)));
+        perm2.add(new BeanGuiPermesso(this, ruo_ele, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli)));
+        perm2.add(new BeanGuiPermesso(this, ruo_ric, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli)));
         listPermessi.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli), perm2);
-        perm3.add(new BeanGuiPermesso(this, con_agg,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti)));
-        perm3.add(new BeanGuiPermesso(this, con_mod,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti)));
-        perm3.add(new BeanGuiPermesso(this, con_el,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti)));
-        perm3.add(new BeanGuiPermesso(this, con_ele,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti)));
-        perm3.add(new BeanGuiPermesso(this, con_ric,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti)));
+        perm3.add(new BeanGuiPermesso(this, con_agg, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti)));
+        perm3.add(new BeanGuiPermesso(this, con_mod, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti)));
+        perm3.add(new BeanGuiPermesso(this, con_el, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti)));
+        perm3.add(new BeanGuiPermesso(this, con_ele, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti)));
+        perm3.add(new BeanGuiPermesso(this, con_ric, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti)));
         listPermessi.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti), perm3);
-        
-        perm4.add(new BeanGuiPermesso(this, for_agg,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori)));
-        perm4.add(new BeanGuiPermesso(this, for_mod,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori)));
-        perm4.add(new BeanGuiPermesso(this, for_el,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori)));
-        perm4.add(new BeanGuiPermesso(this, for_ele,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori)));
-        perm4.add(new BeanGuiPermesso(this, for_ric,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori)));
+
+        perm4.add(new BeanGuiPermesso(this, for_agg, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori)));
+        perm4.add(new BeanGuiPermesso(this, for_mod, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori)));
+        perm4.add(new BeanGuiPermesso(this, for_el, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori)));
+        perm4.add(new BeanGuiPermesso(this, for_ele, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori)));
+        perm4.add(new BeanGuiPermesso(this, for_ric, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori)));
         listPermessi.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori), perm4);
-        perm5.add(new BeanGuiPermesso(this, ser_agg,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi)));
-        perm5.add(new BeanGuiPermesso(this, ser_mod,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi)));
-        perm5.add(new BeanGuiPermesso(this, ser_el,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi)));
-        perm5.add(new BeanGuiPermesso(this, ser_ele,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi)));
-        perm5.add(new BeanGuiPermesso(this, ser_ric,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi)));
+        perm5.add(new BeanGuiPermesso(this, ser_agg, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi)));
+        perm5.add(new BeanGuiPermesso(this, ser_mod, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi)));
+        perm5.add(new BeanGuiPermesso(this, ser_el, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi)));
+        perm5.add(new BeanGuiPermesso(this, ser_ele, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi)));
+        perm5.add(new BeanGuiPermesso(this, ser_ric, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi)));
         listPermessi.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi), perm5);
-        
-        perm6.add(new BeanGuiPermesso(this, dip_agg,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti)));
-        perm6.add(new BeanGuiPermesso(this, dip_mod,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti)));
-        perm6.add(new BeanGuiPermesso(this, dip_el,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti)));
-        perm6.add(new BeanGuiPermesso(this, dip_ele,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti)));
-        perm6.add(new BeanGuiPermesso(this, dip_ric,PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti)));
+
+        perm6.add(new BeanGuiPermesso(this, dip_agg, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti)));
+        perm6.add(new BeanGuiPermesso(this, dip_mod, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti)));
+        perm6.add(new BeanGuiPermesso(this, dip_el, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti)));
+        perm6.add(new BeanGuiPermesso(this, dip_ele, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti)));
+        perm6.add(new BeanGuiPermesso(this, dip_ric, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti)));
         listPermessi.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti), perm6);
-          
+
         be.setListPermessi(listPermessi);
-        HashMap<String, JCheckBox> p_all=new HashMap<String, JCheckBox>();
+        HashMap<String, JCheckBox> p_all = new HashMap<String, JCheckBox>();
         p_all.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti), gest_dip);
         p_all.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti), gest_cli);
         p_all.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti), gest_contr);
@@ -819,44 +861,52 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
         p_all.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi), gest_ser);
         be.setPermGen(p_all);
         be.setTabUt(jXTable1);
+        be.setTabPers(jXTable2);
     }
 
     @Override
     public void itemStateChanged(ItemEvent e) {
-       CommandInterface cmd = (CommandInterface) e.getSource();
-       cmd.execute();
+        CommandInterface cmd = (CommandInterface) e.getSource();
+        cmd.execute();
     }
+
     public BeanGuiRuolo getBeanGuiRuolo() {
         return be;
     }
+
     public void setMenu(MenuRuoli menu) {
         this.menu = menu;
     }
+
     public MenuRuoli getMenu() {
         return this.menu;
     }
-     public void setTipoOP(ConfigurazioneOperazioni.TIPO_OPE_CONST tipo) {
+
+    public void setTipoOP(ConfigurazioneOperazioni.TIPO_OPE_CONST tipo) {
         this.tipoOp = tipo;
     }
-    public void setEditable (boolean b) {
+
+    public void setEditable(boolean b) {
 
         try {
             be.getNome().setEditable(b);
-       
-        Iterator<ArrayList<BeanGuiPermesso>> c = be.getListPermessi().values().iterator();
-        Iterator<BeanGuiPermesso> itint;
-        while (c.hasNext()) {
-            itint=c.next().iterator();
-            while (itint.hasNext())
-                itint.next().getAct().setEnabled(b);
-        }
-        Iterator<JCheckBox> it;
-        it=be.getPermGen().values().iterator();
-        while (it.hasNext())
-            it.next().setEnabled(b);
-        jXTable2.setEnabled(b);
-        jXTable1.setEnabled(!b);
-                
+
+            Iterator<ArrayList<BeanGuiPermesso>> c = be.getListPermessi().values().iterator();
+            Iterator<BeanGuiPermesso> itint;
+            while (c.hasNext()) {
+                itint = c.next().iterator();
+                while (itint.hasNext()) {
+                    itint.next().getAct().setEnabled(b);
+                }
+            }
+            Iterator<JCheckBox> it;
+            it = be.getPermGen().values().iterator();
+            while (it.hasNext()) {
+                it.next().setEnabled(b);
+            }
+            //jXTable2.setEnabled(b);
+            jXTable1.setEnabled(!b);
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -866,8 +916,8 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
     public JButton getSalva() {
         return buttonSalva1;
     }
+
     public JButton getAnnulla() {
         return buttonAnnulla1;
     }
-
 }

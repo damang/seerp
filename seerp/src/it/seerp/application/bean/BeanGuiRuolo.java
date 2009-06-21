@@ -1,5 +1,7 @@
 package it.seerp.application.bean;
 
+import it.seerp.application.tabelle.RuoloTm;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -9,7 +11,7 @@ import org.jdesktop.swingx.JXTable;
 
 /**
  *
- * @author matteo - Tommaso Cattolico
+ * @author peppe
  */
 public class BeanGuiRuolo {
 
@@ -17,7 +19,7 @@ public class BeanGuiRuolo {
     private HashMap<String, ArrayList<BeanGuiPermesso>> listPermessi;
     private JTextField nome;
     private HashMap<String,JCheckBox> perm_all;
-    private JXTable tabRuo;
+    private JXTable tabRuo,tabPers;
 
     /**
      *
@@ -56,6 +58,9 @@ public class BeanGuiRuolo {
                 ar.get(i).getAct().setSelected(false);
             }
         }
+    }
+    public void resetTableUt() throws SQLException {
+        tabRuo.setModel(new RuoloTm());
     }
 
     /**
@@ -110,5 +115,11 @@ public class BeanGuiRuolo {
     }
     public void setTabUt(JXTable t) {
         tabRuo=t;
+    }
+    public JXTable getTabPers() {
+        return  tabPers;
+    }
+    public void setTabPers(JXTable t) {
+        tabPers=t;
     }
 }

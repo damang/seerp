@@ -1,7 +1,12 @@
 package it.seerp.Gui.configurazioni;
 
+import it.seerp.application.bean.BeanGuiPermesso;
+import it.seerp.storage.ejb.Permesso;
 import it.seerp.storage.jaas.PermessoCollection;
 import it.seerp.storage.jaas.PermissionRoleDBAdapter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  *
@@ -156,5 +161,34 @@ public class PermessiDefault {
     public static PermessoCollection getPermessiDipendete() {
         return dipendente;
     }
+
+    /**
+     * Get the value of responsabile
+     *
+     * @return the value of responsabile
+     */
+    public static HashMap<String,ArrayList<BeanGuiPermesso>> getPermessiGUI(String r,HashMap<String,ArrayList<BeanGuiPermesso>> g) {
+        PermessoCollection perm = PermissionRoleDBAdapter.getPermissionsUt(r);
+        convertiPermTOPermGUI(perm,g);
+         return g;
+    }
+
+    public static void convertiPermTOPermGUI(PermessoCollection p, HashMap<String,ArrayList<BeanGuiPermesso>> g ) {
+        Iterator<Permesso> it = p.iterator();
+        Permesso f = null;
+        ArrayList<BeanGuiPermesso> c;
+        while (it.hasNext()) {
+            f = it.next();
+            c = g.get(f.getName());
+            for (BeanGuiPermesso bean : c) {
+                if (bean.getAct().getText().equalsIgnoreCase(f.getActions())) {
+                    bean.getAct().setSelected(true);
+                    break;
+                }
+            }
+        }
+    }
+
+
 
 }
