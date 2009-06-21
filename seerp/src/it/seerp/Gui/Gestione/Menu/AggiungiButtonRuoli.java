@@ -50,7 +50,7 @@ public class AggiungiButtonRuoli extends JButton implements CommandInterface {
         // this.setEnabled(false);
          String r=sceltaRuolo.getRuolo();
          if (r==null) {
-             JOptionPane.showMessageDialog(area, "Non hai selezionato nessun ruolo", "Errore", JOptionPane.ERROR_MESSAGE);
+             JOptionPane.showMessageDialog(area, "Non hai selezionato nessun ruolo o hai annullato l'operazione!", "Errore", JOptionPane.ERROR_MESSAGE);
          }
          else {         
                  area.getMenu().setButtonEnabled(false);
