@@ -192,6 +192,7 @@ public class OpResponsabile extends OpeUtente {
                 con.commit();
             } catch (SQLException se) {
                 con.rollback();
+                se.printStackTrace();
                 System.out.println("inserimento fallito");
             }
 
