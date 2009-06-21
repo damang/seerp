@@ -21,7 +21,7 @@ import java.sql.Statement;
  */
 public class OpFornitore extends OpExtraAzienda {
 
-    Connection con = null;
+    Connection conness = null;
 
     /**
      *
@@ -29,14 +29,14 @@ public class OpFornitore extends OpExtraAzienda {
      */
     public OpFornitore() throws SQLException {
         super();
-        con = ConnectionPool.getConnection();
+
     }
 
     /** Metodo che permette la visualizzazione della lista dei Fornitori
      * @return ArrayList contenente la lista dei  Fornitori
      * @throws java.sql.SQLException*/
     public ArrayList<Fornitore> elencaFornitore() throws SQLException {
-
+        conness = ConnectionPool.getConnection();
         ArrayList<Fornitore> list = new ArrayList<Fornitore>();
 
         Statement stmt = null;
@@ -46,7 +46,7 @@ public class OpFornitore extends OpExtraAzienda {
         String sql = "SELECT idUtente,username,password,citta,ruolo,prov," +
                 "telefono,cap,email,ruolo,note,visibilita,cognome,nome,ragioneSociale,piva," +
                 "fax FROM utente,extraazienda where  idUtente=idExtraAzienda  and visibilita=true and ruolo='Fornitore'";
-        stmt = (PreparedStatement) con.prepareStatement(sql);
+        stmt = (PreparedStatement) conness.prepareStatement(sql);
 
         // Execute the query
         rs = stmt.executeQuery(sql);
@@ -66,7 +66,7 @@ public class OpFornitore extends OpExtraAzienda {
 
         rs.close();
         stmt.close();
-        ConnectionPool.releaseConnection(con);
+        ConnectionPool.releaseConnection(conness);
 
         return list;
     }
@@ -77,63 +77,63 @@ public class OpFornitore extends OpExtraAzienda {
      * @param ruolo
      * ruolo che il Fornitore ricopre all'interno dell'azienda
      * @return la lista dei Fornitori che corrispondono ai criteri di ricerca
-     * @throws java.sql.SQLException*/
+     * @throws java.sql.SQLException
     public ArrayList<Fornitore> ricercaFornitore(String cognome, String ruolo) throws SQLException {
 
-        ArrayList<Fornitore> list = this.elencaFornitore();
+    ArrayList<Fornitore> list = this.elencaFornitore();
 
-        return list;
+    return list;
 
     }
 
     /** Metodo che permette di eliminare un Fornitore già esistente
      * @param user
      * user del Fornitore da eliminare
-     * @throws java.sql.SQLException*/
+     * @throws java.sql.SQLException
     public void elimina(Fornitore user) throws SQLException {
+    conness = ConnectionPool.getConnection();
+    PreparedStatement stmt = null;
+    PreparedStatement stmt1 = null;
+    try {
+    conness.setAutoCommit(false);
+    String sqlu = "Delete * from utente where username=?";
+    String sqle = "Delete * extraazienda where idExtraAzienda=?";
 
-        PreparedStatement stmt = null;
-        PreparedStatement stmt1 = null;
-        try {
-            con.setAutoCommit(false);
-            String sqlu = "Delete * from utente where username=?";
-            String sqle = "Delete * extraazienda where idExtraAzienda=?";
 
+    stmt = (PreparedStatement) conness.prepareStatement(sqlu);
+    stmt1 = (PreparedStatement) conness.prepareStatement(sqle);
+    stmt.setString(1, user.getUsername());
+    stmt1.setInt(1, user.getIdUtente());
 
-            stmt = (PreparedStatement) con.prepareStatement(sqlu);
-            stmt1 = (PreparedStatement) con.prepareStatement(sqle);
-            stmt.setString(1, user.getUsername());
-            stmt1.setInt(1, user.getIdUtente());
+    stmt.execute();
+    stmt1.execute();
 
-            stmt.execute();
-            stmt1.execute();
-
-            con.commit();
-        } catch (SQLException e) {
-            con.rollback();
-        }
-        stmt.close();
-        ConnectionPool.releaseConnection(con);
+    conness.commit();
+    } catch (SQLException e) {
+    conness.rollback();
+    }
+    stmt.close();
+    ConnectionPool.releaseConnection(conness);
     }
 
     /** Nasconde l'utente eliminato al sistema senza l'eliminazione fisica
      * @param user
      * user del Fornitore da eliminare
-     * @throws java.sql.SQLException*/
+     * @throws java.sql.SQLException
     private void eliminazioneLogica(Fornitore user) throws SQLException {
-        PreparedStatement stmt = null;
+    PreparedStatement stmt = null;
 
 
-        String sql = "UPDATE utente(visibilita) SET visibilita='false'";
+    String sql = "UPDATE utente(visibilita) SET visibilita='false'";
 
-        // Create a statement
-        stmt = (PreparedStatement) con.prepareStatement(sql);
+    // Create a statement
+    stmt = (PreparedStatement) conness.prepareStatement(sql);
 
-        // Execute the query
-        stmt.executeQuery();
+    // Execute the query
+    stmt.executeQuery();
 
-        stmt.close();
-        ConnectionPool.releaseConnection(con);
+    stmt.close();
+    ConnectionPool.releaseConnection(conness);
 
 
     }
@@ -146,10 +146,10 @@ public class OpFornitore extends OpExtraAzienda {
      */
     public void inserisci(Fornitore user) throws SQLException, DatiDuplicatiEx {
 
-
+        conness = ConnectionPool.getConnection();
         PreparedStatement stmt = null;
         PreparedStatement stmte = null;
-        Statement stmt1 = con.createStatement();
+        Statement stmt1 = conness.createStatement();
         String sqlTest = "SELECT piva FROM extraazienda WHERE piva= '" + user.getPIva() + "'";
         ResultSet rs = stmt1.executeQuery(sqlTest);
 
@@ -157,13 +157,13 @@ public class OpFornitore extends OpExtraAzienda {
             throw new DatiDuplicatiEx("contatto già esistente nel database");
         } else {
             try {
-                con.setAutoCommit(false);
+                conness.setAutoCommit(false);
                 String sqlu = "INSERT INTO utente(username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita) VALUES(?,?,?,?,?,?,?,?,?,true)";
                 String sqle = "INSERT INTO extraazienda(idExtraAzienda,nome,cognome,fax,piva,ragioneSociale,Ruolo)" +
                         "VALUES(LAST_INSERT_ID(),?,?,?,?,?,'Fornitore')";
 
 
-                stmt = (PreparedStatement) con.prepareStatement(sqlu);
+                stmt = (PreparedStatement) conness.prepareStatement(sqlu);
                 stmt.setString(1, user.getUsername());
                 stmt.setString(2, user.getPassword());
                 stmt.setString(3, user.getEmail());
@@ -174,7 +174,7 @@ public class OpFornitore extends OpExtraAzienda {
                 stmt.setString(8, user.getNote());
                 stmt.setString(9, user.getTipo());
                 // stmt.setString(10, user.getVisible().toString());
-                stmte = (PreparedStatement) con.prepareStatement(sqle);
+                stmte = (PreparedStatement) conness.prepareStatement(sqle);
                 stmte.setString(1, user.getNome());
                 stmte.setString(2, user.getCognome());
                 stmte.setString(3, user.getFax());
@@ -185,14 +185,14 @@ public class OpFornitore extends OpExtraAzienda {
                 stmt.execute();
                 stmte.execute();
 
-                con.commit();
+                conness.commit();
             } catch (SQLException e) {
                 e.printStackTrace();
-                con.rollback();
+                conness.rollback();
             }
 
             stmt.close();
-            ConnectionPool.releaseConnection(con);
+            ConnectionPool.releaseConnection(conness);
         }
 
 
@@ -205,61 +205,61 @@ public class OpFornitore extends OpExtraAzienda {
      * @throws java.sql.SQLException
      * @throws DatiErratiEx
      * @throws DatiDuplicatiEx
-     */
+
     public Fornitore modifica(Fornitore user) throws SQLException, DatiErratiEx, DatiDuplicatiEx {
-        PreparedStatement stmt = null;
-        PreparedStatement stmte = null;
+    PreparedStatement stmt = null;
+    PreparedStatement stmte = null;
 
 
 
-        Statement stmt1 = con.createStatement();
-        String sqlTest = "SELECT idUtente,username,password,città,ruol,provincia," +
-                "telefono,cap,email,ruolo,note,v,cognome,nome,ragioneSociale,pIva," +
-                "fax FROM fornitore,utente,extraazienda WHERE  idUtente=idExtraAzienda and idExtraAzienda=idFornitore and nome='" + user.getPIva();
-        ResultSet rs = stmt1.executeQuery(sqlTest);
+    Statement stmt1 = conness.createStatement();
+    String sqlTest = "SELECT idUtente,username,password,città,ruol,provincia," +
+    "telefono,cap,email,ruolo,note,v,cognome,nome,ragioneSociale,pIva," +
+    "fax FROM fornitore,utente,extraazienda WHERE  idUtente=idExtraAzienda and idExtraAzienda=idFornitore and nome='" + user.getPIva();
+    ResultSet rs = stmt1.executeQuery(sqlTest);
 
-        if (rs.next()) {
-            throw new DatiDuplicatiEx("utente già esistente nel database");
-        } else {
-            try {
-                con.setAutoCommit(false);
-                String sqlu = "UPDATE utente(username,password,email,citta,prov,telefono" +
-                        "CAP,note,tipo,visibilita) SET username=?,password=?,email=?,citta=?,prov=?," +
-                        "telefono=?,CAP=?,note=?,tipo=?,visibilita=?";
-                String sqle = "UPDATE extraazienda(nome,cognome,fax,piva,ragioneSociale,codiceFiscale)" +
-                        "SET nome=?,cognome=?,fax=?,piva=?,ragioneSociale=?,codiceFiscale=?";
+    if (rs.next()) {
+    throw new DatiDuplicatiEx("utente già esistente nel database");
+    } else {
+    try {
+    conness.setAutoCommit(false);
+    String sqlu = "UPDATE utente(username,password,email,citta,prov,telefono" +
+    "CAP,note,tipo,visibilita) SET username=?,password=?,email=?,citta=?,prov=?," +
+    "telefono=?,CAP=?,note=?,tipo=?,visibilita=?";
+    String sqle = "UPDATE extraazienda(nome,cognome,fax,piva,ragioneSociale,codiceFiscale)" +
+    "SET nome=?,cognome=?,fax=?,piva=?,ragioneSociale=?,codiceFiscale=?";
 
 
-                stmt = (PreparedStatement) con.prepareStatement(sqlu);
-                stmt.setString(1, user.getUsername());
-                stmt.setString(2, user.getPassword());
-                stmt.setString(3, user.getEmail());
-                stmt.setString(4, user.getCitta());
-                stmt.setString(5, user.getProvincia());
-                stmt.setString(6, user.getTelefono());
-                stmt.setString(7, user.getCap());
-                stmt.setString(8, user.getNote());
-                stmt.setString(9, user.getTipo());
-                stmt.setString(10, user.getVisible().toString());
-                stmte = (PreparedStatement) con.prepareStatement(sqle);
-                stmte.setString(1, user.getNome());
-                stmte.setString(2, user.getCognome());
-                stmte.setString(3, user.getFax());
-                stmte.setString(4, user.getPIva());
-                stmte.setString(5, user.getRagioneSociale());
+    stmt = (PreparedStatement) conness.prepareStatement(sqlu);
+    stmt.setString(1, user.getUsername());
+    stmt.setString(2, user.getPassword());
+    stmt.setString(3, user.getEmail());
+    stmt.setString(4, user.getCitta());
+    stmt.setString(5, user.getProvincia());
+    stmt.setString(6, user.getTelefono());
+    stmt.setString(7, user.getCap());
+    stmt.setString(8, user.getNote());
+    stmt.setString(9, user.getTipo());
+    stmt.setString(10, user.getVisible().toString());
+    stmte = (PreparedStatement) conness.prepareStatement(sqle);
+    stmte.setString(1, user.getNome());
+    stmte.setString(2, user.getCognome());
+    stmte.setString(3, user.getFax());
+    stmte.setString(4, user.getPIva());
+    stmte.setString(5, user.getRagioneSociale());
 
-                stmt.execute();
-                stmte.execute();
+    stmt.execute();
+    stmte.execute();
 
-                con.commit();
-            } catch (SQLException e) {
-                con.rollback();
-            }
-        }
-        stmt.close();
-        ConnectionPool.releaseConnection(con);
+    conness.commit();
+    } catch (SQLException e) {
+    conness.rollback();
+    }
+    }
+    stmt.close();
+    ConnectionPool.releaseConnection(conness);
 
-        return user;
+    return user;
 
     }
 
@@ -269,19 +269,19 @@ public class OpFornitore extends OpExtraAzienda {
      * @return il bean con i dettagli del Fornitore
      * @throws java.sql.SQLException*/
     public Fornitore visualizzaDati(Integer id) throws SQLException {
-
+        conness = ConnectionPool.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
         Fornitore fornitore = null;
 
 
 
-        String sql ="SELECT idUtente,username,password,citta,prov," +
-        "telefono,cap,email,Ruolo,note,visibilita,cognome,nome,ragioneSociale," +
-        "piva,fax FROM utente,extraazienda WHERE idUtente=idExtraAzienda and idExtraAzienda=?" ;
-       // String sql = "SELECT * FROM extraazienda where idExtraAzienda= ? ";
+        String sql = "SELECT idUtente,username,password,citta,prov," +
+                "telefono,cap,email,Ruolo,note,visibilita,cognome,nome,ragioneSociale," +
+                "piva,fax FROM utente,extraazienda WHERE idUtente=idExtraAzienda and idExtraAzienda=?";
+        // String sql = "SELECT * FROM extraazienda where idExtraAzienda= ? ";
 
-        stmt = (PreparedStatement) con.prepareStatement(sql);
+        stmt = (PreparedStatement) conness.prepareStatement(sql);
         stmt.setInt(1, id);
         // Execute the query
         rs = stmt.executeQuery();
@@ -309,7 +309,7 @@ public class OpFornitore extends OpExtraAzienda {
         }
         rs.close();
         stmt.close();
-        ConnectionPool.releaseConnection(con);
+        ConnectionPool.releaseConnection(conness);
         return fornitore;
 
     }
