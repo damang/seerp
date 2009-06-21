@@ -151,8 +151,6 @@ public class AppRuoli implements GestioneRuoli<BeanGuiRuolo> {
         } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        } catch (Exception ex) {
-            Logger.getLogger(AppRuoli.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

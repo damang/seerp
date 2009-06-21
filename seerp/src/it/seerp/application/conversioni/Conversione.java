@@ -878,8 +878,8 @@ public class Conversione {
      * @para r il Bean Grafico che deve essere modificato
      * @return il Bean Gui convertito
      */
-    public static BeanGuiRuolo conversioneRuolo(Ruolo b, BeanGuiRuolo r) throws ValidatorException, Exception {
-       // r.resetAll();
+    public static BeanGuiRuolo conversioneRuolo(Ruolo b, BeanGuiRuolo r) throws ValidatorException {
+        r.resetAll();
         r.getNome().setText(b.getNome());
         HashMap<String, ArrayList<BeanGuiPermesso>> lipi = r.getListPermessi();//new HashMap<String, ArrayList<BeanGuiPermesso>>();
         PermessoCollection p = b.getListPermesso();
