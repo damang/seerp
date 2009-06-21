@@ -57,7 +57,7 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
     public ArrayList<BeanGuiUtente> ricerca(ArrayList<BeanGuiUtente> list) throws DatiErrati, RicercaFallita {
         try {
             OpeUtente ope = new OpeUtente();
-            ArrayList<Utente> listGui = ope.ricerca();
+            ArrayList<Utente> listGui = ope.visualizzaElenco();
             int i = 0;
             for (Utente user : listGui) {
                 list.add(Conversione.conversioneUtente(user, list.get(i)));
