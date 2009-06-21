@@ -800,6 +800,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
         p_all.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli), gest_ruo);
         p_all.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi), gest_ser);
         be.setPermGen(p_all);
+        be.setTabUt(jXTable1);
     }
 
     @Override
@@ -812,6 +813,9 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
     }
     public void setMenu(MenuRuoli menu) {
         this.menu = menu;
+    }
+    public MenuRuoli getMenu() {
+        return this.menu;
     }
      public void setTipoOP(ConfigurazioneOperazioni.TIPO_OPE_CONST tipo) {
         this.tipoOp = tipo;
@@ -832,8 +836,9 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
         it=be.getPermGen().values().iterator();
         while (it.hasNext())
             it.next().setEnabled(b);
-        jXTable2.setEditable(b);
-        
+        jXTable2.setEnabled(b);
+        jXTable1.setEnabled(!b);
+                
         } catch (Exception ex) {
             ex.printStackTrace();
         }

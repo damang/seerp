@@ -103,7 +103,6 @@ public class MenuRuoli extends javax.swing.JPanel implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         CommandInterface cmd = (CommandInterface) e.getSource();
-        setButtonEnabled(false);
         cmd.execute();
     }
     public void setButtonEnabled (boolean b) {
