@@ -20,6 +20,7 @@ import it.seerp.application.bean.BeanGuiRuolo;
 import it.seerp.application.bean.BeanGuiServizio;
 import it.seerp.application.bean.BeanGuiServizioAssociato;
 import it.seerp.application.bean.BeanGuiUtente;
+import it.seerp.application.tabelle.PersonaleTm;
 import it.seerp.storage.jaas.PermessoCollection;
 import it.seerp.storage.ejb.Agenda;
 import it.seerp.storage.ejb.Amministratore;
@@ -42,6 +43,7 @@ import it.seerp.storage.ejb.Ruolo;
 import it.seerp.storage.ejb.Servizio;
 import it.seerp.storage.ejb.ServizioAssociato;
 import it.seerp.storage.ejb.Utente;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -879,7 +881,7 @@ public class Conversione {
      * @para r il Bean Grafico che deve essere modificato
      * @return il Bean Gui convertito
      */
-    public static BeanGuiRuolo conversioneRuolo(Ruolo b, BeanGuiRuolo r) throws ValidatorException {
+    public static BeanGuiRuolo conversioneRuolo(Ruolo b, BeanGuiRuolo r) throws ValidatorException, SQLException {
         r.resetAll();
         r.getNome().setText(b.getNome());
         HashMap<String, ArrayList<BeanGuiPermesso>> lipi = r.getListPermessi();//new HashMap<String, ArrayList<BeanGuiPermesso>>();
@@ -897,6 +899,7 @@ public class Conversione {
                 }
             }
         }
+        r.getTabPers().setModel(new PersonaleTm(b));
 
         return r;
 

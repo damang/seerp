@@ -31,18 +31,14 @@ public class AppRuoli implements GestioneRuoli<BeanGuiRuolo> {
      * @throws it.seerp.application.Exception.DatiDuplicati
      * nel caso in cui si immettano dati duplicati
      */
-    public void inserimento(BeanGuiRuolo beanGui) throws DatiErrati, DatiDuplicati {
+    public void inserimento(BeanGuiRuolo beanGui) throws SQLException, DatiErrati, DatiDuplicati {
         try {
             OpRuolo ope = new OpRuolo();
             Ruolo ruolo = Conversione.conversioneRuolo(beanGui);
             ope.inserimento(ruolo);
-        }catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
         } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-
         }
     }
     /**
@@ -57,9 +53,9 @@ public class AppRuoli implements GestioneRuoli<BeanGuiRuolo> {
     public BeanGuiRuolo modifica(BeanGuiRuolo beanGui) throws DatiErrati {
         try {
             OpRuolo ope = new OpRuolo();
-         //   Ruolo ruo = Conversione.conversioneRuolo(beanGui);
-         //   ruo = ope.modifica(ruo);
-           // beanGui = Conversione.conversioneRuolo(ruo, beanGui);
+            Ruolo ruo = Conversione.conversioneRuolo(beanGui);
+            ruo = ope.modifica(ruo);
+            //beanGui = Conversione.conversioneRuolo(ruo, beanGui);
         }catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
@@ -76,19 +72,34 @@ public class AppRuoli implements GestioneRuoli<BeanGuiRuolo> {
      *
      * @param r
      * @return
-
+  */
     public void elimina(BeanGuiRuolo r) {
     try {
-    OpRuolo ope = new OpRuolo();
-    Ruolo ruo = Conversione.conversioneRuolo(r);
-    ope.elimina(ruo);
-    } catch (SQLException se) {
-    se.printStackTrace();
-    JOptionPane.showMessageDialog(null, "Errore nel database!");
-    } catch (ValidatorException e) {
-    e.printStackTrace();
-    JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
+            OpRuolo ope = new OpRuolo();
+            Ruolo ruo = Conversione.conversioneRuolo(r);
+            ope.elimina(ruo);
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (ValidatorException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
+        }
     }
+    public void elimina(String r) {
+    try {
+            OpRuolo ope = new OpRuolo();
+            ope.elimina(new Ruolo(r));
+        } catch (SQLException se) {
+            se.printStackTrace();
+            switch (se.getErrorCode()) {
+                    case 1451: JOptionPane.showMessageDialog(null, "Impossibile eliminare perchè il ruolo è assegnato!");break;
+                    default: JOptionPane.showMessageDialog(null, "Errore nel database!");break;
+            }
+        } catch (ValidatorException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
+        }
     }
 
     /**

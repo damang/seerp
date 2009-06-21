@@ -35,6 +35,17 @@ public class OpRuolo implements OpeEntity<Ruolo,String>{
         
     }
 
+    private void insertIncarico(Connection conn,PreparedStatement stmt, Ruolo bean) throws SQLException {
+        String sql = "insert into incarico set ruolo=?, permesso= (SELECT idPermesso from permesso where task=? and `action`=?);";
+        stmt = (PreparedStatement) conn.prepareStatement(sql);
+        PermessoCollection b = bean.getListPermesso();
+        stmt.setString(1, bean.getNome());
+        for (int i = 0; i < b.size(); i++) {
+            stmt.setString(2, b.get(i).getName());
+            stmt.setString(3, b.get(i).getActions());
+            stmt.execute();
+        }
+    }
     public void inserimento(Ruolo bean) throws SQLException {
         conn = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
@@ -44,19 +55,9 @@ public class OpRuolo implements OpeEntity<Ruolo,String>{
         stmt.setString(1, bean.getNome());
             // Execute the query
         stmt.execute();
-
-        sql = "insert into incarico set ruolo=?, permesso= (SELECT idPermesso from permesso where task=? and `action`=?);";
-        stmt = (PreparedStatement) conn.prepareStatement(sql);
-        PermessoCollection b = bean.getListPermesso();
-            stmt.setString(1, bean.getNome());
-        for (int i = 0; i < b.size(); i++) {
-            stmt.setString(2, b.get(i).getName());
-            stmt.setString(3, b.get(i).getActions());
-            stmt.execute();
-        }
-        
+        insertIncarico(conn, stmt, bean);
+               
             // Execute the query
-       
         stmt.close();
         ConnectionPool.releaseConnection(conn);
 
@@ -64,7 +65,18 @@ public class OpRuolo implements OpeEntity<Ruolo,String>{
     }
 
     public Ruolo modifica(Ruolo bean) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet.");
+        conn = (Connection) ConnectionPool.getConnection();
+        PreparedStatement stmt = null;
+
+        String sql = "Delete from incarico where ruolo=?;";
+        stmt = (PreparedStatement) conn.prepareStatement(sql);
+        stmt.setString(1, bean.getNome());
+            // Execute the query
+        stmt.execute();
+        insertIncarico(conn, stmt, bean);
+        stmt.close();
+        ConnectionPool.releaseConnection(conn);
+        return bean;
     }
 
     public Ruolo visualizza(String id) throws SQLException {
@@ -102,5 +114,15 @@ public class OpRuolo implements OpeEntity<Ruolo,String>{
         stmt.close();
         ConnectionPool.releaseConnection(conn);
         return r;
+    }
+    public void elimina(Ruolo bean) throws SQLException {
+        conn = (Connection) ConnectionPool.getConnection();
+        PreparedStatement stmt = null;
+        String sql = "Delete from ruolo where nome=?;";
+        stmt = (PreparedStatement) conn.prepareStatement(sql);
+        stmt.setString(1, bean.getNome());
+        stmt.execute();
+        stmt.close();
+        ConnectionPool.releaseConnection(conn);
     }
 }

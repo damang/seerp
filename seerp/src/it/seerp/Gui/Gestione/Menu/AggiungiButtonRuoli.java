@@ -9,6 +9,7 @@ import it.seerp.Gui.Gestione.Ruoli.GestioneRuoli;
 import it.seerp.Gui.Gestione.Contratti.GestioneContratti;
 import it.seerp.Gui.Gestione.Ruoli.sceltaRuolo;
 import it.seerp.Gui.configurazioni.Gui.ConfigurazioneOperazioni;
+import it.seerp.Gui.configurazioni.PermessiDefault;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -56,6 +57,7 @@ public class AggiungiButtonRuoli extends JButton implements CommandInterface {
                  area.getMenu().setButtonEnabled(false);
                  area.getBeanGuiRuolo().resetAll();
                  area.getBeanGuiRuolo().getNome().setText(r+"_");
+                 area.getBeanGuiRuolo().setListPermessi(PermessiDefault.getPermessiGUI(r,area.getBeanGuiRuolo().getListPermessi()));
                  area.setTipoOP(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI);
                  area.getSalva().setVisible(true);
                  area.getAnnulla().setVisible(true);

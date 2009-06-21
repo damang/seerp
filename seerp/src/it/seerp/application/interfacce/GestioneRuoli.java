@@ -2,6 +2,7 @@ package it.seerp.application.interfacce;
 
 import it.seerp.application.Exception.DatiDuplicati;
 import it.seerp.application.Exception.DatiErrati;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -17,7 +18,7 @@ public interface GestioneRuoli<E> {
      * @throws it.seerp.application.Exception.DatiErrati
      * @throws it.seerp.application.Exception.DatiDuplicati
      */
-    public void inserimento(E beanGuiEventi) throws DatiErrati, DatiDuplicati;
+    public void inserimento(E beanGuiEventi) throws SQLException, DatiErrati, DatiDuplicati;
 
     /**
      *

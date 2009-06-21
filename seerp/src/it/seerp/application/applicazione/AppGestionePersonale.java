@@ -12,12 +12,15 @@ import it.seerp.storage.Operazioni.OpAmministratore;
 import it.seerp.storage.Operazioni.OpCliente;
 import it.seerp.storage.Operazioni.OpDipendente;
 import it.seerp.storage.Operazioni.OpFornitore;
+import it.seerp.storage.Operazioni.OpPersonale;
 import it.seerp.storage.Operazioni.OpResponsabile;
 import it.seerp.storage.ejb.Amministratore;
 import it.seerp.storage.ejb.Cliente;
 import it.seerp.storage.ejb.Dipendente;
 import it.seerp.storage.ejb.Fornitore;
+import it.seerp.storage.ejb.Personale;
 import it.seerp.storage.ejb.Responsabile;
+import it.seerp.storage.ejb.Ruolo;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -158,7 +161,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * @return lista dei bean
      */
     public ArrayList<Dipendente> visualizzaTabellaDipendenti() {
-        ArrayList<Dipendente> list = new ArrayList<Dipendente>();
+        ArrayList<Dipendente> list=null;
         try {
             OpDipendente ope = new OpDipendente();
             list = ope.elencaDipendente();
@@ -167,6 +170,21 @@ public class AppGestionePersonale extends AppGestioneUtente {
             JOptionPane.showMessageDialog(null, "Errore nel database!");
         }
         return list;
+    }
+
+    public ArrayList<Personale> visualizzaTabellaPersonaleRuolo(Ruolo r) throws SQLException {
+
+        OpPersonale op= new OpPersonale();
+        ArrayList<Personale> l=op.elencaPersonalePerRuolo(r);
+        return l;
+
+    }
+     public ArrayList<Personale> visualizzaTabellaPersonale() throws SQLException {
+
+        OpPersonale op= new OpPersonale();
+        ArrayList<Personale> l=op.elencaPersonale();
+        return l;
+
     }
 
     /**
