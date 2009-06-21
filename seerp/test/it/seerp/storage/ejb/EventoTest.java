@@ -168,8 +168,7 @@ public class EventoTest extends TestCase {
     public void testSetData() {
         System.out.println("setData");
         GregorianCalendar dataT = new GregorianCalendar();
-        Evento instance = new Evento();
-        instance.setData(dataT);
+        eveSet.setData(dataT);
         assertEquals(dataT, eveSet.getData());
     }
 
