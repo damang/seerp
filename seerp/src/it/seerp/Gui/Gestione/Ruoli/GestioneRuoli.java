@@ -648,7 +648,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
     private void jXTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jXTable1MouseClicked
         //JOptionPane.showMessageDialog(null, ));
         AppRuoli r= new AppRuoli();
-        r.visualizzaDati((String)jXTable1.getValueAt(jXTable1.convertRowIndexToModel(jXTable1.getSelectedRow()), 0), be);
+        r.visualizzaDati((String)jXTable1.getValueAt(jXTable1.getSelectedRow(), 0), be);
     }//GEN-LAST:event_jXTable1MouseClicked
 
     private void con_ricActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_con_ricActionPerformed
