@@ -27,6 +27,39 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
         conn = (Connection) ConnectionPool.getConnection();
     }
 
+    public Utente visualizza(String user) throws SQLException {
+        conn = (Connection) ConnectionPool.getConnection();
+        Utente ut=null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        String sql = "SELECT * FROM Utente WHERE username = ?;";
+        stmt = (PreparedStatement) conn.prepareStatement(sql);
+        stmt.setString(1, user);
+
+        rs = stmt.executeQuery();
+
+        while (rs.next()) {
+
+            ut = new Utente();
+            ut.setIdUtente(rs.getInt("idUtente"));
+            ut.setUsername(user);
+            ut.setPassword(rs.getString("password"));
+            ut.setCap(rs.getString("cap"));
+            ut.setCitta(rs.getString("citta"));
+            ut.setEmail(rs.getString("email"));
+            ut.setNote(rs.getString("note"));
+            ut.setProvincia(rs.getString("prov"));
+            ut.setTelefono(rs.getString("telefono"));
+            ut.setTipo(rs.getString("tipo"));
+            ut.setVisible(rs.getBoolean("visibilita"));
+       }
+
+        rs.close();
+        stmt.close();
+        ConnectionPool.releaseConnection(conn);
+        return ut;
+    }
+
     /*
      * metodo che permette di visualizzare l'elenco degli utenti
      * @return ArrayList<Utente> l'elenco degli utenti

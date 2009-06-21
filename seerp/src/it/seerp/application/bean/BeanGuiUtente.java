@@ -19,6 +19,7 @@ public class BeanGuiUtente {
 
     private JTextField idUtenteTxt;
     private JTextField txtUsername;
+    private JTextField txtUsername2;
     private JTextField txtPassword;
     private JTextField txtCitta;
     private JTextField txtProvincia;
@@ -132,6 +133,19 @@ public class BeanGuiUtente {
      */
     public JTextField getTxtNotifica() {
         return txtNotifica;
+    }
+
+    public void setTxtUsernameSec(JTextField user1) {
+        txtUsername2=user1;
+    }
+     public JTextField getTxtUsername2() throws ValidatorException {
+       /* if (!val.shouldYieldFocus(grafica)) {
+            throw new ValidatorException("Errore nella grafica!");
+        }
+        if (!valMinLen.shouldYieldFocus(grafica)) {
+            throw new ValidatorException("Errore nella grafica!");
+        }*/
+        return txtUsername2;
     }
 
     /**

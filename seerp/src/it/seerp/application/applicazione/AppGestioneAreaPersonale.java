@@ -50,8 +50,8 @@ public class AppGestioneAreaPersonale implements GestioneAreaPersonale<BeanGuiUt
         try {
             OpAreaPersonale ope = new OpAreaPersonale();
             Utente user = Conversione.conversioneUtente(beanGui);
-            user = ope.modificaPassword(user);
-            beanGui = Conversione.conversioneUtente(user, beanGui);
+            ope.modificaPassword(user);
+            //beanGui = Conversione.conversioneUtente(user, beanGui);
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");

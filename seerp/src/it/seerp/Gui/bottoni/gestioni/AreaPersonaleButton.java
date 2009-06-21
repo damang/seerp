@@ -3,6 +3,7 @@ package it.seerp.Gui.bottoni.gestioni;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.AreaPersonale.AreaPersonalePanel;
+import it.seerp.Gui.Home.Index;
 import it.seerp.Gui.observerButton.ObserverButton;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
@@ -27,10 +28,10 @@ public class AreaPersonaleButton extends ObserverButton implements CommandInterf
      * @param menu
      * @param act
      */
-    public AreaPersonaleButton(JTabbedPane pan, JPanel menu, ActionListener act) {
+    public AreaPersonaleButton(JTabbedPane pan, JPanel menu, Index act) {
         this.tabbedPane = pan;
         this.menu = menu;
-        this.panel = new AreaPersonalePanel();
+        this.panel = new AreaPersonalePanel(act.getSubject());
         this.addActionListener(act);
         panel.register(this);
     }

@@ -45,6 +45,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.pack();
     }
+    public Subject getSubject() { return ut_sub; }
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -84,7 +85,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
             menuServizi1 = new it.seerp.Gui.Gestione.Menu.MenuServizi();
             menuInfoAzienda1 = new it.seerp.Gui.Gestione.Menu.MenuInfoAzienda();
             menuAreaPersonale2 = new it.seerp.Gui.Gestione.Menu.MenuAreaPersonale();
-            menuAppuntamento1 = new it.seerp.Gui.Gestione.Menu.MenuAppuntamento();
+            menuAppuntamento1 = new it.seerp.Gui.Gestione.Menu.MenuAgenda();
             menuBar = new javax.swing.JMenuBar();
             fileMenu = new javax.swing.JMenu();
             openMenuItem = new javax.swing.JMenuItem();
@@ -749,7 +750,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
     private org.jdesktop.swingx.JXTaskPane jXTaskPane3;
     private org.jdesktop.swingx.JXTaskPaneContainer jXTaskPaneContainer1;
     private org.jdesktop.swingx.JXTitledPanel jXTitledPanel1;
-    private it.seerp.Gui.Gestione.Menu.MenuAppuntamento menuAppuntamento1;
+    private it.seerp.Gui.Gestione.Menu.MenuAgenda menuAppuntamento1;
     private it.seerp.Gui.Gestione.Menu.MenuAreaPersonale menuAreaPersonale2;
     private javax.swing.JMenuBar menuBar;
     private it.seerp.Gui.Gestione.Menu.MenuContratti menuContratti1;
