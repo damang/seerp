@@ -187,7 +187,7 @@ public  class OpeUtente implements OpeEntity<Utente, Integer> {
      * @throws java.sql.SQLException
      */
     public void eliminaLogica(Utente ut) throws SQLException {
-        /*
+        conn = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
 
         String sql = "UPDATE Utente SET Visible='false' where username = ?";
@@ -197,7 +197,7 @@ public  class OpeUtente implements OpeEntity<Utente, Integer> {
         // Execute the query
         stmt.executeQuery();
         stmt.close();
-        ConnectionPool.releaseConnection(conn);*/
+        ConnectionPool.releaseConnection(conn);
     }
 
     /**

@@ -34,6 +34,7 @@ public class OpAreaPersonale extends OpPersonale {
      * id del membro del personale
      * @return il bean con i dettagli del membro del personale
      * @throws java.sql.SQLException*/
+
     @Override
     public Personale visualizzaDati(Integer id) throws SQLException {
 
