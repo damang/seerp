@@ -95,9 +95,9 @@ public class OpResponsabile extends OpeUtente {
 
         try {
             con.setAutoCommit(false);
-            String sql = "DELETE * FROM utente where username = ?";
-            String sql1 = "DELETE * FROM personale where idPersonale=?";
-            String sql2 = "DELETE * FROM responsabile where idResponsabile=?";
+            String sql = "DELETE  FROM utente where username = ?";
+            String sql1 = "DELETE  FROM personale where idPersonale=?";
+            String sql2 = "DELETE  FROM responsabile where idResponsabile=?";
             // Create a statement
             stmt = (PreparedStatement) con.prepareStatement(sql);
             stmt1 = (PreparedStatement) con.prepareStatement(sql1);
@@ -106,11 +106,12 @@ public class OpResponsabile extends OpeUtente {
             stmt1.setInt(1, user.getIdUtente());
             stmt2.setInt(1, user.getIdUtente());
             // Execute the query
-            stmt.executeQuery(sql);
-            stmt1.executeQuery(sql1);
-            stmt2.executeQuery(sql2);
+            stmt.execute();
+            stmt1.execute();
+            stmt2.execute();
             con.commit();
         } catch (SQLException se) {
+            se.printStackTrace();
             con.rollback();
             System.out.println("eliminazione fallita");
         }
@@ -276,7 +277,9 @@ public class OpResponsabile extends OpeUtente {
         ResultSet rs = null;
 
 
-        String sql = "SELECT * FROM utente,personale WHERE idUtente=idPersonale and idPersonale= ? ";
+        String sql = "SELECT idUtente,username,password,citta,prov," +
+                "telefono,cap,email,note,tipo,cognome,nome,codiceFiscale," +
+                "ruolo,visibilita FROM utente,personale WHERE idUtente=idPersonale and idPersonale= ? ";
 
         stmt = (PreparedStatement) con.prepareStatement(sql);
         stmt.setInt(1, id);
@@ -293,7 +296,7 @@ public class OpResponsabile extends OpeUtente {
                     rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8),
                     rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13),
                     new Ruolo(rs.getString(14)), rs.getBoolean(15));
-
+            System.out.println("resp"+responsabile.getNome());
         }
 
         rs.close();

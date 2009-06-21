@@ -13,6 +13,7 @@ import java.sql.Connection;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -202,22 +203,22 @@ public class OpCliente extends OpExtraAzienda {
         PreparedStatement stmt = null;
         PreparedStatement stmte = null;
 
-        Statement stmt1 = con.createStatement();
-        String sqlTest = "SELECT idUtente,username,password,città,ruol,provincia," +
-                "telefono,cap,email,ruolo,note,v,cognome,nome,ragioneSociale,pIva" +
-                "fax FROM cliente,utente,extraazienda WHERE  idUtente=idExtraAzienda and idExtraAzienda=idContatto and nome='" + user.getPIva() + "' ";
+       /* Statement stmt1 = con.createStatement();
+        String sqlTest = "SELECT idUtente,username,password,citta,ruol,provincia," +
+                "telefono,cap,email,ruolo,note,visibilita,cognome,nome,ragioneSociale,pIva" +
+                "fax FROM utente,extraazienda WHERE  idUtente=idExtraAzienda and nome='" + user.getPIva() + "' ";
         ResultSet rs = stmt1.executeQuery(sqlTest);
 
         if (rs.next()) {
             throw new DatiDuplicatiEx("utente già esistente nel database");
-        } else {
+        } else {*/
  try {
+     
                 con.setAutoCommit(false);
-                String sqlu = "UPDATE utente(username,password,email,citta,prov,telefono" +
-                        "CAP,note,tipo,visibilita) SET username=?,password=?,email=?,citta=?,prov=?," +
-                        "telefono=?,CAP=?,note=?,tipo=?,visibilita=?";
-                String sqle = "UPDATE extraazienda(nome,cognome,fax,piva,ragioneSociale,codiceFiscale)" +
-                        "SET nome=?,cognome=?,fax=?,piva=?,ragioneSociale=?,codiceFiscale=?";
+                String sqlu = "UPDATE utente SET username=?,password=?,email=?,citta=?,prov=?," +
+                        "telefono=? WHERE idUtente=?";/*mettere visibilita tipo e cap*/
+                String sqle = "UPDATE extraazienda SET piva=?,ragioneSociale=?"+
+                        "WHERE idExtraAzienda=?";/*nome,cognome=?,fax=?,codiceFiscale=?*/
 
 
                 stmt = (PreparedStatement) con.prepareStatement(sqlu);
@@ -227,25 +228,28 @@ public class OpCliente extends OpExtraAzienda {
                 stmt.setString(4, user.getCitta());
                 stmt.setString(5, user.getProvincia());
                 stmt.setString(6, user.getTelefono());
-                stmt.setString(7, user.getCap());
-                stmt.setString(8, user.getNote());
-                stmt.setString(9, user.getTipo());
-                stmt.setString(10, user.getVisible().toString());
+              //  stmt.setString(7, user.getCap());
+                //stmt.setString(8, user.getNote());
+             //   stmt.setString(9, user.getTipo());
+                stmt.setInt(7, user.getIdUtente());
+//                stmt.setString(10, user.getVisible().toString());
                 stmte = (PreparedStatement) con.prepareStatement(sqle);
-                stmte.setString(1, user.getNome());
-                stmte.setString(2, user.getCognome());
-                stmte.setString(3, user.getFax());
-                stmte.setString(4, user.getPIva());
-                stmte.setString(5, user.getRagioneSociale());
+              //  stmte.setString(1, user.getNome());
+                //stmte.setString(2, user.getCognome());
+               // stmte.setString(3, user.getFax());
+                stmte.setString(1, user.getPIva());
+                stmte.setString(2, user.getRagioneSociale());
+                stmte.setInt(3, user.getIdUtente());
 
                 stmt.execute();
                 stmte.execute();
 
                 con.commit();
             } catch (SQLException e) {
+                e.printStackTrace();
                 con.rollback();
             }
-        }
+       
 
         stmt.close();
         ConnectionPool.releaseConnection(con);

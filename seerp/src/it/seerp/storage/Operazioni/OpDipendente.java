@@ -90,9 +90,9 @@ public class OpDipendente extends OpPersonale {
 
         try {
             con.setAutoCommit(false);
-            String sql = "DELETE * FROM utente where username = ?";
-            String sql1 = "DELETE * FROM personale where idPersonale=?";
-            String sql2 = "DELETE * FROM dipendente where idDipendente=?";
+            String sql = "DELETE  FROM utente where username = ?";
+            String sql1 = "DELETE  FROM personale where idPersonale=?";
+            String sql2 = "DELETE  FROM dipendente where idDipendente=?";
             // Create a statement
             stmt = (PreparedStatement) con.prepareStatement(sql);
             stmt1 = (PreparedStatement) con.prepareStatement(sql1);
@@ -101,12 +101,13 @@ public class OpDipendente extends OpPersonale {
             stmt1.setInt(1, user.getIdUtente());
             stmt2.setInt(1, user.getIdUtente());
             // Execute the query
-            stmt.executeQuery(sql);
-            stmt1.executeQuery(sql1);
-            stmt2.executeQuery(sql2);
+            System.out.println(   stmt.execute());
+            System.out.println( stmt1.execute());
+            System.out.println( stmt2.execute());
             con.commit();
         } catch (SQLException se) {
             con.rollback();
+            se.printStackTrace();
             System.out.println("eliminazione fallita");
         }
         stmt.close();
@@ -282,7 +283,7 @@ public class OpDipendente extends OpPersonale {
                     rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
                     rs.getString(11), rs.getString(12), rs.getString(13), new Ruolo(rs.getString(14)),
                     rs.getBoolean(15));
-
+            System.out.println("lu"+ rs.getString(1));
         }
         rs.close();
         stmt.close();
