@@ -153,6 +153,7 @@ public class OpExtraAzienda extends OpeUtente {
      * @throws DatiDuplicatiEx
      */
     public void inserisci(ExtraAzienda user) throws SQLException, DatiDuplicatiEx {
+        super.inserimento(user);
         /*PreparedStatement stmt = null;
         Statement stmt1 = con.createStatement();
         String sqlTest = "SELECT idUtente,username,password,città,ruol,provincia," +
@@ -253,7 +254,7 @@ public class OpExtraAzienda extends OpeUtente {
             }
 
 
-        stmt.close();
+      stmte.close();
         ConnectionPool.releaseConnection(con);
         return user;
 
