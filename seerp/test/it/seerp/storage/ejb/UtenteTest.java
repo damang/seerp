@@ -16,11 +16,13 @@ import static org.junit.Assert.*;
  * @author LuNy
  */
 public class UtenteTest extends TestCase{
-    private Utente u;
+    private Utente uSet;
+    private Utente uGet;
     private Boolean v;
     private Integer id;
 
-    public UtenteTest() {
+    public UtenteTest(String name) {
+        super(name);
     }
 
     @BeforeClass
@@ -34,14 +36,19 @@ public class UtenteTest extends TestCase{
     @Before
     public void setUp() {
 
-        u = new Utente(id, "marros" , "123456" , "Salerno" ,
+        uSet = new Utente(id, "marros" , "123456" , "Salerno" ,
+                  "sa" , "089345678" ,"84100", "rossi@email.it" ,
+                  "ruolo" , "note" , v );
+
+        uGet = new Utente(id, "marros" , "123456" , "Salerno" ,
                   "sa" , "089345678" ,"84100", "rossi@email.it" ,
                   "ruolo" , "note" , v );
     }
 
     @After
+    @Override
     public void tearDown() {
-        u=null;
+        uGet=null;
         System.gc();
     }
 
@@ -53,7 +60,7 @@ public class UtenteTest extends TestCase{
         System.out.println("getCap");
 
         String expResult = "84100";
-        String result = u.getCap();
+        String result = uGet.getCap();
         assertEquals(expResult, result);
 
     }
@@ -66,8 +73,8 @@ public class UtenteTest extends TestCase{
         System.out.println("setCap");
         String cap = "84100";
 
-        u.setCap(cap);
-        assertEquals("84100", u.getCap());
+        uSet.setCap(cap);
+        assertEquals("84100", uGet.getCap());
     }
 
     /**
@@ -78,7 +85,7 @@ public class UtenteTest extends TestCase{
         System.out.println("getTipo");
 
         String expResult = "ruolo";
-        String result = u.getTipo();
+        String result = uGet.getTipo();
         assertEquals(expResult, result);
 
     }
@@ -89,8 +96,9 @@ public class UtenteTest extends TestCase{
     @Test
     public void testSetVisible() {
         System.out.println("setVisible");
-
-        u.setVisible(true);
+        Boolean visible = true;
+        uSet.setVisible(true);
+        assertEquals(v, uSet.getVisible());
 
     }
 
@@ -102,7 +110,7 @@ public class UtenteTest extends TestCase{
         System.out.println("getVisible");
 
         Boolean expResult = true;
-        Boolean result = u.getVisible();
+        Boolean result = uGet.getVisible();
         assertEquals(expResult, result);
 
     }
@@ -115,7 +123,7 @@ public class UtenteTest extends TestCase{
         System.out.println("getNote");
 
         String expResult = "note";
-        String result = u.getNote();
+        String result = uGet.getNote();
         assertEquals(expResult, result);
 
     }
@@ -128,7 +136,8 @@ public class UtenteTest extends TestCase{
         System.out.println("setNote");
         String note = "note";
 
-        u.setNote(note);
+        uSet.setNote(note);
+        assertEquals(note, uSet.getNote());
 
     }
 
@@ -140,7 +149,7 @@ public class UtenteTest extends TestCase{
         System.out.println("getCitta");
 
         String expResult = "Salerno";
-        String result = u.getCitta();
+        String result = uGet.getCitta();
         assertEquals(expResult, result);
 
     }
@@ -153,7 +162,7 @@ public class UtenteTest extends TestCase{
         System.out.println("getEmail");
 
         String expResult = "rossi@email.it";
-        String result = u.getEmail();
+        String result = uGet.getEmail();
         assertEquals(expResult, result);
 
     }
@@ -166,7 +175,7 @@ public class UtenteTest extends TestCase{
         System.out.println("getIdUtente");
 
         Integer expResult = id;
-        Integer result = u.getIdUtente();
+        Integer result = uGet.getIdUtente();
         assertEquals(expResult, result);
 
     }
@@ -179,7 +188,7 @@ public class UtenteTest extends TestCase{
         System.out.println("getPassword");
 
         String expResult = "123456";
-        String result = u.getPassword();
+        String result = uGet.getPassword();
         assertEquals(expResult, result);
 
     }
@@ -192,7 +201,7 @@ public class UtenteTest extends TestCase{
         System.out.println("getProvincia");
 
         String expResult = "Sa";
-        String result = u.getProvincia();
+        String result = uGet.getProvincia();
         assertEquals(expResult, result);
 
     }
@@ -205,7 +214,7 @@ public class UtenteTest extends TestCase{
         System.out.println("getTelefono");
 
         String expResult = "089345678";
-        String result = u.getTelefono();
+        String result = uGet.getTelefono();
         assertEquals(expResult, result);
 
     }
@@ -218,7 +227,7 @@ public class UtenteTest extends TestCase{
         System.out.println("getUsername");
 
         String expResult = "marros";
-        String result = u.getUsername();
+        String result = uGet.getUsername();
         assertEquals(expResult, result);
 
     }
@@ -231,8 +240,8 @@ public class UtenteTest extends TestCase{
         System.out.println("setTipo");
         String tipo = "tipo";
 
-        u.setTipo(tipo);
-        assertEquals("tipo",u.getTipo());
+        uSet.setTipo(tipo);
+        assertEquals("tipo",uSet.getTipo());
     }
 
     /**
@@ -243,8 +252,8 @@ public class UtenteTest extends TestCase{
         System.out.println("setCitta");
         String citta = "Salerno";
 
-        u.setCitta(citta);
-        assertEquals("Salerno",u.getCitta());
+        uSet.setCitta(citta);
+        assertEquals("Salerno",uSet.getCitta());
     }
 
     /**
@@ -255,8 +264,8 @@ public class UtenteTest extends TestCase{
         System.out.println("setEmail");
         String email = "rossi@email.it";
 
-        u.setEmail(email);
-        assertEquals("rossi@email.it",u.getEmail());
+        uSet.setEmail(email);
+        assertEquals("rossi@email.it",uSet.getEmail());
     }
 
     /**
@@ -266,8 +275,8 @@ public class UtenteTest extends TestCase{
     public void testSetIdUtente() {
         System.out.println("setIdUtente");
 
-        u.setIdUtente(id);
-        assertEquals(id,u.getIdUtente());
+        uSet.setIdUtente(id);
+        assertEquals(id,uSet.getIdUtente());
 
     }
 
@@ -279,8 +288,8 @@ public class UtenteTest extends TestCase{
         System.out.println("setPassword");
         String password = "123456";
 
-        u.setPassword(password);
-        assertEquals("123456",u.getPassword());
+        uSet.setPassword(password);
+        assertEquals("123456",uSet.getPassword());
 
     }
 
@@ -292,8 +301,8 @@ public class UtenteTest extends TestCase{
         System.out.println("setProvincia");
         String provincia = "Sa";
 
-        u.setProvincia(provincia);
-        assertEquals("Sa",u.getProvincia());
+        uSet.setProvincia(provincia);
+        assertEquals("Sa",uSet.getProvincia());
     }
 
     /**
@@ -304,8 +313,8 @@ public class UtenteTest extends TestCase{
         System.out.println("setTelefono");
         String telefono = "089345678";
 
-        u.setTelefono(telefono);
-        assertEquals("089345678",u.getTelefono());
+        uSet.setTelefono(telefono);
+        assertEquals("089345678",uSet.getTelefono());
     }
 
     /**
@@ -316,8 +325,8 @@ public class UtenteTest extends TestCase{
         System.out.println("setUsername");
         String username = "Rossi";
 
-        u.setUsername(username);
-        assertEquals("Rossi",u.getUsername());
+        uSet.setUsername(username);
+        assertEquals("Rossi",uSet.getUsername());
     }
 
     /**
@@ -329,7 +338,7 @@ public class UtenteTest extends TestCase{
         Object obj = null;
 
         boolean expResult = true;
-        boolean result = u.equals(obj);
+        boolean result = uGet.equals(obj);
         assertEquals(expResult, result);
 
     }
