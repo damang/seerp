@@ -13,13 +13,13 @@ public class Agenda {
     private Utente utente;
 
     /**
-     *
+     * Costruttore vuoto
      */
     public Agenda() {
     }
 
     /**
-     *  costruttore classe
+     * Costruttore di classe
      * @param idAgenda
      */
     public Agenda(Integer idAgenda) {
@@ -46,12 +46,6 @@ public class Agenda {
             return false;
         }
         return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        return hash;
     }
 
     /**
