@@ -15,18 +15,26 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import it.seerp.application.applicazione.AppGestioneAreaPersonale;
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
+import it.seerp.application.applicazione.AppGestioneUtente;
 import it.seerp.application.bean.BeanGuiUtente;
+import it.seerp.storage.jaas.AuthPrincipal;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.security.auth.Subject;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Andrea
  */
 public class AreaPersonalePanel extends ObservableJPanel implements ActionListener {
-
-    BeanGuiUtente utente;
+    private Subject ut;
+    private BeanGuiUtente utente;
 
     /** Creates new form AreaPersonalePanel */
-    public AreaPersonalePanel() {
+    public AreaPersonalePanel(Subject sub) {
+        ut=sub;
         initComponents();
         utente = new BeanGuiUtente(this);
         legameBean();
@@ -34,6 +42,12 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         buttonSalva1.setEnabled(false);
         this.pwd.setEditable(false);
         editabile(false);
+        AppGestioneUtente a= new AppGestioneUtente();
+        try {
+            a.visualizzaDati(ut.getPrincipals().iterator().next().getName(), utente);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     /** This method is called from within the constructor to
@@ -202,7 +216,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
                         .addGap(6, 6, 6)
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(300, Short.MAX_VALUE))
+                .addContainerGap(312, Short.MAX_VALUE))
         );
         jXPanel1Layout.setVerticalGroup(
             jXPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,7 +262,6 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         panel28.setBorder(javax.swing.BorderFactory.createTitledBorder("Username"));
         panel28.setName("panel28"); // NOI18N
 
-        user.setText("Username");
         user.setName("user"); // NOI18N
 
         javax.swing.GroupLayout panel28Layout = new javax.swing.GroupLayout(panel28);
@@ -281,6 +294,11 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
                 modificaMouseClicked(evt);
             }
         });
+        modifica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jXPanel2Layout = new javax.swing.GroupLayout(jXPanel2);
         jXPanel2.setLayout(jXPanel2Layout);
@@ -308,7 +326,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
                         .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(modifica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(384, Short.MAX_VALUE))
+                .addContainerGap(387, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Password", jXPanel2);
@@ -338,9 +356,8 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
 
     private void buttonSalva1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSalva1MouseClicked
         this.pwd.setEditable(false);
-
-        // AppGestioneAreaPersonale operazione = new AppGestioneAreaPersonale();
-        //  operazione.modificaPassword(utente);
+         AppGestioneAreaPersonale operazione = new AppGestioneAreaPersonale();
+         operazione.modificaPassword(utente);
         // operazione.visualizzaDati(id,utente);
         modifica.setEnabled(true);
         buttonSalva1.setEnabled(false);
@@ -348,10 +365,14 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
     }//GEN-LAST:event_buttonSalva1MouseClicked
 
     private void modificaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificaMouseClicked
-        this.pwd.setEditable(true);
+        
+    }//GEN-LAST:event_modificaMouseClicked
+
+    private void modificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificaActionPerformed
+       this.pwd.setEditable(true);
         modifica.setEnabled(false);
         buttonSalva1.setEnabled(true);
-    }//GEN-LAST:event_modificaMouseClicked
+    }//GEN-LAST:event_modificaActionPerformed
     public void inizializzazione(String s) {
 
         this.citta.setText(s);
@@ -366,7 +387,8 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         utente.setTxtCitta(citta);
         utente.setTxtProvincia(provincia);
         utente.setTxtTelefono(tell);
-        utente.setTxtUsername(user);
+        utente.setTxtUsername(user1);
+        utente.setTxtUsernameSec(user);
         utente.setTxtPassword(pwd);
     }
 
@@ -377,14 +399,13 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
     }
 
     public void editabile(boolean flag) {
-
-
         this.citta.setEditable(flag);
         this.provincia.setEditable(flag);
         this.tell.setEditable(flag);
         this.mail.setEditable(flag);
-        this.user.setEnabled(flag);
-
+        this.user1.setEditable(flag);
+        this.user.setEditable(flag);
+        this.pwd.setEditable(flag);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva buttonSalva1;
