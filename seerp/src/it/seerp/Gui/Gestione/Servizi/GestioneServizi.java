@@ -720,10 +720,11 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
 
         menu.getAggiungi().setEnabled(true);
         menu.getModifica().setEnabled(true);
-        //  if (tipoOP.compareToIgnoreCase("modifica") == 0) {
-            /*  AppServizi operazione = new AppServizi();
-        operazione.modifica(servizio);
-        ((ServiziTm) jXTable1.getModel()).refresh();*/
+         if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.MODIFICA)) {
+             JOptionPane.showMessageDialog(null, "usa");
+              AppServizi operazione = new AppServizi();
+        operazione.modifica(servi);}
+     /*   ((ServiziTm) jXTable1.getModel()).refresh();*/
         //  }
         if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI)) {
 
