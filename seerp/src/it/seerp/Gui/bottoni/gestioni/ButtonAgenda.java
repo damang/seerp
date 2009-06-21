@@ -5,7 +5,7 @@
 package it.seerp.Gui.bottoni.gestioni;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
-import it.seerp.Gui.Gestione.Menu.MenuAppuntamento;
+import it.seerp.Gui.Gestione.Menu.MenuAgenda;
 import it.seerp.Gui.Gestione.Menu.MenuRuoli;
 import it.seerp.Gui.observerButton.ObserverButton;
 import it.seerp.storage.ejb.Evento;
@@ -30,7 +30,7 @@ public class ButtonAgenda extends ObserverButton implements CommandInterface {
      *
      */
     protected JTabbedPane tabbedPane;
-    private MenuAppuntamento menu;
+    private MenuAgenda menu;
     CalendarPanel panel;
     String s = "Agenda";
 
@@ -41,7 +41,7 @@ public class ButtonAgenda extends ObserverButton implements CommandInterface {
      * @param act
      * @throws SQLException
      */
-    public ButtonAgenda(JTabbedPane pan, MenuAppuntamento menu, ActionListener act) throws SQLException {
+    public ButtonAgenda(JTabbedPane pan, MenuAgenda menu, ActionListener act) throws SQLException {
         this.tabbedPane = pan;
         this.menu = menu;
         //this.panel = new AreaUtentePanel(TIPO_UTENTE_CONST.CLIENTE);

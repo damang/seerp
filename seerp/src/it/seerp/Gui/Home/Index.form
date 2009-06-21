@@ -646,7 +646,7 @@
             <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="menuAreaPersonale2.setVisible(false);"/>
           </AuxValues>
         </Component>
-        <Component class="it.seerp.Gui.Gestione.Menu.MenuAppuntamento" name="menuAppuntamento1">
+        <Component class="it.seerp.Gui.Gestione.Menu.MenuAgenda" name="menuAppuntamento1">
           <Properties>
             <Property name="name" type="java.lang.String" value="menuAppuntamento1" noResource="true"/>
           </Properties>

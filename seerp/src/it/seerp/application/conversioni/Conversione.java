@@ -308,6 +308,7 @@ public class Conversione {
     public static BeanGuiUtente conversioneUtente(Utente user, BeanGuiUtente utente) {
 
         utente.getTxtUsername().setText(user.getUsername());
+        utente.getTxtUsername2().setText(user.getUsername());
         utente.getTxtPassword().setText(user.getPassword());
         utente.getTxtCitta().setText(user.getCitta());
         utente.getTxtEmail().setText(user.getEmail());
