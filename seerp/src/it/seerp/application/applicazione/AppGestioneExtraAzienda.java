@@ -3,13 +3,16 @@ package it.seerp.application.applicazione;
 import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.bean.BeanGuiCliente;
 import it.seerp.application.bean.BeanGuiContatto;
+import it.seerp.application.bean.BeanGuiExtraAzienda;
 import it.seerp.application.bean.BeanGuiFornitore;
 import it.seerp.application.conversioni.Conversione;
 import it.seerp.storage.Operazioni.OpCliente;
 import it.seerp.storage.Operazioni.OpContatto;
+import it.seerp.storage.Operazioni.OpExtraAzienda;
 import it.seerp.storage.Operazioni.OpFornitore;
 import it.seerp.storage.ejb.Cliente;
 import it.seerp.storage.ejb.Contatto;
+import it.seerp.storage.ejb.ExtraAzienda;
 import it.seerp.storage.ejb.Fornitore;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -121,8 +124,8 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
      * @param cont il Contatto che si deve modificare
      * @return il Contatto modificato
      */
-    public BeanGuiContatto modificaContatto(BeanGuiContatto cont) {
-        super.modifica(cont);
+    public BeanGuiContatto modificaContatto(int id,BeanGuiContatto cont) {
+//        super.modifica(cont);
         try {
             OpContatto a = new OpContatto();
             Contatto co = Conversione.conversioneContatto(cont);
@@ -143,13 +146,17 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
      * @param clien il cliente che si deve modificare
      * @return il cliente modificato
      */
-    public BeanGuiCliente modificaCliente(BeanGuiCliente clien) {
-        super.modifica(clien);
+    public BeanGuiCliente modificaCliente(int id,BeanGuiCliente clien) {
+     //   super.modifica(clien);
         try {
-            OpCliente a = new OpCliente();
+            OpExtraAzienda a = new OpExtraAzienda();
             Cliente cl = Conversione.conversioneCliente(clien);
-            cl = a.modifica(cl);
-            clien = Conversione.conversioneCliente(cl, clien);
+              cl.setIdUtente(id);
+
+          a.modifica(cl);
+          this.visualizzaDatiCliente(id, clien);
+
+           // clien = Conversione.conversioneCliente(cl, clien);
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
@@ -165,13 +172,16 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
      * @param forn il Fornitore che si vuole modificare
      * @return il Fornitore modificato
      */
-    public BeanGuiFornitore modificaFornitore(BeanGuiFornitore forn) {
-        super.modifica(forn);
+    public BeanGuiFornitore modificaFornitore(int id, BeanGuiFornitore forn) {
+        //super.modifica(forn);
         try {
-            OpFornitore a = new OpFornitore();
+            OpExtraAzienda a = new OpExtraAzienda();
             Fornitore fo = Conversione.conversioneFornitore(forn);
-            fo = a.modifica(fo);
-            forn = Conversione.conversioneFornitore(fo, forn);
+            fo.setIdUtente(id);
+             a.modifica(fo);
+             this.visualizzaDatiFornitore(id, forn);
+             
+         //  forn = Conversione.conversioneFornitore(fo, forn);
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
@@ -213,4 +223,20 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
         }
         return list;
     }
+
+    public void eliminaExtraAziena(int id,BeanGuiExtraAzienda e){
+
+        try {
+            ExtraAzienda extra=new ExtraAzienda();
+           
+           OpExtraAzienda ope= new OpExtraAzienda();
+           extra=Conversione.conversioneExtraAzienda(e);
+            extra.setIdUtente(id);
+           ope.elimina(extra);
+
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        }
+      }
 }

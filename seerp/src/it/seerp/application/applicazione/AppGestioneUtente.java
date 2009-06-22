@@ -78,7 +78,7 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
      * @param user
      * l'utente che si vuole eliminare
      */
-    public void elimina(BeanGuiUtente user) {
+    public void elimina(int id,BeanGuiUtente user) {
         try {
             OpeUtente ope = new OpeUtente();
             Utente ut = Conversione.conversioneUtente(user);
@@ -147,7 +147,7 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui i dati inseriti sono errati
      */
-    public BeanGuiUtente modifica(BeanGuiUtente user) throws DatiErrati {
+    public BeanGuiUtente modifica(int id,BeanGuiUtente user) throws DatiErrati {
         try {
             OpeUtente ope = new OpeUtente();
             Utente utente = Conversione.conversioneUtente(user);
