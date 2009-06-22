@@ -14,14 +14,14 @@ import it.seerp.storage.ejb.Azienda;
  */
 public class OpAzienda {
 
-    private Connection conn;
+    private Connection connessione;
 
     /**
      *
      * @throws java.sql.SQLException
      */
     public OpAzienda() throws SQLException {
-        conn = (Connection) ConnectionPool.getConnection();
+        connessione = (Connection) ConnectionPool.getConnection();
     }
 
     /**
@@ -36,7 +36,7 @@ public class OpAzienda {
         String query = "INSERT INTO azienda(citta,email,fax,indirizzo,nazione,PIVA,regioneSociale,telefono)" +
                 " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-        stmt = (PreparedStatement) conn.prepareStatement(query);
+        stmt = (PreparedStatement) connessione.prepareStatement(query);
 
         stmt.setString(1, az.getCitta());
         stmt.setString(2, az.getEmail());
@@ -50,7 +50,7 @@ public class OpAzienda {
         stmt.execute();
         stmt.close();
 
-        ConnectionPool.releaseConnection(conn);
+        ConnectionPool.releaseConnection(connessione);
 
     }
 
@@ -66,7 +66,7 @@ public class OpAzienda {
         PreparedStatement stmt = null;
         String query = "UPDATE azienda SET citta=?,email=?,fax=?,indirizzo=?,nazione=?,PIVA=?,regioneSociale=?,telefono=?" +
                 "where idAzienda=?";
-        stmt = (PreparedStatement) conn.prepareStatement(query);
+        stmt = (PreparedStatement) connessione.prepareStatement(query);
 
         stmt.setString(1, az.getCitta());
         stmt.setString(2, az.getEmail());
@@ -80,7 +80,7 @@ public class OpAzienda {
 
         stmt.execute();
         stmt.close();
-        ConnectionPool.releaseConnection(conn);
+        ConnectionPool.releaseConnection(connessione);
         return az;
     }
 
@@ -98,7 +98,7 @@ public class OpAzienda {
 
         String sql = "SELECT idAzienda,citta,email,fax,indirizzo,nazione,piva,regioneSociale,telefono" +
                     "FROM azienda";
-        stmt = (PreparedStatement) conn.prepareStatement(sql);
+        stmt = (PreparedStatement) connessione.prepareStatement(sql);
 
         rs = stmt.executeQuery();
 
@@ -111,7 +111,7 @@ public class OpAzienda {
         }
         stmt.close();
         rs.close();
-        ConnectionPool.releaseConnection(conn);
+        ConnectionPool.releaseConnection(connessione);
 
         return az;
     }
