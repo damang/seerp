@@ -125,6 +125,11 @@ public class MenuUtente extends javax.swing.JPanel implements ActionListener {
       return modificaButtonUtente1;
   }
 
+  public void setButtonEnabled (boolean b) {
+        this.modificaButtonUtente1.setEnabled(b);
+        this.aggiungiButton1.setEnabled(b);
+        this.eliminaButton1.setEnabled(b);
+    }
     /**
      *
      * @return

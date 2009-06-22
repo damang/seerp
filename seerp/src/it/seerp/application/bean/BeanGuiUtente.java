@@ -87,9 +87,9 @@ public class BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getTipo() throws ValidatorException {
-        if (!val.shouldYieldFocus(grafica)) {
+       /* if (!val.shouldYieldFocus(grafica)) {
             throw new ValidatorException("Errore nella grafica!");
-        }
+        }*/
         return tipo;
     }
 
@@ -161,10 +161,11 @@ public class BeanGuiUtente {
      * @param pidUtenteTxt
      */
     public void setIdUtenteTxt(JTextField pidUtenteTxt) {
-       /* this.idUtenteTxt = pidUtenteTxt;
-        val = new NotEmptyValidator(grafica, idUtenteTxt, "Il campo non può essere vuoto.");
+       this.idUtenteTxt = pidUtenteTxt;
+       /* val = new NotEmptyValidator(grafica, idUtenteTxt, "Il campo non può essere vuoto.");
         grafica.setInputVerifier(val);*/
     }
+
 
     /**
      *
@@ -280,15 +281,7 @@ public class BeanGuiUtente {
         return txtUsername;
     }
 
-    /**
-     *
-     * @param pidUtenteTxt
-     */
-    public void setIdUtenteText(JTextField pidUtenteTxt) {
-      /*  this.idUtenteTxt = pidUtenteTxt;
-        val = new NotEmptyValidator(grafica, idUtenteTxt, "Il campo non può essere vuoto.");
-        grafica.setInputVerifier(val);*/
-    }
+
 
     /**
      *

@@ -125,7 +125,7 @@ public class Conversione {
         area.setText(c.getNote());
         gui.setNote(area);
         gui.setDipendente(conversioneDipendente(c.getDipendente(), gui.getDipendente()));
-        gui.setExtraAzienda(conversazioneExtraAzienda(c.getExtraAzienda(), new BeanGuiExtraAzienda()));
+        gui.setExtraAzienda(conversioneExtraAzienda(c.getExtraAzienda(), new BeanGuiExtraAzienda()));
         gui.setListPagamento(gui.getListPagamento());
         gui.setListServizio(gui.getListServizio());
 
@@ -284,7 +284,7 @@ public class Conversione {
 
         Utente utente = new Utente();
 
-//        utente.setIdUtente(Integer.parseInt(bUtente.getIdUtenteTxt().getText()));
+     //   utente.setIdUtente(Integer.parseInt(bUtente.getIdUtenteTxt().getText()));
         utente.setUsername(bUtente.getTxtUsername().getText());
         utente.setPassword(bUtente.getTxtPassword().getText());
         utente.setCitta(bUtente.getTxtCitta().getText());
@@ -307,11 +307,13 @@ public class Conversione {
      */
     public static BeanGuiUtente conversioneUtente(Utente user, BeanGuiUtente utente) {
 
-        utente.getTxtUsername().setText(user.getUsername());
+     //   utente.getIdUtenteTxt().setText(user.getIdUtente().toString());
+          utente.getTxtUsername().setText(user.getUsername());
         utente.getTxtUsername2().setText(user.getUsername());
         utente.getTxtPassword().setText(user.getPassword());
         utente.getTxtCitta().setText(user.getCitta());
         utente.getTxtEmail().setText(user.getEmail());
+       
         utente.getTxtProvincia().setText(user.getProvincia());
         utente.getTxtTelefono().setText(user.getTelefono());
 //        utente.getTxtNote().setText(user.getNote());
@@ -331,7 +333,7 @@ public class Conversione {
 
 
         Personale utente = new Personale();
-        // utente.setIdUtente(Integer.parseInt(bp.getIdUtenteTxt().getText()));
+     //   utente.setIdUtente(Integer.parseInt(bp.getIdUtenteTxt().getText()));
         utente.setUsername(bp.getTxtUsername().getText());
         utente.setPassword(bp.getTxtPassword().getText());
         utente.setCitta(bp.getTxtCitta().getText());
@@ -358,7 +360,9 @@ public class Conversione {
     public static BeanGuiPersonale conversionePersonale(Personale p, BeanGuiPersonale bp) {
 
         Conversione.conversioneUtente(p, bp);
+     
         bp.getCognome().setText(p.getCognome());
+        System.out.println("luisa"+p.getNome());
         bp.getNome().setText(p.getNome());
         bp.getCodiceFiscale().setText(p.getCodiceFiscale());
         bp.getRuolo().setText(p.getRuolo().getNome());
@@ -376,7 +380,7 @@ public class Conversione {
     public static ExtraAzienda conversioneExtraAzienda(BeanGuiExtraAzienda e) throws ValidatorException {
 
 
-        ArrayList<Appuntamento> a = new ArrayList<Appuntamento>();
+     /*   ArrayList<Appuntamento> a = new ArrayList<Appuntamento>();
         ArrayList<Contratto> a1 = new ArrayList<Contratto>();
 
         for (BeanGuiAppuntamento b : e.getListAppuntamenti()) {
@@ -387,27 +391,27 @@ public class Conversione {
         for (BeanGuiContratto b : e.getListContratti()) {
             Contratto b1 = conversioneContratto(b);
             a1.add(b1);
-        }
+        }*/
         ExtraAzienda utente = new ExtraAzienda();
-        utente.setIdUtente(Integer.parseInt(e.getIdUtenteTxt().getText()));
+       // utente.setIdUtente(Integer.parseInt(e.getIdUtenteTxt().getText()));
         utente.setUsername(e.getTxtUsername().getText());
         utente.setPassword(e.getTxtPassword().getText());
         utente.setCitta(e.getTxtCitta().getText());
         utente.setProvincia(e.getTxtProvincia().getText());
-        utente.setCap(e.getCap().getText());
+//        utente.setCap(e.getCap().getText());
         utente.setTelefono(e.getTxtTelefono().getText());
         utente.setEmail(e.getTxtEmail().getText());
-        utente.setNote(e.getTxtNote().getText());
-        utente.setTipo(e.getTipo().getText());
-        utente.setVisible(Boolean.parseBoolean(e.getTxtNotifica().getText()));
-        utente.setCognome(e.getCognome().getText());
-        utente.setNome(e.getNome().getText());
+//        utente.setNote(e.getTxtNote().getText());
+      //  utente.setTipo(e.getTipo().getText());
+        //utente.setVisible(Boolean.parseBoolean(e.getTxtNotifica().getText()));
+        //utente.setCognome(e.getCognome().getText());
+     //   utente.setNome(e.getNome().getText());
         utente.setRagioneSociale(e.getRagioneSociale().getText());
         utente.setPIva(e.getPIva().getText());
-        utente.setFax(e.getFax().getText());
-        utente.setTipo(e.getTipo().getText());
-        utente.setListAppuntamenti(a);
-        utente.setListContratti(a1);
+       // utente.setFax(e.getFax().getText());
+        //utente.setTipo(e.getTipo().getText());
+        //utente.setListAppuntamenti(a);
+       // utente.setListContratti(a1);
         return utente;
     }
 
@@ -418,9 +422,10 @@ public class Conversione {
      * @return il Bean Gui convertito
      * @throws Exception
      */
-    public static BeanGuiExtraAzienda conversazioneExtraAzienda(ExtraAzienda e, BeanGuiExtraAzienda extra) throws ValidatorException {
+    public static BeanGuiExtraAzienda conversioneExtraAzienda(ExtraAzienda e, BeanGuiExtraAzienda extra) throws ValidatorException {
 
          conversioneUtente(e, extra);
+        //   extra.getIdUtenteTxt().setText(e.getIdUtente().toString());
   //       extra.getCognome().setText(e.getCognome());
 //         extra.getNome().setText(e.getNome());
          extra.getRagioneSociale().setText(e.getRagioneSociale());
@@ -443,7 +448,7 @@ public class Conversione {
     public static Responsabile conversioneResponsabile(BeanGuiResponsabile r) throws ValidatorException {
 
         Responsabile utente = new Responsabile();
-        //utente.setIdUtente(Integer.parseInt(r.getIdUtenteTxt().getText()));
+//        utente.setIdUtente(Integer.parseInt(r.getIdUtenteTxt().getText()));
         utente.setUsername(r.getTxtUsername().getText());
         utente.setPassword(r.getTxtPassword().getText());
         utente.setCitta(r.getTxtCitta().getText());
@@ -495,7 +500,7 @@ public class Conversione {
         }*/
 
         Dipendente utente = new Dipendente();
-        //  utente.setIdUtente(Integer.parseInt(r.getIdUtenteTxt().getText()));
+//        utente.setIdUtente(Integer.parseInt(r.getIdUtenteTxt().getText()));
         utente.setUsername(r.getTxtUsername().getText());
         utente.setPassword(r.getTxtPassword().getText());
         utente.setCitta(r.getTxtCitta().getText());
@@ -537,7 +542,7 @@ public class Conversione {
 
         JTextField c = new JTextField();
         c.setText(e.getIdUtente().toString());
-        ba.setIdUtenteText(c);
+        ba.setIdUtenteTxt(c);
         c.setText(e.getPassword());
         ba.setTxtPassword(c);
         c.setText(e.getCitta());
@@ -648,7 +653,7 @@ public class Conversione {
 
         JTextField c = new JTextField();
         c.setText(e.getIdUtente().toString());
-        cont.setIdUtenteText(c);
+        cont.setIdUtenteTxt(c);
         c.setText(e.getPassword());
         cont.setTxtPassword(c);
         c.setText(e.getCitta());
@@ -708,7 +713,7 @@ public class Conversione {
          */
 
         Cliente utente = new Cliente();
-        //      utente.setIdUtente(Integer.parseInt(e.getIdUtenteTxt().getText()));
+//             utente.setIdUtente(Integer.parseInt(e.getIdUtenteTxt().getText()));
         utente.setUsername(e.getTxtUsername().getText());
         utente.setPassword(e.getTxtPassword().getText());
         utente.setCitta(e.getTxtCitta().getText());
@@ -740,7 +745,7 @@ public class Conversione {
     public static BeanGuiCliente conversioneCliente(Cliente e, BeanGuiCliente cl) throws ValidatorException {
 
     
-        conversazioneExtraAzienda(e, cl);
+        conversioneExtraAzienda(e, cl);
      //   cl.getRuolo().setText("Cliente");
        /* cl.setListAppuntamenti(cl.getListAppuntamenti());
         cl.setListContratti(cl.getListContratti());*/
@@ -770,7 +775,7 @@ public class Conversione {
         }
          */
         Fornitore utente = new Fornitore();
-        //  utente.setIdUtente(Integer.parseInt(e.getIdUtenteTxt().getText()));
+     //   utente.setIdUtente(Integer.parseInt(e.getIdUtenteTxt().getText()));
         utente.setUsername(e.getTxtUsername().getText());
         utente.setPassword(e.getTxtPassword().getText());
         utente.setCitta(e.getTxtCitta().getText());
@@ -800,7 +805,7 @@ public class Conversione {
      */
     public static BeanGuiFornitore conversioneFornitore(Fornitore e, BeanGuiFornitore fo) {
 
-        conversazioneExtraAzienda(e, fo);
+        conversioneExtraAzienda(e, fo);
       //  fo.getRuolo().setText("Fornitore");
         return fo;
     }

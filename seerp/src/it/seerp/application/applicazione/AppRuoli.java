@@ -31,6 +31,7 @@ public class AppRuoli implements GestioneRuoli<BeanGuiRuolo> {
      * @throws it.seerp.application.Exception.DatiDuplicati
      * nel caso in cui si immettano dati duplicati
      */
+    @Override
     public void inserimento(BeanGuiRuolo beanGui) throws SQLException, DatiErrati, DatiDuplicati {
         try {
             OpRuolo ope = new OpRuolo();

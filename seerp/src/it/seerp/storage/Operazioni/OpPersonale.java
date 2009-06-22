@@ -41,7 +41,7 @@ public class OpPersonale extends OpeUtente {
     ArrayList<Personale> list = new ArrayList<Personale>();
     PreparedStatement stmt = null;
     ResultSet rs = null;
-    String sql = "SELECT * FROM Personale where visible='true'";
+    String sql = "SELECT * FROM personale join utente on idPersonale=idUtente WHERE visibilita=true";
     stmt = (PreparedStatement) connessione.prepareStatement(sql);
     // Execute the query
     rs = stmt.executeQuery(sql);

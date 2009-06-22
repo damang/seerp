@@ -6,6 +6,7 @@ package it.seerp.Gui.Gestione.Menu;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.Utenti.AreaUtentePanel;
+import it.seerp.Gui.configurazioni.Gui.ConfigurazioneOperazioni;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -44,8 +45,8 @@ public class AggiungiButtonUtenti extends JButton implements CommandInterface {
     }
 
     public void execute() {
-        this.setEnabled(false);
-        areaUt.setTipoOp("inserisci");
+        areaUt.getMenu().setButtonEnabled(false);
+        areaUt.setTipoOP(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI);
         areaUt.inizializzazione("");
         areaUt.editabile(true);
         areaUt.getSalva().setEnabled(true);
