@@ -756,8 +756,8 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
             if (i < 0) {
                 return;
             }
-            Integer id = (Integer) jXTable1.getValueAt(this.jXTable1.convertRowIndexToModel(i), 0);
-            JOptionPane.showMessageDialog(null, id);
+            Integer id = (Integer) jXTable1.getValueAt(i, 0);
+          
 
             AppServizi operazione = new AppServizi();
 

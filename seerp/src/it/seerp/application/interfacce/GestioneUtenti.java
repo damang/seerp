@@ -41,7 +41,7 @@ public interface GestioneUtenti<E extends Utente, U extends BeanGuiUtente> {
      *
      * @param user
      */
-    public void elimina(U user);
+    public void elimina(int id,U user);
 
     /**
      *
@@ -64,7 +64,7 @@ public interface GestioneUtenti<E extends Utente, U extends BeanGuiUtente> {
      * @return
      * @throws it.seerp.application.Exception.DatiErrati
      */
-    public U modifica(U user) throws DatiErrati;
+    public U modifica(int id,U user) throws DatiErrati;
 
     /**
      *

@@ -177,7 +177,13 @@ public class AppGestionePersonale extends AppGestioneUtente {
         return l;
 
     }
+     public ArrayList<Personale> visualizzaTabellaPersonale() throws SQLException {
 
+        OpPersonale op= new OpPersonale();
+        ArrayList<Personale> l=op.elencaPersonale();
+        return l;
+
+    }
 
     /**
      * Metodo che passa la lista di bean utilizzando l'operazioni del lato storage

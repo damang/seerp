@@ -6,6 +6,7 @@ package it.seerp.Gui.Gestione.Menu;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.Utenti.AreaUtentePanel;
+import it.seerp.Gui.configurazioni.Gui.ConfigurazioneOperazioni;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
@@ -42,8 +43,8 @@ public class ModificaButtonUtente extends JButton implements CommandInterface {
     }
 
     public void execute() {
-        areaUt.setTipoOp("modifica");
-        this.setEnabled(false);
+        areaUt.setTipoOP(ConfigurazioneOperazioni.TIPO_OPE_CONST.MODIFICA);
+        areaUt.getMenu().setEnabled(false);
         areaUt.editabile(true);
         areaUt.getSalva().setEnabled(true);
         areaUt.getAnnulla().setEnabled(true);
