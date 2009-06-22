@@ -1,5 +1,6 @@
 package it.seerp.application.conversioni;
 
+import it.seerp.Gui.Gestione.agenda.EventInstance;
 import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.bean.BeanGuiAgenda;
 import it.seerp.application.bean.BeanGuiAmministratore;
@@ -21,6 +22,7 @@ import it.seerp.application.bean.BeanGuiServizio;
 import it.seerp.application.bean.BeanGuiServizioAssociato;
 import it.seerp.application.bean.BeanGuiUtente;
 import it.seerp.application.tabelle.PersonaleTm;
+import it.seerp.storage.Operazioni.OpEvento;
 import it.seerp.storage.jaas.PermessoCollection;
 import it.seerp.storage.ejb.Agenda;
 import it.seerp.storage.ejb.Amministratore;
@@ -132,6 +134,12 @@ public class Conversione {
         return gui;
     }
 
+    public static Evento conversioneEvento(EventInstance e) throws SQLException {
+        OpEvento o= new OpEvento();
+
+        return o.getEventoPerId(e.getEventoId());
+    }
+
     /**
      * Metodo che converte un Bean Gui Evento in un normale Bean Evento
      * @param pGui
@@ -145,15 +153,28 @@ public class Conversione {
         evento.setTema(pGui.getTema().getText());
         evento.setNome(pGui.getNome().getText());
         evento.setNote(pGui.getNote().getText());
-        GregorianCalendar data = null;
-        data.setTimeInMillis(Long.parseLong(pGui.getData().getText()));
+        GregorianCalendar data = new GregorianCalendar();
+        data.setTimeInMillis(pGui.getData().getDate().getTime());
         evento.setData(data);
-        GregorianCalendar ora = null;
-        ora.setTimeInMillis(Long.parseLong(pGui.getOra().getText()));
+        
+        GregorianCalendar ora = new GregorianCalendar();
+        String t[]= pGui.getOra().getText().split(":");
+
+        ora.set(GregorianCalendar.HOUR_OF_DAY, Integer.parseInt(t[0]));
+        ora.set(GregorianCalendar.MINUTE, Integer.parseInt(t[1]));
+        ora.set(GregorianCalendar.SECOND, Integer.parseInt(t[2]));
+
         evento.setOra(ora);
-        evento.setIdEvento(Integer.parseInt(pGui.getIdEvento().getText()));
-        evento.setAgenda(conversioneAgenda(pGui.getAgenda()));
+        try {
+            evento.setIdEvento(Integer.parseInt(pGui.getIdEvento().getText()));
+        }
+        catch (NumberFormatException e) {
+            evento.setIdEvento(-1);
+        }
+
+        //evento.setAgenda(conversioneAgenda(pGui.getAgenda()));
         evento.setNotifica(Boolean.parseBoolean(pGui.getNotifica().getText()));
+        evento.setAgenda(pGui.getIdAgenda());
 
         return evento;
     }
@@ -165,26 +186,14 @@ public class Conversione {
      * @return Il Bean Gui Evento convertito
      */
     public static BeanGuiEvento conversioneEvento(Evento e, BeanGuiEvento gui) {
-
-        JTextField field = new JTextField();
-        JTextArea area = new JTextArea();
-
-        field.setText(e.getLuogo());
-        gui.setLuogo(field);
-        field.setText(e.getTema());
-        gui.setTema(field);
-        field.setText(e.getNome());
-        gui.setNome(field);
-        field.setText(e.getNote());
-        gui.setNote(area);
-        field.setText(e.getData().toString());
-        gui.setData(field);
-        field.setText(e.getOra().toString());
-        gui.setOra(field);
-        field.setText(Integer.toString(e.getIdEvento()));
-        gui.setIdEvento(field);
-        gui.setAgenda(conversioneAgenda(e.getAgenda(), new BeanGuiAgenda()));
-
+        gui.getData().setDate(e.getData().getTime());
+        gui.getIdEvento().setText(""+e.getIdEvento());
+        gui.getLuogo().setText(e.getLuogo());
+        gui.getNome().setText(e.getNome());
+        gui.getNote().setText(e.getNote());
+        gui.getNotifica().setSelected(e.getNotifica());
+        gui.getOra().setText(e.getOra().get(GregorianCalendar.HOUR)+ ":" + e.getOra().get(GregorianCalendar.MINUTE)+ ":" + e.getOra().get(GregorianCalendar.SECOND));
+        gui.getTema().setText(e.getTema());
         return gui;
     }
 
