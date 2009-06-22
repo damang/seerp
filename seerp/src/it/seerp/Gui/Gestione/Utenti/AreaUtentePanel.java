@@ -572,20 +572,27 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
     }// </editor-fold>//GEN-END:initComponents
 
     private void jXTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jXTable1MouseClicked
+        int i = jXTable1.getSelectedRow();
+        if (i < 0) {
+            return;
+        }
+
+        Integer id = (Integer) jXTable1.getValueAt(i, 0);
+
         if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
-            Integer id = (Integer) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0);
+
             AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
             operazione.visualizzaDatiCliente(id, cliente);
         } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
-            Integer id = (Integer) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0);
+
             AppGestionePersonale operazione = new AppGestionePersonale();
             operazione.visualizzaDatiDipendente(id, dipendente);
         } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
-            Integer id = (Integer) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0);
+
             AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
             operazione.visualizzaDatiFornitore(id, fornitore);
         } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
-            Integer id = (Integer) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0);
+
             AppGestionePersonale operazione = new AppGestionePersonale();
             operazione.visualizzaDatiResponsabile(id, responsabile);
         }
@@ -604,12 +611,12 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
                 AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
                 operazione.inserisciCliente(cliente);
-                refresh();
+
             } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
 
                 AppGestionePersonale operazione = new AppGestionePersonale();
                 operazione.inserisciDipendente(dipendente);
- refresh();
+
 
 
 
@@ -617,18 +624,24 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
                 AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
                 operazione.inserisciFornitore(fornitore);
- refresh();
+
 
             } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
 
                 AppGestionePersonale operazione = new AppGestionePersonale();
                 operazione.inserisciResponsabile(responsabile);
- refresh();
+
 
             }
+            refresh();
         }
         if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.MODIFICA)) {
-            Integer id = (Integer) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0);
+            int i = jXTable1.getSelectedRow();
+            if (i < 0) {
+                return;
+            }
+
+            Integer id = (Integer) jXTable1.getValueAt(i, 0);
             if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
 
 
@@ -636,21 +649,19 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
                 AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
 
                 operazione.modificaCliente(id, cliente);
-                 refresh();
-            // ((ClienteTm) jXTable1.getModel()).refresh();
+
 
             } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
 
                 AppGestionePersonale operazione = new AppGestionePersonale();
-                operazione.modificaDipendente(id, dipendente); refresh();
-            // ((DipendenteTm) jXTable1.getModel()).refresh();
+                operazione.modificaDipendente(id, dipendente);
+
 
             } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
 
 
                 AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
-                operazione.modificaFornitore(id, fornitore); refresh();
-            //((FornitoreTm) jXTable1.getModel()).refresh();
+                operazione.modificaFornitore(id, fornitore);
 
 
 
@@ -659,11 +670,12 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
 
                 AppGestionePersonale operazione = new AppGestionePersonale();
-                operazione.modificaResponsabile(id, responsabile); refresh();
-            //   operazione.modificaResponsabile(responsabile);
-//((ResponsabileTm) jXTable1.getModel()).refresh();
+                operazione.modificaResponsabile(id, responsabile);
+
 
             }
+            refresh();
+
 
         }
         editabile(false);
@@ -672,8 +684,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
     }//GEN-LAST:event_buttonSalva1MouseClicked
 
     private void buttonAnnulla1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonAnnulla1MouseClicked
-        menu.getAggiungi().setEnabled(true);
-        menu.getModifica().setEnabled(true);
+        menu.setButtonEnabled(true);
         JOptionPane.showMessageDialog(null, "operazione annulata");
         jTabbedPane1.setSelectedComponent(jPanel1);
         editabile(false);
@@ -729,36 +740,41 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
      *
      */
     public void elmina() {
-        Integer id = (Integer) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0);
+        int i = jXTable1.getSelectedRow();
+        if (i < 0) {
+            return;
+        }
+
+        Integer id = (Integer) jXTable1.getValueAt(i, 0);
+
         if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
-            JOptionPane.showMessageDialog(null, dipendente.getIdUtenteTxt().getText());
+
             AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
             operazione.eliminaExtraAziena(id, cliente);
 
-        // ((ClienteTm) jXTable1.getModel()).refresh();
         } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
 
             AppGestionePersonale operazione = new AppGestionePersonale();
             operazione.eliminaDipendente(id, dipendente);
-        //    ((DipendenteTm) jXTable1.getModel()).refresh();
+
 
         } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
 
-            JOptionPane.showMessageDialog(null, fornitore.getIdUtenteTxt().getText());
+
             AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
             operazione.eliminaExtraAziena(id, fornitore);
-        //((FornitoreTm) jXTable1.getModel()).refresh();
+
 
         } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
-            JOptionPane.showMessageDialog(null, responsabile.getIdUtenteTxt().getText());
+
             AppGestionePersonale operazione = new AppGestionePersonale();
             operazione.eliminaResponsabile(id, responsabile);
-        //((ResponsabileTm) jXTable1.getModel()).refresh();
         }
-refresh();
-        editabile(false);
-        this.buttonAnnulla1.setEnabled(false);
-        this.buttonSalva1.setEnabled(false);
+            refresh();
+            editabile(false);
+            this.buttonAnnulla1.setEnabled(false);
+            this.buttonSalva1.setEnabled(false);
+        
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -892,7 +908,6 @@ refresh();
 
         if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
             tModel = new ClienteTm();
-
         } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
             tModel = new DipendenteTm();
         } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {

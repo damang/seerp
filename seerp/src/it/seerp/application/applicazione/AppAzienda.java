@@ -28,8 +28,8 @@ public class AppAzienda {
         try {
             OpAzienda ope = new OpAzienda();
             Azienda azi = Conversione.conversioneAzienda(beanGui);
-            azi = ope.modifica(azi);
-            beanGui = Conversione.conversioneAzienda(azi, beanGui);
+        ope.modifica(azi);
+           //beanGui = Conversione.conversioneAzienda(azi, beanGui);
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
@@ -51,7 +51,8 @@ public class AppAzienda {
         try {
             OpAzienda ope = new OpAzienda();
             Azienda azi = ope.visualizza();
-            gui = Conversione.conversioneAzienda(azi, gui);
+            ;
+            Conversione.conversioneAzienda(azi, gui);
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");

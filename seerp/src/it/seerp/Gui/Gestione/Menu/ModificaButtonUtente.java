@@ -44,7 +44,7 @@ public class ModificaButtonUtente extends JButton implements CommandInterface {
 
     public void execute() {
         areaUt.setTipoOP(ConfigurazioneOperazioni.TIPO_OPE_CONST.MODIFICA);
-        areaUt.getMenu().setEnabled(false);
+        areaUt.getMenu().setButtonEnabled(false);
         areaUt.editabile(true);
         areaUt.getSalva().setEnabled(true);
         areaUt.getAnnulla().setEnabled(true);

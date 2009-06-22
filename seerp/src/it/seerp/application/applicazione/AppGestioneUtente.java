@@ -31,7 +31,7 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
             ArrayList<Utente> list = ope.visualizzaElenco();
             int i = 0;
             for (Utente user : list) {
-                listGui.add(Conversione.conversioneAreaPersonale(user, listGui.get(i)));
+                listGui.add(Conversione.conversioneUtente(user, listGui.get(i)));
                 i++;
             }
         } catch (SQLException se) {
@@ -60,7 +60,7 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
             ArrayList<Utente> listGui = ope.visualizzaElenco();
             int i = 0;
             for (Utente user : listGui) {
-                list.add(Conversione.conversioneAreaPersonale(user, list.get(i)));
+                list.add(Conversione.conversioneUtente(user, list.get(i)));
                 i++;
             }
         } catch (SQLException se) {
@@ -152,7 +152,7 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
             OpeUtente ope = new OpeUtente();
             Utente utente = Conversione.conversioneUtente(user);
             utente = ope.modifica(utente);
-            user = Conversione.conversioneAreaPersonale(utente, user);
+            user = Conversione.conversioneUtente(utente, user);
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
@@ -176,7 +176,7 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
         try {
             OpeUtente ope = new OpeUtente();
             Utente utente = ope.visualizza(user);
-            beanGui = it.seerp.application.conversioni.Conversione.conversioneAreaPersonale(utente, beanGui);
+            beanGui = it.seerp.application.conversioni.Conversione.conversioneUtente(utente, beanGui);
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
