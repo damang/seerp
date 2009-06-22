@@ -990,27 +990,15 @@ public class Conversione {
      */
     public static BeanGuiAzienda conversioneAzienda(Azienda a, BeanGuiAzienda bga) {
 
-        JTextField c = new JTextField();
-        c.setText(a.getCitta().toString());
-        bga.setCitta(c);
-        c.setText(a.getEmail().toString());
-        bga.setEmail(c);
-        c.setText(a.getFax().toString());
-        bga.setFax(c);
-        c.setText(a.getIndirizzo().toString());
-        bga.setInidirizzo(c);
-        c.setText(a.getNazione().toString());
-        bga.setNazione(c);
-        c.setText(a.getNote());
-        bga.setNote(c);
-        c.setText(a.getPIVA());
-        bga.setPIVA(c);
-        c.setText(a.getRagioneSociale());
-        bga.setRagioneSociale(c);
-        c.setText(a.getTelefono().toString());
-        bga.setTelefono(c);
+        bga.getCitta().setText(a.getCitta());
+        bga.getEmail().setText(a.getEmail());
+        bga.getFax().setText(a.getFax());
+        bga.getInidirizzo().setText(a.getIndirizzo());
+        bga.getNazione().setText(a.getNazione());
+        bga.getPIVA().setText(a.getPIVA());
+        bga.getRagioneSociale().setText(a.getRagioneSociale());
+        bga.getTelefono().setText(a.getTelefono());
         bga.setAmministratore(bga.getAmministratore());
-
         return bga;
     }
 }
