@@ -97,7 +97,7 @@ public class OpAzienda {
         Azienda az = null;
 
         String sql = "SELECT idAzienda,citta,email,fax,indirizzo,nazione,piva,regioneSociale,telefono" +
-                    "FROM azienda";
+                     "FROM azienda";
         stmt = (PreparedStatement) connessione.prepareStatement(sql);
 
         rs = stmt.executeQuery();
