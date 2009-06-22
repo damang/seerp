@@ -41,7 +41,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
         initComponents();
 
         editabile(false);
-        contratto = new BeanGuiContratto(this);
+        contratto = new BeanGuiContratto();
         pagamento = new BeanGuiPagamento();
         servizio = new BeanGuiServizioAssociato(data, provincia, jTextArea1);
         extraAz = new BeanGuiExtraAzienda(this);

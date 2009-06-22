@@ -11,6 +11,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import org.jdesktop.swingx.JXPanel;
 import tommaso.NewJFrame;
+import tommaso.pannello;
 
 /**
  * Classe relativa ai componenti grafici della gestione del Contratto
@@ -29,7 +30,7 @@ public class BeanGuiContratto {
     private ArrayList<BeanGuiPagamento> listPagamento;
     private ArrayList<BeanGuiServizioAssociato> listServizio;
     private ArrayList<BeanGuiFattura> listFatture;
-    private JXPanel grafica;
+    private pannello grafica;
     private NewJFrame frame;
     private NotEmptyValidator val;
     private NotMinNumberValidator valMinNum;
@@ -40,7 +41,7 @@ public class BeanGuiContratto {
      * validazione del campo
      * @param c
      */
-    public BeanGuiContratto(JXPanel c) {
+    public BeanGuiContratto(pannello c) {
         grafica = c;
     }
 
@@ -149,9 +150,9 @@ public class BeanGuiContratto {
      * @throws ValidatorException
      */
     public JTextField getDurata() throws ValidatorException {
-        if (!val.shouldYieldFocus(frame.getField())) {
+    /*   if (!val.shouldYieldFocus(grafica.getField())) {
             throw new ValidatorException("Errore nella grafica!");
-        }
+        }*/
         return durata;
     }
 
@@ -160,9 +161,9 @@ public class BeanGuiContratto {
      * @param pdurata rappresenta il campo durata  da inserire
      */
     public void setDurata(JTextField pdurata) {
-        this.durata = pdurata;
-        val = new NotEmptyValidator(frame, durata, "Il campo non può essere vuoto.");
-        ((JComponent) frame.getContentPane()).setInputVerifier(val);
+       this.durata = pdurata;
+     /*   val = new NotEmptyValidator(grafica, durata, "Il campo non può essere vuoto.");
+        grafica.setInputVerifier(val);*/
     }
 
     /**

@@ -21,7 +21,6 @@ public class OpAzienda {
      * @throws java.sql.SQLException
      */
     public OpAzienda() throws SQLException {
-        connessione = (Connection) ConnectionPool.getConnection();
     }
 
     /**
@@ -32,7 +31,7 @@ public class OpAzienda {
      */
     public void inserimento(Azienda az) throws SQLException, DatiErratiEx {
         PreparedStatement stmt = null;
-
+        connessione = (Connection) ConnectionPool.getConnection();
         String query = "INSERT INTO azienda(citta,email,fax,indirizzo,nazione,PIVA,regioneSociale,telefono)" +
                 " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -62,7 +61,7 @@ public class OpAzienda {
      * @throws it.seerp.storage.Exception.DatiErratiEx
      */
     public Azienda modifica(Azienda az) throws SQLException, DatiErratiEx {
-
+        connessione = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
         String query = "UPDATE azienda SET citta=?,email=?,fax=?,indirizzo=?,nazione=?,PIVA=?,regioneSociale=?,telefono=?" +
                 "where idAzienda=?";
@@ -91,13 +90,12 @@ public class OpAzienda {
      * @throws java.sql.SQLException
      */
     public Azienda visualizza() throws SQLException {
-
+        connessione = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
         Azienda az = null;
 
-        String sql = "SELECT idAzienda,citta,email,fax,indirizzo,nazione,piva,regioneSociale,telefono" +
-                     "FROM azienda";
+        String sql = "SELECT * FROM azienda";
         stmt = (PreparedStatement) connessione.prepareStatement(sql);
 
         rs = stmt.executeQuery();
@@ -116,6 +114,7 @@ public class OpAzienda {
             az.setRagioneSociale(rs.getString(8));
             az.setTelefono(rs.getString(9));
         }
+
         stmt.close();
         rs.close();
         ConnectionPool.releaseConnection(connessione);

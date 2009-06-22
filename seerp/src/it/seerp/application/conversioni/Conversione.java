@@ -302,6 +302,8 @@ public class Conversione {
         public static BeanGuiUtente conversioneUtente(Utente user, BeanGuiUtente utente) {
 
      //   utente.getIdUtenteTxt().setText(user.getIdUtente().toString());
+       
+
           utente.getTxtUsername().setText(user.getUsername());
       
         utente.getTxtPassword().setText(user.getPassword());
@@ -376,7 +378,7 @@ public class Conversione {
      */
     public static BeanGuiPersonale conversionePersonale(Personale p, BeanGuiPersonale bp) {
 
-        Conversione.conversioneAreaPersonale(p, bp);
+        Conversione.conversioneUtente(p, bp);
      
         bp.getCognome().setText(p.getCognome());
         System.out.println("luisa"+p.getNome());
@@ -441,7 +443,7 @@ public class Conversione {
      */
     public static BeanGuiExtraAzienda conversioneExtraAzienda(ExtraAzienda e, BeanGuiExtraAzienda extra) throws ValidatorException {
 
-         conversioneAreaPersonale(e, extra);
+         conversioneUtente(e, extra);
         //   extra.getIdUtenteTxt().setText(e.getIdUtente().toString());
   //       extra.getCognome().setText(e.getCognome());
 //         extra.getNome().setText(e.getNome());
@@ -489,7 +491,7 @@ public class Conversione {
      * @return il Bean Gui convertito
      */
     public static BeanGuiResponsabile conversioneResponsabile(Responsabile e, BeanGuiResponsabile br) {
-         conversionePersonale(e, br);
+         conversioneUtente(e, br);
 
         return br;
     }
@@ -949,17 +951,17 @@ public class Conversione {
      */
     public static Azienda conversioneAzienda(BeanGuiAzienda azienda) throws ValidatorException {
         Azienda azienda1 = new Azienda();
-        azienda1.setCitta(azienda.getCitta().getText());
+//        azienda1.setCitta(azienda.getCitta().getText());
         azienda1.setEmail(azienda.getEmail().getText());
-        azienda1.setFax(azienda.getFax().getText());
+  //      azienda1.setFax(azienda.getFax().getText());
         azienda1.setIndirizzo(azienda.getInidirizzo().getText());
         azienda1.setNazione(azienda.getNazione().getText());
         azienda1.setPIVA(azienda.getPIVA().getText());
         azienda1.setRagioneSociale(azienda.getRagioneSociale().getText());
         azienda1.setTelefono(azienda.getTelefono().getText());
-        azienda1.setIdAzienda(Integer.parseInt(azienda.getIdAzienda().getText()));
-        azienda1.setNote(azienda.getNote().getText());
-        azienda1.setAmministratore(conversioneAmministratore(azienda.getAmministratore()));
+    //    azienda1.setIdAzienda(Integer.parseInt(azienda.getIdAzienda().getText()));
+        //azienda1.setNote(azienda.getNote().getText());
+        //azienda1.setAmministratore(conversioneAmministratore(azienda.getAmministratore()));
         return azienda1;
     }
 
@@ -967,7 +969,7 @@ public class Conversione {
         JTextField c = new JTextField();
         c.setText(agenda.getIdAgenda().toString());
         beanGuiAgenda.setIdAgenda(c);
-        beanGuiAgenda.setUtente(conversioneAreaPersonale(new Utente(), beanGuiAgenda.getUtente()));
+        beanGuiAgenda.setUtente(conversioneUtente(new Utente(), beanGuiAgenda.getUtente()));
         beanGuiAgenda.setArrEventi(beanGuiAgenda.getArrEventi());
         return beanGuiAgenda;
     }
@@ -990,15 +992,18 @@ public class Conversione {
      */
     public static BeanGuiAzienda conversioneAzienda(Azienda a, BeanGuiAzienda bga) {
 
-        bga.getCitta().setText(a.getCitta());
+//        bga.getCitta().setText(a.getCitta());
+//
         bga.getEmail().setText(a.getEmail());
-        bga.getFax().setText(a.getFax());
+      //  bga.getFax().setText(a.getFax());
+        
         bga.getInidirizzo().setText(a.getIndirizzo());
+         
         bga.getNazione().setText(a.getNazione());
         bga.getPIVA().setText(a.getPIVA());
         bga.getRagioneSociale().setText(a.getRagioneSociale());
-        bga.getTelefono().setText(a.getTelefono());
-        bga.setAmministratore(bga.getAmministratore());
+       bga.getTelefono().setText(a.getTelefono());
+        //bga.setAmministratore(bga.getAmministratore());
         return bga;
     }
 }
