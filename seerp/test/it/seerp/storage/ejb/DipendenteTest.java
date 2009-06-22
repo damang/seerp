@@ -70,7 +70,7 @@ public class DipendenteTest extends TestCase{
     public void testGetListContratti() {
         System.out.println("getListContratti");
         
-        ArrayList<Contratto> expResult = contr;
+        ArrayList<Contratto> expResult = null;
         ArrayList<Contratto> result = dGet.getListContratti();
         assertEquals(expResult, result);
         
@@ -83,7 +83,7 @@ public class DipendenteTest extends TestCase{
     public void testGetListAppuntamenti() {
         System.out.println("getListAppuntamenti");
         
-        ArrayList<Appuntamento> expResult = app;
+        ArrayList<Appuntamento> expResult = null;
         ArrayList<Appuntamento> result = dGet.getListAppuntamenti();
         assertEquals(expResult, result);
         
@@ -110,7 +110,7 @@ public class DipendenteTest extends TestCase{
         Appuntamento p = null;
         
         dGet.removeAppuntamento(p);
-        assertEquals(app, dGet.getListAppuntamenti());
+        assertEquals(p, dGet.getListAppuntamenti());
     }
 
     /**
@@ -122,7 +122,7 @@ public class DipendenteTest extends TestCase{
         Appuntamento p = null;
         
         dGet.addAppuntamento(p);
-        assertEquals(app, dGet.getListAppuntamenti());
+        assertEquals(p, dGet.getListAppuntamenti());
         
     }
 
@@ -135,7 +135,7 @@ public class DipendenteTest extends TestCase{
         Contratto c = null;
         
         dGet.removeContratto(c);
-        assertEquals(contr, dGet.getListContratti());
+        assertEquals(c, dGet.getListContratti());
     }
 
     /**
@@ -147,7 +147,7 @@ public class DipendenteTest extends TestCase{
         Contratto c = null;
         
         dGet.addContratto(c);
-        assertEquals(contr, dGet.getListContratti());
+        assertEquals(c, dGet.getListContratti());
     }
 
 }

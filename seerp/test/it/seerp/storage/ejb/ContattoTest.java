@@ -82,7 +82,7 @@ public class ContattoTest extends TestCase{
         System.out.println("equals");
         Object obj = null;
         
-        boolean expResult = true;
+        boolean expResult = false;
         boolean result = cGet.equals(obj);
         assertEquals(expResult, result);
        

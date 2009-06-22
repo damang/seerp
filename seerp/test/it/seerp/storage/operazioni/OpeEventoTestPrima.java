@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
  *
  * @author Ila
  */
-public class OpeEventoTestPrima extends TestCase{
+/* public class OpeEventoTestPrima extends TestCase{
     private Date d;
     private Time g;
     private Evento c;
@@ -40,7 +40,7 @@ public class OpeEventoTestPrima extends TestCase{
         d = new Date(108,00,12);
         g= new Time(12,00,00);
 
-        c=new Evento("aula p13", "riunione", "InternationalSchool",
+  /*      c=new Evento("aula p13", "riunione", "InternationalSchool",
                 "conferenza salvaguardia ambientale", d, g, 17, 15, true);
         //String luogo, String tema, String nome, String note, Date data, Time ora, int idEvento, int agenda, Boolean not
     }
@@ -54,7 +54,7 @@ public class OpeEventoTestPrima extends TestCase{
     /**
      * Test of inserimento method, of class OpeEvento.
      */
-    @Test
+ /*   @Test
     public void testInserimento() throws Exception {
         System.out.println("inserimento");
        
@@ -76,7 +76,7 @@ public class OpeEventoTestPrima extends TestCase{
     /**
      * Test of modifica method, of class OpeEvento.
      */
-    @Test
+/*    @Test
     public void testModifica() throws Exception {
         System.out.println("modifica");
        
@@ -102,7 +102,7 @@ public class OpeEventoTestPrima extends TestCase{
     /**
      * Test of visualizza method, of class OpeEvento.
      */
-    @Test
+ /*   @Test
     public void testVisualizza() throws Exception {
         System.out.println("visualizza");
         Integer id = 17;
@@ -117,7 +117,7 @@ public class OpeEventoTestPrima extends TestCase{
     /**
      * Test of visualizzaElenco method, of class OpeEvento.
      */
-    @Test
+ /*   @Test
     public void testVisualizzaElenco() throws Exception {
         System.out.println("visualizzaElenco");
         OpeEvento instance = new OpeEvento();
@@ -131,7 +131,7 @@ public class OpeEventoTestPrima extends TestCase{
     /**
      * Test of ricercaEvento method, of class OpeEvento.
      */
-    @Test
+ /*   @Test
     public void testRicercaEvento() throws Exception {
         System.out.println("ricercaEvento");
         String nome = "riunione";
@@ -146,7 +146,7 @@ public class OpeEventoTestPrima extends TestCase{
     /**
      * Test of ricercaPerTema method, of class OpeEvento.
      */
-    @Test
+ /*   @Test
     public void testRicercaPerTema() throws Exception {
         System.out.println("ricercaPerTema");
         String tema = "";
@@ -161,7 +161,7 @@ public class OpeEventoTestPrima extends TestCase{
     /**
      * Test of ricercaPerGiorno method, of class OpeEvento.
      */
-    @Test
+ /*   @Test
     public void testRicercaPerGiorno() throws Exception {
         System.out.println("ricercaPerGiorno");
         String data = "";
@@ -176,7 +176,7 @@ public class OpeEventoTestPrima extends TestCase{
     /**
      * Test of cancella method, of class OpeEvento.
      */
-    @Test
+/*    @Test
     public void testCancella() throws Exception {
         System.out.println("cancella");
         Evento e = null;
@@ -189,7 +189,7 @@ public class OpeEventoTestPrima extends TestCase{
     /**
      * Test of notificaEvento method, of class OpeEvento.
      */
-    @Test
+ /*   @Test
     public void testNotificaEvento() throws Exception {
         System.out.println("notificaEvento");
         Evento e = null;
@@ -202,7 +202,7 @@ public class OpeEventoTestPrima extends TestCase{
     /**
      * Test of eventiNotificati method, of class OpeEvento.
      */
-    @Test
+/*   @Test
     public void testEventiNotificati() throws Exception {
         System.out.println("eventiNotificati");
         Date data = null;
@@ -217,4 +217,4 @@ public class OpeEventoTestPrima extends TestCase{
 
 }
 
-}
+}*/

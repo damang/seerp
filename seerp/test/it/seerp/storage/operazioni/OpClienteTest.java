@@ -60,7 +60,7 @@ public class OpClienteTest extends TestCase{
     @Test
     public void testElencaCliente() throws Exception {
          System.out.println("elencaCliente");
-         ArrayList<Cliente> con = new ArrayList<Cliente>();
+        ArrayList<Cliente> con = new ArrayList<Cliente>();
         OpCliente instance = new OpCliente();
         ArrayList<Cliente> expResult = con;
         ArrayList<Cliente> result = instance.elencaCliente();
@@ -110,8 +110,6 @@ public class OpClienteTest extends TestCase{
         System.out.println("inserisci");
        
         OpCliente instance = new OpCliente();
-
-    
 
         assertEquals("marros",c.getUsername());
         assertEquals("123456",c.getPassword());
