@@ -105,9 +105,16 @@ public class OpAzienda {
         // Define the resource list
         while (rs.next()) {
 
-            az = new Azienda(rs.getString(1), rs.getString(2), rs.getString(3),
-                    rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),
-                    rs.getString(8), rs.getInt(9));
+            az = new Azienda();
+            az.setIdAzienda(rs.getInt(1));
+            az.setCitta(rs.getString(2));
+            az.setEmail(rs.getString(3));
+            az.setFax(rs.getString(4));
+            az.setIndirizzo(rs.getString(5));
+            az.setNazione(rs.getString(6));
+            az.setPIVA(rs.getString(7));
+            az.setRagioneSociale(rs.getString(8));
+            az.setTelefono(rs.getString(9));
         }
         stmt.close();
         rs.close();
