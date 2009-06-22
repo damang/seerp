@@ -35,23 +35,23 @@ public class OpPersonale extends OpeUtente {
     /** Metodo che permette la visualizzazione
      * della lista del Personale
      * @return ArrayList contenente la lista del personale
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException*/
     public ArrayList<Personale> elencaPersonale() throws SQLException {
-    con = (Connection) ConnectionPool.getConnection();
+    connessione = (Connection) ConnectionPool.getConnection();
     ArrayList<Personale> list = new ArrayList<Personale>();
     PreparedStatement stmt = null;
     ResultSet rs = null;
     String sql = "SELECT * FROM Personale where visible='true'";
-    stmt = (PreparedStatement) con.prepareStatement(sql);
+    stmt = (PreparedStatement) connessione.prepareStatement(sql);
     // Execute the query
     rs = stmt.executeQuery(sql);
 
     // Define the resource list
     while (rs.next()) {
-    /*
-     * Integer idUtente1, String username2, String password3, String città4,
+    
+   /* Integer idUtente1, String username2, String password3, String città4,
     String provincia5, String telefono6,String cap7, String email8, String note9,
-    String tipo10, String cognome11, String nome12, String codiceFiscale13, Boolean v14, String ruolo15
+    String tipo10, String cognome11, String nome12, String codiceFiscale13, Boolean v14, String ruolo15*/
 
     Personale personale = new Personale(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
     rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12),
@@ -60,7 +60,7 @@ public class OpPersonale extends OpeUtente {
     }
     rs.close();
     stmt.close();
-    ConnectionPool.releaseConnection(con);
+    ConnectionPool.releaseConnection(connessione);
 
     return list;
     }
