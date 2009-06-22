@@ -21,7 +21,7 @@ import java.util.GregorianCalendar;
  */
 public class OpEvento implements OpeEntity<Evento, Integer> {
 
-    private Connection conn;
+    private Connection connessione;
 
     /**
      *
@@ -29,7 +29,7 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
      */
     public OpEvento() throws SQLException {
 
-        conn = (Connection) ConnectionPool.getConnection();
+        connessione = (Connection) ConnectionPool.getConnection();
     }
 
     /** crea la query per inserire l'evento e nel database
@@ -42,13 +42,13 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
 
         PreparedStatement stmt = null;
         Statement stmt1 = null;
-        String query = "INSERT INTO evento(data, ora,agenda,luogo,nome,tema,note,notifica)" +
-                " VALUE (?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO evento(data,ora,agenda,luogo,nome,tema,note,notifica)" +
+                " VALUES (?,?,?,?,?,?,?,?)";
         //da controllare campi
-        String sqlTest = "SELECT * FROM evento WHERE nome='" + e.getNome() + "' ";
+        String sqlTest = "SELECT * FROM evento WHERE nome='" + e.getNome() + "'";
 
-        stmt1 = conn.createStatement();
-        stmt = (PreparedStatement) conn.prepareStatement(query);
+        stmt1 = connessione.createStatement();
+        stmt = (PreparedStatement) connessione.prepareStatement(query);
         ResultSet rs = stmt1.executeQuery(sqlTest);
 
         if (rs.next()) {
@@ -68,7 +68,7 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
             stmt.execute();
             stmt.close();
             rs.close();
-            ConnectionPool.releaseConnection(conn);
+            ConnectionPool.releaseConnection(connessione);
         }
     }
 
@@ -83,12 +83,13 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
 
         PreparedStatement stmt = null;
         Statement stmt1 = null;
-        String query = "UPDATE evento(data, ora,luogo,nome,tema,note,notifica) VALUE (?,?,?,?,?,?,?)";
-        //da controllare campi
+        String query = "UPDATE evento SET data=?, ora=?, agenda=?, luogo=?, nome=?, tema=?," +
+                "note=?, notifica=?";
+       
         String sqlTest = "SELECT * FROM evento WHERE nome='" + e.getNome() + "' ";
 
-        stmt1 = conn.createStatement();
-        stmt = (PreparedStatement) conn.prepareStatement(query);
+        stmt1 = connessione.createStatement();
+        stmt = (PreparedStatement) connessione.prepareStatement(query);
         ResultSet rs = stmt1.executeQuery(sqlTest);
 
         if (rs.next()) {
@@ -99,18 +100,18 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
             stmt.setDate(1, sqlDate);
             java.sql.Date sqlTime = new java.sql.Date(new java.util.Date().getTime());
             stmt.setDate(2, sqlTime);
-            stmt.setString(3, e.getLuogo());
-            stmt.setString(4, e.getNome());
-            stmt.setString(5, e.getTema());
-            stmt.setString(6, e.getNote());
-            stmt.setBoolean(7, e.getNotifica());
-
+            stmt.setInt(3, e.getAgenda().getIdAgenda());
+            stmt.setString(4,e.getLuogo());
+            stmt.setString(5,e.getNome());
+            stmt.setString(6, e.getTema());
+            stmt.setString(7, e.getNote());
+            stmt.setBoolean(8,e.getNotifica());
             stmt.execute();
 
         }
         stmt.close();
         rs.close();
-        ConnectionPool.releaseConnection(conn);
+        ConnectionPool.releaseConnection(connessione);
 
         return e;
     }
@@ -127,14 +128,14 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
         ResultSet rs = null;
         Evento ev = null;
 
-        String query = "SELECT idEvento,data, ora,luogo,nome,tema,note,notifica" +
-                " FROM evento, agenda" +
-                "where evento.idAgenda=agenda.idAgenda and idAgenda=?";
+        String query = "SELECT idEvento, data, ora, luogo, nome, tema, note, notifica" +
+                       " FROM evento join agenda on agenda=idAgenda" +
+                       "where idAgenda=?";
 
-        stmt = (PreparedStatement) conn.prepareStatement(query);
+        stmt = (PreparedStatement) connessione.prepareStatement(query);
         stmt.setInt(1, id);
         // Execute the query
-        rs = stmt.executeQuery(query);
+        rs = stmt.executeQuery();
 
         while (rs.next()) {
             GregorianCalendar date = new GregorianCalendar();
@@ -144,13 +145,13 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
             time.setTimeInMillis(rs.getTime(3).getTime());
 
             ev = new Evento(rs.getString(1), rs.getString(2), rs.getString(3),
-                    rs.getString(4), date, time, rs.getInt(7),
-                    rs.getBoolean(8));
+                            rs.getString(4), date, time, rs.getInt(7),
+                            rs.getBoolean(8));
 
         }
         stmt.close();
         rs.close();
-        ConnectionPool.releaseConnection(conn);
+        ConnectionPool.releaseConnection(connessione);
 
         return ev;
 
@@ -162,7 +163,7 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
      * @return	La lista degli eventi
      * @throws SQLException
      */
-    public ArrayList<Evento> visualizzaElenco() throws SQLException {
+    public ArrayList<Evento> visualizzaElenco(String usr) throws SQLException {
 
         ArrayList<Evento> lista = new ArrayList<Evento>();
 
@@ -170,10 +171,11 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
         ResultSet rs = null;
 
         String query = "SELECT idEvento,data, ora,luogo,nome,tema,evento.note,notifica" +
-                " FROM evento, agenda, utente " +
-                "WHERE evento.agenda=agenda.idAgenda and agenda.idAgenda=utente.idUtente ";
-        stmt = (PreparedStatement) conn.prepareStatement(query);
-        rs = stmt.executeQuery(query);
+                       " FROM evento, agenda, utente " +
+                       "WHERE evento.agenda=agenda.idAgenda and agenda.idAgenda=utente.idUtente and username=? ";
+        stmt = (PreparedStatement) connessione.prepareStatement(query);
+        stmt.setString(1, usr);
+        rs = stmt.executeQuery();
 
         while (rs.next()) {
             GregorianCalendar date = new GregorianCalendar();
@@ -189,7 +191,7 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
         }
         stmt.close();
         rs.close();
-        ConnectionPool.releaseConnection(conn);
+        ConnectionPool.releaseConnection(connessione);
         return lista;
     }
 
@@ -214,12 +216,13 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
 
         PreparedStatement stmt = null;
 
-        String query = "DELETE FROM evento WHERE idEvento='" + e.getIdEvento() + "'";
-        stmt = (PreparedStatement) conn.prepareStatement(query);
+        String query = "DELETE FROM evento WHERE idEvento=?";
+        stmt = (PreparedStatement) connessione.prepareStatement(query);
+        stmt.setInt(1, e.getIdEvento());
         stmt.executeUpdate();
         stmt.close();
 
-        ConnectionPool.releaseConnection(conn);
+        ConnectionPool.releaseConnection(connessione);
     }
    
     /**
@@ -232,15 +235,15 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
         PreparedStatement stmt = null;
 
 
-        String query = "UPDATE evento(notifica) SET (true) " +
-                "WHERE idEvento='" + e.getIdEvento() + "'";
-        stmt.setBoolean(1, e.getNotifica());
-        stmt = (PreparedStatement) conn.prepareStatement(query);
+        String query = "UPDATE evento SET  notifica='true'" +
+                "WHERE idEvento=?";
+        stmt.setInt(1, e.getIdEvento());
+        stmt = (PreparedStatement) connessione.prepareStatement(query);
         stmt.executeUpdate();
 
         stmt.close();
 
-        ConnectionPool.releaseConnection(conn);
+        ConnectionPool.releaseConnection(connessione);
     }
 
      /**
@@ -257,7 +260,9 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
         GregorianCalendar gc = new GregorianCalendar();
         Date a = new Date(gc.getTimeInMillis());
         String query = "SELECT nome,tema,data FROM evento" +
-                " WHERE notifica=true and data<='" + a.toString() + "'";
+                " WHERE notifica=true and data<=?";
+        stmt= (PreparedStatement) connessione.prepareStatement(query);
+        stmt.setString(1,a.toString());
         ResultSet rs = stmt.executeQuery(query);
 
         while (rs.next()) {
@@ -272,15 +277,48 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
 
 
             evNotificati.add(e);
-            stmt = (PreparedStatement) conn.prepareStatement(query);
+            stmt = (PreparedStatement) connessione.prepareStatement(query);
             stmt.executeUpdate();
 
         }
         stmt.close();
         rs.close();
-        ConnectionPool.releaseConnection(conn);
+        ConnectionPool.releaseConnection(connessione);
 
         return evNotificati;
 
+    }
+
+
+    public ArrayList<Evento> visualizzaElenco() throws SQLException {
+
+        ArrayList<Evento> lista = new ArrayList<Evento>();
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        String query = "SELECT idEvento,data, ora,luogo,nome,tema,evento.note,notifica" +
+                       " FROM evento, agenda, utente " +
+                       "WHERE evento.agenda=agenda.idAgenda and agenda.idAgenda=utente.idUtente";
+        stmt = (PreparedStatement) connessione.prepareStatement(query);
+
+        rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            GregorianCalendar date = new GregorianCalendar();
+            date.setTimeInMillis(rs.getDate(2).getTime());
+
+            GregorianCalendar time = new GregorianCalendar();
+            time.setTimeInMillis(rs.getTime(3).getTime());
+
+            Evento ev = new Evento(rs.getString(1), rs.getString(2), rs.getString(3),
+                    rs.getString(4), date, time, rs.getInt(7), rs.getBoolean(8));
+
+            lista.add(ev);
+        }
+        stmt.close();
+        rs.close();
+        ConnectionPool.releaseConnection(connessione);
+        return lista;
     }
 }
