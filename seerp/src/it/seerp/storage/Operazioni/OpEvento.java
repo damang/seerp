@@ -54,11 +54,11 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
         if (rs.next()) {
             throw new DatiDuplicatiEx("evento già esistente nel database");
         } else {
-            java.sql.Date sqlDate = new java.sql.Date(new java.util.Date().getTime());
+            java.sql.Date sqlDate = new java.sql.Date(e.getData().getTimeInMillis());
             stmt.setDate(1, sqlDate);
-            java.sql.Date sqlTime = new java.sql.Date(new java.util.Date().getTime());
-            stmt.setDate(2, sqlTime);
-            stmt.setInt(3, e.getAgenda().getIdAgenda());
+            java.sql.Time sqlTime = new java.sql.Time(e.getOra().getTimeInMillis());
+            stmt.setTime(2, sqlTime);
+            stmt.setInt(3, e.getAgenda());
             stmt.setString(4, e.getLuogo());
             stmt.setString(5, e.getNome());
             stmt.setString(6, e.getTema());
@@ -100,7 +100,7 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
             stmt.setDate(1, sqlDate);
             java.sql.Date sqlTime = new java.sql.Date(new java.util.Date().getTime());
             stmt.setDate(2, sqlTime);
-            stmt.setInt(3, e.getAgenda().getIdAgenda());
+            stmt.setInt(3, e.getAgenda());
             stmt.setString(4,e.getLuogo());
             stmt.setString(5,e.getNome());
             stmt.setString(6, e.getTema());
@@ -123,7 +123,7 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
      * @throws SQLException
      */
     public Evento visualizza(Integer id) throws SQLException {
-
+        connessione = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
         Evento ev = null;
@@ -164,7 +164,7 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
      * @throws SQLException
      */
     public ArrayList<Evento> visualizzaElenco(String usr) throws SQLException {
-
+        connessione = (Connection) ConnectionPool.getConnection();
         ArrayList<Evento> lista = new ArrayList<Evento>();
 
         PreparedStatement stmt = null;
@@ -184,8 +184,15 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
             GregorianCalendar time = new GregorianCalendar();
             time.setTimeInMillis(rs.getTime(3).getTime());
 
-            Evento ev = new Evento(rs.getString(1), rs.getString(2), rs.getString(3),
-                    rs.getString(4), date, time, rs.getInt(7), rs.getBoolean(8));
+            Evento ev = new Evento();
+            ev.setIdEvento(rs.getInt("idEvento"));
+            ev.setData(date);
+            ev.setOra(time);
+            ev.setLuogo(rs.getString("luogo"));
+            ev.setNome(rs.getString("nome"));
+            ev.setNote(rs.getString("evento.note"));
+            ev.setNotifica(rs.getBoolean("notifica"));
+            ev.setTema(rs.getString("tema"));
 
             lista.add(ev);
         }
@@ -323,18 +330,15 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
     }
 
     public Evento getEventoPerId(Integer id) throws SQLException{
-
+        connessione = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
         Evento ev = null;
 
-        String query = "SELECT idEvento, data, ora, luogo, nome, tema, note, notifica" +
-                       " FROM evento join agenda on agenda=idAgenda" +
-                       "where idAgenda=? and idEvento=?";
+        String query = "SELECT idEvento, data, ora, luogo, nome, tema, evento.note, notifica FROM evento, agenda WHERE agenda=idAgenda and idEvento=?";
 
         stmt = (PreparedStatement) connessione.prepareStatement(query);
         stmt.setInt(1, id);
-        stmt.setInt(2, id);
         // Execute the query
         rs = stmt.executeQuery();
 
@@ -345,9 +349,15 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
             GregorianCalendar time = new GregorianCalendar();
             time.setTimeInMillis(rs.getTime(3).getTime());
 
-            ev = new Evento(rs.getString(1), rs.getString(2), rs.getString(3),
-                            rs.getString(4), date, time, rs.getInt(7),
-                            rs.getBoolean(8));
+            ev = new Evento();
+            ev.setIdEvento(rs.getInt("idEvento"));
+            ev.setData(date);
+            ev.setOra(time);
+            ev.setLuogo(rs.getString("luogo"));
+            ev.setNome(rs.getString("nome"));
+            ev.setNote(rs.getString("evento.note"));
+            ev.setNotifica(rs.getBoolean("notifica"));
+            ev.setTema(rs.getString("tema"));
 
         }
         stmt.close();
@@ -357,5 +367,24 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
         return ev;
 
 
+    }
+    public int getIdAgendaUtCorr(String username) throws SQLException {
+        connessione = (Connection) ConnectionPool.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        String query = "SELECT agenda FROM evento,agenda,utente WHERE agenda=idAgenda and idAgenda=idUtente and username=?";
+
+        stmt = (PreparedStatement) connessione.prepareStatement(query);
+        stmt.setString(1, username);
+        // Execute the query
+        rs = stmt.executeQuery();
+        int id=-1;
+        if(rs.next()) {
+            id=rs.getInt(1);
+        }
+        stmt.close();
+        rs.close();
+        ConnectionPool.releaseConnection(connessione);
+        return id;
     }
 }
