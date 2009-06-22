@@ -25,10 +25,10 @@ public class OpEventoTest extends TestCase {
     private GregorianCalendar data;
     private GregorianCalendar ora;
     private Boolean not;
-
     ArrayList<Evento> listEve;
 
-    public OpEventoTest() {
+    public OpEventoTest(String name) {
+        super(name);
     }
 
     @BeforeClass
@@ -40,8 +40,8 @@ public class OpEventoTest extends TestCase {
     }
 
     @Before
-    @Override
     public void setUp() {
+        listEve = null;
         agd = new Agenda();
         not = true;
         data = new GregorianCalendar(2009, 7, 23);
@@ -104,27 +104,22 @@ public class OpEventoTest extends TestCase {
     @Test
     public void testVisualizza() throws Exception {
         System.out.println("visualizza");
-        Integer id = null;
+        Integer id = 4;
         OpEvento instance = new OpEvento();
         Evento expResult = null;
         Evento result = instance.visualizza(id);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of visualizzaElenco method, of class OpEvento.
-     
+     */
     @Test
     public void testVisualizzaElenco() throws Exception {
         System.out.println("Visualizza Elenco");
-
         OpEvento instance = new OpEvento();
-
         ArrayList<Evento> expResult = listEve;
         ArrayList<Evento> result = instance.visualizzaElenco();
-
         Iterator<Evento> it = expResult.iterator();
         int i = 0;
         while (it.hasNext()) {
@@ -136,57 +131,59 @@ public class OpEventoTest extends TestCase {
 
     /**
      * Test of ricercaEvento method, of class OpEvento.
-     
+     */
     @Test
     public void testRicercaEvento() throws Exception {
         System.out.println("ricercaEvento");
         OpEvento instance = new OpEvento();
-        ArrayList<Evento> expResult = null;
+        ArrayList<Evento> expResult = listEve;
         ArrayList<Evento> result = instance.ricercaEvento();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Iterator<Evento> it = expResult.iterator();
+        int i = 0;
+        while (it.hasNext()) {
+            Evento temp = it.next();
+            assertEquals(temp, result.get(i));
+            i++;
+        }
     }
 
     /**
      * Test of cancella method, of class OpEvento.
-     
+     */
     @Test
     public void testCancella() throws Exception {
         System.out.println("cancella");
-        Evento e = null;
         OpEvento instance = new OpEvento();
-        instance.cancella(e);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.cancella(eve);
     }
 
     /**
      * Test of notificaEvento method, of class OpEvento.
-     
+     */
     @Test
     public void testNotificaEvento() throws Exception {
         System.out.println("notificaEvento");
-        Evento e = null;
         OpEvento instance = new OpEvento();
-        instance.notificaEvento(e);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.notificaEvento(eve);
+
     }
 
     /**
      * Test of eventiNotificati method, of class OpEvento.
-     
+     */
     @Test
     public void testEventiNotificati() throws Exception {
         System.out.println("eventiNotificati");
-        GregorianCalendar data = null;
+        GregorianCalendar datas = new GregorianCalendar();
         OpEvento instance = new OpEvento();
-        ArrayList<Evento> expResult = null;
-        ArrayList<Evento> result = instance.eventiNotificati(data);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }*/
-
+        ArrayList<Evento> expResult = listEve;
+        ArrayList<Evento> result = instance.eventiNotificati(datas);
+        Iterator<Evento> it = expResult.iterator();
+        int i = 0;
+        while (it.hasNext()) {
+            Evento temp = it.next();
+            assertEquals(temp, result.get(i));
+            i++;
+        }
+    }
 }
