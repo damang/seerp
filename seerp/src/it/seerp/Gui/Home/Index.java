@@ -75,7 +75,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
             jXPanel3 = new org.jdesktop.swingx.JXPanel();
             buttonRuoli1 = new it.seerp.Gui.bottoni.gestioni.ButtonRuoli(this.jTabbedPanePrincipale,this.menuRuoli1,this);
             buttonInfoAzienda1 = new it.seerp.Gui.bottoni.gestioni.ButtonInfoAzienda(this.jTabbedPanePrincipale,this.menuInfoAzienda1,this);
-            buttonAgenda1 = new it.seerp.Gui.bottoni.gestioni.ButtonAgenda(this.jTabbedPanePrincipale,this.menuAppuntamento1,this);
+            buttonAgenda1 = new it.seerp.Gui.bottoni.gestioni.ButtonAgenda(this.jTabbedPanePrincipale,this.menuAgenda,this);
             areaPersonaleButton5 = new it.seerp.Gui.bottoni.gestioni.AreaPersonaleButton(this.jTabbedPanePrincipale,this.menuAreaPersonale2,this);
             jXMonthView1 = new org.jdesktop.swingx.JXMonthView();
             jXTitledPanel1 = new org.jdesktop.swingx.JXTitledPanel();
@@ -85,7 +85,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
             menuServizi1 = new it.seerp.Gui.Gestione.Menu.MenuServizi();
             menuInfoAzienda1 = new it.seerp.Gui.Gestione.Menu.MenuInfoAzienda();
             menuAreaPersonale2 = new it.seerp.Gui.Gestione.Menu.MenuAreaPersonale();
-            menuAppuntamento1 = new it.seerp.Gui.Gestione.Menu.MenuAgenda();
+            menuAgenda = new it.seerp.Gui.Gestione.Menu.MenuAgenda();
             menuBar = new javax.swing.JMenuBar();
             fileMenu = new javax.swing.JMenu();
             openMenuItem = new javax.swing.JMenuItem();
@@ -393,7 +393,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
 
         menuAreaPersonale2.setName("menuAreaPersonale2"); // NOI18N
 
-        menuAppuntamento1.setName("menuAppuntamento1"); // NOI18N
+        menuAgenda.setName("menuAgenda"); // NOI18N
 
         javax.swing.GroupLayout jXTitledPanel1Layout = new javax.swing.GroupLayout(jXTitledPanel1.getContentContainer());
         jXTitledPanel1.getContentContainer().setLayout(jXTitledPanel1Layout);
@@ -412,8 +412,8 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(menuInfoAzienda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(menuAppuntamento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addComponent(menuAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         jXTitledPanel1Layout.setVerticalGroup(
             jXTitledPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -425,8 +425,8 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
                     .addComponent(menuServizi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(menuAreaPersonale2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(menuInfoAzienda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(menuAppuntamento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                    .addComponent(menuAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         this.menuUtente1.setVisible(false);
@@ -435,7 +435,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
         menuServizi1.setVisible(false);
         this.menuInfoAzienda1.setVisible(false);
         menuAreaPersonale2.setVisible(false);
-        menuAppuntamento1.setVisible(false);
+        menuAgenda.setVisible(false);
 
         fileMenu.setText("File");
 
@@ -504,7 +504,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jXTitledPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.DEFAULT_SIZE, 854, Short.MAX_VALUE)
+                .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.DEFAULT_SIZE, 855, Short.MAX_VALUE)
                 .addContainerGap())
             .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, 1014, Short.MAX_VALUE)
         );
@@ -549,7 +549,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
                 this.menuAreaPersonale2.setVisible(false);
                 this.menuServizi1.setVisible(false);
                 this.menuUtente1.setVisible(true);
-                this.menuAppuntamento1.setVisible(false);
+                this.menuAgenda.setVisible(false);
                 this.menuInfoAzienda1.setVisible(false);
                 this.menuRuoli1.setVisible(false);
                 this.menuUtente1.setPannello((AreaUtentePanel) p);
@@ -557,7 +557,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
                 this.menuUtente1.setVisible(false);
                 this.menuAreaPersonale2.setVisible(false);
                 this.menuServizi1.setVisible(false);
-                this.menuAppuntamento1.setVisible(false);
+                this.menuAgenda.setVisible(false);
                 this.menuInfoAzienda1.setVisible(false);
                 this.menuRuoli1.setVisible(false);
                 this.menuContratti1.setVisible(true);
@@ -567,7 +567,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
                 this.menuAreaPersonale2.setVisible(false);
                 this.menuInfoAzienda1.setVisible(false);
                 this.menuRuoli1.setVisible(false);
-                this.menuAppuntamento1.setVisible(false);
+                this.menuAgenda.setVisible(false);
                 this.menuContratti1.setVisible(false);
                 this.menuServizi1.setVisible(true);
                 this.menuServizi1.setPannello((GestioneServizi) p);
@@ -575,7 +575,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
                 this.menuContratti1.setVisible(false);
                 this.menuUtente1.setVisible(false);
                 this.menuServizi1.setVisible(false);
-                this.menuAppuntamento1.setVisible(false);
+                this.menuAgenda.setVisible(false);
                 this.menuInfoAzienda1.setVisible(false);
                 this.menuRuoli1.setVisible(false);
                 this.menuAreaPersonale2.setVisible(true);
@@ -585,7 +585,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
                 this.menuServizi1.setVisible(false);
                 this.menuInfoAzienda1.setVisible(false);
                 this.menuContratti1.setVisible(false);
-                this.menuAppuntamento1.setVisible(false);
+                this.menuAgenda.setVisible(false);
                 this.menuRuoli1.setVisible(true);
                 this.menuRuoli1.setPannello((GestioneRuoli) p);
             } else if (p.getClass().equals(InfoAzienda.class)) {
@@ -594,18 +594,18 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
                 this.menuServizi1.setVisible(false);
                 this.menuRuoli1.setVisible(false);
                 this.menuContratti1.setVisible(false);
-                this.menuAppuntamento1.setVisible(false);
+                this.menuAgenda.setVisible(false);
                 this.menuInfoAzienda1.setVisible(true);
                 this.menuInfoAzienda1.setPannello((InfoAzienda) p);
-            } else if (p.getClass().equals(InfoAzienda.class)) {
+            } else if (p.getClass().equals(CalendarPanel.class)) {
                 this.menuUtente1.setVisible(false);
                 this.menuAreaPersonale2.setVisible(false);
                 this.menuServizi1.setVisible(false);
                 this.menuRuoli1.setVisible(false);
                 this.menuContratti1.setVisible(false);
                 this.menuInfoAzienda1.setVisible(false);
-                this.menuAppuntamento1.setVisible(true);
-                this.menuAppuntamento1.setPannello((CalendarPanel) p);
+                this.menuAgenda.setVisible(true);
+                this.menuAgenda.setPannello((CalendarPanel) p);
             } else {
                 this.menuContratti1.setVisible(false);
                 this.menuAreaPersonale2.setVisible(false);
@@ -613,9 +613,19 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
                 this.menuServizi1.setVisible(false);
                 this.menuInfoAzienda1.setVisible(false);
                 this.menuRuoli1.setVisible(false);
-                this.menuAppuntamento1.setVisible(false);
+                this.menuAgenda.setVisible(false);
             }
         }
+        else {
+                this.menuContratti1.setVisible(false);
+                this.menuAreaPersonale2.setVisible(false);
+                this.menuUtente1.setVisible(false);
+                this.menuServizi1.setVisible(false);
+                this.menuInfoAzienda1.setVisible(false);
+                this.menuRuoli1.setVisible(false);
+                this.menuAgenda.setVisible(false);
+        }
+
     }//GEN-LAST:event_jTabbedPanePrincipaleStateChanged
 
     private void areaPersonaleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areaPersonaleButton1ActionPerformed
@@ -704,6 +714,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
         final Subject _subject = new Subject();
         _subject.getPrincipals().add(new AuthPrincipal("majinb", "username"));
         _subject.getPrincipals().add(new AuthPrincipal("amministratore", "ruolo"));
+        _subject.getPrincipals().add(new AuthPrincipal("1", "id"));
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
@@ -750,7 +761,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
     private org.jdesktop.swingx.JXTaskPane jXTaskPane3;
     private org.jdesktop.swingx.JXTaskPaneContainer jXTaskPaneContainer1;
     private org.jdesktop.swingx.JXTitledPanel jXTitledPanel1;
-    private it.seerp.Gui.Gestione.Menu.MenuAgenda menuAppuntamento1;
+    private it.seerp.Gui.Gestione.Menu.MenuAgenda menuAgenda;
     private it.seerp.Gui.Gestione.Menu.MenuAreaPersonale menuAreaPersonale2;
     private javax.swing.JMenuBar menuBar;
     private it.seerp.Gui.Gestione.Menu.MenuContratti menuContratti1;

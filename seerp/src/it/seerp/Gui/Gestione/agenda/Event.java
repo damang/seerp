@@ -12,8 +12,9 @@ import java.awt.Color;
  * @author peppe
  */
 public class Event implements EventInstance {
-    String title, description;
-		int Y, M, D, h, m, s;
+
+        String title, description;
+		int Y, M, D, h, m, s,id;
 		boolean hasTime, allDay;
 		Color fg, bg, border;
 		Color[] colors = { Color.blue, Color.red, Color.orange, Color.pink,
@@ -27,8 +28,8 @@ public class Event implements EventInstance {
          * @param M
          * @param D
          */
-        public Event(String title, String description, int Y, int M, int D) {
-			this ( title, description, Y, M, D, 0, 0, 0, false, false );
+        public Event(String title, String description, int Y, int M, int D, int id) {
+			this ( title, description, Y, M, D, 0, 0, 0, false, false, id);
 		}
 
         /**
@@ -42,9 +43,8 @@ public class Event implements EventInstance {
          * @param m
          * @param s
          */
-        public Event(String title, String description, int Y, int M, int D, int h,
-		    int m, int s) {
-			this ( title, description, Y, M, D, h, m, s, true, false );
+        public Event(String title, String description, int Y, int M, int D, int h, int m, int s, int id) {
+			this ( title, description, Y, M, D, h, m, s, true, false, id);
 		}
 
         /**
@@ -60,8 +60,7 @@ public class Event implements EventInstance {
          * @param hasTime
          * @param allDay
          */
-        public Event(String title, String description, int Y, int M, int D, int h,
-		    int m, int s, boolean hasTime, boolean allDay) {
+        public Event(String title, String description, int Y, int M, int D, int h, int m, int s, boolean hasTime, boolean allDay, int id) {
 			this.title = title;
 			this.description = description;
 			this.Y = Y;
@@ -77,6 +76,7 @@ public class Event implements EventInstance {
 			this.fg = new Color ( this.bg.getRed () / 2, this.bg.getGreen () / 2,
 			    this.bg.getBlue () / 2 );
 			this.border = this.fg;
+            this.id=id;
 		}
 
 		public String getTitle () {
@@ -95,7 +95,11 @@ public class Event implements EventInstance {
 			return hasTime;
 		}
 
-		public int getYear () {
+		public void setEventoId(int id){
+            this.id=id;
+        }
+         
+        public int getYear () {
 			return Y;
 		}
 
@@ -187,4 +191,9 @@ public class Event implements EventInstance {
 
 			return 0;
 		}
+
+    @Override
+    public Integer getEventoId() {
+        return id;
+    }
 }

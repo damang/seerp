@@ -4,6 +4,7 @@
  */
 package it.seerp.Gui.bottoni.gestioni;
 
+import it.seerp.Gui.Gestione.agenda.EventInstance;
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.Menu.MenuAgenda;
 import it.seerp.Gui.Gestione.Menu.MenuRuoli;
@@ -15,10 +16,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTabbedPane;
 import it.seerp.Gui.Gestione.agenda.CalendarDataRepository;
 import it.seerp.Gui.Gestione.agenda.CalendarPanel;
+import it.seerp.Gui.Gestione.agenda.CalendarPanelSelectionListener;
 import it.seerp.Gui.Gestione.agenda.Event;
+import it.seerp.Gui.Gestione.agenda.datiEvento;
+import it.seerp.Gui.Home.Index;
+import it.seerp.application.conversioni.Conversione;
+import it.seerp.storage.jaas.SujGest;
+import javax.security.auth.Subject;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,6 +44,8 @@ public class ButtonAgenda extends ObserverButton implements CommandInterface {
     private MenuAgenda menu;
     CalendarPanel panel;
     String s = "Agenda";
+    private Subject ut_sub;
+    private datiEvento dat;
 
     /**
      *
@@ -41,13 +54,15 @@ public class ButtonAgenda extends ObserverButton implements CommandInterface {
      * @param act
      * @throws SQLException
      */
-    public ButtonAgenda(JTabbedPane pan, MenuAgenda menu, ActionListener act) throws SQLException {
+    public ButtonAgenda(JTabbedPane pan, MenuAgenda menu, Index act) throws SQLException {
         this.tabbedPane = pan;
         this.menu = menu;
         //this.panel = new AreaUtentePanel(TIPO_UTENTE_CONST.CLIENTE);
 
         //panel.register(this);
         this.addActionListener(act);
+        this.ut_sub=act.getSubject();
+        
 
 
     }
@@ -62,9 +77,10 @@ public class ButtonAgenda extends ObserverButton implements CommandInterface {
     public void execute() {
 
         if (!isPresente) {
-
+            dat= new datiEvento(new JFrame(), true);
             this.panel = new CalendarPanel(new CalendarDataRepository() {
 
+                @Override
                 public Vector getEventInstancesForDate(int year, int month, int day) {
                     Vector ret = new Vector();
 
@@ -72,7 +88,9 @@ public class ButtonAgenda extends ObserverButton implements CommandInterface {
                     ArrayList<Evento> e = null;
                     try {
                         op = new OpEvento();
-                        e = op.visualizzaElenco();
+                        
+                        e = op.visualizzaElenco(SujGest.getUsername(ut_sub));
+                     //   System.out.println(e.get(0).getIdEvento());
                     } catch (SQLException ex) {
                         ex.printStackTrace();
                     }
@@ -82,13 +100,42 @@ public class ButtonAgenda extends ObserverButton implements CommandInterface {
                         //      new GregorianCalendar(year, month, day).getTimeInMillis()
                         //     );
                         if (evento.getData().get(GregorianCalendar.YEAR) == year && evento.getData().get(GregorianCalendar.MONTH) == month - 1 && evento.getData().get(GregorianCalendar.DAY_OF_MONTH) == day) {
-                            System.out.println("ok ci sto: " + evento.toString());
-                            ret.addElement(new Event(evento.getTema(),
-                                    evento.getLuogo(), year, month, day, evento.getOra().get(GregorianCalendar.HOUR),
-                                    evento.getOra().get(GregorianCalendar.MINUTE), evento.getOra().get(GregorianCalendar.SECOND)));
+                            //System.out.println("ok ci sto: " + evento.getIdEvento());
+                            ret.addElement(new Event(evento.getTema(),evento.getLuogo(), year, month, day, evento.getOra().get(GregorianCalendar.HOUR),
+                                    evento.getOra().get(GregorianCalendar.MINUTE), evento.getOra().get(GregorianCalendar.SECOND),true,true,evento.getIdEvento()));
                         }
                     }
                     return ret;
+                }
+            },dat,SujGest.getIdUtente(ut_sub));
+            dat.setCalendarPannel(this.panel);
+         
+            this.panel.addSelectionListener(new CalendarPanelSelectionListener() {
+
+                @Override
+                public void eventSelected(EventInstance eventInstance) {
+                    try {
+                        Evento e = Conversione.conversioneEvento(eventInstance);
+                        dat.visualizza(e);
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "Errore dal database!");
+                    }
+                }
+
+                @Override
+                public void eventUnselected() {
+                    
+                }
+
+                @Override
+                public void eventDoubleClicked(EventInstance eventInstance) {
+                    throw new UnsupportedOperationException("Not supported yet.");
+                }
+
+                @Override
+                public void dateDoubleClicked(int year, int month, int dayOfMonth) {
+                    JOptionPane.showMessageDialog(null, year + " "+ month + " " + dayOfMonth);
                 }
             });
             panel.register(this);

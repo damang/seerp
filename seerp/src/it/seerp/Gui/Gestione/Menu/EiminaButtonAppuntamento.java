@@ -8,6 +8,7 @@ package it.seerp.Gui.Gestione.Menu;
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.Ruoli.GestioneRuoli;
 import it.seerp.Gui.Gestione.Servizi.GestioneServizi;
+import it.seerp.Gui.Gestione.agenda.CalendarPanel;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -17,14 +18,14 @@ import javax.swing.JOptionPane;
  * @author Luisa
  */
 public class EiminaButtonAppuntamento extends JButton implements CommandInterface{
-     GestioneRuoli areaServ;
+    CalendarPanel area;
 
      /**
       *
       * @param areaServ
       */
-     public void setAreaServ(GestioneRuoli areaServ) {
-        this.areaServ = areaServ;
+   public void setAreaAgenda(CalendarPanel areaContr) {
+        this.area = areaContr;
     }
 
 
@@ -46,7 +47,7 @@ public class EiminaButtonAppuntamento extends JButton implements CommandInterfac
     }
 
     public void execute() {
-       JOptionPane.showMessageDialog(null, "luu");
+       
     }
 
 

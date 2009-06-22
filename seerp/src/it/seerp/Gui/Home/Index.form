@@ -514,7 +514,7 @@
                     <Property name="name" type="java.lang.String" value="buttonAgenda1" noResource="true"/>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.bottoni.gestioni.ButtonAgenda(this.jTabbedPanePrincipale,this.menuAppuntamento1,this)"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.bottoni.gestioni.ButtonAgenda(this.jTabbedPanePrincipale,this.menuAgenda,this)"/>
                   </AuxValues>
                 </Component>
                 <Component class="it.seerp.Gui.bottoni.gestioni.AreaPersonaleButton" name="areaPersonaleButton5">
@@ -575,7 +575,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="menuInfoAzienda1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="menuAppuntamento1" min="-2" max="-2" attributes="0"/>
+                  <Component id="menuAgenda" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="66" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -590,7 +590,7 @@
                       <Component id="menuServizi1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="menuAreaPersonale2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="menuInfoAzienda1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="menuAppuntamento1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="menuAgenda" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="26" max="32767" attributes="0"/>
               </Group>
@@ -646,12 +646,12 @@
             <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="menuAreaPersonale2.setVisible(false);"/>
           </AuxValues>
         </Component>
-        <Component class="it.seerp.Gui.Gestione.Menu.MenuAgenda" name="menuAppuntamento1">
+        <Component class="it.seerp.Gui.Gestione.Menu.MenuAgenda" name="menuAgenda">
           <Properties>
-            <Property name="name" type="java.lang.String" value="menuAppuntamento1" noResource="true"/>
+            <Property name="name" type="java.lang.String" value="menuAgenda" noResource="true"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="menuAppuntamento1.setVisible(false);"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="menuAgenda.setVisible(false);"/>
           </AuxValues>
         </Component>
       </SubComponents>

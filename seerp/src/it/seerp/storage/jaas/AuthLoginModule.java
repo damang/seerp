@@ -129,6 +129,7 @@ public class AuthLoginModule implements LoginModule
        
         _subject.getPrincipals().add(new AuthPrincipal(_userId,"username"));
         _subject.getPrincipals().add(new AuthPrincipal(getUserGroup(),"ruolo"));
+        _subject.getPrincipals().add(new AuthPrincipal(getUserId(),"id"));
 		        
 		_userId = null;
 		_password = null;
@@ -213,5 +214,21 @@ public class AuthLoginModule implements LoginModule
 		if (groupName == null)
 			return null;
 		return groupName;
+	}
+    private String getUserId()
+	{
+		//access data base table using userId, get the groups this user belongs to
+		//suppose return String[]
+		String id = null;
+
+		if (_adapter != null)
+			try {
+            id = _adapter.getUserId();
+        } catch (LoginException ex) {
+            return null;
+        }
+		if (id == null)
+			return null;
+		return id;
 	}
 }

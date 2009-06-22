@@ -35,9 +35,10 @@ public class MenuAgenda extends javax.swing.JPanel implements ActionListener {
     public void setPannello( CalendarPanel pannello) {
 
         this.pannello = pannello;
-   /*     this.modificaButtonServizi1.setAreaServizi(pannello);
-        this.aggiungiButtonServizi1.setServizi(pannello);
-        this.eiminaButtonServizi1.setAreaServ(pannello);*/
+        pannello.setMenu(this);
+        this.modificaButtonAppuntamento1.setAreaAgenda(pannello);
+        this.aggiungiButtonAppuntamento1.setAreaAgenda(pannello);
+        this.eiminaButtonAppuntamento1.setAreaAgenda(pannello);
 
     }
 
@@ -50,9 +51,9 @@ public class MenuAgenda extends javax.swing.JPanel implements ActionListener {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        aggiungiButtonAppuntamento1 = new it.seerp.Gui.Gestione.Menu.AggiungiButtonAppuntamento();
-        eiminaButtonAppuntamento1 = new it.seerp.Gui.Gestione.Menu.EiminaButtonAppuntamento();
-        modificaButtonAppuntamento1 = new it.seerp.Gui.Gestione.Menu.ModificaButtonAppuntamento();
+        aggiungiButtonAppuntamento1 = new it.seerp.Gui.Gestione.Menu.AggiungiButtonAppuntamento(this);
+        eiminaButtonAppuntamento1 = new it.seerp.Gui.Gestione.Menu.EiminaButtonAppuntamento(this);
+        modificaButtonAppuntamento1 = new it.seerp.Gui.Gestione.Menu.ModificaButtonAppuntamento(this);
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Appuntamenti", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_BOTTOM));
 
@@ -102,5 +103,10 @@ public class MenuAgenda extends javax.swing.JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         CommandInterface cmd = (CommandInterface) e.getSource();
         cmd.execute();
+    }
+     public void setButtonEnabled (boolean b) {
+        this.modificaButtonAppuntamento1.setEnabled(b);
+        this.aggiungiButtonAppuntamento1.setEnabled(b);
+        this.eiminaButtonAppuntamento1.setEnabled(b);
     }
 }

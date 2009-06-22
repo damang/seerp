@@ -26,7 +26,7 @@ public class LoginDBSourceAdapter implements LoginSourceAdapter
 {
 //	private Hashtable _htConnProp;
 	private Connection _connection;
-	private String _group;
+	private String _group,_id;
     boolean bOK = false;
 
     /**
@@ -67,7 +67,7 @@ public class LoginDBSourceAdapter implements LoginSourceAdapter
 
 		bOK = false;
 
-		String sql = "SELECT username, `password`, r.nome as role FROM utente u, personale p, ruolo r "+
+		String sql = "SELECT username, `password`, r.nome as role , idUtente FROM utente u, personale p, ruolo r "+
                     "WHERE idUtente=idPersonale AND p.ruolo=r.nome AND username=?";
        
 		PreparedStatement stmt = null;
@@ -86,6 +86,7 @@ public class LoginDBSourceAdapter implements LoginSourceAdapter
 					if (pw.equals (strPw))
 					{
 						_group=rs.getString("role");
+                        _id=rs.getString("idUtente");
 						bOK = true;
 						break;
 					}
@@ -186,4 +187,11 @@ public class LoginDBSourceAdapter implements LoginSourceAdapter
 		return connection;*/
         return ConnectionPool.getConnection();
 	}
+
+    @Override
+    public String getUserId() throws LoginException {
+        if(bOK == true)
+            return _id;
+        throw new LoginException();
+    }
 }

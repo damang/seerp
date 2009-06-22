@@ -16,7 +16,8 @@ public class Evento {
     private GregorianCalendar ora;
     private int idEvento;
     private Boolean notifica;
-    private Agenda agd;
+    //private Agenda agd;
+    private int agenda;
 
     /**
      * Costruttore vuoto
@@ -35,7 +36,7 @@ public class Evento {
      * @param idEvento
      * @param not
      */
-    public Evento(String luogo, String tema, String nome, String note, GregorianCalendar data, GregorianCalendar ora, int idEvento, Boolean not, Agenda agd) {
+    public Evento(String luogo, String tema, String nome, String note, GregorianCalendar data, GregorianCalendar ora, int idEvento, Boolean not, int agd) {
         this.luogo = luogo;
         this.notifica = not;
         this.tema = tema;
@@ -44,7 +45,7 @@ public class Evento {
         this.data = data;
         this.ora = ora;
         this.idEvento = idEvento;
-        this.agd = agd;
+        this.agenda = agd;
     }
 
     public Evento(String luogo, String tema, String nome, String note, GregorianCalendar data, GregorianCalendar ora, int idEvento, Boolean not) {
@@ -91,7 +92,7 @@ public class Evento {
         if (this.notifica != other.notifica && (this.notifica == null || !this.notifica.equals(other.notifica))) {
             return false;
         }
-        if (this.agd != other.agd && (this.agd == null || !this.agd.equals(other.agd))) {
+        if (this.agenda != other.agenda) {
             return false;
         }
         return true;
@@ -109,8 +110,8 @@ public class Evento {
      * motodo che permette di restituire l'agenda a cui l'evento appartiene
      * @return l'agenda dell'Evento
      */
-    public Agenda getAgenda() {
-        return agd;
+    public int getAgenda() {
+        return agenda;
     }
 
     /**
@@ -125,8 +126,8 @@ public class Evento {
      * metodo che setta l'identificativo dell'agenda associata a quell'evento
      * @param a
      */
-    public void setAgenda(Agenda a) {
-        this.agd = a;
+    public void setAgenda(int a) {
+        this.agenda = a;
     }
 
     /**
