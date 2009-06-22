@@ -96,8 +96,8 @@ public class OpAzienda {
         ResultSet rs = null;
         Azienda az = null;
 
-        String sql = "SELECT idAzienda,citta,email,fax,indirizzo,nazione,piva,ragioneSociale,telefono" +
-                " FROM azienda";
+        String sql = "SELECT idAzienda,citta,email,fax,indirizzo,nazione,piva,regioneSociale,telefono" +
+                    "FROM azienda";
         stmt = (PreparedStatement) conn.prepareStatement(sql);
 
         rs = stmt.executeQuery();
