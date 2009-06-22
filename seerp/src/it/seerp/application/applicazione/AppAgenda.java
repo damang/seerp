@@ -27,16 +27,11 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui vi siano dati errati
      */
-    public ArrayList<BeanGuiEvento> elenca(ArrayList<BeanGuiEvento> listGui) {
+    public ArrayList<BeanGuiEvento> elenca(ArrayList<BeanGuiEvento> listGui,String usr) {
         ArrayList<Evento> list;
         try {
             OpEvento ope = new OpEvento();
-            list = ope.visualizzaElenco();
-            for (Evento eve : list) {
-                BeanGuiEvento eveGui = new BeanGuiEvento();
-                eveGui = Conversione.conversioneEvento(eve, eveGui);
-                listGui.add(eveGui);
-            }
+            ope.visualizzaElenco(usr);
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
@@ -221,5 +216,10 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
             JOptionPane.showMessageDialog(null, "Errore nel database!");
         }
         return list;
+    }
+
+    @Override
+    public ArrayList<BeanGuiEvento> elenca(ArrayList<BeanGuiEvento> listGui) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
