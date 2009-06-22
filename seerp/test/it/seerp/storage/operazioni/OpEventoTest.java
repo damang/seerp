@@ -165,7 +165,6 @@ public class OpEventoTest extends TestCase {
         System.out.println("notificaEvento");
         OpEvento instance = new OpEvento();
         instance.notificaEvento(eve);
-
     }
 
     /**
