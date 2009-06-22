@@ -43,19 +43,30 @@ public class OpCliente extends OpExtraAzienda {
 
         String sql = "SELECT idUtente,username,password,citta,prov," +
                     "telefono,cap,email,Ruolo,note,visibilita,cognome,nome,ragioneSociale," +
-                    "piva,fax FROM utente,extraazienda WHERE idUtente=idExtraAzienda and Ruolo='Cliente' and visibilita='true'";
+                    "piva,fax FROM utente,extraazienda WHERE idUtente=idExtraAzienda and Ruolo='Cliente' and visibilita= true";
         stmt = (PreparedStatement) connessione.prepareStatement(sql);
         // Execute the query
         rs = stmt.executeQuery(sql);
 
         // Define the resource list
         while (rs.next()) {
-            Cliente cliente = new Cliente(rs.getInt(1), rs.getString(2),
-                    rs.getString(3), rs.getString(4), rs.getString(5),
-                    rs.getString(6), rs.getString(7), rs.getString(8),
-                    rs.getString(9), rs.getString(10), rs.getString(11),
-                    rs.getBoolean(12), rs.getString(13), rs.getString(14),
-                    rs.getString(15), rs.getString(16), rs.getString(17));
+            Cliente cliente = new Cliente();
+            cliente.setIdUtente(rs.getInt(1));
+            cliente.setUsername(rs.getString(2));
+            cliente.setPassword(rs.getString(3));
+            cliente.setCitta(rs.getString(4));
+            cliente.setProvincia(rs.getString(5));
+            cliente.setTelefono(rs.getString(6));
+            cliente.setCap(rs.getString(7));
+            cliente.setEmail(rs.getString(8));
+            cliente.setTipo(rs.getString(9));
+            cliente.setNote(rs.getString(10));
+            cliente.setVisible(rs.getBoolean(11));
+            cliente.setCognome(rs.getString(12));
+            cliente.setNome(rs.getString(13));
+            cliente.setRagioneSociale(rs.getString(14));
+            cliente.setPIva(rs.getString(15));
+            cliente.setFax(rs.getString(16));
             //Integer idUtente, String username, String password, String città, String ruol 5, String provincia, String telefono, String cap, String email, String ruolo 10, String note, Boolean v, String cognome, String nome, String ragioneSociale 15, String pIva, String fax) {
 
             list.add(cliente);
@@ -289,6 +300,7 @@ public class OpCliente extends OpExtraAzienda {
 
         // Define the resource list
         while (rs.next()) {
+            
             cliente = new Cliente();
             cliente.setIdUtente(rs.getInt(1));
             cliente.setUsername(rs.getString(2));
