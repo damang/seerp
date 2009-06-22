@@ -42,7 +42,7 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
         PreparedStatement stmt = null;
 
         String query = "INSERT INTO contratto(durata,stato,tipo,extrazienda,dipendente,data,note)" +
-                " VALUES (?, ?, ?, ?, ?, ?, ? )" + "where idContratto=" + contratto.getIdContratto();
+                " VALUES (?, ?, ?, ?, ?, ?, ? )";
 
         stmt = (PreparedStatement) conn.prepareStatement(query);
 
