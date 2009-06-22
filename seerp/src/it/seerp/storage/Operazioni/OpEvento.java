@@ -172,7 +172,7 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
 
         String query = "SELECT idEvento,data, ora,luogo,nome,tema,evento.note,notifica" +
                        " FROM evento, agenda, utente " +
-                       "WHERE evento.agenda=agenda.idAgenda and agenda.idAgenda=utente.idUtente and username=? ";
+                       "WHERE evento.agenda=agenda.idAgenda and agenda.idAgenda=utente.idUtente and username= ? ";
         stmt = (PreparedStatement) connessione.prepareStatement(query);
         stmt.setString(1, usr);
         rs = stmt.executeQuery();
