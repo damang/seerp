@@ -299,13 +299,30 @@ public class Conversione {
         return utente;
     }
 
+        public static BeanGuiUtente conversioneUtente(Utente user, BeanGuiUtente utente) {
+
+     //   utente.getIdUtenteTxt().setText(user.getIdUtente().toString());
+          utente.getTxtUsername().setText(user.getUsername());
+      
+        utente.getTxtPassword().setText(user.getPassword());
+        utente.getTxtCitta().setText(user.getCitta());
+        utente.getTxtEmail().setText(user.getEmail());
+
+        utente.getTxtProvincia().setText(user.getProvincia());
+        utente.getTxtTelefono().setText(user.getTelefono());
+//        utente.getTxtNote().setText(user.getNote());
+//        utente.getVisible().setText(user.getVisible().toString());
+    //    utente.getTipo().setText(user.getTipo());
+        return utente;
+    }
     /**
      * Metodo che converte un Bean Utente in un Bean Gui Utente
      * @param user il Bean da convertire
      * @param utente il Bean Grafico che deve essere modificato
      * @return il Bean Gui convertito
      */
-    public static BeanGuiUtente conversioneUtente(Utente user, BeanGuiUtente utente) {
+
+    public static BeanGuiUtente conversioneAreaPersonale(Utente user, BeanGuiUtente utente) {
 
      //   utente.getIdUtenteTxt().setText(user.getIdUtente().toString());
           utente.getTxtUsername().setText(user.getUsername());
@@ -359,7 +376,7 @@ public class Conversione {
      */
     public static BeanGuiPersonale conversionePersonale(Personale p, BeanGuiPersonale bp) {
 
-        Conversione.conversioneUtente(p, bp);
+        Conversione.conversioneAreaPersonale(p, bp);
      
         bp.getCognome().setText(p.getCognome());
         System.out.println("luisa"+p.getNome());
@@ -424,7 +441,7 @@ public class Conversione {
      */
     public static BeanGuiExtraAzienda conversioneExtraAzienda(ExtraAzienda e, BeanGuiExtraAzienda extra) throws ValidatorException {
 
-         conversioneUtente(e, extra);
+         conversioneAreaPersonale(e, extra);
         //   extra.getIdUtenteTxt().setText(e.getIdUtente().toString());
   //       extra.getCognome().setText(e.getCognome());
 //         extra.getNome().setText(e.getNome());
@@ -950,7 +967,7 @@ public class Conversione {
         JTextField c = new JTextField();
         c.setText(agenda.getIdAgenda().toString());
         beanGuiAgenda.setIdAgenda(c);
-        beanGuiAgenda.setUtente(conversioneUtente(new Utente(), beanGuiAgenda.getUtente()));
+        beanGuiAgenda.setUtente(conversioneAreaPersonale(new Utente(), beanGuiAgenda.getUtente()));
         beanGuiAgenda.setArrEventi(beanGuiAgenda.getArrEventi());
         return beanGuiAgenda;
     }
