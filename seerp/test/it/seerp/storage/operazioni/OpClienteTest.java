@@ -24,6 +24,8 @@ public class OpClienteTest extends TestCase{
     private Boolean v;
     private Integer id;
     private ArrayList<Cliente> con;
+   
+    
 
 
     public OpClienteTest(String name) {
@@ -58,6 +60,7 @@ public class OpClienteTest extends TestCase{
     @Test
     public void testElencaCliente() throws Exception {
          System.out.println("elencaCliente");
+         ArrayList<Cliente> con = new ArrayList<Cliente>();
         OpCliente instance = new OpCliente();
         ArrayList<Cliente> expResult = con;
         ArrayList<Cliente> result = instance.elencaCliente();
@@ -105,10 +108,11 @@ public class OpClienteTest extends TestCase{
     @Test
     public void testInserisci() throws Exception {
         System.out.println("inserisci");
-        
+       
         OpCliente instance = new OpCliente();
 
-        assertEquals(id,c.getIdUtente());
+    
+
         assertEquals("marros",c.getUsername());
         assertEquals("123456",c.getPassword());
         assertEquals("Salerno",c.getCitta());
@@ -168,10 +172,11 @@ public class OpClienteTest extends TestCase{
     @Test
     public void testVisualizzaDati() throws Exception {
         System.out.println("visualizzaDati");
+        Integer id = 12;
        
         OpCliente instance = new OpCliente();
         Cliente expResult = null;
-        Cliente result = instance.visualizzaDati(id);
+        Cliente result = instance.visualizzaDati(12);
         assertEquals(expResult, result);
         
     }
