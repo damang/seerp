@@ -33,7 +33,7 @@ public class OpAzienda {
     public void inserimento(Azienda az) throws SQLException, DatiErratiEx {
         PreparedStatement stmt = null;
 
-        String query = "INSERT INTO azienda(citta,email,fax,indirizzo,nazione,PIVA,RagioneSociale,telefono)" +
+        String query = "INSERT INTO azienda(citta,email,fax,indirizzo,nazione,PIVA,regioneSociale,telefono)" +
                 " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         stmt = (PreparedStatement) conn.prepareStatement(query);
