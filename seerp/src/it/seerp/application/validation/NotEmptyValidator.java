@@ -1,6 +1,7 @@
 package it.seerp.application.validation;
 
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JTextField;
 import org.jdesktop.swingx.JXPanel;
 
@@ -17,21 +18,19 @@ public class NotEmptyValidator extends AbstractValidator {
      * @param c
      * @param message
      */
+    public NotEmptyValidator(JFrame parent, JTextField c, String message) {
+        super(parent, c, message);
+    }
+
     public NotEmptyValidator(JXPanel parent, JTextField c, String message) {
         super(parent, c, message);
     }
 
     @Override
     protected boolean validationCriteria(JComponent c) {
-        try {
-            if (((JTextField) c).getText().equals("")) {
-                return false;
-            }
-            return true;
-
-
-        } catch (ClassCastException e) {
-            System.out.print("strunzaa!");
+        if (((JTextField) c).getText().equals("")) {
+            return false;
         }
-return false;}
+        return true;
+    }
 }

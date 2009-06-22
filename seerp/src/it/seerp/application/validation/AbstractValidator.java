@@ -47,6 +47,18 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
     }
 
     /**
+     * @param parent Un JXPanel
+     * @param c Il JComponent che deve essere validato.
+     * @param message Il messaggio da mostrare nel popup se la validazione fallisce
+     */
+    public AbstractValidator(JFrame parent, JComponent c, String message) {
+        this(c, message);
+        this.parent = parent;
+        popup = new JDialog(parent);
+        initComponents();
+    }
+
+    /**
      * Implementare la logica di validazione in questo metodo. Il metodo deve ritornare false se i dati inseriti non
      * sono validi e true viceversa. E' comunque possibile settare il messaggio di popup tramite il metodo setMessage()
      * prima di ritornare, al fine di customizzare il testo per differenti tipi di validazioni
@@ -61,6 +73,7 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
      * validazione. Implementare validationCriteria()
      * @param c
      */
+    @Override
     public boolean verify(JComponent c) {
         if (!validationCriteria(c)) {
 
@@ -102,6 +115,7 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
      * @param e
      * @see KeyListener
      */
+    @Override
     public void keyPressed(KeyEvent e) {
         popup.setVisible(false);
     }
@@ -110,6 +124,7 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
      * @param e
      * @see KeyListener
      */
+    @Override
     public void keyTyped(KeyEvent e) {
     }
 
@@ -117,6 +132,7 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
      * @param e
      * @see KeyListener
      */
+    @Override
     public void keyReleased(KeyEvent e) {
     }
 
