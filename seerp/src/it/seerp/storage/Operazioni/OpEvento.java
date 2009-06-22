@@ -321,4 +321,41 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
         ConnectionPool.releaseConnection(connessione);
         return lista;
     }
+
+    public Evento getEventoPerId(Integer id) throws SQLException{
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Evento ev = null;
+
+        String query = "SELECT idEvento, data, ora, luogo, nome, tema, note, notifica" +
+                       " FROM evento join agenda on agenda=idAgenda" +
+                       "where idAgenda=? and idEvento=?";
+
+        stmt = (PreparedStatement) connessione.prepareStatement(query);
+        stmt.setInt(1, id);
+        stmt.setInt(2, id);
+        // Execute the query
+        rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            GregorianCalendar date = new GregorianCalendar();
+            date.setTimeInMillis(rs.getDate(2).getTime());
+
+            GregorianCalendar time = new GregorianCalendar();
+            time.setTimeInMillis(rs.getTime(3).getTime());
+
+            ev = new Evento(rs.getString(1), rs.getString(2), rs.getString(3),
+                            rs.getString(4), date, time, rs.getInt(7),
+                            rs.getBoolean(8));
+
+        }
+        stmt.close();
+        rs.close();
+        ConnectionPool.releaseConnection(connessione);
+
+        return ev;
+
+
+    }
 }
