@@ -4,7 +4,6 @@ package it.seerp.storage.operazioni;
 
 import it.seerp.storage.Operazioni.OpCliente;
 import it.seerp.storage.ejb.Cliente;
-import it.seerp.storage.ejb.ExtraAzienda;
 import java.util.ArrayList;
 import java.util.Iterator;
 import junit.framework.TestCase;
