@@ -201,7 +201,7 @@ public class OpCliente extends OpExtraAzienda {
      * @throws java.sql.SQLException
      * @throws DatiErratiEx
      * @throws DatiDuplicatiEx
-     */
+     
     public Cliente modifica(Cliente user) throws SQLException, DatiErratiEx, DatiDuplicatiEx {
         PreparedStatement stmt = null;
         PreparedStatement stmte = null;
@@ -214,14 +214,14 @@ public class OpCliente extends OpExtraAzienda {
 
         if (rs.next()) {
         throw new DatiDuplicatiEx("utente già esistente nel database");
-        } else {*/
+        } else {
         try {
 
             con.setAutoCommit(false);
             String sqlu = "UPDATE utente SET username=?,password=?,email=?,citta=?,prov=?," +
-                    "telefono=? WHERE idUtente=?";/*mettere visibilita tipo e cap*/
+                    "telefono=? WHERE idUtente=?";/*mettere visibilita tipo e cap
             String sqle = "UPDATE extraazienda SET piva=?,ragioneSociale=?" +
-                    "WHERE idExtraAzienda=?";/*nome,cognome=?,fax=?,codiceFiscale=?*/
+                    "WHERE idExtraAzienda=?";/*nome,cognome=?,fax=?,codiceFiscale=?
 
 
             stmt = (PreparedStatement) con.prepareStatement(sqlu);
