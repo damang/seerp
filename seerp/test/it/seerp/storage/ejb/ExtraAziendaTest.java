@@ -118,7 +118,7 @@ public class ExtraAziendaTest extends TestCase{
     public void testGetFax() {
         System.out.println("getFax");
        
-        String expResult = "089345678";
+        String expResult = "089232323";
         String result = eGet.getFax();
         assertEquals(expResult, result);
         
@@ -304,7 +304,7 @@ public class ExtraAziendaTest extends TestCase{
         System.out.println("equals");
         Object obj = null;
         
-        boolean expResult = true;
+        boolean expResult = false;
         boolean result = eGet.equals(obj);
         assertEquals(expResult, result);
         

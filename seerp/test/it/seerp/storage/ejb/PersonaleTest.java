@@ -167,7 +167,7 @@ public class PersonaleTest extends TestCase{
     public void testGetTipo() {
         System.out.println("getTipo");
         
-        String expResult = "tipo";
+        String expResult = null;
         String result = pGet.getTipo();
         assertEquals(expResult, result);
          }
@@ -180,7 +180,7 @@ public class PersonaleTest extends TestCase{
         System.out.println("equals");
         Object obj = null;
         
-        boolean expResult = true;
+        boolean expResult = false;
         boolean result = pGet.equals(obj);
         assertEquals(expResult, result);
        

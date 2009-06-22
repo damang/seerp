@@ -20,6 +20,7 @@ public class EventoTest extends TestCase {
     private Evento eveSet;
     private GregorianCalendar data;
     private GregorianCalendar ora;
+    private Integer id;
 
     public EventoTest(String name) {
         super(name);
@@ -36,6 +37,7 @@ public class EventoTest extends TestCase {
     @Before
     @Override
     public void setUp() {
+        id = new Integer(15);
         agd = new Agenda();
         data = new GregorianCalendar(2009, 7, 23);
         ora = new GregorianCalendar(2009, 7, 23, 13, 40);

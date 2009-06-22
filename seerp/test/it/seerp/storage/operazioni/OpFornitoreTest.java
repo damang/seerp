@@ -25,8 +25,12 @@ public class OpFornitoreTest extends TestCase {
     private ArrayList<Contratto> contr;
     private ArrayList<Fornitore> forn;
     private Boolean v;
+    private Integer id;
+    private Integer idf;
 
     public OpFornitoreTest() {
+
+
     }
 
     @BeforeClass
@@ -39,10 +43,14 @@ public class OpFornitoreTest extends TestCase {
 
     @Before
     public void setUp() {
+
+        f = new Fornitore (id, "marros", "123456", "Salerno", "ruolo","sa", "089345678", "84100", "rossi@email.it", "ruolo", "note", v , "Rossi", "Mario", "x y z.srl", "12345678901C", "089232323");
     }
 
     @After
     public void tearDown() {
+        f=null;
+        System.gc();
     }
 
     /**
@@ -72,30 +80,28 @@ public class OpFornitoreTest extends TestCase {
     /**
      * Test of ricercaFornitore method, of class OpFornitore.
      */
-    @Test
+/*    @Test
     public void testRicercaFornitore() throws Exception {
         System.out.println("ricercaFornitore");
-        String cognome = "";
-        String ruolo = "";
+        String cognome = "Rossi";
+        String ruolo = "ruolo";
         OpFornitore instance = new OpFornitore();
-        ArrayList<Fornitore> expResult = null;
+        ArrayList<Fornitore> expResult = forn;
         ArrayList<Fornitore> result = instance.ricercaFornitore(cognome, ruolo);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
      * Test of elimina method, of class OpFornitore.
      */
-    @Test
+  /*  @Test
     public void testElimina() throws Exception {
         System.out.println("elimina");
-        Fornitore user = null;
+        
         OpFornitore instance = new OpFornitore();
-        instance.elimina(user);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.elimina(f);
+        assertEquals(forn, instance.elencaFornitore());
     }
 
     /**
@@ -104,26 +110,62 @@ public class OpFornitoreTest extends TestCase {
     @Test
     public void testInserisci() throws Exception {
         System.out.println("inserisci");
-        Fornitore user = null;
+
         OpFornitore instance = new OpFornitore();
-        instance.inserisci(user);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        assertEquals(id,f.getIdUtente());
+        assertEquals("marros",f.getUsername());
+        assertEquals("123456",f.getPassword());
+        assertEquals("Salerno",f.getCitta());
+        assertEquals("ruolo",f.getRuolo());
+        assertEquals("sa", f.getProvincia());
+        assertEquals("089345678",f.getTelefono());
+        assertEquals("84100",f.getCap());
+        assertEquals("rossi@email.it",f.getEmail());
+        assertEquals("ruolo",f.getRuolo());
+        assertEquals("note",f.getNote());
+        assertEquals(v, f.getVisible());
+        assertEquals("Rossi",f.getCognome());
+        assertEquals("Mario",f.getNome());
+        assertEquals("x y z.srl",f.getRagioneSociale());
+        assertEquals("12345678901C",f.getPIva());
+        assertEquals("089232323",f.getFax());
+
+        instance.inserisci(f);
+        
     }
 
     /**
      * Test of modifica method, of class OpFornitore.
      */
-    @Test
+ /*   @Test
     public void testModifica() throws Exception {
         System.out.println("modifica");
-        Fornitore user = null;
+        
         OpFornitore instance = new OpFornitore();
         Fornitore expResult = null;
-        Fornitore result = instance.modifica(user);
+
+        assertEquals(id,f.getIdUtente());
+        assertEquals("marros",f.getUsername());
+        assertEquals("123456",f.getPassword());
+        assertEquals("Salerno",f.getCitta());
+        assertEquals("ruolo",f.getRuolo());
+        assertEquals("sa", f.getProvincia());
+        assertEquals("089345678",f.getTelefono());
+        assertEquals("84100",f.getCap());
+        assertEquals("rossi@email.it",f.getEmail());
+        assertEquals("ruolo",f.getRuolo());
+        assertEquals("note",f.getNote());
+        assertEquals(v, f.getVisible());
+        assertEquals("Rossi",f.getCognome());
+        assertEquals("Mario",f.getNome());
+        assertEquals("x y z.srl",f.getRagioneSociale());
+        assertEquals("12345678901C",f.getPIva());
+        assertEquals("089232323",f.getFax());
+
+        Fornitore result = instance.modifica(f);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
     }
 
     /**
@@ -132,12 +174,13 @@ public class OpFornitoreTest extends TestCase {
     @Test
     public void testVisualizzaDati() throws Exception {
         System.out.println("visualizzaDati");
-        Integer id = null;
+       
         OpFornitore instance = new OpFornitore();
-        Fornitore expResult = null;
-        Fornitore result = instance.visualizzaDati(id);
+        Fornitore expResult = f;
+        Fornitore result = instance.visualizzaDati(f.getIdUtente());
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
     }
+
+   
 }

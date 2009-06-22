@@ -1,7 +1,7 @@
 
 
 package it.seerp.storage.ejb;
-
+ 
 import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -96,8 +96,8 @@ public class UtenteTest extends TestCase{
     @Test
     public void testSetVisible() {
         System.out.println("setVisible");
-        Boolean visible = true;
-        uSet.setVisible(true);
+        Boolean visible = v;
+        uSet.setVisible(visible);
         assertEquals(v, uSet.getVisible());
 
     }
@@ -109,7 +109,7 @@ public class UtenteTest extends TestCase{
     public void testGetVisible() {
         System.out.println("getVisible");
 
-        Boolean expResult = true;
+        Boolean expResult = v;
         Boolean result = uGet.getVisible();
         assertEquals(expResult, result);
 
@@ -200,7 +200,7 @@ public class UtenteTest extends TestCase{
     public void testGetProvincia() {
         System.out.println("getProvincia");
 
-        String expResult = "Sa";
+        String expResult = "sa";
         String result = uGet.getProvincia();
         assertEquals(expResult, result);
 
@@ -337,7 +337,7 @@ public class UtenteTest extends TestCase{
         System.out.println("equals");
         Object obj = null;
 
-        boolean expResult = true;
+        boolean expResult = false;
         boolean result = uGet.equals(obj);
         assertEquals(expResult, result);
 
