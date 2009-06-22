@@ -64,7 +64,7 @@ public class OpAzienda {
     public Azienda modifica(Azienda az) throws SQLException, DatiErratiEx {
 
         PreparedStatement stmt = null;
-        String query = "UPDATE azienda SET citta=?,email=?,fax=?,indirizzo=?,nazione=?,PIVA=?,RagioneSociale=?,telefono=?" +
+        String query = "UPDATE azienda SET citta=?,email=?,fax=?,indirizzo=?,nazione=?,PIVA=?,regioneSociale=?,telefono=?" +
                 "where idAzienda=?";
         stmt = (PreparedStatement) conn.prepareStatement(query);
 
