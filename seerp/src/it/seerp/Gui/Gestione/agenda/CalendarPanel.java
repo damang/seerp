@@ -1,5 +1,6 @@
 package it.seerp.Gui.Gestione.agenda;
 
+import it.seerp.Gui.Gestione.Menu.MenuAgenda;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
 import java.awt.AlphaComposite;
 import java.awt.BorderLayout;
@@ -50,6 +51,8 @@ import javax.swing.ToolTipManager;
  */
 public class CalendarPanel extends ObservableJPanel implements MouseWheelListener {
 
+    datiEvento dat;
+    int idAgenda;
     private static final long serialVersionUID = 1000L;
     CalendarDataRepository repository;
     JLabel title;
@@ -99,6 +102,14 @@ public class CalendarPanel extends ObservableJPanel implements MouseWheelListene
     private Date selectedDate = null;
     private int selectedItemInd = -1;// 0=first event of day selected
     private Vector selectionListeners;
+    private MenuAgenda menu;
+
+    public void setMenu(MenuAgenda aThis) {
+        this.menu=aThis;
+    }
+    public MenuAgenda getMenu() {
+        return menu;
+    }
 
     class Date {
 
@@ -326,7 +337,7 @@ public class CalendarPanel extends ObservableJPanel implements MouseWheelListene
      * 
      * @param repository
      */
-    public CalendarPanel(CalendarDataRepository repository) {
+    public CalendarPanel(CalendarDataRepository repository, datiEvento dat, int id) {
         super();
         this.repository = repository;
         this.firstDayOfWeek = getFirstDayOfWeek();
@@ -343,15 +354,34 @@ public class CalendarPanel extends ObservableJPanel implements MouseWheelListene
         this.hintForeground = Color.white;
         this.displayedEvents = new Vector();
         this.displayedDates = new Vector();
-
+        this.dat=dat;
+        this.idAgenda=id;
         createUI();
 
         this.setWeekOffset(0);
+
+    }
+
+    public int getIdAgenda() {
+        return idAgenda;
+    }
+
+    public void setIdAgenda(int idAgenda) {
+        this.idAgenda = idAgenda;
+    }
+
+    public datiEvento getDialogDati() {
+        return dat;
     }
 
     /**
      * 
      */
+    public void reset() {
+        this.displayedEvents = new Vector();
+        this.displayedDates = new Vector();
+        createUI();
+    }
     protected void createUI() {
         this.setLayout(new BorderLayout());
         JPanel titlePanel = new JPanel();

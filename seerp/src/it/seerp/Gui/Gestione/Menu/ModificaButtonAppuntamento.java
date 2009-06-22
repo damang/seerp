@@ -7,6 +7,7 @@ package it.seerp.Gui.Gestione.Menu;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.Contratti.GestioneContratti;
+import it.seerp.Gui.Gestione.agenda.CalendarPanel;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -16,7 +17,7 @@ import javax.swing.JOptionPane;
  * @author Andrea
  */
 public class ModificaButtonAppuntamento extends JButton  implements CommandInterface {
-GestioneContratti areaContr=null;
+CalendarPanel area;
 
 /**
  *
@@ -40,11 +41,11 @@ public ModificaButtonAppuntamento(ActionListener l) {
      *
      * @param areaContr
      */
-    public void setAreaContratti(GestioneContratti areaContr) {
-        this.areaContr =  areaContr;
+    public void setAreaAgenda(CalendarPanel areaContr) {
+        this.area = areaContr;
     }
     public void execute() {
        
-      JOptionPane.showMessageDialog(null, "funzionalità non abilitata");
+      
     }
 }

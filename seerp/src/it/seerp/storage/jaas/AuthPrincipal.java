@@ -37,6 +37,10 @@ public class AuthPrincipal implements Principal
 		_name = name;
         _type=type;
 	}
+    public AuthPrincipal(String type)
+	{
+		_type=type;
+	}
 
 	 /**
      * Get the value of type
@@ -76,7 +80,8 @@ public class AuthPrincipal implements Principal
 			return true;
 
 		AuthPrincipal principal = (AuthPrincipal) object;
-		if (getName().equals(principal.getName()) && getType().equals(principal.getType()))
+		//if (getName().equals(principal.getName()) && getType().equals(principal.getType()))
+        if (getType().equals(principal.getType()))
 			return true;
 
 		return false;

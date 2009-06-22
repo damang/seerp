@@ -18,6 +18,8 @@ import javax.security.auth.login.LoginException;
  */
 public interface LoginSourceAdapter
 {
+
+    public String getUserId() throws LoginException;
     /**
      *
      * @param htProperty

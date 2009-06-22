@@ -16,6 +16,8 @@ import java.awt.Color;
  */
 public interface EventInstance extends Comparable {
 
+    public Integer getEventoId();
+
     /** Get the event title (what appears in the CalendarPanel)
      * @return 
      */

@@ -6,6 +6,7 @@ package it.seerp.Gui.Gestione.Menu;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.Contratti.GestioneContratti;
+import it.seerp.Gui.Gestione.agenda.CalendarPanel;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
@@ -15,7 +16,7 @@ import javax.swing.JButton;
  */
 public class AggiungiButtonAppuntamento extends JButton implements CommandInterface {
 
-    GestioneContratti areaContr;
+    CalendarPanel area;
 
     /**
      *
@@ -38,15 +39,11 @@ public class AggiungiButtonAppuntamento extends JButton implements CommandInterf
      *
      * @param areaContr
      */
-    public void setAreaContratti(GestioneContratti areaContr) {
-        this.areaContr = areaContr;
+    public void setAreaAgenda(CalendarPanel areaContr) {
+        this.area = areaContr;
     }
 
     public void execute() {
-        this.setEnabled(false);
-        areaContr.inizializza("");
-        areaContr.getSalva().setEnabled(true);
-        areaContr.getAnnulla().setEnabled(true);
-        areaContr.editabile(true);
+       area.getDialogDati().inserisci();
     }
 }
