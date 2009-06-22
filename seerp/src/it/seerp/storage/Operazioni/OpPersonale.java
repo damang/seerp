@@ -44,7 +44,7 @@ public class OpPersonale extends OpeUtente {
     String sql = "SELECT * FROM personale join utente on idPersonale=idUtente WHERE visibilita=true";
     stmt = (PreparedStatement) connessione.prepareStatement(sql);
     // Execute the query
-    rs = stmt.executeQuery(sql);
+    rs = stmt.executeQuery();
 
     // Define the resource list
     while (rs.next()) {

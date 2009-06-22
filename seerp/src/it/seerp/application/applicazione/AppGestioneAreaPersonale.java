@@ -27,7 +27,7 @@ public class AppGestioneAreaPersonale implements GestioneAreaPersonale<BeanGuiUt
         try {
             OpAreaPersonale ope = new OpAreaPersonale();
             Utente user = ope.visualizzaDati(id);
-            beanGui = it.seerp.application.conversioni.Conversione.conversioneUtente(user, beanGui);
+            beanGui = it.seerp.application.conversioni.Conversione.conversioneAreaPersonale(user, beanGui);
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");

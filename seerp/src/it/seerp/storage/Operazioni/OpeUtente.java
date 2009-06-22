@@ -35,7 +35,7 @@ public  class OpeUtente implements OpeEntity<Utente, Integer> {
 
         rs = stmt.executeQuery();
 
-        while (rs.next()) {
+        if(rs.next()) {
 
             ut = new Utente();
             ut.setIdUtente(rs.getInt("idUtente"));
@@ -50,6 +50,7 @@ public  class OpeUtente implements OpeEntity<Utente, Integer> {
             ut.setTipo(rs.getString("tipo"));
             ut.setVisible(rs.getBoolean("visibilita"));
        }
+        else throw new SQLException("L'utente non è presente nel database");
 
         rs.close();
         stmt.close();
