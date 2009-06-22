@@ -11,6 +11,7 @@
 
 package tommaso;
 
+import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.bean.BeanGuiContratto;
 import javax.swing.JTextField;
 import org.jdesktop.swingx.JXPanel;
@@ -79,7 +80,11 @@ public class pannello extends JXPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-           contratto.getDurata();
+         try{
+             contratto.getDurata();
+         }catch(ValidatorException e){
+ 
+         }
     }//GEN-LAST:event_jButton1ActionPerformed
  public JTextField getField(){
         return jTextField1;
