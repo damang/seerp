@@ -38,8 +38,8 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
         this.menu = menu;
         azienda = new BeanGuiAzienda();
         legameBean();
-        //AppAzienda operazione= new   AppAzienda();
-        //operazione.visualizza(azienda);
+        AppAzienda operazione= new   AppAzienda();
+        operazione.visualizzaAzienda(azienda);
    
         editabile(false);
     }
@@ -349,10 +349,10 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
 
     private void buttonSalva1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSalva1MouseClicked
         menu.getModifica().setEnabled(true);
-        editabile(false);
-         //AppAzienda operazione= new   AppAzienda();
-        // operazione.modifica(azienda);
-        //operazione.visualizza(azienda);
+        editabile(true);
+         AppAzienda operazione= new   AppAzienda();
+         operazione.modifica(azienda);
+       // operazione.visualizzaAzienda(azienda);
         editabile(false);
         this.buttonAnnulla1.setEnabled(false);
         this.buttonSalva1.setEnabled(false);
