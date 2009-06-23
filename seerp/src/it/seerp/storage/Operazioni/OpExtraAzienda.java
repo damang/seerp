@@ -91,7 +91,7 @@ public class OpExtraAzienda extends OpeUtente {
 
 
 
-       connection = ConnectionPool.getConnection();
+        connection = ConnectionPool.getConnection();
 
         PreparedStatement stmt = null;
         PreparedStatement stmt1 = null;
@@ -121,28 +121,27 @@ public class OpExtraAzienda extends OpeUtente {
         stmt.close();
         stmt1.close();
 
-        ConnectionPool.releaseConnection(connection);}
-
-
+        ConnectionPool.releaseConnection(connection);
+    }
 
     /** Nasconde l'utente eliminato al sistema senza l'eliminazione fisica
      * @param user
      * user dell'utente da eliminare
      * @throws java.sql.SQLException
     private void eliminazioneLogica(ExtraAzienda user) throws SQLException {
-        /*
-        PreparedStatement stmt = null;
+    /*
+    PreparedStatement stmt = null;
 
 
-        String sql = "UPDATE ExtraAzienda(Visible) SET Visible='false' where username =" + user;
-        // Create a statement
-        stmt = (PreparedStatement) con.prepareStatement(sql);
+    String sql = "UPDATE ExtraAzienda(Visible) SET Visible='false' where username =" + user;
+    // Create a statement
+    stmt = (PreparedStatement) con.prepareStatement(sql);
 
-        // Execute the query
-        stmt.executeQuery();
+    // Execute the query
+    stmt.executeQuery();
 
-        stmt.close();
-        ConnectionPool.releaseConnection(con);
+    stmt.close();
+    ConnectionPool.releaseConnection(con);
     }
 
     /** Metodo per inserire un nuovo membro del personale ExtraAzienda
@@ -201,7 +200,7 @@ public class OpExtraAzienda extends OpeUtente {
      * @throws DatiDuplicatiEx
      */
     public ExtraAzienda modifica(ExtraAzienda user) throws SQLException, DatiErratiEx, DatiDuplicatiEx {
-       
+
         PreparedStatement stmte = null;
         connection = ConnectionPool.getConnection();
 
@@ -210,17 +209,18 @@ public class OpExtraAzienda extends OpeUtente {
             connection.setAutoCommit(false);
             super.modifica(user);
 
-            String sqle = "UPDATE extraazienda SET piva=?,ragioneSociale=?" +
-                    "WHERE idExtraAzienda=?";/*nome,cognome=?,fax=?,codiceFiscale=?*/
+            String sqle = "UPDATE extraazienda SET cognome=?,fax=?,nome=?,piva=?,ragioneSociale=?,codiceFiscale=?" +
+                    "WHERE idExtraAzienda=?";/*nome*/
 
 
             stmte = (PreparedStatement) connection.prepareStatement(sqle);
-            //  stmte.setString(1, user.getNome());
-            //stmte.setString(2, user.getCognome());
-            // stmte.setString(3, user.getFax());
-            stmte.setString(1, user.getPIva());
-            stmte.setString(2, user.getRagioneSociale());
-            stmte.setInt(3, user.getIdUtente());
+            stmte.setString(3, user.getNome());
+            stmte.setString(1, user.getCognome());
+            stmte.setString(2, user.getFax());
+            stmte.setString(4, user.getPIva());
+            stmte.setString(5, user.getRagioneSociale());
+            stmte.setString(6, user.getCodiceFiscale());
+            stmte.setInt(7, user.getIdUtente());
 
 
             stmte.execute();

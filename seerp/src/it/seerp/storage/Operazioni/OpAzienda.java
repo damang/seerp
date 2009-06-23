@@ -77,7 +77,9 @@ public class OpAzienda {
         stmt.setString(8, az.getTelefono());
         stmt.setInt(9, az.getIdAzienda());
 
-        stmt.execute();
+       stmt.execute();
+
+
         stmt.close();
         ConnectionPool.releaseConnection(connessione);
         return az;

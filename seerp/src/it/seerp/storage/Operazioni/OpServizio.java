@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Connection;
 import it.seerp.storage.Exception.DatiErratiEx;
-import javax.sound.midi.Soundbank;
 
 /**
  * la classe storage che si occupa di interfacciarsi con il dbms e compiere operazioni sui servizi
@@ -78,8 +77,8 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
     public Servizio modifica(Servizio servizio) throws SQLException, DatiErratiEx {
 
         PreparedStatement stmt = null;
-        String query="UPDATE servizio(descrizione,disponibilità,quantità,tipo,prezzo,iva,note)" +
-                " SET (?, ?, ?, ?, ?, ?) WHERE idServizio=" + servizio.getIdServizio();
+        String query="UPDATE servizio" +
+                " SET descrizione=?, disponibilita=?, quantita=?, tipo=?, prezzo=?, iva=?,note=?WHERE idServizio=?" ;
         stmt = (PreparedStatement) conn.prepareStatement(query);
 
         stmt.setString(1, servizio.getDescrizione());
@@ -89,6 +88,7 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
         stmt.setDouble(5, servizio.getPrezzo());
         stmt.setInt(6, servizio.getIva());
         stmt.setString(7, servizio.getNote());
+        stmt.setInt(8, servizio.getIdServizio());
 
         stmt.execute();
 

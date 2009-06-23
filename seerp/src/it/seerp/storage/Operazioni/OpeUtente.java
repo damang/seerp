@@ -99,7 +99,7 @@ public  class OpeUtente implements OpeEntity<Utente, Integer> {
 
 
         String sqlu = "UPDATE utente SET username=?,password=?,email=?,citta=?,prov=?," +
-                "telefono=? WHERE idUtente=?";/*mettere visibilita tipo e cap*/
+                "telefono=?,cap=?,note=? WHERE idUtente=?";/*mettere visibilita tipo e cap*/
 
 
         stmt = (PreparedStatement) conn.prepareStatement(sqlu);
@@ -109,10 +109,10 @@ public  class OpeUtente implements OpeEntity<Utente, Integer> {
         stmt.setString(4, user.getCitta());
         stmt.setString(5, user.getProvincia());
         stmt.setString(6, user.getTelefono());
-        //  stmt.setString(7, user.getCap());
-        //stmt.setString(8, user.getNote());
+        stmt.setString(7, user.getCap());
+        stmt.setString(8, user.getNote());
         //   stmt.setString(9, user.getTipo());
-        stmt.setInt(7, user.getIdUtente());
+        stmt.setInt(9, user.getIdUtente());
        //  stmt.setString(10, user.getVisible().toString());
 
 
