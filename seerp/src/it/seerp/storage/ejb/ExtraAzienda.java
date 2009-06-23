@@ -14,6 +14,8 @@ public class ExtraAzienda extends Utente {
     private String pIva;
     private String fax;
     private String tipo;
+    private String codiceFiscale;
+
     private ArrayList<Appuntamento> listAppuntamenti;
     private ArrayList<Contratto> listContratti;
 
@@ -61,6 +63,13 @@ public class ExtraAzienda extends Utente {
 
    
 
+    public String getCodiceFiscale() {
+        return codiceFiscale;
+    }
+
+    public void setCodiceFiscale(String codiceFiscale) {
+        this.codiceFiscale = codiceFiscale;
+    }
     /**
      * restituisce la lista dei contratti associati ad un extraazienda
      * @return la lista dei contrattia ssociatia d un extraazienda
