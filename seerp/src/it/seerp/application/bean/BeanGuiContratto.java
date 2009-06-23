@@ -30,7 +30,7 @@ public class BeanGuiContratto {
     private ArrayList<BeanGuiPagamento> listPagamento;
     private ArrayList<BeanGuiServizioAssociato> listServizio;
     private ArrayList<BeanGuiFattura> listFatture;
-    private pannello grafica;
+    private Object grafica;
     private NewJFrame frame;
     private NotEmptyValidator val;
     private NotMinNumberValidator valMinNum;
@@ -46,7 +46,7 @@ public class BeanGuiContratto {
     }
 
     public BeanGuiContratto(NewJFrame c) {
-        this.frame = c;
+        grafica = c;
     }
 
     /**
@@ -151,12 +151,12 @@ public class BeanGuiContratto {
      */
     public JTextField getDurata() throws ValidatorException {
 
-    /*    System.out.println("-------------->"+grafica.getField());
+       //System.out.println("-------------->"+grafica.getField());
 
-     if (!val.shouldYieldFocus(grafica.getField())) {
+    /* if (!val.shouldYieldFocus(durata)) {
             throw new ValidatorException("Errore nella grafica!");
-        }*/
-        return durata;
+        }
+      */  return durata;
     }
 
     /**
@@ -165,8 +165,9 @@ public class BeanGuiContratto {
      */
     public void setDurata(JTextField pdurata) {
        this.durata = pdurata;
-     /*  val = new NotEmptyValidator(grafica, durata, "Il campo non può essere vuoto.");
-        grafica.setInputVerifier(val);*/
+       //val = new NotEmptyValidator((JXPanel)grafica, durata, "Il campo non può essere vuoto.");
+
+       //durata.setInputVerifier(val);
     }
 
     /**
