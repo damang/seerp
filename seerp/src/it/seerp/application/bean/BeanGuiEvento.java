@@ -3,6 +3,7 @@ package it.seerp.application.bean;
 import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.validation.NotEmptyValidator;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import org.jdesktop.swingx.JXDatePicker;
@@ -15,7 +16,7 @@ import org.jdesktop.swingx.JXPanel;
 public class BeanGuiEvento {
 
     private JTextField luogo;
-    private JTextField tema;
+    private JComboBox tema;
     private JTextField nome;
     private JTextArea note;
     private JXDatePicker data;
@@ -54,7 +55,7 @@ public class BeanGuiEvento {
      * @param notifica
      * @param grafica
      */
-    public BeanGuiEvento(JTextField luogo, JTextField tema, JTextField nome, JTextArea note, JXDatePicker data, JTextField ora, JTextField idEvento, JCheckBox notifica, JXPanel grafica, int id) {
+    public BeanGuiEvento(JTextField luogo, JComboBox tema, JTextField nome, JTextArea note, JXDatePicker data, JTextField ora, JTextField idEvento, JCheckBox notifica, JXPanel grafica, int id) {
         this.luogo = luogo;
         this.tema = tema;
         this.nome = nome;
@@ -243,7 +244,7 @@ public class BeanGuiEvento {
      * @return il campo tema
      * @throws ValidatorException
      */
-    public JTextField getTema() throws ValidatorException {
+    public JComboBox getTema() throws ValidatorException {
  /*       if (!val.shouldYieldFocus(grafica)) {
             throw new ValidatorException("Errore nella grafica!");
         }
@@ -254,7 +255,7 @@ public class BeanGuiEvento {
      * metodo che setta il campo tema dell'Evento
      * @param ptema rappresenta il campo tema da inserire
      */
-    public void setTema(JTextField ptema) {
+    public void setTema(JComboBox ptema) {
         this.tema = ptema;
 //        val = new NotEmptyValidator(grafica, tema, "Il campo non può essere vuoto.");
  //       grafica.setInputVerifier(val);

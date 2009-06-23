@@ -21,9 +21,14 @@ import it.seerp.application.conversioni.Conversione;
 import it.seerp.storage.ejb.Evento;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.text.MaskFormatter;
 
 /**
  *
@@ -33,14 +38,21 @@ public class datiEvento extends javax.swing.JDialog {
     ConfigurazioneOperazioni.TIPO_OPE_CONST tipoOp;
     private BeanGuiEvento be;
     private CalendarPanel pannel;
+    private MaskFormatter mask;
     /** Creates new form datiEvento */
     public datiEvento(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        tipoOp=ConfigurazioneOperazioni.TIPO_OPE_CONST.VISUALIZZA;
-        initComponents();
-        legameBean();
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        Screen.centraFinestra(this);
+        try {
+            tipoOp = ConfigurazioneOperazioni.TIPO_OPE_CONST.VISUALIZZA;
+            initComponents();
+            legameBean();
+            setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            Screen.centraFinestra(this);
+            mask = new javax.swing.text.MaskFormatter("##:##:##");
+            mask.setPlaceholderCharacter('_');
+        } catch (ParseException ex) {
+           JOptionPane.showMessageDialog(null, "Errore nella creazione della finestra di dialogo!");
+        }
     }
 
     private BeanGuiEvento getBeanGuiEvento() {
@@ -60,12 +72,10 @@ public class datiEvento extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         txt_nome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txt_tema = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txt_luogo = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txt_ora = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -76,6 +86,8 @@ public class datiEvento extends javax.swing.JDialog {
         chk_notifica = new javax.swing.JCheckBox();
         jLabel7 = new javax.swing.JLabel();
         txt_id = new javax.swing.JTextField();
+        txt_ora = new javax.swing.JFormattedTextField();
+        txt_tema = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(285, 340));
@@ -118,15 +130,6 @@ public class datiEvento extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         getContentPane().add(jLabel2, gridBagConstraints);
 
-        txt_tema.setFont(new java.awt.Font("Tahoma", 0, 12));
-        txt_tema.setName("txt_tema"); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(4, 0, 0, 0);
-        getContentPane().add(txt_tema, gridBagConstraints);
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel3.setText("Luogo");
         jLabel3.setName("jLabel3"); // NOI18N
@@ -162,15 +165,6 @@ public class datiEvento extends javax.swing.JDialog {
         gridBagConstraints.gridy = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         getContentPane().add(jLabel5, gridBagConstraints);
-
-        txt_ora.setFont(new java.awt.Font("Tahoma", 0, 12));
-        txt_ora.setName("txt_ora"); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(4, 0, 0, 0);
-        getContentPane().add(txt_ora, gridBagConstraints);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel6.setText("Notifica");
@@ -263,6 +257,28 @@ public class datiEvento extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         getContentPane().add(txt_id, gridBagConstraints);
 
+        txt_ora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        txt_ora.setFont(new java.awt.Font("Tahoma", 0, 12));
+        txt_ora.setName("txt_ora"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(4, 0, 0, 0);
+        getContentPane().add(txt_ora, gridBagConstraints);
+
+        txt_tema.setEditable(true);
+        txt_tema.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txt_tema.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Compleanno", "Riunione", "Anniversario", "Appuntamento", "Cena Aziendale", "Promemoria", "Convegno", "Colloquio", "Altro" }));
+        txt_tema.setSelectedIndex(5);
+        txt_tema.setName("txt_tema"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(4, 0, 0, 0);
+        getContentPane().add(txt_tema, gridBagConstraints);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -290,7 +306,8 @@ public class datiEvento extends javax.swing.JDialog {
     public void resetAll() {
         txt_nome.setText("");
         txt_luogo.setText("");
-        txt_tema.setText("");
+        txt_tema.setSelectedIndex(-1);
+        //txt_tema.
         txt_ora.setText("");
         txt_note.setText("");
         chk_notifica.setSelected(false);
@@ -344,6 +361,7 @@ public class datiEvento extends javax.swing.JDialog {
     public void visualizza(Evento e) {
        //final datiEvento f = new datiEvento(new JFrame(), true);
         resetAll();
+        //txt_ora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("H:mm:ss"))));
         buttonOperazione.setText("Modifica");
         tipoOp=ConfigurazioneOperazioni.TIPO_OPE_CONST.VISUALIZZA;
         Conversione.conversioneEvento(e, be);
@@ -355,6 +373,7 @@ public class datiEvento extends javax.swing.JDialog {
     public void inserisci()
     {
         resetAll();
+        //txt_ora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(mask));
         setModal(false);
         setEditable(true);
         buttonOperazione.setText("Salva");
@@ -372,6 +391,7 @@ public class datiEvento extends javax.swing.JDialog {
     }
     public void modifica(Evento e) {
         resetAll();
+        //txt_ora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("H:mm:ss"))));
         Conversione.conversioneEvento(e, be);
         setEditable(true);
         buttonOperazione.setText("Salva");
@@ -408,14 +428,14 @@ public class datiEvento extends javax.swing.JDialog {
     private javax.swing.JTextField txt_luogo;
     private javax.swing.JTextField txt_nome;
     private javax.swing.JTextArea txt_note;
-    private javax.swing.JTextField txt_ora;
-    private javax.swing.JTextField txt_tema;
+    private javax.swing.JFormattedTextField txt_ora;
+    private javax.swing.JComboBox txt_tema;
     // End of variables declaration//GEN-END:variables
 
     public void setEditable (boolean f) {
         txt_nome.setEditable(f);
         txt_luogo.setEditable(f);
-        txt_tema.setEditable(f);
+        txt_tema.setEnabled(f);
         txt_ora.setEditable(f);
         txt_note.setEditable(f);
         chk_notifica.setEnabled(f);

@@ -150,7 +150,7 @@ public class Conversione {
     public static Evento conversioneEvento(BeanGuiEvento pGui) throws ValidatorException {
         Evento evento = new Evento();
         evento.setLuogo(pGui.getLuogo().getText());
-        evento.setTema(pGui.getTema().getText());
+        evento.setTema((String)pGui.getTema().getSelectedItem());
         evento.setNome(pGui.getNome().getText());
         evento.setNote(pGui.getNote().getText());
         GregorianCalendar data = new GregorianCalendar();
@@ -193,7 +193,7 @@ public class Conversione {
         gui.getNote().setText(e.getNote());
         gui.getNotifica().setSelected(e.getNotifica());
         gui.getOra().setText(e.getOra().get(GregorianCalendar.HOUR_OF_DAY)+ ":" + e.getOra().get(GregorianCalendar.MINUTE)+ ":" + e.getOra().get(GregorianCalendar.SECOND));
-        gui.getTema().setText(e.getTema());
+        gui.getTema().setSelectedItem(e.getTema());
         return gui;
     }
 
