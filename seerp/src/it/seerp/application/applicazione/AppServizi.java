@@ -125,12 +125,13 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio> {
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si immettano dati errati durante la modifica
      */
-    public BeanGuiServizio modifica(BeanGuiServizio beanGui) throws DatiErrati {
+    public BeanGuiServizio modifica(int id,BeanGuiServizio beanGui) throws DatiErrati {
         try {
             OpServizio ope = new OpServizio();
             Servizio serv = Conversione.conversioneServizio(beanGui);
+            serv.setIdServizio(id);
             serv = ope.modifica(serv);
-            beanGui = Conversione.conversioneServizio(serv, beanGui);
+          // this.visualizza(nome, beanGui)
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");

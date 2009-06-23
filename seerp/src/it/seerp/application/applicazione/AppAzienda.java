@@ -28,7 +28,8 @@ public class AppAzienda {
         try {
             OpAzienda ope = new OpAzienda();
             Azienda azi = Conversione.conversioneAzienda(beanGui);
-        ope.modifica(azi);
+            azi.setIdAzienda(1);
+           ope.modifica(azi);
            //beanGui = Conversione.conversioneAzienda(azi, beanGui);
         } catch (SQLException se) {
             se.printStackTrace();
@@ -51,7 +52,7 @@ public class AppAzienda {
         try {
             OpAzienda ope = new OpAzienda();
             Azienda azi = ope.visualizza();
-            ;
+           
             Conversione.conversioneAzienda(azi, gui);
         } catch (SQLException se) {
             se.printStackTrace();
