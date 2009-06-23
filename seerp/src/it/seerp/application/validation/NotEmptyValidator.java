@@ -28,7 +28,7 @@ public class NotEmptyValidator extends AbstractValidator {
 
     @Override
     protected boolean validationCriteria(JComponent c) {
-        if (((JTextField) c).getText().equals("")) {
+       if (((JTextField) c).getText().equals("")) {
             return false;
         }
         return true;

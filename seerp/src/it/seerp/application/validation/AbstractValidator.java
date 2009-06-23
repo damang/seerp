@@ -135,6 +135,7 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
      */
     @Override
     public void keyReleased(KeyEvent e) {
+        verify((JComponent)e.getSource());
     }
 
     private void initComponents() {
