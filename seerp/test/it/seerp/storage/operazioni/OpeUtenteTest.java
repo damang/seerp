@@ -86,7 +86,7 @@ public class OpeUtenteTest extends TestCase{
         System.out.println("modifica");
         
         OpeUtente instance = new OpeUtente();
-        Utente expResult = null;
+        Utente expResult = u;
         
         assertEquals(id,u.getIdUtente());
         assertEquals("marros",u.getUsername());
