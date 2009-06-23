@@ -24,9 +24,12 @@ public class AppGestioneAreaPersonale implements GestioneAreaPersonale<BeanGuiUt
      */
     @Override
     public BeanGuiUtente visualizzaDati(int id, BeanGuiUtente beanGui) {
+        Utente user;
         try {
             OpAreaPersonale ope = new OpAreaPersonale();
-            Utente user = ope.visualizzaDati(id);
+            if(beanGui.getTipo().equals("Personale")){
+            user = ope.visualizzaDatiPersonale(beanGui.getTxtUsername().getText());}
+            else{user = ope.visualizzaDatiExtraAzienda(beanGui.getTxtUsername().getText());}
             beanGui = it.seerp.application.conversioni.Conversione.conversioneAreaPersonale(user, beanGui);
         } catch (SQLException se) {
             se.printStackTrace();
