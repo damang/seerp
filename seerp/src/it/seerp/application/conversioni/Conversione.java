@@ -220,7 +220,7 @@ public class Conversione {
         servizio.setPrezzo(Double.parseDouble(pGui.getPrezzo().getText()));
         //   servizio.setIdServizio(Integer.parseInt(pGui.getIdServizio().getText()));
         servizio.setIva(Integer.parseInt(pGui.getIva().getText()));
-//        servizio.setNote(pGui.getNote().getText());
+        servizio.setNote(pGui.getNote().getText());
         //  servizio.setListServiziAssociati(list);
         return servizio;
     }
@@ -293,28 +293,28 @@ public class Conversione {
 
         Utente utente = new Utente();
 
-     //   utente.setIdUtente(Integer.parseInt(bUtente.getIdUtenteTxt().getText()));
+        //   utente.setIdUtente(Integer.parseInt(bUtente.getIdUtenteTxt().getText()));
         utente.setUsername(bUtente.getTxtUsername().getText());
         utente.setPassword(bUtente.getTxtPassword().getText());
         utente.setCitta(bUtente.getTxtCitta().getText());
         utente.setProvincia(bUtente.getTxtProvincia().getText());
-        //   utente.setCap(bUtente.getCap().getText());
+        utente.setCap(bUtente.getCap().getText());
         utente.setTelefono(bUtente.getTxtTelefono().getText());
         utente.setEmail(bUtente.getTxtEmail().getText());
-//        utente.setNote(bUtente.getTxtNote().getText());
+        utente.setNote(bUtente.getTxtNote().getText());
         //      utente.setTipo(bUtente.getTipo().getText());
         //    utente.setVisible(Boolean.parseBoolean(bUtente.getTxtNotifica().getText()));
 
         return utente;
     }
 
-        public static BeanGuiUtente conversioneUtente(Utente user, BeanGuiUtente utente) {
+    public static BeanGuiUtente conversioneUtente(Utente user, BeanGuiUtente utente) {
 
-     //   utente.getIdUtenteTxt().setText(user.getIdUtente().toString());
-       
+        //   utente.getIdUtenteTxt().setText(user.getIdUtente().toString());
 
-          utente.getTxtUsername().setText(user.getUsername());
-      
+
+        utente.getTxtUsername().setText(user.getUsername());
+
         utente.getTxtPassword().setText(user.getPassword());
         utente.getTxtCitta().setText(user.getCitta());
         utente.getTxtEmail().setText(user.getEmail());
@@ -323,30 +323,30 @@ public class Conversione {
         utente.getTxtTelefono().setText(user.getTelefono());
 //        utente.getTxtNote().setText(user.getNote());
 //        utente.getVisible().setText(user.getVisible().toString());
-    //    utente.getTipo().setText(user.getTipo());
+        //    utente.getTipo().setText(user.getTipo());
         return utente;
     }
+
     /**
      * Metodo che converte un Bean Utente in un Bean Gui Utente
      * @param user il Bean da convertire
      * @param utente il Bean Grafico che deve essere modificato
      * @return il Bean Gui convertito
      */
-
     public static BeanGuiUtente conversioneAreaPersonale(Utente user, BeanGuiUtente utente) {
 
-     //   utente.getIdUtenteTxt().setText(user.getIdUtente().toString());
-          utente.getTxtUsername().setText(user.getUsername());
+        //   utente.getIdUtenteTxt().setText(user.getIdUtente().toString());
+        utente.getTxtUsername().setText(user.getUsername());
         utente.getTxtUsername2().setText(user.getUsername());
         utente.getTxtPassword().setText(user.getPassword());
         utente.getTxtCitta().setText(user.getCitta());
         utente.getTxtEmail().setText(user.getEmail());
-       
+
         utente.getTxtProvincia().setText(user.getProvincia());
         utente.getTxtTelefono().setText(user.getTelefono());
 //        utente.getTxtNote().setText(user.getNote());
 //        utente.getVisible().setText(user.getVisible().toString());
-    //    utente.getTipo().setText(user.getTipo());
+        //    utente.getTipo().setText(user.getTipo());
         return utente;
     }
 
@@ -361,20 +361,21 @@ public class Conversione {
 
 
         Personale utente = new Personale();
-     //   utente.setIdUtente(Integer.parseInt(bp.getIdUtenteTxt().getText()));
+
+        //   utente.setIdUtente(Integer.parseInt(bp.getIdUtenteTxt().getText()));
         utente.setUsername(bp.getTxtUsername().getText());
         utente.setPassword(bp.getTxtPassword().getText());
         utente.setCitta(bp.getTxtCitta().getText());
         utente.setProvincia(bp.getTxtProvincia().getText());
-        // utente.setCap(bp.getCap().getText());
+        utente.setCap(bp.getCap().getText());
         utente.setTelefono(bp.getTxtTelefono().getText());
         utente.setEmail(bp.getTxtEmail().getText());
-        //  utente.setNote(bp.getTxtNote().getText());
+        utente.setNote(bp.getTxtNote().getText());
         // utente.setTipo(bp.getTipo().getText());
         utente.setVisible(Boolean.parseBoolean(bp.getTxtNotifica().getText()));
         utente.setCognome(bp.getCognome().getText());
         utente.setNome(bp.getNome().getText());
-        //utente.setCodiceFiscale(bp.getCodiceFiscale().getText());
+        utente.setCodiceFiscale(bp.getCodiceFiscale().getText());
         utente.setRuolo(new Ruolo(bp.getRuolo().getText()));
         return utente;
     }
@@ -388,9 +389,9 @@ public class Conversione {
     public static BeanGuiPersonale conversionePersonale(Personale p, BeanGuiPersonale bp) {
 
         Conversione.conversioneUtente(p, bp);
-     
+
         bp.getCognome().setText(p.getCognome());
-        System.out.println("luisa"+p.getNome());
+        System.out.println("luisa" + p.getNome());
         bp.getNome().setText(p.getNome());
         bp.getCodiceFiscale().setText(p.getCodiceFiscale());
         bp.getRuolo().setText(p.getRuolo().getNome());
@@ -408,38 +409,38 @@ public class Conversione {
     public static ExtraAzienda conversioneExtraAzienda(BeanGuiExtraAzienda e) throws ValidatorException {
 
 
-     /*   ArrayList<Appuntamento> a = new ArrayList<Appuntamento>();
+        /*   ArrayList<Appuntamento> a = new ArrayList<Appuntamento>();
         ArrayList<Contratto> a1 = new ArrayList<Contratto>();
 
         for (BeanGuiAppuntamento b : e.getListAppuntamenti()) {
-            Appuntamento b1 = conversioneAppuntamento(b);
-            a.add(b1);
+        Appuntamento b1 = conversioneAppuntamento(b);
+        a.add(b1);
         }
 
         for (BeanGuiContratto b : e.getListContratti()) {
-            Contratto b1 = conversioneContratto(b);
-            a1.add(b1);
+        Contratto b1 = conversioneContratto(b);
+        a1.add(b1);
         }*/
         ExtraAzienda utente = new ExtraAzienda();
-       // utente.setIdUtente(Integer.parseInt(e.getIdUtenteTxt().getText()));
+        // utente.setIdUtente(Integer.parseInt(e.getIdUtenteTxt().getText()));
         utente.setUsername(e.getTxtUsername().getText());
         utente.setPassword(e.getTxtPassword().getText());
         utente.setCitta(e.getTxtCitta().getText());
         utente.setProvincia(e.getTxtProvincia().getText());
-//        utente.setCap(e.getCap().getText());
+        utente.setCap(e.getCap().getText());
         utente.setTelefono(e.getTxtTelefono().getText());
         utente.setEmail(e.getTxtEmail().getText());
-//        utente.setNote(e.getTxtNote().getText());
-      //  utente.setTipo(e.getTipo().getText());
+        utente.setNote(e.getTxtNote().getText());
+        //  utente.setTipo(e.getTipo().getText());
         //utente.setVisible(Boolean.parseBoolean(e.getTxtNotifica().getText()));
-        //utente.setCognome(e.getCognome().getText());
-     //   utente.setNome(e.getNome().getText());
+        utente.setCognome(e.getCognome().getText());
+        utente.setNome(e.getNome().getText());
         utente.setRagioneSociale(e.getRagioneSociale().getText());
         utente.setPIva(e.getPIva().getText());
-       // utente.setFax(e.getFax().getText());
+        // utente.setFax(e.getFax().getText());
         //utente.setTipo(e.getTipo().getText());
         //utente.setListAppuntamenti(a);
-       // utente.setListContratti(a1);
+        // utente.setListContratti(a1);
         return utente;
     }
 
@@ -452,17 +453,18 @@ public class Conversione {
      */
     public static BeanGuiExtraAzienda conversioneExtraAzienda(ExtraAzienda e, BeanGuiExtraAzienda extra) throws ValidatorException {
 
-         conversioneUtente(e, extra);
+        conversioneUtente(e, extra);
         //   extra.getIdUtenteTxt().setText(e.getIdUtente().toString());
-  //       extra.getCognome().setText(e.getCognome());
-//         extra.getNome().setText(e.getNome());
-         extra.getRagioneSociale().setText(e.getRagioneSociale());
-         extra.getPIva().setText(e.getPIva());
-    //     extra.getFax().setText(e.getFax());
-       
-      
-       // extra.setListAppuntamenti(extra.getListAppuntamenti());
-       // extra.setListContratti(extra.getListContratti());
+        extra.getCognome().setText(e.getCognome());
+        extra.getNome().setText(e.getNome());
+        extra.getRagioneSociale().setText(e.getRagioneSociale());
+        extra.getPIva().setText(e.getPIva());
+        extra.getFax().setText(e.getFax());
+        extra.getCodiceFiscale().setText(e.getCodiceFiscale());
+
+
+        // extra.setListAppuntamenti(extra.getListAppuntamenti());
+        // extra.setListContratti(extra.getListContratti());
         return extra;
     }
 
@@ -483,7 +485,7 @@ public class Conversione {
         utente.setProvincia(r.getTxtProvincia().getText());
         utente.setTelefono(r.getTxtTelefono().getText());
         utente.setEmail(r.getTxtEmail().getText());
-        // utente.setNote(r.getTxtNote().getText());
+        utente.setNote(r.getTxtNote().getText());
         // utente.setVisible(Boolean.parseBoolean(r.getTxtNotifica().getText()));
         utente.setCognome(r.getCognome().getText());
         utente.setNome(r.getNome().getText());
@@ -500,7 +502,7 @@ public class Conversione {
      * @return il Bean Gui convertito
      */
     public static BeanGuiResponsabile conversioneResponsabile(Responsabile e, BeanGuiResponsabile br) {
-         conversioneUtente(e, br);
+        conversioneUtente(e, br);
 
         return br;
     }
@@ -533,10 +535,10 @@ public class Conversione {
         utente.setPassword(r.getTxtPassword().getText());
         utente.setCitta(r.getTxtCitta().getText());
         utente.setProvincia(r.getTxtProvincia().getText());
-        //  utente.setCap(r.getCap().getText());
+         utente.setCap(r.getCap().getText());
         utente.setTelefono(r.getTxtTelefono().getText());
         utente.setEmail(r.getTxtEmail().getText());
-//        utente.setNote(r.getTxtNote().getText());
+        utente.setNote(r.getTxtNote().getText());
         //utente.setTipo(r.getTipo().getText());
         //utente.setVisible(Boolean.parseBoolean(r.getTxtNotifica().getText()));
         utente.setCognome(r.getCognome().getText());
@@ -746,17 +748,18 @@ public class Conversione {
         utente.setPassword(e.getTxtPassword().getText());
         utente.setCitta(e.getTxtCitta().getText());
         utente.setProvincia(e.getTxtProvincia().getText());
-        //    utente.setCap(e.getCap().getText());
+        utente.setCap(e.getCap().getText());
         utente.setTelefono(e.getTxtTelefono().getText());
         utente.setEmail(e.getTxtEmail().getText());
-//        utente.setNote(e.getTxtNote().getText());
+        utente.setNote(e.getTxtNote().getText());
         //      utente.setTipo(e.getTipo().getText());
         //  utente.setVisible(Boolean.parseBoolean(e.getTxtNotifica().getText()));
-        // utente.setCognome(e.getCognome().getText());
-        // utente.setNome(e.getNome().getText());
+        utente.setCognome(e.getCognome().getText());
+        utente.setNome(e.getNome().getText());
         utente.setRagioneSociale(e.getRagioneSociale().getText());
         utente.setPIva(e.getPIva().getText());
-        //utente.setFax(e.getFax().getText());
+        utente.setCodiceFiscale(e.getCodiceFiscale().getText());
+        utente.setFax(e.getFax().getText());
         //utente.setTipo(e.getTipo().getText());
         //utente.setListAppuntamenti(a);
         // utente.setListContratti(a1);
@@ -772,9 +775,9 @@ public class Conversione {
      */
     public static BeanGuiCliente conversioneCliente(Cliente e, BeanGuiCliente cl) throws ValidatorException {
 
-    
+
         conversioneExtraAzienda(e, cl);
-     //   cl.getRuolo().setText("Cliente");
+        //   cl.getRuolo().setText("Cliente");
        /* cl.setListAppuntamenti(cl.getListAppuntamenti());
         cl.setListContratti(cl.getListContratti());*/
 
@@ -803,22 +806,22 @@ public class Conversione {
         }
          */
         Fornitore utente = new Fornitore();
-     //   utente.setIdUtente(Integer.parseInt(e.getIdUtenteTxt().getText()));
+        //   utente.setIdUtente(Integer.parseInt(e.getIdUtenteTxt().getText()));
         utente.setUsername(e.getTxtUsername().getText());
         utente.setPassword(e.getTxtPassword().getText());
         utente.setCitta(e.getTxtCitta().getText());
         utente.setProvincia(e.getTxtProvincia().getText());
-        //utente.setCap(e.getCap().getText());
+        utente.setCap(e.getCap().getText());
         utente.setTelefono(e.getTxtTelefono().getText());
         utente.setEmail(e.getTxtEmail().getText());
-        //utente.setNote(e.getTxtNote().getText());
+        utente.setNote(e.getTxtNote().getText());
+        utente.setCodiceFiscale(e.getCodiceFiscale().getText());
         //utente.setTipo(e.getTipo().getText());
         //utente.setVisible(Boolean.parseBoolean(e.getTxtNotifica().getText()));
-//        utente.setCognome(e.getCognome().getText());
-        // utente.setNome(e.getNome().getText());
+        utente.setNome(e.getNome().getText());
         utente.setRagioneSociale(e.getRagioneSociale().getText());
         utente.setPIva(e.getPIva().getText());
-        // utente.setFax(e.getFax().getText());
+        utente.setFax(e.getFax().getText());
         //utente.setTipo(e.getTipo().getText());
         //utente.setListAppuntamenti(a);
         //utente.setListContratti(a1);
@@ -834,7 +837,7 @@ public class Conversione {
     public static BeanGuiFornitore conversioneFornitore(Fornitore e, BeanGuiFornitore fo) {
 
         conversioneExtraAzienda(e, fo);
-      //  fo.getRuolo().setText("Fornitore");
+        //  fo.getRuolo().setText("Fornitore");
         return fo;
     }
 
@@ -901,8 +904,9 @@ public class Conversione {
             entry = (Map.Entry) it.next();
             ArrayList<BeanGuiPermesso> e = (ArrayList<BeanGuiPermesso>) entry.getValue();
             for (BeanGuiPermesso bean : e) {
-                if (bean.getAct().isSelected())
+                if (bean.getAct().isSelected()) {
                     r.addPermesso(conversionePermesso(bean));
+                }
             }
         }
         return r;
@@ -962,13 +966,14 @@ public class Conversione {
         Azienda azienda1 = new Azienda();
 //        azienda1.setCitta(azienda.getCitta().getText());
         azienda1.setEmail(azienda.getEmail().getText());
-  //      azienda1.setFax(azienda.getFax().getText());
+        //      azienda1.setFax(azienda.getFax().getText());
         azienda1.setIndirizzo(azienda.getInidirizzo().getText());
         azienda1.setNazione(azienda.getNazione().getText());
         azienda1.setPIVA(azienda.getPIVA().getText());
         azienda1.setRagioneSociale(azienda.getRagioneSociale().getText());
         azienda1.setTelefono(azienda.getTelefono().getText());
-    //    azienda1.setIdAzienda(Integer.parseInt(azienda.getIdAzienda().getText()));
+        
+        //    azienda1.setIdAzienda(Integer.parseInt(azienda.getIdAzienda().getText()));
         //azienda1.setNote(azienda.getNote().getText());
         //azienda1.setAmministratore(conversioneAmministratore(azienda.getAmministratore()));
         return azienda1;
@@ -1004,14 +1009,14 @@ public class Conversione {
 //        bga.getCitta().setText(a.getCitta());
 //
         bga.getEmail().setText(a.getEmail());
-      //  bga.getFax().setText(a.getFax());
-        
+        //  bga.getFax().setText(a.getFax());
+
         bga.getInidirizzo().setText(a.getIndirizzo());
-         
+
         bga.getNazione().setText(a.getNazione());
         bga.getPIVA().setText(a.getPIVA());
         bga.getRagioneSociale().setText(a.getRagioneSociale());
-       bga.getTelefono().setText(a.getTelefono());
+        bga.getTelefono().setText(a.getTelefono());
         //bga.setAmministratore(bga.getAmministratore());
         return bga;
     }
