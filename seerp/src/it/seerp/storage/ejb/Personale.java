@@ -128,4 +128,34 @@ public class Personale extends Utente {
     public String getTipo() {
         return tipo;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Personale other = (Personale) obj;
+        if ((this.cognome == null) ? (other.cognome != null) : !this.cognome.equals(other.cognome)) {
+            return false;
+        }
+        if ((this.nome == null) ? (other.nome != null) : !this.nome.equals(other.nome)) {
+            return false;
+        }
+        if ((this.codiceFiscale == null) ? (other.codiceFiscale != null) : !this.codiceFiscale.equals(other.codiceFiscale)) {
+            return false;
+        }
+        if ((this.tipo == null) ? (other.tipo != null) : !this.tipo.equals(other.tipo)) {
+            return false;
+        }
+        if (this.ruolo != other.ruolo && (this.ruolo == null || !this.ruolo.equals(other.ruolo))) {
+            return false;
+        }
+        return true;
+    }
+
+   
+
 }

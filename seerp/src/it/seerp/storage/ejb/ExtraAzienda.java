@@ -254,11 +254,6 @@ public class ExtraAzienda extends Utente {
         return true;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        return hash;
-    }
-
+   
 
 }

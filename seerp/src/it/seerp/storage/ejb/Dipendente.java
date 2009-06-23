@@ -116,4 +116,5 @@ public class Dipendente extends Personale {
     public void addContratto(Contratto c) {
         listContratti.add(c);
     }
+    
 }

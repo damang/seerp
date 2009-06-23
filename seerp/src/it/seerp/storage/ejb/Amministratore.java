@@ -76,4 +76,22 @@ public class Amministratore extends Personale {
     public void setAzienda(Azienda azienda) {
         this.azienda = azienda;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Amministratore other = (Amministratore) obj;
+        if (this.azienda != other.azienda && (this.azienda == null || !this.azienda.equals(other.azienda))) {
+            return false;
+        }
+        return true;
+    }
+
+    
+
 }

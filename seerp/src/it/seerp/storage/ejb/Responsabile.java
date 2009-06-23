@@ -42,4 +42,7 @@ public class Responsabile extends Personale {
        super(idUtente, username, password, citta, provincia, telefono, cap, email, note, tipo, cognome, nome, codiceFiscale, v, ruolo);
     }
 
+
+
+    
 }

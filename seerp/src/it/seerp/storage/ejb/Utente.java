@@ -232,4 +232,51 @@ public class Utente {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Utente other = (Utente) obj;
+        if (this.idUtente != other.idUtente && (this.idUtente == null || !this.idUtente.equals(other.idUtente))) {
+            return false;
+        }
+        if ((this.username == null) ? (other.username != null) : !this.username.equals(other.username)) {
+            return false;
+        }
+        if ((this.password == null) ? (other.password != null) : !this.password.equals(other.password)) {
+            return false;
+        }
+        if ((this.citta == null) ? (other.citta != null) : !this.citta.equals(other.citta)) {
+            return false;
+        }
+        if ((this.provincia == null) ? (other.provincia != null) : !this.provincia.equals(other.provincia)) {
+            return false;
+        }
+        if ((this.telefono == null) ? (other.telefono != null) : !this.telefono.equals(other.telefono)) {
+            return false;
+        }
+        if ((this.email == null) ? (other.email != null) : !this.email.equals(other.email)) {
+            return false;
+        }
+        if ((this.note == null) ? (other.note != null) : !this.note.equals(other.note)) {
+            return false;
+        }
+        if ((this.tipo == null) ? (other.tipo != null) : !this.tipo.equals(other.tipo)) {
+            return false;
+        }
+        if (this.visible != other.visible && (this.visible == null || !this.visible.equals(other.visible))) {
+            return false;
+        }
+        if ((this.cap == null) ? (other.cap != null) : !this.cap.equals(other.cap)) {
+            return false;
+        }
+        return true;
+    }
+
+    
 }

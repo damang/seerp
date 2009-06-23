@@ -59,6 +59,10 @@ public class Evento {
         this.idEvento = idEvento;
     }
 
+    Evento(String string, String string0, String string1, String string2, GregorianCalendar data, GregorianCalendar ora, int i, boolean b, Agenda agd) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
