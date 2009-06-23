@@ -1,5 +1,6 @@
 package it.seerp.application.bean;
 
+import it.seerp.Gui.Gestione.Servizi.GestioneServizi;
 import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.validation.NotAlphabeticValidator;
 import it.seerp.application.validation.NotEmptyValidator;
@@ -26,7 +27,7 @@ public class BeanGuiServizio {
     private JTextField iva;
     private JTextArea note;
     private ArrayList<BeanGuiServizioAssociato> listServiziAssociati;
-    private JXPanel grafica;
+    private GestioneServizi grafica;
     private NotEmptyValidator val;
     private NotAlphabeticValidator valApha;
     private NotMinNumberValidator valMinNum;
@@ -37,7 +38,7 @@ public class BeanGuiServizio {
      * validazione del campo
      * @param c
      */
-    public BeanGuiServizio(JXPanel c) {
+    public BeanGuiServizio(GestioneServizi c) {
         grafica = c;
     }
 
@@ -266,10 +267,10 @@ public class BeanGuiServizio {
      * @throws ValidatorException
      */
     public JTextField getTipo() throws ValidatorException {
-       /* if (!val.shouldYieldFocus(grafica)) {
+        if (!val.shouldYieldFocus(grafica.getTipo())) {
             throw new ValidatorException("Errore nella grafica!");
         }
-        if (!valApha.shouldYieldFocus(grafica)) {
+     /*   if (!valApha.shouldYieldFocus(grafica)) {
             throw new ValidatorException("Errore nella grafica!");
         }*/
         return tipo;
@@ -281,9 +282,9 @@ public class BeanGuiServizio {
      */
     public void setTipo(JTextField ptipo) {
         this.tipo = ptipo;
-      /*  val = new NotEmptyValidator(grafica, tipo, "Il campo non può essere vuoto.");
+        val = new NotEmptyValidator(grafica, tipo, "Il campo non può essere vuoto.");
         grafica.setInputVerifier(val);
-        valApha = new NotAlphabeticValidator(grafica, tipo, "La stringa inserita deve essere alfabetica.");
+      /*  valApha = new NotAlphabeticValidator(grafica, tipo, "La stringa inserita deve essere alfabetica.");
         grafica.setInputVerifier(valApha);*/
     }
 }

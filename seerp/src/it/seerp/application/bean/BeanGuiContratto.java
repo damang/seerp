@@ -150,7 +150,10 @@ public class BeanGuiContratto {
      * @throws ValidatorException
      */
     public JTextField getDurata() throws ValidatorException {
-    /*   if (!val.shouldYieldFocus(grafica.getField())) {
+
+    /*    System.out.println("-------------->"+grafica.getField());
+
+     if (!val.shouldYieldFocus(grafica.getField())) {
             throw new ValidatorException("Errore nella grafica!");
         }*/
         return durata;
@@ -162,7 +165,7 @@ public class BeanGuiContratto {
      */
     public void setDurata(JTextField pdurata) {
        this.durata = pdurata;
-     /*   val = new NotEmptyValidator(grafica, durata, "Il campo non può essere vuoto.");
+     /*  val = new NotEmptyValidator(grafica, durata, "Il campo non può essere vuoto.");
         grafica.setInputVerifier(val);*/
     }
 
