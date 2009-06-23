@@ -27,6 +27,7 @@ import java.util.logging.Logger;
 import org.jdesktop.swingx.*;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -38,6 +39,11 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
     BeanGuiServizio servi;
     String tipoOP;
     MenuServizi menu;
+   
+
+    public MenuServizi getMenu() {
+        return menu;
+    }
     ServiziTm tableModel = new ServiziTm();
     ;
 
@@ -61,7 +67,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
     public GestioneServizi() throws SQLException {
         initComponents();
 
-        this.servi = new BeanGuiServizio();
+        this.servi = new BeanGuiServizio(this);
 
         legameBeans();
         editabile(false);
@@ -110,6 +116,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         servi.setQuantita(qnt);
         servi.setDescrizione(descrizione);
         servi.setIva(iva);
+        servi.setNote(jTextArea1);
 
     }
 
@@ -644,7 +651,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jXFindBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(222, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         buttonAnnulla1.setName("buttonAnnulla1"); // NOI18N
@@ -666,35 +673,34 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(405, Short.MAX_VALUE)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jXLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(113, 113, 113)
-                        .addComponent(buttonAnnulla1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(buttonSalva1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jXPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jXPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jXLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 373, Short.MAX_VALUE)
+                .addComponent(buttonAnnulla1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonSalva1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(154, 154, 154))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(buttonAnnulla1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(buttonSalva1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(buttonSalva1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonAnnulla1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jXLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jXPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jXPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE))
+                .addContainerGap(180, Short.MAX_VALUE))
         );
 
         buttonAnnulla1.setEnabled(false);
@@ -706,8 +712,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
 }//GEN-LAST:event_tipoActionPerformed
 
     private void buttonAnnulla1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonAnnulla1MouseClicked
-        menu.getAggiungi().setEnabled(true);
-        menu.getModifica().setEnabled(true);
+        menu.setButtonEnabled(true);
         JOptionPane.showMessageDialog(null, "operazione annulata");
         jTabbedPane1.setSelectedComponent(jPanel1);
         editabile(false);
@@ -717,13 +722,29 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
     }//GEN-LAST:event_buttonAnnulla1MouseClicked
 
     private void buttonSalva1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSalva1MouseClicked
-
-        menu.getAggiungi().setEnabled(true);
-        menu.getModifica().setEnabled(true);
+ menu.setButtonEnabled(true);
          if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.MODIFICA)) {
-             JOptionPane.showMessageDialog(null, "usa");
+         
+            int i = jXTable1.getSelectedRow();
+            if (i < 0) {
+                return;
+            }
+            Integer id = (Integer) jXTable1.getValueAt(i, 0);
               AppServizi operazione = new AppServizi();
-        operazione.modifica(servi);}
+              operazione.modifica(id,servi);
+           try {
+                this.tableModel = new ServiziTm();
+            } catch (SQLException ex) {
+                Logger.getLogger(GestioneServizi.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            this.jXTable1.setModel(tableModel);
+            this.jXFindBar1.setSearchable(jXTable1.getSearchable());
+            this.jXTable1.updateUI();
+
+            //  }
+            editabile(false);
+            buttonAnnulla1.setEnabled(false);
+            buttonSalva1.setEnabled(false);}
      /*   ((ServiziTm) jXTable1.getModel()).refresh();*/
         //  }
         if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI)) {
@@ -765,7 +786,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
 
           //  visualizza();
 
-         editabile(true);
+         editabile(false);
     }//GEN-LAST:event_jXTable1MouseClicked
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -811,7 +832,8 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
     private javax.swing.JTextField qnt;
     private javax.swing.JTextField tipo;
     // End of variables declaration//GEN-END:variables
-
+public JTextField getTipo(){
+return tipo;}
 
 
     @Override
