@@ -715,6 +715,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
         _subject.getPrincipals().add(new AuthPrincipal("majinb", "username"));
         _subject.getPrincipals().add(new AuthPrincipal("amministratore", "ruolo"));
         _subject.getPrincipals().add(new AuthPrincipal("1", "id"));
+        _subject.getPrincipals().add(new AuthPrincipal("personale", "tipo"));
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
