@@ -25,7 +25,7 @@ public class OpeUtenteTest extends TestCase{
 
     private Utente u;
     private Boolean v;
-    private Integer id;
+   private Integer id = 0;
     private ArrayList<Utente> ut;
 
     public OpeUtenteTest() {
@@ -139,7 +139,7 @@ public class OpeUtenteTest extends TestCase{
     @Test
     public void testVisualizza() throws Exception {
         System.out.println("visualizza");
-       
+      
         OpeUtente instance = new OpeUtente();
         Utente expResult = u;
         Utente result = instance.visualizza(id);

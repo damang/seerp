@@ -24,7 +24,7 @@ import junit.framework.TestCase;
 public class OpDipendenteTest extends TestCase {
     
     private Dipendente d;
-    private Integer id;
+    private Integer id = 0;
     private Boolean v;
     private Ruolo r;
     private ArrayList<Dipendente> di;
@@ -178,7 +178,7 @@ public class OpDipendenteTest extends TestCase {
     @Test
     public void testVisualizzaDati() throws Exception {
         System.out.println("visualizzaDati");
-        
+      
         OpDipendente instance = new OpDipendente();
         Dipendente expResult = null;
         Dipendente result = instance.visualizzaDati(id);

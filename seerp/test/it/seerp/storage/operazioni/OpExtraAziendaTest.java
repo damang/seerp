@@ -23,7 +23,7 @@ public class OpExtraAziendaTest extends TestCase {
 
     private ExtraAzienda e;
     private Boolean v;
-    private Integer id;
+    private Integer id = 0;
     private ArrayList<Appuntamento> app;
     private ArrayList<Contratto> contr;
     ArrayList<ExtraAzienda> ex;
@@ -98,7 +98,7 @@ public class OpExtraAziendaTest extends TestCase {
     @Test
     public void testElimina() throws Exception {
         System.out.println("elimina");
-        ExtraAzienda user = e;
+        
         OpExtraAzienda instance = new OpExtraAzienda();
         instance.elimina(e);
         
@@ -174,9 +174,9 @@ public class OpExtraAziendaTest extends TestCase {
     @Test
     public void testVisualizzaDati() throws Exception {
         System.out.println("visualizzaDati");
-        
+       
         OpExtraAzienda instance = new OpExtraAzienda();
-        ExtraAzienda expResult = null;
+        ExtraAzienda expResult = e;
         ExtraAzienda result = instance.visualizzaDati(id);
         assertEquals(expResult, result);
         

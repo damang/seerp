@@ -22,7 +22,7 @@ public class OpContattoTest extends TestCase{
 
     private Contatto c;
     private Boolean v;
-    private Integer id;
+    private Integer id = 0;
     private ArrayList<Contatto> con;
 
      public OpContattoTest(String name) {
