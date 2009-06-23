@@ -92,7 +92,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         jPanel18 = new javax.swing.JPanel();
         citta1 = new javax.swing.JTextField();
         jPanel19 = new javax.swing.JPanel();
-        citta2 = new javax.swing.JTextField();
+        fax = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(0, 0, 102));
 
@@ -439,7 +439,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder("FAX"));
         jPanel19.setName("jPanel19"); // NOI18N
 
-        citta2.setName("citta2"); // NOI18N
+        fax.setName("fax"); // NOI18N
 
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
         jPanel19.setLayout(jPanel19Layout);
@@ -447,13 +447,13 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel19Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(citta2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fax, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel19Layout.setVerticalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel19Layout.createSequentialGroup()
-                .addComponent(citta2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -597,7 +597,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
     private it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva buttonSalva1;
     private javax.swing.JTextField citta;
     private javax.swing.JTextField citta1;
-    private javax.swing.JTextField citta2;
+    private javax.swing.JTextField fax;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
