@@ -61,14 +61,20 @@ public class OpAreaPersonale extends OpeUtente {
       public ExtraAzienda visualizzaDatiExtraAzienda(String usr) throws SQLException {
         ResultSet rs=null;
         ExtraAzienda extra = (ExtraAzienda) super.visualizza(usr);
-        String sql="SELECT nome, cognome, codicefiscale,ruolo " +
+        String sql="SELECT nome, cognome,fax,piva,ragioneSociale,ruolo,codicefiscale " +
                    "FROM utente join extraazienda on idUtente=idExtraAzienda" +
                    "WHERE username=?";
         PreparedStatement stmt = (PreparedStatement) conn.prepareStatement(sql);
         stmt.setString(1, usr);
         rs=stmt.executeQuery();
         while(rs.next()){
-           
+           extra.setNome(rs.getString(1));
+           extra.setCognome(rs.getString(2));
+           extra.setFax(rs.getString(3));
+           extra.setPIva(rs.getString(4));
+           extra.setRagioneSociale(rs.getString(5));
+           extra.setRuolo(rs.getString(6));
+           extra.setCodiceFiscale(rs.getString(7));
         }
         return extra;
     }
