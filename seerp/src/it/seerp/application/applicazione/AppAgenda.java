@@ -118,7 +118,6 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
             OpEvento ope = new OpEvento();
             Evento eve = Conversione.conversioneEvento(beanGui);
             eve = ope.modifica(eve);
-            beanGui = Conversione.conversioneEvento(eve, beanGui);
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
@@ -201,16 +200,32 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
     }
-
+     public void cancellaEvento(Evento bean) throws CancellazioneFallita {
+        try {
+            OpEvento ope = new OpEvento();
+            ope.cancella(bean);
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        } catch (ValidatorException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
+        }
+    }
+     public void cancellaEvento(int id) throws CancellazioneFallita {
+         Evento e= new Evento();
+         e.setIdEvento(id);
+         cancellaEvento(e);
+     }
     /**
      * Metodo che passa la lista di bean utilizzando l'operazioni del lato storage
      * @return lista dei bean
      */
-    public ArrayList<Evento> visualizzaTabella() {
+    public ArrayList<Evento> visualizzaTabella(String user) {
         ArrayList<Evento> list = new ArrayList<Evento>();
         try {
             OpEvento ope = new OpEvento();
-            list = ope.visualizzaElenco();
+            list = ope.visualizzaElenco(user);
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
@@ -221,5 +236,18 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
     @Override
     public ArrayList<BeanGuiEvento> elenca(ArrayList<BeanGuiEvento> listGui) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public ArrayList<Evento> visualizzaTabella() {
+         ArrayList<Evento> list = new ArrayList<Evento>();
+        try {
+            OpEvento ope = new OpEvento();
+            list = ope.visualizzaElenco();
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        }
+        return list;
     }
 }

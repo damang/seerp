@@ -41,20 +41,9 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
     public void inserimento(Evento e) throws DatiDuplicatiEx, DatiErratiEx, SQLException {
 
         PreparedStatement stmt = null;
-        Statement stmt1 = null;
-        String query = "INSERT INTO evento(data,ora,agenda,luogo,nome,tema,note,notifica)" +
-                " VALUES (?,?,?,?,?,?,?,?)";
-        //da controllare campi
-        String sqlTest = "SELECT * FROM evento WHERE nome='" + e.getNome() + "'";
-
-        stmt1 = connessione.createStatement();
+        String query = "INSERT INTO evento(data,ora,agenda,luogo,nome,tema,note,notifica) VALUES (?,?,?,?,?,?,?,?)";
         stmt = (PreparedStatement) connessione.prepareStatement(query);
-        ResultSet rs = stmt1.executeQuery(sqlTest);
-
-        if (rs.next()) {
-            throw new DatiDuplicatiEx("evento già esistente nel database");
-        } else {
-            java.sql.Date sqlDate = new java.sql.Date(e.getData().getTimeInMillis());
+        java.sql.Date sqlDate = new java.sql.Date(e.getData().getTimeInMillis());
             stmt.setDate(1, sqlDate);
             java.sql.Time sqlTime = new java.sql.Time(e.getOra().getTimeInMillis());
             stmt.setTime(2, sqlTime);
@@ -64,12 +53,9 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
             stmt.setString(6, e.getTema());
             stmt.setString(7, e.getNote());
             stmt.setBoolean(8, e.getNotifica());
-
             stmt.execute();
             stmt.close();
-            rs.close();
-            ConnectionPool.releaseConnection(connessione);
-        }
+           ConnectionPool.releaseConnection(connessione);
     }
 
     /** crea la query per modificare un evento nel database
@@ -82,37 +68,21 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
     public Evento modifica(Evento e) throws DatiDuplicatiEx, DatiErratiEx, SQLException {
 
         PreparedStatement stmt = null;
-        Statement stmt1 = null;
-        String query = "UPDATE evento SET data=?, ora=?, agenda=?, luogo=?, nome=?, tema=?," +
-                "note=?, notifica=?";
-       
-        String sqlTest = "SELECT * FROM evento WHERE nome='" + e.getNome() + "' ";
-
-        stmt1 = connessione.createStatement();
+        String query = "UPDATE evento SET data=?, ora=?, luogo=?, nome=?, tema=?, note=?, notifica=? where idEvento=?";
         stmt = (PreparedStatement) connessione.prepareStatement(query);
-        ResultSet rs = stmt1.executeQuery(sqlTest);
-
-        if (rs.next()) {
-            throw new DatiDuplicatiEx("evento già esistente nel database");
-        } else {
-
-            java.sql.Date sqlDate = new java.sql.Date(new java.util.Date().getTime());
+        java.sql.Date sqlDate = new java.sql.Date(e.getData().getTimeInMillis());
             stmt.setDate(1, sqlDate);
-            java.sql.Date sqlTime = new java.sql.Date(new java.util.Date().getTime());
-            stmt.setDate(2, sqlTime);
-            stmt.setInt(3, e.getAgenda());
-            stmt.setString(4,e.getLuogo());
-            stmt.setString(5,e.getNome());
-            stmt.setString(6, e.getTema());
-            stmt.setString(7, e.getNote());
-            stmt.setBoolean(8,e.getNotifica());
+            java.sql.Time sqlTime = new java.sql.Time(e.getOra().getTimeInMillis());
+            stmt.setTime(2, sqlTime);
+            stmt.setString(3,e.getLuogo());
+            stmt.setString(4,e.getNome());
+            stmt.setString(5, e.getTema());
+            stmt.setString(6, e.getNote());
+            stmt.setBoolean(7,e.getNotifica());
+            stmt.setInt(8, e.getIdEvento());
             stmt.execute();
-
-        }
         stmt.close();
-        rs.close();
         ConnectionPool.releaseConnection(connessione);
-
         return e;
     }
 

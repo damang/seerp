@@ -237,6 +237,7 @@
     </Component>
     <Component class="it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla" name="buttonAnnulla1">
       <Properties>
+        <Property name="text" type="java.lang.String" value="Chiudi"/>
         <Property name="name" type="java.lang.String" value="buttonAnnulla1" noResource="true"/>
       </Properties>
       <Events>

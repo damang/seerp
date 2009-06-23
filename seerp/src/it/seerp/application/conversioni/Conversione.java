@@ -192,7 +192,7 @@ public class Conversione {
         gui.getNome().setText(e.getNome());
         gui.getNote().setText(e.getNote());
         gui.getNotifica().setSelected(e.getNotifica());
-        gui.getOra().setText(e.getOra().get(GregorianCalendar.HOUR)+ ":" + e.getOra().get(GregorianCalendar.MINUTE)+ ":" + e.getOra().get(GregorianCalendar.SECOND));
+        gui.getOra().setText(e.getOra().get(GregorianCalendar.HOUR_OF_DAY)+ ":" + e.getOra().get(GregorianCalendar.MINUTE)+ ":" + e.getOra().get(GregorianCalendar.SECOND));
         gui.getTema().setText(e.getTema());
         return gui;
     }

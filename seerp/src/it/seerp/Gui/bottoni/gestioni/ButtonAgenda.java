@@ -25,6 +25,7 @@ import it.seerp.Gui.Gestione.agenda.CalendarPanelSelectionListener;
 import it.seerp.Gui.Gestione.agenda.Event;
 import it.seerp.Gui.Gestione.agenda.datiEvento;
 import it.seerp.Gui.Home.Index;
+import it.seerp.application.applicazione.AppAgenda;
 import it.seerp.application.conversioni.Conversione;
 import it.seerp.storage.jaas.SujGest;
 import javax.security.auth.Subject;
@@ -84,24 +85,16 @@ public class ButtonAgenda extends ObserverButton implements CommandInterface {
                 public Vector getEventInstancesForDate(int year, int month, int day) {
                     Vector ret = new Vector();
 
-                    OpEvento op;
-                    ArrayList<Evento> e = null;
-                    try {
-                        op = new OpEvento();
-                        
-                        e = op.visualizzaElenco(SujGest.getUsername(ut_sub));
-                     //   System.out.println(e.get(0).getIdEvento());
-                    } catch (SQLException ex) {
-                        ex.printStackTrace();
-                    }
-
-                    for (Evento evento : e) {
+                   AppAgenda a=new AppAgenda();
+                   ArrayList<Evento> e=null;
+                   e=a.visualizzaTabella(SujGest.getUsername(ut_sub));
+                   for (Evento evento : e) {
                         //  System.out.println(year + "/"+month + "/"+day + " " + evento.getData().getTimeInMillis() + " nuobo: " +
                         //      new GregorianCalendar(year, month, day).getTimeInMillis()
                         //     );
                         if (evento.getData().get(GregorianCalendar.YEAR) == year && evento.getData().get(GregorianCalendar.MONTH) == month - 1 && evento.getData().get(GregorianCalendar.DAY_OF_MONTH) == day) {
                             //System.out.println("ok ci sto: " + evento.getIdEvento());
-                            ret.addElement(new Event(evento.getTema(),evento.getLuogo(), year, month, day, evento.getOra().get(GregorianCalendar.HOUR_OF_DAY),
+                            ret.addElement(new Event(evento.getNome(),evento.getTema(), year, month, day, evento.getOra().get(GregorianCalendar.HOUR_OF_DAY),
                                     evento.getOra().get(GregorianCalendar.MINUTE), evento.getOra().get(GregorianCalendar.SECOND),true,true,evento.getIdEvento()));
                         }
                     }
@@ -114,13 +107,7 @@ public class ButtonAgenda extends ObserverButton implements CommandInterface {
 
                 @Override
                 public void eventSelected(EventInstance eventInstance) {
-                    try {
-                        Evento e = Conversione.conversioneEvento(eventInstance);
-                        dat.visualizza(e);
-                    } catch (SQLException ex) {
-                        ex.printStackTrace();
-                        JOptionPane.showMessageDialog(null, "Errore dal database!");
-                    }
+                    
                 }
 
                 @Override
@@ -130,7 +117,13 @@ public class ButtonAgenda extends ObserverButton implements CommandInterface {
 
                 @Override
                 public void eventDoubleClicked(EventInstance eventInstance) {
-                    throw new UnsupportedOperationException("Not supported yet.");
+                    try {
+                        Evento e = Conversione.conversioneEvento(eventInstance);
+                        dat.visualizza(e);
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "Errore dal database!");
+                    }
                 }
 
                 @Override

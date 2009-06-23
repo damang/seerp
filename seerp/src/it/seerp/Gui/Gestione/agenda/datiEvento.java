@@ -228,6 +228,7 @@ public class datiEvento extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         getContentPane().add(buttonOperazione, gridBagConstraints);
 
+        buttonAnnulla1.setText("Chiudi");
         buttonAnnulla1.setName("buttonAnnulla1"); // NOI18N
         buttonAnnulla1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -317,7 +318,8 @@ public class datiEvento extends javax.swing.JDialog {
 
     private void buttonOperazioneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOperazioneActionPerformed
        if(tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.VISUALIZZA)) {
-           this.setVisible(false);
+           //this.setVisible(false);
+           modifica();
        }
            
        else if(tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI)) {
@@ -327,9 +329,13 @@ public class datiEvento extends javax.swing.JDialog {
            pannel.getMenu().setButtonEnabled(true);
            this.setVisible(false);
        }
-      // else if(tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.VISUALIZZA)){
-        //   this.setVisible(false);
-      // }
+       else if(tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.MODIFICA)){
+           AppAgenda ap= new AppAgenda();
+           ap.modifica(be);
+           pannel.reset();
+           pannel.getMenu().setButtonEnabled(true);
+           this.setVisible(false);
+       }
     }//GEN-LAST:event_buttonOperazioneActionPerformed
 
     /**
@@ -338,7 +344,7 @@ public class datiEvento extends javax.swing.JDialog {
     public void visualizza(Evento e) {
        //final datiEvento f = new datiEvento(new JFrame(), true);
         resetAll();
-        buttonOperazione.setText("Ok");
+        buttonOperazione.setText("Modifica");
         tipoOp=ConfigurazioneOperazioni.TIPO_OPE_CONST.VISUALIZZA;
         Conversione.conversioneEvento(e, be);
         //f.getButtonOperazione().setText("Ok");
@@ -349,6 +355,7 @@ public class datiEvento extends javax.swing.JDialog {
     public void inserisci()
     {
         resetAll();
+        setModal(false);
         setEditable(true);
         buttonOperazione.setText("Salva");
         tipoOp=ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI;
@@ -362,7 +369,15 @@ public class datiEvento extends javax.swing.JDialog {
         tipoOp=ConfigurazioneOperazioni.TIPO_OPE_CONST.MODIFICA;
         pannel.getMenu().setButtonEnabled(false);
         setVisible(true);
-
+    }
+    public void modifica(Evento e) {
+        resetAll();
+        Conversione.conversioneEvento(e, be);
+        setEditable(true);
+        buttonOperazione.setText("Salva");
+        tipoOp=ConfigurazioneOperazioni.TIPO_OPE_CONST.MODIFICA;
+        pannel.getMenu().setButtonEnabled(false);
+        setVisible(true);
     }
 
     public ButtonAnnulla getButtonAnnulla() {
@@ -405,7 +420,7 @@ public class datiEvento extends javax.swing.JDialog {
         txt_note.setEditable(f);
         chk_notifica.setEnabled(f);
         data.setEditable(f);
-        txt_id.setEditable(f);
+        txt_id.setEditable(false);
     }
     public void setTipoOP(ConfigurazioneOperazioni.TIPO_OPE_CONST tipo) {
         this.tipoOp = tipo;
