@@ -45,7 +45,7 @@ public class TabButton extends JButton implements ActionListener {
         setBorderPainted(false);
         //Making nice rollover effect
         //we use the same listener for all buttons
-        //  addMouseListener(buttonMouseListener);
+         addMouseListener(buttonMouseListener);
         setRolloverEnabled(true);
         //Close the proper tab by clicking the button
         addActionListener(this);
@@ -85,4 +85,23 @@ public class TabButton extends JButton implements ActionListener {
     g2.drawLine(getWidth() - delta - 1, delta, delta, getHeight() - delta - 1);
     g2.dispose();*/
     }
+     private final static MouseListener buttonMouseListener = new MouseAdapter() {
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            Component component = e.getComponent();
+            if (component instanceof AbstractButton) {
+                AbstractButton button = (AbstractButton) component;
+                button.setBorderPainted(true);
+            }
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            Component component = e.getComponent();
+            if (component instanceof AbstractButton) {
+                AbstractButton button = (AbstractButton) component;
+                button.setBorderPainted(false);
+            }
+        }
+    };
 }

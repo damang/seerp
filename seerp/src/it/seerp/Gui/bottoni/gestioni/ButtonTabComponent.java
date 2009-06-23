@@ -63,24 +63,6 @@ public class ButtonTabComponent extends JPanel  {
   
  
 
- /*   private final static MouseListener buttonMouseListener = new MouseAdapter() {
-        @Override
-        public void mouseEntered(MouseEvent e) {
-            Component component = e.getComponent();
-            if (component instanceof AbstractButton) {
-                AbstractButton button = (AbstractButton) component;
-                button.setBorderPainted(true);
-            }
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-            Component component = e.getComponent();
-            if (component instanceof AbstractButton) {
-                AbstractButton button = (AbstractButton) component;
-                button.setBorderPainted(false);
-            }
-        }
-    };*/
+ /*  ;*/
 }
 

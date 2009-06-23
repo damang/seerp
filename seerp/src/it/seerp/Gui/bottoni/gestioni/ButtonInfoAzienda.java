@@ -29,7 +29,7 @@ public class ButtonInfoAzienda  extends ObserverButton implements CommandInterfa
     protected JTabbedPane tabbedPane;
     private MenuInfoAzienda menu;
     InfoAzienda panel;
-    String s = "";
+    String s = "Info Azienda";
 
 
     /**
