@@ -63,4 +63,21 @@ public class Contatto extends ExtraAzienda {
         this.feedback = feedback;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Contatto other = (Contatto) obj;
+        if (this.feedback != other.feedback && (this.feedback == null || !this.feedback.equals(other.feedback))) {
+            return false;
+        }
+        return true;
+    }
+
+   
+
 }
