@@ -139,10 +139,10 @@ public class OpeUtenteTest extends TestCase{
     @Test
     public void testVisualizza() throws Exception {
         System.out.println("visualizza");
-        
+       
         OpeUtente instance = new OpeUtente();
         Utente expResult = u;
-        Utente result = instance.visualizza(u.getIdUtente());
+        Utente result = instance.visualizza(id);
         assertEquals(expResult, result);
         
     }
@@ -169,6 +169,7 @@ public class OpeUtenteTest extends TestCase{
         
         OpeUtente instance = new OpeUtente();
         instance.eliminaLogica(u);
+        assertEquals(ut, instance.visualizzaElenco());
         
     }
 

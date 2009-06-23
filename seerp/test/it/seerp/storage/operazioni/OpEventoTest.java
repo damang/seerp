@@ -20,12 +20,12 @@ import static org.junit.Assert.*;
  */
 public class OpEventoTest extends TestCase {
 
-    private Agenda agd;
     private Evento eve;
     private GregorianCalendar data;
     private GregorianCalendar ora;
     private Boolean not;
     ArrayList<Evento> listEve;
+    int idEvento;
 
     public OpEventoTest(String name) {
         super(name);
@@ -40,13 +40,14 @@ public class OpEventoTest extends TestCase {
     }
 
     @Before
+    @Override
     public void setUp() {
         listEve = null;
-        agd = new Agenda();
         not = true;
+        idEvento = 15;
         data = new GregorianCalendar(2009, 7, 23);
         ora = new GregorianCalendar(2009, 7, 23, 13, 40);
-        eve = new Evento("aula p13", "riunione", "InternationalSchool", "conferenza salvaguardia ambientale", data, ora, 15, not, agd);
+        eve = new Evento("aula p13", "riunione", "InternationalSchool", "conferenza salvaguardia ambientale", data, ora, idEvento, not, 65);
     }
 
     @After
@@ -67,9 +68,9 @@ public class OpEventoTest extends TestCase {
         assertEquals("conferenza salvaguardia ambientale", eve.getNote());
         assertEquals(data, eve.getData());
         assertEquals(ora, eve.getOra());
-        assertEquals(15, eve.getIdEvento());
+        assertEquals(idEvento, eve.getIdEvento());
         assertEquals(not, eve.getNotifica());
-        assertEquals(agd, eve.getAgenda());
+        assertEquals(65, eve.getAgenda());
         instance.inserimento(eve);
     }
 
@@ -79,12 +80,11 @@ public class OpEventoTest extends TestCase {
     @Test
     public void testModifica() throws Exception {
         System.out.println("modifica");
-        Agenda agdP = new Agenda();
         GregorianCalendar dataP = new GregorianCalendar();
         GregorianCalendar oraP = new GregorianCalendar();
         Boolean notP = false;
         OpEvento instance = new OpEvento();
-        Evento expResult = new Evento("aula p16", "appuntamento", "compleanno", "N/D", dataP, oraP, 5, notP, agdP);
+        Evento expResult = new Evento("aula p16", "appuntamento", "compleanno", "N/D", dataP, oraP, 5, notP, 45);
         assertEquals("aula p16", expResult.getLuogo());
         assertEquals("appuntamento", expResult.getTema());
         assertEquals("compleanno", expResult.getNome());
@@ -93,7 +93,7 @@ public class OpEventoTest extends TestCase {
         assertEquals(oraP, expResult.getOra());
         assertEquals(5, expResult.getIdEvento());
         assertEquals(notP, expResult.getNotifica());
-        assertEquals(agdP, expResult.getAgenda());
+        assertEquals(45, expResult.getAgenda());
         Evento result = instance.modifica(expResult);
         assertEquals(expResult, result);
     }
