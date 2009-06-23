@@ -108,7 +108,8 @@ public class OpDipendente extends OpPersonale {
         } catch (SQLException se) {
             conne.rollback();
             se.printStackTrace();
-            System.out.println("eliminazione fallita");
+            throw new SQLException("Transizione fallita");
+
         }
         stmt.close();
         stmt1.close();
@@ -189,6 +190,8 @@ public class OpDipendente extends OpPersonale {
                 conne.commit();
             } catch (SQLException se) {
                 conne.rollback();
+                            throw new SQLException("Transizione fallita");
+
             }
 
             stmt.close();

@@ -80,8 +80,8 @@ public class OpResponsabile extends OpeUtente {
      * @return la lista dei membri dei responsabili che corrispondono ai criteri di ricerca
      * @throws java.sql.SQLException
     public ArrayList<Responsabile> ricercaResponsabile() throws SQLException {
-        ArrayList<Responsabile> list = this.elencaResponsabile();
-        return list;
+    ArrayList<Responsabile> list = this.elencaResponsabile();
+    return list;
     }
 
     /** Metodo che permette di eliminare un membro dei responsabili già esistente
@@ -129,18 +129,18 @@ public class OpResponsabile extends OpeUtente {
      * user dell'utente da eliminare
      * @throws java.sql.SQLException
     public void eliminazioneLogica(Responsabile user) throws SQLException {
-        co = (Connection) ConnectionPool.getConnection();
-        PreparedStatement stmt = null;
-        String sql = "UPDATE utente(visibilita) SET visibilita='false' where username = ? ";
-        // Create a statement
-        stmt = (PreparedStatement) co.prepareStatement(sql);
+    co = (Connection) ConnectionPool.getConnection();
+    PreparedStatement stmt = null;
+    String sql = "UPDATE utente(visibilita) SET visibilita='false' where username = ? ";
+    // Create a statement
+    stmt = (PreparedStatement) co.prepareStatement(sql);
 
-        // Execute the query
-        stmt.executeQuery();
+    // Execute the query
+    stmt.executeQuery();
 
-        stmt.close();
+    stmt.close();
 
-        ConnectionPool.releaseConnection(co);
+    ConnectionPool.releaseConnection(co);
     }
 
     /** Metodo per inserire un nuovo responsabile
@@ -194,7 +194,8 @@ public class OpResponsabile extends OpeUtente {
             } catch (SQLException se) {
                 co.rollback();
                 se.printStackTrace();
-                System.out.println("inserimento fallito");
+                throw new SQLException("Transizione fallita");
+
             }
 
             stmt.close();
@@ -300,15 +301,9 @@ public class OpResponsabile extends OpeUtente {
                     new Ruolo(rs.getString(14)), rs.getBoolean(15));
 
         }
-
         rs.close();
-
         stmt.close();
-
         ConnectionPool.releaseConnection(co);
-
-
         return responsabile;
-
     }
 }

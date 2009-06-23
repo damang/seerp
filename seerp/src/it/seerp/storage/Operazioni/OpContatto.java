@@ -100,6 +100,8 @@ public class OpContatto extends OpExtraAzienda {
                 connection.commit();
             } catch (SQLException e) {
                 connection.rollback();
+                            throw new SQLException("Transizione fallita");
+
             }
         stmt.close();
         ConnectionPool.releaseConnection(connection);
@@ -154,7 +156,9 @@ public class OpContatto extends OpExtraAzienda {
 
                 connection.commit();
             }catch(SQLException e){
-                 connection.rollback();}
+                 connection.rollback();
+                        throw new SQLException("Transizione fallita");
+}
 
                 stmt.close();
                 ConnectionPool.releaseConnection(connection);
@@ -217,6 +221,8 @@ public class OpContatto extends OpExtraAzienda {
                 connection.commit();
             } catch (SQLException e) {
                 connection.rollback();
+                            throw new SQLException("Transizione fallita");
+
             }
 
         }

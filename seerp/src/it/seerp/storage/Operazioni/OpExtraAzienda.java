@@ -116,7 +116,7 @@ public class OpExtraAzienda extends OpeUtente {
         } catch (SQLException se) {
             connection.rollback();
             se.printStackTrace();
-            System.out.println("eliminazione fallita");
+            throw new SQLException("Transizione fallita");
         }
         stmt.close();
         stmt1.close();
@@ -229,6 +229,9 @@ public class OpExtraAzienda extends OpeUtente {
         } catch (SQLException e) {
             e.printStackTrace();
             connection.rollback();
+            throw new SQLException("Transizione fallita");
+
+
         }
 
 
