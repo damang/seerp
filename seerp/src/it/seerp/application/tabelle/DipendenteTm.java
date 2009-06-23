@@ -30,7 +30,7 @@ public class DipendenteTm extends Generica <Dipendente>{
             "Id",
             "Nome",
             "Cognome",
-            "Data di nasciata",
+            "Mail",
 
         };
 
