@@ -31,7 +31,7 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
         this();
         c.addKeyListener(this);
         messageLabel = new JLabel(message + " ");
-        image = new JLabel(new ImageIcon("it.seerp.icone.16x16.remove.png"));
+        image = new JLabel(new ImageIcon("/it/seerp/Gui/icone/ico16x16/remove.png"));
     }
 
     /**
@@ -43,6 +43,7 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
         this(c, message);
         this.parent = parent;
         popup = new JXDialog(parent);
+
         initComponents();
     }
 
@@ -138,6 +139,7 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
 
     private void initComponents() {
         popup.getContentPane().setLayout(new FlowLayout());
+        popup.getContentPane().remove(0);
         popup.setUndecorated(true);
         popup.getContentPane().setBackground(color);
         popup.getContentPane().add(image);
