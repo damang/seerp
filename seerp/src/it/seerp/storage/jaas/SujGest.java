@@ -46,4 +46,15 @@ public class SujGest {
         }
         return null;
        }
+       public static String getTipoUtente(Subject s){
+        Iterator<AuthPrincipal> it = s.getPrincipals(AuthPrincipal.class).iterator();
+        AuthPrincipal p = new AuthPrincipal("tipo");
+        AuthPrincipal i=null;
+        while (it.hasNext()) {
+            i=it.next();
+            if(i.equals(p))
+                return i.getName();
+        }
+        return null;
+       }
 }
