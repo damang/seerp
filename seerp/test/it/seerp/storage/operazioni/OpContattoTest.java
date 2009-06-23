@@ -56,6 +56,7 @@ public class OpContattoTest extends TestCase{
     @Test
     public void testElencaContatto() throws Exception {
         System.out.println("elencaContatto");
+        ArrayList<Contatto> con = new ArrayList<Contatto>();
         OpContatto instance = new OpContatto();
         ArrayList<Contatto> expResult = con;
         ArrayList<Contatto> result = instance.elencaContatto();
@@ -72,7 +73,7 @@ public class OpContattoTest extends TestCase{
     /**
      * Test of ricercaContatto method, of class OpContatto.
      */
-    @Test
+  /*  @Test
     public void testRicercaContatto() throws Exception {
         System.out.println("ricercaContatto");
         Integer idd = 23;

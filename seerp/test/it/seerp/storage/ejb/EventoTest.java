@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
  */
 public class EventoTest extends TestCase {
 
-    private Agenda agd;
+    private int agd;
     private Evento eveGet;
     private Evento eveSet;
     private GregorianCalendar data;
@@ -38,7 +38,7 @@ public class EventoTest extends TestCase {
     @Override
     public void setUp() {
         id = new Integer(15);
-        agd = new Agenda();
+        agd = 45;
         data = new GregorianCalendar(2009, 7, 23);
         ora = new GregorianCalendar(2009, 7, 23, 13, 40);
         eveGet = new Evento("aula p13", "riunione", "InternationalSchool", "conferenza salvaguardia ambientale", data, ora, 15, true, agd);
@@ -82,8 +82,8 @@ public class EventoTest extends TestCase {
     @Test
     public void testGetAgenda() {
         System.out.println("getAgenda");
-        Agenda expResult = agd;
-        Agenda result = eveGet.getAgenda();
+        int expResult = agd;
+        int result = eveGet.getAgenda();
         assertEquals(expResult, result);
     }
 
@@ -104,7 +104,7 @@ public class EventoTest extends TestCase {
     @Test
     public void testSetAgenda() {
         System.out.println("setAgenda");
-        Agenda a = new Agenda();
+        int a = 56;
         eveSet.setAgenda(a);
         assertEquals(a, eveSet.getAgenda());
     }

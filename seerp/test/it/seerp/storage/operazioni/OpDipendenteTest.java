@@ -121,7 +121,7 @@ public class OpDipendenteTest extends TestCase {
        
         OpDipendente instance = new OpDipendente();
 
-          assertEquals(id,d.getIdUtente());
+        assertEquals(id,d.getIdUtente());
         assertEquals("marros",d.getUsername());
         assertEquals("123456",d.getPassword());
         assertEquals("Salerno",d.getCitta());
@@ -129,8 +129,8 @@ public class OpDipendenteTest extends TestCase {
         assertEquals("089345678",d.getTelefono());
         assertEquals("84100",d.getCap());
         assertEquals("rossi@email.it",d.getEmail());        
-        assertEquals("note",d.getNote());
-        assertEquals("tipo", d.getTipo());
+        assertEquals("tipo",d.getNote());
+        assertEquals(null, d.getTipo());
         assertEquals("Rossi",d.getCognome());
         assertEquals("Mario",d.getNome());        
         assertEquals("RSSMRO45B21H703C",d.getCodiceFiscale());
