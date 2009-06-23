@@ -42,11 +42,37 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
     ConfigurazioneUtente.TIPO_UTENTE_CONST tipoUtente;
     Generica tModel;
     MenuUtente menu;
+    ConfigurazioneOperazioni.TIPO_OPE_CONST tipoOp;
+
+    /** Creates new form AreaPersonalePanel */
+    public AreaUtentePanel() {
+        initComponents();
+    }
+
+    /**
+     *
+     * @param tipoUtente
+     * @throws java.sql.SQLException
+     */
+    public AreaUtentePanel(ConfigurazioneUtente.TIPO_UTENTE_CONST tipoUtente) throws SQLException {
+        this.tipoUtente = tipoUtente;
+        this.settaTableModel();
+        initComponents();
+        settaPanel();
+        responsabile = new BeanGuiResponsabile();
+        dipendente = new BeanGuiDipendente();
+        this.fornitore = new BeanGuiFornitore();
+        this.cliente = new BeanGuiCliente();
+        legameBeanResponsabile();
+        legameBeanDipendente();
+        legameBeanFornitore();
+        legameBeanCliente();
+        editabile(false);
+    }
 
     public MenuUtente getMenu() {
         return menu;
     }
-    ConfigurazioneOperazioni.TIPO_OPE_CONST tipoOp;
 
     /**
      *
@@ -62,32 +88,6 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
      */
     public void setMenu(MenuUtente menu) {
         this.menu = menu;
-    }
-
-    /** Creates new form AreaPersonalePanel */
-    public AreaUtentePanel() {
-        initComponents();
-    }
-
-    /**
-     *
-     * @param tipoUtente
-     * @throws java.sql.SQLException
-     */
-    public AreaUtentePanel(ConfigurazioneUtente.TIPO_UTENTE_CONST tipoUtente) throws SQLException {
-        this.tipoUtente = tipoUtente;
-        this.settaTableModel();
-
-        initComponents();
-        responsabile = new BeanGuiResponsabile();
-        dipendente = new BeanGuiDipendente();
-        this.fornitore = new BeanGuiFornitore();
-        this.cliente = new BeanGuiCliente();
-        legameBeanResponsabile();
-        legameBeanDipendente();
-        legameBeanFornitore();
-        legameBeanCliente();
-        editabile(false);
     }
 
     /** This method is called from within the constructor to
@@ -111,14 +111,23 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         mail = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         tell = new javax.swing.JTextField();
-        jPanel8 = new javax.swing.JPanel();
-        id = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
         provincia = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         ruolo = new javax.swing.JTextField();
         jPanel11 = new javax.swing.JPanel();
         citta = new javax.swing.JTextField();
+        jPanel19 = new javax.swing.JPanel();
+        fax = new javax.swing.JTextField();
+        jPanel14 = new javax.swing.JPanel();
+        ragSoc = new javax.swing.JTextField();
+        jPanel18 = new javax.swing.JPanel();
+        cap = new javax.swing.JTextField();
+        jPanel17 = new javax.swing.JPanel();
+        piva = new javax.swing.JTextField();
+        jPanel10 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        note = new javax.swing.JTextArea();
         jPanel27 = new javax.swing.JPanel();
         panel28 = new javax.swing.JPanel();
         user = new javax.swing.JTextField();
@@ -142,13 +151,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome"));
         jPanel3.setName("jPanel3"); // NOI18N
 
-        nm.setText("Nome");
         nm.setName("Nome"); // NOI18N
-        nm.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nmActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -156,8 +159,8 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(nm, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(nm, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,13 +172,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Cognome"));
         jPanel4.setName("jPanel4"); // NOI18N
 
-        cog.setText("Cognome");
         cog.setName("Cognome"); // NOI18N
-        cog.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cogActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -183,8 +180,8 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cog, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addComponent(cog, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,7 +193,6 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Codice Fiscale "));
         jPanel5.setName("jPanel5"); // NOI18N
 
-        codFisc.setText("Codice Fiscale");
         codFisc.setName("CodiceFiscale"); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -205,7 +201,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(codFisc, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+                .addComponent(codFisc, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -218,16 +214,16 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("E-mail"));
         jPanel6.setName("jPanel6"); // NOI18N
 
-        mail.setText("E-mail");
         mail.setName("E-mail"); // NOI18N
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+            .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(mail, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
+                .addComponent(mail, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,7 +235,6 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Telefono"));
         jPanel7.setName("jPanel7"); // NOI18N
 
-        tell.setText("Telefono");
         tell.setName("Telefono"); // NOI18N
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -248,7 +243,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tell, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                .addComponent(tell, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -258,32 +253,9 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("Città"));
-        jPanel8.setName("jPanel8"); // NOI18N
-
-        id.setText("Città");
-        id.setName("Citta"); // NOI18N
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(id, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Provincia"));
         jPanel9.setName("jPanel9"); // NOI18N
 
-        provincia.setText("Provincia");
         provincia.setName("Provincia"); // NOI18N
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -292,7 +264,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(provincia, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                .addComponent(provincia, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
@@ -305,7 +277,6 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder("Ruolo"));
         jPanel13.setName("jPanel13"); // NOI18N
 
-        ruolo.setText("Ruolo");
         ruolo.setName("ruolo"); // NOI18N
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
@@ -314,7 +285,8 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ruolo, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
+                .addComponent(ruolo, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,7 +298,6 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Città"));
         jPanel11.setName("jPanel11"); // NOI18N
 
-        citta.setText("Città");
         citta.setName("citta"); // NOI18N
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
@@ -335,7 +306,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(citta, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                .addComponent(citta, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
@@ -345,51 +316,178 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder("FAX"));
+        jPanel19.setName("jPanel19"); // NOI18N
+
+        fax.setName("fax"); // NOI18N
+
+        javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
+        jPanel19.setLayout(jPanel19Layout);
+        jPanel19Layout.setHorizontalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(fax, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(7, Short.MAX_VALUE))
+        );
+        jPanel19Layout.setVerticalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addComponent(fax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder("Ragione Sociale"));
+        jPanel14.setName("jPanel14"); // NOI18N
+
+        ragSoc.setName("ragSoc"); // NOI18N
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ragSoc, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addComponent(ragSoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder("CAP"));
+        jPanel18.setName("jPanel18"); // NOI18N
+
+        cap.setName("cap"); // NOI18N
+
+        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
+        jPanel18.setLayout(jPanel18Layout);
+        jPanel18Layout.setHorizontalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel18Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cap, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel18Layout.setVerticalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel18Layout.createSequentialGroup()
+                .addComponent(cap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder("P.IVA"));
+        jPanel17.setName("jPanel17"); // NOI18N
+
+        piva.setName("piva"); // NOI18N
+
+        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
+        jPanel17.setLayout(jPanel17Layout);
+        jPanel17Layout.setHorizontalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(piva, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel17Layout.setVerticalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addComponent(piva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Note"));
+        jPanel10.setName("jPanel10"); // NOI18N
+
+        jScrollPane1.setName("jScrollPane1"); // NOI18N
+
+        note.setColumns(20);
+        note.setRows(5);
+        note.setName("note"); // NOI18N
+        jScrollPane1.setViewportView(note);
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(229, 229, 229))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)
+                        .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                        .addComponent(jPanel19, 0, 154, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(91, 91, 91)
+                .addComponent(jPanel10, 0, 361, Short.MAX_VALUE)
+                .addGap(227, 227, 227))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(398, 398, 398))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jPanel11.setVisible(true);
@@ -401,7 +499,6 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         panel28.setBorder(javax.swing.BorderFactory.createTitledBorder("Username"));
         panel28.setName("panel28"); // NOI18N
 
-        user.setText("Username");
         user.setName("Username"); // NOI18N
 
         javax.swing.GroupLayout panel28Layout = new javax.swing.GroupLayout(panel28);
@@ -423,7 +520,6 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel29.setBorder(javax.swing.BorderFactory.createTitledBorder("Password"));
         jPanel29.setName("jPanel29"); // NOI18N
 
-        pwd.setText("Password");
         pwd.setName("Password"); // NOI18N
 
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
@@ -460,7 +556,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(panel28, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel29, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(532, Short.MAX_VALUE))
+                .addContainerGap(362, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Dati LogIn", jPanel27);
@@ -564,7 +660,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jXPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(192, 192, 192))
         );
 
         buttonAnnulla1.setEnabled(false);
@@ -572,33 +668,34 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
     }// </editor-fold>//GEN-END:initComponents
 
     private void jXTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jXTable1MouseClicked
-        int i = jXTable1.getSelectedRow();
-        if (i < 0) {
-            return;
+        if (evt.getClickCount() == 2) {
+            int i = jXTable1.getSelectedRow();
+            if (i < 0) {
+                return;
+            }
+
+            Integer id = (Integer) jXTable1.getValueAt(i, 0);
+
+            if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
+
+                AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
+                operazione.visualizzaDatiCliente(id, cliente);
+            } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
+
+                AppGestionePersonale operazione = new AppGestionePersonale();
+                operazione.visualizzaDatiDipendente(id, dipendente);
+            } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
+
+                AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
+                operazione.visualizzaDatiFornitore(id, fornitore);
+            } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
+
+                AppGestionePersonale operazione = new AppGestionePersonale();
+                operazione.visualizzaDatiResponsabile(id, responsabile);
+            }
+
+            editabile(false);
         }
-
-        Integer id = (Integer) jXTable1.getValueAt(i, 0);
-
-        if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
-
-            AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
-            operazione.visualizzaDatiCliente(id, cliente);
-        } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
-
-            AppGestionePersonale operazione = new AppGestionePersonale();
-            operazione.visualizzaDatiDipendente(id, dipendente);
-        } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
-
-            AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
-            operazione.visualizzaDatiFornitore(id, fornitore);
-        } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
-
-            AppGestionePersonale operazione = new AppGestionePersonale();
-            operazione.visualizzaDatiResponsabile(id, responsabile);
-        }
-
-        editabile(false);
-
     }//GEN-LAST:event_jXTable1MouseClicked
 
     private void mailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mailActionPerformed
@@ -608,6 +705,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
     private void buttonSalva1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSalva1MouseClicked
         menu.setButtonEnabled(true);
         if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI)) {
+
             if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
                 AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
                 operazione.inserisciCliente(cliente);
@@ -649,7 +747,6 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
                 AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
 
                 operazione.modificaCliente(id, cliente);
-
 
             } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
 
@@ -693,24 +790,23 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
     }//GEN-LAST:event_buttonAnnulla1MouseClicked
 
-    private void nmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nmActionPerformed
-}//GEN-LAST:event_nmActionPerformed
-
-    private void cogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cogActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cogActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla buttonAnnulla1;
     private it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva buttonSalva1;
+    private javax.swing.JTextField cap;
     private javax.swing.JTextField citta;
     private javax.swing.JTextField codFisc;
     private javax.swing.JTextField cog;
-    private javax.swing.JTextField id;
+    private javax.swing.JTextField fax;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel27;
     private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
@@ -718,8 +814,8 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private org.jdesktop.swingx.JXFindBar jXFindBar1;
@@ -728,9 +824,12 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
     private org.jdesktop.swingx.JXTable jXTable1;
     private javax.swing.JTextField mail;
     private javax.swing.JTextField nm;
+    private javax.swing.JTextArea note;
     private javax.swing.JPanel panel28;
+    private javax.swing.JTextField piva;
     private javax.swing.JTextField provincia;
     private javax.swing.JTextField pwd;
+    private javax.swing.JTextField ragSoc;
     private javax.swing.JTextField ruolo;
     private javax.swing.JTextField tell;
     private javax.swing.JTextField user;
@@ -770,11 +869,11 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             AppGestionePersonale operazione = new AppGestionePersonale();
             operazione.eliminaResponsabile(id, responsabile);
         }
-            refresh();
-            editabile(false);
-            this.buttonAnnulla1.setEnabled(false);
-            this.buttonSalva1.setEnabled(false);
-        
+        refresh();
+        editabile(false);
+        this.buttonAnnulla1.setEnabled(false);
+        this.buttonSalva1.setEnabled(false);
+
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -805,13 +904,18 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
     public void inizializzazione(String s) {
         this.nm.setText(s);
         this.cog.setText(s);
-        this.id.setText(s);
         this.provincia.setText(s);
+        this.citta.setText(s);
         this.tell.setText(s);
         this.mail.setText(s);
         this.user.setText(s);
         this.pwd.setText(s);
+        this.ruolo.setText(s);
         this.codFisc.setText(s);
+        this.ragSoc.setText(s);
+        this.fax.setText(s);
+        this.piva.setText(s);
+        this.cap.setText(s);
     }
 
     /**
@@ -821,6 +925,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         responsabile.setNome(nm);
         responsabile.setCognome(cog);
         responsabile.setCodiceFiscale(codFisc);
+        responsabile.setCap(cap);
         responsabile.setTxtPassword(pwd);
         responsabile.setTxtUsername(user);
         responsabile.setTxtCitta(citta);
@@ -828,7 +933,8 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         responsabile.setTxtTelefono(tell);
         responsabile.setTxtProvincia(provincia);
         responsabile.setRuolo(ruolo);
-        responsabile.setIdUtenteTxt(id);
+        responsabile.setTxtNote(note);
+
     }
 
     public void legameBeanDipendente() {
@@ -836,13 +942,15 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         dipendente.setCognome(cog);
         dipendente.setCodiceFiscale(codFisc);
         dipendente.setRuolo(ruolo);
+        dipendente.setCap(cap);
         dipendente.setTxtPassword(pwd);
         dipendente.setTxtUsername(user);
         dipendente.setTxtCitta(citta);
         dipendente.setTxtEmail(mail);
         dipendente.setTxtTelefono(tell);
         dipendente.setTxtProvincia(provincia);
-        dipendente.setIdUtenteTxt(id);
+        dipendente.setTxtNote(note);
+
 
     }
 
@@ -854,25 +962,35 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         fornitore.setTxtProvincia(provincia);
         fornitore.setTxtCitta(citta);
         fornitore.setTxtEmail(mail);
-        fornitore.setPIva(codFisc);
-        fornitore.setRagioneSociale(nm);
+        fornitore.setCap(cap);
+        fornitore.setPIva(piva);
+        fornitore.setRagioneSociale(ragSoc);
         fornitore.setTxtTelefono(tell);
         fornitore.setTxtUsername(user);
         fornitore.setTxtPassword(pwd);
-        fornitore.setIdUtenteTxt(id);
-
+        fornitore.setFax(fax);
+        fornitore.setNome(nm);
+        fornitore.setCognome(cog);
+        fornitore.setCodiceFiscale(codFisc);
+        fornitore.setTxtNote(note);
     }
 
     public void legameBeanCliente() {
         cliente.setTxtProvincia(provincia);
         cliente.setTxtCitta(citta);
         cliente.setTxtEmail(mail);
-        cliente.setPIva(codFisc);
-        cliente.setRagioneSociale(nm);
+        cliente.setCap(cap);
+        cliente.setPIva(piva);
+        cliente.setRagioneSociale(ragSoc);
         cliente.setTxtTelefono(tell);
         cliente.setTxtUsername(user);
         cliente.setTxtPassword(pwd);
-        cliente.setIdUtenteTxt(id);
+        cliente.setNome(nm);
+        cliente.setFax(fax);
+        cliente.setCognome(cog);
+        cliente.setCodiceFiscale(codFisc);
+        cliente.setTxtNote(note);
+
     }
 
     /**
@@ -882,7 +1000,6 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
     public void editabile(boolean flag) {
         this.nm.setEditable(flag);
         this.cog.setEditable(flag);
-        this.id.setEditable(flag);
         this.provincia.setEditable(flag);
         this.tell.setEditable(flag);
         this.mail.setEditable(flag);
@@ -890,6 +1007,11 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         this.codFisc.setEditable(flag);
         this.user.setEditable(flag);
         this.pwd.setEditable(flag);
+        this.ragSoc.setEditable(flag);
+        this.fax.setEditable(flag);
+        this.piva.setEditable(flag);
+        this.citta.setEditable(flag);
+        this.cap.setEditable(flag);
 
     }
 
@@ -904,16 +1026,46 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         this.jXTable1.updateUI();
     }
 
+    private void settaPanel() throws SQLException {
+
+        if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
+
+            this.jPanel13.setVisible(false);
+        } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
+
+            this.jPanel14.setVisible(false);
+            this.jPanel18.setVisible(false);
+            this.jPanel19.setVisible(false);
+            this.jPanel17.setVisible(false);
+        } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
+
+            this.jPanel13.setVisible(false);
+
+        } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
+
+            this.jPanel14.setVisible(false);
+            this.jPanel18.setVisible(false);
+            this.jPanel19.setVisible(false);
+            this.jPanel17.setVisible(false);
+        }
+
+    }
+
     private void settaTableModel() throws SQLException {
 
         if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
             tModel = new ClienteTm();
+
         } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
             tModel = new DipendenteTm();
+
         } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
             tModel = new FornitoreTm();
+
+
         } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
             tModel = new ResponsabileTm();
+
         }
 
     }
