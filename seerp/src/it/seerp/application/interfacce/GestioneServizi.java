@@ -55,5 +55,5 @@ public interface GestioneServizi<E, U> {
      * @return
      * @throws it.seerp.application.Exception.DatiErrati
      */
-    public E modifica(E BeansGuiServizio) throws DatiErrati;
+    public E modifica(int id,E BeansGuiServizio) throws DatiErrati;
 }
