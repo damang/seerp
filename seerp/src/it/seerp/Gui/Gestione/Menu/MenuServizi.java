@@ -117,6 +117,11 @@ public class MenuServizi extends javax.swing.JPanel implements ActionListener {
         public JButton getAggiungi() {
         return aggiungiButtonServizi1;
     }
+          public void setButtonEnabled (boolean b) {
+        this.modificaButtonServizi1.setEnabled(b);
+        this.aggiungiButtonServizi1.setEnabled(b);
+
+    }
     public void actionPerformed(ActionEvent e) {
         CommandInterface cmd = (CommandInterface) e.getSource();
         cmd.execute();
