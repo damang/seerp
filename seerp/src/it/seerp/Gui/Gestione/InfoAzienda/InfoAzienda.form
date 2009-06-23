@@ -26,7 +26,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jXLabel4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="126" max="32767" attributes="0"/>
+                      <EmptySpace pref="131" max="32767" attributes="0"/>
                       <Component id="buttonSalva1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="buttonAnnulla1" min="-2" max="-2" attributes="0"/>
@@ -76,40 +76,40 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jPanel11" alignment="0" min="0" max="32767" attributes="3"/>
-                      <Component id="jPanel9" alignment="0" max="32767" attributes="3"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="jPanel11" max="32767" attributes="3"/>
+                      <Component id="jPanel5" alignment="1" max="32767" attributes="3"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jPanel12" alignment="0" min="0" max="32767" attributes="3"/>
                       <Component id="jPanel10" alignment="0" max="32767" attributes="3"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jPanel5" min="-2" max="-2" attributes="3"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="jPanel13" min="-2" max="-2" attributes="3"/>
+                      <Component id="jPanel14" alignment="1" max="32767" attributes="3"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jPanel9" max="32767" attributes="1"/>
                       <Component id="jPanel10" min="-2" max="-2" attributes="1"/>
                       <Component id="jPanel5" min="-2" max="-2" attributes="1"/>
+                      <Component id="jPanel14" min="-2" max="-2" attributes="1"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jPanel13" max="32767" attributes="1"/>
-                      <Component id="jPanel11" alignment="0" max="32767" attributes="1"/>
-                      <Component id="jPanel12" min="-2" max="-2" attributes="1"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jPanel11" max="32767" attributes="1"/>
+                      <Component id="jPanel13" alignment="1" max="32767" attributes="1"/>
+                      <Component id="jPanel12" alignment="1" min="-2" max="-2" attributes="1"/>
                   </Group>
-                  <EmptySpace pref="197" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="197" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -119,11 +119,14 @@
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Nome Azienda"/>
+                <TitledBorder title="Ragione Sociale"/>
               </Border>
             </Property>
             <Property name="name" type="java.lang.String" value="jPanel5" noResource="true"/>
           </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
+          </AccessibilityProperties>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -156,49 +159,11 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanel9">
-          <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Via"/>
-              </Border>
-            </Property>
-            <Property name="name" type="java.lang.String" value="jPanel9" noResource="true"/>
-          </Properties>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="via" pref="119" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="via" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="1"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JTextField" name="via">
-              <Properties>
-                <Property name="focusCycleRoot" type="boolean" value="true"/>
-                <Property name="name" type="java.lang.String" value="via" noResource="true"/>
-              </Properties>
-            </Component>
-          </SubComponents>
-        </Container>
         <Container class="javax.swing.JPanel" name="jPanel10">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Citt&#xe0;"/>
+                <TitledBorder title="Tell"/>
               </Border>
             </Property>
             <Property name="name" type="java.lang.String" value="citta" noResource="true"/>
@@ -236,7 +201,7 @@
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Provincia"/>
+                <TitledBorder title="Nazione"/>
               </Border>
             </Property>
             <Property name="name" type="java.lang.String" value="jPanel11" noResource="true"/>
@@ -247,7 +212,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="naz" pref="119" max="32767" attributes="0"/>
+                      <Component id="naz" pref="126" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -312,14 +277,11 @@
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="E-Mail"/>
+                <TitledBorder title="P.IVA"/>
               </Border>
             </Property>
             <Property name="name" type="java.lang.String" value="jPanel13" noResource="true"/>
           </Properties>
-          <AccessibilityProperties>
-            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="P.IVA" noResource="true"/>
-          </AccessibilityProperties>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -345,6 +307,47 @@
               <Properties>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
                 <Property name="name" type="java.lang.String" value="e-mail" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pivaActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel14">
+          <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder title="Indirizzo"/>
+              </Border>
+            </Property>
+            <Property name="name" type="java.lang.String" value="jPanel14" noResource="true"/>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="via" pref="124" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="via" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JTextField" name="via">
+              <Properties>
+                <Property name="focusCycleRoot" type="boolean" value="true"/>
+                <Property name="name" type="java.lang.String" value="via" noResource="true"/>
               </Properties>
             </Component>
           </SubComponents>
