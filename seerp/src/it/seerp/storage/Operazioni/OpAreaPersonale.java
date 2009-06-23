@@ -42,17 +42,28 @@ public class OpAreaPersonale extends OpeUtente {
 
         ResultSet rs=null;
         Personale per = (Personale) super.visualizza(usr);
-        String sql="SELECT nome, cognome, codicefiscale,ruolo " +
+        String sql="SELECT username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita," +
+                   "nome, cognome, codicefiscale,ruolo " +
                    "FROM utente join personale on idUtente=idPersonale" +
                    "WHERE username=?";
         PreparedStatement stmt = (PreparedStatement) conn.prepareStatement(sql);
         stmt.setString(1, usr);
         rs=stmt.executeQuery();
         while(rs.next()){
-            per.setNome(rs.getString(1));
-            per.setCognome(rs.getString(2));
-            per.setCodiceFiscale(rs.getString(3));
-            per.setRuolo(new Ruolo(rs.getString(4)));
+            per.setUsername(rs.getString(1));
+            per.setPassword(rs.getString(2));
+            per.setEmail(rs.getString(3));
+            per.setCitta(rs.getString(4));
+            per.setProvincia(rs.getString(5));
+            per.setTelefono(rs.getString(6));
+            per.setCap(rs.getString(7));
+            per.setNote(rs.getString(8));
+            per.setTipo(rs.getString(9));
+            per.setVisible(rs.getBoolean(10));
+            per.setNome(rs.getString(11));
+            per.setCognome(rs.getString(12));
+            per.setCodiceFiscale(rs.getString(13));
+            per.setRuolo(new Ruolo(rs.getString(14)));
         }
         return per;
     }
@@ -61,13 +72,24 @@ public class OpAreaPersonale extends OpeUtente {
       public ExtraAzienda visualizzaDatiExtraAzienda(String usr) throws SQLException {
         ResultSet rs=null;
         ExtraAzienda extra = (ExtraAzienda) super.visualizza(usr);
-        String sql="SELECT nome, cognome,fax,piva,ragioneSociale,ruolo,codicefiscale " +
+        String sql="SELECT username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita" +
+                   "nome, cognome,fax,piva,ragioneSociale,ruolo,codicefiscale," +
                    "FROM utente join extraazienda on idUtente=idExtraAzienda" +
                    "WHERE username=?";
         PreparedStatement stmt = (PreparedStatement) conn.prepareStatement(sql);
         stmt.setString(1, usr);
         rs=stmt.executeQuery();
         while(rs.next()){
+           extra.setUsername(rs.getString(1));
+           extra.setPassword(rs.getString(2));
+           extra.setEmail(rs.getString(3));
+           extra.setCitta(rs.getString(4));
+           extra.setProvincia(rs.getString(5));
+           extra.setTelefono(rs.getString(6));
+           extra.setCap(rs.getString(7));
+           extra.setNote(rs.getString(8));
+           extra.setTipo(rs.getString(9));
+           extra.setVisible(rs.getBoolean(10));
            extra.setNome(rs.getString(1));
            extra.setCognome(rs.getString(2));
            extra.setFax(rs.getString(3));
