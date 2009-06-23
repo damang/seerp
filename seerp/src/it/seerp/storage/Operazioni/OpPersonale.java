@@ -208,6 +208,8 @@ public class OpPersonale extends OpeUtente {
         } catch (SQLException e) {
             e.printStackTrace();
             connessione.rollback();
+                        throw new SQLException("Transizione fallita");
+
         }
 
 

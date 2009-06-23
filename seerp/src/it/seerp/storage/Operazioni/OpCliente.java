@@ -198,6 +198,8 @@ public class OpCliente extends OpExtraAzienda {
             } catch (SQLException e) {
                 e.printStackTrace();
                 connessione.rollback();
+                            throw new SQLException("Transizione fallita");
+
             }
 
             stmt.close();

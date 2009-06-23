@@ -111,6 +111,8 @@ public class OpFornitore extends OpExtraAzienda {
     conness.commit();
     } catch (SQLException e) {
     conness.rollback();
+    throw new SQLException("Transizione fallita");
+
     }
     stmt.close();
     ConnectionPool.releaseConnection(conness);
@@ -254,6 +256,8 @@ public class OpFornitore extends OpExtraAzienda {
     conness.commit();
     } catch (SQLException e) {
     conness.rollback();
+    throw new SQLException("Transizione fallita");
+
     }
     }
     stmt.close();
