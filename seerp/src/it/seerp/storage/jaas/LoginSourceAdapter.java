@@ -19,6 +19,8 @@ import javax.security.auth.login.LoginException;
 public interface LoginSourceAdapter
 {
 
+    public String getTipoUtente() throws LoginException;
+
     public String getUserId() throws LoginException;
     /**
      *

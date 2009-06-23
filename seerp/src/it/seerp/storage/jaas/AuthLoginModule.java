@@ -130,7 +130,7 @@ public class AuthLoginModule implements LoginModule
         _subject.getPrincipals().add(new AuthPrincipal(_userId,"username"));
         _subject.getPrincipals().add(new AuthPrincipal(getUserGroup(),"ruolo"));
         _subject.getPrincipals().add(new AuthPrincipal(getUserId(),"id"));
-		        
+		_subject.getPrincipals().add(new AuthPrincipal(getTipoUtente(),"tipo"));
 		_userId = null;
 		_password = null;
 
@@ -230,5 +230,20 @@ public class AuthLoginModule implements LoginModule
 		if (id == null)
 			return null;
 		return id;
+	}
+     private String getTipoUtente()
+	{
+	
+		String tipo = null;
+
+		if (_adapter != null)
+			try {
+            tipo = _adapter.getTipoUtente();
+        } catch (LoginException ex) {
+            return null;
+        }
+		if (tipo == null)
+			return null;
+		return tipo;
 	}
 }
