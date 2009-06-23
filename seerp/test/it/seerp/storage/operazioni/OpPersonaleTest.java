@@ -22,7 +22,7 @@ import java.util.Iterator;
 public class OpPersonaleTest extends TestCase{
 
     private Personale p;
-    private Integer id;
+    private Integer id = 0;
     private Ruolo r;
     private Boolean v;
     private ArrayList<Personale> pers;

@@ -24,9 +24,9 @@ import java.util.Iterator;
  */
 public class OpResponsabileTest extends TestCase{
     private Responsabile r;
-    private Integer id;
+    private Integer id = 0;
     private Boolean v;
-    private Ruolo ru;
+    private Ruolo ru = new Ruolo("ruolo");
     private ArrayList<Responsabile> resp;
 
     public OpResponsabileTest() {
@@ -125,13 +125,13 @@ public class OpResponsabileTest extends TestCase{
         assertEquals("marros",r.getUsername());
         assertEquals("123456",r.getPassword());
         assertEquals("Salerno",r.getCitta());
-        assertEquals("ruolo",r.getRuolo());
+        assertEquals(ru,r.getRuolo());
         assertEquals("sa", r.getProvincia());
         assertEquals("089345678",r.getTelefono());
         assertEquals("84100",r.getCap());
         assertEquals("rossi@email.it",r.getEmail());
-        assertEquals("ruolo",r.getRuolo());
-        assertEquals("note",r.getNote());
+        assertEquals(ru,r.getRuolo());
+       
         assertEquals(v, r.getVisible());
         assertEquals("Rossi",r.getCognome());
         assertEquals("Mario",r.getNome());
@@ -179,10 +179,10 @@ public class OpResponsabileTest extends TestCase{
     @Test
     public void testVisualizzaResponsabile() throws Exception {
         System.out.println("visualizzaPersonale");
-        
+        Integer idc = 12;
         OpResponsabile instance = new OpResponsabile();
         Responsabile expResult = r;
-        Responsabile result = instance.visualizzaResponsabile(id);
+        Responsabile result = instance.visualizzaResponsabile(idc);
         assertEquals(expResult, result);
         
     }

@@ -21,7 +21,7 @@ import static org.junit.Assert.*;
 public class OpClienteTest extends TestCase{
     private Cliente c;
     private Boolean v;
-    private Integer id;
+    private Integer id = 0;
     private ArrayList<Cliente> con;
    
     
@@ -169,11 +169,11 @@ public class OpClienteTest extends TestCase{
     @Test
     public void testVisualizzaDati() throws Exception {
         System.out.println("visualizzaDati");
-        Integer id = 12;
+        
        
         OpCliente instance = new OpCliente();
         Cliente expResult = null;
-        Cliente result = instance.visualizzaDati(12);
+        Cliente result = instance.visualizzaDati(id);
         assertEquals(expResult, result);
         
     }

@@ -25,7 +25,7 @@ public class OpFornitoreTest extends TestCase {
     private ArrayList<Contratto> contr;
     private ArrayList<Fornitore> forn;
     private Boolean v;
-    private Integer id;
+    private Integer id = 0;
     private Integer idf;
 
     public OpFornitoreTest() {
@@ -174,10 +174,10 @@ public class OpFornitoreTest extends TestCase {
     @Test
     public void testVisualizzaDati() throws Exception {
         System.out.println("visualizzaDati");
-       
+        
         OpFornitore instance = new OpFornitore();
         Fornitore expResult = f;
-        Fornitore result = instance.visualizzaDati(f.getIdUtente());
+        Fornitore result = instance.visualizzaDati(id);
         assertEquals(expResult, result);
        
     }
