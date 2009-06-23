@@ -25,22 +25,19 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace pref="405" max="32767" attributes="3"/>
-                      <Component id="jTabbedPane1" min="-2" pref="536" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jXLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
-                      <Component id="buttonAnnulla1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="buttonSalva1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="jXPanel1" alignment="0" min="-2" max="-2" attributes="1"/>
-              </Group>
+              <Component id="jXPanel1" min="-2" max="-2" attributes="1"/>
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <Component id="jTabbedPane1" min="-2" pref="536" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jXLabel2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="373" max="32767" attributes="0"/>
+              <Component id="buttonAnnulla1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="buttonSalva1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="154" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -49,8 +46,8 @@
           <Group type="102" max="-2" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                      <Component id="buttonAnnulla1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="buttonSalva1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="buttonAnnulla1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -58,11 +55,11 @@
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jTabbedPane1" min="-2" pref="373" max="-2" attributes="2"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jXPanel1" max="32767" attributes="1"/>
+                  <Component id="jTabbedPane1" alignment="0" pref="373" max="32767" attributes="3"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="180" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -822,7 +819,7 @@
                   <Component id="jScrollPane2" min="-2" pref="195" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jXFindBar1" min="-2" pref="88" max="-2" attributes="0"/>
-                  <EmptySpace pref="222" max="32767" attributes="1"/>
+                  <EmptySpace pref="53" max="32767" attributes="1"/>
               </Group>
           </Group>
         </DimensionLayout>
