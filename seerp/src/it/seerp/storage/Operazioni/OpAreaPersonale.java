@@ -8,13 +8,16 @@ import it.seerp.storage.ejb.Utente;
 import java.sql.SQLException;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Connection;
+import it.seerp.storage.ejb.ExtraAzienda;
+import it.seerp.storage.ejb.Ruolo;
+import java.sql.ResultSet;
 
 
 /**
  *
  * @author Ila
  */
-public class OpAreaPersonale extends OpPersonale {
+public class OpAreaPersonale extends OpeUtente {
 
     private Connection conn;
 
@@ -35,10 +38,39 @@ public class OpAreaPersonale extends OpPersonale {
      * @return il bean con i dettagli del membro del personale
      * @throws java.sql.SQLException*/
 
-    @Override
-    public Personale visualizzaDati(Integer id) throws SQLException {
+       public Personale visualizzaDatiPersonale(String usr) throws SQLException {
 
-        return super.visualizzaDati(id);
+        ResultSet rs=null;
+        Personale per = (Personale) super.visualizza(usr);
+        String sql="SELECT nome, cognome, codicefiscale,ruolo " +
+                   "FROM utente join personale on idUtente=idPersonale" +
+                   "WHERE username=?";
+        PreparedStatement stmt = (PreparedStatement) conn.prepareStatement(sql);
+        stmt.setString(1, usr);
+        rs=stmt.executeQuery();
+        while(rs.next()){
+            per.setNome(rs.getString(1));
+            per.setCognome(rs.getString(2));
+            per.setCodiceFiscale(rs.getString(3));
+            per.setRuolo(new Ruolo(rs.getString(4)));
+        }
+        return per;
+    }
+
+
+      public ExtraAzienda visualizzaDatiExtraAzienda(String usr) throws SQLException {
+        ResultSet rs=null;
+        ExtraAzienda extra = (ExtraAzienda) super.visualizza(usr);
+        String sql="SELECT nome, cognome, codicefiscale,ruolo " +
+                   "FROM utente join extraazienda on idUtente=idExtraAzienda" +
+                   "WHERE username=?";
+        PreparedStatement stmt = (PreparedStatement) conn.prepareStatement(sql);
+        stmt.setString(1, usr);
+        rs=stmt.executeQuery();
+        while(rs.next()){
+           
+        }
+        return extra;
     }
 
     /** Metodo che permette la modifica della password
@@ -60,7 +92,6 @@ public class OpAreaPersonale extends OpPersonale {
         stmt.execute();
         stmt.close();
         ConnectionPool.releaseConnection(conn);
-
 
         return u;
     }

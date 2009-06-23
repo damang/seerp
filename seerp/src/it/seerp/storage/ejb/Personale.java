@@ -18,8 +18,9 @@ public class Personale extends Utente {
      *
      */
     public Personale() {
-        
+        super();
     }
+
 
 
     /**
