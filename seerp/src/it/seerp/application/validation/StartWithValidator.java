@@ -1,8 +1,8 @@
 package it.seerp.application.validation;
 
 import javax.swing.JComponent;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
-import org.jdesktop.swingx.JXPanel;
 
 /**
  * La classe che sviluppa i meccanismi di validazione dei campi di testo.
@@ -17,7 +17,7 @@ public class StartWithValidator extends AbstractValidator {
      * @param c
      * @param message
      */
-    public StartWithValidator(JXPanel parent, JTextField c, String message) {
+    public StartWithValidator(JPanel parent, JTextField c, String message) {
         super(parent, c, message);
     }
 

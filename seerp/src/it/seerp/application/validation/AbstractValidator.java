@@ -39,11 +39,10 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
      * @param c Il JComponent che deve essere validato.
      * @param message Il messaggio da mostrare nel popup se la validazione fallisce
      */
-    public AbstractValidator(JXPanel parent, JComponent c, String message) {
+    public AbstractValidator(JPanel parent, JComponent c, String message) {
         this(c, message);
         this.parent = parent;
         popup = new JXDialog(parent);
-
         initComponents();
     }
 

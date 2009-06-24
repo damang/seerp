@@ -1,11 +1,14 @@
 package it.seerp.application.bean;
 
+import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.tabelle.RuoloTm;
+import it.seerp.application.validation.StartWithValidator;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import javax.swing.JCheckBox;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import org.jdesktop.swingx.JXTable;
 
@@ -18,13 +21,15 @@ public class BeanGuiRuolo {
     private ArrayList<BeanGuiPersonale> listPersonale;
     private HashMap<String, ArrayList<BeanGuiPermesso>> listPermessi;
     private JTextField nome;
-    private HashMap<String,JCheckBox> perm_all;
-    private JXTable tabRuo,tabPers;
+    private HashMap<String, JCheckBox> perm_all;
+    private JXTable tabRuo,  tabPers;
+    private Object grafica;
 
     /**
      *
      */
-    public BeanGuiRuolo() {
+    public BeanGuiRuolo(JPanel pannello) {
+        this.grafica = pannello;
     }
 
     /**
@@ -41,9 +46,9 @@ public class BeanGuiRuolo {
      * @throws Exception
      */
     public JTextField getNome() {
-        /*  if (!valStartW.shouldYieldFocus(grafica)) {
-        throw new ValidatorException("Errore nella grafica!");
-        }*/
+        if (!nome.getInputVerifier().shouldYieldFocus(nome)) {
+            throw new ValidatorException("Errore nella grafica!");
+        }
         return nome;
     }
 
@@ -59,6 +64,7 @@ public class BeanGuiRuolo {
             }
         }
     }
+
     public void resetTableUt() throws SQLException {
         tabRuo.setModel(new RuoloTm());
     }
@@ -69,8 +75,7 @@ public class BeanGuiRuolo {
      */
     public void setNome(JTextField pnome) {
         this.nome = pnome;
-//        valStartW = new StartWithValidator(grafica, nome, "Il campo non può essere vuoto.");
-    //      grafica.setInputVerifier(valStartW);
+        nome.setInputVerifier(new StartWithValidator((JPanel) grafica, nome, "Il campo non può essere vuoto."));
     }
 
     /**
@@ -104,22 +109,28 @@ public class BeanGuiRuolo {
     public void setListPersonale(ArrayList<BeanGuiPersonale> listPersonale) {
         this.listPersonale = listPersonale;
     }
+
     public HashMap<String, JCheckBox> getPermGen() {
         return perm_all;
     }
+
     public void setPermGen(HashMap<String, JCheckBox> p) {
-        perm_all=p;
+        perm_all = p;
     }
+
     public JXTable getTabUt() {
-        return  tabRuo;
+        return tabRuo;
     }
+
     public void setTabUt(JXTable t) {
-        tabRuo=t;
+        tabRuo = t;
     }
+
     public JXTable getTabPers() {
-        return  tabPers;
+        return tabPers;
     }
+
     public void setTabPers(JXTable t) {
-        tabPers=t;
+        tabPers = t;
     }
 }
