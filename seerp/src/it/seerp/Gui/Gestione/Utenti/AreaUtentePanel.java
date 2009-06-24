@@ -59,10 +59,10 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         this.settaTableModel();
         initComponents();
         settaPanel();
-        responsabile = new BeanGuiResponsabile();
-        dipendente = new BeanGuiDipendente();
-        this.fornitore = new BeanGuiFornitore();
-        this.cliente = new BeanGuiCliente();
+        responsabile = new BeanGuiResponsabile(this);
+        dipendente = new BeanGuiDipendente(this);
+        this.fornitore = new BeanGuiFornitore(this);
+        this.cliente = new BeanGuiCliente(this);
         legameBeanResponsabile();
         legameBeanDipendente();
         legameBeanFornitore();
@@ -277,6 +277,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder("Ruolo"));
         jPanel13.setName("jPanel13"); // NOI18N
 
+        ruolo.setText("jTextField1");
         ruolo.setName("ruolo"); // NOI18N
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
@@ -285,14 +286,14 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ruolo, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(ruolo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addComponent(ruolo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Città"));
