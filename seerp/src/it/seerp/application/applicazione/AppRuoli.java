@@ -15,6 +15,7 @@ import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  * Classe del livello application riguardante la Gestione dei Ruoli
@@ -116,7 +117,7 @@ public class AppRuoli implements GestioneRuoli<BeanGuiRuolo> {
             OpRuolo ope = new OpRuolo();
             list = ope.visualizzaElenco();
             for (Ruolo eve : list) {
-                BeanGuiRuolo eveGui = new BeanGuiRuolo();
+                BeanGuiRuolo eveGui = new BeanGuiRuolo(new JPanel());
             //    eveGui = Conversione.conversioneRuolo(eve, eveGui);
                 listGui.add(eveGui);
             }
