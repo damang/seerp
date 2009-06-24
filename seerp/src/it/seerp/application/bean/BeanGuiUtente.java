@@ -278,7 +278,7 @@ public class BeanGuiUtente {
     public void setTxtPassword(JTextField ptxtPassword) {
         this.txtPassword = ptxtPassword;
         txtPassword.setInputVerifier(new NotEmptyValidator((JPanel) grafica,txtPassword, "Il campo non può essere vuoto."));
-        txtPassword.setInputVerifier(new NotMaxLengthValidator((JPanel) grafica,txtProvincia, "Il campo deve essere di massimo 15 caratteri", 16));
+        txtPassword.setInputVerifier(new NotMaxLengthValidator((JPanel) grafica,txtPassword, "Il campo deve essere di massimo 15 caratteri", 16));
     }
 
     /**
@@ -307,7 +307,7 @@ public class BeanGuiUtente {
     public void setTxtUsername(JTextField ptxtUsername) {
         this.txtUsername = ptxtUsername;
         txtUsername.setInputVerifier(new NotEmptyValidator((JPanel) grafica,txtUsername, "Il campo non può essere vuoto."));
-        txtUsername.setInputVerifier(new NotMaxLengthValidator((JPanel) grafica,txtProvincia, "Il campo deve essere di massimo 15 caratteri", 16));
+        txtUsername.setInputVerifier(new NotMaxLengthValidator((JPanel) grafica,txtUsername, "Il campo deve essere di massimo 15 caratteri", 16));
     }
 
     /**

@@ -42,8 +42,8 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
     public AreaPersonalePanel(Subject sub) {
         ut = sub;
         initComponents();
-        utente = new BeanGuiPersonale();
-        extra = new BeanGuiExtraAzienda();
+        utente = new BeanGuiPersonale(this);
+        extra = new BeanGuiExtraAzienda(this);
 
         modifica.setEnabled(true);
         buttonSalva1.setEnabled(false);
