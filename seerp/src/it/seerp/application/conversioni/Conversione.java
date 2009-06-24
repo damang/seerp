@@ -46,6 +46,7 @@ import it.seerp.storage.ejb.Servizio;
 import it.seerp.storage.ejb.ServizioAssociato;
 import it.seerp.storage.ejb.Utente;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -179,7 +180,9 @@ public class Conversione {
         gui.getNome().setText(e.getNome());
         gui.getNote().setText(e.getNote());
         gui.getNotifica().setSelected(e.getNotifica());
-        gui.getOra().setText(e.getOra().get(GregorianCalendar.HOUR_OF_DAY)+ ":" + e.getOra().get(GregorianCalendar.MINUTE)+ ":" + e.getOra().get(GregorianCalendar.SECOND));
+        //gui.getOra().setText(e.getOra().get(GregorianCalendar.HOUR_OF_DAY)+ ":" + e.getOra().get(GregorianCalendar.MINUTE)+ ":" + e.getOra().get(GregorianCalendar.SECOND));
+        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
+        gui.getOra().setText(formatter.format(e.getOra().getTime()));
         gui.getTema().setSelectedItem(e.getTema());
         return gui;
     }
