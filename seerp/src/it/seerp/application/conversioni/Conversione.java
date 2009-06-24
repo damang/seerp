@@ -143,6 +143,7 @@ public class Conversione {
         GregorianCalendar data = new GregorianCalendar();
         data.setTimeInMillis(pGui.getData().getDate().getTime());
         evento.setData(data);
+        evento.setNotifica(pGui.getNotifica().isSelected());
 
         GregorianCalendar ora = new GregorianCalendar();
         String t[] = pGui.getOra().getText().split(":");
@@ -159,7 +160,6 @@ public class Conversione {
         }
 
         //evento.setAgenda(conversioneAgenda(pGui.getAgenda()));
-        evento.setNotifica(Boolean.parseBoolean(pGui.getNotifica().getText()));
         evento.setAgenda(pGui.getIdAgenda());
 
         return evento;

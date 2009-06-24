@@ -229,16 +229,16 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
       * @return
       * @throws SQLException
      */
-    public ArrayList<Evento> eventiNotificati(GregorianCalendar data) throws SQLException {
+    public ArrayList<Evento> eventiNotificati(int id, GregorianCalendar data) throws SQLException {
         connessione = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
         ArrayList<Evento> evNotificati = new ArrayList<Evento>();
 
-        String query = "SELECT nome,tema,`data`,ora FROM evento WHERE notifica=true and data>=?";
+        String query = "SELECT nome,tema,`data`,ora FROM evento WHERE agenda=? and notifica=true and data>=?";
         stmt= (PreparedStatement) connessione.prepareStatement(query);
         java.sql.Date sqlDate = new java.sql.Date(data.getTimeInMillis());
-        stmt.setDate(1, sqlDate);
-        // stmt.setString(1,a.toString());
+        stmt.setInt(1,id);
+        stmt.setDate(2, sqlDate);
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
             Evento e = new Evento();

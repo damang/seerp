@@ -27,11 +27,12 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
         color = new Color(243, 255, 159);
     }
 
-    private AbstractValidator(JComponent c, String message) {
+    protected AbstractValidator(JComponent c, String message) {
         this();
         c.addKeyListener(this);
         messageLabel = new JLabel(message + " ");
         image = new JLabel(new ImageIcon("/it/seerp/Gui/icone/ico16x16/remove.png"));
+        popup = new JDialog();
     }
 
     /**
@@ -45,7 +46,7 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
         popup = new JXDialog(parent);
         initComponents();
     }
-
+   
     /**
      * @param parent Un JXPanel
      * @param c Il JComponent che deve essere validato.
@@ -77,10 +78,10 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
     public boolean verify(JComponent c) {
         if (!validationCriteria(c)) {
 
-            if (parent instanceof WantsValidationStatus) {
+         /*   if (parent instanceof WantsValidationStatus) {
                 ((WantsValidationStatus) parent).validateFailed();
             }
-
+*/
             c.setBackground(Color.PINK);
             popup.setSize(0, 0);
             popup.setLocationRelativeTo(c);
@@ -94,11 +95,10 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
         }
 
         c.setBackground(Color.WHITE);
-
-        if (parent instanceof WantsValidationStatus) {
-            ((WantsValidationStatus) parent).validatePassed();
-        }
-
+//
+//        if (parent instanceof WantsValidationStatus) {
+//            ((WantsValidationStatus) parent).validatePassed();
+//        }
         return true;
     }
 
