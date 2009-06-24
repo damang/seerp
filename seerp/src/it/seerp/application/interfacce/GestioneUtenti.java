@@ -5,6 +5,7 @@ import it.seerp.application.Exception.DatiErrati;
 import it.seerp.application.Exception.RicercaFallita;
 import it.seerp.application.bean.BeanGuiUtente;
 import it.seerp.storage.ejb.Utente;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -56,7 +57,7 @@ public interface GestioneUtenti<E extends Utente, U extends BeanGuiUtente> {
      * @throws it.seerp.application.Exception.DatiErrati
      * @throws it.seerp.application.Exception.DatiDuplicati
      */
-    public void inserisci(U user) throws DatiErrati, DatiDuplicati;
+    public void inserisci(U user) throws DatiErrati, DatiDuplicati,SQLException;
 
     /**
      *
@@ -64,7 +65,7 @@ public interface GestioneUtenti<E extends Utente, U extends BeanGuiUtente> {
      * @return
      * @throws it.seerp.application.Exception.DatiErrati
      */
-    public U modifica(int id,U user) throws DatiErrati;
+    public U modifica(int id,U user) throws DatiErrati, SQLException;
 
     /**
      *

@@ -2,6 +2,7 @@ package it.seerp.application.interfacce;
 
 import it.seerp.application.Exception.DatiDuplicati;
 import it.seerp.application.Exception.DatiErrati;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -39,7 +40,7 @@ public interface GestioneServizi<E, U, G> {
      * @throws it.seerp.application.Exception.DatiErrati
      * @throws it.seerp.application.Exception.DatiDuplicati
      */
-    public void inserisci(E BeansGuiServizio) throws DatiErrati, DatiDuplicati;
+    public void inserisci(E BeansGuiServizio) throws DatiErrati, DatiDuplicati, SQLException;
 
     /**
      *
@@ -55,5 +56,5 @@ public interface GestioneServizi<E, U, G> {
      * @return
      * @throws it.seerp.application.Exception.DatiErrati
      */
-    public E modifica(int id,E BeansGuiServizio) throws DatiErrati;
+    public E modifica(int id,E BeansGuiServizio) throws DatiErrati, SQLException;
 }
