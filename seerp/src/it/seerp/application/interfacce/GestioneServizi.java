@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @param <U>
  * @author Luisa - Tommaso Cattolico
  */
-public interface GestioneServizi<E, U> {
+public interface GestioneServizi<E, U,G> {
 
     /**
      *
@@ -47,7 +47,7 @@ public interface GestioneServizi<E, U> {
      * @param beanGui
      * @return
      */
-    public E visualizza(int nome, E beanGui);
+    public E visualizza(int nome, E beanGui, G beanGuiFornitore);
 
     /**
      *
