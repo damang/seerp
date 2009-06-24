@@ -44,25 +44,7 @@ public class ConfigurazioneUtente {
         PERSONALE,
     };
 
-    /**
-     *
-     * @param tipo
-     * @return
-     */
-    public static BeanGuiUtente istanziaBean(TIPO_UTENTE_CONST tipo) {
 
-        if (tipo.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
-            return new BeanGuiCliente();
-        } else if (tipo.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
-            return new BeanGuiDipendente();
-        } else if (tipo.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
-            return new BeanGuiFornitore();
-        } else if (tipo.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
-            return new BeanGuiResponsabile();
-        }
-
-        return null;
-    }
 
     /**
      *
