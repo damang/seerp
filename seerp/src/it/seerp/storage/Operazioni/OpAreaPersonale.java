@@ -41,13 +41,11 @@ public class OpAreaPersonale extends OpeUtente {
        public Personale visualizzaDatiPersonale(String usr) throws SQLException {
 
         ResultSet rs=null;
-        Personale per = (Personale) super.visualizza(usr);
-        String sql="SELECT username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita," +
-                   "nome, cognome, codicefiscale,ruolo " +
-                   "FROM utente join personale on idUtente=idPersonale" +
-                   "WHERE username=?";
+        Personale per=new  Personale();/* = (Personale) super.visualizza(usr);*/
+        String sql="SELECT username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita, nome, cognome, codicefiscale,ruolo FROM utente, personale WHERE idUtente=idPersonale and username=?";
         PreparedStatement stmt = (PreparedStatement) conn.prepareStatement(sql);
         stmt.setString(1, usr);
+     
         rs=stmt.executeQuery();
         while(rs.next()){
             per.setUsername(rs.getString(1));
@@ -64,7 +62,7 @@ public class OpAreaPersonale extends OpeUtente {
             per.setCognome(rs.getString(12));
             per.setCodiceFiscale(rs.getString(13));
             per.setRuolo(new Ruolo(rs.getString(14)));
-        }
+             }
         return per;
     }
 

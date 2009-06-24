@@ -787,6 +787,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         editabile(false);
         this.buttonAnnulla1.setEnabled(false);
         this.buttonSalva1.setEnabled(false);
+        this.inizializzazione("");
 
     }//GEN-LAST:event_buttonAnnulla1MouseClicked
 
@@ -871,6 +872,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         }
         refresh();
         editabile(false);
+        inizializzazione("");
         this.buttonAnnulla1.setEnabled(false);
         this.buttonSalva1.setEnabled(false);
 

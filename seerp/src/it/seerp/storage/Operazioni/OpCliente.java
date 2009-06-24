@@ -169,8 +169,8 @@ public class OpCliente extends OpExtraAzienda {
                 String sqlu = "INSERT INTO utente(username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita) VALUES(?,?,?,?,?,?,?,?,?,true)";
                 super.inserimento(user);
 
-                String sqle = "INSERT INTO extraazienda(idExtraAzienda,nome,cognome,fax,piva,ragioneSociale,Ruolo)" +
-                        "VALUES(LAST_INSERT_ID(),?,?,?,?,?,'Cliente')";
+                String sqle = "INSERT INTO extraazienda(idExtraAzienda,nome,cognome,fax,piva,ragioneSociale,Ruolo,codiceFiscale)" +
+                        "VALUES(LAST_INSERT_ID(),?,?,?,?,?,'Cliente',?)";
 
 
                 stmt = (PreparedStatement) connessione.prepareStatement(sqlu);
@@ -190,9 +190,10 @@ public class OpCliente extends OpExtraAzienda {
                 stmte.setString(3, user.getFax());
                 stmte.setString(4, user.getPIva());
                 stmte.setString(5, user.getRagioneSociale());
+                stmte.setString(6, user.getCodiceFiscale());
 
-                System.out.println(stmt.execute());
-                System.out.println(stmte.execute());
+               stmt.execute();
+                stmte.execute();
 
                 connessione.commit();
             } catch (SQLException e) {
@@ -291,7 +292,7 @@ public class OpCliente extends OpExtraAzienda {
 
         String sql ="SELECT idUtente,username,password,citta,prov," +
                     "telefono,cap,email,Ruolo,note,visibilita,cognome,nome,ragioneSociale," +
-                    "piva,fax FROM utente,extraazienda WHERE idUtente=idExtraAzienda and idExtraAzienda=?";
+                    "piva,fax,codiceFiscale FROM utente,extraazienda WHERE idUtente=idExtraAzienda and idExtraAzienda=?";
         
 
         stmt = (PreparedStatement) connessione.prepareStatement(sql);
@@ -320,6 +321,8 @@ public class OpCliente extends OpExtraAzienda {
             cliente.setRagioneSociale(rs.getString(14));
             cliente.setPIva(rs.getString(15));
             cliente.setFax(rs.getString(16));
+            cliente.setCodiceFiscale(rs.getString(17));
+
         }
         rs.close();
         stmt.close();

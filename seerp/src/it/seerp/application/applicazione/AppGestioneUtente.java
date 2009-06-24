@@ -187,11 +187,7 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
         return beanGui;
     }
 
-    public void visualizzaDati(String user, BeanGuiUtente utente) throws SQLException {
-         OpeUtente ope = new OpeUtente();
-         Utente ut = ope.visualizza(user);
-         Conversione.conversioneAreaPersonale(ut, utente);
-    }
+
 
     /**
      * Metodo che passa la lista di bean utilizzando l'operazioni del lato storage

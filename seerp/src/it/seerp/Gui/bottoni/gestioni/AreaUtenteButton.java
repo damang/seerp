@@ -87,7 +87,7 @@ public class AreaUtenteButton extends ObserverButton implements CommandInterface
         } else if (tipoUtente.compareToIgnoreCase("Dipendenti") == 0) {
             this.panel = new AreaUtentePanel(TIPO_UTENTE_CONST.DIPENDENTE);
 
-            s = "Area Dipendeti";
+            s = "Area Dipendenti";
             panel.register(this);
 
         } else if (tipoUtente.compareToIgnoreCase("Fornitori") == 0) {

@@ -333,23 +333,26 @@ public class Conversione {
      * @param utente il Bean Grafico che deve essere modificato
      * @return il Bean Gui convertito
      */
-    public static BeanGuiUtente conversioneAreaPersonale(Utente user, BeanGuiUtente utente) {
+    public static BeanGuiUtente conversioneAreaPersonalePer(Personale user, BeanGuiPersonale utente) {
 
-        //   utente.getIdUtenteTxt().setText(user.getIdUtente().toString());
         utente.getTxtUsername().setText(user.getUsername());
         utente.getTxtUsername2().setText(user.getUsername());
-        utente.getTxtPassword().setText(user.getPassword());
-        utente.getTxtCitta().setText(user.getCitta());
-        utente.getTxtEmail().setText(user.getEmail());
+        conversionePersonale(user, utente);
 
-        utente.getTxtProvincia().setText(user.getProvincia());
-        utente.getTxtTelefono().setText(user.getTelefono());
-//        utente.getTxtNote().setText(user.getNote());
-//        utente.getVisible().setText(user.getVisible().toString());
-        //    utente.getTipo().setText(user.getTipo());
+        
+
         return utente;
     }
+    public static BeanGuiUtente conversioneAreaPersonaleExtra(ExtraAzienda user, BeanGuiExtraAzienda utente) {
 
+        utente.getTxtUsername().setText(user.getUsername());
+        utente.getTxtUsername2().setText(user.getUsername());
+        conversioneExtraAzienda(user, utente);
+
+
+
+        return utente;
+    }
     /**
      * Metodo che converte un Bean Gui Personale in un normale Bean Personale
      * @param bp
@@ -391,9 +394,10 @@ public class Conversione {
         Conversione.conversioneUtente(p, bp);
 
         bp.getCognome().setText(p.getCognome());
-        System.out.println("luisa" + p.getNome());
+      //  System.out.println("luisacognome" + p.getUsername());
         bp.getNome().setText(p.getNome());
         bp.getCodiceFiscale().setText(p.getCodiceFiscale());
+        
         bp.getRuolo().setText(p.getRuolo().getNome());
 
         return bp;
@@ -815,6 +819,7 @@ public class Conversione {
         utente.setTelefono(e.getTxtTelefono().getText());
         utente.setEmail(e.getTxtEmail().getText());
         utente.setNote(e.getTxtNote().getText());
+        utente.setCognome(e.getCognome().getText());
         utente.setCodiceFiscale(e.getCodiceFiscale().getText());
         //utente.setTipo(e.getTipo().getText());
         //utente.setVisible(Boolean.parseBoolean(e.getTxtNotifica().getText()));

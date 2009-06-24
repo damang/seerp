@@ -161,8 +161,8 @@ public class OpFornitore extends OpExtraAzienda {
             try {
                 conness.setAutoCommit(false);
                 String sqlu = "INSERT INTO utente(username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita) VALUES(?,?,?,?,?,?,?,?,?,true)";
-                String sqle = "INSERT INTO extraazienda(idExtraAzienda,nome,cognome,fax,piva,ragioneSociale,Ruolo)" +
-                        "VALUES(LAST_INSERT_ID(),?,?,?,?,?,'Fornitore')";
+                String sqle = "INSERT INTO extraazienda(idExtraAzienda,nome,cognome,fax,piva,ragioneSociale,Ruolo,codiceFiscale)" +
+                        "VALUES(LAST_INSERT_ID(),?,?,?,?,?,'Fornitore',?)";
 
 
                 stmt = (PreparedStatement) conness.prepareStatement(sqlu);
@@ -182,10 +182,11 @@ public class OpFornitore extends OpExtraAzienda {
                 stmte.setString(3, user.getFax());
                 stmte.setString(4, user.getPIva());
                 stmte.setString(5, user.getRagioneSociale());
+                stmte.setString(6, user.getCodiceFiscale());
 
 
-                stmt.execute();
-                stmte.execute();
+                System.out.println( stmt.execute());
+                System.out.println( stmte.execute());
 
                 conness.commit();
             } catch (SQLException e) {
@@ -272,6 +273,7 @@ public class OpFornitore extends OpExtraAzienda {
      * id del Fornitore
      * @return il bean con i dettagli del Fornitore
      * @throws java.sql.SQLException*/
+    @Override
     public Fornitore visualizzaDati(Integer id) throws SQLException {
         conness = ConnectionPool.getConnection();
         PreparedStatement stmt = null;
@@ -282,7 +284,7 @@ public class OpFornitore extends OpExtraAzienda {
 
         String sql = "SELECT idUtente,username,password,citta,prov," +
                 "telefono,cap,email,Ruolo,note,visibilita,cognome,nome,ragioneSociale," +
-                "piva,fax FROM utente,extraazienda WHERE idUtente=idExtraAzienda and idExtraAzienda=?";
+                "piva,fax,codiceFiscale FROM utente,extraazienda WHERE idUtente=idExtraAzienda and idExtraAzienda=?";
         // String sql = "SELECT * FROM extraazienda where idExtraAzienda= ? ";
 
         stmt = (PreparedStatement) conness.prepareStatement(sql);
@@ -310,6 +312,8 @@ public class OpFornitore extends OpExtraAzienda {
             fornitore.setRagioneSociale(rs.getString(14));
             fornitore.setPIva(rs.getString(15));
             fornitore.setFax(rs.getString(16));
+            fornitore.setCodiceFiscale(rs.getString(17));
+            
         }
         rs.close();
         stmt.close();
