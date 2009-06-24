@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 package it.seerp.application.interfacce;
 
@@ -23,5 +20,5 @@ public interface GestioneInit <G> {
      */
     public void inserimento(G beanGuiAmministratore) throws SQLException, DatiErrati, DatiDuplicati;
 
-     public void check();
+     public boolean check();
 }
