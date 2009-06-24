@@ -33,6 +33,7 @@ public class OpInit implements OpeEntity<Amministratore, Azienda> {
         PreparedStatement stmtd = null;
 
         try {
+            connessione.setAutoCommit(false);
             String sqlu = "INSERT INTO utente(username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita) " +
                     "VALUES(?,?,?,?,?,?,?,?,?,true)";
             String sqlp = "INSERT INTO personale(idPersonale,nome,cognome,codicefiscale,ruolo)" +
