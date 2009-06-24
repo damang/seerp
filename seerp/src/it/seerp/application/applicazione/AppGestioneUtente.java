@@ -122,15 +122,13 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
      * @throws it.seerp.application.Exception.DatiDuplicati
      * nel caso in cui i dati inseriti sono duplicati
      */
-    public void inserisci(BeanGuiUtente user) throws DatiErrati, DatiDuplicati {
+    @Override
+    public void inserisci(BeanGuiUtente user) throws DatiErrati, DatiDuplicati, SQLException {
         try {
             OpeUtente a = new OpeUtente();
             Utente utente = Conversione.conversioneUtente(user);
             a.inserimento(utente);
 
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
         } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
@@ -147,15 +145,13 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui i dati inseriti sono errati
      */
-    public BeanGuiUtente modifica(int id,BeanGuiUtente user) throws DatiErrati {
+    @Override
+    public BeanGuiUtente modifica(int id,BeanGuiUtente user) throws DatiErrati, SQLException{
         try {
             OpeUtente ope = new OpeUtente();
             Utente utente = Conversione.conversioneUtente(user);
             utente = ope.modifica(utente);
             user = Conversione.conversioneUtente(utente, user);
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
         } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
