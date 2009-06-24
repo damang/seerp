@@ -53,7 +53,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
      */
     public GestioneRuoli() throws SQLException {
         tModel = new RuoloTm();
-        be = new BeanGuiRuolo();
+        be = new BeanGuiRuolo(this);
         initComponents();
         legameBean();
         setEditable(false);

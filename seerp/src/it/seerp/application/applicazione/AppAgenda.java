@@ -12,6 +12,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import it.seerp.application.conversioni.Conversione;
 import it.seerp.storage.Operazioni.OpEvento;
+import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
+import java.util.Iterator;
 import javax.swing.JOptionPane;
 
 /**
@@ -40,6 +43,25 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
         return listGui;
+    }
+
+    public ArrayList<String> getEventiNotificare(int id) throws SQLException {
+        SimpleDateFormat formatter_data = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat formatter_ora = new SimpleDateFormat("HH:mm:ss");
+
+        OpEvento e= new OpEvento();
+        Evento ev;
+        ArrayList<Evento> evs = e.eventiNotificati(new GregorianCalendar());
+        Iterator<Evento> it= evs.iterator();
+        ArrayList<String> s= new ArrayList<String>();
+        while (it.hasNext()){
+            ev=it.next();
+            s.add(formatter_data.format(ev.getData().getTime()) + " at "+ formatter_ora.format(ev.getOra().getTime()) + " - " + ev.getNome());
+        }
+        return s;
+
+
+
     }
 
     /**

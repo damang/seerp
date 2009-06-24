@@ -13,17 +13,27 @@ import it.seerp.Gui.Gestione.Contratti.GestioneContratti;
 import it.seerp.Gui.Gestione.Servizi.GestioneServizi;
 import it.seerp.Gui.Gestione.InfoAzienda.InfoAzienda;
 import it.seerp.Gui.Gestione.agenda.CalendarPanel;
+import it.seerp.Gui.Gestione.agenda.notificaEventi;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
 import it.seerp.storage.jaas.AuthPolicy;
 import it.seerp.storage.jaas.AuthPrincipal;
+import it.seerp.storage.jaas.SujGest;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
 import java.security.Policy;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import javax.security.auth.Subject;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import org.jdesktop.swingx.JXTipOfTheDay;
+import org.jdesktop.swingx.tips.DefaultTip;
+import org.jdesktop.swingx.tips.DefaultTipOfTheDayModel;
+import org.jdesktop.swingx.tips.TipOfTheDayModel;
+import org.jdesktop.swingx.tips.TipOfTheDayModel.Tip;
 
 /**
  *
@@ -36,7 +46,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
      */
     public Index(Subject sub) {
         ut_sub = sub;
-
+        tipDay=new notificaEventi(SujGest.getIdUtente(ut_sub));
 
         initComponents();
 
@@ -44,7 +54,13 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
         // setSize(ge.getMaximumWindowBounds().width,ge.getMaximumWindowBounds().height);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.pack();
+        setVisible(true);
+        //tipDay.
+
+        tipDay.showDialog(this);
     }
+
+
     public Subject getSubject() { return ut_sub; }
 
     /** This method is called from within the constructor to
@@ -719,7 +735,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                new Index(_subject).setVisible(true);
+                new Index(_subject);
             }
         });
 
@@ -776,6 +792,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
     private javax.swing.JMenuItem saveMenuItem;
     // End of variables declaration//GEN-END:variables
     private Subject ut_sub;
+     private org.jdesktop.swingx.JXTipOfTheDay tipDay;
 
     public void actionPerformed(ActionEvent e) {
         CommandInterface cmd = (CommandInterface) e.getSource();

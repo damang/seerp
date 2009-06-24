@@ -230,33 +230,27 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
       * @throws SQLException
      */
     public ArrayList<Evento> eventiNotificati(GregorianCalendar data) throws SQLException {
-
+        connessione = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
         ArrayList<Evento> evNotificati = new ArrayList<Evento>();
 
-        GregorianCalendar gc = new GregorianCalendar();
-        Date a = new Date(gc.getTimeInMillis());
-        String query = "SELECT nome,tema,data FROM evento" +
-                " WHERE notifica=true and data>=?";
+        String query = "SELECT nome,tema,`data`,ora FROM evento WHERE notifica=true and data>=?";
         stmt= (PreparedStatement) connessione.prepareStatement(query);
-        stmt.setString(1,a.toString());
-        ResultSet rs = stmt.executeQuery(query);
-
+        java.sql.Date sqlDate = new java.sql.Date(data.getTimeInMillis());
+        stmt.setDate(1, sqlDate);
+        // stmt.setString(1,a.toString());
+        ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
             Evento e = new Evento();
-
-            GregorianCalendar g = new GregorianCalendar();
-
+            GregorianCalendar d = new GregorianCalendar();
+            GregorianCalendar o = new GregorianCalendar();
             e.setNome(rs.getString(1));
             e.setTema(rs.getString(2));
-            g.setTimeInMillis(rs.getDate(3).getTime());
-            e.setData(g);
-
-
+            d.setTimeInMillis(rs.getDate(3).getTime());
+            e.setData(d);
+            o.setTimeInMillis(rs.getTime(4).getTime());
+            e.setOra(o);
             evNotificati.add(e);
-            stmt = (PreparedStatement) connessione.prepareStatement(query);
-            stmt.executeUpdate();
-
         }
         stmt.close();
         rs.close();
