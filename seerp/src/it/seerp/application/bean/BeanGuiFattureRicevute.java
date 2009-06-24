@@ -8,24 +8,11 @@ import javax.swing.JTextField;
  * @author Luisa - Tommaso Cattolico
  */
 public class BeanGuiFattureRicevute {
-  private JTextArea note;
+
+    private JTextArea note;
     private JTextField idFatturaRicevuta;
     private JTextField numeroProgressivo;
     private JTextField ivaCredito;
-
-    /**
-     *
-     * @param note
-     * @param idFatturaRicevuta
-     * @param numeroProgressivo
-     * @param ivaCredito
-     */
-    public BeanGuiFattureRicevute(JTextArea note, JTextField idFatturaRicevuta, JTextField numeroProgressivo, JTextField ivaCredito) {
-        this.note = note;
-        this.idFatturaRicevuta = idFatturaRicevuta;
-        this.numeroProgressivo = numeroProgressivo;
-        this.ivaCredito = ivaCredito;
-    }
 
     /**
      * metodo che permette di restituire il codice identificativo di una Fattura Ricevuta

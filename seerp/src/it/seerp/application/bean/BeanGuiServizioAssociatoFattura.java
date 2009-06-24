@@ -6,7 +6,7 @@ import javax.swing.JTextField;
 
 /**
  * Classe relativa ai componenti grafici della gestione dei Servizi associati alle fatture
- * @author Luisa
+ * @author Luisa - Tommaso Cattolico
  */
 public class BeanGuiServizioAssociatoFattura {
 
@@ -16,24 +16,6 @@ public class BeanGuiServizioAssociatoFattura {
     private JTextField contratto;
     private JTextArea note;
     private ArrayList<BeanGuiDDT> listDDT;
-
-    /**
-     *
-     * @param quantita
-     * @param servizio
-     * @param fattura
-     * @param contratto
-     * @param note
-     * @param listDDT
-     */
-    public BeanGuiServizioAssociatoFattura(JTextField quantita, JTextField servizio, JTextField fattura, JTextField contratto, JTextArea note, ArrayList<BeanGuiDDT> listDDT) {
-        this.quantita = quantita;
-        this.servizio = servizio;
-        this.fattura = fattura;
-        this.contratto = contratto;
-        this.note = note;
-        this.listDDT = listDDT;
-    }
 
     /**
      *

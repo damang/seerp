@@ -4,9 +4,8 @@ import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.validation.NotAlphabeticValidator;
 import it.seerp.application.validation.NotEmptyValidator;
 import it.seerp.application.validation.NotEqualLengthValidator;
-import javax.swing.JTextArea;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
-import org.jdesktop.swingx.JXPanel;
 
 /**
  * Classe relativa ai componenti grafici della gestione del Personale
@@ -18,46 +17,20 @@ public class BeanGuiPersonale extends BeanGuiUtente {
     private JTextField nome;
     private JTextField codiceFiscale;
     private JTextField ruolo;
- 
-    /**
-     * Costruttore a cui viene passato un componente grafico necessario alla
-     * validazione del campo
-     * @param c
-     */
-    public BeanGuiPersonale(JXPanel c) {
-        super(c);
-    }
 
     /**
-     * 
+     *
      */
     public BeanGuiPersonale() {
     }
 
     /**
-     *
-     * @param idUtenteTxt
-     * @param txtUsername
-     * @param txtPassword
-     * @param txtCitta
-     * @param txtProvincia
-     * @param txtTelefono
-     * @param txtEmail
-     * @param txtNote
-     * @param txtNotifica
-     * @param tipo
-     * @param visible
-     * @param cognome
-     * @param nome
-     * @param codiceFiscale
-     * @param ruolo
+     * Costruttore a cui viene passato un componente grafico necessario alla
+     * validazione del campo
+     * @param c
      */
-    public BeanGuiPersonale(JTextField idUtenteTxt, JTextField txtUsername, JTextField txtPassword, JTextField txtCitta, JTextField txtProvincia, JTextField txtTelefono, JTextField txtEmail, JTextArea txtNote, JTextField txtNotifica, JTextField tipo, JTextField visible, JTextField cognome, JTextField nome, JTextField codiceFiscale, JTextField ruolo) {
-        super(idUtenteTxt, txtUsername, txtPassword, txtCitta, txtProvincia, txtTelefono, txtEmail, txtNote, txtNotifica, tipo, visible);
-        this.cognome = cognome;
-        this.nome = nome;
-        this.codiceFiscale = codiceFiscale;
-        this.ruolo = ruolo;
+    public BeanGuiPersonale(JPanel c) {
+        super(c);
     }
 
     /**
@@ -82,12 +55,12 @@ public class BeanGuiPersonale extends BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getCodiceFiscale() throws ValidatorException {
-       /* if (!val.shouldYieldFocus(grafica)) {
+        if (!codiceFiscale.getInputVerifier().shouldYieldFocus(codiceFiscale)) {
             throw new ValidatorException("Errore nella grafica!");
         }
-        if (!valEqLen.shouldYieldFocus(grafica)) {
+        if (!codiceFiscale.getInputVerifier().shouldYieldFocus(codiceFiscale)) {
             throw new ValidatorException("Errore nella grafica!");
-        }*/
+        }
         return codiceFiscale;
     }
 
@@ -97,12 +70,12 @@ public class BeanGuiPersonale extends BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getCognome() throws ValidatorException {
-        /*if (!val.shouldYieldFocus(grafica)) {
+        if (!cognome.getInputVerifier().shouldYieldFocus(cognome)) {
             throw new ValidatorException("Errore nella grafica!");
         }
-        if (!valApha.shouldYieldFocus(grafica)) {
+        if (!cognome.getInputVerifier().shouldYieldFocus(cognome)) {
             throw new ValidatorException("Errore nella grafica!");
-        }*/
+        }
         return cognome;
     }
 
@@ -112,12 +85,12 @@ public class BeanGuiPersonale extends BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getNome() throws ValidatorException {
-      /*if (!val.shouldYieldFocus(grafica)) {
+        if (!nome.getInputVerifier().shouldYieldFocus(nome)) {
             throw new ValidatorException("Errore nella grafica!");
         }
-        if (!valApha.shouldYieldFocus(grafica)) {
+        if (!nome.getInputVerifier().shouldYieldFocus(nome)) {
             throw new ValidatorException("Errore nella grafica!");
-        }*/
+        }
         return nome;
     }
 
@@ -127,10 +100,8 @@ public class BeanGuiPersonale extends BeanGuiUtente {
      */
     public void setCodiceFiscale(JTextField pcodiceFiscale) {
         this.codiceFiscale = pcodiceFiscale;
-      /*  val = new NotEmptyValidator(grafica, codiceFiscale, "Il campo non può essere vuoto.");
-        grafica.setInputVerifier(val);
-        valEqLen = new NotEqualLengthValidator(grafica, codiceFiscale, "Il campo deve essere di 16 caratteri", 16);
-        grafica.setInputVerifier(valEqLen);*/
+        codiceFiscale.setInputVerifier(new NotEmptyValidator((JPanel) grafica, codiceFiscale, "Il campo non può essere vuoto."));
+        codiceFiscale.setInputVerifier(new NotEqualLengthValidator((JPanel) grafica, codiceFiscale, "Il campo deve essere di 16 caratteri", 16));
 
     }
 
@@ -140,10 +111,9 @@ public class BeanGuiPersonale extends BeanGuiUtente {
      */
     public void setCognome(JTextField pcognome) {
         this.cognome = pcognome;
-    /*    val = new NotEmptyValidator(grafica, cognome, "Il campo non può essere vuoto.");
-        grafica.setInputVerifier(val);
-        valApha = new NotAlphabeticValidator(grafica, cognome, "La stringa inserita deve essere alfabetica.");
-        grafica.setInputVerifier(valApha);*/}
+        cognome.setInputVerifier(new NotEmptyValidator((JPanel) grafica, cognome, "Il campo non può essere vuoto."));
+        cognome.setInputVerifier(new NotAlphabeticValidator((JPanel) grafica, cognome, "La stringa inserita deve essere alfabetica."));
+    }
 
     /**
      *
@@ -151,9 +121,7 @@ public class BeanGuiPersonale extends BeanGuiUtente {
      */
     public void setNome(JTextField pnome) {
         this.nome = pnome;
-       /* val = new NotEmptyValidator(grafica, nome, "Il campo non può essere vuoto.");
-        grafica.setInputVerifier(val);
-        valApha = new NotAlphabeticValidator(grafica, nome, "La stringa inserita deve essere alfabetica.");
-        grafica.setInputVerifier(valApha);*/
+        nome.setInputVerifier(new NotEmptyValidator((JPanel) grafica, nome, "Il campo non può essere vuoto."));
+        nome.setInputVerifier(new NotAlphabeticValidator((JPanel) grafica, nome, "La stringa inserita deve essere alfabetica."));
     }
 }

@@ -8,24 +8,17 @@ import javax.swing.JTextField;
  * @author Luisa - Tommaso Cattolico
  */
 public class BeanGuiServizioAssociato {
- private JTextField quantita;
+
+    private JTextField quantita;
     private JTextField prezzoUnitario;
     private BeanGuiContratto contratto;
     private BeanGuiServizio servizio;
     private JTextArea note;
-      public BeanGuiServizioAssociato(){}
-    
 
     /**
      *
-     * @param quantita
-     * @param prezzoUnitario
-     * @param note
      */
-    public BeanGuiServizioAssociato(JTextField quantita, JTextField prezzoUnitario, JTextArea note) {
-        this.quantita = quantita;
-        this.prezzoUnitario = prezzoUnitario;
-        this.note = note;
+    public BeanGuiServizioAssociato() {
     }
 
     /**

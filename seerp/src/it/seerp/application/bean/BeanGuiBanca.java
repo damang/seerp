@@ -21,34 +21,6 @@ public class BeanGuiBanca {
     private JTextField importoInAvere;
 
     /**
-     * Costruttore per la Classe Bean Gui Banca
-     * @param agenzia
-     * @param abi
-     * @param cab
-     * @param citta
-     * @param provincia
-     * @param indirizzo
-     * @param cap
-     * @param filiale
-     * @param nazione
-     * @param importoInDare
-     * @param importoInAvere
-     */
-    public BeanGuiBanca(JTextField agenzia, JTextField abi, JTextField cab, JTextField citta, JTextField provincia, JTextField indirizzo, JTextField cap, JTextField filiale, JTextField nazione, JTextField importoInDare, JTextField importoInAvere) {
-        this.agenzia = agenzia;
-        this.abi = abi;
-        this.cab = cab;
-        this.citta = citta;
-        this.provincia = provincia;
-        this.indirizzo = indirizzo;
-        this.cap = cap;
-        this.filiale = filiale;
-        this.nazione = nazione;
-        this.importoInDare = importoInDare;
-        this.importoInAvere = importoInAvere;
-    }
-
-    /**
      * metodo che restituisce il campo contente l'abi della Banca
      * @return il campo Abi
      */

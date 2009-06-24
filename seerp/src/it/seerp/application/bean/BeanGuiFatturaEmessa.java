@@ -4,36 +4,18 @@ import java.util.ArrayList;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-
 /**
  * Classe relativa ai componenti grafici della gestione delle Fatture emesse
  * @author Luisa - Tommaso Cattolico
  */
 public class BeanGuiFatturaEmessa {
-private JTextArea note;
+
+    private JTextArea note;
     private JTextField idFatturaEmessa;
     private JTextField numeroProgressivo;
     private JTextField ivaDebito;
     private JTextField tipo;
-     private ArrayList<BeanGuiDDT> listDDT;
-
-     /**
-      * Costruttore della classe Bean Gui Fattura Emessa 
-      * @param note
-      * @param idFatturaEmessa
-      * @param numeroProgressivo
-      * @param ivaDebito
-      * @param tipo
-      * @param listDDT
-      */
-     public BeanGuiFatturaEmessa(JTextArea note, JTextField idFatturaEmessa, JTextField numeroProgressivo, JTextField ivaDebito, JTextField tipo, ArrayList<BeanGuiDDT> listDDT) {
-        this.note = note;
-        this.idFatturaEmessa = idFatturaEmessa;
-        this.numeroProgressivo = numeroProgressivo;
-        this.ivaDebito = ivaDebito;
-        this.tipo = tipo;
-        this.listDDT = listDDT;
-    }
+    private ArrayList<BeanGuiDDT> listDDT;
 
     /**
      * Metodo che restituisce la lista dei DDT associati ad una fattura
@@ -130,20 +112,22 @@ private JTextArea note;
     public void setTipo(JTextField tipo) {
         this.tipo = tipo;
     }
+
     /**
      * metodo che permette di rimuovere un DDT dalla lista dei DDT
      * di una Fattura Emessa
      * @param c rappresenta il DDT da rimuovere
      */
-    public void removeDDT(BeanGuiDDT c){
-     listDDT.remove(c);}
+    public void removeDDT(BeanGuiDDT c) {
+        listDDT.remove(c);
+    }
 
-
-        /**
-         * metodo che permette di inserire un DDT nella lista dei DDT
-         * di una Fattura Emessa
-         * @param c
-         */
-        public void addDDT(BeanGuiDDT c){
-     listDDT.add(c);}
+    /**
+     * metodo che permette di inserire un DDT nella lista dei DDT
+     * di una Fattura Emessa
+     * @param c
+     */
+    public void addDDT(BeanGuiDDT c) {
+        listDDT.add(c);
+    }
 }

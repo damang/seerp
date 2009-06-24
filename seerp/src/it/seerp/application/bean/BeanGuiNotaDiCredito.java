@@ -8,6 +8,7 @@ import javax.swing.JTextField;
  * @author Luisa - Tommaso Cattolico
  */
 public class BeanGuiNotaDiCredito {
+
     private JTextField motivazione;
     private JTextField nFattura;
     private JTextArea note;
@@ -16,28 +17,6 @@ public class BeanGuiNotaDiCredito {
     private JTextField iva;
     private JTextField data;
     private JTextField fattureEmesse;
-
-    /**
-     * Costruttore per la classe BeanGuiNotaDiCredito
-     * @param motivazione
-     * @param nFattura
-     * @param note
-     * @param importo
-     * @param idNotaDiCredito
-     * @param iva
-     * @param data
-     * @param fattureEmesse
-     */
-    public BeanGuiNotaDiCredito(JTextField motivazione, JTextField nFattura, JTextArea note, JTextField importo, JTextField idNotaDiCredito, JTextField iva, JTextField data, JTextField fattureEmesse) {
-        this.motivazione = motivazione;
-        this.nFattura = nFattura;
-        this.note = note;
-        this.importo = importo;
-        this.idNotaDiCredito = idNotaDiCredito;
-        this.iva = iva;
-        this.data = data;
-        this.fattureEmesse = fattureEmesse;
-    }
 
     /**
      * metodo che permette di restituire il campo data della Nota di Credito

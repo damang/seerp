@@ -27,23 +27,15 @@ public class BeanGuiRuolo {
 
     /**
      *
+     * @param pannello
      */
     public BeanGuiRuolo(JPanel pannello) {
         this.grafica = pannello;
     }
 
     /**
-     * 
-     * @param nome
-     */
-    public BeanGuiRuolo(JTextField nome) {
-        this.nome = nome;
-    }
-
-    /**
      *
      * @return
-     * @throws Exception
      */
     public JTextField getNome() {
         if (!nome.getInputVerifier().shouldYieldFocus(nome)) {
@@ -52,6 +44,9 @@ public class BeanGuiRuolo {
         return nome;
     }
 
+    /**
+     * 
+     */
     public void resetAll() {
         nome.setText("");
         Iterator<ArrayList<BeanGuiPermesso>> l = listPermessi.values().iterator();
@@ -65,6 +60,10 @@ public class BeanGuiRuolo {
         }
     }
 
+    /**
+     *
+     * @throws java.sql.SQLException
+     */
     public void resetTableUt() throws SQLException {
         tabRuo.setModel(new RuoloTm());
     }
@@ -110,26 +109,50 @@ public class BeanGuiRuolo {
         this.listPersonale = listPersonale;
     }
 
+    /**
+     *
+     * @return
+     */
     public HashMap<String, JCheckBox> getPermGen() {
         return perm_all;
     }
 
+    /**
+     *
+     * @param p
+     */
     public void setPermGen(HashMap<String, JCheckBox> p) {
         perm_all = p;
     }
 
+    /**
+     *
+     * @return
+     */
     public JXTable getTabUt() {
         return tabRuo;
     }
 
+    /**
+     *
+     * @param t
+     */
     public void setTabUt(JXTable t) {
         tabRuo = t;
     }
 
+    /**
+     *
+     * @return
+     */
     public JXTable getTabPers() {
         return tabPers;
     }
 
+    /**
+     *
+     * @param t
+     */
     public void setTabPers(JXTable t) {
         tabPers = t;
     }

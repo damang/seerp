@@ -27,31 +27,6 @@ public class BeanGuiPagamento {
     }
 
     /**
-     *
-     * @param note
-     * @param dataScadenza
-     * @param descrizione
-     * @param importo
-     * @param modalitaPagamento
-     * @param stato
-     * @param altreInformazioni
-     * @param idPagamento
-     * @param banca
-     */
-    public BeanGuiPagamento(JTextArea note, JTextField dataScadenza, JTextField descrizione, JTextField importo, JTextField modalitaPagamento, JTextField stato, JTextField altreInformazioni, JTextField idPagamento, JTextField banca) {
-        this.note = note;
-        this.dataScadenza = dataScadenza;
-        this.descrizione = descrizione;
-        this.importo = importo;
-        this.modalitaPagamento = modalitaPagamento;
-        this.stato = stato;
-        this.altreInformazioni = altreInformazioni;
-        this.idPagamento = idPagamento;
-
-        this.banca = banca;
-    }
-
-    /**
      * metodo che
      * @return
      */
