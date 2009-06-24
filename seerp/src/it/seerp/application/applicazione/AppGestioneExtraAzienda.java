@@ -48,7 +48,7 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
      * Metodo che permette di inserire un nuovo Cliente
      * @param clien il Cliente che si vuole inserire
      */
-    public void inserisciCliente(BeanGuiCliente clien) {
+    public void inserisciCliente(BeanGuiCliente clien)throws SQLException {
         //  super.inserisci(clien);
         try {
             OpCliente a = new OpCliente();
