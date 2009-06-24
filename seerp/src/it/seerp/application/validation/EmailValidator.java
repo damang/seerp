@@ -2,8 +2,8 @@ package it.seerp.application.validation;
 
 import java.util.regex.Pattern;
 import javax.swing.JComponent;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
-import org.jdesktop.swingx.JXPanel;
 
 /**
  * La classe che sviluppa i meccanismi di validazione dei campi di testo.
@@ -18,7 +18,7 @@ public class EmailValidator extends AbstractValidator {
      * @param c
      * @param message
      */
-    public EmailValidator(JXPanel parent, JTextField c, String message) {
+    public EmailValidator(JPanel parent, JTextField c, String message) {
         super(parent, c, message);
     }
 

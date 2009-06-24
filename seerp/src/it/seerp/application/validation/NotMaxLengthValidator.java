@@ -1,8 +1,8 @@
 package it.seerp.application.validation;
 
 import javax.swing.JComponent;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
-import org.jdesktop.swingx.JXPanel;
 
 /**
  * La classe che sviluppa i meccanismi di validazione dei campi di testo.
@@ -20,7 +20,7 @@ public class NotMaxLengthValidator extends AbstractValidator {
      * @param message
      * @param length
      */
-    public NotMaxLengthValidator(JXPanel parent, JTextField c, String message, int length) {
+    public NotMaxLengthValidator(JPanel parent, JTextField c, String message, int length) {
         super(parent, c, message);
         this.length = length;
     }
