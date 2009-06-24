@@ -41,8 +41,10 @@ public class notificaEventi extends JXTipOfTheDay {
             AppAgenda a = new AppAgenda();
             Iterator<String> s;
             s=a.getEventiNotificare(id).iterator();
+            String ev="";
             while (s.hasNext())
-                tips.add(new DefaultTip("evento", s.next()));
+                ev+=s.next()+"\n";
+            tips.add(new DefaultTip("evento", ev));
             TipOfTheDayModel model = new DefaultTipOfTheDayModel(tips);
             this.setModel(model);
             this.updateUI();

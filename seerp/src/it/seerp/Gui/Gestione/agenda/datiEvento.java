@@ -40,7 +40,7 @@ public class datiEvento extends javax.swing.JDialog {
     private BeanGuiEvento be;
     private CalendarPanel pannel;
     /** Creates new form datiEvento */
-    public datiEvento(java.awt.Frame parent, boolean modal) {
+    public datiEvento(JFrame parent, boolean modal) {
         super(parent, modal);
             tipoOp = ConfigurazioneOperazioni.TIPO_OPE_CONST.VISUALIZZA;
             initComponents();

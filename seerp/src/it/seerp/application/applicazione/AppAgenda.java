@@ -51,7 +51,7 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
 
         OpEvento e= new OpEvento();
         Evento ev;
-        ArrayList<Evento> evs = e.eventiNotificati(new GregorianCalendar());
+        ArrayList<Evento> evs = e.eventiNotificati(id, new GregorianCalendar());
         Iterator<Evento> it= evs.iterator();
         ArrayList<String> s= new ArrayList<String>();
         while (it.hasNext()){
