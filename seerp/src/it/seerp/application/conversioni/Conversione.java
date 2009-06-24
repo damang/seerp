@@ -111,26 +111,13 @@ public class Conversione {
      * @throws Exception
      */
     public static BeanGuiContratto conversioneContratto(Contratto c, BeanGuiContratto gui) throws ValidatorException {
-        JTextField field = new JTextField();
-        JTextArea area = new JTextArea();
-
-        field.setText(c.getStato());
-        gui.setStato(field);
-        field.setText(c.getData().toString());
-        gui.setData(field);
-        field.setText(c.getDurata().toString());
-        gui.setDurata(field);
-        field.setText(c.getTipo());
-        gui.setTipo(field);
-        field.setText(c.getIdContratto().toString());
-        gui.setIdContratto(field);
-        area.setText(c.getNote());
-        gui.setNote(area);
-        gui.setDipendente(conversioneDipendente(c.getDipendente(), gui.getDipendente()));
-        gui.setExtraAzienda(conversioneExtraAzienda(c.getExtraAzienda(), new BeanGuiExtraAzienda()));
-        gui.setListPagamento(gui.getListPagamento());
-        gui.setListServizio(gui.getListServizio());
-
+        
+        gui.getData().setText(c.getData().toString());
+        gui.getDurata().setText(c.getDurata().toString());
+        gui.getIdContratto().setText(c.getIdContratto().toString());
+        gui.getNote().setText(c.getNote());
+        gui.getStato().setText(c.getStato());
+        gui.getTipo().setText(c.getTipo());
         return gui;
     }
 

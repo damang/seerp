@@ -46,21 +46,25 @@ public class OpDipendente extends OpPersonale {
         stmt = (PreparedStatement) conne.prepareStatement(sql);
         // Execute the query
         rs = stmt.executeQuery(sql);
-
-
-        /*
-         * Integer idUtente1, String username2, String password3, String città4,
-        String provincia5, String telefono6, String cap7, String email8, String note9,
-        String tipo10, String cognome11, String nome12, String codiceFiscale13, Ruolo ruolo14, Boolean v15
-         */
         // Define the resource list
         while (rs.next()) {
-            Dipendente dipendente = new Dipendente(rs.getInt(1), rs.getString(2),
-                    rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),
-                    rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
-                    rs.getString(11), rs.getString(12), rs.getString(13), new Ruolo(rs.getString(14)),
-                    rs.getBoolean(15));
-            list.add(dipendente);
+            Dipendente dip = new Dipendente();
+            dip.setIdUtente(rs.getInt(1));
+            dip.setUsername(rs.getString(2));
+            dip.setPassword(rs.getString(3));
+            dip.setCitta(rs.getString(4));
+            dip.setProvincia(rs.getString(5));
+            dip.setTelefono(rs.getString(6));
+            dip.setCap(rs.getString(7));
+            dip.setEmail(rs.getString(8));
+            dip.setNote(rs.getString(9));
+            dip.setTipo(rs.getString(10));
+            dip.setCognome(rs.getString(11));
+            dip.setNome(rs.getString(12));
+            dip.setCodiceFiscale(rs.getString(13));
+            dip.setRuolo(new Ruolo(rs.getString(13)));
+            dip.setVisible(rs.getBoolean(14));
+            list.add(dip);
         }
         rs.close();
         stmt.close();
@@ -69,7 +73,7 @@ public class OpDipendente extends OpPersonale {
     }
 
     /** Metodo che permette la ricerca di un membro dei dipendenti
-     * @return la lista dei membri dei dipendente che corrispondono ai criteri di ricerca
+     * @return la lista dei membri dei dip che corrispondono ai criteri di ricerca
      * @throws java.sql.SQLException
      
     public ArrayList<Dipendente> ricercaDipendente() throws SQLException {
