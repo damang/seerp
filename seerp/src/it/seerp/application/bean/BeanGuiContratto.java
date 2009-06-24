@@ -121,7 +121,8 @@ public class BeanGuiContratto {
      * @throws ValidatorException
      */
     public JTextField getDurata() throws ValidatorException {
-        if (!durata.getInputVerifier().shouldYieldFocus(durata) && validator==true) {
+        if(validator==true)
+        if (!durata.getInputVerifier().shouldYieldFocus(durata)) {
             throw new ValidatorException("Errore nella grafica!");
         }
         return durata;
@@ -209,9 +210,7 @@ public class BeanGuiContratto {
         if (!tipo.getInputVerifier().shouldYieldFocus(tipo)) {
         throw new ValidatorException("Errore nella grafica!");
         }
-        if (!tipo.getInputVerifier().shouldYieldFocus(tipo)) {
-        throw new ValidatorException("Errore nella grafica!");
-        }
+      
         return tipo;
     }
 
@@ -222,7 +221,7 @@ public class BeanGuiContratto {
     public void setTipo(JTextField ptipo) {
         this.tipo = ptipo;
         tipo.setInputVerifier(new NotEmptyValidator((JPanel) grafica, tipo, "Il campo non può essere vuoto."));
-        tipo.setInputVerifier(new NotAlphabeticValidator((JXPanel) grafica, tipo, "La stringa inserita deve essere alfabetica."));
+      //  tipo.setInputVerifier(new NotAlphabeticValidator((JXPanel) grafica, tipo, "La stringa inserita deve essere alfabetica."));
     }
 
     /**

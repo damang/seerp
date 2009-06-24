@@ -59,7 +59,8 @@ public class BeanGuiRuolo {
      * @return
      */
     public JTextField getNome() {
-        if (!nome.getInputVerifier().shouldYieldFocus(nome) && validator==true) {
+        if(validator==true)
+        if (!nome.getInputVerifier().shouldYieldFocus(nome)) {
             throw new ValidatorException("Errore nella grafica!");
         }
         return nome;

@@ -90,10 +90,8 @@ public class BeanGuiServizio {
      * @throws ValidatorException
      */
     public JTextField getDescrizione() throws ValidatorException {
-     if (!descrizione.getInputVerifier().shouldYieldFocus(descrizione) && validator==true) {
-            throw new ValidatorException("Errore nella grafica!");
-        }
-        if (!descrizione.getInputVerifier().shouldYieldFocus(descrizione) && validator==true) {
+        if(validator==true)
+        if (!descrizione.getInputVerifier().shouldYieldFocus(descrizione)) {
             throw new ValidatorException("Errore nella grafica!");
         }
         return descrizione;
@@ -106,7 +104,7 @@ public class BeanGuiServizio {
     public void setDescrizione(JTextField pdescrizione) {
         this.descrizione = pdescrizione;
         descrizione.setInputVerifier(new NotEmptyValidator((JPanel) grafica,descrizione, "Il campo non può essere vuoto."));
-        descrizione.setInputVerifier(new NotAlphabeticValidator((JPanel) grafica,descrizione, "La stringa inserita deve essere alfabetica."));
+     //   descrizione.setInputVerifier(new NotAlphabeticValidator((JPanel) grafica,descrizione, "La stringa inserita deve essere alfabetica."));
     }
 
     /**
@@ -147,10 +145,8 @@ public class BeanGuiServizio {
      * @throws ValidatorException
      */
     public JTextField getIva() throws ValidatorException {
+        if(validator==true)
         if (iva.getInputVerifier().shouldYieldFocus(iva) && validator==true) {
-            throw new ValidatorException("Errore nella grafica!");
-        }
-        if (!iva.getInputVerifier().shouldYieldFocus(iva) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
         }
         return iva;
@@ -163,7 +159,7 @@ public class BeanGuiServizio {
     public void setIva(JTextField piva) {
         this.iva = piva;
         iva.setInputVerifier(new NotEmptyValidator((JPanel) grafica,iva, "Il campo non può essere vuoto."));
-        iva.setInputVerifier(new NotNumericValidator((JPanel) grafica,iva, "Il campo deve essere numerico."));
+    //    iva.setInputVerifier(new NotNumericValidator((JPanel) grafica,iva, "Il campo deve essere numerico."));
     }
 
     /**
@@ -188,9 +184,7 @@ public class BeanGuiServizio {
      * @throws ValidatorException
      */
     public JTextField getPrezzo() throws ValidatorException {
-       if (!prezzo.getInputVerifier().shouldYieldFocus(prezzo) && validator==true) {
-            throw new ValidatorException("Errore nella grafica!");
-        }
+      if(validator==true)
         if (!prezzo.getInputVerifier().shouldYieldFocus(prezzo) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
         }
@@ -204,7 +198,7 @@ public class BeanGuiServizio {
     public void setPrezzo(JTextField pprezzo) {
         this.prezzo = pprezzo;
         prezzo.setInputVerifier(new NotEmptyValidator((JPanel) grafica,prezzo, "Il campo non può essere vuoto."));
-        prezzo.setInputVerifier(new NotNumericValidator((JPanel) grafica,prezzo, "Il campo deve essere numerico."));
+      //  prezzo.setInputVerifier(new NotNumericValidator((JPanel) grafica,prezzo, "Il campo deve essere numerico."));
     }
 
     /**
@@ -213,9 +207,7 @@ public class BeanGuiServizio {
      * @throws ValidatorException
      */
     public JTextField getQuantita() throws ValidatorException {
-        if (!quantita.getInputVerifier().shouldYieldFocus(quantita) && validator==true) {
-            throw new ValidatorException("Errore nella grafica!");
-        }
+        if(validator==true)
         if (!quantita.getInputVerifier().shouldYieldFocus(quantita) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
         }
@@ -229,7 +221,7 @@ public class BeanGuiServizio {
     public void setQuantita(JTextField pquantita) {
         this.quantita = pquantita;
         quantita.setInputVerifier(new NotEmptyValidator((JPanel) grafica,quantita, "Il campo non può essere vuoto."));
-        quantita.setInputVerifier(new NotMinNumberValidator((JPanel) grafica,quantita, "Il campo non può essere minore di 1.", 1));
+  //      quantita.setInputVerifier(new NotMinNumberValidator((JPanel) grafica,quantita, "Il campo non può essere minore di 1.", 1));
     }
 
     /**
@@ -238,13 +230,11 @@ public class BeanGuiServizio {
      * @throws ValidatorException
      */
     public JTextField getTipo() throws ValidatorException {
+        if(validator==true)
         if (!tipo.getInputVerifier().shouldYieldFocus(tipo) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
         }
-        if (!tipo.getInputVerifier().shouldYieldFocus(tipo) && validator==true) {
-            throw new ValidatorException("Errore nella grafica!");
-        }
-        return tipo;
+       return tipo;
     }
 
     /**
@@ -254,6 +244,6 @@ public class BeanGuiServizio {
     public void setTipo(JTextField ptipo) {
         this.tipo = ptipo;
         tipo.setInputVerifier(new NotEmptyValidator((JPanel) grafica,tipo, "Il campo non può essere vuoto."));
-        tipo.setInputVerifier(new NotAlphabeticValidator((JPanel) grafica,tipo, "La stringa inserita deve essere alfabetica."));
+  //      tipo.setInputVerifier(new NotAlphabeticValidator((JPanel) grafica,tipo, "La stringa inserita deve essere alfabetica."));
     }
 }

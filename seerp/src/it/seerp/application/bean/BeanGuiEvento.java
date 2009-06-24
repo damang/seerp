@@ -27,6 +27,16 @@ public class BeanGuiEvento {
     private Object grafica;
     private NotEmptyValidator val;
     private int idAgenda;
+    private boolean validator=true;
+
+    public boolean isValidator() {
+        return validator;
+    }
+
+    public void setValidator(boolean validator) {
+        this.validator = validator;
+    }
+    
 
     /**
      * Costruttore a cui viene passato un componente grafico necessario alla
@@ -102,6 +112,7 @@ public class BeanGuiEvento {
      * @throws ValidatorException
      */
     public JTextField getIdEvento() throws ValidatorException {
+        if(validator==true)
         if (!idEvento.getInputVerifier().shouldYieldFocus(idEvento)) {
             throw new ValidatorException("Errore nella grafica!");
         }
@@ -123,6 +134,7 @@ public class BeanGuiEvento {
      * @throws ValidatorException
      */
     public JTextField getLuogo() throws ValidatorException {
+        if(validator==true)
         if (!luogo.getInputVerifier().shouldYieldFocus(luogo)) {
             throw new ValidatorException("Errore nella grafica!");
         }
@@ -144,6 +156,7 @@ public class BeanGuiEvento {
      * @throws ValidatorException
      */
     public JTextField getNome() throws ValidatorException {
+        if(validator==true)
         if (!nome.getInputVerifier().shouldYieldFocus(nome)) {
             throw new ValidatorException("Errore nella grafica!");
         }
@@ -181,6 +194,7 @@ public class BeanGuiEvento {
      * @throws ValidatorException
      */
     public JTextField getOra() throws ValidatorException {
+        if(validator==true)
         if (!ora.getInputVerifier().shouldYieldFocus(ora)) {
             throw new ValidatorException("Errore nella grafica!");
         }
@@ -202,6 +216,7 @@ public class BeanGuiEvento {
      * @throws ValidatorException
      */
     public JComboBox getTema() throws ValidatorException {
+        if(validator==true)
         if (!tema.getInputVerifier().shouldYieldFocus(tema)) {
             throw new ValidatorException("Errore nella grafica!");
         }
