@@ -3,20 +3,17 @@ package it.seerp.application.applicazione;
 import it.seerp.application.Exception.CancellazioneFallita;
 import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.bean.BeanGuiAmministratore;
-import it.seerp.application.bean.BeanGuiCliente;
 import it.seerp.application.bean.BeanGuiDipendente;
 import it.seerp.application.bean.BeanGuiFornitore;
 import it.seerp.application.bean.BeanGuiResponsabile;
 import it.seerp.application.conversioni.Conversione;
 import it.seerp.storage.Exception.DatiDuplicatiEx;
 import it.seerp.storage.Operazioni.OpAmministratore;
-import it.seerp.storage.Operazioni.OpCliente;
 import it.seerp.storage.Operazioni.OpDipendente;
 import it.seerp.storage.Operazioni.OpFornitore;
 import it.seerp.storage.Operazioni.OpPersonale;
 import it.seerp.storage.Operazioni.OpResponsabile;
 import it.seerp.storage.ejb.Amministratore;
-import it.seerp.storage.ejb.Cliente;
 import it.seerp.storage.ejb.Dipendente;
 import it.seerp.storage.ejb.Fornitore;
 import it.seerp.storage.ejb.Personale;
@@ -43,7 +40,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * Metodo che peremette di inserire un nuovo Dipendente
      * @param user il dipendente da inserire
      */
-    public void inserisciDipendente(BeanGuiDipendente user) {
+    public void inserisciDipendente(BeanGuiDipendente user) throws SQLException {
         // super.inserisci(user);
         try {
             OpDipendente a = new OpDipendente();
@@ -51,10 +48,6 @@ public class AppGestionePersonale extends AppGestioneUtente {
             a.inserisci(dip);
         } catch (DatiDuplicatiEx e) {
             JOptionPane.showMessageDialog(null, "Dati duplicati");
-        } catch (SQLException se) {
-
-
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
         } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
@@ -65,7 +58,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * Metodo che permette di inserire un nuovo Responsabile
      * @param user
      */
-    public void inserisciResponsabile(BeanGuiResponsabile user) {
+    public void inserisciResponsabile(BeanGuiResponsabile user) throws SQLException {
         //super.inserisci(user);
         try {
             OpResponsabile a = new OpResponsabile();
@@ -73,8 +66,6 @@ public class AppGestionePersonale extends AppGestioneUtente {
             a.inserisci(dip);
         } catch (DatiDuplicatiEx e) {
             JOptionPane.showMessageDialog(null, "Dati duplicati");
-        } catch (SQLException se) {
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
         } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
@@ -86,7 +77,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * @param user rappresenta il Dipendente da modificare
      * @return il Dipendente modificato
      */
-    public BeanGuiDipendente modificaDipendente(int id, BeanGuiDipendente user) {
+    public BeanGuiDipendente modificaDipendente(int id, BeanGuiDipendente user) throws SQLException {
         //super.modifica(user);
         try {
             OpPersonale a = new OpPersonale();
@@ -94,13 +85,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
             dip.setIdUtente(id);
             a.modifica(dip);
             this.visualizzaDatiDipendente(id, user);
-
-
-        } catch (SQLException se) {
-
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
         } catch (ValidatorException e) {
-
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
         return user;
@@ -111,18 +96,14 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * @param user rappresenta l'Amministratore da modificare
      * @return l'Amministratore modificato
      */
-    public BeanGuiAmministratore modificaAmministratore(BeanGuiAmministratore user) {
+    public BeanGuiAmministratore modificaAmministratore(BeanGuiAmministratore user) throws SQLException {
         //  super.modifica(user);
         try {
             OpAmministratore a = new OpAmministratore();
             Amministratore amm = Conversione.conversioneAmministratore(user);
             amm = (Amministratore) a.modifica(amm);
             user = Conversione.conversioneAmministratore(amm, user);
-        } catch (SQLException se) {
-
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
         } catch (ValidatorException e) {
-
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
         return user;
@@ -133,7 +114,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * @param user il Responsabile da modificare
      * @return il Responsabile modificato
      */
-    public BeanGuiResponsabile modificaResponsabile(int id, BeanGuiResponsabile user) {
+    public BeanGuiResponsabile modificaResponsabile(int id, BeanGuiResponsabile user) throws SQLException {
         // super.modifica(user);
         try {
             OpPersonale a = new OpPersonale();
@@ -141,12 +122,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
             res.setIdUtente(id);
             a.modifica(res);
             this.visualizzaDatiResponsabile(id, user);
-
-        } catch (SQLException se) {
-
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
         } catch (ValidatorException e) {
-
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
         return user;
@@ -162,14 +138,12 @@ public class AppGestionePersonale extends AppGestioneUtente {
             OpDipendente ope = new OpDipendente();
             list = ope.elencaDipendente();
         } catch (SQLException se) {
-
             JOptionPane.showMessageDialog(null, "Errore nel database!");
         }
         return list;
     }
 
     public ArrayList<Personale> visualizzaTabellaPersonaleRuolo(Ruolo r) throws SQLException {
-
         OpPersonale op = new OpPersonale();
         ArrayList<Personale> l = op.elencaPersonalePerRuolo(r);
         return l;
@@ -177,7 +151,6 @@ public class AppGestionePersonale extends AppGestioneUtente {
     }
 
     public ArrayList<Personale> visualizzaTabellaPersonale() throws SQLException {
-
         OpPersonale op = new OpPersonale();
         ArrayList<Personale> l = op.elencaPersonale();
         return l;
@@ -194,7 +167,6 @@ public class AppGestionePersonale extends AppGestioneUtente {
             OpResponsabile ope = new OpResponsabile();
             list = ope.elencaResponsabile();
         } catch (SQLException se) {
-
             JOptionPane.showMessageDialog(null, "Errore nel database!");
         }
         return list;
@@ -217,7 +189,6 @@ public class AppGestionePersonale extends AppGestioneUtente {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
         } catch (ValidatorException e) {
-
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
     }
@@ -232,7 +203,6 @@ public class AppGestionePersonale extends AppGestioneUtente {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
         } catch (ValidatorException e) {
-
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
     }
@@ -250,10 +220,8 @@ public class AppGestionePersonale extends AppGestioneUtente {
             Fornitore forn = Conversione.conversioneFornitore(beanGui);
             ope.elimina(forn);
         } catch (SQLException se) {
-
             JOptionPane.showMessageDialog(null, "Errore nel database!");
         } catch (ValidatorException e) {
-
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
     }
@@ -269,10 +237,8 @@ public class AppGestionePersonale extends AppGestioneUtente {
             Responsabile utente = ope.visualizzaResponsabile(user);
             beanGui = it.seerp.application.conversioni.Conversione.conversioneResponsabile(utente, beanGui);
         } catch (SQLException se) {
-
             JOptionPane.showMessageDialog(null, "Errore nel database!");
         } catch (ValidatorException e) {
-
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
     }

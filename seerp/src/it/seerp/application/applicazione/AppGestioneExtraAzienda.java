@@ -29,15 +29,12 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
      * Metodo che permette di inserire un nuovo Contatto
      * @param cont il Contatto che si vuole inserire
      */
-    public void inserisciContatto(BeanGuiContatto cont) {
+    public void inserisciContatto(BeanGuiContatto cont) throws SQLException {
         super.inserisci(cont);
         try {
             OpContatto a = new OpContatto();
             Contatto co = Conversione.conversioneContatto(cont);
             a.inserisci(co);
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
         } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
@@ -48,7 +45,7 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
      * Metodo che permette di inserire un nuovo Cliente
      * @param clien il Cliente che si vuole inserire
      */
-    public void inserisciCliente(BeanGuiCliente clien)throws SQLException {
+    public void inserisciCliente(BeanGuiCliente clien) throws SQLException {
         //  super.inserisci(clien);
         try {
             OpCliente a = new OpCliente();
@@ -57,9 +54,6 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
 
         } catch (DatiDuplicatiEx e) {
             JOptionPane.showMessageDialog(null, "Dati duplicati");
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
         } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
@@ -108,7 +102,7 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
      * Metodo che permette di inserire un nuovo Fornitore
      * @param forn il Fornitore che si vuole inserire
      */
-    public void inserisciFornitore(BeanGuiFornitore forn) {
+    public void inserisciFornitore(BeanGuiFornitore forn) throws SQLException {
         //  super.inserisci(forn);
         try {
             OpFornitore a = new OpFornitore();
@@ -116,9 +110,6 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
             a.inserisci(fo);
         } catch (DatiDuplicatiEx e) {
             JOptionPane.showMessageDialog(null, "Dati duplicati");
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
         } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
@@ -130,16 +121,13 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
      * @param cont il Contatto che si deve modificare
      * @return il Contatto modificato
      */
-    public BeanGuiContatto modificaContatto(int id, BeanGuiContatto cont) {
+    public BeanGuiContatto modificaContatto(int id, BeanGuiContatto cont) throws SQLException {
 //        super.modifica(cont);
         try {
             OpContatto a = new OpContatto();
             Contatto co = Conversione.conversioneContatto(cont);
             co = a.modifica(co);
             cont = Conversione.conversioneContatto(co, cont);
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
         } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
@@ -152,7 +140,7 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
      * @param clien il cliente che si deve modificare
      * @return il cliente modificato
      */
-    public BeanGuiCliente modificaCliente(int id, BeanGuiCliente clien) {
+    public BeanGuiCliente modificaCliente(int id, BeanGuiCliente clien) throws SQLException {
         //   super.modifica(clien);
         try {
             OpExtraAzienda a = new OpExtraAzienda();
@@ -163,9 +151,6 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
             this.visualizzaDatiCliente(id, clien);
 
         // clien = Conversione.conversioneCliente(cl, clien);
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
         } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
@@ -178,16 +163,13 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
      * @param forn il Fornitore che si vuole modificare
      * @return il Fornitore modificato
      */
-    public BeanGuiFornitore modificaFornitore(int id, BeanGuiFornitore forn) {
-        //super.modifica(forn);
+    public BeanGuiFornitore modificaFornitore(int id, BeanGuiFornitore forn) throws SQLException {
         try {
             OpExtraAzienda a = new OpExtraAzienda();
             Fornitore fo = Conversione.conversioneFornitore(forn);
             fo.setIdUtente(id);
             a.modifica(fo);
             this.visualizzaDatiFornitore(id, forn);
-
-        //  forn = Conversione.conversioneFornitore(fo, forn);
         } catch (SQLException se) {
 
             JOptionPane.showMessageDialog(null, "Errore nel database!");

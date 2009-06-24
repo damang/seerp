@@ -80,14 +80,11 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio,Bea
      * nel caso in cui si immettano dati errati
      * @throws DatiDuplicati
      */
-    public void inserisci(BeanGuiServizio beanGui) throws DatiErrati, DatiDuplicati {
+    public void inserisci(BeanGuiServizio beanGui) throws DatiErrati, DatiDuplicati, SQLException {
         try {
             OpServizio ope = new OpServizio();
             Servizio serv = Conversione.conversioneServizio(beanGui);
             ope.inserimento(serv);
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
         } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
@@ -101,6 +98,7 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio,Bea
      * @param beanGui
      * @return Bean Gui del servizio da visualizzare
      */
+    @Override
     public BeanGuiServizio visualizza(int id, BeanGuiServizio beanGui, BeanGuiFornitore forni) {
         try {
             OpServizio ope = new OpServizio();
@@ -131,16 +129,14 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio,Bea
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si immettano dati errati durante la modifica
      */
-    public BeanGuiServizio modifica(int id,BeanGuiServizio beanGui) throws DatiErrati {
+    @Override
+    public BeanGuiServizio modifica(int id,BeanGuiServizio beanGui) throws DatiErrati, SQLException {
         try {
             OpServizio ope = new OpServizio();
             Servizio serv = Conversione.conversioneServizio(beanGui);
             serv.setIdServizio(id);
             serv = ope.modifica(serv);
           // this.visualizza(nome, beanGui)
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
         } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
