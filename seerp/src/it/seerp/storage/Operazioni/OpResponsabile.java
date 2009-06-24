@@ -53,20 +53,23 @@ public class OpResponsabile extends OpeUtente {
 
         // Define the resource list
         while (rs.next()) {
-
-            /*
-             * Integer idUtente1, String username2, String password3,
-            String città4, String provincia5, String telefono6, String cap7, String email8,
-            String note9, String tipo10, String cognome11, String nome12, String
-            codiceFiscale13, String ruolo14, Boolean v15
-             */
-            Responsabile responsabile = new Responsabile(rs.getInt(1), rs.getString(2),
-                    rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),
-                    rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
-                    rs.getString(11), rs.getString(12), rs.getString(13), new Ruolo(rs.getString(14)),
-                    rs.getBoolean(15));
-
-            list.add(responsabile);
+            Responsabile res = new Responsabile();
+            res.setIdUtente(rs.getInt(1));
+            res.setUsername(rs.getString(2));
+            res.setPassword(rs.getString(3));
+            res.setCitta(rs.getString(4));
+            res.setProvincia(rs.getString(5));
+            res.setTelefono(rs.getString(6));
+            res.setCap(rs.getString(7));
+            res.setEmail(rs.getString(8));
+            res.setNote(rs.getString(9));
+            res.setTipo(rs.getString(10));
+            res.setCognome(rs.getString(11));
+            res.setNome(rs.getString(12));
+            res.setCodiceFiscale(rs.getString(13));
+            res.setRuolo(new Ruolo(rs.getString(13)));
+            res.setVisible(rs.getBoolean(14));
+            list.add(res);
         }
         rs.close();
         stmt.close();
@@ -143,7 +146,7 @@ public class OpResponsabile extends OpeUtente {
     ConnectionPool.releaseConnection(co);
     }
 
-    /** Metodo per inserire un nuovo responsabile
+    /** Metodo per inserire un nuovo res
      * @param user
      * user dell'utente da inserire
      * @throws java.sql.SQLException
@@ -218,7 +221,7 @@ public class OpResponsabile extends OpeUtente {
     PreparedStatement stmtP = null;
     con = (Connection) ConnectionPool.getConnection();
     Statement stmt1 = con.createStatement();
-    String sqlTest = "SELECT * FROM utente,personale,responsabile WHERE codiceFiscale='" + user.getCodiceFiscale() + "'" +
+    String sqlTest = "SELECT * FROM utente,personale,res WHERE codiceFiscale='" + user.getCodiceFiscale() + "'" +
     "and idPersonale=idUtente and idPersonale=idResponsabile ";
     ResultSet rs = stmt1.executeQuery(sqlTest);
 
