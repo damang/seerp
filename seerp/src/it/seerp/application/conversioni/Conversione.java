@@ -938,18 +938,7 @@ public class Conversione {
 
     }
 
-    private static Agenda conversioneAgenda(BeanGuiAgenda agenda) throws ValidatorException {
-        ArrayList<Evento> a = new ArrayList<Evento>();
-        for (BeanGuiEvento b : agenda.getArrEventi()) {
-            Evento e = conversioneEvento(b);
-            a.add(e);
-        }
-        Agenda agenda1 = new Agenda();
-        agenda1.setIdAgenda(Integer.parseInt(agenda.getIdAgenda().getText()));
-        agenda1.setUtente(conversioneUtente(agenda.getUtente()));
-        agenda1.setListEventi(a);
-        return agenda1;
-    }
+   
 
     /**
      *
@@ -974,14 +963,6 @@ public class Conversione {
         return azienda1;
     }
 
-    private static BeanGuiAgenda conversioneAgenda(Agenda agenda, BeanGuiAgenda beanGuiAgenda) {
-        JTextField c = new JTextField();
-        c.setText(agenda.getIdAgenda().toString());
-        beanGuiAgenda.setIdAgenda(c);
-        beanGuiAgenda.setUtente(conversioneUtente(new Utente(), beanGuiAgenda.getUtente()));
-        beanGuiAgenda.setArrEventi(beanGuiAgenda.getArrEventi());
-        return beanGuiAgenda;
-    }
 
     private static ServizioAssociato conversioneAssociato(BeanGuiServizioAssociato c) throws ValidatorException {
         ServizioAssociato sa = new ServizioAssociato();
