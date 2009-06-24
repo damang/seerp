@@ -11,15 +11,81 @@
 
 package it.seerp.Gui.Gestione.Init;
 
+import it.seerp.application.bean.BeanGuiAmministratore;
+
 /**
  *
  * @author Luisa
  */
 public class GestioneInit extends javax.swing.JPanel {
 
+    BeanGuiAmministratore amm;
+
+
     /** Creates new form GestioneInit */
     public GestioneInit() {
         initComponents();
+    }
+
+        /**
+     *
+     * @param flag
+     */
+    public void editabile(boolean flag) {
+    nm.setEditable(flag);
+    nm1.setEditable(flag);
+    nm2.setEditable(flag);
+    nm3.setEditable(flag);
+    nm4.setEditable(flag);
+    nm5.setEditable(flag);
+    nm6.setEditable(flag);
+    nm7.setEditable(flag);
+    nm8.setEditable(flag);
+    nm9.setEditable(flag);
+    nm10.setEditable(flag);
+    nm11.setEditable(flag);
+    jTextArea1.setEditable(flag);
+    }
+
+    /**
+     *
+     * @param s
+     */
+    public void inizializza(String s) {
+        nm.setText(s);
+        nm1.setText(s);
+        nm2.setText(s);
+        nm3.setText(s);
+        nm4.setText(s);
+        nm5.setText(s);
+        nm6.setText(s);
+        nm7.setText(s);
+        nm8.setText(s);
+        nm9.setText(s);
+        nm10.setText(s);
+        nm11.setText(s);
+        jTextArea1.setText(s);
+
+    }
+
+    /**
+     *
+     */
+    public void legameBeans() {
+
+        amm.setNome(nm);
+        amm.setCognome(nm1);
+        amm.setTxtCitta(nm2);
+        amm.setTxtProvincia(nm3);
+        amm.setCap(nm4);
+        amm.setCodiceFiscale(nm5);
+        amm.setTipo(nm6);
+        amm.setRuolo(nm7);
+        amm.setTxtEmail(nm8);
+        amm.setTxtTelefono(nm9);
+        amm.setTxtUsername(nm10);
+        amm.setTxtPassword(nm11);
+        amm.setTxtNote(jTextArea1);
     }
 
     /** This method is called from within the constructor to
@@ -56,8 +122,9 @@ public class GestioneInit extends javax.swing.JPanel {
         nm10 = new javax.swing.JTextField();
         password = new javax.swing.JPanel();
         nm11 = new javax.swing.JTextField();
-        note = new javax.swing.JPanel();
-        nm12 = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(255, 204, 204));
 
@@ -80,7 +147,7 @@ public class GestioneInit extends javax.swing.JPanel {
             nomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(nomeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(nm, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                .addComponent(nm, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
                 .addContainerGap())
         );
         nomeLayout.setVerticalGroup(
@@ -107,7 +174,7 @@ public class GestioneInit extends javax.swing.JPanel {
             CognomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CognomeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(nm1, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                .addComponent(nm1, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                 .addContainerGap())
         );
         CognomeLayout.setVerticalGroup(
@@ -134,7 +201,7 @@ public class GestioneInit extends javax.swing.JPanel {
             cittaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cittaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(nm2, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                .addComponent(nm2, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                 .addContainerGap())
         );
         cittaLayout.setVerticalGroup(
@@ -161,7 +228,7 @@ public class GestioneInit extends javax.swing.JPanel {
             provinciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, provinciaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(nm3, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                .addComponent(nm3, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
                 .addContainerGap())
         );
         provinciaLayout.setVerticalGroup(
@@ -188,7 +255,7 @@ public class GestioneInit extends javax.swing.JPanel {
             capLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, capLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(nm4, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                .addComponent(nm4, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                 .addContainerGap())
         );
         capLayout.setVerticalGroup(
@@ -215,7 +282,7 @@ public class GestioneInit extends javax.swing.JPanel {
             cfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cfLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(nm5, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                .addComponent(nm5, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                 .addContainerGap())
         );
         cfLayout.setVerticalGroup(
@@ -242,7 +309,7 @@ public class GestioneInit extends javax.swing.JPanel {
             tipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tipoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(nm6, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                .addComponent(nm6, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
                 .addContainerGap())
         );
         tipoLayout.setVerticalGroup(
@@ -269,7 +336,7 @@ public class GestioneInit extends javax.swing.JPanel {
             ruoloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ruoloLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(nm7, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                .addComponent(nm7, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                 .addContainerGap())
         );
         ruoloLayout.setVerticalGroup(
@@ -296,7 +363,7 @@ public class GestioneInit extends javax.swing.JPanel {
             emailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, emailLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(nm8, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                .addComponent(nm8, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                 .addContainerGap())
         );
         emailLayout.setVerticalGroup(
@@ -323,7 +390,7 @@ public class GestioneInit extends javax.swing.JPanel {
             telefonoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, telefonoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(nm9, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                .addComponent(nm9, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                 .addContainerGap())
         );
         telefonoLayout.setVerticalGroup(
@@ -350,7 +417,7 @@ public class GestioneInit extends javax.swing.JPanel {
             usernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usernameLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(nm10, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                .addComponent(nm10, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
                 .addContainerGap())
         );
         usernameLayout.setVerticalGroup(
@@ -377,7 +444,7 @@ public class GestioneInit extends javax.swing.JPanel {
             passwordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, passwordLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(nm11, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                .addComponent(nm11, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                 .addContainerGap())
         );
         passwordLayout.setVerticalGroup(
@@ -387,30 +454,29 @@ public class GestioneInit extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        note.setBorder(javax.swing.BorderFactory.createTitledBorder("Note"));
-        note.setName("note"); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Note"));
+        jPanel2.setName("Note"); // NOI18N
 
-        nm12.setFocusCycleRoot(true);
-        nm12.setName("nm12"); // NOI18N
-        nm12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nm12ActionPerformed(evt);
-            }
-        });
+        jScrollPane1.setName("jScrollPane1"); // NOI18N
 
-        javax.swing.GroupLayout noteLayout = new javax.swing.GroupLayout(note);
-        note.setLayout(noteLayout);
-        noteLayout.setHorizontalGroup(
-            noteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, noteLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(nm12, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setName("jTextArea1"); // NOI18N
+        jScrollPane1.setViewportView(jTextArea1);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        noteLayout.setVerticalGroup(
-            noteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(noteLayout.createSequentialGroup()
-                .addComponent(nm12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -420,25 +486,29 @@ public class GestioneInit extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(note, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(username, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(provincia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tipo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(password, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ruolo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cap, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Cognome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(telefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(citta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(57, 57, 57))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(369, 369, 369))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(username, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(nome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(provincia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(password, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ruolo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cap, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Cognome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(telefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(citta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(57, 57, 57))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -464,11 +534,10 @@ public class GestioneInit extends javax.swing.JPanel {
                     .addComponent(telefono, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(password, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(note, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(198, 198, 198))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(167, 167, 167))
         );
 
-        nome.getAccessibleContext().setAccessibleName("Nome");
         nome.getAccessibleContext().setAccessibleParent(nome);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -485,7 +554,7 @@ public class GestioneInit extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(494, Short.MAX_VALUE))
+                .addContainerGap(445, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -537,10 +606,6 @@ public class GestioneInit extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_nm11ActionPerformed
 
-    private void nm12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nm12ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nm12ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Cognome;
@@ -549,11 +614,13 @@ public class GestioneInit extends javax.swing.JPanel {
     private javax.swing.JPanel citta;
     private javax.swing.JPanel email;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField nm;
     private javax.swing.JTextField nm1;
     private javax.swing.JTextField nm10;
     private javax.swing.JTextField nm11;
-    private javax.swing.JTextField nm12;
     private javax.swing.JTextField nm2;
     private javax.swing.JTextField nm3;
     private javax.swing.JTextField nm4;
@@ -563,7 +630,6 @@ public class GestioneInit extends javax.swing.JPanel {
     private javax.swing.JTextField nm8;
     private javax.swing.JTextField nm9;
     private javax.swing.JPanel nome;
-    private javax.swing.JPanel note;
     private javax.swing.JPanel password;
     private javax.swing.JPanel provincia;
     private javax.swing.JPanel ruolo;
