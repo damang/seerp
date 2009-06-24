@@ -6,6 +6,7 @@ import it.seerp.application.validation.NotEmptyValidator;
 import it.seerp.application.validation.NotMinNumberValidator;
 import it.seerp.application.validation.NotNumericValidator;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -34,6 +35,12 @@ public class BeanGuiServizio {
      */
     public BeanGuiServizio(JPanel c) {
         this.grafica = c;
+    }
+    public BeanGuiServizio(JFrame c) {
+        this.grafica = c;
+    }
+    public BeanGuiServizio() {
+        
     }
 
     /**

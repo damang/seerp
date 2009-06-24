@@ -292,7 +292,7 @@ public class datiEvento extends javax.swing.JDialog {
         be.setIdAgenda(pannel.getIdAgenda());
     }
     private void legameBean() {
-        be= new BeanGuiEvento();
+        be= new BeanGuiEvento(this);
         be.setData(data);
         be.setIdEvento(txt_id);
         be.setLuogo(txt_luogo);

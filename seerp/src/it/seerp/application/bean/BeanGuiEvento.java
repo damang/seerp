@@ -4,6 +4,7 @@ import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.validation.NotEmptyValidator;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -34,6 +35,12 @@ public class BeanGuiEvento {
      */
     public BeanGuiEvento(JPanel c) {
         grafica = c;
+    }
+     public BeanGuiEvento(JDialog c) {
+        grafica = c;
+    }
+     public BeanGuiEvento() {
+
     }
 
     /**

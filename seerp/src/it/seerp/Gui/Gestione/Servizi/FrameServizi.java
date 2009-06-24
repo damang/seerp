@@ -22,7 +22,7 @@ public class FrameServizi extends javax.swing.JFrame {
     public FrameServizi() {
         initComponents();
         servizio = new BeanGuiServizioAssociato();
-        ser = new BeanGuiServizio();
+        ser = new BeanGuiServizio(this);
         legameBean();
         editabile(true);
         inizializza("");

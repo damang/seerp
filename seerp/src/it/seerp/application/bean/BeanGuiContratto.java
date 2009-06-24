@@ -36,6 +36,9 @@ public class BeanGuiContratto {
     public BeanGuiContratto(JPanel c) {
         grafica = c;
     }
+     public BeanGuiContratto() {
+        
+    }
 
     /**
      *  metodo che restituisce la lista dei pagamenti relativi ad un Contratto
