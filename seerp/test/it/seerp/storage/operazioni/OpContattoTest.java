@@ -20,9 +20,9 @@ import static org.junit.Assert.*;
  */
 public class OpContattoTest extends TestCase{
 
-    private Contatto c;
+    private Contatto co;
     private Boolean v;
-    private Integer id = 0;
+    private Integer id = 1;
     private ArrayList<Contatto> con;
 
      public OpContattoTest(String name) {
@@ -40,13 +40,13 @@ public class OpContattoTest extends TestCase{
     @Before
     public void setUp() {
         Integer f = 4;
-        c = new Contatto (id, "marros", "123456", "Salerno", "ruolo","sa", "089345678", "84100", "rossi@email.it", "ruolo", "note", v , "Rossi", "Mario", "x y z.srl", "1234567890C", "089232323", 4);
+        co = new Contatto (id, "marros", "123456", "Salerno", "ruolo","sa", "089345678", "84100", "rossi@email.it", "ruolo", "note", v , "Rossi", "Mario", "x y z.srl", "1234567890C", "089232323", 4);
 
     }
 
     @After
     public void tearDown() {
-        c = null;
+        co = null;
         System.gc();
     }
 
@@ -70,96 +70,41 @@ public class OpContattoTest extends TestCase{
         }
     }
 
-    /**
-     * Test of ricercaContatto method, of class OpContatto.
-     */
-  /*  @Test
-    public void testRicercaContatto() throws Exception {
-        System.out.println("ricercaContatto");
-        Integer idd = 23;
-        String user = "marros";
-        OpContatto instance = new OpContatto();
-        ArrayList<Contatto> expResult = null;
-        ArrayList<Contatto> result = instance.ricercaContatto(23, user);
-        assertEquals(expResult, result);
-       
-    }
-
-    /**
-     * Test of elimina method, of class OpContatto.
-     */
-    @Test
-    public void testElimina() throws Exception {
-        System.out.println("elimina");
-        
-        OpContatto instance = new OpContatto();
-        instance.elimina(c);
-       
-    }
-
+    
     /**
      * Test of inserisci method, of class OpContatto.
      */
     @Test
     public void testInserisci() throws Exception {
-        System.out.println("inserisci");
-        
-        OpContatto instance = new OpContatto();
+       System.out.println("inserisci");
 
-        assertEquals(id,c.getIdUtente());
-        assertEquals("marros",c.getUsername());
-        assertEquals("123456",c.getPassword());
-        assertEquals("Salerno",c.getCitta());
-        assertEquals("ruolo",c.getRuolo());
-        assertEquals("sa", c.getProvincia());
-        assertEquals("089345678",c.getTelefono());
-        assertEquals("84100",c.getCap());
-        assertEquals("rossi@email.it",c.getEmail());
-        assertEquals("ruolo",c.getRuolo());
-        assertEquals("note",c.getNote());
-        assertEquals(v, c.getVisible());
-        assertEquals("Rossi",c.getCognome());
-        assertEquals("Mario",c.getNome());
-        assertEquals("x y z.srl",c.getRagioneSociale());
-        assertEquals("1234567890C",c.getPIva());
-        assertEquals("089232323",c.getFax());
+        OpContatto instance = new OpContatto();
+        Integer id1= new Integer(0);
+        Integer f = new Integer(4);
+        Contatto c= new Contatto(id1,"mardet","200282", "Salerno","contatto","sa", "089330271","84100","mardet@email.it","contatto","abcferd",v,"DeTommaso","Marialuna","B&B.srl","2343234323D","089232323", f);
         instance.inserisci(c);
-        
+        assertEquals("mardet",c.getUsername());
+        assertEquals("200282",c.getPassword());
+        assertEquals("Salerno",c.getCitta());
+        assertEquals("contatto",c.getRuolo());
+        assertEquals("sa", c.getProvincia());
+        assertEquals("089330271",c.getTelefono());
+        assertEquals("84100",c.getCap());
+        assertEquals("mardet@email.it",c.getEmail());
+        assertEquals("contatto",c.getRuolo());
+        assertEquals("abcferd",c.getNote());
+        assertEquals(v, c.getVisible());
+        assertEquals("DeTommaso",c.getCognome());
+        assertEquals("Marialuna",c.getNome());
+        assertEquals("B&B.srl",c.getRagioneSociale());
+        assertEquals("2343234323D",c.getPIva());
+        assertEquals("089232323",c.getFax());
+        assertEquals(f, c.getFeedback());
+
+
     }
 
-    /**
-     * Test of modifica method, of class OpContatto.
-     */
-    @Test
-    public void testModifica() throws Exception {
-        System.out.println("modifica");
-        Integer id2 = new Integer(0);
-        Contatto co2 = new Contatto(id2, "biagio", "123456", "Salerno", "ruolo","sa", "089345678", "84100", "bianchi@email.it", "ruolo", "note", v , "Bianchi", "Giovanni", "x y z.srl", "1134567890C", "089232323", 3);
-        OpContatto instance = new OpContatto();
-        Contatto expResult = null;
-
-        assertEquals(id2,co2.getIdUtente());
-        assertEquals("biagio",co2.getUsername());
-        assertEquals("123456",co2.getPassword());
-        assertEquals("Salerno",co2.getCitta());
-        assertEquals("ruolo",co2.getRuolo());
-        assertEquals("sa", co2.getProvincia());
-        assertEquals("089345678",co2.getTelefono());
-        assertEquals("84100",co2.getCap());
-        assertEquals("bianchi@email.it",co2.getEmail());
-        assertEquals("ruolo",co2.getRuolo());
-        assertEquals("note",co2.getNote());
-        assertEquals(v, co2.getVisible());
-        assertEquals("Bianchi",co2.getCognome());
-        assertEquals("Giovanni",co2.getNome());
-        assertEquals("x y z.srl",co2.getRagioneSociale());
-        assertEquals("1134567890C",co2.getPIva());
-        assertEquals("089232323",co2.getFax());
-        
-        Contatto result = instance.modifica(co2);
-        assertEquals(expResult, result);
-        
-    }
+    
 
     /**
      * Test of visualizzaDati method, of class OpContatto.
