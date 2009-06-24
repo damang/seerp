@@ -3,10 +3,12 @@ package it.seerp.application.applicazione;
 import it.seerp.application.Exception.DatiDuplicati;
 import it.seerp.application.Exception.DatiErrati;
 import it.seerp.application.Exception.ValidatorException;
+import it.seerp.application.bean.BeanGuiFornitore;
 import it.seerp.application.bean.BeanGuiServizio;
 import it.seerp.application.conversioni.Conversione;
 import it.seerp.application.interfacce.GestioneServizi;
 import it.seerp.storage.Operazioni.OpServizio;
+import it.seerp.storage.ejb.Fornitore;
 import it.seerp.storage.ejb.Servizio;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,7 +18,7 @@ import javax.swing.JOptionPane;
  * Classe del livello application riguardante la Gestione dei Servizi
  * @author Tommaso Cattolico
  */
-public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio> {
+public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio,BeanGuiFornitore> {
 
     /**
      * Metodo che permette di visualizzare l'elenco dei servizi
@@ -27,11 +29,11 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio> {
         try {
             OpServizio ope = new OpServizio();
             ArrayList<Servizio> list = ope.visualizzaElenco();
-            for (Servizio serv : list) {
+           /* for (Servizio serv : list) {
                 BeanGuiServizio servGui = new BeanGuiServizio();
                 servGui = Conversione.conversioneServizio(serv, servGui);
                 listGui.add(servGui);
-            }
+            }*/
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
@@ -56,11 +58,11 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio> {
         try {
             OpServizio ope = new OpServizio();
             ArrayList<Servizio> list = ope.ricerca();
-            for (Servizio serv : list) {
+         /*   for (Servizio serv : list) {
                 BeanGuiServizio servGui = new BeanGuiServizio();
                 servGui = Conversione.conversioneServizio(serv, servGui);
                 listGui.add(servGui);
-            }
+            }*/
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
@@ -99,14 +101,18 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio> {
      * @param beanGui
      * @return Bean Gui del servizio da visualizzare
      */
-    public BeanGuiServizio visualizza(int nome, BeanGuiServizio beanGui) {
+    public BeanGuiServizio visualizza(int id, BeanGuiServizio beanGui, BeanGuiFornitore forni) {
         try {
             OpServizio ope = new OpServizio();
-            Servizio serv = ope.visualizza(nome);
+            Servizio serv = ope.visualizza(id);
+            serv.setIdServizio(id);
+            
+            Fornitore forn=ope.visualizzaFornitore(serv.getIdServizio());
           
            // beanGui =
 
-                    Conversione.conversioneServizio(serv, beanGui);
+           Conversione.conversioneServizio(serv, beanGui);
+           Conversione.conversioneServiziFor(forn,forni);
             
         } catch (SQLException se) {
             se.printStackTrace();
