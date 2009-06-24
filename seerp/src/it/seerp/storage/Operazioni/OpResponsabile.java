@@ -277,7 +277,7 @@ public class OpResponsabile extends OpeUtente {
      * @throws SQLException
      */
     public Responsabile visualizzaResponsabile(Integer id) throws SQLException {
-        Responsabile responsabile = null;
+        Responsabile res = null;
         co = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -298,15 +298,26 @@ public class OpResponsabile extends OpeUtente {
             String telefono6, String cap7, String email8, String note9, String tipo10, String cognome11,
             String nome12, String codiceFiscale13, Ruolo ruolo14, Boolean v15
              */
-            responsabile = new Responsabile(rs.getInt(1), rs.getString(2), rs.getString(3),
-                    rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8),
-                    rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13),
-                    new Ruolo(rs.getString(14)), rs.getBoolean(15));
-
+            res = new Responsabile();
+            res.setIdUtente(rs.getInt(1));
+            res.setUsername(rs.getString(2));
+            res.setPassword(rs.getString(3));
+            res.setCitta(rs.getString(4));
+            res.setProvincia(rs.getString(5));
+            res.setTelefono(rs.getString(6));
+            res.setCap(rs.getString(7));
+            res.setEmail(rs.getString(8));
+            res.setNote(rs.getString(9));
+            res.setTipo(rs.getString(10));
+            res.setCognome(rs.getString(11));
+            res.setNome(rs.getString(12));
+            res.setCodiceFiscale(rs.getString(13));
+            res.setRuolo(new Ruolo(rs.getString(13)));
+            res.setVisible(rs.getBoolean(14));
         }
         rs.close();
         stmt.close();
         ConnectionPool.releaseConnection(co);
-        return responsabile;
+        return res;
     }
 }
