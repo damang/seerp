@@ -111,7 +111,7 @@ public class Conversione {
      * @throws Exception
      */
     public static BeanGuiContratto conversioneContratto(Contratto c, BeanGuiContratto gui) throws ValidatorException {
-        
+
         gui.getData().setText(c.getData().toString());
         gui.getDurata().setText(c.getDurata().toString());
         gui.getIdContratto().setText(c.getIdContratto().toString());
@@ -122,7 +122,7 @@ public class Conversione {
     }
 
     public static Evento conversioneEvento(EventInstance e) throws SQLException {
-        OpEvento o= new OpEvento();
+        OpEvento o = new OpEvento();
 
         return o.getEventoPerId(e.getEventoId());
     }
@@ -137,15 +137,15 @@ public class Conversione {
     public static Evento conversioneEvento(BeanGuiEvento pGui) throws ValidatorException {
         Evento evento = new Evento();
         evento.setLuogo(pGui.getLuogo().getText());
-        evento.setTema((String)pGui.getTema().getSelectedItem());
+        evento.setTema((String) pGui.getTema().getSelectedItem());
         evento.setNome(pGui.getNome().getText());
         evento.setNote(pGui.getNote().getText());
         GregorianCalendar data = new GregorianCalendar();
         data.setTimeInMillis(pGui.getData().getDate().getTime());
         evento.setData(data);
-        
+
         GregorianCalendar ora = new GregorianCalendar();
-        String t[]= pGui.getOra().getText().split(":");
+        String t[] = pGui.getOra().getText().split(":");
 
         ora.set(GregorianCalendar.HOUR_OF_DAY, Integer.parseInt(t[0]));
         ora.set(GregorianCalendar.MINUTE, Integer.parseInt(t[1]));
@@ -154,8 +154,7 @@ public class Conversione {
         evento.setOra(ora);
         try {
             evento.setIdEvento(Integer.parseInt(pGui.getIdEvento().getText()));
-        }
-        catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             evento.setIdEvento(-1);
         }
 
@@ -174,7 +173,7 @@ public class Conversione {
      */
     public static BeanGuiEvento conversioneEvento(Evento e, BeanGuiEvento gui) {
         gui.getData().setDate(e.getData().getTime());
-        gui.getIdEvento().setText(""+e.getIdEvento());
+        gui.getIdEvento().setText("" + e.getIdEvento());
         gui.getLuogo().setText(e.getLuogo());
         gui.getNome().setText(e.getNome());
         gui.getNote().setText(e.getNote());
@@ -222,6 +221,7 @@ public class Conversione {
      */
     public static BeanGuiServizio conversioneServizio(Servizio s, BeanGuiServizio gui) {
 
+        gui.getTipo().setText(s.getTipo());
         gui.getDescrizione().setText(s.getDescrizione());
         gui.getDisponibilita().setText(s.getDisponibilita().toString());
         gui.getQuantita().setText(s.getQuantita().toString());
@@ -307,7 +307,7 @@ public class Conversione {
         utente.getTxtPassword().setText(user.getPassword());
         utente.getTxtCitta().setText(user.getCitta());
         utente.getTxtEmail().setText(user.getEmail());
-
+        utente.getCap().setText(user.getCap());
         utente.getTxtProvincia().setText(user.getProvincia());
         utente.getTxtTelefono().setText(user.getTelefono());
 //        utente.getTxtNote().setText(user.getNote());
@@ -328,10 +328,11 @@ public class Conversione {
         utente.getTxtUsername2().setText(user.getUsername());
         conversionePersonale(user, utente);
 
-        
+
 
         return utente;
     }
+
     public static BeanGuiUtente conversioneAreaPersonaleExtra(ExtraAzienda user, BeanGuiExtraAzienda utente) {
 
         utente.getTxtUsername().setText(user.getUsername());
@@ -342,6 +343,7 @@ public class Conversione {
 
         return utente;
     }
+
     /**
      * Metodo che converte un Bean Gui Personale in un normale Bean Personale
      * @param bp
@@ -383,10 +385,10 @@ public class Conversione {
         Conversione.conversioneUtente(p, bp);
 
         bp.getCognome().setText(p.getCognome());
-      //  System.out.println("luisacognome" + p.getUsername());
+        System.out.println("luisacognome" + p.getCognome());
         bp.getNome().setText(p.getNome());
         bp.getCodiceFiscale().setText(p.getCodiceFiscale());
-        
+
         bp.getRuolo().setText(p.getRuolo().getNome());
 
         return bp;
@@ -488,6 +490,18 @@ public class Conversione {
 
     }
 
+    public static void conversioneServiziFor(Fornitore e, BeanGuiFornitore extra) {
+
+        extra.getRagioneSociale().setText(e.getRagioneSociale());
+        extra.getPIva().setText(e.getPIva());
+        extra.getTxtCitta().setText(e.getCitta());
+        extra.getTxtEmail().setText(e.getEmail());
+        extra.getTxtProvincia().setText(e.getProvincia());
+        extra.getTxtTelefono().setText(e.getTelefono());
+
+
+    }
+
     /**
      * Metodo che converte un Bean Responsabile in un Bean Gui Responsabile
      * @param e il Bean da convertire
@@ -495,7 +509,7 @@ public class Conversione {
      * @return il Bean Gui convertito
      */
     public static BeanGuiResponsabile conversioneResponsabile(Responsabile e, BeanGuiResponsabile br) {
-        conversioneUtente(e, br);
+        conversionePersonale(e, br);
 
         return br;
     }
@@ -528,7 +542,7 @@ public class Conversione {
         utente.setPassword(r.getTxtPassword().getText());
         utente.setCitta(r.getTxtCitta().getText());
         utente.setProvincia(r.getTxtProvincia().getText());
-         utente.setCap(r.getCap().getText());
+        utente.setCap(r.getCap().getText());
         utente.setTelefono(r.getTxtTelefono().getText());
         utente.setEmail(r.getTxtEmail().getText());
         utente.setNote(r.getTxtNote().getText());
@@ -955,7 +969,7 @@ public class Conversione {
         azienda1.setPIVA(azienda.getPIVA().getText());
         azienda1.setRagioneSociale(azienda.getRagioneSociale().getText());
         azienda1.setTelefono(azienda.getTelefono().getText());
-        
+
         //    azienda1.setIdAzienda(Integer.parseInt(azienda.getIdAzienda().getText()));
         //azienda1.setNote(azienda.getNote().getText());
         //azienda1.setAmministratore(conversioneAmministratore(azienda.getAmministratore()));
