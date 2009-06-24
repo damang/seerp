@@ -21,7 +21,7 @@ public class ConfigurazioneUtente {
         /**
          *
          */
-        AZIENDA,
+        EXTRAAZIENDA,
         /**
          *
          */
@@ -38,6 +38,10 @@ public class ConfigurazioneUtente {
          *
          */
         DIPENDENTE,
+        /**
+         *
+         */
+        PERSONALE,
     };
 
     /**
@@ -65,19 +69,24 @@ public class ConfigurazioneUtente {
      * @param con
      * @return
      */
-    public static int valueOf(TIPO_UTENTE_CONST con) {
+    public static String valueOf(TIPO_UTENTE_CONST con) {
 
         if (con.equals(TIPO_UTENTE_CONST.CLIENTE)) {
-            return 0;
+            return "cliente";
         } else if (con.equals(TIPO_UTENTE_CONST.RESPONSABILE)) {
-            return 1;
+            return "responsabile";
         } else if (con.equals(TIPO_UTENTE_CONST.DIPENDENTE)) {
-            return 2;
+            return "dipendente";
         }
         if (con.equals(TIPO_UTENTE_CONST.FORNITORE)) {
-            return 3;
+            return "fornitore";
         }
-
-        return -1;
+            if (con.equals(TIPO_UTENTE_CONST.EXTRAAZIENDA)) {
+            return "extraazienda";
+        }
+            if (con.equals(TIPO_UTENTE_CONST.PERSONALE)) {
+            return "personale";
+        }
+        return null;
     }
 }

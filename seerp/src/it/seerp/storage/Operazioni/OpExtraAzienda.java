@@ -210,7 +210,7 @@ public class OpExtraAzienda extends OpeUtente {
             super.modifica(user);
 
             String sqle = "UPDATE extraazienda SET cognome=?,fax=?,nome=?,piva=?,ragioneSociale=?,codiceFiscale=?" +
-                    "WHERE idExtraAzienda=?";/*nome*/
+                    "WHERE idExtraAzienda=?";
 
 
             stmte = (PreparedStatement) connection.prepareStatement(sqle);

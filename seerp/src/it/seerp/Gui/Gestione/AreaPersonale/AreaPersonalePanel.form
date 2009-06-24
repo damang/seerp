@@ -144,7 +144,6 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="pwd">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Password"/>
                     <Property name="name" type="java.lang.String" value="pwd" noResource="true"/>
                   </Properties>
                 </Component>
@@ -229,10 +228,11 @@
                               <Component id="panel29" min="-2" max="-2" attributes="3"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jPanel6" max="32767" attributes="1"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Component id="jPanel18" max="32767" attributes="3"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jPanel14" min="-2" max="-2" attributes="3"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jPanel15" min="-2" max="-2" attributes="3"/>
+                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
@@ -241,8 +241,8 @@
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jPanel9" max="32767" attributes="3"/>
-                                  <Component id="jPanel16" alignment="0" max="32767" attributes="1"/>
+                                  <Component id="jPanel16" max="32767" attributes="1"/>
+                                  <Component id="jPanel13" max="32767" attributes="1"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -250,9 +250,9 @@
                                   <Component id="jPanel19" alignment="0" max="32767" attributes="3"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jPanel13" max="32767" attributes="1"/>
-                                  <Component id="jPanel18" alignment="1" max="32767" attributes="3"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jPanel9" max="32767" attributes="3"/>
+                                  <Component id="jPanel15" alignment="0" min="-2" max="-2" attributes="3"/>
                               </Group>
                           </Group>
                       </Group>
@@ -264,29 +264,33 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jPanel6" max="32767" attributes="1"/>
-                          <Component id="jPanel15" alignment="0" max="32767" attributes="3"/>
-                          <Component id="jPanel14" alignment="0" max="32767" attributes="3"/>
-                          <Component id="panel29" alignment="0" max="32767" attributes="1"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jPanel6" max="32767" attributes="1"/>
+                              <Component id="panel29" alignment="0" max="32767" attributes="1"/>
+                          </Group>
+                          <Component id="jPanel18" alignment="1" max="32767" attributes="1"/>
+                          <Component id="jPanel14" max="32767" attributes="3"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jPanel7" max="32767" attributes="1"/>
+                              <Component id="jPanel16" alignment="0" max="32767" attributes="1"/>
+                          </Group>
+                          <Component id="jPanel19" alignment="1" max="32767" attributes="1"/>
+                          <Component id="jPanel9" min="-2" max="-2" attributes="3"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jPanel7" max="32767" attributes="1"/>
-                              <Component id="jPanel16" alignment="0" max="32767" attributes="1"/>
+                              <Component id="jPanel8" max="32767" attributes="1"/>
+                              <Component id="jPanel17" max="32767" attributes="1"/>
                           </Group>
+                          <Component id="jPanel15" max="32767" attributes="3"/>
                           <Component id="jPanel13" min="-2" max="-2" attributes="1"/>
-                          <Component id="jPanel19" max="32767" attributes="1"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jPanel18" max="32767" attributes="1"/>
-                          <Component id="jPanel8" max="32767" attributes="1"/>
-                          <Component id="jPanel17" max="32767" attributes="1"/>
-                          <Component id="jPanel9" alignment="0" min="-2" max="-2" attributes="3"/>
-                      </Group>
-                      <EmptySpace pref="349" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="349" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -324,9 +328,11 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="tell">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Telefono"/>
                     <Property name="name" type="java.lang.String" value="tell" noResource="true"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tellActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -362,7 +368,6 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="citta">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Citt&#xe0;"/>
                     <Property name="name" type="java.lang.String" value="citta" noResource="true"/>
                   </Properties>
                 </Component>
@@ -400,7 +405,6 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="provincia">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Provincia"/>
                     <Property name="name" type="java.lang.String" value="provincia" noResource="true"/>
                   </Properties>
                 </Component>
@@ -420,7 +424,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="mail" pref="139" max="32767" attributes="0"/>
+                          <Component id="cog" pref="139" max="32767" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -428,17 +432,16 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="mail" min="-2" max="-2" attributes="0"/>
+                          <Component id="cog" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JTextField" name="mail">
+                <Component class="javax.swing.JTextField" name="cog">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="E-mail"/>
-                    <Property name="name" type="java.lang.String" value="mail" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="cog" noResource="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -447,7 +450,7 @@
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Nome"/>
+                    <TitledBorder title="Username"/>
                   </Border>
                 </Property>
                 <Property name="name" type="java.lang.String" value="panel29" noResource="true"/>
@@ -495,7 +498,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="mail1" pref="129" max="32767" attributes="0"/>
+                          <Component id="ragSoc" pref="129" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -503,16 +506,16 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="mail1" min="-2" max="-2" attributes="0"/>
+                          <Component id="ragSoc" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JTextField" name="mail1">
+                <Component class="javax.swing.JTextField" name="ragSoc">
                   <Properties>
-                    <Property name="name" type="java.lang.String" value="mail1" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="ragSoc" noResource="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -532,7 +535,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="provincia4" min="-2" pref="129" max="-2" attributes="0"/>
+                          <Component id="codFisc" min="-2" pref="129" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="1"/>
                       </Group>
                   </Group>
@@ -540,16 +543,16 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="provincia4" min="-2" max="-2" attributes="0"/>
+                          <Component id="codFisc" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JTextField" name="provincia4">
+                <Component class="javax.swing.JTextField" name="codFisc">
                   <Properties>
-                    <Property name="name" type="java.lang.String" value="provincia4" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="codFisc" noResource="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -569,7 +572,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="provincia5" min="-2" pref="129" max="-2" attributes="0"/>
+                          <Component id="ruolo" min="-2" pref="129" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="1"/>
                       </Group>
                   </Group>
@@ -577,16 +580,16 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="provincia5" min="-2" max="-2" attributes="0"/>
+                          <Component id="ruolo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JTextField" name="provincia5">
+                <Component class="javax.swing.JTextField" name="ruolo">
                   <Properties>
-                    <Property name="name" type="java.lang.String" value="provincia5" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="ruolo" noResource="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -622,7 +625,6 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="mail2">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="E-mail"/>
                     <Property name="name" type="java.lang.String" value="mail2" noResource="true"/>
                   </Properties>
                 </Component>
@@ -643,7 +645,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="mail3" pref="133" max="32767" attributes="0"/>
+                          <Component id="piva" pref="133" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -651,17 +653,16 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="mail3" min="-2" max="-2" attributes="0"/>
+                          <Component id="piva" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JTextField" name="mail3">
+                <Component class="javax.swing.JTextField" name="piva">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="E-mail"/>
-                    <Property name="name" type="java.lang.String" value="mail3" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="piva" noResource="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -670,9 +671,10 @@
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="CAP"/>
+                    <TitledBorder title="Nome"/>
                   </Border>
                 </Property>
+                <Property name="opaque" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="jPanel18" noResource="true"/>
               </Properties>
 
@@ -681,7 +683,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="citta1" min="-2" pref="121" max="-2" attributes="0"/>
+                          <Component id="nm" min="-2" pref="121" max="-2" attributes="0"/>
                           <EmptySpace pref="18" max="32767" attributes="1"/>
                       </Group>
                   </Group>
@@ -689,16 +691,16 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="citta1" min="-2" max="-2" attributes="0"/>
+                          <Component id="nm" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JTextField" name="citta1">
+                <Component class="javax.swing.JTextField" name="nm">
                   <Properties>
-                    <Property name="name" type="java.lang.String" value="citta1" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="nm" noResource="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
