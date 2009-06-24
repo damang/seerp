@@ -387,7 +387,7 @@ public class Conversione {
         bp.getNome().setText(p.getNome());
         bp.getCodiceFiscale().setText(p.getCodiceFiscale());
 
-        bp.getRuolo().setText(p.getRuolo().getNome());
+//        bp.getRuolo().setText(p.getRuolo().getNome());
 
         return bp;
     }
