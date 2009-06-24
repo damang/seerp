@@ -34,6 +34,18 @@ public class BeanGuiRuolo {
     }
 
     /**
+     * 
+     * @param nome
+     */
+    public BeanGuiRuolo(JTextField nome) {
+        this.nome = nome;
+    }
+
+     public BeanGuiRuolo() {
+
+    }
+
+    /**
      *
      * @return
      */

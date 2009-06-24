@@ -121,7 +121,7 @@ public class BeanGuiPersonale extends BeanGuiUtente {
      */
     public void setNome(JTextField pnome) {
         this.nome = pnome;
-        nome.setInputVerifier(new NotEmptyValidator((JPanel) grafica, nome, "Il campo non può essere vuoto."));
+       nome.setInputVerifier(new NotEmptyValidator((JPanel) grafica, nome, "Il campo non può essere vuoto."));
         nome.setInputVerifier(new NotAlphabeticValidator((JPanel) grafica, nome, "La stringa inserita deve essere alfabetica."));
     }
 }

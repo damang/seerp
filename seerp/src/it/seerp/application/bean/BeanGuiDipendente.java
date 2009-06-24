@@ -1,6 +1,7 @@
 package it.seerp.application.bean;
 
 import java.util.ArrayList;
+import javax.swing.JPanel;
 
 /**
  * Classe relativa ai componenti grafici della gestione del Dipendente
@@ -14,7 +15,8 @@ public class BeanGuiDipendente extends BeanGuiPersonale {
     /**
      * Costruttore vuoto per la classe Bean Gui Personale
      */
-    public BeanGuiDipendente() {
+    public BeanGuiDipendente(JPanel c) {
+        super(c);
     }
 
     /**
