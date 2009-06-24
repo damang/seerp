@@ -270,7 +270,7 @@ public class OpDipendente extends OpPersonale {
      */
     @Override
     public Dipendente visualizzaDati(Integer id) throws SQLException {
-        Dipendente dipendente = null;
+        Dipendente dip= null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
        conne = (Connection) ConnectionPool.getConnection();
@@ -285,18 +285,28 @@ public class OpDipendente extends OpPersonale {
 
         // Define the resource list
         while (rs.next()) {
-            dipendente = new Dipendente(rs.getInt(1), rs.getString(2),
-                    rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),
-                    rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
-                    rs.getString(11), rs.getString(12), rs.getString(13), new Ruolo(rs.getString(14)),
-                    rs.getBoolean(15));
-
+            dip = new Dipendente();
+            dip.setIdUtente(rs.getInt(1));
+            dip.setUsername(rs.getString(2));
+            dip.setPassword(rs.getString(3));
+            dip.setCitta(rs.getString(4));
+            dip.setProvincia(rs.getString(5));
+            dip.setTelefono(rs.getString(6));
+            dip.setCap(rs.getString(7));
+            dip.setEmail(rs.getString(8));
+            dip.setNote(rs.getString(9));
+            dip.setTipo(rs.getString(10));
+            dip.setCognome(rs.getString(11));
+            dip.setNome(rs.getString(12));
+            dip.setCodiceFiscale(rs.getString(13));
+            dip.setRuolo(new Ruolo(rs.getString(13)));
+            dip.setVisible(rs.getBoolean(14));
         }
         rs.close();
         stmt.close();
         ConnectionPool.releaseConnection(conne);
 
-        return dipendente;
+        return dip;
 
     }
 }
