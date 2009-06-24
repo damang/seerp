@@ -323,6 +323,7 @@ public class OpCliente extends OpExtraAzienda {
             cliente.setFax(rs.getString(16));
             cliente.setCodiceFiscale(rs.getString(17));
 
+
         }
         rs.close();
         stmt.close();

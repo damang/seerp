@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Connection;
 import it.seerp.storage.Exception.DatiErratiEx;
+import it.seerp.storage.ejb.Fornitore;
 
 /**
  * la classe storage che si occupa di interfacciarsi con il dbms e compiere operazioni sui servizi
@@ -19,13 +20,11 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
 
     private Connection conn;
 
-
     /**
      *
      * @throws java.sql.SQLException
      */
     public OpServizio() throws SQLException {
-        conn = (Connection) ConnectionPool.getConnection();
     }
 
     /**
@@ -35,12 +34,12 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
      * @throws DatiErratiEx eccezione lanciata se si inseriscono dati errati
      */
     public void inserimento(Servizio serv) throws SQLException, DatiErratiEx {
-      
+        conn = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
-        
+
         String query = "INSERT INTO servizio(descrizione,disponibilita,quantita,tipo,prezzo,iva,note) VALUES (?,?,?,?,?,?,?)";
         stmt = (PreparedStatement) conn.prepareStatement(query);
-      
+
         stmt.setString(1, serv.getDescrizione());
         stmt.setBoolean(2, serv.getDisponibilita());
         stmt.setInt(3, serv.getQuantita());
@@ -75,10 +74,10 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
      * @throws DatiErratiEx
      */
     public Servizio modifica(Servizio servizio) throws SQLException, DatiErratiEx {
-
+        conn = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
-        String query="UPDATE servizio" +
-                " SET descrizione=?, disponibilita=?, quantita=?, tipo=?, prezzo=?, iva=?,note=?WHERE idServizio=?" ;
+        String query = "UPDATE servizio" +
+                " SET descrizione=?, disponibilita=?, quantita=?, tipo=?, prezzo=?, iva=?,note=?WHERE idServizio=?";
         stmt = (PreparedStatement) conn.prepareStatement(query);
 
         stmt.setString(1, servizio.getDescrizione());
@@ -104,7 +103,7 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
      * @throws java.sql.SQLException
      */
     public ArrayList<Servizio> visualizzaElenco() throws SQLException {
-
+        conn = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
@@ -121,10 +120,10 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
             Servizio e = new Servizio(rs.getInt(1), rs.getString(2), rs.getBoolean(3),
                     rs.getInt(4), rs.getString(5), rs.getDouble(6),
                     rs.getInt(7), rs.getString(8));
-           
+
             lista.add(e);
         }
-        
+
         stmt.close();
         rs.close();
         ConnectionPool.releaseConnection(conn);
@@ -139,7 +138,7 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
      */
     @Override
     public Servizio visualizza(Integer id) throws SQLException {
-
+        conn = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
         Servizio serv = null;
@@ -156,12 +155,51 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
             serv = new Servizio(rs.getInt(1), rs.getString(2), rs.getBoolean(3),
                     rs.getInt(4), rs.getString(5), rs.getDouble(6),
                     rs.getInt(7), rs.getString(8));
-        
+
         }
         stmt.close();
         rs.close();
         ConnectionPool.releaseConnection(conn);
 
         return serv;
+    }
+
+    public Fornitore visualizzaFornitore(Integer id) throws SQLException {
+        conn = (Connection) ConnectionPool.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Fornitore fornitore = null;
+
+
+
+        String sql = "SELECT citta,prov,telefono,email,ragioneSociale,piva FROM utente,extraazienda,contratto,serviziassociati,servizio WHERE idUtente=idExtraAzienda and idExtraAzienda=extrazienda and idContratto=contratto and servizio=idServizio and idSErvizio=?";
+        // String sql = "SELECT * FROM extraazienda where idExtraAzienda= ? ";
+
+        stmt = (PreparedStatement) conn.prepareStatement(sql);
+        stmt.setInt(1, id);
+        // Execute the query
+        rs = stmt.executeQuery();
+
+
+        // Define the resource list
+        while (rs.next()) {
+            fornitore = new Fornitore();
+
+            fornitore.setCitta(rs.getString(1));
+            fornitore.setProvincia(rs.getString(2));
+            fornitore.setTelefono(rs.getString(3));
+
+            fornitore.setEmail(rs.getString(4));
+
+            fornitore.setRagioneSociale(rs.getString(5));
+            fornitore.setPIva(rs.getString(6));
+
+
+        }
+        stmt.close();
+        rs.close();
+        ConnectionPool.releaseConnection(conn);
+
+        return fornitore;
     }
 }
