@@ -119,7 +119,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
     }
 
     /**
-     *
+     * 
      */
     public void legameBeans() {
 
