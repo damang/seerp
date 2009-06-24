@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 package it.seerp.storage.Operazioni;
 
@@ -125,4 +122,26 @@ public class OpRuolo implements OpeEntity<Ruolo,String>{
         stmt.close();
         ConnectionPool.releaseConnection(conn);
     }
+
+    public ArrayList<Ruolo> GetListaRuoli(Ruolo ruol)throws SQLException{
+        conn = (Connection) ConnectionPool.getConnection();
+        ArrayList<Ruolo> r= new ArrayList<Ruolo>();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        String sql = "SELECT * FROM ruolo,permesso WHERE ruolo.nome like '?%'";
+        stmt = (PreparedStatement) conn.prepareStatement(sql);
+             // Execute the query
+        stmt.setString(1,ruol.getNome());
+        rs=stmt.executeQuery();
+        while (rs.next())
+        {
+        r.add(new Ruolo(rs.getString(1)));
+         rs.close();
+        stmt.close();
+        ConnectionPool.releaseConnection(conn);}
+        return r;
+        }
+
+
+    
 }
