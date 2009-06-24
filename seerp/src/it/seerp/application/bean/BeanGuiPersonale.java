@@ -55,10 +55,10 @@ public class BeanGuiPersonale extends BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getCodiceFiscale() throws ValidatorException {
-        if (!codiceFiscale.getInputVerifier().shouldYieldFocus(codiceFiscale)) {
+        if (!codiceFiscale.getInputVerifier().shouldYieldFocus(codiceFiscale) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
         }
-        if (!codiceFiscale.getInputVerifier().shouldYieldFocus(codiceFiscale)) {
+        if (!codiceFiscale.getInputVerifier().shouldYieldFocus(codiceFiscale) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
         }
         return codiceFiscale;
@@ -70,10 +70,10 @@ public class BeanGuiPersonale extends BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getCognome() throws ValidatorException {
-        if (!cognome.getInputVerifier().shouldYieldFocus(cognome)) {
+        if (!cognome.getInputVerifier().shouldYieldFocus(cognome) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
         }
-        if (!cognome.getInputVerifier().shouldYieldFocus(cognome)) {
+        if (!cognome.getInputVerifier().shouldYieldFocus(cognome) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
         }
         return cognome;
@@ -85,10 +85,10 @@ public class BeanGuiPersonale extends BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getNome() throws ValidatorException {
-        if (!nome.getInputVerifier().shouldYieldFocus(nome)) {
+        if (!nome.getInputVerifier().shouldYieldFocus(nome) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
         }
-        if (!nome.getInputVerifier().shouldYieldFocus(nome)) {
+        if (!nome.getInputVerifier().shouldYieldFocus(nome) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
         }
         return nome;

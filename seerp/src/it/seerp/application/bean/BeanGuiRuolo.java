@@ -24,6 +24,15 @@ public class BeanGuiRuolo {
     private HashMap<String, JCheckBox> perm_all;
     private JXTable tabRuo,  tabPers;
     private Object grafica;
+    protected boolean validator=true;
+
+    public boolean isValidator() {
+        return validator;
+    }
+
+    public void setValidator(boolean validator) {
+        this.validator = validator;
+    }
 
     /**
      *
@@ -50,7 +59,7 @@ public class BeanGuiRuolo {
      * @return
      */
     public JTextField getNome() {
-        if (!nome.getInputVerifier().shouldYieldFocus(nome)) {
+        if (!nome.getInputVerifier().shouldYieldFocus(nome) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
         }
         return nome;

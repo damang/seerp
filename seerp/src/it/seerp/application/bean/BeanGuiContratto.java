@@ -27,6 +27,15 @@ public class BeanGuiContratto {
     private ArrayList<BeanGuiServizioAssociato> listServizio;
     private ArrayList<BeanGuiFattura> listFatture;
     private Object grafica;
+    public boolean validator=true;
+
+    public boolean isValidator() {
+        return validator;
+    }
+
+    public void setValidator(boolean validator) {
+        this.validator = validator;
+    }
 
     /**
      * Costruttore a cui viene passato un componente grafico necessario alla
@@ -112,7 +121,7 @@ public class BeanGuiContratto {
      * @throws ValidatorException
      */
     public JTextField getDurata() throws ValidatorException {
-        if (!durata.getInputVerifier().shouldYieldFocus(durata)) {
+        if (!durata.getInputVerifier().shouldYieldFocus(durata) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
         }
         return durata;

@@ -81,9 +81,9 @@ public class BeanGuiEvento {
      * @throws ValidatorException
      */
     public JXDatePicker getData() throws ValidatorException {
-        if (!data.getInputVerifier().shouldYieldFocus(data)) {
+    /*   if (!data.getInputVerifier().shouldYieldFocus(data)) {
             throw new ValidatorException("Errore nella grafica!");
-        }
+        }*/
         return data;
     }
 
@@ -93,7 +93,7 @@ public class BeanGuiEvento {
      */
     public void setData(JXDatePicker pdata) {
         this.data = pdata;
-        data.setInputVerifier(new NotEmptyValidator((JPanel) grafica, new JTextField(data.getDate().toString()), "Il capo non può essere vuoto."));
+//        data.setInputVerifier(new NotEmptyValidator((JPanel) grafica, new JTextField(data.getDate().toString()), "Il capo non può essere vuoto."));
     }
 
     /**
