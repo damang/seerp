@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
  * @author LuNy
  */
 public class OpClienteTest extends TestCase{
-    private Cliente c;
+    private Cliente cl;
     private Boolean v;
     private Integer id = 0;
     private ArrayList<Cliente> con;
@@ -42,14 +42,14 @@ public class OpClienteTest extends TestCase{
     @Before
     @Override
    public void setUp() {
-        c = new Cliente(id, "marros", "123456", "Salerno", "ruolo","sa", "089345678", "84100", "rossi@email.it", "ruolo", "note", v , "Rossi", "Mario", "x y z.srl", "1234567890C", "089232323" );
+        cl = new Cliente(id, "marros", "123456", "Salerno", "ruolo","sa", "089345678", "84100", "rossi@email.it", "ruolo", "note", v , "Rossi", "Mario", "x y z.srl", "1234567890C", "089232323" );
 
     }
 
     @After
     @Override
     public void tearDown() {
-        c=null;
+        cl=null;
         System.gc();
     }
 
@@ -109,24 +109,26 @@ public class OpClienteTest extends TestCase{
         System.out.println("inserisci");
        
         OpCliente instance = new OpCliente();
-
-        assertEquals("marros",c.getUsername());
-        assertEquals("123456",c.getPassword());
-        assertEquals("Salerno",c.getCitta());
-        assertEquals("ruolo",c.getRuolo());
-        assertEquals("sa", c.getProvincia());
-        assertEquals("089345678",c.getTelefono());
-        assertEquals("84100",c.getCap());
-        assertEquals("rossi@email.it",c.getEmail());
-        assertEquals("ruolo",c.getRuolo());
-        assertEquals("note",c.getNote());
-        assertEquals(v, c.getVisible());
-        assertEquals("Rossi",c.getCognome());
-        assertEquals("Mario",c.getNome());
-        assertEquals("x y z.srl",c.getRagioneSociale());
-        assertEquals("1234567890C",c.getPIva());
-        assertEquals("089232323",c.getFax());
+        Integer id1= new Integer(0);
+        Cliente c= new Cliente(id1,"mardet","200282", "Salerno","cliente","sa", "089330271","84100","mardet@email.it","cliente","abcferd",v,"DeTommaso","Marialuna","B&B.srl","2343234323D","089232323");
         instance.inserisci(c);
+        assertEquals("mardet",c.getUsername());
+        assertEquals("200282",c.getPassword());
+        assertEquals("Salerno",c.getCitta());
+        assertEquals("cliente",c.getRuolo());
+        assertEquals("sa", c.getProvincia());
+        assertEquals("089330271",c.getTelefono());
+        assertEquals("84100",c.getCap());
+        assertEquals("mardet@email.it",c.getEmail());
+        assertEquals("cliente",c.getRuolo());
+        assertEquals("abcferd",c.getNote());
+        assertEquals(v, c.getVisible());
+        assertEquals("DeTommaso",c.getCognome());
+        assertEquals("Marialuna",c.getNome());
+        assertEquals("B&B.srl",c.getRagioneSociale());
+        assertEquals("2343234323D",c.getPIva());
+        assertEquals("089232323",c.getFax());
+        
         
     }
 
