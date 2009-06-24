@@ -237,7 +237,7 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
         GregorianCalendar gc = new GregorianCalendar();
         Date a = new Date(gc.getTimeInMillis());
         String query = "SELECT nome,tema,data FROM evento" +
-                " WHERE notifica=true and data<=?";
+                " WHERE notifica=true and data>=?";
         stmt= (PreparedStatement) connessione.prepareStatement(query);
         stmt.setString(1,a.toString());
         ResultSet rs = stmt.executeQuery(query);
