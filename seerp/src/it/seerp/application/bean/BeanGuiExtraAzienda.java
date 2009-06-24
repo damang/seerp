@@ -111,7 +111,7 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
     public void setCognome(JTextField ptxtCognome) {
         this.cognome = ptxtCognome;
         cognome.setInputVerifier(new NotEmptyValidator((JPanel) grafica, cognome, "Il campo non può essere vuoto."));
-        cognome.setInputVerifier(new NotAlphabeticValidator((JPanel) grafica, cognome, "La stringa inserita deve essere alfabetica."));
+     //   cognome.setInputVerifier(new NotAlphabeticValidator((JPanel) grafica, cognome, "La stringa inserita deve essere alfabetica."));
     }
 
     /**
@@ -121,7 +121,7 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
     public void setNome(JTextField ptxtNome) {
         this.nome = ptxtNome;
         nome.setInputVerifier(new NotEmptyValidator((JPanel) grafica, nome, "Il campo non può essere vuoto."));
-        nome.setInputVerifier(new NotAlphabeticValidator((JPanel) grafica, nome, "La stringa inserita deve essere alfabetica."));
+ //       nome.setInputVerifier(new NotAlphabeticValidator((JPanel) grafica, nome, "La stringa inserita deve essere alfabetica."));
     }
 
     /**
@@ -140,7 +140,7 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
     public void setPIva(JTextField ppIva) {
         this.pIva = ppIva;
         pIva.setInputVerifier(new NotEmptyValidator((JPanel) grafica, pIva, "Il campo non può essere vuoto."));
-        pIva.setInputVerifier(new NotEqualLengthValidator((JPanel) grafica, pIva, "Il campo deve essere di 11 caratteri", 11));
+   //     pIva.setInputVerifier(new NotEqualLengthValidator((JPanel) grafica, pIva, "Il campo deve essere di 11 caratteri", 11));
     }
 
     /**
@@ -166,13 +166,11 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getCognome() throws ValidatorException {
-        if (!cognome.getInputVerifier().shouldYieldFocus(cognome) && validator==true) {
+        if(validator==true)
+        if (!cognome.getInputVerifier().shouldYieldFocus(cognome)) {
             throw new ValidatorException("Errore nella grafica!");
         }
-        if (!cognome.getInputVerifier().shouldYieldFocus(cognome) && validator==true) {
-            throw new ValidatorException("Errore nella grafica!");
-        }
-        return cognome;
+    return cognome;
     }
 
     /**
@@ -181,10 +179,8 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getNome() throws ValidatorException {
-        if (!nome.getInputVerifier().shouldYieldFocus(nome) && validator==true) {
-            throw new ValidatorException("Errore nella grafica!");
-        }
-        if (!nome.getInputVerifier().shouldYieldFocus(nome) && validator==true) {
+        if(validator==true)
+        if (!nome.getInputVerifier().shouldYieldFocus(nome)) {
             throw new ValidatorException("Errore nella grafica!");
         }
         return nome;
@@ -196,7 +192,8 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getFax() throws ValidatorException {
-        if (!fax.getInputVerifier().shouldYieldFocus(fax) && validator==true) {
+        if(validator==true)
+        if (!fax.getInputVerifier().shouldYieldFocus(fax)) {
             throw new ValidatorException("Errore nella grafica!");
         }
         return fax;
@@ -208,9 +205,8 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getPIva() throws ValidatorException {
-        if (!pIva.getInputVerifier().shouldYieldFocus(pIva) && validator==true) {
-            throw new ValidatorException("Errore nella grafica!");
-        } else if (!pIva.getInputVerifier().shouldYieldFocus(pIva) && validator==true) {
+        if(validator==true)
+        if (!pIva.getInputVerifier().shouldYieldFocus(pIva)) {
             throw new ValidatorException("Errore nella grafica!");
         }
         return pIva;
@@ -222,7 +218,8 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getRagioneSociale() throws ValidatorException {
-        if (!ragioneSociale.getInputVerifier().shouldYieldFocus(ragioneSociale) && validator==true) {
+        if(validator==true)
+        if (!ragioneSociale.getInputVerifier().shouldYieldFocus(ragioneSociale)) {
             throw new ValidatorException("Errore nella grafica!");
         }
         return ragioneSociale;

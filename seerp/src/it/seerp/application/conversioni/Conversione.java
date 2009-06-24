@@ -383,9 +383,7 @@ public class Conversione {
     public static BeanGuiPersonale conversionePersonale(Personale p, BeanGuiPersonale bp) {
 
         Conversione.conversioneUtente(p, bp);
-
         bp.getCognome().setText(p.getCognome());
-        System.out.println("luisacognome" + p.getCognome());
         bp.getNome().setText(p.getNome());
         bp.getCodiceFiscale().setText(p.getCodiceFiscale());
 
