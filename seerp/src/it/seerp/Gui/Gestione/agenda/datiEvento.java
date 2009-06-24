@@ -22,6 +22,7 @@ import it.seerp.storage.ejb.Evento;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
@@ -38,21 +39,15 @@ public class datiEvento extends javax.swing.JDialog {
     ConfigurazioneOperazioni.TIPO_OPE_CONST tipoOp;
     private BeanGuiEvento be;
     private CalendarPanel pannel;
-    private MaskFormatter mask;
     /** Creates new form datiEvento */
     public datiEvento(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        try {
             tipoOp = ConfigurazioneOperazioni.TIPO_OPE_CONST.VISUALIZZA;
             initComponents();
             legameBean();
             setDefaultCloseOperation(DISPOSE_ON_CLOSE);
             Screen.centraFinestra(this);
-            mask = new javax.swing.text.MaskFormatter("##:##:##");
-            mask.setPlaceholderCharacter('_');
-        } catch (ParseException ex) {
-           JOptionPane.showMessageDialog(null, "Errore nella creazione della finestra di dialogo!");
-        }
+
     }
 
     private BeanGuiEvento getBeanGuiEvento() {
@@ -257,7 +252,13 @@ public class datiEvento extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         getContentPane().add(txt_id, gridBagConstraints);
 
-        txt_ora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        try {
+            javax.swing.text.MaskFormatter mask = new javax.swing.text.MaskFormatter("##:##:##");
+            mask.setPlaceholderCharacter('_');
+            txt_ora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(mask));
+        } catch (java.text.ParseException ex) {
+            JOptionPane.showMessageDialog(null, "Errore nella creazione del dialogo","",JOptionPane.ERROR_MESSAGE);
+        }
         txt_ora.setFont(new java.awt.Font("Tahoma", 0, 12));
         txt_ora.setName("txt_ora"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -268,7 +269,7 @@ public class datiEvento extends javax.swing.JDialog {
         getContentPane().add(txt_ora, gridBagConstraints);
 
         txt_tema.setEditable(true);
-        txt_tema.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txt_tema.setFont(new java.awt.Font("Tahoma", 0, 12));
         txt_tema.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Compleanno", "Riunione", "Anniversario", "Appuntamento", "Cena Aziendale", "Promemoria", "Convegno", "Colloquio", "Altro" }));
         txt_tema.setSelectedIndex(5);
         txt_tema.setName("txt_tema"); // NOI18N
