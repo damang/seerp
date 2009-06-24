@@ -572,4 +572,5 @@ public class GestioneInit extends javax.swing.JPanel {
     private javax.swing.JPanel username;
     // End of variables declaration//GEN-END:variables
 
+
 }
