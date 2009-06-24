@@ -27,6 +27,15 @@ public class BeanGuiServizio {
     private JTextArea note;
     private ArrayList<BeanGuiServizioAssociato> listServiziAssociati;
     private Object grafica;
+    protected boolean validator=true;
+
+    public boolean isValidator() {
+        return validator;
+    }
+
+    public void setValidator(boolean validator) {
+        this.validator = validator;
+    }
 
     /**
      * Costruttore a cui viene passato un componente grafico necessario alla
@@ -81,10 +90,10 @@ public class BeanGuiServizio {
      * @throws ValidatorException
      */
     public JTextField getDescrizione() throws ValidatorException {
-     if (!descrizione.getInputVerifier().shouldYieldFocus(descrizione)) {
+     if (!descrizione.getInputVerifier().shouldYieldFocus(descrizione) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
         }
-        if (!descrizione.getInputVerifier().shouldYieldFocus(descrizione)) {
+        if (!descrizione.getInputVerifier().shouldYieldFocus(descrizione) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
         }
         return descrizione;
@@ -138,10 +147,10 @@ public class BeanGuiServizio {
      * @throws ValidatorException
      */
     public JTextField getIva() throws ValidatorException {
-        if (iva.getInputVerifier().shouldYieldFocus(iva)) {
+        if (iva.getInputVerifier().shouldYieldFocus(iva) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
         }
-        if (!iva.getInputVerifier().shouldYieldFocus(iva)) {
+        if (!iva.getInputVerifier().shouldYieldFocus(iva) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
         }
         return iva;
@@ -179,10 +188,10 @@ public class BeanGuiServizio {
      * @throws ValidatorException
      */
     public JTextField getPrezzo() throws ValidatorException {
-       if (!prezzo.getInputVerifier().shouldYieldFocus(prezzo)) {
+       if (!prezzo.getInputVerifier().shouldYieldFocus(prezzo) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
         }
-        if (!prezzo.getInputVerifier().shouldYieldFocus(prezzo)) {
+        if (!prezzo.getInputVerifier().shouldYieldFocus(prezzo) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
         }
         return prezzo;
@@ -204,10 +213,10 @@ public class BeanGuiServizio {
      * @throws ValidatorException
      */
     public JTextField getQuantita() throws ValidatorException {
-        if (!quantita.getInputVerifier().shouldYieldFocus(quantita)) {
+        if (!quantita.getInputVerifier().shouldYieldFocus(quantita) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
         }
-        if (!quantita.getInputVerifier().shouldYieldFocus(quantita)) {
+        if (!quantita.getInputVerifier().shouldYieldFocus(quantita) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
         }
         return quantita;
@@ -229,10 +238,10 @@ public class BeanGuiServizio {
      * @throws ValidatorException
      */
     public JTextField getTipo() throws ValidatorException {
-        if (!tipo.getInputVerifier().shouldYieldFocus(tipo)) {
+        if (!tipo.getInputVerifier().shouldYieldFocus(tipo) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
         }
-        if (!tipo.getInputVerifier().shouldYieldFocus(tipo)) {
+        if (!tipo.getInputVerifier().shouldYieldFocus(tipo) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
         }
         return tipo;

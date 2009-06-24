@@ -166,10 +166,10 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getCognome() throws ValidatorException {
-        if (!cognome.getInputVerifier().shouldYieldFocus(cognome)) {
+        if (!cognome.getInputVerifier().shouldYieldFocus(cognome) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
         }
-        if (!cognome.getInputVerifier().shouldYieldFocus(cognome)) {
+        if (!cognome.getInputVerifier().shouldYieldFocus(cognome) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
         }
         return cognome;
@@ -181,10 +181,10 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getNome() throws ValidatorException {
-        if (!nome.getInputVerifier().shouldYieldFocus(nome)) {
+        if (!nome.getInputVerifier().shouldYieldFocus(nome) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
         }
-        if (!nome.getInputVerifier().shouldYieldFocus(nome)) {
+        if (!nome.getInputVerifier().shouldYieldFocus(nome) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
         }
         return nome;
@@ -196,7 +196,7 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getFax() throws ValidatorException {
-        if (!fax.getInputVerifier().shouldYieldFocus(fax)) {
+        if (!fax.getInputVerifier().shouldYieldFocus(fax) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
         }
         return fax;
@@ -208,9 +208,9 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getPIva() throws ValidatorException {
-        if (!pIva.getInputVerifier().shouldYieldFocus(pIva)) {
+        if (!pIva.getInputVerifier().shouldYieldFocus(pIva) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
-        } else if (!pIva.getInputVerifier().shouldYieldFocus(pIva)) {
+        } else if (!pIva.getInputVerifier().shouldYieldFocus(pIva) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
         }
         return pIva;
@@ -222,7 +222,7 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getRagioneSociale() throws ValidatorException {
-        if (!ragioneSociale.getInputVerifier().shouldYieldFocus(ragioneSociale)) {
+        if (!ragioneSociale.getInputVerifier().shouldYieldFocus(ragioneSociale) && validator==true) {
             throw new ValidatorException("Errore nella grafica!");
         }
         return ragioneSociale;
