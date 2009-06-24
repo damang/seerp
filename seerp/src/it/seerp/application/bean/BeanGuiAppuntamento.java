@@ -17,47 +17,21 @@ public class BeanGuiAppuntamento {
     private BeanGuiExtraAzienda extraAzienda;
     private JTextField notifica;
 
-     /**
-      * Costruttore vuoto per la classe Bean Gui Appuntamento
-      */
-     public BeanGuiAppuntamento() {
-        
-    }
-
- 
-
-     /**
-      * Costruttore per la Classe Bean Gui Appuntamento
-      * @param data
-      * @param ora
-      * @param idAppuntamento
-      * @param note
-      * @param notifica
-      */
-     public BeanGuiAppuntamento(JTextField data, JTextField ora, JTextField idAppuntamento, JTextArea note,JTextField notifica) {
-        this.data = data;
-        this.ora = ora;
-        this.idAppuntamento = idAppuntamento;
-        this.note = note;
-        this.notifica=notifica;
-    }
-
-     /**
-      * metodo che restituisce il campo contenente il messaggio di notifica dell'appuntamento
-      * @return la notifica dell'appuntamento
-      */
-     public JTextField getNotifica() {
+    /**
+     * metodo che restituisce il campo contenente il messaggio di notifica dell'appuntamento
+     * @return la notifica dell'appuntamento
+     */
+    public JTextField getNotifica() {
         return notifica;
     }
 
-       /**
-        * metodo che setta il campo contenente messaggio di notifica dell'appuntamento
-        * @param notifica rappresenta il messaggio di notifica da inserire
-        */
-       public void setNotifica(JTextField notifica) {
+    /**
+     * metodo che setta il campo contenente messaggio di notifica dell'appuntamento
+     * @param notifica rappresenta il messaggio di notifica da inserire
+     */
+    public void setNotifica(JTextField notifica) {
         this.notifica = notifica;
     }
-
 
     /**
      * metodo che restituisce il campo contenente la data dell'appuntamento
@@ -67,7 +41,6 @@ public class BeanGuiAppuntamento {
         return data;
     }
 
-    
     /**
      *
      * @return
@@ -76,7 +49,6 @@ public class BeanGuiAppuntamento {
         return dipendente;
     }
 
-    
     /**
      *
      * @return
@@ -117,7 +89,6 @@ public class BeanGuiAppuntamento {
         this.data = data;
     }
 
-   
     /**
      *
      * @param dipendente
@@ -126,7 +97,6 @@ public class BeanGuiAppuntamento {
         this.dipendente = dipendente;
     }
 
-   
     /**
      *
      * @param extraAzienda
@@ -158,7 +128,4 @@ public class BeanGuiAppuntamento {
     public void setOra(JTextField ora) {
         this.ora = ora;
     }
-
-
-
 }

@@ -4,7 +4,7 @@ import javax.swing.JTextField;
 
 /**
  * Classe relativa ai componenti grafici della gestione dell'Azienda
- * @author matteo
+ * @author matteo - Tommaso Cattolico
  */
 public class BeanGuiAzienda {
 
@@ -21,39 +21,9 @@ public class BeanGuiAzienda {
     private BeanGuiAmministratore amministratore;
 
     /**
-     *
+     *  Costruttore vuoto
      */
     public BeanGuiAzienda() {
-    }
-
-    
-
-    /**
-     *
-     * @param citta
-     * @param email
-     * @param fax
-     * @param inidirizzo
-     * @param nazione
-     * @param pIVA
-     * @param ragioneSociale
-     * @param telefono
-     * @param idAzienda
-     * @param note
-     * @param amministratore
-     */
-    public BeanGuiAzienda(JTextField citta, JTextField email, JTextField fax, JTextField inidirizzo, JTextField nazione, JTextField pIVA, JTextField ragioneSociale, JTextField telefono, JTextField idAzienda, JTextField note, BeanGuiAmministratore amministratore) {
-        this.citta = citta;
-        this.email = email;
-        this.fax = fax;
-        this.inidirizzo = inidirizzo;
-        this.nazione = nazione;
-        this.pIVA = pIVA;
-        this.ragioneSociale = ragioneSociale;
-        this.telefono = telefono;
-        this.idAzienda = idAzienda;
-        this.note = note;
-        this.amministratore = amministratore;
     }
 
     /**

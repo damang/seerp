@@ -20,28 +20,6 @@ public class BeanGuiDDT {
     private JTextArea note;
 
     /**
-     * Costruttore per la classe Bean Gui DDT
-     * @param merce
-     * @param quantita
-     * @param data
-     * @param idDDT
-     * @param numero
-     * @param fattureEmesse
-     * @param listServizio
-     * @param note
-     */
-    public BeanGuiDDT(JTextField merce, JTextField quantita, JTextField data, JTextField idDDT, JTextField numero, JTextField fattureEmesse, ArrayList<BeanGuiServizioAssociatoFattura> listServizio, JTextArea note) {
-        this.merce = merce;
-        this.quantita = quantita;
-        this.data = data;
-        this.idDDT = idDDT;
-        this.numero = numero;
-        this.fattureEmesse = fattureEmesse;
-        this.listServizio = listServizio;
-        this.note = note;
-    }
-
-    /**
      * metodo che restituisce la lista dei servizi associati al DDT
      * @return la lista dei servizi
      */

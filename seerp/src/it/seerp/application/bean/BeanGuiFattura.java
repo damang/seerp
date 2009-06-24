@@ -9,39 +9,15 @@ import javax.swing.JTextField;
  * @author Luisa - Tommaso Cattolico
  */
 public class BeanGuiFattura {
-        private JTextField data;
+
+    private JTextField data;
     private JTextField idFattura;
     private JTextField imponibile;
     private JTextField importo;
     private JTextField iva;
     private JTextField tipo;
     private JTextArea note;
-      private ArrayList<BeanGuiNotaDiCredito> listNotaDiCredito;
-
-      /**
-       * Costruttore per la classe Bean Gui Fattura
-       * @param data
-       * @param idFattura
-       * @param imponibile
-       * @param importo
-       * @param iva
-       * @param tipo
-       * @param note
-       * @param listNotaDiCredito
-       * @param listServizio
-       */
-
-      public BeanGuiFattura(JTextField data, JTextField idFattura, JTextField imponibile, JTextField importo, JTextField iva, JTextField tipo, JTextArea note, ArrayList<BeanGuiNotaDiCredito> listNotaDiCredito, ArrayList<BeanGuiServizioAssociato> listServizio) {
-        this.data = data;
-        this.idFattura = idFattura;
-        this.imponibile = imponibile;
-        this.importo = importo;
-        this.iva = iva;
-        this.tipo = tipo;
-        this.note = note;
-        this.listNotaDiCredito = listNotaDiCredito;
-        this.listServizio = listServizio;
-    }
+    private ArrayList<BeanGuiNotaDiCredito> listNotaDiCredito;
     private ArrayList<BeanGuiServizioAssociato> listServizio;
 
     /**
@@ -155,16 +131,20 @@ public class BeanGuiFattura {
     public void setTipo(JTextField tipo) {
         this.tipo = tipo;
     }
+
     /**
      * metodo che rimuove un servizio dalla lista dei serzivi associati ad una Fattura
      * @param c rappresenta il servizio da rimuovere
      */
-    public void removeServizio(BeanGuiServizioAssociato c){
-     listServizio.remove(c);}
+    public void removeServizio(BeanGuiServizioAssociato c) {
+        listServizio.remove(c);
+    }
+
     /**
      * metodo che inserisce un servizio nella lista dei serzivi associati ad una Fattura
      * @param c rappresenta il servizio da inserire
      */
-    public void addServizio(BeanGuiServizioAssociato c){
-     listServizio.add(c);}
+    public void addServizio(BeanGuiServizioAssociato c) {
+        listServizio.add(c);
+    }
 }
