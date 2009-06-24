@@ -95,7 +95,7 @@
                           <Component id="jPanel10" alignment="0" min="0" pref="462" max="32767" attributes="3"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jPanel7" min="0" pref="156" max="32767" attributes="3"/>
+                                  <Component id="jPanel7" min="0" max="32767" attributes="3"/>
                                   <Component id="jPanel5" alignment="0" max="32767" attributes="3"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -191,7 +191,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="tipo" min="-2" pref="120" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="14" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -232,7 +232,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="prz" min="-2" pref="122" max="-2" attributes="0"/>
-                          <EmptySpace pref="8" max="32767" attributes="0"/>
+                          <EmptySpace pref="12" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -558,7 +558,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="pIva" min="-2" pref="124" max="-2" attributes="0"/>
-                          <EmptySpace pref="4" max="32767" attributes="1"/>
+                          <EmptySpace max="32767" attributes="1"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -594,7 +594,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="mail" pref="144" max="32767" attributes="0"/>
+                          <Component id="mail" pref="148" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
