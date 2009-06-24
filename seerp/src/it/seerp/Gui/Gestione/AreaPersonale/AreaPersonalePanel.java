@@ -58,7 +58,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
             if (SujGest.getTipoUtente(sub).equals(ConfigurazioneUtente.valueOf(ConfigurazioneUtente.TIPO_UTENTE_CONST.PERSONALE))) {
                 legameBeanPersonale();
                 
-               utente.setValidatorEnabled(false);
+          
                a.visualizzaDatiPersonale(SujGest.getUsername(ut), utente);
             }
             if (SujGest.getTipoUtente(sub).equals(ConfigurazioneUtente.valueOf(ConfigurazioneUtente.TIPO_UTENTE_CONST.EXTRAAZIENDA))) {

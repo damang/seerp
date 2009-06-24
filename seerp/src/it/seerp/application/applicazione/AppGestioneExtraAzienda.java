@@ -126,7 +126,7 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
         try {
             OpContatto a = new OpContatto();
             Contatto co = Conversione.conversioneContatto(cont);
-            co = a.modifica(co);
+            co = (Contatto) a.modifica(co);
             cont = Conversione.conversioneContatto(co, cont);
         } catch (ValidatorException e) {
             e.printStackTrace();

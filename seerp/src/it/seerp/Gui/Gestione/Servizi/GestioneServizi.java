@@ -16,15 +16,14 @@ import it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva;
 import it.seerp.Gui.Gestione.Menu.MenuServizi;
 import it.seerp.Gui.configurazioni.Gui.ConfigurazioneOperazioni;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
-import it.seerp.application.tabelle.ServiziTm;
+import it.seerp.application.Exception.DatiDuplicati;
+import it.seerp.application.Exception.DatiErrati;
 import it.seerp.application.applicazione.AppServizi;
 import it.seerp.application.bean.BeanGuiFornitore;
 import it.seerp.application.bean.BeanGuiServizio;
 import it.seerp.application.tabelle.ServiziTm;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.jdesktop.swingx.*;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -41,7 +40,6 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
     BeanGuiFornitore fornitore;
     String tipoOP;
     MenuServizi menu;
-   
 
     public MenuServizi getMenu() {
         return menu;
@@ -70,7 +68,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         initComponents();
 
         this.servi = new BeanGuiServizio(this);
-        this.fornitore= new BeanGuiFornitore(this);
+        this.fornitore = new BeanGuiFornitore(this);
         legameBeans();
         editabile(false);
 
@@ -89,7 +87,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         tipo.setEditable(flag);
         iva.setEditable(flag);
         descrizione.setEditable(flag);
-         rag.setEditable(flag);
+        rag.setEditable(flag);
         pIva.setEditable(flag);
         citta.setEditable(flag);
         tell.setEditable(flag);
@@ -742,50 +740,63 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
     }//GEN-LAST:event_buttonAnnulla1MouseClicked
 
     private void buttonSalva1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSalva1MouseClicked
- menu.setButtonEnabled(true);
-         if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.MODIFICA)) {
-         
+        menu.setButtonEnabled(true);
+        if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.MODIFICA)) {
+
             int i = jXTable1.getSelectedRow();
             if (i < 0) {
                 return;
             }
             Integer id = (Integer) jXTable1.getValueAt(i, 0);
-              AppServizi operazione = new AppServizi();
-              operazione.modifica(id,servi);
-           try {
-                this.tableModel = new ServiziTm();
-            } catch (SQLException ex) {
-                Logger.getLogger(GestioneServizi.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            this.jXTable1.setModel(tableModel);
-            this.jXFindBar1.setSearchable(jXTable1.getSearchable());
-            this.jXTable1.updateUI();
-
-            //  }
-            editabile(false);
-            buttonAnnulla1.setEnabled(false);
-            buttonSalva1.setEnabled(false);}
-     /*   ((ServiziTm) jXTable1.getModel()).refresh();*/
-        //  }
-        if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI)) {
-
-
-
             AppServizi operazione = new AppServizi();
-            operazione.inserisci(servi);
             try {
+                operazione.modifica(id, servi);
                 this.tableModel = new ServiziTm();
+
+                this.jXTable1.setModel(tableModel);
+                this.jXFindBar1.setSearchable(jXTable1.getSearchable());
+                this.jXTable1.updateUI();
+            } catch (DatiErrati ex) {
+                JOptionPane.showMessageDialog(null, "dati errati");
             } catch (SQLException ex) {
-                Logger.getLogger(GestioneServizi.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "errore nel database");
+                this.inizializza("");
+                editabile(true);
+                this.buttonAnnulla1.setEnabled(true);
+                this.buttonSalva1.setEnabled(true);
+
             }
-            this.jXTable1.setModel(tableModel);
-            this.jXFindBar1.setSearchable(jXTable1.getSearchable());
-            this.jXTable1.updateUI();
+
+
 
             //  }
             editabile(false);
             buttonAnnulla1.setEnabled(false);
             buttonSalva1.setEnabled(false);
+        }
+
+
+        if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI)) {
+            try {
+                AppServizi operazione = new AppServizi();
+                operazione.inserisci(servi);
+                this.tableModel = new ServiziTm();
+
+                editabile(false);
+                buttonAnnulla1.setEnabled(false);
+                buttonSalva1.setEnabled(false);
+            } catch (DatiErrati ex) {
+                JOptionPane.showMessageDialog(null, "dati errati");
+            } catch (DatiDuplicati ex) {
+                JOptionPane.showMessageDialog(null, "dati duplicati");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "errore nel database");
+                this.inizializza("");
+                editabile(true);
+                this.buttonAnnulla1.setEnabled(true);
+                this.buttonSalva1.setEnabled(true);
+
+            }
         }
     }//GEN-LAST:event_buttonSalva1MouseClicked
 
@@ -798,21 +809,20 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
                 return;
             }
             Integer id = (Integer) jXTable1.getValueAt(i, 0);
-          
+
 
             AppServizi operazione = new AppServizi();
 
-            servi=operazione.visualizza(id, servi,fornitore);
+            servi = operazione.visualizza(id, servi, fornitore);
 
-          //  visualizza();
 
-         editabile(false);
+
+            editabile(false);
     }//GEN-LAST:event_jXTable1MouseClicked
     }
         private void ragActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ragActionPerformed
             // TODO add your handling code here:
         }//GEN-LAST:event_ragActionPerformed
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla buttonAnnulla1;
     private it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva buttonSalva1;
@@ -856,9 +866,10 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
     private javax.swing.JTextField tell;
     private javax.swing.JTextField tipo;
     // End of variables declaration//GEN-END:variables
-public JTextField getTipo(){
-return tipo;}
 
+    public JTextField getTipo() {
+        return tipo;
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {

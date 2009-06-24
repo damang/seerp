@@ -781,7 +781,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             this.buttonAnnulla1.setEnabled(false);
             this.buttonSalva1.setEnabled(false);
         } catch (Exception ex) {
-           
+            JOptionPane.showMessageDialog (null, "errore nel database");
             this.inizializzazione("");
              editabile(true);
             this.buttonAnnulla1.setEnabled(true);

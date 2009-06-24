@@ -32,7 +32,7 @@ public class BeanGuiUtente {
     private JTextField tipo;
     private JTextField visible;
     protected Object grafica;
-    protected boolean validator=true;
+    protected boolean validator=false;
 
     public boolean isValidatorEnabled() {
         return validator;
