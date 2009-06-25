@@ -765,14 +765,6 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
                 this.buttonAnnulla1.setEnabled(true);
                 this.buttonSalva1.setEnabled(true);
 
-            } catch (ValidatorException e) {
-
-                JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-                this.inizializzazione("");
-                editabile(true);
-                this.buttonAnnulla1.setEnabled(true);
-                this.buttonSalva1.setEnabled(true);
-
             }
         }
 
@@ -832,14 +824,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
                 this.buttonAnnulla1.setEnabled(true);
                 this.buttonSalva1.setEnabled(true);
 
-            } catch (ValidatorException e) {
-
-                JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-                this.inizializzazione("");
-                editabile(true);
-                this.buttonAnnulla1.setEnabled(true);
-                this.buttonSalva1.setEnabled(true);
-            }
+            } 
         }
     }//GEN-LAST:event_buttonSalva1MouseClicked
 
