@@ -53,15 +53,17 @@ public class AggiungiButtonRuoli extends JButton implements CommandInterface {
          if (r==null) {
              JOptionPane.showMessageDialog(area, "Non hai selezionato nessun ruolo o hai annullato l'operazione!", "Errore", JOptionPane.ERROR_MESSAGE);
          }
-         else {         
+         else {
                  area.getMenu().setButtonEnabled(false);
                  area.getBeanGuiRuolo().resetAll();
                  area.getBeanGuiRuolo().getNome().setText(r+"_");
+                // area.getBeanGuiRuolo().getNome().setEnabled(true);
                  area.getBeanGuiRuolo().setListPermessi(PermessiDefault.getPermessiGUI(r,area.getBeanGuiRuolo().getListPermessi()));
                  area.setTipoOP(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI);
                  area.getSalva().setVisible(true);
                  area.getAnnulla().setVisible(true);
                  area.setEditable(true);
-         }
+                 area.getBeanGuiRuolo().setValidator(true);
+       }
     }
 }

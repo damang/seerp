@@ -2,6 +2,7 @@ package it.seerp.application.bean;
 
 import it.seerp.Gui.configurazioni.Gui.RegexpDef;
 import it.seerp.application.Exception.ValidatorException;
+import it.seerp.application.tabelle.PersonaleTm;
 import it.seerp.application.tabelle.RuoloTm;
 import it.seerp.application.validation.NotEmptyValidator;
 import it.seerp.application.validation.StartWithValidator;
@@ -9,7 +10,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import org.jdesktop.swingx.JXTable;
@@ -72,17 +76,21 @@ public class BeanGuiRuolo {
      * 
      */
     public void resetAll() {
-        nome.setText("");
-        Iterator<ArrayList<BeanGuiPermesso>> l = listPermessi.values().iterator();
-        ArrayList<BeanGuiPermesso> ar;
-
-        while (l.hasNext()) {
-            ar = l.next();
-            for (int i = 0; i < ar.size(); i++) {
-                ar.get(i).getAct().setSelected(false);
+        try {
+            validator=false;
+            nome.setText("");
+            Iterator<ArrayList<BeanGuiPermesso>> l = listPermessi.values().iterator();
+            ArrayList<BeanGuiPermesso> ar;
+            while (l.hasNext()) {
+                ar = l.next();
+                for (int i = 0; i < ar.size(); i++) {
+                    ar.get(i).getAct().setSelected(false);
+                }
             }
+            tabPers.setModel(new PersonaleTm());
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(nome, "Errore dal database!!");
         }
-       
     }
 
     /**
