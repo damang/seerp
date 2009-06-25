@@ -86,9 +86,9 @@
                       <Component id="jPanel10" alignment="0" max="32767" attributes="3"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jPanel13" min="-2" max="-2" attributes="3"/>
-                      <Component id="jPanel14" alignment="1" max="32767" attributes="3"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jPanel13" max="32767" attributes="3"/>
+                      <Component id="jPanel14" alignment="0" max="32767" attributes="3"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -104,9 +104,9 @@
                       <Component id="jPanel14" min="-2" max="-2" attributes="1"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jPanel11" max="32767" attributes="1"/>
-                      <Component id="jPanel13" alignment="1" max="32767" attributes="1"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="jPanel13" max="32767" attributes="1"/>
+                      <Component id="jPanel11" alignment="0" max="32767" attributes="1"/>
                       <Component id="jPanel12" alignment="1" min="-2" max="-2" attributes="1"/>
                   </Group>
                   <EmptySpace min="-2" pref="197" max="-2" attributes="0"/>
@@ -133,8 +133,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="nm" pref="126" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="nm" min="-2" pref="126" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="1"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -174,8 +174,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tell" pref="125" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="tell" min="-2" pref="125" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="1"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -212,8 +212,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="naz" pref="126" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="naz" min="-2" pref="126" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="1"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -249,8 +249,8 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="mail" pref="125" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="1"/>
+                      <Component id="mail" min="-2" pref="125" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -288,8 +288,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="piva" min="-2" pref="124" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="piva" pref="136" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -329,8 +329,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="via" pref="124" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="via" min="-2" pref="136" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="1"/>
                   </Group>
               </Group>
             </DimensionLayout>
