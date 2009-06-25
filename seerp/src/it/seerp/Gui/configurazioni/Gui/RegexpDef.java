@@ -44,7 +44,7 @@ public class RegexpDef {
         else if(c.equals(VAL.ORA))
             return "(?:[01]\\d|2[0-3])[.:](?:[0-5]\\d)[.:](?:[0-5]\\d)";
         else if (c.equals(VAL.TELEFONO))
-            return "^[0-9]+\\s[0-9]+$";
+            return "^[0-9]+\\d[0-9]+$";
         else if (c.equals(VAL.VUOTO))
             return"(.[a-z]*)*";
         else if (c.equals(VAL.PREZZO))
