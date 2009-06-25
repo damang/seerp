@@ -1,16 +1,9 @@
 package it.seerp.application.bean;
 
 import it.seerp.application.Exception.ValidatorException;
-import it.seerp.application.validation.EmailValidator;
-import it.seerp.application.validation.NotAlphabeticValidator;
-import it.seerp.application.validation.NotEqualLengthValidator;
 import it.seerp.application.validation.NotEmptyValidator;
-import it.seerp.application.validation.NotMaxLengthValidator;
-import it.seerp.application.validation.NotMinLengthValidator;
-import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import org.jdesktop.swingx.JXPanel;
 
 /**
  * Classe relativa ai componenti grafici della gestione degli Utenti
@@ -32,7 +25,7 @@ public class BeanGuiUtente {
     private JTextField tipo;
     private JTextField visible;
     protected Object grafica;
-    protected boolean validator=false;
+    protected boolean validator = false;
 
     public boolean isValidatorEnabled() {
         return validator;
@@ -47,7 +40,7 @@ public class BeanGuiUtente {
      * validazione del campo
      * @param c
      */
-    public BeanGuiUtente(JPanel c) {
+    public BeanGuiUtente(Object c) {
         grafica = c;
     }
 
@@ -63,10 +56,11 @@ public class BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getTipo() throws ValidatorException {
-        if(validator==true)
+        if (validator == true) {
             if (!tipo.getInputVerifier().shouldYieldFocus(tipo)) {
                 throw new ValidatorException("Errore nella grafica!");
             }
+        }
 
         return tipo;
     }
@@ -77,7 +71,7 @@ public class BeanGuiUtente {
      */
     public void setTipo(JTextField ptipo) {
         this.tipo = ptipo;
-        tipo.setInputVerifier(new NotEmptyValidator((JPanel) grafica,tipo, "Il campo non può essere vuoto."));
+        tipo.setInputVerifier(new NotEmptyValidator(grafica, tipo, "Il campo non può essere vuoto.", "")); //espressione
     }
 
     /**
@@ -117,8 +111,9 @@ public class BeanGuiUtente {
      * @param user1
      */
     public void setTxtUsernameSec(JTextField user1) {
-        txtUsername2=user1;
+        txtUsername2 = user1;
     }
+
     /**
      *
      * @return
@@ -141,10 +136,9 @@ public class BeanGuiUtente {
      * @param pidUtenteTxt
      */
     public void setIdUtenteTxt(JTextField pidUtenteTxt) {
-       this.idUtenteTxt = pidUtenteTxt;
-       idUtenteTxt.setInputVerifier(new NotEmptyValidator((JPanel) grafica,idUtenteTxt, "Il campo non può essere vuoto."));
+        this.idUtenteTxt = pidUtenteTxt;
+        idUtenteTxt.setInputVerifier(new NotEmptyValidator(grafica, idUtenteTxt, "Il campo non può essere vuoto.", "")); //espressione
     }
-
 
     /**
      *
@@ -167,11 +161,11 @@ public class BeanGuiUtente {
      * @return
      * @throws ValidatorException
      */
-
     public JTextField getIdUtenteTxt() throws ValidatorException {
-        if(validator==true)
-        if (!idUtenteTxt.getInputVerifier().shouldYieldFocus(idUtenteTxt)) {
-            throw new ValidatorException("Errore nella grafica!");
+        if (validator == true) {
+            if (!idUtenteTxt.getInputVerifier().shouldYieldFocus(idUtenteTxt)) {
+                throw new ValidatorException("Errore nella grafica!");
+            }
         }
         return idUtenteTxt;
     }
@@ -182,9 +176,10 @@ public class BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getTxtCitta() throws ValidatorException {
-        if(validator==true)
-        if (!txtCitta.getInputVerifier().shouldYieldFocus(txtCitta)) {
-            throw new ValidatorException("Errore nella grafica!");
+        if (validator == true) {
+            if (!txtCitta.getInputVerifier().shouldYieldFocus(txtCitta)) {
+                throw new ValidatorException("Errore nella grafica!");
+            }
         }
         return txtCitta;
     }
@@ -195,11 +190,12 @@ public class BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getTxtEmail() throws ValidatorException {
-        if(validator==true)
-        if (!txtEmail.getInputVerifier().shouldYieldFocus(txtEmail)) {
-            throw new ValidatorException("Errore nella grafica!");
+        if (validator == true) {
+            if (!txtEmail.getInputVerifier().shouldYieldFocus(txtEmail)) {
+                throw new ValidatorException("Errore nella grafica!");
+            }
         }
-      
+
         return txtEmail;
     }
 
@@ -209,11 +205,12 @@ public class BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getTxtPassword() throws ValidatorException {
-        if(validator==true)
-        if (!txtPassword.getInputVerifier().shouldYieldFocus(txtPassword)) {
-            throw new ValidatorException("Errore nella grafica!");
+        if (validator == true) {
+            if (!txtPassword.getInputVerifier().shouldYieldFocus(txtPassword)) {
+                throw new ValidatorException("Errore nella grafica!");
+            }
         }
-       
+
         return txtPassword;
     }
 
@@ -223,10 +220,11 @@ public class BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getTxtProvincia() throws ValidatorException {
-        if(validator==true)
-        if (!txtProvincia.getInputVerifier().shouldYieldFocus(txtProvincia)) {
-            throw new ValidatorException("Errore nella grafica!");
-        } 
+        if (validator == true) {
+            if (!txtProvincia.getInputVerifier().shouldYieldFocus(txtProvincia)) {
+                throw new ValidatorException("Errore nella grafica!");
+            }
+        }
         return txtProvincia;
     }
 
@@ -236,9 +234,10 @@ public class BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getTxtTelefono() throws ValidatorException {
-        if(validator==true)
-        if (!txtTelefono.getInputVerifier().shouldYieldFocus(txtTelefono)) {
-            throw new ValidatorException("Errore nella grafica!");
+        if (validator == true) {
+            if (!txtTelefono.getInputVerifier().shouldYieldFocus(txtTelefono)) {
+                throw new ValidatorException("Errore nella grafica!");
+            }
         }
         return txtTelefono;
     }
@@ -249,15 +248,14 @@ public class BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getTxtUsername() throws ValidatorException {
-        if(validator==true)
-       if (!txtUsername.getInputVerifier().shouldYieldFocus(txtUsername)) {
-            throw new ValidatorException("Errore nella grafica!");
+        if (validator == true) {
+            if (!txtUsername.getInputVerifier().shouldYieldFocus(txtUsername)) {
+                throw new ValidatorException("Errore nella grafica!");
+            }
         }
-       
+
         return txtUsername;
     }
-
-
 
     /**
      *
@@ -265,8 +263,7 @@ public class BeanGuiUtente {
      */
     public void setTxtCitta(JTextField ptxtCitta) {
         this.txtCitta = ptxtCitta;
-        txtCitta.setInputVerifier(new NotEmptyValidator((JPanel) grafica,txtCitta, "Il campo non può essere vuoto."));
-        //txtCitta.setInputVerifier(new NotAlphabeticValidator((JPanel) grafica,txtCitta, "La stringa inserita deve essere alfabetica."));
+        txtCitta.setInputVerifier(new NotEmptyValidator(grafica, txtCitta, "Il campo non può essere vuoto.", "")); //espressione
     }
 
     /**
@@ -275,8 +272,7 @@ public class BeanGuiUtente {
      */
     public void setTxtEmail(JTextField ptxtEmail) {
         this.txtEmail = ptxtEmail;
-        txtEmail.setInputVerifier(new NotEmptyValidator((JPanel) grafica,ptxtEmail, "Il campo non può essere vuoto."));
-      //  txtEmail.setInputVerifier(new EmailValidator((JPanel) grafica,ptxtEmail, "Formato e-mail inserito non valido."));
+        txtEmail.setInputVerifier(new NotEmptyValidator(grafica, ptxtEmail, "Il campo non può essere vuoto.", "")); //espressione
     }
 
     /**
@@ -285,8 +281,7 @@ public class BeanGuiUtente {
      */
     public void setTxtPassword(JTextField ptxtPassword) {
         this.txtPassword = ptxtPassword;
-        txtPassword.setInputVerifier(new NotEmptyValidator((JPanel) grafica,txtPassword, "Il campo non può essere vuoto."));
-      //  txtPassword.setInputVerifier(new NotMaxLengthValidator((JPanel) grafica,txtPassword, "Il campo deve essere di massimo 15 caratteri", 16));
+        txtPassword.setInputVerifier(new NotEmptyValidator(grafica, txtPassword, "Il campo non può essere vuoto.", "")); //espressione
     }
 
     /**
@@ -295,8 +290,7 @@ public class BeanGuiUtente {
      */
     public void setTxtProvincia(JTextField ptxtProvincia) {
         this.txtProvincia = ptxtProvincia;
-        txtProvincia.setInputVerifier(new NotEmptyValidator((JPanel) grafica,txtProvincia, "Il campo non può essere vuoto."));
-      //  txtProvincia.setInputVerifier(new NotEqualLengthValidator((JPanel) grafica,txtProvincia, "Il campo deve essere di 2 caratteri", 2));
+        txtProvincia.setInputVerifier(new NotEmptyValidator(grafica, txtProvincia, "Il campo non può essere vuoto.", "")); //espressione
     }
 
     /**
@@ -305,7 +299,7 @@ public class BeanGuiUtente {
      */
     public void setTxtTelefono(JTextField ptxtTelefono) {
         this.txtTelefono = ptxtTelefono;
-        txtTelefono.setInputVerifier(new NotMinLengthValidator((JPanel) grafica,txtTelefono, "Il campo deve essere di almeno 8 caratteri", 8));
+        txtTelefono.setInputVerifier(new NotEmptyValidator(grafica, txtTelefono, "Il campo deve essere di almeno 8 caratteri", "")); //espressione
     }
 
     /**
@@ -314,8 +308,7 @@ public class BeanGuiUtente {
      */
     public void setTxtUsername(JTextField ptxtUsername) {
         this.txtUsername = ptxtUsername;
-        txtUsername.setInputVerifier(new NotEmptyValidator((JPanel) grafica,txtUsername, "Il campo non può essere vuoto."));
-   //     txtUsername.setInputVerifier(new NotMaxLengthValidator((JPanel) grafica,txtUsername, "Il campo deve essere di massimo 15 caratteri", 16));
+        txtUsername.setInputVerifier(new NotEmptyValidator(grafica, txtUsername, "Il campo non può essere vuoto.", "")); //espressione
     }
 
     /**

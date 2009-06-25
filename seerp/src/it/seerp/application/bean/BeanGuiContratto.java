@@ -1,13 +1,10 @@
 package it.seerp.application.bean;
 
 import it.seerp.application.Exception.ValidatorException;
-import it.seerp.application.validation.NotAlphabeticValidator;
 import it.seerp.application.validation.NotEmptyValidator;
 import java.util.ArrayList;
-import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import org.jdesktop.swingx.JXPanel;
 
 /**
  * Classe relativa ai componenti grafici della gestione del Contratto
@@ -27,7 +24,7 @@ public class BeanGuiContratto {
     private ArrayList<BeanGuiServizioAssociato> listServizio;
     private ArrayList<BeanGuiFattura> listFatture;
     private Object grafica;
-    public boolean validator=true;
+    public boolean validator = false;
 
     public boolean isValidator() {
         return validator;
@@ -42,11 +39,11 @@ public class BeanGuiContratto {
      * validazione del campo
      * @param c
      */
-    public BeanGuiContratto(JPanel c) {
+    public BeanGuiContratto(Object c) {
         grafica = c;
     }
-     public BeanGuiContratto() {
-        
+
+    public BeanGuiContratto() {
     }
 
     /**
@@ -121,9 +118,10 @@ public class BeanGuiContratto {
      * @throws ValidatorException
      */
     public JTextField getDurata() throws ValidatorException {
-        if(validator==true)
-        if (!durata.getInputVerifier().shouldYieldFocus(durata)) {
-            throw new ValidatorException("Errore nella grafica!");
+        if (validator == true) {
+            if (!durata.getInputVerifier().shouldYieldFocus(durata)) {
+                throw new ValidatorException("Errore nella grafica!");
+            }
         }
         return durata;
     }
@@ -134,7 +132,7 @@ public class BeanGuiContratto {
      */
     public void setDurata(JTextField pdurata) {
         this.durata = pdurata;
-        durata.setInputVerifier(new NotEmptyValidator((JPanel) grafica, durata, "Il campo non può essere vuoto."));
+        durata.setInputVerifier(new NotEmptyValidator(grafica, durata, "Il campo non può essere vuoto.", "")); //espressione
     }
 
     /**
@@ -207,10 +205,11 @@ public class BeanGuiContratto {
      * @throws ValidatorException
      */
     public JTextField getTipo() throws ValidatorException {
-        if (!tipo.getInputVerifier().shouldYieldFocus(tipo)) {
-        throw new ValidatorException("Errore nella grafica!");
+        if (validator == true) {
+            if (!tipo.getInputVerifier().shouldYieldFocus(tipo)) {
+                throw new ValidatorException("Errore nella grafica!");
+            }
         }
-      
         return tipo;
     }
 
@@ -220,8 +219,7 @@ public class BeanGuiContratto {
      */
     public void setTipo(JTextField ptipo) {
         this.tipo = ptipo;
-        tipo.setInputVerifier(new NotEmptyValidator((JPanel) grafica, tipo, "Il campo non può essere vuoto."));
-      //  tipo.setInputVerifier(new NotAlphabeticValidator((JXPanel) grafica, tipo, "La stringa inserita deve essere alfabetica."));
+        tipo.setInputVerifier(new NotEmptyValidator(grafica, tipo, "Il campo non può essere vuoto.", "")); //espressione
     }
 
     /**
