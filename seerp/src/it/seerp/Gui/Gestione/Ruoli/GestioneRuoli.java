@@ -698,7 +698,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
         if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI)) {
             be.setValidator(false);
             be.resetAll();
-            
+            ((NotEmptyValidator)be.getNome().getInputVerifier()).reset(be.getNome());
 
         } else {
             be.setValidator(false);
@@ -708,6 +708,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
         menu.setButtonEnabled(true);
         buttonSalva1.setVisible(false);
         buttonAnnulla1.setVisible(false);
+        JOptionPane.showMessageDialog(null, "Operazione Annullata!!");
     }//GEN-LAST:event_buttonAnnulla1ActionPerformed
 
     private void buttonSalva1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalva1ActionPerformed
@@ -896,8 +897,8 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
 
         try {
             be.getNome().setEnabled(b);
-            if (!b)
-                ((NotEmptyValidator)be.getNome().getInputVerifier()).reset(be.getNome());
+           // if (!b)
+                //((NotEmptyValidator)be.getNome().getInputVerifier()).reset(be.getNome());
 
             Iterator<ArrayList<BeanGuiPermesso>> c = be.getListPermessi().values().iterator();
             Iterator<BeanGuiPermesso> itint;

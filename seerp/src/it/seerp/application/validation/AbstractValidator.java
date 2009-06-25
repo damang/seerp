@@ -2,6 +2,9 @@ package it.seerp.application.validation;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.lang.reflect.InvocationTargetException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import org.jdesktop.swingx.JXDialog;
 import org.jdesktop.swingx.JXPanel;
@@ -86,22 +89,34 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
      * @param c
      */
     @Override
-    public boolean verify(JComponent c) {
+    public boolean verify(final JComponent c) {
         if (!validationCriteria(c)) {
-
-         /*   if (parent instanceof WantsValidationStatus) {
+           
+                /*   if (parent instanceof WantsValidationStatus) {
                 ((WantsValidationStatus) parent).validateFailed();
-            }
-*/            c.setBackground(Color.PINK);
-            popup.setSize(0, 0);
-            popup.setLocationRelativeTo(c);
-            point = popup.getLocation();
-            cDim = c.getSize();
-            popup.setLocation(point.x - (int) cDim.getWidth() / 2,
-                    point.y + (int) cDim.getHeight() / 2);
-            popup.pack();
-            popup.setVisible(true);
-            return false;
+                }*/
+                   
+                Runnable r= new Runnable() {
+
+                @Override
+                public void run() {
+                    c.setBackground(Color.PINK);
+                        popup.setSize(0, 0);
+                        popup.setLocationRelativeTo(c);
+                        point = popup.getLocation();
+                        cDim = c.getSize();
+                        popup.setLocation(point.x - (int) cDim.getWidth() / 2, point.y + (int) cDim.getHeight() / 2);
+                        popup.pack();
+                        popup.setVisible(true);
+                }
+            };
+                r.run();
+
+                
+
+
+                return false;
+           
         }
 
         c.setBackground(Color.WHITE);
@@ -112,12 +127,19 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
         return true;
     }
 
-    public void reset(JComponent c) {
-        c.setBackground(Color.WHITE);
-        popup.setSize(0,0);
-        popup.dispose();
+    public void reset(final JComponent c) {
+      // Runnable r= new Runnable() {
 
-        
+
+        //@Override
+          //              public void run() {
+                            c.setBackground(Color.WHITE);
+                            popup.setVisible(false);
+            //            }
+     // };
+           
+                       
+
     }
     /**
      * Cambia il messagglio che appare nel popup quando il dato nel componente non è valido. Le sottoclassi
@@ -152,6 +174,7 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
     @Override
     public void keyReleased(KeyEvent e) {
         verify((JComponent)e.getSource());
+
     }
 
     private void initComponents() {
