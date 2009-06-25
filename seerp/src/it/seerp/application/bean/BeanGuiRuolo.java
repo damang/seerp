@@ -78,6 +78,7 @@ public class BeanGuiRuolo {
     public void resetAll() {
         try {
             validator=false;
+
             nome.setText("");
             Iterator<ArrayList<BeanGuiPermesso>> l = listPermessi.values().iterator();
             ArrayList<BeanGuiPermesso> ar;
