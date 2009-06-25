@@ -1,5 +1,6 @@
 package it.seerp.application.bean;
 
+import it.seerp.Gui.configurazioni.Gui.RegexpDef;
 import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.validation.NotEmptyValidator;
 import java.util.ArrayList;
@@ -83,6 +84,11 @@ public class BeanGuiContratto {
      * @return la il campo data di stipula
      */
     public JTextField getData() {
+        if (validator == true) {
+            if (!data.getInputVerifier().shouldYieldFocus(data)) {
+                throw new ValidatorException("Errore nella grafica!");
+            }
+        }
         return data;
     }
 
@@ -91,6 +97,7 @@ public class BeanGuiContratto {
      * @param data rappresenta il campo data di stipula da inserire
      */
     public void setData(JTextField data) {
+        data.setInputVerifier(new NotEmptyValidator(grafica, data, "Il formato data deve essere GG/MM/AAAA.", RegexpDef.valueOf(RegexpDef.VAL.DATA)));
         this.data = data;
     }
 
@@ -99,7 +106,6 @@ public class BeanGuiContratto {
      * @return
      */
     public BeanGuiDipendente getDipendente() {
-
         return dipendente;
     }
 
@@ -132,7 +138,7 @@ public class BeanGuiContratto {
      */
     public void setDurata(JTextField pdurata) {
         this.durata = pdurata;
-        durata.setInputVerifier(new NotEmptyValidator(grafica, durata, "Il campo non può essere vuoto.", "")); //espressione
+        durata.setInputVerifier(new NotEmptyValidator(grafica, durata, "Il campo non può essere vuoto.", RegexpDef.valueOf(RegexpDef.VAL.VUOTO)));
     }
 
     /**
@@ -219,7 +225,7 @@ public class BeanGuiContratto {
      */
     public void setTipo(JTextField ptipo) {
         this.tipo = ptipo;
-        tipo.setInputVerifier(new NotEmptyValidator(grafica, tipo, "Il campo non può essere vuoto.", "")); //espressione
+        tipo.setInputVerifier(new NotEmptyValidator(grafica, tipo, "Il campo non può essere vuoto.", RegexpDef.valueOf(RegexpDef.VAL.VUOTO));
     }
 
     /**

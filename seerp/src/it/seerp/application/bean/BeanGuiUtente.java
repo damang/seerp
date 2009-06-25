@@ -1,5 +1,6 @@
 package it.seerp.application.bean;
 
+import it.seerp.Gui.configurazioni.Gui.RegexpDef;
 import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.validation.NotEmptyValidator;
 import javax.swing.JTextArea;
@@ -71,7 +72,7 @@ public class BeanGuiUtente {
      */
     public void setTipo(JTextField ptipo) {
         this.tipo = ptipo;
-        tipo.setInputVerifier(new NotEmptyValidator(grafica, tipo, "Il campo non può essere vuoto.", "")); //espressione
+        tipo.setInputVerifier(new NotEmptyValidator(grafica, tipo, "Il campo non può essere vuoto.", RegexpDef.valueOf(RegexpDef.VAL.VUOTO)));
     }
 
     /**
@@ -137,7 +138,7 @@ public class BeanGuiUtente {
      */
     public void setIdUtenteTxt(JTextField pidUtenteTxt) {
         this.idUtenteTxt = pidUtenteTxt;
-        idUtenteTxt.setInputVerifier(new NotEmptyValidator(grafica, idUtenteTxt, "Il campo non può essere vuoto.", "")); //espressione
+        idUtenteTxt.setInputVerifier(new NotEmptyValidator(grafica, idUtenteTxt, "Il campo non può essere vuoto.", RegexpDef.valueOf(RegexpDef.VAL.VUOTO)));
     }
 
     /**
@@ -263,7 +264,7 @@ public class BeanGuiUtente {
      */
     public void setTxtCitta(JTextField ptxtCitta) {
         this.txtCitta = ptxtCitta;
-        txtCitta.setInputVerifier(new NotEmptyValidator(grafica, txtCitta, "Il campo non può essere vuoto.", "")); //espressione
+        txtCitta.setInputVerifier(new NotEmptyValidator(grafica, txtCitta, "Il campo non può essere vuoto.", RegexpDef.valueOf(RegexpDef.VAL.VUOTO)));
     }
 
     /**
@@ -272,7 +273,7 @@ public class BeanGuiUtente {
      */
     public void setTxtEmail(JTextField ptxtEmail) {
         this.txtEmail = ptxtEmail;
-        txtEmail.setInputVerifier(new NotEmptyValidator(grafica, ptxtEmail, "Il campo non può essere vuoto.", "")); //espressione
+        txtEmail.setInputVerifier(new NotEmptyValidator(grafica, ptxtEmail, "Email inserita non valida.", RegexpDef.valueOf(RegexpDef.VAL.MAIL)));
     }
 
     /**
@@ -281,7 +282,7 @@ public class BeanGuiUtente {
      */
     public void setTxtPassword(JTextField ptxtPassword) {
         this.txtPassword = ptxtPassword;
-        txtPassword.setInputVerifier(new NotEmptyValidator(grafica, txtPassword, "Il campo non può essere vuoto.", "")); //espressione
+        txtPassword.setInputVerifier(new NotEmptyValidator(grafica, txtPassword, "Il campo non può essere vuoto.", RegexpDef.valueOf(RegexpDef.VAL.VUOTO)));
     }
 
     /**
@@ -290,7 +291,7 @@ public class BeanGuiUtente {
      */
     public void setTxtProvincia(JTextField ptxtProvincia) {
         this.txtProvincia = ptxtProvincia;
-        txtProvincia.setInputVerifier(new NotEmptyValidator(grafica, txtProvincia, "Il campo non può essere vuoto.", "")); //espressione
+        txtProvincia.setInputVerifier(new NotEmptyValidator(grafica, txtProvincia, "Il campo non può essere vuoto.", RegexpDef.valueOf(RegexpDef.VAL.PROV)));
     }
 
     /**
@@ -299,7 +300,7 @@ public class BeanGuiUtente {
      */
     public void setTxtTelefono(JTextField ptxtTelefono) {
         this.txtTelefono = ptxtTelefono;
-        txtTelefono.setInputVerifier(new NotEmptyValidator(grafica, txtTelefono, "Il campo deve essere di almeno 8 caratteri", "")); //espressione
+        txtTelefono.setInputVerifier(new NotEmptyValidator(grafica, txtTelefono, "Il campo deve essere di almeno 8 caratteri", RegexpDef.valueOf(RegexpDef.VAL.TELEFONO)));
     }
 
     /**
@@ -308,7 +309,7 @@ public class BeanGuiUtente {
      */
     public void setTxtUsername(JTextField ptxtUsername) {
         this.txtUsername = ptxtUsername;
-        txtUsername.setInputVerifier(new NotEmptyValidator(grafica, txtUsername, "Il campo non può essere vuoto.", "")); //espressione
+        txtUsername.setInputVerifier(new NotEmptyValidator(grafica, txtUsername, "Il campo non può essere vuoto.", RegexpDef.valueOf(RegexpDef.VAL.VUOTO)));
     }
 
     /**
