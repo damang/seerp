@@ -1,7 +1,9 @@
 package it.seerp.application.bean;
 
+import it.seerp.Gui.configurazioni.Gui.RegexpDef;
 import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.tabelle.RuoloTm;
+import it.seerp.application.validation.NotEmptyValidator;
 import it.seerp.application.validation.StartWithValidator;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -24,7 +26,7 @@ public class BeanGuiRuolo {
     private HashMap<String, JCheckBox> perm_all;
     private JXTable tabRuo,  tabPers;
     private Object grafica;
-    protected boolean validator=true;
+    protected boolean validator=false;
 
     public boolean isValidator() {
         return validator;
@@ -80,6 +82,7 @@ public class BeanGuiRuolo {
                 ar.get(i).getAct().setSelected(false);
             }
         }
+        tabPers.rem;
     }
 
     /**
@@ -96,7 +99,7 @@ public class BeanGuiRuolo {
      */
     public void setNome(JTextField pnome) {
         this.nome = pnome;
-        nome.setInputVerifier(new StartWithValidator((JPanel) grafica, nome, "Il campo non può essere vuoto."));
+        nome.setInputVerifier(new NotEmptyValidator(grafica,nome, "Il nome inserito non è valido!",RegexpDef.valueOf(RegexpDef.VAL.NOME_RUOLO)));
     }
 
     /**

@@ -43,10 +43,7 @@ public class BeanGuiEvento {
      * validazione del campo
      * @param c
      */
-    public BeanGuiEvento(JPanel c) {
-        grafica = c;
-    }
-     public BeanGuiEvento(JDialog c) {
+    public BeanGuiEvento(Object c) {
         grafica = c;
     }
      public BeanGuiEvento() {
@@ -105,7 +102,7 @@ public class BeanGuiEvento {
     public void setData(JXDatePicker pdata) {
         this.data = pdata;
       //  data.setInputVerifier(new NotEmptyValidator(new JTextField(data.getDate().toString()), "Il capo non può essere vuoto."));
-          data.setInputVerifier(new NotEmptyValidator(data, "Il capo non può essere vuoto."));
+          data.setInputVerifier(new NotEmptyValidator(grafica,data, "Il capo non può essere vuoto."," "));
     }
 
     /**
@@ -127,7 +124,7 @@ public class BeanGuiEvento {
      */
     public void setIdEvento(JTextField pidEvento) {
         this.idEvento = pidEvento;
-        idEvento.setInputVerifier(new NotEmptyValidator(idEvento, "Il campo non può essere vuoto."));
+        idEvento.setInputVerifier(new NotEmptyValidator(grafica, idEvento, "Il campo non può essere vuoto."," "));
     }
 
     /**
@@ -149,7 +146,7 @@ public class BeanGuiEvento {
      */
     public void setLuogo(JTextField pluogo) {
         this.luogo = pluogo;
-        luogo.setInputVerifier(new NotEmptyValidator(luogo, "Il campo non può essere vuoto."));
+        luogo.setInputVerifier(new NotEmptyValidator(grafica, luogo, "Il campo non può essere vuoto."," "));
     }
 
     /**
@@ -171,7 +168,7 @@ public class BeanGuiEvento {
      */
     public void setNome(JTextField pnome) {
         this.nome = pnome;
-        nome.setInputVerifier(new NotEmptyValidator(nome, "Il campo non può essere vuoto."));
+        nome.setInputVerifier(new NotEmptyValidator(grafica, nome, "Il campo non può essere vuoto."," "));
     }
 
     /**
@@ -209,7 +206,7 @@ public class BeanGuiEvento {
      */
     public void setOra(JTextField pora) {
         this.ora = pora;
-        ora.setInputVerifier(new NotEmptyValidator(ora, "Il campo non può essere vuoto."));
+        ora.setInputVerifier(new NotEmptyValidator(grafica ,ora, "Il campo non può essere vuoto."," "));
     }
 
     /**
@@ -232,6 +229,6 @@ public class BeanGuiEvento {
     public void setTema(JComboBox ptema) {
         this.tema = ptema;
         //tema.setInputVerifier(new NotEmptyValidator(new JTextField((String) tema.getSelectedItem()), "Il campo non può essere vuoto."));
-        tema.setInputVerifier(new NotEmptyValidator(tema, "Il campo non può essere vuoto."));
+        tema.setInputVerifier(new NotEmptyValidator(grafica, tema, "Il campo non può essere vuoto."," "));
     }
 }
