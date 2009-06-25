@@ -28,7 +28,7 @@ public class PersonaleTm extends Generica<Personale> {
         Object[] list = new Object[]{"id","Cognome", "Nome","Tipo"};
         super.setColumnIdentifiers(list);
         super.setColumnCount(4);
-        refresh();
+        //refresh();
     }
      public PersonaleTm(Ruolo r) throws SQLException {
          this.r=r;

@@ -21,6 +21,7 @@ import it.seerp.application.tabelle.RuoloTm;
 import it.seerp.application.applicazione.AppRuoli;
 import it.seerp.application.bean.BeanGuiPermesso;
 import it.seerp.application.bean.BeanGuiRuolo;
+import it.seerp.application.validation.NotEmptyValidator;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -695,9 +696,13 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
 
     private void buttonAnnulla1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAnnulla1ActionPerformed
         if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI)) {
+            be.setValidator(false);
             be.resetAll();
+            
+
         } else {
-            jXTable1MouseClicked(null);
+            be.setValidator(false);
+            //jXTable1MouseClicked(null);
         }
         setEditable(false);
         menu.setButtonEnabled(true);
@@ -718,6 +723,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
             menu.setButtonEnabled(true);
             buttonSalva1.setVisible(false);
             buttonAnnulla1.setVisible(false);
+            be.setValidator(false);
             setEditable(false);
         } catch (SQLException ex) {
             switch (ex.getErrorCode()) {
@@ -889,7 +895,9 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
     public void setEditable(boolean b) {
 
         try {
-            be.getNome().setEditable(b);
+            be.getNome().setEnabled(b);
+            if (!b)
+                ((NotEmptyValidator)be.getNome().getInputVerifier()).reset(be.getNome());
 
             Iterator<ArrayList<BeanGuiPermesso>> c = be.getListPermessi().values().iterator();
             Iterator<BeanGuiPermesso> itint;

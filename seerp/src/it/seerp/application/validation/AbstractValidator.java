@@ -92,8 +92,7 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
          /*   if (parent instanceof WantsValidationStatus) {
                 ((WantsValidationStatus) parent).validateFailed();
             }
-*/
-            c.setBackground(Color.PINK);
+*/            c.setBackground(Color.PINK);
             popup.setSize(0, 0);
             popup.setLocationRelativeTo(c);
             point = popup.getLocation();
@@ -116,7 +115,7 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
     public void reset(JComponent c) {
         c.setBackground(Color.WHITE);
         popup.setSize(0,0);
-        popup.setVisible(false);
+        popup.dispose();
 
         
     }
