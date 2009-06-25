@@ -14,13 +14,16 @@ public class RegexpDef {
 
         NOME_RUOLO,
         MAIL,
+        VUOTO,
         CODFIS,
         PROV,
         CAP,
         PIVA,
         DATA,
         ORA,
-        TELEFONO
+        TELEFONO,
+        PREZZO,
+        NUMP
     }
 
     public static String valueOf(VAL c) {
@@ -42,6 +45,12 @@ public class RegexpDef {
             return "(?:[01]\\d|2[0-3])[.:](?:[0-5]\\d)[.:](?:[0-5]\\d)";
         else if (c.equals(VAL.TELEFONO))
             return "^[0-9]+\\s[0-9]+$";
+        else if (c.equals(VAL.VUOTO))
+            return"(.[a-z]*)*";
+        else if (c.equals(VAL.PREZZO))
+            return "(\\d{0,9})[.](\\d{2})";
+        else if (c.equals(VAL.NUMP))
+            return "\\d{0,9}";
         else return"";
 
     }
