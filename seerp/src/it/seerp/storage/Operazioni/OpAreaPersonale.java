@@ -25,11 +25,7 @@ public class OpAreaPersonale extends OpeUtente {
      *
      * @throws java.sql.SQLException
      */
-    public OpAreaPersonale() throws SQLException {
-
-        conn = (Connection) ConnectionPool.getConnection();
-
-    }
+    public OpAreaPersonale() throws SQLException {}
 
     /** Metodo che permette la visualizzazione dei dettagli
      * di un membro del personale nella propria area personale
@@ -39,7 +35,7 @@ public class OpAreaPersonale extends OpeUtente {
      * @throws java.sql.SQLException*/
 
        public Personale visualizzaDatiPersonale(String usr) throws SQLException {
-
+      conn = (Connection) ConnectionPool.getConnection();
         ResultSet rs=null;
         Personale per=new  Personale();/* = (Personale) super.visualizza(usr);*/
         String sql="SELECT username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita, nome, cognome, codicefiscale,ruolo FROM utente, personale WHERE idUtente=idPersonale and username=?";
@@ -68,7 +64,8 @@ public class OpAreaPersonale extends OpeUtente {
 
 
       public ExtraAzienda visualizzaDatiExtraAzienda(String usr) throws SQLException {
-        ResultSet rs=null;
+              conn = (Connection) ConnectionPool.getConnection();
+          ResultSet rs=null;
         ExtraAzienda extra = (ExtraAzienda) super.visualizza(usr);
         String sql="SELECT username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita" +
                    "nome, cognome,fax,piva,ragioneSociale,ruolo,codicefiscale," +
@@ -107,7 +104,7 @@ public class OpAreaPersonale extends OpeUtente {
      * @throws DatiErratiEx se si modifica con una password errata
      */
     public Utente modificaPassword(Utente u) throws SQLException, DatiErratiEx {
-
+      conn = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
 
         String sql = "UPDATE utente SET password=? where username=?";
