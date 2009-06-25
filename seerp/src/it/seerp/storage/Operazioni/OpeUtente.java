@@ -10,13 +10,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
 /**
  *
  * @author matteo
  */
-public  class OpeUtente implements OpeEntity<Utente, Integer> {
-   Connection conn=null;
+public class OpeUtente implements OpeEntity<Utente, Integer> {
+
+    Connection conn = null;
+
     /**
      *
      * @throws java.sql.SQLException
@@ -26,7 +27,7 @@ public  class OpeUtente implements OpeEntity<Utente, Integer> {
 
     public Utente visualizza(String user) throws SQLException {
         conn = (Connection) ConnectionPool.getConnection();
-        Utente ut=null;
+        Utente ut = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         String sql = "SELECT * FROM Utente WHERE username = ?;";
@@ -35,7 +36,7 @@ public  class OpeUtente implements OpeEntity<Utente, Integer> {
 
         rs = stmt.executeQuery();
 
-        if(rs.next()) {
+        if (rs.next()) {
 
             ut = new Utente();
             ut.setIdUtente(rs.getInt("idUtente"));
@@ -49,8 +50,9 @@ public  class OpeUtente implements OpeEntity<Utente, Integer> {
             ut.setTelefono(rs.getString("telefono"));
             ut.setTipo(rs.getString("tipo"));
             ut.setVisible(rs.getBoolean("visibilita"));
-       }
-        else throw new SQLException("L'utente non è presente nel database");
+        } else {
+            throw new SQLException("L'utente non è presente nel database");
+        }
 
         rs.close();
         stmt.close();
@@ -113,14 +115,9 @@ public  class OpeUtente implements OpeEntity<Utente, Integer> {
         stmt.setString(8, user.getNote());
         //   stmt.setString(9, user.getTipo());
         stmt.setInt(9, user.getIdUtente());
-       //  stmt.setString(10, user.getVisible().toString());
-
+        //  stmt.setString(10, user.getVisible().toString());
 
         stmt.execute();
-
-
-
-
 
         stmt.close();
         ConnectionPool.releaseConnection(conn);
@@ -133,7 +130,9 @@ public  class OpeUtente implements OpeEntity<Utente, Integer> {
      * @throws SQLException
      * @throws DatiErratiEx
      */
-    public void inserimento(Utente user) throws SQLException{};
+    public void inserimento(Utente user) throws SQLException {
+    }
+    ;
 
     /**
      * metodo che permette di visualizzare i dati di un utente
@@ -142,18 +141,18 @@ public  class OpeUtente implements OpeEntity<Utente, Integer> {
      * @throws SQLException
      * @throws DatiErratiEx
      */
-    public Utente visualizza( Integer id) throws SQLException {
-         conn = (Connection) ConnectionPool.getConnection();
+    public Utente visualizza(Integer id) throws SQLException {
+        conn = (Connection) ConnectionPool.getConnection();
         Utente utente = new Utente();
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
         String sql = "SELECT * FROM Utente WHERE idUtente = ? ";
-        stmt =(PreparedStatement) conn.prepareStatement(sql);
+        stmt = (PreparedStatement) conn.prepareStatement(sql);
 
         stmt.setInt(1, id);
 
-        rs =  stmt.executeQuery(sql);
+        rs = stmt.executeQuery(sql);
 
         while (rs.next()) {
 
@@ -174,12 +173,12 @@ public  class OpeUtente implements OpeEntity<Utente, Integer> {
      * metodo che permette di visualizzare i dati degli utenti per effettuare una ricerca
      * @return ArrayList<Utente> la lista degli utenti per effetturare la ricerca
      * @throws java.sql.SQLException
-     
+
     public ArrayList<Utente> ricerca() throws SQLException {
 
-           ArrayList<Utente> list = this.visualizzaElenco();
+    ArrayList<Utente> list = this.visualizzaElenco();
 
-        return list;
+    return list;
     }
 
     /**
@@ -206,8 +205,9 @@ public  class OpeUtente implements OpeEntity<Utente, Integer> {
      * @param ut
      * @throws java.sql.SQLException
      */
-    public void elimina(Utente ut) throws SQLException {};
-  
+    public void elimina(Utente ut) throws SQLException {
+    }
+    ;
 }
 
 

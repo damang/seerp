@@ -9,9 +9,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import it.seerp.storage.db.ConnectionPool;
 import it.seerp.storage.db.OpeEntity;
-import java.sql.Date;
+
 import java.sql.ResultSet;
-import java.sql.Statement;
+
 
 import java.util.GregorianCalendar;
 
@@ -29,7 +29,7 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
      */
     public OpEvento() throws SQLException {
 
-        connessione = (Connection) ConnectionPool.getConnection();
+   
     }
 
     /** crea la query per inserire l'evento e nel database
@@ -39,7 +39,7 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
      * @throws DatiDuplicatiEx eccezione lanciata se esiste già un evento con lo stesso nome
      */
     public void inserimento(Evento e) throws DatiDuplicatiEx, DatiErratiEx, SQLException {
-
+     connessione = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
         String query = "INSERT INTO evento(data,ora,agenda,luogo,nome,tema,note,notifica) VALUES (?,?,?,?,?,?,?,?)";
         stmt = (PreparedStatement) connessione.prepareStatement(query);
@@ -66,7 +66,7 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
      * @throws SQLException
      */
     public Evento modifica(Evento e) throws DatiDuplicatiEx, DatiErratiEx, SQLException {
-
+     connessione = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
         String query = "UPDATE evento SET data=?, ora=?, luogo=?, nome=?, tema=?, note=?, notifica=? where idEvento=?";
         stmt = (PreparedStatement) connessione.prepareStatement(query);
@@ -179,7 +179,7 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
      * @throws SQLException
      */
     public ArrayList<Evento> ricercaEvento() throws SQLException {
-
+     connessione = (Connection) ConnectionPool.getConnection();
         ArrayList<Evento> b = this.visualizzaElenco();
         return b;
     }
@@ -190,7 +190,7 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
      * @throws SQLException
      */
     public void cancella(Evento e) throws SQLException {
-
+     connessione = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
 
         String query = "DELETE FROM evento WHERE idEvento=?";
@@ -208,7 +208,7 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
      * @throws SQLException
      */
     public void notificaEvento(Evento e) throws SQLException {
-
+     connessione = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
 
 
@@ -262,7 +262,7 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
 
 
     public ArrayList<Evento> visualizzaElenco() throws SQLException {
-
+     connessione = (Connection) ConnectionPool.getConnection();
         ArrayList<Evento> lista = new ArrayList<Evento>();
 
         PreparedStatement stmt = null;

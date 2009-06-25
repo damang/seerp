@@ -28,7 +28,6 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
      * @throws java.sql.SQLException
      */
     public OpContratto() throws SQLException {
-        connessione = (Connection) ConnectionPool.getConnection();
     }
 
     /**
@@ -38,7 +37,7 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
      * @throws DatiErratiEx se si inseriscono dati errati
      */
     public void inserimento(Contratto contratto) throws SQLException, DatiErratiEx {
-
+        connessione = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
 
         String query = "INSERT INTO contratto(durata,stato,tipo,extrazienda,dipendente,data,note)" +
@@ -67,7 +66,7 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
      * @throws java.sql.SQLException     
      */
     public ArrayList<Contratto> ricercaPerDipendente() throws SQLException {
-
+        connessione = (Connection) ConnectionPool.getConnection();
         ArrayList<Contratto> lista = this.visualizzaElenco();
         return lista;
     }
@@ -78,7 +77,7 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
      * @throws java.sql.SQLException
      */
     public ArrayList<Contratto> visualizzaElenco() throws SQLException {
-
+        connessione = (Connection) ConnectionPool.getConnection();
         ArrayList<Contratto> lista = new ArrayList<Contratto>();
 
         PreparedStatement stmt = null;
@@ -120,14 +119,14 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
      * @throws java.sql.SQLException
      */
     public Contratto visualizza(Integer id) throws SQLException {
-
+        connessione = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
         Contratto contratto = null;
 
 
         String sql = "SELECT idContratto,durata,stato,tipo,extrazienda,dipendente,data,note " +
-                     "FROM contratto WHERE idContratto= ?";
+                "FROM contratto WHERE idContratto= ?";
         stmt = (PreparedStatement) connessione.prepareStatement(sql);
 
         stmt.setInt(1, id);
@@ -189,7 +188,7 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
      * @throws java.sql.SQLException
      */
     public ArrayList<Servizio> getServizioContratto(Integer id) throws SQLException {
-
+        connessione = (Connection) ConnectionPool.getConnection();
         ArrayList<Servizio> list = new ArrayList<Servizio>();
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -233,5 +232,5 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
     rs.close();
     connessione.close();
     return bean;*/
- }
+}
 

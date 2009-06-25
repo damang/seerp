@@ -22,12 +22,12 @@ public class OpInit implements OpeEntity<Amministratore, Azienda> {
 
     public OpInit() throws SQLException {
 
-        connessione = (Connection) ConnectionPool.getConnection();
+   
     }
 
     @Override
     public void inserimento(Amministratore user) throws SQLException {
-
+     connessione = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
         PreparedStatement stmtp = null;
         PreparedStatement stmtd = null;
@@ -69,7 +69,7 @@ public class OpInit implements OpeEntity<Amministratore, Azienda> {
     }
 
     public boolean check() throws SQLException {
-
+     connessione = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmtp = null;
         ResultSet rs = null;
 

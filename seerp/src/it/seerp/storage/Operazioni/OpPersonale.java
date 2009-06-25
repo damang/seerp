@@ -13,7 +13,6 @@ import it.seerp.storage.db.ConnectionPool;
 
 
 import java.sql.ResultSet;
-import java.sql.Statement;
 
 /** Classe riguardante la gestione Personale
  *

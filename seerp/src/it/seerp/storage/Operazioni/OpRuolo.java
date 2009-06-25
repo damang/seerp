@@ -3,15 +3,15 @@ package it.seerp.storage.Operazioni;
 import java.sql.Statement;
 import it.seerp.storage.db.ConnectionPool;
 import it.seerp.storage.db.OpeEntity;
-import it.seerp.storage.ejb.Permesso;
+
 import it.seerp.storage.ejb.Ruolo;
 import it.seerp.storage.jaas.PermessoCollection;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+import com.mysql.jdbc.PreparedStatement;
+import com.mysql.jdbc.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
+
 
 /**
  *
@@ -29,6 +29,7 @@ public class OpRuolo implements OpeEntity<Ruolo, String> {
     }
 
     private void insertIncarico(Connection conn, PreparedStatement stmt, Ruolo bean) throws SQLException {
+        conn = (Connection) ConnectionPool.getConnection();
         String sql = "insert into incarico set ruolo=?, permesso= (SELECT idPermesso from permesso where task=? and `action`=?);";
         stmt = (PreparedStatement) conn.prepareStatement(sql);
         PermessoCollection b = bean.getListPermesso();
