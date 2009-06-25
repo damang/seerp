@@ -1,5 +1,6 @@
 package it.seerp.application.bean;
 
+import it.seerp.Gui.configurazioni.Gui.RegexpDef;
 import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.validation.NotEmptyValidator;
 import javax.swing.JTextField;
@@ -88,7 +89,7 @@ public class BeanGuiPersonale extends BeanGuiUtente {
      */
     public void setCodiceFiscale(JTextField pcodiceFiscale) {
         this.codiceFiscale = pcodiceFiscale;
-        codiceFiscale.setInputVerifier(new NotEmptyValidator(grafica, codiceFiscale, "Il campo non può essere vuoto.", "")); //espressione
+        codiceFiscale.setInputVerifier(new NotEmptyValidator(grafica, codiceFiscale, "Il CF deve essere di 16 caratteri", RegexpDef.valueOf(RegexpDef.VAL.CODFIS)));
     }
 
     /**
@@ -97,7 +98,7 @@ public class BeanGuiPersonale extends BeanGuiUtente {
      */
     public void setCognome(JTextField pcognome) {
         this.cognome = pcognome;
-        cognome.setInputVerifier(new NotEmptyValidator(grafica, cognome, "Il campo non può essere vuoto.", "")); //espressione
+        cognome.setInputVerifier(new NotEmptyValidator(grafica, cognome, "Il campo non può essere vuoto.", RegexpDef.valueOf(RegexpDef.VAL.VUOTO)));
     }
 
     /**
@@ -106,6 +107,6 @@ public class BeanGuiPersonale extends BeanGuiUtente {
      */
     public void setNome(JTextField pnome) {
         this.nome = pnome;
-        nome.setInputVerifier(new NotEmptyValidator(grafica, nome, "Il campo non può essere vuoto.", "")); //espressione
+        nome.setInputVerifier(new NotEmptyValidator(grafica, nome, "Il campo non può essere vuoto.", RegexpDef.valueOf(RegexpDef.VAL.VUOTO)));
     }
 }

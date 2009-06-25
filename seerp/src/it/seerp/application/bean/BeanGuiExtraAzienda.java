@@ -1,5 +1,6 @@
 package it.seerp.application.bean;
 
+import it.seerp.Gui.configurazioni.Gui.RegexpDef;
 import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.validation.NotEmptyValidator;
 import java.util.ArrayList;
@@ -106,7 +107,7 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      */
     public void setCognome(JTextField ptxtCognome) {
         this.cognome = ptxtCognome;
-        cognome.setInputVerifier(new NotEmptyValidator(grafica, cognome, "Il campo non può essere vuoto.", "")); //espressione
+        cognome.setInputVerifier(new NotEmptyValidator(grafica, cognome, "Il campo non può essere vuoto.", RegexpDef.valueOf(RegexpDef.VAL.VUOTO)));
     }
 
     /**
@@ -115,7 +116,7 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      */
     public void setNome(JTextField ptxtNome) {
         this.nome = ptxtNome;
-        nome.setInputVerifier(new NotEmptyValidator(grafica, nome, "Il campo non può essere vuoto.", "")); //espressione
+        nome.setInputVerifier(new NotEmptyValidator(grafica, nome, "Il campo non può essere vuoto.", RegexpDef.valueOf(RegexpDef.VAL.VUOTO)));
     }
 
     /**
@@ -124,7 +125,7 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      */
     public void setFax(JTextField ptxtFax) {
         this.fax = ptxtFax;
-        fax.setInputVerifier(new NotEmptyValidator(grafica, fax, "Il campo deve essere di almeno 8 caratteri", "")); //espressione
+        fax.setInputVerifier(new NotEmptyValidator(grafica, fax, "Il campo deve essere di almeno 8 caratteri", RegexpDef.valueOf(RegexpDef.VAL.TELEFONO)));
     }
 
     /**
@@ -133,7 +134,7 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      */
     public void setPIva(JTextField ppIva) {
         this.pIva = ppIva;
-        pIva.setInputVerifier(new NotEmptyValidator(grafica, pIva, "Il campo non può essere vuoto.", "")); //espressione
+        pIva.setInputVerifier(new NotEmptyValidator(grafica, pIva, "Il campo IVA deve essere di 11 caratteri.", RegexpDef.valueOf(RegexpDef.VAL.PIVA)));
     }
 
     /**
@@ -142,7 +143,7 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      */
     public void setTxtRagioneSociale(JTextField ptxtRagioneSociale) {
         this.ragioneSociale = ptxtRagioneSociale;
-        ragioneSociale.setInputVerifier(new NotEmptyValidator(grafica, ragioneSociale, "Il campo non può essere vuoto.", "")); //espressione
+        ragioneSociale.setInputVerifier(new NotEmptyValidator(grafica, ragioneSociale, "Il campo non può essere vuoto.", RegexpDef.valueOf(RegexpDef.VAL.VUOTO)));
     }
 
     /**

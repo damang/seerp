@@ -1,5 +1,6 @@
 package it.seerp.application.bean;
 
+import it.seerp.Gui.configurazioni.Gui.RegexpDef;
 import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.validation.NotEmptyValidator;
 import java.util.ArrayList;
@@ -96,7 +97,7 @@ public class BeanGuiServizio {
      */
     public void setDescrizione(JTextField pdescrizione) {
         this.descrizione = pdescrizione;
-        descrizione.setInputVerifier(new NotEmptyValidator(grafica, descrizione, "Il campo non può essere vuoto.", "")); //espressione
+        descrizione.setInputVerifier(new NotEmptyValidator(grafica, descrizione, "Il campo non può essere vuoto.", RegexpDef.valueOf(RegexpDef.VAL.VUOTO)));
     }
 
     /**
@@ -151,7 +152,7 @@ public class BeanGuiServizio {
      */
     public void setIva(JTextField piva) {
         this.iva = piva;
-        iva.setInputVerifier(new NotEmptyValidator(grafica, iva, "Il campo non può essere vuoto.", "")); //espressione
+        iva.setInputVerifier(new NotEmptyValidator(grafica, iva, "Il campo IVA deve essere di 11 caratteri.", RegexpDef.valueOf(RegexpDef.VAL.PIVA))); //espressione
     }
 
     /**
@@ -190,7 +191,7 @@ public class BeanGuiServizio {
      */
     public void setPrezzo(JTextField pprezzo) {
         this.prezzo = pprezzo;
-        prezzo.setInputVerifier(new NotEmptyValidator(grafica, prezzo, "Il campo non può essere vuoto.", "")); //espressione
+        prezzo.setInputVerifier(new NotEmptyValidator(grafica, prezzo, "Prezzo inserito non valido.", RegexpDef.valueOf(RegexpDef.VAL.PREZZO)));
     }
 
     /**
@@ -213,7 +214,7 @@ public class BeanGuiServizio {
      */
     public void setQuantita(JTextField pquantita) {
         this.quantita = pquantita;
-        quantita.setInputVerifier(new NotEmptyValidator(grafica, quantita, "Il campo non può essere vuoto.", "")); //espressione
+        quantita.setInputVerifier(new NotEmptyValidator(grafica, quantita, "Inserire una quantità positiva.", RegexpDef.valueOf(RegexpDef.VAL.NUMPOS)));
     }
 
     /**
@@ -236,6 +237,6 @@ public class BeanGuiServizio {
      */
     public void setTipo(JTextField ptipo) {
         this.tipo = ptipo;
-        tipo.setInputVerifier(new NotEmptyValidator(grafica, tipo, "Il campo non può essere vuoto.", "")); //espressione
+        tipo.setInputVerifier(new NotEmptyValidator(grafica, tipo, "Il campo non può essere vuoto.", RegexpDef.valueOf(RegexpDef.VAL.VUOTO)));
     }
 }
