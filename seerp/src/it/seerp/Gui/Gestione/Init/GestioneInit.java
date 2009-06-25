@@ -12,6 +12,7 @@
 package it.seerp.Gui.Gestione.Init;
 
 import it.seerp.application.bean.BeanGuiAmministratore;
+import it.seerp.application.bean.BeanGuiAzienda;
 
 /**
  *
@@ -20,6 +21,7 @@ import it.seerp.application.bean.BeanGuiAmministratore;
 public class GestioneInit extends javax.swing.JPanel {
 
     BeanGuiAmministratore amm;
+    BeanGuiAzienda az;
 
 
     /** Creates new form GestioneInit */
@@ -45,6 +47,15 @@ public class GestioneInit extends javax.swing.JPanel {
     nm10.setEditable(flag);
     nm11.setEditable(flag);
     jTextArea1.setEditable(flag);
+    nm13.setEditable(flag);
+    nm14.setEditable(flag);
+    nm15.setEditable(flag);
+    nm16.setEditable(flag);
+    nm17.setEditable(flag);
+    nm18.setEditable(flag);
+    nm19.setEditable(flag);
+    nm20.setEditable(flag);
+    nm21.setEditable(flag);
     }
 
     /**
@@ -65,6 +76,15 @@ public class GestioneInit extends javax.swing.JPanel {
         nm10.setText(s);
         nm11.setText(s);
         jTextArea1.setText(s);
+        nm13.setText(s);
+        nm14.setText(s);
+        nm15.setText(s);
+        nm16.setText(s);
+        nm17.setText(s);
+        nm18.setText(s);
+        nm19.setText(s);
+        nm20.setText(s);
+        nm21.setText(s);
 
     }
 
@@ -86,6 +106,15 @@ public class GestioneInit extends javax.swing.JPanel {
         amm.setTxtUsername(nm10);
         amm.setTxtPassword(nm11);
         amm.setTxtNote(jTextArea1);
+        az.setIdAzienda(nm13);
+        az.setCitta(nm14);
+        az.setEmail(nm15);
+        az.setFax(nm16);
+        az.setInidirizzo(nm17);
+        az.setNazione(nm18);
+        az.setPIVA(nm19);
+        az.setRagioneSociale(nm20);
+        az.setTelefono(nm21);
     }
 
     /** This method is called from within the constructor to
