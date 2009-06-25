@@ -45,13 +45,15 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
      * Metodo che permette di inserire un nuovo Cliente
      * @param clien il Cliente che si vuole inserire
      */
-    public void inserisciCliente(BeanGuiCliente clien) throws SQLException,ValidatorException,DatiDuplicatiEx {
+    public void inserisciCliente(BeanGuiCliente clien) throws SQLException,DatiDuplicatiEx {
         //  super.inserisci(clien);
-          
+          try{
             OpCliente a = new OpCliente();
             Cliente cl = Conversione.conversioneCliente(clien);
             a.inserisci(cl);
-      
+          }
+          catch(ValidatorException ex){
+          JOptionPane.showMessageDialog(null, "campi errati");}
  
     }
 
@@ -99,11 +101,13 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
      */
     public void inserisciFornitore(BeanGuiFornitore forn) throws SQLException,ValidatorException,DatiDuplicatiEx {
         //  super.inserisci(forn);
-      
+      try{
             OpFornitore a = new OpFornitore();
             Fornitore fo = Conversione.conversioneFornitore(forn);
             a.inserisci(fo);
-       
+            }
+          catch(ValidatorException ex){
+          JOptionPane.showMessageDialog(null, "campi errati");}
     }
 
     /**

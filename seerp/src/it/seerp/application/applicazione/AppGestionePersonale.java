@@ -40,28 +40,30 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * Metodo che peremette di inserire un nuovo Dipendente
      * @param user il dipendente da inserire
      */
-    public void inserisciDipendente(BeanGuiDipendente user) throws SQLException,ValidatorException {
+    public void inserisciDipendente(BeanGuiDipendente user) throws SQLException, DatiDuplicatiEx {
         // super.inserisci(user);
         try {
             OpDipendente a = new OpDipendente();
             Dipendente dip = Conversione.conversioneDipendente(user);
             a.inserisci(dip);
-        } catch (DatiDuplicatiEx e) {
+        } catch (ValidatorException e) {
             JOptionPane.showMessageDialog(null, "Dati duplicati");
-        } 
+        }
     }
 
     /**
      * Metodo che permette di inserire un nuovo Responsabile
      * @param user
      */
-    public void inserisciResponsabile(BeanGuiResponsabile user) throws SQLException,ValidatorException, DatiDuplicatiEx {
+    public void inserisciResponsabile(BeanGuiResponsabile user) throws SQLException, DatiDuplicatiEx {
         //super.inserisci(user);
-        
+        try {
             OpResponsabile a = new OpResponsabile();
             Responsabile dip = Conversione.conversioneResponsabile(user);
             a.inserisci(dip);
-      
+        } catch (ValidatorException ex) {
+            JOptionPane.showMessageDialog(null, "campi errati");
+        }
     }
 
     /**
