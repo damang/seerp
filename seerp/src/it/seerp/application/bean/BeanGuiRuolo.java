@@ -82,7 +82,7 @@ public class BeanGuiRuolo {
                 ar.get(i).getAct().setSelected(false);
             }
         }
-        tabPers.rem;
+       
     }
 
     /**
