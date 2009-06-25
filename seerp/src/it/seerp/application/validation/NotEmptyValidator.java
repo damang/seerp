@@ -10,7 +10,7 @@ import javax.swing.JTextField;
  * @author Tommaso Cattolico
  */
 public class NotEmptyValidator extends AbstractValidator {
-
+    String regexp;
     /**
      *
      * @param parent
@@ -21,17 +21,19 @@ public class NotEmptyValidator extends AbstractValidator {
         super(parent, c, message);
     }
 
-    public NotEmptyValidator(JComponent c, String message) {
+   /* public NotEmptyValidator(JComponent c, String message, String regexp) {
         super(c, message);
+        this.regexp=regexp;
+    }*/
+    public NotEmptyValidator(Object l,JComponent c, String message, String regexp) {
+        super(l, c, message);
+        this.regexp=regexp;
     }
 
 
     
     @Override
     protected boolean validationCriteria(JComponent c) {
-       //if (((JTextField) c).getText().equals("")) {
-         //   return false;
-       // }
-        return true;
+       return ((JTextField) c).getText().matches(regexp);
     }
 }
