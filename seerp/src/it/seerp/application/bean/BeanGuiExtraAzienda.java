@@ -1,12 +1,8 @@
 package it.seerp.application.bean;
 
 import it.seerp.application.Exception.ValidatorException;
-import it.seerp.application.validation.NotAlphabeticValidator;
 import it.seerp.application.validation.NotEmptyValidator;
-import it.seerp.application.validation.NotEqualLengthValidator;
-import it.seerp.application.validation.NotMinLengthValidator;
 import java.util.ArrayList;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
@@ -46,7 +42,7 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * validazione del campo
      * @param c
      */
-    public BeanGuiExtraAzienda(JPanel c) {
+    public BeanGuiExtraAzienda(Object c) {
         super(c);
     }
 
@@ -110,8 +106,7 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      */
     public void setCognome(JTextField ptxtCognome) {
         this.cognome = ptxtCognome;
-        cognome.setInputVerifier(new NotEmptyValidator((JPanel) grafica, cognome, "Il campo non può essere vuoto."));
-     //   cognome.setInputVerifier(new NotAlphabeticValidator((JPanel) grafica, cognome, "La stringa inserita deve essere alfabetica."));
+        cognome.setInputVerifier(new NotEmptyValidator(grafica, cognome, "Il campo non può essere vuoto.", "")); //espressione
     }
 
     /**
@@ -120,8 +115,7 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      */
     public void setNome(JTextField ptxtNome) {
         this.nome = ptxtNome;
-        nome.setInputVerifier(new NotEmptyValidator((JPanel) grafica, nome, "Il campo non può essere vuoto."));
- //       nome.setInputVerifier(new NotAlphabeticValidator((JPanel) grafica, nome, "La stringa inserita deve essere alfabetica."));
+        nome.setInputVerifier(new NotEmptyValidator(grafica, nome, "Il campo non può essere vuoto.", "")); //espressione
     }
 
     /**
@@ -130,7 +124,7 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      */
     public void setFax(JTextField ptxtFax) {
         this.fax = ptxtFax;
-        fax.setInputVerifier(new NotMinLengthValidator((JPanel) grafica, fax, "Il campo deve essere di almeno 8 caratteri", 8));
+        fax.setInputVerifier(new NotEmptyValidator(grafica, fax, "Il campo deve essere di almeno 8 caratteri", "")); //espressione
     }
 
     /**
@@ -139,8 +133,7 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      */
     public void setPIva(JTextField ppIva) {
         this.pIva = ppIva;
-        pIva.setInputVerifier(new NotEmptyValidator((JPanel) grafica, pIva, "Il campo non può essere vuoto."));
-   //     pIva.setInputVerifier(new NotEqualLengthValidator((JPanel) grafica, pIva, "Il campo deve essere di 11 caratteri", 11));
+        pIva.setInputVerifier(new NotEmptyValidator(grafica, pIva, "Il campo non può essere vuoto.", "")); //espressione
     }
 
     /**
@@ -149,7 +142,7 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      */
     public void setTxtRagioneSociale(JTextField ptxtRagioneSociale) {
         this.ragioneSociale = ptxtRagioneSociale;
-        ragioneSociale.setInputVerifier(new NotEmptyValidator((JPanel) grafica, ragioneSociale, "Il campo non può essere vuoto."));
+        ragioneSociale.setInputVerifier(new NotEmptyValidator(grafica, ragioneSociale, "Il campo non può essere vuoto.", "")); //espressione
     }
 
     /**
@@ -166,11 +159,12 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getCognome() throws ValidatorException {
-        if(validator==true)
-        if (!cognome.getInputVerifier().shouldYieldFocus(cognome)) {
-            throw new ValidatorException("Errore nella grafica!");
+        if (validator == true) {
+            if (!cognome.getInputVerifier().shouldYieldFocus(cognome)) {
+                throw new ValidatorException("Errore nella grafica!");
+            }
         }
-    return cognome;
+        return cognome;
     }
 
     /**
@@ -179,9 +173,10 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getNome() throws ValidatorException {
-        if(validator==true)
-        if (!nome.getInputVerifier().shouldYieldFocus(nome)) {
-            throw new ValidatorException("Errore nella grafica!");
+        if (validator == true) {
+            if (!nome.getInputVerifier().shouldYieldFocus(nome)) {
+                throw new ValidatorException("Errore nella grafica!");
+            }
         }
         return nome;
     }
@@ -192,9 +187,10 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getFax() throws ValidatorException {
-        if(validator==true)
-        if (!fax.getInputVerifier().shouldYieldFocus(fax)) {
-            throw new ValidatorException("Errore nella grafica!");
+        if (validator == true) {
+            if (!fax.getInputVerifier().shouldYieldFocus(fax)) {
+                throw new ValidatorException("Errore nella grafica!");
+            }
         }
         return fax;
     }
@@ -205,9 +201,10 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getPIva() throws ValidatorException {
-        if(validator==true)
-        if (!pIva.getInputVerifier().shouldYieldFocus(pIva)) {
-            throw new ValidatorException("Errore nella grafica!");
+        if (validator == true) {
+            if (!pIva.getInputVerifier().shouldYieldFocus(pIva)) {
+                throw new ValidatorException("Errore nella grafica!");
+            }
         }
         return pIva;
     }
@@ -218,9 +215,10 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getRagioneSociale() throws ValidatorException {
-        if(validator==true)
-        if (!ragioneSociale.getInputVerifier().shouldYieldFocus(ragioneSociale)) {
-            throw new ValidatorException("Errore nella grafica!");
+        if (validator == true) {
+            if (!ragioneSociale.getInputVerifier().shouldYieldFocus(ragioneSociale)) {
+                throw new ValidatorException("Errore nella grafica!");
+            }
         }
         return ragioneSociale;
     }
