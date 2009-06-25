@@ -34,6 +34,6 @@ public class NotEmptyValidator extends AbstractValidator {
     
     @Override
     protected boolean validationCriteria(JComponent c) {
-       return ((JTextField) c).getText().matches(regexp);
+       return true;//((JTextField) c).getText().matches(regexp);
     }
 }
