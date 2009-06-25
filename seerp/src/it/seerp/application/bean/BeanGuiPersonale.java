@@ -2,7 +2,9 @@ package it.seerp.application.bean;
 
 import it.seerp.Gui.configurazioni.Gui.RegexpDef;
 import it.seerp.application.Exception.ValidatorException;
+
 import it.seerp.application.validation.NotEmptyValidator;
+import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
 /**
@@ -14,7 +16,7 @@ public class BeanGuiPersonale extends BeanGuiUtente {
     private JTextField cognome;
     private JTextField nome;
     private JTextField codiceFiscale;
-    private JTextField ruolo;
+    private JComboBox ruolo;
 
     /**
      * Costruttore a cui viene passato un componente grafico necessario alla
@@ -29,7 +31,7 @@ public class BeanGuiPersonale extends BeanGuiUtente {
      *
      * @return
      */
-    public JTextField getRuolo() {
+    public JComboBox getRuolo() {
         return ruolo;
     }
 
@@ -37,7 +39,7 @@ public class BeanGuiPersonale extends BeanGuiUtente {
      *
      * @param ruolo
      */
-    public void setRuolo(JTextField ruolo) {
+    public void setRuolo(JComboBox ruolo) {
         this.ruolo = ruolo;
     }
 

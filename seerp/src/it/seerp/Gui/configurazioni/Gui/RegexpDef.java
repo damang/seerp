@@ -23,7 +23,7 @@ public class RegexpDef {
         ORA,
         TELEFONO,
         PREZZO,
-        NUMP
+        NUMPOS
     }
 
     public static String valueOf(VAL c) {
@@ -49,7 +49,7 @@ public class RegexpDef {
             return"(.[a-z]*)*";
         else if (c.equals(VAL.PREZZO))
             return "(\\d{0,9})[.](\\d{2})";
-        else if (c.equals(VAL.NUMP))
+        else if (c.equals(VAL.NUMPOS))
             return "\\d{0,9}";
         else return"";
 

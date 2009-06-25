@@ -40,7 +40,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * Metodo che peremette di inserire un nuovo Dipendente
      * @param user il dipendente da inserire
      */
-    public void inserisciDipendente(BeanGuiDipendente user) throws SQLException {
+    public void inserisciDipendente(BeanGuiDipendente user) throws SQLException,ValidatorException {
         // super.inserisci(user);
         try {
             OpDipendente a = new OpDipendente();
@@ -48,28 +48,20 @@ public class AppGestionePersonale extends AppGestioneUtente {
             a.inserisci(dip);
         } catch (DatiDuplicatiEx e) {
             JOptionPane.showMessageDialog(null, "Dati duplicati");
-        } catch (ValidatorException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
+        } 
     }
 
     /**
      * Metodo che permette di inserire un nuovo Responsabile
      * @param user
      */
-    public void inserisciResponsabile(BeanGuiResponsabile user) throws SQLException {
+    public void inserisciResponsabile(BeanGuiResponsabile user) throws SQLException,ValidatorException, DatiDuplicatiEx {
         //super.inserisci(user);
-        try {
+        
             OpResponsabile a = new OpResponsabile();
             Responsabile dip = Conversione.conversioneResponsabile(user);
             a.inserisci(dip);
-        } catch (DatiDuplicatiEx e) {
-            JOptionPane.showMessageDialog(null, "Dati duplicati");
-        } catch (ValidatorException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
+      
     }
 
     /**
@@ -84,6 +76,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
             Dipendente dip = Conversione.conversioneDipendente(user);
             dip.setIdUtente(id);
             a.modifica(dip);
+            user.setValidatorEnabled(false);
             this.visualizzaDatiDipendente(id, user);
         } catch (ValidatorException e) {
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
@@ -120,6 +113,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
             OpPersonale a = new OpPersonale();
             Responsabile res = Conversione.conversioneResponsabile(user);
             res.setIdUtente(id);
+            user.setValidatorEnabled(false);
             a.modifica(res);
             this.visualizzaDatiResponsabile(id, user);
         } catch (ValidatorException e) {

@@ -41,10 +41,10 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
         initComponents();
 
         editabile(false);
-        contratto = new BeanGuiContratto(this);
+        contratto = new BeanGuiContratto();
         pagamento = new BeanGuiPagamento();
         servizio = new BeanGuiServizioAssociato();
-        extraAz = new BeanGuiExtraAzienda(this);
+        extraAz = new BeanGuiExtraAzienda();
         arr = new ArrayList<BeanGuiServizioAssociato>();
         legameBean();
     }
@@ -82,7 +82,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
      */
     public void legameBean() {
         contratto.setData(data);
-        contratto.setDurata(durata);
+      contratto.setDurata(durata);
         //JcomboBox contratto.setStato(stato);
 
         extraAz.setPIva(piva);

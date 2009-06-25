@@ -37,7 +37,7 @@ public class GestioneInit extends javax.swing.JPanel {
     /** Creates new form GestioneInit */
     public GestioneInit() {
         initComponents();
-        this.amm = new BeanGuiAmministratore();
+        this.amm = new BeanGuiAmministratore(this);
         this.az = new BeanGuiAzienda();
         legameBeans();
         editabile(false);
@@ -54,7 +54,7 @@ public class GestioneInit extends javax.swing.JPanel {
     nm4.setEditable(flag);
     nm5.setEditable(flag);
     nm6.setEditable(flag);
-    nm7.setEditable(flag);
+    ruol.setEditable(flag);
     nm8.setEditable(flag);
     nm9.setEditable(flag);
     nm10.setEditable(flag);
@@ -83,7 +83,7 @@ public class GestioneInit extends javax.swing.JPanel {
         nm4.setText(s);
         nm5.setText(s);
         nm6.setText(s);
-        nm7.setText(s);
+       
         nm8.setText(s);
         nm9.setText(s);
         nm10.setText(s);
@@ -113,7 +113,7 @@ public class GestioneInit extends javax.swing.JPanel {
         amm.setCap(nm4);
         amm.setCodiceFiscale(nm5);
         amm.setTipo(nm6);
-        amm.setRuolo(nm7);
+        amm.setRuolo(ruol);
         amm.setTxtEmail(nm8);
         amm.setTxtTelefono(nm9);
         amm.setTxtUsername(nm10);
@@ -155,7 +155,7 @@ public class GestioneInit extends javax.swing.JPanel {
         tipo = new javax.swing.JPanel();
         nm6 = new javax.swing.JTextField();
         ruolo = new javax.swing.JPanel();
-        nm7 = new javax.swing.JTextField();
+        ruol = new javax.swing.JComboBox();
         email = new javax.swing.JPanel();
         nm8 = new javax.swing.JTextField();
         telefono = new javax.swing.JPanel();
@@ -384,28 +384,23 @@ public class GestioneInit extends javax.swing.JPanel {
         ruolo.setBorder(javax.swing.BorderFactory.createTitledBorder("Ruolo"));
         ruolo.setName("ruolo"); // NOI18N
 
-        nm7.setFocusCycleRoot(true);
-        nm7.setName("nm7"); // NOI18N
-        nm7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nm7ActionPerformed(evt);
-            }
-        });
+        ruol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ruol.setName("ruol"); // NOI18N
 
         javax.swing.GroupLayout ruoloLayout = new javax.swing.GroupLayout(ruolo);
         ruolo.setLayout(ruoloLayout);
         ruoloLayout.setHorizontalGroup(
             ruoloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ruoloLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(nm7, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(ruoloLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(ruol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         ruoloLayout.setVerticalGroup(
             ruoloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ruoloLayout.createSequentialGroup()
-                .addComponent(nm7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(ruol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         email.setBorder(javax.swing.BorderFactory.createTitledBorder("Email"));
@@ -947,10 +942,6 @@ public class GestioneInit extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_nm6ActionPerformed
 
-    private void nm7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nm7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nm7ActionPerformed
-
     private void nm8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nm8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nm8ActionPerformed
@@ -1078,7 +1069,6 @@ public class GestioneInit extends javax.swing.JPanel {
     private javax.swing.JTextField nm4;
     private javax.swing.JTextField nm5;
     private javax.swing.JTextField nm6;
-    private javax.swing.JTextField nm7;
     private javax.swing.JTextField nm8;
     private javax.swing.JTextField nm9;
     private javax.swing.JPanel nome;
@@ -1087,6 +1077,7 @@ public class GestioneInit extends javax.swing.JPanel {
     private javax.swing.JPanel password;
     private javax.swing.JPanel pivaAz;
     private javax.swing.JPanel provincia;
+    private javax.swing.JComboBox ruol;
     private javax.swing.JPanel ruolo;
     private javax.swing.JPanel telefono;
     private javax.swing.JPanel tipo;

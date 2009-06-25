@@ -42,7 +42,7 @@ public class OpDipendente extends OpPersonale {
 
         String sql = "SELECT idUtente,username,password,citta,prov,telefono," +
                 "cap,email,note,tipo,cognome,nome,codiceFiscale,ruolo,visibilita " +
-                "FROM Dipendente,Utente,Personale where idUtente=idpersonale and idPersonale=idDipendente and visibilita=true";
+                "FROM Dipendente,Utente,Personale where idUtente=idPersonale and idPersonale=idDipendente and visibilita=true";
         stmt = (PreparedStatement) conne.prepareStatement(sql);
         // Execute the query
         rs = stmt.executeQuery(sql);
@@ -153,7 +153,7 @@ public class OpDipendente extends OpPersonale {
         PreparedStatement stmt = null;
         PreparedStatement stmtp = null;
         PreparedStatement stmtd = null;
-
+         PreparedStatement stmtv = null;
         Statement stmt1 = conne.createStatement();
         String sqlTest = "SELECT idUtente,username,password,citta,prov,telefono," +
                 "cap,email,note,tipo,cognome,nome,codiceFiscale,ruolo,visibilita" +
@@ -170,7 +170,7 @@ public class OpDipendente extends OpPersonale {
                         "VALUES(LAST_INSERT_ID(),?,?,?,?)";
                 String sqlr = "INSERT INTO dipendente (idDipendente)" +
                         "VALUES(LAST_INSERT_ID())";
-
+                 String sqla = "INSERT INTO agenda (idAgenda) VALUES(LAST_INSERT_ID()) ";
                 stmt = (PreparedStatement) conne.prepareStatement(sqlu);
                 stmt.setString(1, user.getUsername());
                 stmt.setString(2, user.getPassword());
@@ -188,9 +188,13 @@ public class OpDipendente extends OpPersonale {
                 stmtp.setString(3, user.getCodiceFiscale());
                 stmtp.setString(4, user.getRuolo().getNome());
                 stmtd = (PreparedStatement) conne.prepareStatement(sqlr);
+                stmtv = (PreparedStatement) conne.prepareStatement(sqla);
                 stmt.execute();
                 stmtp.execute();
                 stmtd.execute();
+
+                stmtv.execute();
+
                 conne.commit();
             } catch (SQLException se) {
                 conne.rollback();
@@ -299,8 +303,8 @@ public class OpDipendente extends OpPersonale {
             dip.setCognome(rs.getString(11));
             dip.setNome(rs.getString(12));
             dip.setCodiceFiscale(rs.getString(13));
-            dip.setRuolo(new Ruolo(rs.getString(13)));
-            dip.setVisible(rs.getBoolean(14));
+            dip.setRuolo(new Ruolo(rs.getString(14)));
+            dip.setVisible(rs.getBoolean(15));
         }
         rs.close();
         stmt.close();

@@ -225,7 +225,7 @@ public class BeanGuiContratto {
      */
     public void setTipo(JTextField ptipo) {
         this.tipo = ptipo;
-        tipo.setInputVerifier(new NotEmptyValidator(grafica, tipo, "Il campo non può essere vuoto.", RegexpDef.valueOf(RegexpDef.VAL.VUOTO));
+        tipo.setInputVerifier(new NotEmptyValidator(grafica, tipo, "Il campo non può essere vuoto.", RegexpDef.valueOf(RegexpDef.VAL.VUOTO)));
     }
 
     /**
