@@ -156,7 +156,7 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
 
     private void initComponents() {
         popup.getContentPane().setLayout(new FlowLayout());
-        popup.getContentPane().remove(0);
+//        popup.getContentPane().remove(0);
         popup.setUndecorated(true);
         popup.getContentPane().setBackground(color);
         popup.getContentPane().add(image);

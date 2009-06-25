@@ -19,14 +19,18 @@ import java.util.logging.Level;
 import javax.swing.JOptionPane;
 import it.seerp.Gui.Gestione.Menu.*;
 import it.seerp.Gui.configurazioni.Gui.ConfigurazioneOperazioni;
+import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.tabelle.*;
 import it.seerp.application.applicazione.AppGestioneExtraAzienda;
 import it.seerp.application.applicazione.AppGestionePersonale;
 
+import it.seerp.application.applicazione.AppRuoli;
 import it.seerp.application.bean.BeanGuiCliente;
 import it.seerp.application.bean.BeanGuiDipendente;
 
 import it.seerp.application.bean.BeanGuiResponsabile;
+import it.seerp.storage.Exception.DatiDuplicatiEx;
+import java.util.Iterator;
 import java.util.logging.Logger;
 
 /**
@@ -68,6 +72,8 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         legameBeanFornitore();
         legameBeanCliente();
         editabile(false);
+       
+
     }
 
     public MenuUtente getMenu() {
@@ -114,7 +120,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel9 = new javax.swing.JPanel();
         provincia = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
-        ruolo = new javax.swing.JTextField();
+        ruolo = new javax.swing.JComboBox();
         jPanel11 = new javax.swing.JPanel();
         citta = new javax.swing.JTextField();
         jPanel19 = new javax.swing.JPanel();
@@ -277,7 +283,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder("Ruolo"));
         jPanel13.setName("jPanel13"); // NOI18N
 
-        ruolo.setText("jTextField1");
+        ruolo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         ruolo.setName("ruolo"); // NOI18N
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
@@ -286,14 +292,13 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ruolo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addComponent(ruolo, 0, 132, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
-                .addComponent(ruolo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addComponent(ruolo, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Città"));
@@ -456,9 +461,11 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(91, 91, 91)
@@ -678,19 +685,19 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             Integer id = (Integer) jXTable1.getValueAt(i, 0);
 
             if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
-
+                cliente.setValidatorEnabled(false);
                 AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
                 operazione.visualizzaDatiCliente(id, cliente);
             } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
-
+                dipendente.setValidatorEnabled(false);
                 AppGestionePersonale operazione = new AppGestionePersonale();
                 operazione.visualizzaDatiDipendente(id, dipendente);
             } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
-
+                fornitore.setValidatorEnabled(false);
                 AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
                 operazione.visualizzaDatiFornitore(id, fornitore);
             } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
-
+                responsabile.setValidatorEnabled(false);
                 AppGestionePersonale operazione = new AppGestionePersonale();
                 operazione.visualizzaDatiResponsabile(id, responsabile);
             }
@@ -705,8 +712,11 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
     private void buttonSalva1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSalva1MouseClicked
         menu.setButtonEnabled(true);
-        try {
-            if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI)) {
+
+        if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI)) {
+
+            try {
+
 
                 if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
                     AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
@@ -734,8 +744,39 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
                 }
                 refresh();
+                editabile(false);
+                this.buttonAnnulla1.setEnabled(false);
+                this.buttonSalva1.setEnabled(false);
+
+            } catch (DatiDuplicatiEx ex) {
+                JOptionPane.showMessageDialog(null, "dati duplicati");
+                this.inizializzazione(" ");
+                editabile(true);
+                this.buttonAnnulla1.setEnabled(true);
+                this.buttonSalva1.setEnabled(true);
+
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "errore nel database");
+                ex.printStackTrace();
+                this.inizializzazione(" ");
+                editabile(true);
+                this.buttonAnnulla1.setEnabled(true);
+                this.buttonSalva1.setEnabled(true);
+
+            } catch (ValidatorException e) {
+
+                JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
+                this.inizializzazione("");
+                editabile(true);
+                this.buttonAnnulla1.setEnabled(true);
+                this.buttonSalva1.setEnabled(true);
+
             }
-            if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.MODIFICA)) {
+        }
+
+        if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.MODIFICA)) {
+            try {
+
                 int i = jXTable1.getSelectedRow();
                 if (i < 0) {
                     return;
@@ -747,12 +788,13 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
 
                     AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
-
+                    //cliente.setValidatorEnabled(true);
                     operazione.modificaCliente(id, cliente);
 
                 } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
 
                     AppGestionePersonale operazione = new AppGestionePersonale();
+                    //dipendente.setValidatorEnabled(true);
                     operazione.modificaDipendente(id, dipendente);
 
 
@@ -760,6 +802,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
 
                     AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
+                    //fornitore.setValidatorEnabled(true);
                     operazione.modificaFornitore(id, fornitore);
 
 
@@ -769,32 +812,38 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
 
                     AppGestionePersonale operazione = new AppGestionePersonale();
+                    //responsabile.setValidatorEnabled(true);
                     operazione.modificaResponsabile(id, responsabile);
 
 
                 }
                 refresh();
+                editabile(false);
+                this.buttonAnnulla1.setEnabled(false);
+                this.buttonSalva1.setEnabled(false);
 
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "errore nel database");
+                this.inizializzazione("");
+                editabile(true);
+                ex.printStackTrace();
+                this.buttonAnnulla1.setEnabled(true);
+                this.buttonSalva1.setEnabled(true);
 
+            } catch (ValidatorException e) {
+
+                JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
+                this.inizializzazione("");
+                editabile(true);
+                this.buttonAnnulla1.setEnabled(true);
+                this.buttonSalva1.setEnabled(true);
             }
-            editabile(false);
-            this.buttonAnnulla1.setEnabled(false);
-            this.buttonSalva1.setEnabled(false);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog (null, "errore nel database");
-            this.inizializzazione("");
-             editabile(true);
-            this.buttonAnnulla1.setEnabled(true);
-            this.buttonSalva1.setEnabled(true);
-
         }
-
     }//GEN-LAST:event_buttonSalva1MouseClicked
 
     private void buttonAnnulla1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonAnnulla1MouseClicked
         menu.setButtonEnabled(true);
         JOptionPane.showMessageDialog(null, "operazione annulata");
-        jTabbedPane1.setSelectedComponent(jPanel1);
         editabile(false);
         this.buttonAnnulla1.setEnabled(false);
         this.buttonSalva1.setEnabled(false);
@@ -842,7 +891,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
     private javax.swing.JTextField provincia;
     private javax.swing.JTextField pwd;
     private javax.swing.JTextField ragSoc;
-    private javax.swing.JTextField ruolo;
+    private javax.swing.JComboBox ruolo;
     private javax.swing.JTextField tell;
     private javax.swing.JTextField user;
     // End of variables declaration//GEN-END:variables
@@ -923,7 +972,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         this.mail.setText(s);
         this.user.setText(s);
         this.pwd.setText(s);
-        this.ruolo.setText(s);
+
         this.codFisc.setText(s);
         this.ragSoc.setText(s);
         this.fax.setText(s);
@@ -1045,7 +1094,13 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
             this.jPanel13.setVisible(false);
         } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
+            AppRuoli app = new AppRuoli();
 
+            ruolo.removeAllItems();
+            for (String s : app.getNomeRuolo("dipendente")) {
+
+                ruolo.addItem(s);
+            }
             this.jPanel14.setVisible(false);
             this.jPanel18.setVisible(false);
             this.jPanel19.setVisible(false);
@@ -1055,7 +1110,13 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             this.jPanel13.setVisible(false);
 
         } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
+            AppRuoli app = new AppRuoli();
 
+            ruolo.removeAllItems();
+            for (String s : app.getNomeRuolo("responsabile")) {
+
+                ruolo.addItem(s);
+            }
             this.jPanel14.setVisible(false);
             this.jPanel18.setVisible(false);
             this.jPanel19.setVisible(false);

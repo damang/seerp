@@ -158,7 +158,7 @@ public class OpResponsabile extends OpeUtente {
         PreparedStatement stmt = null;
         PreparedStatement stmtP = null;
         PreparedStatement stmtR = null;
-
+        PreparedStatement stmtv = null;
         Statement stmt1 = co.createStatement();
         String sqlTest = "SELECT * FROM utente,personale,responsabile WHERE codiceFiscale='" + user.getCodiceFiscale() + "'and idUtente=idPersonale and idPersonale=idResponsabile";
         ResultSet rs = stmt1.executeQuery(sqlTest);
@@ -172,7 +172,7 @@ public class OpResponsabile extends OpeUtente {
                 String sqlu = "INSERT INTO utente(username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita) VALUES(?,?,?,?,?,?,?,?,?,true)";
                 String sqlp = "INSERT INTO personale(idPersonale,nome,cognome,codicefiscale,ruolo) VALUES(LAST_INSERT_ID(),?,?,?,?)";
                 String sqlr = "INSERT INTO responsabile (idResponsabile)VALUES(LAST_INSERT_ID())";
-
+                String sqla = "INSERT INTO agenda (idAgenda) VALUES(LAST_INSERT_ID()) ";
                 stmt = (PreparedStatement) co.prepareStatement(sqlu);
                 stmt.setString(1, user.getUsername());
                 stmt.setString(2, user.getPassword());
@@ -190,10 +190,16 @@ public class OpResponsabile extends OpeUtente {
                 stmtP.setString(3, user.getCodiceFiscale());
                 stmtP.setString(4, user.getRuolo().getNome());
                 stmtR = (PreparedStatement) co.prepareStatement(sqlr);
+                stmtv = (PreparedStatement) co.prepareStatement(sqla);
+
+
+
                 stmt.execute();
                 stmtP.execute();
                 stmtR.execute();
+                stmtv.execute();
                 co.commit();
+
             } catch (SQLException se) {
                 co.rollback();
                 se.printStackTrace();
@@ -312,8 +318,8 @@ public class OpResponsabile extends OpeUtente {
             res.setCognome(rs.getString(11));
             res.setNome(rs.getString(12));
             res.setCodiceFiscale(rs.getString(13));
-            res.setRuolo(new Ruolo(rs.getString(13)));
-            res.setVisible(rs.getBoolean(14));
+            res.setRuolo(new Ruolo(rs.getString(14)));
+            res.setVisible(rs.getBoolean(15));
         }
         rs.close();
         stmt.close();

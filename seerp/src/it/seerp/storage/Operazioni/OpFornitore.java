@@ -151,6 +151,7 @@ public class OpFornitore extends OpExtraAzienda {
         conness = ConnectionPool.getConnection();
         PreparedStatement stmt = null;
         PreparedStatement stmte = null;
+        PreparedStatement stmtv = null;
         Statement stmt1 = conness.createStatement();
         String sqlTest = "SELECT piva FROM extraazienda WHERE piva= '" + user.getPIva() + "'";
         ResultSet rs = stmt1.executeQuery(sqlTest);
@@ -163,7 +164,7 @@ public class OpFornitore extends OpExtraAzienda {
                 String sqlu = "INSERT INTO utente(username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita) VALUES(?,?,?,?,?,?,?,?,?,true)";
                 String sqle = "INSERT INTO extraazienda(idExtraAzienda,nome,cognome,fax,piva,ragioneSociale,Ruolo,codiceFiscale)" +
                         "VALUES(LAST_INSERT_ID(),?,?,?,?,?,'Fornitore',?)";
-
+                String sqla = "INSERT INTO agenda (idAgenda) VALUES(LAST_INSERT_ID()) ";
 
                 stmt = (PreparedStatement) conness.prepareStatement(sqlu);
                 stmt.setString(1, user.getUsername());
@@ -184,9 +185,13 @@ public class OpFornitore extends OpExtraAzienda {
                 stmte.setString(5, user.getRagioneSociale());
                 stmte.setString(6, user.getCodiceFiscale());
 
+                stmtv = (PreparedStatement) conness.prepareStatement(sqla);
 
-                System.out.println( stmt.execute());
-                System.out.println( stmte.execute());
+                
+                stmt.execute();
+                stmte.execute();
+                stmtv.execute();
+
 
                 conness.commit();
             } catch (SQLException e) {
@@ -313,7 +318,7 @@ public class OpFornitore extends OpExtraAzienda {
             fornitore.setPIva(rs.getString(15));
             fornitore.setFax(rs.getString(16));
             fornitore.setCodiceFiscale(rs.getString(17));
-            
+
         }
         rs.close();
         stmt.close();

@@ -167,4 +167,21 @@ public class AppRuoli implements GestioneRuoli<BeanGuiRuolo> {
         }
 
     }
+
+
+    public ArrayList<String> getNomeRuolo(String s) {
+        ArrayList<String> list=new ArrayList<String> ();
+        OpRuolo op;
+        try {
+            op = new OpRuolo();
+           Iterator <Ruolo> it= op.GetListaRuoli(s).iterator();
+           while(it.hasNext()){
+            list.add(it.next().getNome());}
+        } catch (SQLException ex) {
+            Logger.getLogger(AppRuoli.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     
+        
+        return list;
+    }
 }

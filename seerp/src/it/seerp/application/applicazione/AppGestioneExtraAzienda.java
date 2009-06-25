@@ -45,19 +45,14 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
      * Metodo che permette di inserire un nuovo Cliente
      * @param clien il Cliente che si vuole inserire
      */
-    public void inserisciCliente(BeanGuiCliente clien) throws SQLException {
+    public void inserisciCliente(BeanGuiCliente clien) throws SQLException,ValidatorException,DatiDuplicatiEx {
         //  super.inserisci(clien);
-        try {
+          
             OpCliente a = new OpCliente();
             Cliente cl = Conversione.conversioneCliente(clien);
             a.inserisci(cl);
-
-        } catch (DatiDuplicatiEx e) {
-            JOptionPane.showMessageDialog(null, "Dati duplicati");
-        } catch (ValidatorException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
+      
+ 
     }
 
     /**
@@ -102,18 +97,13 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
      * Metodo che permette di inserire un nuovo Fornitore
      * @param forn il Fornitore che si vuole inserire
      */
-    public void inserisciFornitore(BeanGuiFornitore forn) throws SQLException {
+    public void inserisciFornitore(BeanGuiFornitore forn) throws SQLException,ValidatorException,DatiDuplicatiEx {
         //  super.inserisci(forn);
-        try {
+      
             OpFornitore a = new OpFornitore();
             Fornitore fo = Conversione.conversioneFornitore(forn);
             a.inserisci(fo);
-        } catch (DatiDuplicatiEx e) {
-            JOptionPane.showMessageDialog(null, "Dati duplicati");
-        } catch (ValidatorException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
+       
     }
 
     /**
@@ -149,6 +139,7 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
 
             a.modifica(cl);
             this.visualizzaDatiCliente(id, clien);
+            clien.setValidatorEnabled(false);
 
         // clien = Conversione.conversioneCliente(cl, clien);
         } catch (ValidatorException e) {
@@ -169,6 +160,7 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
             Fornitore fo = Conversione.conversioneFornitore(forn);
             fo.setIdUtente(id);
             a.modifica(fo);
+            forn.setValidatorEnabled(false);
             this.visualizzaDatiFornitore(id, forn);
         } catch (SQLException se) {
 

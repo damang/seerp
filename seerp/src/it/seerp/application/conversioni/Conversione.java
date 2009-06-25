@@ -370,7 +370,7 @@ public class Conversione {
         utente.setCognome(bp.getCognome().getText());
         utente.setNome(bp.getNome().getText());
         utente.setCodiceFiscale(bp.getCodiceFiscale().getText());
-        utente.setRuolo(new Ruolo(bp.getRuolo().getText()));
+//        utente.setRuolo(new Ruolo(bp.getRuolo().getText()));
         return utente;
     }
 
@@ -386,8 +386,9 @@ public class Conversione {
         bp.getCognome().setText(p.getCognome());
         bp.getNome().setText(p.getNome());
         bp.getCodiceFiscale().setText(p.getCodiceFiscale());
-
-//        bp.getRuolo().setText(p.getRuolo().getNome());
+        JOptionPane.showMessageDialog(null, p.getRuolo().getNome());
+        bp.getRuolo().removeAllItems();
+        bp.getRuolo().addItem(p.getRuolo().getNome());
 
         return bp;
     }
@@ -483,7 +484,8 @@ public class Conversione {
         utente.setCognome(r.getCognome().getText());
         utente.setNome(r.getNome().getText());
         utente.setCodiceFiscale(r.getCodiceFiscale().getText());
-        utente.setRuolo(new Ruolo(r.getRuolo().getText()));
+        utente.setRuolo(new Ruolo((String) r.getRuolo().getSelectedItem()));
+
         return utente;
 
     }
@@ -549,7 +551,8 @@ public class Conversione {
         utente.setCognome(r.getCognome().getText());
         utente.setNome(r.getNome().getText());
         utente.setCodiceFiscale(r.getCodiceFiscale().getText());
-        utente.setRuolo(new Ruolo(r.getRuolo().getText()));
+        utente.setRuolo(new Ruolo((String) r.getRuolo().getSelectedItem()));
+
         //utente.setListAppuntamenti(a2);
         //utente.setListContratti(a3);
         return utente;
@@ -597,7 +600,7 @@ public class Conversione {
         c.setText(e.getCodiceFiscale());
         ba.setCodiceFiscale(c);
         c.setText(e.getRuolo().getNome());
-        ba.setRuolo(c);
+//        ba.setRuolo(c);
         c.setText(e.getVisible().toString());
         ba.setTxtnotifica(c);
         ba.setAzienda(conversioneAzienda(e.getAzienda(), new BeanGuiAzienda()));
@@ -627,7 +630,7 @@ public class Conversione {
         utente.setCognome(r.getCognome().getText());
         utente.setNome(r.getNome().getText());
         utente.setCodiceFiscale(r.getCodiceFiscale().getText());
-        utente.setRuolo(new Ruolo(r.getRuolo().getText()));
+//        utente.setRuolo(new Ruolo(r.getRuolo().getText()));
         utente.setAzienda(conversioneAzienda(r.getAzienda()));
         return utente;
     }
@@ -949,8 +952,6 @@ public class Conversione {
 
     }
 
-   
-
     /**
      *
      * @param azienda
@@ -973,7 +974,6 @@ public class Conversione {
         //azienda1.setAmministratore(conversioneAmministratore(azienda.getAmministratore()));
         return azienda1;
     }
-
 
     private static ServizioAssociato conversioneAssociato(BeanGuiServizioAssociato c) throws ValidatorException {
         ServizioAssociato sa = new ServizioAssociato();

@@ -1,9 +1,6 @@
-
-
 package it.seerp.storage.Operazioni;
 
-
-import com.mysql.jdbc.Statement;
+import java.sql.Statement;
 import it.seerp.storage.db.ConnectionPool;
 import it.seerp.storage.db.OpeEntity;
 import it.seerp.storage.ejb.Permesso;
@@ -20,7 +17,8 @@ import java.util.Iterator;
  *
  * @author peppe
  */
-public class OpRuolo implements OpeEntity<Ruolo,String>{
+public class OpRuolo implements OpeEntity<Ruolo, String> {
+
     private Connection conn;
 
     /**
@@ -28,11 +26,9 @@ public class OpRuolo implements OpeEntity<Ruolo,String>{
      * @throws java.sql.SQLException
      */
     public OpRuolo() throws SQLException {
-
-        
     }
 
-    private void insertIncarico(Connection conn,PreparedStatement stmt, Ruolo bean) throws SQLException {
+    private void insertIncarico(Connection conn, PreparedStatement stmt, Ruolo bean) throws SQLException {
         String sql = "insert into incarico set ruolo=?, permesso= (SELECT idPermesso from permesso where task=? and `action`=?);";
         stmt = (PreparedStatement) conn.prepareStatement(sql);
         PermessoCollection b = bean.getListPermesso();
@@ -43,6 +39,7 @@ public class OpRuolo implements OpeEntity<Ruolo,String>{
             stmt.execute();
         }
     }
+
     public void inserimento(Ruolo bean) throws SQLException {
         conn = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
@@ -50,15 +47,15 @@ public class OpRuolo implements OpeEntity<Ruolo,String>{
         String sql = "INSERT INTO Ruolo Values (?);";
         stmt = (PreparedStatement) conn.prepareStatement(sql);
         stmt.setString(1, bean.getNome());
-            // Execute the query
+        // Execute the query
         stmt.execute();
         insertIncarico(conn, stmt, bean);
-               
-            // Execute the query
+
+        // Execute the query
         stmt.close();
         ConnectionPool.releaseConnection(conn);
 
-           
+
     }
 
     public Ruolo modifica(Ruolo bean) throws SQLException {
@@ -68,7 +65,7 @@ public class OpRuolo implements OpeEntity<Ruolo,String>{
         String sql = "Delete from incarico where ruolo=?;";
         stmt = (PreparedStatement) conn.prepareStatement(sql);
         stmt.setString(1, bean.getNome());
-            // Execute the query
+        // Execute the query
         stmt.execute();
         insertIncarico(conn, stmt, bean);
         stmt.close();
@@ -82,14 +79,15 @@ public class OpRuolo implements OpeEntity<Ruolo,String>{
         ResultSet rs = null;
         String sql = "SELECT * FROM Ruolo where nome=?;";
         stmt = (PreparedStatement) conn.prepareStatement(sql);
-             // Execute the query
+        // Execute the query
         stmt.setString(1, id);
-        rs=stmt.executeQuery();
+        rs = stmt.executeQuery();
         Ruolo r;
         if (rs.next()) {
-            r= new Ruolo(rs.getString(1));
+            r = new Ruolo(rs.getString(1));
+        } else {
+            r = null;
         }
-        else r=null;
         rs.close();
         stmt.close();
         ConnectionPool.releaseConnection(conn);
@@ -98,20 +96,22 @@ public class OpRuolo implements OpeEntity<Ruolo,String>{
 
     public ArrayList<Ruolo> visualizzaElenco() throws SQLException {
         conn = (Connection) ConnectionPool.getConnection();
-        ArrayList<Ruolo> r= new ArrayList<Ruolo>();
+        ArrayList<Ruolo> r = new ArrayList<Ruolo>();
         PreparedStatement stmt = null;
         ResultSet rs = null;
         String sql = "SELECT * FROM Ruolo;";
         stmt = (PreparedStatement) conn.prepareStatement(sql);
-             // Execute the query
-        rs=stmt.executeQuery();
-        while (rs.next())
+        // Execute the query
+        rs = stmt.executeQuery();
+        while (rs.next()) {
             r.add(new Ruolo(rs.getString(1)));
-         rs.close();
+        }
+        rs.close();
         stmt.close();
         ConnectionPool.releaseConnection(conn);
         return r;
     }
+
     public void elimina(Ruolo bean) throws SQLException {
         conn = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
@@ -123,25 +123,26 @@ public class OpRuolo implements OpeEntity<Ruolo,String>{
         ConnectionPool.releaseConnection(conn);
     }
 
-    public ArrayList<Ruolo> GetListaRuoli(Ruolo ruol)throws SQLException{
+    public ArrayList<Ruolo> GetListaRuoli(String ruolo) throws SQLException {
         conn = (Connection) ConnectionPool.getConnection();
-        ArrayList<Ruolo> r= new ArrayList<Ruolo>();
+        ArrayList<Ruolo> r = new ArrayList<Ruolo>();
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        String sql = "SELECT * FROM ruolo,permesso WHERE ruolo.nome like '?%'";
-        stmt = (PreparedStatement) conn.prepareStatement(sql);
-             // Execute the query
-        stmt.setString(1,ruol.getNome());
-        rs=stmt.executeQuery();
-        while (rs.next())
-        {
-        r.add(new Ruolo(rs.getString(1)));
-         rs.close();
-        stmt.close();
-        ConnectionPool.releaseConnection(conn);}
-        return r;
+        Statement stmt1 = conn.createStatement();
+        String sql = "SELECT * FROM ruolo WHERE  nome like '" + ruolo + "%'";
+        rs = stmt1.executeQuery(sql);
+
+
+
+        while (rs.next()) {
+
+
+            r.add(new Ruolo(rs.getString(1)));
         }
-
-
-    
+        
+        rs.close();
+        stmt1.close();
+        ConnectionPool.releaseConnection(conn);
+        return r;
+    }
 }
