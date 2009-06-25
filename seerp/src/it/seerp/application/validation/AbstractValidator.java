@@ -32,7 +32,6 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
         c.addKeyListener(this);
         messageLabel = new JLabel(message + " ");
         image = new JLabel(new ImageIcon("/it/seerp/Gui/icone/ico16x16/remove.png"));
-        popup = new JDialog();
     }
 
     /**
@@ -56,6 +55,18 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
         this(c, message);
         this.parent = parent;
         popup = new JDialog(parent);
+        initComponents();
+    }
+    public AbstractValidator(Object parent, JComponent c, String message) {
+        this(c, message);
+        this.parent = parent;
+        if (parent instanceof JFrame)
+             popup = new JDialog((JFrame)parent);
+        else if (parent instanceof JPanel)
+            popup = new JXDialog((JPanel)parent);
+        else if (parent instanceof JDialog)
+            popup = new JDialog((JDialog)parent);
+        else popup = new JDialog();
         initComponents();
     }
 
@@ -102,6 +113,13 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
         return true;
     }
 
+    public void reset(JComponent c) {
+        c.setBackground(Color.WHITE);
+        popup.setSize(0,0);
+        popup.setVisible(false);
+
+        
+    }
     /**
      * Cambia il messagglio che appare nel popup quando il dato nel componente non è valido. Le sottoclassi
      * possono usare questo metodo per  sensibilizzare il messaggio in base a quello che l'utente fa erroneamente
@@ -134,7 +152,7 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
      */
     @Override
     public void keyReleased(KeyEvent e) {
-       // verify((JComponent)e.getSource());
+        verify((JComponent)e.getSource());
     }
 
     private void initComponents() {
