@@ -698,7 +698,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
         if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI)) {
             be.setValidator(false);
             be.resetAll();
-            ((NotEmptyValidator)be.getNome().getInputVerifier()).reset(be.getNome());
+            ((NotEmptyValidator)be.getNome().getInputVerifier()).setEnabled(false);//reset(be.getNome());
 
         } else {
             be.setValidator(false);

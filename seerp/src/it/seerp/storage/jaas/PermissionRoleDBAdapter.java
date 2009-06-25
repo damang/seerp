@@ -70,9 +70,15 @@ public class PermissionRoleDBAdapter implements PermissionAdapter {
         if (Debug.DEBUG) {
             Debug.trace("PermissionRoleDBAdapter::getPermissions(ProtectionDomain domain)");
         }
+        String role="";
         Principal[] principals = domain.getPrincipals();
+        for (int i=0; i<principals.length;i++)
+            if(((AuthPrincipal)principals[i]).getType().equals("ruolo")) {
+                role = principals[i].getName();
+                break;
+            }
 
-        String role = principals[1].getName();
+        
         PermessoCollection list = null;
 
         list = getPermissionsUt(role);
