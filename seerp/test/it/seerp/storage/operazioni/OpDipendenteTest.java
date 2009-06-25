@@ -44,7 +44,7 @@ public class OpDipendenteTest extends TestCase {
 
     @Before
     public void setUp() {
-        d = new Dipendente(id, "marros", "123456", "Salerno", "sa", "089345678", "84100", "rossi@email.it", "note", "tipo", "Rossi", "Mario", "RSSMRO45B21H703C",r, v);
+        d = new Dipendente(id, "marros", "123456", "Salerno", "sa", "089345678", "84100", "rossi@email.it", "tipo", "tipo", "Rossi", "Mario", "RSSMRO45B21H703C",r, v);
         
     }
 
@@ -120,24 +120,24 @@ public class OpDipendenteTest extends TestCase {
         System.out.println("inserisci");
        
         OpDipendente instance = new OpDipendente();
-
-        assertEquals(id,d.getIdUtente());
-        assertEquals("marros",d.getUsername());
-        assertEquals("123456",d.getPassword());
-        assertEquals("Salerno",d.getCitta());
-        assertEquals("sa", d.getProvincia());
-        assertEquals("089345678",d.getTelefono());
-        assertEquals("84100",d.getCap());
-        assertEquals("rossi@email.it",d.getEmail());        
-        assertEquals("tipo",d.getNote());
-        assertEquals(null, d.getTipo());
-        assertEquals("Rossi",d.getCognome());
-        assertEquals("Mario",d.getNome());        
-        assertEquals("RSSMRO45B21H703C",d.getCodiceFiscale());
-        assertEquals(r,d.getRuolo());
-        assertEquals(v, d.getVisible());
-
-        instance.inserisci(d);
+        Integer id1= new Integer(0);
+        Dipendente c= new Dipendente(id1,"ilaant","1203892", "Salerno","sa", "089567890","84100","ilaant@email.it","abcferd","dipendente","Anzivino","Ilaria","NZNLRA89B60H703C",r,v);
+        instance.inserisci(c);
+        assertEquals("ilaant",c.getUsername());
+        assertEquals("1203892",c.getPassword());
+        assertEquals("Salerno",c.getCitta());
+        assertEquals("sa", c.getProvincia());
+        assertEquals("089567890",c.getTelefono());
+        assertEquals("84100",c.getCap());
+        assertEquals("ilaantt@email.it",c.getEmail());
+        assertEquals("abcferd",c.getNote());
+        assertEquals("dipendente", c.getTipo());
+        assertEquals("Anzivino",c.getCognome());
+        assertEquals("Ilaria",c.getNome());
+        assertEquals("NZNLRA89B60H703C",c.getCodiceFiscale());
+        assertEquals(r,c.getRuolo());
+        assertEquals(v, c.getVisible());
+        
         
     }
 

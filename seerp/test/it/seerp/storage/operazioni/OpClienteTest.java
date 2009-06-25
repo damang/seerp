@@ -109,7 +109,7 @@ public class OpClienteTest extends TestCase{
         System.out.println("inserisci");
        
         OpCliente instance = new OpCliente();
-        Integer id1= new Integer(0);
+        Integer id1= new Integer(2);
         Cliente c= new Cliente(id1,"mardet","200282", "Salerno","cliente","sa", "089330271","84100","mardet@email.it","cliente","abcferd",v,"DeTommaso","Marialuna","B&B.srl","2343234323D","089232323");
         instance.inserisci(c);
         assertEquals("mardet",c.getUsername());

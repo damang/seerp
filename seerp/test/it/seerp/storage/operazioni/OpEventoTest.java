@@ -23,9 +23,10 @@ public class OpEventoTest extends TestCase {
     private Evento eve;
     private GregorianCalendar data;
     private GregorianCalendar ora;
-    private Boolean not;
-    ArrayList<Evento> listEve;
-    int idEvento;
+    private Boolean not=true;
+    private ArrayList<Evento> listEve = null;
+    private Integer idEvento;
+    private Integer idAgenda=65;
 
     public OpEventoTest(String name) {
         super(name);
@@ -42,12 +43,10 @@ public class OpEventoTest extends TestCase {
     @Before
     @Override
     public void setUp() {
-        listEve = null;
-        not = true;
-        idEvento = 15;
+      
         data = new GregorianCalendar(2009, 7, 23);
         ora = new GregorianCalendar(2009, 7, 23, 13, 40);
-        eve = new Evento("aula p13", "riunione", "InternationalSchool", "conferenza salvaguardia ambientale", data, ora, idEvento, not, 65);
+        eve = new Evento("aula p13", "riunione", "InternationalSchool", "conferenza salvaguardia ambientale", data, ora, idEvento, not, idAgenda);
     }
 
     @After
@@ -68,7 +67,7 @@ public class OpEventoTest extends TestCase {
         assertEquals("conferenza salvaguardia ambientale", eve.getNote());
         assertEquals(data, eve.getData());
         assertEquals(ora, eve.getOra());
-        assertEquals(idEvento, eve.getIdEvento());
+        
         assertEquals(not, eve.getNotifica());
         assertEquals(65, eve.getAgenda());
         instance.inserimento(eve);
@@ -104,10 +103,10 @@ public class OpEventoTest extends TestCase {
     @Test
     public void testVisualizza() throws Exception {
         System.out.println("visualizza");
-        Integer id = 4;
+        
         OpEvento instance = new OpEvento();
         Evento expResult = null;
-        Evento result = instance.visualizza(id);
+        Evento result = instance.visualizza(idEvento);
         assertEquals(expResult, result);
     }
 
