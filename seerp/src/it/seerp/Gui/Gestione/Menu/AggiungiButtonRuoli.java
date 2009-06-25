@@ -10,6 +10,7 @@ import it.seerp.Gui.Gestione.Contratti.GestioneContratti;
 import it.seerp.Gui.Gestione.Ruoli.sceltaRuolo;
 import it.seerp.Gui.configurazioni.Gui.ConfigurazioneOperazioni;
 import it.seerp.Gui.configurazioni.PermessiDefault;
+import it.seerp.application.validation.NotEmptyValidator;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -64,6 +65,7 @@ public class AggiungiButtonRuoli extends JButton implements CommandInterface {
                  area.getAnnulla().setVisible(true);
                  area.setEditable(true);
                  area.getBeanGuiRuolo().setValidator(true);
+                 ((NotEmptyValidator)area.getBeanGuiRuolo().getNome().getInputVerifier()).setEnabled(true);
        }
     }
 }

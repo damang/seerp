@@ -59,6 +59,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
     }
 
     private void settaPermessi() {
+        System.out.println(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti) + " " + PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELENCA));
         areaUtenteButton2.setVisible(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELENCA))));
       
     }

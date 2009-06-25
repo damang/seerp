@@ -10,6 +10,7 @@ import javax.swing.JTextField;
  * @author Tommaso Cattolico
  */
 public class NotEmptyValidator extends AbstractValidator {
+    boolean enabled=false;
     String regexp;
     /**
      *
@@ -30,10 +31,19 @@ public class NotEmptyValidator extends AbstractValidator {
         this.regexp=regexp;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
 
     
     @Override
     protected boolean validationCriteria(JComponent c) {
-       return true;//((JTextField) c).getText().matches(regexp);
+       if(enabled)return ((JTextField) c).getText().matches(regexp);
+       return true;
     }
 }
