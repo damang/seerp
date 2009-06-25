@@ -11,7 +11,8 @@ public class BeanGuiAmministratore extends BeanGuiPersonale {
     /**
      * costruttore vuoto per il Bean Gui Amministratore
      */
-    public BeanGuiAmministratore() {
+    public BeanGuiAmministratore(Object c) {
+        super(c);
     }
 
     /**
