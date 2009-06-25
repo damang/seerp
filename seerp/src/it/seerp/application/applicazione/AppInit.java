@@ -41,4 +41,6 @@ public class AppInit implements GestioneInit<BeanGuiAmministratore> {
             JOptionPane.showMessageDialog(null, "Errore nel database!");
         }
     }
+
+  
 }

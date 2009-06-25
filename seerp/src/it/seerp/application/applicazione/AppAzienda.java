@@ -1,5 +1,6 @@
 package it.seerp.application.applicazione;
 
+import it.seerp.application.Exception.DatiDuplicati;
 import it.seerp.application.Exception.DatiErrati;
 import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.bean.BeanGuiAzienda;
@@ -62,5 +63,16 @@ public class AppAzienda {
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
         return gui;
+    }
+
+    public void inserimento(BeanGuiAzienda BeanGuiAzienda) throws SQLException, DatiErrati, DatiDuplicati {
+        try {
+            OpAzienda op = new OpAzienda();
+            Azienda a = Conversione.conversioneAzienda(BeanGuiAzienda);
+            op.inserimento(a);
+        } catch (SQLException se) {
+            se.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nel database!");
+        }
     }
 }

@@ -11,8 +11,17 @@
 
 package it.seerp.Gui.Gestione.Init;
 
+import it.seerp.Gui.configurazioni.Gui.ConfigurazioneOperazioni;
+import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
+import it.seerp.application.Exception.DatiDuplicati;
+import it.seerp.application.Exception.DatiErrati;
+import it.seerp.application.applicazione.AppAzienda;
+import it.seerp.application.applicazione.AppInit;
 import it.seerp.application.bean.BeanGuiAmministratore;
 import it.seerp.application.bean.BeanGuiAzienda;
+import java.awt.event.ActionEvent;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,13 +31,17 @@ public class GestioneInit extends javax.swing.JPanel {
 
     BeanGuiAmministratore amm;
     BeanGuiAzienda az;
+    private String tipoOP;
 
 
     /** Creates new form GestioneInit */
     public GestioneInit() {
         initComponents();
+        this.amm = new BeanGuiAmministratore();
+        this.az = new BeanGuiAzienda();
+        legameBeans();
+        editabile(false);
     }
-
         /**
      *
      * @param flag
@@ -172,6 +185,8 @@ public class GestioneInit extends javax.swing.JPanel {
         nm21 = new javax.swing.JTextField();
         nazioneAz = new javax.swing.JPanel();
         nm18 = new javax.swing.JTextField();
+        buttonSalva1 = new it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva();
+        buttonAnnulla1 = new it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla();
 
         setBackground(new java.awt.Color(255, 204, 204));
 
@@ -755,6 +770,15 @@ public class GestioneInit extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        buttonSalva1.setName("buttonSalva1"); // NOI18N
+        buttonSalva1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSalva1ActionPerformed(evt);
+            }
+        });
+
+        buttonAnnulla1.setName("buttonAnnulla1"); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -820,7 +844,12 @@ public class GestioneInit extends javax.swing.JPanel {
                                 .addGap(410, 410, 410))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(62, 62, 62)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(buttonSalva1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(buttonAnnulla1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -863,7 +892,11 @@ public class GestioneInit extends javax.swing.JPanel {
                     .addComponent(note9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(note8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pivaAz, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(136, 136, 136))
+                .addGap(40, 40, 40)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonSalva1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonAnnulla1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(55, 55, 55))
         );
 
         nome.getAccessibleContext().setAccessibleParent(nome);
@@ -971,11 +1004,50 @@ public class GestioneInit extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_nm21ActionPerformed
 
+    private void buttonSalva1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalva1ActionPerformed
+        
+    }//GEN-LAST:event_buttonSalva1ActionPerformed
+
+    private void buttonAnnulla1MouseClicked(java.awt.event.MouseEvent evt) {
+        JOptionPane.showMessageDialog(null, "operazione annulata");
+        editabile(false);
+        buttonAnnulla1.setEnabled(false);
+        buttonSalva1.setEnabled(false);
+
+    }
+
+    private void buttonSalva1MouseClicked(java.awt.event.MouseEvent evt) {
+
+     
+            try {
+                AppInit operazione = new AppInit();
+                operazione.inserimento(amm);
+                AppAzienda op = new AppAzienda();
+                op.inserimento(az);
+                editabile(false);
+                buttonAnnulla1.setEnabled(false);
+                buttonSalva1.setEnabled(false);
+            } catch (DatiErrati ex) {
+                JOptionPane.showMessageDialog(null, "dati errati");
+            } catch (DatiDuplicati ex) {
+                JOptionPane.showMessageDialog(null, "dati duplicati");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "errore nel database");
+                this.inizializza("");
+                editabile(true);
+                this.buttonAnnulla1.setEnabled(true);
+                this.buttonSalva1.setEnabled(true);
+
+            }
+        }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Cognome;
     private javax.swing.JPanel EmailAzienda;
     private javax.swing.JPanel IndirizzoAz;
+    private it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla buttonAnnulla1;
+    private it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva buttonSalva1;
     private javax.swing.JPanel cap;
     private javax.swing.JPanel cf;
     private javax.swing.JPanel citta;
@@ -1021,5 +1093,10 @@ public class GestioneInit extends javax.swing.JPanel {
     private javax.swing.JPanel username;
     // End of variables declaration//GEN-END:variables
 
+    public void actionPerformed(ActionEvent e) {
+        CommandInterface cmd = (CommandInterface) e.getSource();
+        cmd.execute();
+
+    }
 
 }

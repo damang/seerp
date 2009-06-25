@@ -130,6 +130,12 @@
                           <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                           <Component id="jPanel2" min="-2" max="-2" attributes="3"/>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="buttonSalva1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="buttonAnnulla1" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -182,7 +188,12 @@
                       <Component id="note8" max="32767" attributes="1"/>
                       <Component id="pivaAz" alignment="0" max="32767" attributes="1"/>
                   </Group>
-                  <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="buttonSalva1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="buttonAnnulla1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -1086,6 +1097,19 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva" name="buttonSalva1">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="buttonSalva1" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonSalva1ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla" name="buttonAnnulla1">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="buttonAnnulla1" noResource="true"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
