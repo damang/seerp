@@ -3,7 +3,8 @@
  * and open the template in the editor.
  */
 package it.seerp.storage.Operazioni;
-
+import com.mysql.jdbc.PreparedStatement;
+import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import it.seerp.storage.ejb.Fornitore;
 import java.sql.SQLException;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import it.seerp.storage.Exception.DatiDuplicatiEx;
 import it.seerp.storage.Exception.DatiErratiEx;
 import it.seerp.storage.db.ConnectionPool;
-import java.sql.Connection;
+
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -36,7 +37,7 @@ public class OpFornitore extends OpExtraAzienda {
      * @return ArrayList contenente la lista dei  Fornitori
      * @throws java.sql.SQLException*/
     public ArrayList<Fornitore> elencaFornitore() throws SQLException {
-        conness = ConnectionPool.getConnection();
+        conness = (Connection) ConnectionPool.getConnection();
         ArrayList<Fornitore> list = new ArrayList<Fornitore>();
 
         Statement stmt = null;
@@ -148,7 +149,7 @@ public class OpFornitore extends OpExtraAzienda {
      */
     public void inserisci(Fornitore user) throws SQLException, DatiDuplicatiEx {
 
-        conness = ConnectionPool.getConnection();
+        conness = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
         PreparedStatement stmte = null;
         PreparedStatement stmtv = null;
@@ -280,7 +281,7 @@ public class OpFornitore extends OpExtraAzienda {
      * @throws java.sql.SQLException*/
     @Override
     public Fornitore visualizzaDati(Integer id) throws SQLException {
-        conness = ConnectionPool.getConnection();
+        conness = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
         Fornitore fornitore = null;

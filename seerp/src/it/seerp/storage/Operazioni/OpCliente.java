@@ -9,12 +9,11 @@ import java.util.ArrayList;
 import it.seerp.storage.Exception.DatiDuplicatiEx;
 import it.seerp.storage.Exception.DatiErratiEx;
 import it.seerp.storage.db.ConnectionPool;
-import java.sql.Connection;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
-import javax.swing.JOptionPane;
-
+import com.mysql.jdbc.PreparedStatement;
+import com.mysql.jdbc.Connection;
 /**
  *
  * @author LuNy
@@ -37,7 +36,7 @@ public class OpCliente extends OpExtraAzienda {
      * @throws java.sql.SQLException*/
     public ArrayList<Cliente> elencaCliente() throws SQLException {
         ArrayList<Cliente> list = new ArrayList<Cliente>();
-        connessione = ConnectionPool.getConnection();
+        connessione = (Connection) ConnectionPool.getConnection();
         Statement stmt = null;
         ResultSet rs = null;
 
@@ -154,7 +153,7 @@ public class OpCliente extends OpExtraAzienda {
      */
     public void inserisci(Cliente user) throws SQLException, DatiDuplicatiEx {
 
-        connessione = ConnectionPool.getConnection();
+        connessione = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
         PreparedStatement stmtv = null;
         PreparedStatement stmte = null;
@@ -285,7 +284,7 @@ public class OpCliente extends OpExtraAzienda {
      * @throws java.sql.SQLException*/
     @Override
     public Cliente visualizzaDati(Integer id) throws SQLException {
-        connessione = ConnectionPool.getConnection();
+        connessione = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
         Cliente cliente = null;

@@ -10,9 +10,9 @@ import it.seerp.storage.Exception.DatiErratiEx;
 import it.seerp.storage.ejb.Appuntamento;
 import it.seerp.storage.ejb.Contratto;
 import it.seerp.storage.db.ConnectionPool;
-import java.sql.Connection;
 import java.util.GregorianCalendar;
-
+import com.mysql.jdbc.PreparedStatement;
+import com.mysql.jdbc.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -37,7 +37,7 @@ public class OpExtraAzienda extends OpeUtente {
      * @return ArrayList contenente la lista del personale
      * @throws java.sql.SQLException*/
     public ArrayList<ExtraAzienda> elencaExtraAzienda() throws SQLException {
-        connection = ConnectionPool.getConnection();
+        connection = (Connection) ConnectionPool.getConnection();
         ArrayList<ExtraAzienda> list = new ArrayList<ExtraAzienda>();
         Connection con = null;
         Statement stmt = null;
@@ -91,7 +91,7 @@ public class OpExtraAzienda extends OpeUtente {
 
 
 
-        connection = ConnectionPool.getConnection();
+        connection = (Connection) ConnectionPool.getConnection();
 
         PreparedStatement stmt = null;
         PreparedStatement stmt1 = null;
@@ -202,7 +202,7 @@ public class OpExtraAzienda extends OpeUtente {
     public ExtraAzienda modifica(ExtraAzienda user) throws SQLException, DatiErratiEx, DatiDuplicatiEx {
 
         PreparedStatement stmte = null;
-        connection = ConnectionPool.getConnection();
+        connection = (Connection) ConnectionPool.getConnection();
 
         try {
 
@@ -250,7 +250,7 @@ public class OpExtraAzienda extends OpeUtente {
      * @return il bean con i dettagli del membro del personale
      * @throws java.sql.SQLException*/
     public ExtraAzienda visualizzaDati(Integer id) throws SQLException {
-        connection = ConnectionPool.getConnection();
+        connection = (Connection) ConnectionPool.getConnection();
         ExtraAzienda extraazienda = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
