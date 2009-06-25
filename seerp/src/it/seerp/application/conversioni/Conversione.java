@@ -386,7 +386,7 @@ public class Conversione {
         bp.getCognome().setText(p.getCognome());
         bp.getNome().setText(p.getNome());
         bp.getCodiceFiscale().setText(p.getCodiceFiscale());
-        JOptionPane.showMessageDialog(null, p.getRuolo().getNome());
+       
         bp.getRuolo().removeAllItems();
         bp.getRuolo().addItem(p.getRuolo().getNome());
 
