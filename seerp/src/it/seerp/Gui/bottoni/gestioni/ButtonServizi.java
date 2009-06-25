@@ -50,7 +50,7 @@ public class ButtonServizi extends ObserverButton implements CommandInterface {
 
     public void execute() {
 
-        JOptionPane.showMessageDialog(null, isPresente);
+        
 
         if (!isPresente) {
 
