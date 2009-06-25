@@ -719,6 +719,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
 
                 if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
+                    cliente.setValidatorEnabled(false);
                     AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
                     operazione.inserisciCliente(cliente);
 
