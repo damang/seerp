@@ -88,7 +88,7 @@ public class LoginDBSourceAdapter implements LoginSourceAdapter
 					{
 						_group=rs.getString("role");
                         _id=rs.getString("idUtente");
-                        _tipo=rs.getString("utente.tipo");
+                        _tipo=rs.getString("tipo");
 						bOK = true;
 						break;
 					}
