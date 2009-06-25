@@ -251,7 +251,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,7 +273,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(prz, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -388,7 +388,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
                     .addComponent(jPanel10, javax.swing.GroupLayout.Alignment.LEADING, 0, 462, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel7, 0, 156, Short.MAX_VALUE)
+                            .addComponent(jPanel7, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -460,7 +460,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pIva, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(4, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -480,7 +480,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(mail, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                .addComponent(mail, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel14Layout.setVerticalGroup(
@@ -656,7 +656,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
             .addGroup(jXPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jXPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
                     .addComponent(jLabel1)
                     .addComponent(jXFindBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -679,11 +679,21 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
                 buttonAnnulla1MouseClicked(evt);
             }
         });
+        buttonAnnulla1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAnnulla1ActionPerformed(evt);
+            }
+        });
 
         buttonSalva1.setName("buttonSalva1"); // NOI18N
         buttonSalva1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 buttonSalva1MouseClicked(evt);
+            }
+        });
+        buttonSalva1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSalva1ActionPerformed(evt);
             }
         });
 
@@ -698,7 +708,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jXLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 234, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
                 .addComponent(buttonAnnulla1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonSalva1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -823,6 +833,15 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         private void ragActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ragActionPerformed
             // TODO add your handling code here:
         }//GEN-LAST:event_ragActionPerformed
+
+        private void buttonSalva1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalva1ActionPerformed
+            // TODO add your handling code here:
+        }//GEN-LAST:event_buttonSalva1ActionPerformed
+
+        private void buttonAnnulla1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAnnulla1ActionPerformed
+            // TODO add your handling code here:
+        }//GEN-LAST:event_buttonAnnulla1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla buttonAnnulla1;
     private it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva buttonSalva1;

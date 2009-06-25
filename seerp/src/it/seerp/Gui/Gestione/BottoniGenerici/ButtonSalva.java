@@ -34,11 +34,20 @@ public class ButtonSalva extends JButton implements CommandInterface {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        setForeground(new java.awt.Color(0, 204, 0));
+        setFont(new java.awt.Font("Tahoma", 1, 12));
         setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/accept.png"))); // NOI18N
         setText("Salva");
+        setForeground(new java.awt.Color(0, 204, 0));
+        addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                formActionPerformed(evt);
+            }
+        });
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formActionPerformed
 
     public void execute() {
         throw new UnsupportedOperationException("Not supported yet.");
