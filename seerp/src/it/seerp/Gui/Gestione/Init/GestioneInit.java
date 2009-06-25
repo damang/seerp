@@ -21,7 +21,9 @@ import it.seerp.application.bean.BeanGuiAmministratore;
 import it.seerp.application.bean.BeanGuiAzienda;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import org.jdesktop.swingx.JXFrame;
 
 /**
  *
@@ -40,7 +42,7 @@ public class GestioneInit extends javax.swing.JPanel {
         this.amm = new BeanGuiAmministratore(this);
         this.az = new BeanGuiAzienda();
         legameBeans();
-        editabile(false);
+        editabile(true);
     }
         /**
      *
@@ -48,7 +50,7 @@ public class GestioneInit extends javax.swing.JPanel {
      */
     public void editabile(boolean flag) {
     nm.setEditable(flag);
-    nm1.setEditable(flag);
+    cog.setEditable(flag);
     nm2.setEditable(flag);
     nm3.setEditable(flag);
     nm4.setEditable(flag);
@@ -77,7 +79,7 @@ public class GestioneInit extends javax.swing.JPanel {
      */
     public void inizializza(String s) {
         nm.setText(s);
-        nm1.setText(s);
+        cog.setText(s);
         nm2.setText(s);
         nm3.setText(s);
         nm4.setText(s);
@@ -107,7 +109,7 @@ public class GestioneInit extends javax.swing.JPanel {
     public void legameBeans() {
 
         amm.setNome(nm);
-        amm.setCognome(nm1);
+        amm.setCognome(cog);
         amm.setTxtCitta(nm2);
         amm.setTxtProvincia(nm3);
         amm.setCap(nm4);
@@ -143,7 +145,7 @@ public class GestioneInit extends javax.swing.JPanel {
         nome = new javax.swing.JPanel();
         nm = new javax.swing.JTextField();
         Cognome = new javax.swing.JPanel();
-        nm1 = new javax.swing.JTextField();
+        cog = new javax.swing.JTextField();
         citta = new javax.swing.JPanel();
         nm2 = new javax.swing.JTextField();
         provincia = new javax.swing.JPanel();
@@ -225,11 +227,11 @@ public class GestioneInit extends javax.swing.JPanel {
         Cognome.setBorder(javax.swing.BorderFactory.createTitledBorder("Cognome"));
         Cognome.setName("Cognome"); // NOI18N
 
-        nm1.setFocusCycleRoot(true);
-        nm1.setName("nm1"); // NOI18N
-        nm1.addActionListener(new java.awt.event.ActionListener() {
+        cog.setFocusCycleRoot(true);
+        cog.setName("cog"); // NOI18N
+        cog.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nm1ActionPerformed(evt);
+                cogActionPerformed(evt);
             }
         });
 
@@ -239,13 +241,13 @@ public class GestioneInit extends javax.swing.JPanel {
             CognomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CognomeLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(nm1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cog, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         CognomeLayout.setVerticalGroup(
             CognomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CognomeLayout.createSequentialGroup()
-                .addComponent(nm1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -826,7 +828,7 @@ public class GestioneInit extends javax.swing.JPanel {
                             .addComponent(note9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(EmailAzienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jXLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
+                        .addComponent(jXLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -890,8 +892,7 @@ public class GestioneInit extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(IndirizzoAz, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(pivaAz, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(note8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE))
+                            .addComponent(note8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -909,7 +910,7 @@ public class GestioneInit extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jXLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                .addComponent(jXLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
                 .addGap(610, 610, 610))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 789, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -930,9 +931,9 @@ public class GestioneInit extends javax.swing.JPanel {
         // TODO add your handling code here:
 }//GEN-LAST:event_nmActionPerformed
 
-    private void nm1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nm1ActionPerformed
+    private void cogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cogActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nm1ActionPerformed
+}//GEN-LAST:event_cogActionPerformed
 
     private void nm2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nm2ActionPerformed
         // TODO add your handling code here:
@@ -1020,28 +1021,11 @@ public class GestioneInit extends javax.swing.JPanel {
     }
 
     private void buttonSalva1MouseClicked(java.awt.event.MouseEvent evt) {
-
+                JOptionPane.showMessageDialog(null, "luisa");
      
-            try {
-                AppInit operazione = new AppInit();
-                operazione.inserimento(amm);
-                AppAzienda op = new AppAzienda();
-                op.inserimento(az);
-                editabile(false);
-                buttonAnnulla1.setEnabled(false);
-                buttonSalva1.setEnabled(false);
-            } catch (DatiErrati ex) {
-                JOptionPane.showMessageDialog(null, "dati errati");
-            } catch (DatiDuplicati ex) {
-                JOptionPane.showMessageDialog(null, "dati duplicati");
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "errore nel database");
-                this.inizializza("");
-                editabile(true);
-                this.buttonAnnulla1.setEnabled(true);
-                this.buttonSalva1.setEnabled(true);
-
-            }
+  
+                  editabile(false);
+           
         }
     
 
@@ -1055,6 +1039,7 @@ public class GestioneInit extends javax.swing.JPanel {
     private javax.swing.JPanel cf;
     private javax.swing.JPanel citta;
     private javax.swing.JPanel cittaAzienda;
+    private javax.swing.JTextField cog;
     private javax.swing.JPanel email;
     private javax.swing.JPanel faxAz;
     private javax.swing.JPanel idAzienda;
@@ -1066,7 +1051,6 @@ public class GestioneInit extends javax.swing.JPanel {
     private org.jdesktop.swingx.JXLabel jXLabel3;
     private javax.swing.JPanel nazioneAz;
     private javax.swing.JTextField nm;
-    private javax.swing.JTextField nm1;
     private javax.swing.JTextField nm10;
     private javax.swing.JTextField nm11;
     private javax.swing.JTextField nm13;
@@ -1106,7 +1090,10 @@ public class GestioneInit extends javax.swing.JPanel {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                new GestioneInit().setVisible(true);
+                JFrame f= new JFrame();
+                f.getContentPane().add(new GestioneInit());
+                f.setSize(800,600);
+                f.setVisible(true);
             }
         });
     }
