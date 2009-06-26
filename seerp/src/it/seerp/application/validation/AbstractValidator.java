@@ -130,7 +130,7 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
     }
 
     public void reset(final JComponent c) {
-       c.setBackground(Color.WHITE);
+      c.setBackground(Color.WHITE);
        popup.setVisible(false);
     }
     /**
