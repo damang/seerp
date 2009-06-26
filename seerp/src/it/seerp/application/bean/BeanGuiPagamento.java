@@ -27,15 +27,15 @@ public class BeanGuiPagamento {
     }
 
     /**
-     * metodo che
-     * @return
+     * metodo che restituisce il campo altre informazioni del bean gui pagamento
+     * @return il campo altre informazioni
      */
     public JTextField getAltreInformazioni() {
         return altreInformazioni;
     }
 
     /**
-     * metodo che
+     * metodo che setta il campo altre informazioni del bean gui pagamento
      * @param altreInformazioni
      */
     public void setAltreInformazioni(JTextField altreInformazioni) {
@@ -43,15 +43,15 @@ public class BeanGuiPagamento {
     }
 
     /**
-     * metodo che
-     * @return
+     * metodo che restituisce il campo banca del bean gui pagamento
+     * @return il campo banca
      */
     public JTextField getBanca() {
         return banca;
     }
 
     /**
-     * metodo che
+     * metodo che setta il campo banca del bean gui pagamento
      * @param banca
      */
     public void setBanca(JTextField banca) {
@@ -59,15 +59,15 @@ public class BeanGuiPagamento {
     }
 
     /**
-     * metodo che
-     * @return
+     * metodo che restituisce il campo contratto del bean gui pagamento
+     * @return il campo contratto
      */
     public BeanGuiContratto getContratto() {
         return contratto;
     }
 
     /**
-     * metodo che
+     * metodo che setta il campo contratto del bean gui pagamento
      * @param contratto
      */
     public void setContratto(BeanGuiContratto contratto) {
@@ -75,15 +75,15 @@ public class BeanGuiPagamento {
     }
 
     /**
-     * metodo che
-     * @return
+     * metodo che restituisce il campo data di scadenza del bean gui pagamento
+     * @return il campo data di scadenza
      */
     public JTextField getDataScadenza() {
         return dataScadenza;
     }
 
     /**
-     * metodo che
+     * metodo che setta il campo data di scadenza del bean gui pagamento
      * @param dataScadenza
      */
     public void setDataScadenza(JTextField dataScadenza) {
@@ -91,15 +91,15 @@ public class BeanGuiPagamento {
     }
 
     /**
-     * metodo che
-     * @return
+     * metodo che restituisce il campo descrizione del bean gui pagamento
+     * @return il campo pagamento
      */
     public JTextField getDescrizione() {
         return descrizione;
     }
 
     /**
-     * metodo che
+     * metodo che setta il campo descrizione del bean gui pagamento
      * @param descrizione
      */
     public void setDescrizione(JTextField descrizione) {
@@ -107,15 +107,15 @@ public class BeanGuiPagamento {
     }
 
     /**
-     * metodo che
-     * @return
+     * metodo che restituisce il campo id del bean gui pagamento
+     * @return il campo id
      */
     public JTextField getIdPagamento() {
         return idPagamento;
     }
 
     /**
-     * metodo che
+     * metodo che setta il campo id del bean gui pagamento
      * @param idPagamento
      */
     public void setIdPagamento(JTextField idPagamento) {
@@ -123,15 +123,15 @@ public class BeanGuiPagamento {
     }
 
     /**
-     * metodo che
-     * @return
+     * metodo che restituisce il campo importo del bean gui pagamento
+     * @return il campo importo
      */
     public JTextField getImporto() {
         return importo;
     }
 
     /**
-     * metodo che
+     * metodo che setta il campo importo del bean gui pagamento
      * @param importo
      */
     public void setImporto(JTextField importo) {
@@ -139,15 +139,15 @@ public class BeanGuiPagamento {
     }
 
     /**
-     * metodo che
-     * @return
+     * metodo che restituisce il campo modalità di pagamento
+     * @return il campo modalità di  pagamento
      */
     public JTextField getModalitaPagamento() {
         return modalitaPagamento;
     }
 
     /**
-     * metodo che
+     * metodo che setta la modalità di pagamento del bean gui pagamento
      * @param modalitaPagamento
      */
     public void setModalitaPagamento(JTextField modalitaPagamento) {
@@ -155,15 +155,15 @@ public class BeanGuiPagamento {
     }
 
     /**
-     * metodo che
-     * @return
+     * metodo che restituisce il campo note del bena gui pagamento
+     * @return il campo note
      */
     public JTextArea getNote() {
         return note;
     }
 
     /**
-     * metodo che
+     * metodo che setta il campo note del bean gui pagamento
      * @param note
      */
     public void setNote(JTextArea note) {
@@ -171,15 +171,15 @@ public class BeanGuiPagamento {
     }
 
     /**
-     * metodo che
-     * @return
+     * metodo che restituisce il campo stato del bean gui pagamento
+     * @return il campo stato
      */
     public JTextField getStato() {
         return stato;
     }
 
     /**
-     * metodo che
+     * metodo che setta il campo stato del bean gui pagamento
      * @param stato
      */
     public void setStato(JTextField stato) {
