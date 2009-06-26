@@ -47,6 +47,9 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
         setEditable(false);
     }
 
+    /**
+     *
+     */
     public void eliminaSelected() {
 
         if (jXTable1.getSelectedRow() == -1) {
@@ -872,22 +875,42 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
         cmd.execute();
     }
 
+    /**
+     *
+     * @return
+     */
     public BeanGuiRuolo getBeanGuiRuolo() {
         return be;
     }
 
+    /**
+     *
+     * @param menu
+     */
     public void setMenu(MenuRuoli menu) {
         this.menu = menu;
     }
 
+    /**
+     *
+     * @return
+     */
     public MenuRuoli getMenu() {
         return this.menu;
     }
 
+    /**
+     *
+     * @param tipo
+     */
     public void setTipoOP(ConfigurazioneOperazioni.TIPO_OPE_CONST tipo) {
         this.tipoOp = tipo;
     }
 
+    /**
+     * 
+     * @param b
+     */
     public void setEditable(boolean b) {
 
         try {
@@ -917,10 +940,18 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
 
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton getSalva() {
         return buttonSalva1;
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton getAnnulla() {
         return buttonAnnulla1;
     }
