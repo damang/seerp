@@ -28,15 +28,15 @@ public class BeanGuiPersonale extends BeanGuiUtente {
     }
 
     /**
-     *
-     * @return
+     * metodo che restituisce il campo ruolo del bean gui personale
+     * @return il campo ruolo
      */
     public JComboBox getRuolo() {
         return ruolo;
     }
 
     /**
-     *
+     * metodo che setta il campo ruolo del bean gui personale
      * @param ruolo
      */
     public void setRuolo(JComboBox ruolo) {
@@ -44,9 +44,9 @@ public class BeanGuiPersonale extends BeanGuiUtente {
     }
 
     /**
-     *
-     * @return
-     * @throws ValidatorException
+     * metodo che restituisce il campo codice fiscale del bean gui personale
+     * @return il campo codice fiscale
+     * @throws ValidatorException lanciata se il formato del codice fiscale non è valido
      */
     public JTextField getCodiceFiscale() throws ValidatorException {
         if (validator == true) {
@@ -58,9 +58,9 @@ public class BeanGuiPersonale extends BeanGuiUtente {
     }
 
     /**
-     *
-     * @return
-     * @throws ValidatorException
+     * metodo che restituisce il campo cognome del bean gui personale
+     * @return il campo cognome
+     * @throws ValidatorException lanciata se il formato del cognome non è valido
      */
     public JTextField getCognome() throws ValidatorException {
         if (validator == true) {
@@ -72,9 +72,9 @@ public class BeanGuiPersonale extends BeanGuiUtente {
     }
 
     /**
-     *
-     * @return
-     * @throws ValidatorException
+     * metodo che restituisce il campo nome del bean gui personale
+     * @return il campo nome
+     * @throws ValidatorException lancaiata se il formato del cognome non è valido
      */
     public JTextField getNome() throws ValidatorException {
         if (validator == true) {
@@ -86,7 +86,7 @@ public class BeanGuiPersonale extends BeanGuiUtente {
     }
 
     /**
-     * 
+     * metodo che setta il campo codice fiscale del bean gui personale
      * @param pcodiceFiscale
      */
     public void setCodiceFiscale(JTextField pcodiceFiscale) {
@@ -95,7 +95,7 @@ public class BeanGuiPersonale extends BeanGuiUtente {
     }
 
     /**
-     *
+     * metodo che setta il campo cognome del bean gui personale
      * @param pcognome
      */
     public void setCognome(JTextField pcognome) {
@@ -104,7 +104,7 @@ public class BeanGuiPersonale extends BeanGuiUtente {
     }
 
     /**
-     *
+     * metodo che setta il campo note del bean gui personale
      * @param pnome
      */
     public void setNome(JTextField pnome) {
