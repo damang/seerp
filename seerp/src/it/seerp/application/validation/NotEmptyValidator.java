@@ -37,6 +37,7 @@ public class NotEmptyValidator extends AbstractValidator {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+       // if (enabled==false) reset();
     }
 
 

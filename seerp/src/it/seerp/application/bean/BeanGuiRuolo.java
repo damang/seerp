@@ -38,6 +38,8 @@ public class BeanGuiRuolo {
 
     public void setValidator(boolean validator) {
         this.validator = validator;
+        ((NotEmptyValidator)nome.getInputVerifier()).setEnabled(validator);
+        ((NotEmptyValidator)nome.getInputVerifier()).reset(nome);
     }
 
     /**

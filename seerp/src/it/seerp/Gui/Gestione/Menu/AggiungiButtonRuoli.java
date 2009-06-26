@@ -65,7 +65,7 @@ public class AggiungiButtonRuoli extends JButton implements CommandInterface {
                  area.getAnnulla().setVisible(true);
                  area.setEditable(true);
                  area.getBeanGuiRuolo().setValidator(true);
-                 ((NotEmptyValidator)area.getBeanGuiRuolo().getNome().getInputVerifier()).setEnabled(true);
+                 //((NotEmptyValidator)area.getBeanGuiRuolo().getNome().getInputVerifier()).setEnabled(true);
        }
     }
 }
