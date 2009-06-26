@@ -25,10 +25,18 @@ public class BeanGuiServizio {
     private Object grafica;
     protected boolean validator = true;
 
+    /**
+     * metodo che restituisce il campo validator del bean gui servizio
+     * @return il campo validator
+     */
     public boolean isValidator() {
         return validator;
     }
 
+    /**
+     * metodo che setta il campo validator del bean gui servizio
+     * @param validator
+     */
     public void setValidator(boolean validator) {
         this.validator = validator;
     }
@@ -42,19 +50,22 @@ public class BeanGuiServizio {
         this.grafica = c;
     }
 
+    /**
+     * costruttore vuoto del bean gui servizio
+     */
     public BeanGuiServizio() {
     }
 
     /**
-     *
-     * @return
+     * metodo che restituisce la lista dei servizi associati del bean gui servizio
+     * @return la lista di servizi associati
      */
     public ArrayList<BeanGuiServizioAssociato> getListServiziAssociati() {
         return listServiziAssociati;
     }
 
     /**
-     *
+     * metodo che setta la lista dei servizi associati al bean gui servizio
      * @param listServiziAssociati
      */
     public void setListServiziAssociati(ArrayList<BeanGuiServizioAssociato> listServiziAssociati) {
@@ -62,7 +73,7 @@ public class BeanGuiServizio {
     }
 
     /**
-     *
+     * metodo che rimuove un servizio associato dal bean gui servizio
      * @param c
      */
     public void removeServizio(BeanGuiServizioAssociato c) {
@@ -70,7 +81,7 @@ public class BeanGuiServizio {
     }
 
     /**
-     *
+     * metodo che aggiunge un servizio associato alììdal bean gui servizio
      * @param c
      */
     public void addServizio(BeanGuiServizioAssociato c) {
@@ -78,9 +89,9 @@ public class BeanGuiServizio {
     }
 
     /**
-     *
-     * @return
-     * @throws ValidatorException
+     * metodo che restituisce il campo descrizione del bean gui personale
+     * @return il campo descrizione
+     * @throws ValidatorException lanciata quando il formato non è valido
      */
     public JTextField getDescrizione() throws ValidatorException {
         if (validator == true) {
@@ -92,7 +103,7 @@ public class BeanGuiServizio {
     }
 
     /**
-     *
+     * metodo che setta il campo descrizione del bean gui servizio
      * @param pdescrizione
      */
     public void setDescrizione(JTextField pdescrizione) {
@@ -101,15 +112,15 @@ public class BeanGuiServizio {
     }
 
     /**
-     *
-     * @return
+     * metodo che restituisce il campo disponibilita del bean gui servizio
+     * @return il campo disponibile
      */
     public JTextField getDisponibilita() {
         return disponibilita;
     }
 
     /**
-     *
+     * metodo che setta il campo disponibilita del bean gui servizio
      * @param disponibilita
      */
     public void setDisponibilita(JTextField disponibilita) {
@@ -117,15 +128,15 @@ public class BeanGuiServizio {
     }
 
     /**
-     *
-     * @return
+     * metodo che restituisce il campo ide del bean gui servizion
+     * @return il campo id
      */
     public JTextField getIdServizio() {
         return idServizio;
     }
 
     /**
-     *
+     * metodo che setta il campo id del bean gui servizio
      * @param idServizio
      */
     public void setIdServizio(JTextField idServizio) {
@@ -133,9 +144,9 @@ public class BeanGuiServizio {
     }
 
     /**
-     *
-     * @return
-     * @throws ValidatorException
+     * metodo che restituisce il campo iva del bean gui servizio
+     * @return il campo iva
+     * @throws ValidatorException lanciata se il formato della partita iva non è valido
      */
     public JTextField getIva() throws ValidatorException {
         if (validator == true) {
@@ -147,7 +158,7 @@ public class BeanGuiServizio {
     }
 
     /**
-     *
+     * metodo che setta il campo iva del bean gui servizio
      * @param piva
      */
     public void setIva(JTextField piva) {
@@ -156,15 +167,15 @@ public class BeanGuiServizio {
     }
 
     /**
-     *
-     * @return
+     * metodo che restituisce il campo note del bean gui servizio
+     * @return il campo note
      */
     public JTextArea getNote() {
         return note;
     }
 
     /**
-     *
+     * metodo che setta il campo note del bean gui servizio
      * @param pnote
      */
     public void setNote(JTextArea pnote) {
@@ -172,9 +183,9 @@ public class BeanGuiServizio {
     }
 
     /**
-     *
-     * @return
-     * @throws ValidatorException
+     * metodo che restituisce il campo prezzo del bean gui servizio
+     * @return il campo prezzo
+     * @throws ValidatorException lanciata se il formato del campo prezzo nno è valido
      */
     public JTextField getPrezzo() throws ValidatorException {
         if (validator == true) {
@@ -186,7 +197,7 @@ public class BeanGuiServizio {
     }
 
     /**
-     *
+     * metodo che setta il campo prezzo del bean gui servizio
      * @param pprezzo
      */
     public void setPrezzo(JTextField pprezzo) {
@@ -195,9 +206,9 @@ public class BeanGuiServizio {
     }
 
     /**
-     *
-     * @return
-     * @throws ValidatorException
+     * metodo che restituisce il campo quantita del bean gui servizio
+     * @return il campo quantita
+     * @throws ValidatorException lanciata se il formato della quantita non è valido
      */
     public JTextField getQuantita() throws ValidatorException {
         if (validator == true) {
@@ -209,7 +220,7 @@ public class BeanGuiServizio {
     }
 
     /**
-     *
+     * metodo che setta il campo quantita del bean gui servizio
      * @param pquantita
      */
     public void setQuantita(JTextField pquantita) {
@@ -218,9 +229,9 @@ public class BeanGuiServizio {
     }
 
     /**
-     *
-     * @return
-     * @throws ValidatorException
+     * metodo che restituisce il campo tipo del bean gui servizio
+     * @return il campo tipo
+     * @throws ValidatorException lanciata se il formato del tipo non è valido
      */
     public JTextField getTipo() throws ValidatorException {
         if (validator == true) {
@@ -232,7 +243,7 @@ public class BeanGuiServizio {
     }
 
     /**
-     *
+     * metodo che setta il campo tipo del bean gui servizio
      * @param ptipo
      */
     public void setTipo(JTextField ptipo) {
