@@ -93,7 +93,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
         gest_ser = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxGestione(this);
         gest_dip = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxGestione(this);
         gest_ruo = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxGestione(this);
-        gest_contr = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxGestione(this);
+        gest_resp = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxGestione(this);
         jPanel14 = new javax.swing.JPanel();
         pan_gest_cli = new javax.swing.JPanel();
         cli_mod = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
@@ -101,12 +101,12 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
         cli_ele = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
         cli_ric = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
         cli_agg = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
-        pan_gest_con = new javax.swing.JPanel();
-        con_mod = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
-        con_el = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
-        con_ele = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
-        con_ric = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
-        con_agg = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
+        pan_gest_resp = new javax.swing.JPanel();
+        resp_mod = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
+        resp_el = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
+        resp_ele = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
+        resp_ric = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
+        resp_agg = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
         pan_gest_for = new javax.swing.JPanel();
         for_el = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
         for_ele = new it.seerp.Gui.Gestione.Ruoli.JCheckBoxPermesso(this);
@@ -245,13 +245,13 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         pan_gest.add(gest_ruo, gridBagConstraints);
 
-        gest_contr.setText("Gestione Contratti");
-        gest_contr.setName(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti));
+        gest_resp.setText("Gestione Responsabili");
+        gest_resp.setName(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneResponsabili));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        pan_gest.add(gest_contr, gridBagConstraints);
+        pan_gest.add(gest_resp, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
@@ -313,56 +313,57 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
 
         jPanel14.add(pan_gest_cli);
 
-        pan_gest_con.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestione Contratti"));
-        pan_gest_con.setName(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti));
-        pan_gest_con.setLayout(new java.awt.GridBagLayout());
+        pan_gest_resp.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestione Responsabili"));
+        pan_gest_resp.setName(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneResponsabili));
+        pan_gest_resp.setLayout(new java.awt.GridBagLayout());
 
-        con_mod.setText("Modifica");
-        con_mod.setName("GestioneContrttiModifica"); // NOI18N
+        resp_mod.setText("Modifica");
+        resp_mod.setName("GestioneResponsabiliModifica");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        pan_gest_con.add(con_mod, gridBagConstraints);
+        pan_gest_resp.add(resp_mod, gridBagConstraints);
 
-        con_el.setText("Elimina");
-        con_el.setName("GestioneContrttiElimina"); // NOI18N
+        resp_el.setText("Elimina");
+        resp_el.setName("GestioneResponsabiliElimina");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        pan_gest_con.add(con_el, gridBagConstraints);
+        pan_gest_resp.add(resp_el, gridBagConstraints);
 
-        con_ele.setText("Elenca");
-        con_ele.setName("GestioneContrttiElenca"); // NOI18N
+        resp_ele.setText("Elenca");
+        resp_ele.setName("GestioneResponsabiliElenca");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        pan_gest_con.add(con_ele, gridBagConstraints);
+        pan_gest_resp.add(resp_ele, gridBagConstraints);
 
-        con_ric.setText("Ricerca");
-        con_ric.setName("GestioneContrttiRicerca"); // NOI18N
-        con_ric.addActionListener(new java.awt.event.ActionListener() {
+        resp_ric.setText("Ricerca");
+        resp_ric.setName("GestioneResponsabiliRicerca");
+        resp_ric.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                con_ricActionPerformed(evt);
+                resp_ricActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        pan_gest_con.add(con_ric, gridBagConstraints);
+        pan_gest_resp.add(resp_ric, gridBagConstraints);
 
-        con_agg.setText("Aggiungi");
-        con_agg.setName("con_agg"); // NOI18N
+        resp_agg.setText("Aggiungi");
+        resp_agg.setName("GestioneResponsabiliAggiungi");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        pan_gest_con.add(con_agg, gridBagConstraints);
+        pan_gest_resp.add(resp_agg, gridBagConstraints);
 
-        jPanel14.add(pan_gest_con);
+        jPanel14.add(pan_gest_resp);
+        pan_gest_resp.getAccessibleContext().setAccessibleName("Gestione Responsabili");
 
         pan_gest_for.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestione Fornitori"));
         pan_gest_for.setName(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori));
@@ -681,9 +682,9 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
 
     }//GEN-LAST:event_jXTable1MouseClicked
 
-    private void con_ricActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_con_ricActionPerformed
+    private void resp_ricActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resp_ricActionPerformed
         // TODO add your handling code here:
-}//GEN-LAST:event_con_ricActionPerformed
+}//GEN-LAST:event_resp_ricActionPerformed
 
     private void gest_cliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gest_cliActionPerformed
         // TODO add your handling code here:
@@ -749,11 +750,6 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
     private javax.swing.JCheckBox cli_ele;
     private javax.swing.JCheckBox cli_mod;
     private javax.swing.JCheckBox cli_ric;
-    private javax.swing.JCheckBox con_agg;
-    private javax.swing.JCheckBox con_el;
-    private javax.swing.JCheckBox con_ele;
-    private javax.swing.JCheckBox con_mod;
-    private javax.swing.JCheckBox con_ric;
     private javax.swing.JCheckBox dip_agg;
     private javax.swing.JCheckBox dip_el;
     private javax.swing.JCheckBox dip_ele;
@@ -765,9 +761,9 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
     private javax.swing.JCheckBox for_mod;
     private javax.swing.JCheckBox for_ric;
     private javax.swing.JCheckBox gest_cli;
-    private javax.swing.JCheckBox gest_contr;
     private javax.swing.JCheckBox gest_dip;
     private javax.swing.JCheckBox gest_for;
+    private javax.swing.JCheckBox gest_resp;
     private javax.swing.JCheckBox gest_ruo;
     private javax.swing.JCheckBox gest_ser;
     private javax.swing.JLabel jLabel1;
@@ -785,11 +781,16 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
     private org.jdesktop.swingx.JXTable jXTable2;
     private javax.swing.JPanel pan_gest;
     private javax.swing.JPanel pan_gest_cli;
-    private javax.swing.JPanel pan_gest_con;
     private javax.swing.JPanel pan_gest_dip;
     private javax.swing.JPanel pan_gest_for;
+    private javax.swing.JPanel pan_gest_resp;
     private javax.swing.JPanel pan_gest_ruo;
     private javax.swing.JPanel pan_gest_ser;
+    private javax.swing.JCheckBox resp_agg;
+    private javax.swing.JCheckBox resp_el;
+    private javax.swing.JCheckBox resp_ele;
+    private javax.swing.JCheckBox resp_mod;
+    private javax.swing.JCheckBox resp_ric;
     private javax.swing.JCheckBox ruo_agg;
     private javax.swing.JCheckBox ruo_el;
     private javax.swing.JCheckBox ruo_ele;
@@ -829,12 +830,12 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
         perm2.add(new BeanGuiPermesso(this, ruo_ele, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli)));
         perm2.add(new BeanGuiPermesso(this, ruo_ric, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli)));
         listPermessi.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli), perm2);
-        perm3.add(new BeanGuiPermesso(this, con_agg, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti)));
-        perm3.add(new BeanGuiPermesso(this, con_mod, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti)));
-        perm3.add(new BeanGuiPermesso(this, con_el, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti)));
-        perm3.add(new BeanGuiPermesso(this, con_ele, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti)));
-        perm3.add(new BeanGuiPermesso(this, con_ric, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti)));
-        listPermessi.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti), perm3);
+        perm3.add(new BeanGuiPermesso(this, resp_agg, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneResponsabili)));
+        perm3.add(new BeanGuiPermesso(this, resp_mod, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneResponsabili)));
+        perm3.add(new BeanGuiPermesso(this, resp_el, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneResponsabili)));
+        perm3.add(new BeanGuiPermesso(this, resp_ele, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneResponsabili)));
+        perm3.add(new BeanGuiPermesso(this, resp_ric, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneResponsabili)));
+        listPermessi.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneResponsabili), perm3);
 
         perm4.add(new BeanGuiPermesso(this, for_agg, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori)));
         perm4.add(new BeanGuiPermesso(this, for_mod, PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori)));
@@ -860,7 +861,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
         HashMap<String, JCheckBox> p_all = new HashMap<String, JCheckBox>();
         p_all.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti), gest_dip);
         p_all.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti), gest_cli);
-        p_all.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneContratti), gest_contr);
+        p_all.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneResponsabili), gest_resp);
         p_all.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori), gest_for);
         p_all.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli), gest_ruo);
         p_all.put(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi), gest_ser);
