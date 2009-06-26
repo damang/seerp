@@ -16,21 +16,21 @@ public class BeanGuiServizioAssociato {
     private JTextArea note;
 
     /**
-     *
+     *costruttore vuoto per la classe bean gui servizio associato
      */
     public BeanGuiServizioAssociato() {
     }
 
     /**
-     * metodo che restituisce
-     * @return
+     * metodo che restituisce il campo contratto del bean gui servizio associato
+     * @return il campo contratto
      */
     public BeanGuiContratto getContratto() {
         return contratto;
     }
 
     /**
-     * metodo che
+     * metodo che setta il campo contratto del bean gui servizio associato
      * @param contratto
      */
     public void setContratto(BeanGuiContratto contratto) {
@@ -38,15 +38,15 @@ public class BeanGuiServizioAssociato {
     }
 
     /**
-     * metodo che restituisce
-     * @return
+     * metodo che restituisce il campo note del bean gui servizio associato
+     * @return il campo note
      */
     public JTextArea getNote() {
         return note;
     }
 
     /**
-     *
+     * metodo che setta il campo note del bean gui servizio associato
      * @param note
      */
     public void setNote(JTextArea note) {
@@ -54,15 +54,15 @@ public class BeanGuiServizioAssociato {
     }
 
     /**
-     *  metodo che restituisce
-     * @return
+     *  metodo che restituisce il campo prezzo unitario del bean gui servizio associato
+     * @return il campo prezzo unitaria
      */
     public JTextField getPrezzoUnitario() {
         return prezzoUnitario;
     }
 
     /**
-     * metodo che
+     * metodo che setta il campo prezzo unitario del bean gui servizio
      * @param prezzoUnitario
      */
     public void setPrezzoUnitario(JTextField prezzoUnitario) {
@@ -70,15 +70,15 @@ public class BeanGuiServizioAssociato {
     }
 
     /**
-     * metodo che restituisce
-     * @return
+     * metodo che restituisce il campo quantità del bean gui servizio associato
+     * @return il campo quantita
      */
     public JTextField getQuantita() {
         return quantita;
     }
 
     /**
-     * metodo che
+     * metodo che setta il campo quantita del bean gui servizio associato
      * @param quantita
      */
     public void setQuantita(JTextField quantita) {
@@ -86,15 +86,15 @@ public class BeanGuiServizioAssociato {
     }
 
     /**
-     * metodo che restituisce
-     * @return
+     * metodo che restituisce il campo servizio del bean gui servizio associato
+     * @return il campo servizio
      */
     public BeanGuiServizio getServizio() {
         return servizio;
     }
 
     /**
-     * metodo che setta
+     * metodo che setta il campo servizio del bean gui servizio associato
      * @param servizio
      */
     public void setServizio(BeanGuiServizio servizio) {
