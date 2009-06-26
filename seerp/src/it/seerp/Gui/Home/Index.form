@@ -669,6 +669,7 @@
         <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/it/seerp/Gui/icone/ico32x32/Log-Out-48x48.png"/>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Logout"/>
         <Property name="name" type="java.lang.String" value="logout1" noResource="true"/>
       </Properties>
     </Component>
