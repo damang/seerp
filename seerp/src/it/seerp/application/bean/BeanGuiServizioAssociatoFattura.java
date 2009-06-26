@@ -18,15 +18,15 @@ public class BeanGuiServizioAssociatoFattura {
     private ArrayList<BeanGuiDDT> listDDT;
 
     /**
-     *
-     * @return
+     * metodo che restituisce la lista dei DDT del bean gui servizio associato a fattura
+     * @return la lista dei DDT
      */
     public ArrayList<BeanGuiDDT> getListDDT() {
         return listDDT;
     }
 
     /**
-     *
+     * metodo che setta la lista dei DDT del bean gui servizio associato a fattura
      * @param listDDT
      */
     public void setListDDT(ArrayList<BeanGuiDDT> listDDT) {
