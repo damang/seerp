@@ -175,7 +175,7 @@ public class OpEventoTest extends TestCase {
         GregorianCalendar datas = new GregorianCalendar();
         OpEvento instance = new OpEvento();
         ArrayList<Evento> expResult = listEve;
-        ArrayList<Evento> result = instance.eventiNotificati(datas);
+        ArrayList<Evento> result = instance.eventiNotificati(idEvento, data);
         Iterator<Evento> it = expResult.iterator();
         int i = 0;
         while (it.hasNext()) {
