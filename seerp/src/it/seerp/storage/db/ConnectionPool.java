@@ -104,7 +104,7 @@ public class ConnectionPool {
      * @throws IOException
      */
     private static void loadDbProperties() throws IOException {
-        InputStream fileProperties = new FileInputStream("file_config\\database.properties");
+        InputStream fileProperties = new FileInputStream(".\\file_config\\database.properties");
         ConnectionPool.dbProperties = new Properties();
         ConnectionPool.dbProperties.load(fileProperties);
 
