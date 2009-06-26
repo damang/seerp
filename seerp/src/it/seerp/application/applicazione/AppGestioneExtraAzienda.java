@@ -50,6 +50,7 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
           try{
             OpCliente a = new OpCliente();
             Cliente cl = Conversione.conversioneCliente(clien);
+            cl.setTipo("extraazienda");
             a.inserisci(cl);
           }
           catch(ValidatorException ex){
@@ -104,6 +105,7 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
       try{
             OpFornitore a = new OpFornitore();
             Fornitore fo = Conversione.conversioneFornitore(forn);
+            fo.setTipo("extraazienda");
             a.inserisci(fo);
             }
           catch(ValidatorException ex){

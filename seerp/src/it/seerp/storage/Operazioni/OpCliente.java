@@ -154,21 +154,13 @@ public class OpCliente extends OpExtraAzienda {
         PreparedStatement stmt = null;
         PreparedStatement stmtv = null;
         PreparedStatement stmte = null;
-        Statement stmt1 = connessione.createStatement();
-        String sqlTest = "SELECT piva,username FROM extraazienda WHERE piva= '" + user.getPIva() +  "'" +
-                         "OR username='"+user.getUsername()+"' ";
-        ResultSet rs = stmt1.executeQuery(sqlTest);
-
-        if (rs.next()) {
-            throw new DatiDuplicatiEx("cliente già esistente nel database");
-        } else {
-            try {
+                 try {
                 connessione.setAutoCommit(false);
                 String sqlu = "INSERT INTO utente(username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita) VALUES(?,?,?,?,?,?,?,?,?,true)";
                 super.inserimento(user);
 
                 String sqle = "INSERT INTO extraazienda(idExtraAzienda,nome,cognome,fax,piva,ragioneSociale,Ruolo,codiceFiscale)" +
-                        "VALUES(LAST_INSERT_ID(),?,?,?,?,?,'Cliente',?)";
+                        "VALUES(LAST_INSERT_ID(),?,?,?,?,?,'cliente',?)";
 
                 String sqla = "INSERT INTO agenda (idAgenda) VALUES(LAST_INSERT_ID()) ";
                 stmt = (PreparedStatement) connessione.prepareStatement(sqlu);
@@ -196,7 +188,7 @@ public class OpCliente extends OpExtraAzienda {
 
                 connessione.commit();
             } catch (SQLException e) {
-               
+               //e.printStackTrace();
                 connessione.rollback();
                 throw new SQLException("Transizione fallita");
 
@@ -204,8 +196,7 @@ public class OpCliente extends OpExtraAzienda {
 
             stmt.close();
             ConnectionPool.releaseConnection(connessione);
-        }
-
+ 
     }
 
     /** Metodo che permette la modifica di un Cliente presente nel sistema
