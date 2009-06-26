@@ -29,7 +29,7 @@ public class GestioneInit extends javax.swing.JPanel {
     }
         /**
      *
-         *
+         * qusto metodo permette di modifaicare i campi del form.
          * @ flag che permette di modificare i campi presenti sul form.
      */
     public void editabile(boolean flag) {
@@ -59,7 +59,7 @@ public class GestioneInit extends javax.swing.JPanel {
 
     /**
      *
-     * 
+     * Questo metodo permette di inizzalizzare  i componenti del form.
      * @ s sringa che permette l'inalizzazione, inizializza tutti i campi sul form.
      */
     public void inizializza(String s) {

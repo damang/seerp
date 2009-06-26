@@ -32,8 +32,8 @@ public class EiminaButtonAppuntamento extends JButton implements CommandInterfac
     }
 
     /**
-     *
-     * @param l
+     * Costruttore della classe
+     * @param l listner preso in imput da associare al bottone
      */
     public EiminaButtonAppuntamento(ActionListener l) {
         super();

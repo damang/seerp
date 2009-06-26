@@ -21,8 +21,8 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
     MenuInfoAzienda menu;
 
     /**
-     *
-     * @param menu
+     * Permette di associare il menu all'area Azienda.
+     * @param menu viene passato il menù da passa 
      */
     public void setMenu(MenuInfoAzienda menu) {
         this.menu = menu;
@@ -35,7 +35,7 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
     }
 
     /**
-     *
+     * il metodo che permette di rendere editabile o menoo i campi presenti nella grafica
      * @ flag che permette di modificare i campi presenti sul form.
      */
     public void editabile(boolean flag) {
@@ -68,7 +68,7 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
     }
 
     /**
-     *
+     * Il metodo restituisce il pulsante Salva
      * @ restituisce il riferimento al pulsate Salva
      */
     public ButtonSalva getSalva() {
@@ -77,7 +77,7 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
     }
 
     /**
-     *
+     * Il metodo restituisce il pulsante Annulla
      * @restituisce il riferimento al pulsate Annulla
      */
     public ButtonAnnulla getAnnulla() {

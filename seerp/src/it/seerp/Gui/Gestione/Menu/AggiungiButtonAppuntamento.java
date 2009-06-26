@@ -22,8 +22,8 @@ public class AggiungiButtonAppuntamento extends JButton implements CommandInterf
     }
 
     /**
-     *
-     * @param l
+     * Costruttore della classe
+     * @param l listner preso in imput da associare al bottone
      */
     public AggiungiButtonAppuntamento(ActionListener l) {
         super();

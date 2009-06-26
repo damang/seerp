@@ -45,15 +45,15 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
     }
 
     /**
-     *
-     * @param menu
+     * questo metodo associa il menù relativo all'area contatti
+     * @param menu viene passato il parametro del menù
      */
     public void setMenu(MenuContratti menu) {
         this.menu = menu;
     }
 
     /**
-     *
+     * il metodo che permette di rendere editabile o menoo i campi presenti nella grafica
      * @ flag che permette di modificare i campi presenti sul form.
      */
     public void editabile(Boolean flag) {
@@ -91,7 +91,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
     }
 
     /**
-     *
+     * Questo metodo inizzializza i campi sul form
      * @ s sringa che permette l'inalizzazione, permette di inizzializare tutti i campi sul form.
      */
     public void inizializza(String s) {
