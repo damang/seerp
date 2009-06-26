@@ -44,8 +44,9 @@ public class AggiungiButtonServizi extends JButton implements CommandInterface {
         areaSer.getMenu().setButtonEnabled(false);
         areaSer.inizializza("");
         areaSer.setTipoOP(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI);
-        areaSer.getSalva().setEnabled(true);
-        areaSer.getAnnulla().setEnabled(true);
+        areaSer.getSalva().setEnabled(true);  
         areaSer.editabile(true);
+        areaSer.validation(true);
+        areaSer.getAnnulla().setEnabled(true);
     }
 }
