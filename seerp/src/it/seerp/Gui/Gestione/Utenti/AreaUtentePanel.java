@@ -1,4 +1,3 @@
-
 package it.seerp.Gui.Gestione.Utenti;
 
 import it.seerp.Gui.configurazioni.Gui.ConfigurazioneUtente.TIPO_UTENTE_CONST;
@@ -185,7 +184,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(nm, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,7 +206,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(cog, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,7 +228,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(codFisc, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,7 +250,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(mail, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,7 +272,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(tell, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -317,7 +316,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(ruolo, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -361,7 +360,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             .addGroup(jPanel19Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(fax, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel19Layout.setVerticalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -381,7 +380,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ragSoc, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -451,7 +450,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -536,7 +535,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         panel28.setBorder(javax.swing.BorderFactory.createTitledBorder("Username"));
         panel28.setName("panel28"); // NOI18N
 
-        user.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        user.setDisabledTextColor(new java.awt.Color(255, 51, 51));
         user.setName("Username"); // NOI18N
 
         javax.swing.GroupLayout panel28Layout = new javax.swing.GroupLayout(panel28);
@@ -558,8 +557,9 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel29.setBorder(javax.swing.BorderFactory.createTitledBorder("Password"));
         jPanel29.setName("jPanel29"); // NOI18N
 
-        pwd.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        pwd.setDisabledTextColor(new java.awt.Color(255, 0, 51));
         pwd.setName("Password"); // NOI18N
+        pwd.setSelectedTextColor(new java.awt.Color(204, 204, 0));
 
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
         jPanel29.setLayout(jPanel29Layout);
@@ -595,7 +595,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(panel28, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel29, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(365, Short.MAX_VALUE))
+                .addContainerGap(362, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Dati LogIn", jPanel27);
@@ -752,22 +752,21 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 }//GEN-LAST:event_mailActionPerformed
 
     private void buttonSalva1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSalva1MouseClicked
-        
     }//GEN-LAST:event_buttonSalva1MouseClicked
 
     private void buttonAnnulla1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonAnnulla1MouseClicked
-        
     }//GEN-LAST:event_buttonAnnulla1MouseClicked
 
     private void buttonAnnulla1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAnnulla1ActionPerformed
-       menu.setButtonEnabled(true);
-       // JOptionPane.showMessageDialog(null, "operazione annulata");
+        menu.setButtonEnabled(true);
+        // JOptionPane.showMessageDialog(null, "operazione annulata");
         editabile(false);
         this.buttonAnnulla1.setEnabled(false);
         this.buttonSalva1.setEnabled(false);
-        this.inizializzazione("");
+
         validation(false);
-        if (this.tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
+        if (this.tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI)) {
+            this.inizializzazione("");
         }
 
     }//GEN-LAST:event_buttonAnnulla1ActionPerformed
@@ -1153,6 +1152,8 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         codFisc.setBackground(Color.WHITE);
         this.pwd.setEnabled(flag);
         pwd.setBackground(Color.WHITE);
+        this.user.setEnabled(flag);
+        user.setBackground(Color.WHITE);
         this.ragSoc.setEnabled(flag);
         ragSoc.setBackground(Color.WHITE);
         this.fax.setEnabled(flag);
@@ -1244,17 +1245,17 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
      */
     public void validation(Boolean f) {
         if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
-             responsabile.setValidatorEnabled(f);
+            responsabile.setValidatorEnabled(f);
         }
         if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
-             cliente.setValidatorEnabled(f);
-            
+            cliente.setValidatorEnabled(f);
+
         }
         if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
             fornitore.setValidatorEnabled(f);
         }
         if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
-             dipendente.setValidatorEnabled(f);
+            dipendente.setValidatorEnabled(f);
         }
     }
 }
