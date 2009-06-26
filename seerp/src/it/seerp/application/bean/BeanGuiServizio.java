@@ -34,11 +34,22 @@ public class BeanGuiServizio {
     }
 
     /**
-     * metodo che setta il campo validator del bean gui servizio
+     * Metodo che setta il campo validator del bean gui servizio
      * @param validator
      */
-    public void setValidator(boolean validator) {
+    public void setValidatorE(boolean validator) {
         this.validator = validator;
+        ((NotEmptyValidator) descrizione.getInputVerifier()).setEnabled(validator);
+        ((NotEmptyValidator) quantita.getInputVerifier()).setEnabled(validator);
+        ((NotEmptyValidator) tipo.getInputVerifier()).setEnabled(validator);
+        ((NotEmptyValidator) prezzo.getInputVerifier()).setEnabled(validator);
+        ((NotEmptyValidator) iva.getInputVerifier()).setEnabled(validator);
+
+        ((NotEmptyValidator) descrizione.getInputVerifier()).reset(descrizione);
+        ((NotEmptyValidator) quantita.getInputVerifier()).reset(quantita);
+        ((NotEmptyValidator) tipo.getInputVerifier()).reset(tipo);
+        ((NotEmptyValidator) prezzo.getInputVerifier()).reset(prezzo);
+        ((NotEmptyValidator) iva.getInputVerifier()).reset(iva);
     }
 
     /**
