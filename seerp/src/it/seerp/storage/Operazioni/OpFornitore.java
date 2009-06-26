@@ -161,8 +161,7 @@ public class OpFornitore extends OpExtraAzienda {
         try {
             conness.setAutoCommit(false);
             String sqlu = "INSERT INTO utente(username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita) VALUES(?,?,?,?,?,?,?,?,?,true)";
-            String sqle = "INSERT INTO extraazienda(idExtraAzienda,nome,cognome,fax,piva,ragioneSociale,Ruolo,codiceFiscale)" +
-                    "VALUES(LAST_INSERT_ID(),?,?,?,?,?,'Fornitore',?)";
+            String sqle = "INSERT INTO extraazienda(idExtraAzienda,nome,cognome,fax,piva,ragioneSociale,Ruolo,codiceFiscale) VALUES(LAST_INSERT_ID(),?,?,?,?,?,'fornitore',?)";
             String sqla = "INSERT INTO agenda (idAgenda) VALUES(LAST_INSERT_ID()) ";
 
             stmt = (PreparedStatement) conness.prepareStatement(sqlu);
