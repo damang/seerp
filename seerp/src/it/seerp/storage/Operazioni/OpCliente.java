@@ -1,8 +1,5 @@
 package it.seerp.storage.Operazioni;
 
-import com.mysql.jdbc.PreparedStatement;
-
-
 import it.seerp.storage.ejb.Cliente;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -158,7 +155,8 @@ public class OpCliente extends OpExtraAzienda {
         PreparedStatement stmtv = null;
         PreparedStatement stmte = null;
         Statement stmt1 = connessione.createStatement();
-        String sqlTest = "SELECT piva FROM extraazienda WHERE piva= '" + user.getPIva() + "'";
+        String sqlTest = "SELECT piva,username FROM extraazienda WHERE piva= '" + user.getPIva() +  "'" +
+                         "OR username='"+user.getUsername()+"' ";
         ResultSet rs = stmt1.executeQuery(sqlTest);
 
         if (rs.next()) {
