@@ -26,6 +26,7 @@ public class BeanGuiAzienda {
      */
     public BeanGuiAzienda(Object c) {
         grafica=c;
+     
     }
 
     /**
