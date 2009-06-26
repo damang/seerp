@@ -36,6 +36,7 @@ public class AppInit implements GestioneInit<BeanGuiAmministratore> {
             OpInit op = new OpInit();
             Amministratore a = Conversione.conversioneAmministratore(beanGuiAmministratore);
             op.inserimento(a);
+            
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
