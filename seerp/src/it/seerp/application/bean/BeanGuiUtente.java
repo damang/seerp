@@ -310,7 +310,7 @@ public class BeanGuiUtente {
      */
     public void setTxtProvincia(JTextField ptxtProvincia) {
         this.txtProvincia = ptxtProvincia;
-        txtProvincia.setInputVerifier(new NotEmptyValidator(grafica, txtProvincia, "Il campo non può essere vuoto.", RegexpDef.valueOf(RegexpDef.VAL.PROV)));
+        txtProvincia.setInputVerifier(new NotEmptyValidator(grafica, txtProvincia, "La provincia deve essere di 2 caratteri.", RegexpDef.valueOf(RegexpDef.VAL.PROV)));
     }
 
     /**
