@@ -43,6 +43,7 @@ public class ModificaButtonServizi extends JButton implements CommandInterface {
         areaServ.getMenu().setButtonEnabled(false);
         areaServ.setTipoOP(ConfigurazioneOperazioni.TIPO_OPE_CONST.MODIFICA);
         areaServ.getSalva().setEnabled(true);
+        areaServ.validation(true);
         areaServ.getAnnulla().setEnabled(true);
         areaServ.editabile(true);
     }
