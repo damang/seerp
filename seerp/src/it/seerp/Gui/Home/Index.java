@@ -108,7 +108,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
             jXMonthView1 = new org.jdesktop.swingx.JXMonthView();
             jXTitledPanel1 = new org.jdesktop.swingx.JXTitledPanel();
             menuUtente1 = new it.seerp.Gui.Gestione.Menu.MenuUtente();
-            menuRuoli1 = new it.seerp.Gui.Gestione.Menu.MenuRuoli();
+            menuRuoli1 = new it.seerp.Gui.Gestione.Menu.MenuRuoli(getSubject());
             menuContratti1 = new it.seerp.Gui.Gestione.Menu.MenuContratti();
             menuServizi1 = new it.seerp.Gui.Gestione.Menu.MenuServizi();
             menuInfoAzienda1 = new it.seerp.Gui.Gestione.Menu.MenuInfoAzienda();
@@ -469,6 +469,11 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
         logout1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/Log-Out-48x48.png"))); // NOI18N
         logout1.setToolTipText("Logout");
         logout1.setName("logout1"); // NOI18N
+        logout1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logout1ActionPerformed(evt);
+            }
+        });
 
         fileMenu.setText("File");
 
@@ -717,6 +722,10 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
     private void jXMonthView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXMonthView1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jXMonthView1ActionPerformed
+
+    private void logout1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout1ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_logout1ActionPerformed
 
     /**
      * @param args the command line arguments

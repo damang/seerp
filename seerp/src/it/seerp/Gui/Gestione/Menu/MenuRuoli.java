@@ -3,8 +3,12 @@ package it.seerp.Gui.Gestione.Menu;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.Ruoli.GestioneRuoli;
+import it.seerp.Gui.configurazioni.PermessiDefault;
+import it.seerp.storage.ejb.Permesso;
+import it.seerp.storage.jaas.JaasUtil;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.security.auth.Subject;
 
 /**
  *
@@ -13,10 +17,13 @@ import java.awt.event.ActionListener;
 public class MenuRuoli extends javax.swing.JPanel implements ActionListener {
 
     GestioneRuoli pannello = null;
+    Subject ut_sub;
 
     /** Creates new form Preventivi */
-    public  MenuRuoli() {
+    public  MenuRuoli(Subject ut_sub) {
+        this.ut_sub=ut_sub;
         initComponents();
+        settaVisibilita();
     }
 
     /**
@@ -99,5 +106,11 @@ public class MenuRuoli extends javax.swing.JPanel implements ActionListener {
         this.modificaButtonRuoli1.setEnabled(b);
         this.aggiungiButtonRuoli1.setEnabled(b);
         this.eliminaButtonRuoli1.setEnabled(b);
+    }
+
+    private void settaVisibilita() {
+        this.modificaButtonRuoli1.setEnabled(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.MODIFICA))));
+        this.aggiungiButtonRuoli1.setEnabled(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.AGGIUNGI))));
+        this.eliminaButtonRuoli1.setEnabled(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELIMINA))));
     }
 }
