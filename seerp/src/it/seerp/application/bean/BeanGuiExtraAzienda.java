@@ -240,11 +240,11 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      * @throws ValidatorException
      */
     public JTextField getRagioneSociale() throws ValidatorException {
-        if (validator == true) {
-            if (!ragioneSociale.getInputVerifier().shouldYieldFocus(ragioneSociale)) {
-                throw new ValidatorException("Errore nella grafica!");
-            }
-        }
+      //  if (validator == true) {
+        //    if (!ragioneSociale.getInputVerifier().shouldYieldFocus(ragioneSociale)) {
+            //    throw new ValidatorException("Errore nella grafica!");
+          //  }
+       // }
         return ragioneSociale;
     }
 

@@ -19,11 +19,13 @@ public class BeanGuiAzienda {
     private JTextField idAzienda;
     private JTextField note;
     private BeanGuiAmministratore amministratore;
+    Object grafica;
 
     /**
      *  Costruttore vuoto
      */
-    public BeanGuiAzienda() {
+    public BeanGuiAzienda(Object c) {
+        grafica=c;
     }
 
     /**
@@ -87,6 +89,7 @@ public class BeanGuiAzienda {
      * @param pIVA
      */
     public void setPIVA(JTextField pIVA) {
+        
         this.pIVA = pIVA;
     }
 

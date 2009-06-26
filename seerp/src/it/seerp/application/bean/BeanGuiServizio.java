@@ -23,7 +23,7 @@ public class BeanGuiServizio {
     private JTextArea note;
     private ArrayList<BeanGuiServizioAssociato> listServiziAssociati;
     private Object grafica;
-    protected boolean validator = true;
+    protected boolean validator = false;
 
     /**
      * metodo che restituisce il campo validator del bean gui servizio
@@ -37,7 +37,7 @@ public class BeanGuiServizio {
      * Metodo che setta il campo validator del bean gui servizio
      * @param validator
      */
-    public void setValidatorE(boolean validator) {
+    public void setValidator(boolean validator) {
         this.validator = validator;
         ((NotEmptyValidator) descrizione.getInputVerifier()).setEnabled(validator);
         ((NotEmptyValidator) quantita.getInputVerifier()).setEnabled(validator);
@@ -161,7 +161,7 @@ public class BeanGuiServizio {
      */
     public JTextField getIva() throws ValidatorException {
         if (validator == true) {
-            if (iva.getInputVerifier().shouldYieldFocus(iva) && validator == true) {
+            if (iva.getInputVerifier().shouldYieldFocus(iva)) {
                 throw new ValidatorException("Errore nella grafica!");
             }
         }
@@ -223,7 +223,7 @@ public class BeanGuiServizio {
      */
     public JTextField getQuantita() throws ValidatorException {
         if (validator == true) {
-            if (!quantita.getInputVerifier().shouldYieldFocus(quantita) && validator == true) {
+            if (!quantita.getInputVerifier().shouldYieldFocus(quantita)) {
                 throw new ValidatorException("Errore nella grafica!");
             }
         }
