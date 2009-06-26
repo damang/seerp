@@ -21,6 +21,7 @@ public class BeanGuiAmministratore extends BeanGuiPersonale {
      * @return
      */
     public BeanGuiAzienda getAzienda() {
+        
         return azienda;
     }
 
@@ -29,6 +30,7 @@ public class BeanGuiAmministratore extends BeanGuiPersonale {
      * @param azienda
      */
     public void setAzienda(BeanGuiAzienda azienda) {
+       
         this.azienda = azienda;
     }
 }
