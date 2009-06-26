@@ -620,6 +620,7 @@
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="menuRuoli1.setVisible(false);"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.Menu.MenuRuoli(getSubject())"/>
           </AuxValues>
         </Component>
         <Component class="it.seerp.Gui.Gestione.Menu.MenuContratti" name="menuContratti1">
@@ -672,6 +673,9 @@
         <Property name="toolTipText" type="java.lang.String" value="Logout"/>
         <Property name="name" type="java.lang.String" value="logout1" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logout1ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
