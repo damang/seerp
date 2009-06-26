@@ -386,7 +386,7 @@ public class Conversione {
         bp.getCognome().setText(p.getCognome());
         bp.getNome().setText(p.getNome());
         bp.getCodiceFiscale().setText(p.getCodiceFiscale());
-       
+
         bp.getRuolo().removeAllItems();
         bp.getRuolo().addItem(p.getRuolo().getNome());
 
@@ -603,7 +603,7 @@ public class Conversione {
 //        ba.setRuolo(c);
         c.setText(e.getVisible().toString());
         ba.setTxtnotifica(c);
-        ba.setAzienda(conversioneAzienda(e.getAzienda(), new BeanGuiAzienda()));
+        //ba.setAzienda(conversioneAzienda(e.getAzienda(), new BeanGuiAzienda()));
         return ba;
     }
 
@@ -616,7 +616,7 @@ public class Conversione {
     public static Amministratore conversioneAmministratore(BeanGuiAmministratore r) throws ValidatorException {
 
         Amministratore utente = new Amministratore();
-        utente.setIdUtente(Integer.parseInt(r.getIdUtenteTxt().getText()));
+//        utente.setIdUtente(Integer.parseInt(r.getIdUtenteTxt().getText()));
         utente.setUsername(r.getTxtUsername().getText());
         utente.setPassword(r.getTxtPassword().getText());
         utente.setCitta(r.getTxtCitta().getText());
@@ -626,12 +626,21 @@ public class Conversione {
         utente.setEmail(r.getTxtEmail().getText());
         utente.setNote(r.getTxtNote().getText());
         utente.setTipo(r.getTipo().getText());
-        utente.setVisible(Boolean.parseBoolean(r.getTxtNotifica().getText()));
+        // utente.setVisible(Boolean.parseBoolean(r.getTxtNotifica().getText()));
         utente.setCognome(r.getCognome().getText());
         utente.setNome(r.getNome().getText());
         utente.setCodiceFiscale(r.getCodiceFiscale().getText());
+
+        utente.getAzienda().setPIVA(r.getAzienda().getPIVA().getText());
+        utente.getAzienda().setIndirizzo(r.getAzienda().getInidirizzo().getText());
+        utente.getAzienda().setNazione(r.getAzienda().getNazione().getText());
+        utente.getAzienda().setRagioneSociale(r.getAzienda().getRagioneSociale().getText());
+        utente.getAzienda().setTelefono(r.getAzienda().getTelefono().getText());
+        
+        //      System.out.println("utente"+ r.getAzienda().getPIVA().toString());
+
 //        utente.setRuolo(new Ruolo(r.getRuolo().getText()));
-        utente.setAzienda(conversioneAzienda(r.getAzienda()));
+//        utente.setAzienda(conversioneAzienda(r.getAzienda()));
         return utente;
     }
 
@@ -815,7 +824,7 @@ public class Conversione {
          */
         Fornitore utente = new Fornitore();
         //   utente.setIdUtente(Integer.parseInt(e.getIdUtenteTxt().getText()));
-        utente.setUsername(e.getTxtUsername().getText());
+          utente.setUsername(e.getTxtUsername().getText());
         utente.setPassword(e.getTxtPassword().getText());
         utente.setCitta(e.getTxtCitta().getText());
         utente.setProvincia(e.getTxtProvincia().getText());
@@ -823,13 +832,13 @@ public class Conversione {
         utente.setTelefono(e.getTxtTelefono().getText());
         utente.setEmail(e.getTxtEmail().getText());
         utente.setNote(e.getTxtNote().getText());
+        //      utente.setTipo(e.getTipo().getText());
+        //  utente.setVisible(Boolean.parseBoolean(e.getTxtNotifica().getText()));
         utente.setCognome(e.getCognome().getText());
-        utente.setCodiceFiscale(e.getCodiceFiscale().getText());
-        //utente.setTipo(e.getTipo().getText());
-        //utente.setVisible(Boolean.parseBoolean(e.getTxtNotifica().getText()));
         utente.setNome(e.getNome().getText());
         utente.setRagioneSociale(e.getRagioneSociale().getText());
         utente.setPIva(e.getPIva().getText());
+        utente.setCodiceFiscale(e.getCodiceFiscale().getText());
         utente.setFax(e.getFax().getText());
         //utente.setTipo(e.getTipo().getText());
         //utente.setListAppuntamenti(a);
@@ -961,7 +970,7 @@ public class Conversione {
     public static Azienda conversioneAzienda(BeanGuiAzienda azienda) throws ValidatorException {
         Azienda azienda1 = new Azienda();
 //        azienda1.setCitta(azienda.getCitta().getText());
-        azienda1.setEmail(azienda.getEmail().getText());
+//        azienda1.setEmail(azienda.getEmail().getText());
         //      azienda1.setFax(azienda.getFax().getText());
         azienda1.setIndirizzo(azienda.getInidirizzo().getText());
         azienda1.setNazione(azienda.getNazione().getText());
