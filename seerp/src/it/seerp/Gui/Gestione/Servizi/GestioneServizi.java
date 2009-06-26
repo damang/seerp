@@ -1,4 +1,3 @@
-
 package it.seerp.Gui.Gestione.Servizi;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
@@ -78,18 +77,18 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
     public void editabile(boolean flag) {
 
 
-        qnt.setEditable(flag);
-        prz.setEditable(flag);
-        disponibilita.setEditable(flag);
-        tipo.setEditable(flag);
-        iva.setEditable(flag);
-        descrizione.setEditable(flag);
-        rag.setEditable(flag);
-        pIva.setEditable(flag);
-        citta.setEditable(flag);
-        tell.setEditable(flag);
-        mail.setEditable(flag);
-        provincia.setEditable(flag);
+        qnt.setEnabled(flag);
+        prz.setEnabled(flag);
+        disponibilita.setEnabled(flag);
+        tipo.setEnabled(flag);
+        iva.setEnabled(flag);
+        descrizione.setEnabled(flag);
+        rag.setEnabled(flag);
+        pIva.setEnabled(flag);
+        citta.setEnabled(flag);
+        tell.setEnabled(flag);
+        mail.setEnabled(flag);
+        provincia.setEnabled(flag);
 
     }
 
@@ -740,14 +739,45 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         menu.setButtonEnabled(true);
         JOptionPane.showMessageDialog(null, "operazione annulata");
         jTabbedPane1.setSelectedComponent(jPanel1);
+        this.validation(false);
         editabile(false);
         buttonAnnulla1.setEnabled(false);
         buttonSalva1.setEnabled(false);
-
+        if (this.tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI)) {
+            this.inizializza("");
+        }
     }//GEN-LAST:event_buttonAnnulla1MouseClicked
 
     private void buttonSalva1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSalva1MouseClicked
-        menu.setButtonEnabled(true);
+       
+    }//GEN-LAST:event_buttonSalva1MouseClicked
+
+    private void jXTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jXTable1MouseClicked
+
+
+        if (evt.getClickCount() == 2) {
+            int i = jXTable1.getSelectedRow();
+            if (i < 0) {
+                return;
+            }
+            Integer id = (Integer) jXTable1.getValueAt(i, 0);
+
+
+            AppServizi operazione = new AppServizi();
+editabile(false);
+            validation(false);
+            servi = operazione.visualizza(id, servi, fornitore);
+
+
+            
+    }//GEN-LAST:event_jXTable1MouseClicked
+    }
+        private void ragActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ragActionPerformed
+            // TODO add your handling code here:
+        }//GEN-LAST:event_ragActionPerformed
+
+        private void buttonSalva1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalva1ActionPerformed
+             menu.setButtonEnabled(true);
         if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.MODIFICA)) {
 
             int i = jXTable1.getSelectedRow();
@@ -765,6 +795,10 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
                 this.jXTable1.updateUI();
             } catch (DatiErrati ex) {
                 JOptionPane.showMessageDialog(null, "dati errati");
+                this.inizializza("");
+                editabile(true);
+                this.buttonAnnulla1.setEnabled(true);
+                this.buttonSalva1.setEnabled(true);
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "errore nel database");
                 this.inizializza("");
@@ -776,7 +810,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
 
 
 
-            //  }
+            this.validation(false);
             editabile(false);
             buttonAnnulla1.setEnabled(false);
             buttonSalva1.setEnabled(false);
@@ -794,8 +828,16 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
                 buttonSalva1.setEnabled(false);
             } catch (DatiErrati ex) {
                 JOptionPane.showMessageDialog(null, "dati errati");
+                this.inizializza("");
+                editabile(true);
+                this.buttonAnnulla1.setEnabled(true);
+                this.buttonSalva1.setEnabled(true);
             } catch (DatiDuplicati ex) {
                 JOptionPane.showMessageDialog(null, "dati duplicati");
+                this.inizializza("");
+                editabile(true);
+                this.buttonAnnulla1.setEnabled(true);
+                this.buttonSalva1.setEnabled(true);
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "errore nel database");
                 this.inizializza("");
@@ -804,39 +846,25 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
                 this.buttonSalva1.setEnabled(true);
 
             }
-        }
-    }//GEN-LAST:event_buttonSalva1MouseClicked
 
-    private void jXTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jXTable1MouseClicked
-
-
-        if (evt.getClickCount() == 2) {
-            int i = jXTable1.getSelectedRow();
-            if (i < 0) {
-                return;
-            }
-            Integer id = (Integer) jXTable1.getValueAt(i, 0);
-
-
-            AppServizi operazione = new AppServizi();
-
-            servi = operazione.visualizza(id, servi, fornitore);
-
-
-
+            this.validation(false);
             editabile(false);
-    }//GEN-LAST:event_jXTable1MouseClicked
-    }
-        private void ragActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ragActionPerformed
-            // TODO add your handling code here:
-        }//GEN-LAST:event_ragActionPerformed
-
-        private void buttonSalva1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalva1ActionPerformed
-            // TODO add your handling code here:
+            buttonAnnulla1.setEnabled(false);
+            buttonSalva1.setEnabled(false);
+        }
         }//GEN-LAST:event_buttonSalva1ActionPerformed
 
         private void buttonAnnulla1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAnnulla1ActionPerformed
-            // TODO add your handling code here:
+            menu.setButtonEnabled(true);
+        JOptionPane.showMessageDialog(null, "operazione annulata");
+        jTabbedPane1.setSelectedComponent(jPanel1);
+        editabile(false);
+        this.validation(false);
+        buttonAnnulla1.setEnabled(false);
+        buttonSalva1.setEnabled(false);
+        if (this.tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI)) {
+            this.inizializza("");
+        }
         }//GEN-LAST:event_buttonAnnulla1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -896,5 +924,9 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         CommandInterface cmd = (CommandInterface) e.getSource();
         cmd.execute();
 
+    }
+
+    public void validation(Boolean f) {
+        servi.setValidator(f);
     }
 }
