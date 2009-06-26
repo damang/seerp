@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package it.seerp.storage.Operazioni;
+
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
@@ -153,56 +154,62 @@ public class OpFornitore extends OpExtraAzienda {
         PreparedStatement stmt = null;
         PreparedStatement stmte = null;
         PreparedStatement stmtv = null;
-        Statement stmt1 = conness.createStatement();
-        String sqlTest = "SELECT piva FROM extraazienda WHERE piva= '" + user.getPIva() + "'";
-        ResultSet rs = stmt1.executeQuery(sqlTest);
-
-        if (rs.next()) {
-            throw new DatiDuplicatiEx("contatto già esistente nel database");
-        } else {
-            try {
-                conness.setAutoCommit(false);
-                String sqlu = "INSERT INTO utente(username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita) VALUES(?,?,?,?,?,?,?,?,?,true)";
-                String sqle = "INSERT INTO extraazienda(idExtraAzienda,nome,cognome,fax,piva,ragioneSociale,Ruolo,codiceFiscale)" +
-                        "VALUES(LAST_INSERT_ID(),?,?,?,?,?,'Fornitore',?)";
-                String sqla = "INSERT INTO agenda (idAgenda) VALUES(LAST_INSERT_ID()) ";
-
-                stmt = (PreparedStatement) conness.prepareStatement(sqlu);
-                stmt.setString(1, user.getUsername());
-                stmt.setString(2, user.getPassword());
-                stmt.setString(3, user.getEmail());
-                stmt.setString(4, user.getCitta());
-                stmt.setString(5, user.getProvincia());
-                stmt.setString(6, user.getTelefono());
-                stmt.setString(7, user.getCap());
-                stmt.setString(8, user.getNote());
-                stmt.setString(9, user.getTipo());
-                // stmt.setString(10, user.getVisible().toString());
-                stmte = (PreparedStatement) conness.prepareStatement(sqle);
-                stmte.setString(1, user.getNome());
-                stmte.setString(2, user.getCognome());
-                stmte.setString(3, user.getFax());
-                stmte.setString(4, user.getPIva());
-                stmte.setString(5, user.getRagioneSociale());
-                stmte.setString(6, user.getCodiceFiscale());
-
-                stmtv = (PreparedStatement) conness.prepareStatement(sqla);
-
-                
-                stmt.execute();
-                stmte.execute();
-                stmtv.execute();
 
 
-                conness.commit();
-            } catch (SQLException e) {
-                e.printStackTrace();
-                conness.rollback();
+
+
+        try {
+            conness.setAutoCommit(false);
+            String sqlu = "INSERT INTO utente(username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita) VALUES(?,?,?,?,?,?,?,?,?,true)";
+            String sqle = "INSERT INTO extraazienda(idExtraAzienda,nome,cognome,fax,piva,ragioneSociale,Ruolo,codiceFiscale)" +
+                    "VALUES(LAST_INSERT_ID(),?,?,?,?,?,'Fornitore',?)";
+            String sqla = "INSERT INTO agenda (idAgenda) VALUES(LAST_INSERT_ID()) ";
+
+            stmt = (PreparedStatement) conness.prepareStatement(sqlu);
+            stmt.setString(1, user.getUsername());
+            stmt.setString(2, user.getPassword());
+            stmt.setString(3, user.getEmail());
+            stmt.setString(4, user.getCitta());
+            stmt.setString(5, user.getProvincia());
+            stmt.setString(6, user.getTelefono());
+            stmt.setString(7, user.getCap());
+            stmt.setString(8, user.getNote());
+            stmt.setString(9, user.getTipo());
+            // stmt.setString(10, user.getVisible().toString());
+            stmte = (PreparedStatement) conness.prepareStatement(sqle);
+            stmte.setString(1, user.getNome());
+            stmte.setString(2, user.getCognome());
+            stmte.setString(3, user.getFax());
+            stmte.setString(4, user.getPIva());
+            stmte.setString(5, user.getRagioneSociale());
+            stmte.setString(6, user.getCodiceFiscale());
+
+            stmtv = (PreparedStatement) conness.prepareStatement(sqla);
+
+
+            stmt.execute();
+            stmte.execute();
+            stmtv.execute();
+
+
+            conness.commit();
+        } catch (SQLException e) {
+            switch (e.getErrorCode()) {
+                case 1062:
+                    throw new SQLException("Username già assegnato ad un altro utente");
+
+                case 1364:
+                    throw new SQLException("la password è obligatoria!");
+
+                default:
+                    conness.rollback();
+                    throw new SQLException("Transizione fallita");
             }
 
-            stmt.close();
-            ConnectionPool.releaseConnection(conness);
         }
+
+        stmt.close();
+        ConnectionPool.releaseConnection(conness);
 
 
     }

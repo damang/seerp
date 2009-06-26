@@ -155,14 +155,9 @@ public class OpDipendente extends OpPersonale {
         PreparedStatement stmtd = null;
          PreparedStatement stmtv = null;
         Statement stmt1 = conne.createStatement();
-        String sqlTest = "SELECT idUtente,username,password,citta,prov,telefono," +
-                "cap,email,note,tipo,cognome,nome,codiceFiscale,ruolo,visibilita" +
-                " FROM dipendente,personale,utente WHERE codiceFiscale='" + user.getCodiceFiscale() + "' and idUtente=idPersonale and idPersonale=idDipendente";
-        ResultSet rs = stmt1.executeQuery(sqlTest);
+   
 
-        if (rs.next()) {
-            throw new DatiDuplicatiEx("dipendente già esistente nel database");
-        } else {
+       
             try {
                 conne.setAutoCommit(false);
                 String sqlu = "INSERT INTO utente(username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita) VALUES(?,?,?,?,?,?,?,?,?,true)";
@@ -197,15 +192,25 @@ public class OpDipendente extends OpPersonale {
 
                 conne.commit();
             } catch (SQLException se) {
-                conne.rollback();
-                            throw new SQLException("Transizione fallita");
+             
+                      switch (se.getErrorCode()) {
+                case 1062:
+                    throw new SQLException("Username già assegnato ad un altro utente");
+
+                case 1364:
+                    throw new SQLException("la password è obligatoria!");
+
+                  default:
+                    conne.rollback();
+                    throw new SQLException("Transizione fallita");
+          }
 
             }
 
             stmt.close();
             ConnectionPool.releaseConnection(conne);
 
-        }
+        
     }
 
     /** Metodo che permette la modifica di un membro dei dipendenti presente nel sistema

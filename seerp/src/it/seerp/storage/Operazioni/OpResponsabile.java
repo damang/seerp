@@ -159,130 +159,136 @@ public class OpResponsabile extends OpeUtente {
         PreparedStatement stmtP = null;
         PreparedStatement stmtR = null;
         PreparedStatement stmtv = null;
-        Statement stmt1 = co.createStatement();
-        String sqlTest = "SELECT * FROM utente,personale,responsabile WHERE codiceFiscale='" + user.getCodiceFiscale() + "'and idUtente=idPersonale and idPersonale=idResponsabile";
-        ResultSet rs = stmt1.executeQuery(sqlTest);
-
-        if (rs.next()) {
-            throw new DatiDuplicatiEx("responsabile già esistente nel database");
-        } else {
-
-            try {
-                co.setAutoCommit(false);
-                String sqlu = "INSERT INTO utente(username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita) VALUES(?,?,?,?,?,?,?,?,?,true)";
-                String sqlp = "INSERT INTO personale(idPersonale,nome,cognome,codicefiscale,ruolo) VALUES(LAST_INSERT_ID(),?,?,?,?)";
-                String sqlr = "INSERT INTO responsabile (idResponsabile)VALUES(LAST_INSERT_ID())";
-                String sqla = "INSERT INTO agenda (idAgenda) VALUES(LAST_INSERT_ID()) ";
-                stmt = (PreparedStatement) co.prepareStatement(sqlu);
-                stmt.setString(1, user.getUsername());
-                stmt.setString(2, user.getPassword());
-                stmt.setString(3, user.getEmail());
-                stmt.setString(4, user.getCitta());
-                stmt.setString(5, user.getProvincia());
-                stmt.setString(6, user.getTelefono());
-                stmt.setString(7, user.getCap());
-                stmt.setString(8, user.getNote());
-                stmt.setString(9, user.getTipo());
-                // stmt.setString(10, user.getVisible().toString());
-                stmtP = (PreparedStatement) co.prepareStatement(sqlp);
-                stmtP.setString(1, user.getNome());
-                stmtP.setString(2, user.getCognome());
-                stmtP.setString(3, user.getCodiceFiscale());
-                stmtP.setString(4, user.getRuolo().getNome());
-                stmtR = (PreparedStatement) co.prepareStatement(sqlr);
-                stmtv = (PreparedStatement) co.prepareStatement(sqla);
 
 
 
-                stmt.execute();
-                stmtP.execute();
-                stmtR.execute();
-                stmtv.execute();
-                co.commit();
 
-            } catch (SQLException se) {
-                co.rollback();
-                se.printStackTrace();
-                throw new SQLException("Transizione fallita");
 
+        try {
+            co.setAutoCommit(false);
+            String sqlu = "INSERT INTO utente(username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita) VALUES(?,?,?,?,?,?,?,?,?,true)";
+            String sqlp = "INSERT INTO personale(idPersonale,nome,cognome,codicefiscale,ruolo) VALUES(LAST_INSERT_ID(),?,?,?,?)";
+            String sqlr = "INSERT INTO responsabile (idResponsabile)VALUES(LAST_INSERT_ID())";
+            String sqla = "INSERT INTO agenda (idAgenda) VALUES(LAST_INSERT_ID()) ";
+            stmt = (PreparedStatement) co.prepareStatement(sqlu);
+            stmt.setString(1, user.getUsername());
+            stmt.setString(2, user.getPassword());
+            stmt.setString(3, user.getEmail());
+            stmt.setString(4, user.getCitta());
+            stmt.setString(5, user.getProvincia());
+            stmt.setString(6, user.getTelefono());
+            stmt.setString(7, user.getCap());
+            stmt.setString(8, user.getNote());
+            stmt.setString(9, user.getTipo());
+            // stmt.setString(10, user.getVisible().toString());
+            stmtP = (PreparedStatement) co.prepareStatement(sqlp);
+            stmtP.setString(1, user.getNome());
+            stmtP.setString(2, user.getCognome());
+            stmtP.setString(3, user.getCodiceFiscale());
+            stmtP.setString(4, user.getRuolo().getNome());
+            stmtR = (PreparedStatement) co.prepareStatement(sqlr);
+            stmtv = (PreparedStatement) co.prepareStatement(sqla);
+
+
+
+            stmt.execute();
+            stmtP.execute();
+            stmtR.execute();
+            stmtv.execute();
+            co.commit();
+
+        } catch (SQLException se) {
+
+            switch (se.getErrorCode()) {
+                case 1062:
+                    throw new SQLException("Username già assegnato ad un altro utente");
+
+                case 1364:
+                    throw new SQLException("la password è obligatoria!");
+
+                default:
+                    co.rollback();
+                    throw new SQLException("Transizione fallita");}
             }
 
             stmt.close();
             ConnectionPool.releaseConnection(co);
 
+
         }
-    }
 
-    /** Metodo che permette la modifica di un membro dei responsabili presente nel sistema
-     * @param user
-     * user del membro dei responsabili da modificare
-     * @return lo stesso oggetto modificato
-     * @throws java.sql.SQLException
-     * @throws DatiErratiEx
-     * @throws DatiDuplicatiEx
+        /** Metodo che permette la modifica di un membro dei responsabili presente nel sistema
+         * @param user
+         * user del membro dei responsabili da modificare
+         * @return lo stesso oggetto modificato
+         * @throws java.sql.SQLException
+         * @throws DatiErratiEx
+         * @throws DatiDuplicatiEx
 
-    public Responsabile modifica(Responsabile user) throws SQLException, DatiErratiEx, DatiDuplicatiEx {
+        public Responsabile modifica(Responsabile user) throws SQLException, DatiErratiEx, DatiDuplicatiEx {
 
-    PreparedStatement stmt = null;
-    PreparedStatement stmtP = null;
-    con = (Connection) ConnectionPool.getConnection();
-    Statement stmt1 = con.createStatement();
-    String sqlTest = "SELECT * FROM utente,personale,res WHERE codiceFiscale='" + user.getCodiceFiscale() + "'" +
-    "and idPersonale=idUtente and idPersonale=idResponsabile ";
-    ResultSet rs = stmt1.executeQuery(sqlTest);
+        PreparedStatement stmt = null;
+        PreparedStatement stmtP = null;
+        con = (Connection) ConnectionPool.getConnection();
+        Statement stmt1 = con.createStatement();
+        String sqlTest = "SELECT * FROM utente,personale,res WHERE codiceFiscale='" + user.getCodiceFiscale() + "'" +
+        "and idPersonale=idUtente and idPersonale=idResponsabile ";
+        ResultSet rs = stmt1.executeQuery(sqlTest);
 
-    if (rs.next()) {
-    throw new DatiDuplicatiEx("dipendente già esistente nel database");
-    } else {
-    try {
-    con.setAutoCommit(false);
-    String sqlu = "UPDATE utente(username,password,email,citta,prov,telefono" +
-    "CAP,note,tipo,visibilita) SET username=?,,password=?,email=?,citta=?,prov=?," +
-    "telefono=?,CAP=?,note=?,tipo=?,visibilita=?";
-    String sqlp = "UPDATE personale(nome,cognome,codicefiscale,ruolo)" +
-    "SET nome=?,cognome=?,codicefiscale=?,ruolo=? ";
+        if (rs.next()) {
+        throw new DatiDuplicatiEx("dipendente già esistente nel database");
+        } else {
+        try {
+        con.setAutoCommit(false);
+        String sqlu = "UPDATE utente(username,password,email,citta,prov,telefono" +
+        "CAP,note,tipo,visibilita) SET username=?,,password=?,email=?,citta=?,prov=?," +
+        "telefono=?,CAP=?,note=?,tipo=?,visibilita=?";
+        String sqlp = "UPDATE personale(nome,cognome,codicefiscale,ruolo)" +
+        "SET nome=?,cognome=?,codicefiscale=?,ruolo=? ";
 
-    stmt = (PreparedStatement) con.prepareStatement(sqlu);
-    stmt.setString(1, user.getUsername());
-    stmt.setString(2, user.getPassword());
-    stmt.setString(3, user.getEmail());
-    stmt.setString(4, user.getCitta());
-    stmt.setString(5, user.getProvincia());
-    stmt.setString(6, user.getTelefono());
-    stmt.setString(7, user.getCap());
-    stmt.setString(8, user.getNote());
-    stmt.setString(9, user.getTipo());
-    stmt.setString(10, user.getVisible().toString());
-    stmtP = (PreparedStatement) con.prepareStatement(sqlp);
-    stmtP.setString(1, user.getNome());
-    stmtP.setString(2, user.getCognome());
-    stmtP.setString(3, user.getCodiceFiscale());
-    stmtP.setString(4, user.getRuolo().getNome());
-    stmt.execute();
-    stmtP.execute();
-    con.commit();
-    } catch (SQLException e) {
-    con.rollback();
-    System.out.println("modifica fallita");
-    }
+        stmt = (PreparedStatement) con.prepareStatement(sqlu);
+        stmt.setString(1, user.getUsername());
+        stmt.setString(2, user.getPassword());
+        stmt.setString(3, user.getEmail());
+        stmt.setString(4, user.getCitta());
+        stmt.setString(5, user.getProvincia());
+        stmt.setString(6, user.getTelefono());
+        stmt.setString(7, user.getCap());
+        stmt.setString(8, user.getNote());
+        stmt.setString(9, user.getTipo());
+        stmt.setString(10, user.getVisible().toString());
+        stmtP = (PreparedStatement) con.prepareStatement(sqlp);
+        stmtP.setString(1, user.getNome());
+        stmtP.setString(2, user.getCognome());
+        stmtP.setString(3, user.getCodiceFiscale());
+        stmtP.setString(4, user.getRuolo().getNome());
+        stmt.execute();
+        stmtP.execute();
+        con.commit();
+        } catch (SQLException e) {
+        con.rollback();
+        System.out.println("modifica fallita");
+        }
 
-    }
+        }
 
-    stmt.close();
+        stmt.close();
 
-    ConnectionPool.releaseConnection(con);
+        ConnectionPool.releaseConnection(con);
 
-    return user;
+        return user;
 
-    }
+        }
 
-    /** Metodo che permette la visualizzazione dei dettagli di un membro dei responsabili
-     * @param id
-     * id del membro dei responsabili
-     * @return il bean con i dettagli del membro del personale
-     * @throws SQLException
-     */
-    public Responsabile visualizzaResponsabile(Integer id) throws SQLException {
+        /** Metodo che permette la visualizzazione dei dettagli di un membro dei responsabili
+         * @param id
+         * id del membro dei responsabili
+         * @return il bean con i dettagli del membro del personale
+         * @throws SQLException
+         */
+    public
+
+     Responsabile visualizzaResponsabile(Integer id) throws SQLException {
         Responsabile res = null;
         co = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
@@ -320,6 +326,7 @@ public class OpResponsabile extends OpeUtente {
             res.setCodiceFiscale(rs.getString(13));
             res.setRuolo(new Ruolo(rs.getString(14)));
             res.setVisible(rs.getBoolean(15));
+
         }
         rs.close();
         stmt.close();
