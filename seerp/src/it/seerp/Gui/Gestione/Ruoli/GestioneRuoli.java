@@ -679,8 +679,16 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
 
     private void jXTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jXTable1MouseClicked
         //JOptionPane.showMessageDialog(null, ));
-        AppRuoli r = new AppRuoli();
-        r.visualizzaDati((String) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0), be);
+        Runnable r= new Runnable() {
+
+            @Override
+            public void run() {
+                 AppRuoli r = new AppRuoli();
+                r.visualizzaDati((String) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0), be);
+            }
+        };
+        r.run();
+
     }//GEN-LAST:event_jXTable1MouseClicked
 
     private void con_ricActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_con_ricActionPerformed
@@ -698,17 +706,17 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
         if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI)) {
             be.setValidator(false);
             be.resetAll();
-            ((NotEmptyValidator)be.getNome().getInputVerifier()).setEnabled(false);//reset(be.getNome());
+           
 
         } else {
             be.setValidator(false);
-            //jXTable1MouseClicked(null);
+            jXTable1MouseClicked(null);
         }
         setEditable(false);
         menu.setButtonEnabled(true);
         buttonSalva1.setVisible(false);
         buttonAnnulla1.setVisible(false);
-        JOptionPane.showMessageDialog(null, "Operazione Annullata!!");
+       // JOptionPane.showMessageDialog(null, "Operazione Annullata!!");
     }//GEN-LAST:event_buttonAnnulla1ActionPerformed
 
     private void buttonSalva1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalva1ActionPerformed

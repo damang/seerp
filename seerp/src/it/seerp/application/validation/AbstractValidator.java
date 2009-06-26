@@ -18,7 +18,7 @@ import org.jdesktop.swingx.JXPanel;
  */
 public abstract class AbstractValidator extends InputVerifier implements KeyListener {
 
-    private JDialog popup;
+    protected  JDialog popup;
     private Object parent;
     private JLabel messageLabel;
     private JLabel image;
@@ -65,8 +65,9 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
         this.parent = parent;
         if (parent instanceof JFrame)
              popup = new JDialog((JFrame)parent);
-        else if (parent instanceof JPanel)
-            popup = new JXDialog((JPanel)parent);
+        else if (parent instanceof JPanel) {
+             popup = new JXDialog((JPanel)parent);
+        }
         else if (parent instanceof JDialog)
             popup = new JDialog((JDialog)parent);
         else popup = new JDialog();
@@ -107,6 +108,7 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
                         cDim = c.getSize();
                         popup.setLocation(point.x - (int) cDim.getWidth() / 2, point.y + (int) cDim.getHeight() / 2);
                         popup.pack();
+                        popup.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
                         popup.setVisible(true);
                 }
             };
@@ -128,18 +130,8 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
     }
 
     public void reset(final JComponent c) {
-      // Runnable r= new Runnable() {
-
-
-        //@Override
-          //              public void run() {
-                            c.setBackground(Color.WHITE);
-                            popup.setVisible(false);
-            //            }
-     // };
-           
-                       
-
+       c.setBackground(Color.WHITE);
+       popup.setVisible(false);
     }
     /**
      * Cambia il messagglio che appare nel popup quando il dato nel componente non è valido. Le sottoclassi
@@ -179,7 +171,10 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
 
     private void initComponents() {
         popup.getContentPane().setLayout(new FlowLayout());
-//        popup.getContentPane().remove(0);
+        if (popup instanceof JXDialog)
+            popup.getContentPane().remove(0);
+         //   popup.getContentPane().getComponent(0).setVisible(false);
+            
         popup.setUndecorated(true);
         popup.getContentPane().setBackground(color);
         popup.getContentPane().add(image);
