@@ -22,11 +22,34 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
     private ArrayList<BeanGuiAppuntamento> listAppuntamenti;
     private ArrayList<BeanGuiContratto> listContratti;
 
+    @Override
+    public void setValidatorEnabled(boolean validator) {
+        super.setValidatorEnabled(validator);
+        ((NotEmptyValidator) nome.getInputVerifier()).setEnabled(validator);
+            ((NotEmptyValidator) cognome.getInputVerifier()).setEnabled(validator);
+            ((NotEmptyValidator) codiceFiscale.getInputVerifier()).setEnabled(validator);
+            ((NotEmptyValidator) pIva.getInputVerifier()).setEnabled(validator);
+            ((NotEmptyValidator) fax.getInputVerifier()).setEnabled(validator);
+           // ((NotEmptyValidator) cliente.getRagioneSociale().getInputVerifier()).setEnabled(f);
+           ((NotEmptyValidator) nome.getInputVerifier()).reset(nome);
+            ((NotEmptyValidator) cognome.getInputVerifier()).reset(cognome);
+            ((NotEmptyValidator) codiceFiscale.getInputVerifier()).reset(codiceFiscale);
+            ((NotEmptyValidator) pIva.getInputVerifier()).reset(pIva);
+            ((NotEmptyValidator) fax.getInputVerifier()).reset(fax);
+    }
+
+
+
     /**
      *
      * @return
      */
-    public JTextField getCodiceFiscale() {
+     public JTextField getCodiceFiscale() throws ValidatorException {
+        if (validator == true) {
+            if (!codiceFiscale.getInputVerifier().shouldYieldFocus(codiceFiscale)) {
+                throw new ValidatorException("Errore nella grafica!");
+            }
+        }
         return codiceFiscale;
     }
 
@@ -34,8 +57,9 @@ public class BeanGuiExtraAzienda extends BeanGuiUtente {
      *
      * @param codiceFiscale
      */
-    public void setCodiceFiscale(JTextField codiceFiscale) {
-        this.codiceFiscale = codiceFiscale;
+    public void setCodiceFiscale(JTextField pcodiceFiscale) {
+        this.codiceFiscale = pcodiceFiscale;
+        codiceFiscale.setInputVerifier(new NotEmptyValidator(grafica, codiceFiscale, "Il CF deve essere di 16 caratteri", RegexpDef.valueOf(RegexpDef.VAL.CODFIS)));
     }
 
     /**

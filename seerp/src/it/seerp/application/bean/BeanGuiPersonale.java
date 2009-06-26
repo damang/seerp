@@ -111,4 +111,18 @@ public class BeanGuiPersonale extends BeanGuiUtente {
         this.nome = pnome;
         nome.setInputVerifier(new NotEmptyValidator(grafica, nome, "Il campo non può essere vuoto.", RegexpDef.valueOf(RegexpDef.VAL.VUOTO)));
     }
+
+    @Override
+    public void setValidatorEnabled(boolean validator) {
+        super.setValidatorEnabled(validator);
+        ((NotEmptyValidator) nome.getInputVerifier()).setEnabled(validator);
+            ((NotEmptyValidator) cognome.getInputVerifier()).setEnabled(validator);
+            ((NotEmptyValidator) codiceFiscale.getInputVerifier()).setEnabled(validator);
+
+            ((NotEmptyValidator) nome.getInputVerifier()).reset(nome);
+            ((NotEmptyValidator) cognome.getInputVerifier()).reset(cognome);
+            ((NotEmptyValidator) codiceFiscale.getInputVerifier()).reset(codiceFiscale);
+     
+    }
+
 }

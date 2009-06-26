@@ -53,7 +53,7 @@
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jTabbedPane1" min="0" pref="0" max="32767" attributes="1"/>
-                  <Component id="jXPanel1" alignment="0" max="32767" attributes="1"/>
+                  <Component id="jXPanel1" alignment="0" pref="462" max="32767" attributes="1"/>
               </Group>
               <EmptySpace pref="11" max="32767" attributes="0"/>
           </Group>
@@ -196,6 +196,9 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="nm">
                   <Properties>
+                    <Property name="disabledTextColor" type="java.awt.Color" noResource="true" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="Nome" noResource="true"/>
                   </Properties>
                 </Component>
@@ -233,6 +236,9 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="cog">
                   <Properties>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="Cognome" noResource="true"/>
                   </Properties>
                 </Component>
@@ -270,6 +276,9 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="codFisc">
                   <Properties>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="CodiceFiscale" noResource="true"/>
                   </Properties>
                 </Component>
@@ -307,6 +316,9 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="mail">
                   <Properties>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="E-mail" noResource="true"/>
                   </Properties>
                 </Component>
@@ -344,6 +356,9 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="tell">
                   <Properties>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="Telefono" noResource="true"/>
                   </Properties>
                 </Component>
@@ -381,6 +396,9 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="provincia">
                   <Properties>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="Provincia" noResource="true"/>
                   </Properties>
                 </Component>
@@ -466,6 +484,9 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="citta">
                   <Properties>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="citta" noResource="true"/>
                   </Properties>
                 </Component>
@@ -503,6 +524,9 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="fax">
                   <Properties>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="fax" noResource="true"/>
                   </Properties>
                 </Component>
@@ -540,6 +564,9 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="ragSoc">
                   <Properties>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="ragSoc" noResource="true"/>
                   </Properties>
                 </Component>
@@ -577,6 +604,9 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="cap">
                   <Properties>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="cap" noResource="true"/>
                   </Properties>
                 </Component>
@@ -614,6 +644,9 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="piva">
                   <Properties>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="piva" noResource="true"/>
                   </Properties>
                 </Component>
@@ -742,6 +775,9 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="user">
                   <Properties>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="Username" noResource="true"/>
                   </Properties>
                 </Component>
@@ -779,6 +815,9 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="pwd">
                   <Properties>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="Password" noResource="true"/>
                   </Properties>
                 </Component>
@@ -890,6 +929,7 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonAnnulla1MouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAnnulla1ActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="buttonAnnulla1.setEnabled(false);"/>
@@ -901,6 +941,7 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonSalva1MouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonSalva1ActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="buttonSalva1.setEnabled(false);"/>

@@ -26,6 +26,8 @@ import it.seerp.application.bean.BeanGuiDipendente;
 
 import it.seerp.application.bean.BeanGuiResponsabile;
 import it.seerp.storage.Exception.DatiDuplicatiEx;
+import java.awt.Color;
+import java.util.Iterator;
 import java.util.logging.Logger;
 
 /**
@@ -173,6 +175,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome"));
         jPanel3.setName("jPanel3"); // NOI18N
 
+        nm.setDisabledTextColor(new java.awt.Color(255, 0, 0));
         nm.setName("Nome"); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -182,7 +185,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(nm, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,6 +197,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Cognome"));
         jPanel4.setName("jPanel4"); // NOI18N
 
+        cog.setDisabledTextColor(new java.awt.Color(255, 0, 0));
         cog.setName("Cognome"); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -203,7 +207,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(cog, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,6 +219,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Codice Fiscale "));
         jPanel5.setName("jPanel5"); // NOI18N
 
+        codFisc.setDisabledTextColor(new java.awt.Color(255, 0, 0));
         codFisc.setName("CodiceFiscale"); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -224,7 +229,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(codFisc, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,6 +241,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("E-mail"));
         jPanel6.setName("jPanel6"); // NOI18N
 
+        mail.setDisabledTextColor(new java.awt.Color(255, 0, 0));
         mail.setName("E-mail"); // NOI18N
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -245,7 +251,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(mail, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,6 +263,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Telefono"));
         jPanel7.setName("jPanel7"); // NOI18N
 
+        tell.setDisabledTextColor(new java.awt.Color(255, 0, 0));
         tell.setName("Telefono"); // NOI18N
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -266,7 +273,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(tell, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,6 +285,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Provincia"));
         jPanel9.setName("jPanel9"); // NOI18N
 
+        provincia.setDisabledTextColor(new java.awt.Color(255, 0, 0));
         provincia.setName("Provincia"); // NOI18N
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -309,7 +317,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(ruolo, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -321,6 +329,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Città"));
         jPanel11.setName("jPanel11"); // NOI18N
 
+        citta.setDisabledTextColor(new java.awt.Color(255, 0, 0));
         citta.setName("citta"); // NOI18N
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
@@ -342,6 +351,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder("FAX"));
         jPanel19.setName("jPanel19"); // NOI18N
 
+        fax.setDisabledTextColor(new java.awt.Color(255, 0, 0));
         fax.setName("fax"); // NOI18N
 
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
@@ -351,7 +361,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             .addGroup(jPanel19Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(fax, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         jPanel19Layout.setVerticalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -363,6 +373,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder("Ragione Sociale"));
         jPanel14.setName("jPanel14"); // NOI18N
 
+        ragSoc.setDisabledTextColor(new java.awt.Color(255, 0, 0));
         ragSoc.setName("ragSoc"); // NOI18N
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
@@ -370,7 +381,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(ragSoc, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -384,6 +395,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder("CAP"));
         jPanel18.setName("jPanel18"); // NOI18N
 
+        cap.setDisabledTextColor(new java.awt.Color(255, 0, 0));
         cap.setName("cap"); // NOI18N
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
@@ -405,6 +417,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder("P.IVA"));
         jPanel17.setName("jPanel17"); // NOI18N
 
+        piva.setDisabledTextColor(new java.awt.Color(255, 0, 0));
         piva.setName("piva"); // NOI18N
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
@@ -523,6 +536,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         panel28.setBorder(javax.swing.BorderFactory.createTitledBorder("Username"));
         panel28.setName("panel28"); // NOI18N
 
+        user.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         user.setName("Username"); // NOI18N
 
         javax.swing.GroupLayout panel28Layout = new javax.swing.GroupLayout(panel28);
@@ -544,6 +558,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         jPanel29.setBorder(javax.swing.BorderFactory.createTitledBorder("Password"));
         jPanel29.setName("jPanel29"); // NOI18N
 
+        pwd.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         pwd.setName("Password"); // NOI18N
 
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
@@ -645,11 +660,21 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
                 buttonAnnulla1MouseClicked(evt);
             }
         });
+        buttonAnnulla1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAnnulla1ActionPerformed(evt);
+            }
+        });
 
         buttonSalva1.setName("buttonSalva1"); // NOI18N
         buttonSalva1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 buttonSalva1MouseClicked(evt);
+            }
+        });
+        buttonSalva1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSalva1ActionPerformed(evt);
             }
         });
 
@@ -727,6 +752,27 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 }//GEN-LAST:event_mailActionPerformed
 
     private void buttonSalva1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSalva1MouseClicked
+        
+    }//GEN-LAST:event_buttonSalva1MouseClicked
+
+    private void buttonAnnulla1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonAnnulla1MouseClicked
+        
+    }//GEN-LAST:event_buttonAnnulla1MouseClicked
+
+    private void buttonAnnulla1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAnnulla1ActionPerformed
+       menu.setButtonEnabled(true);
+       // JOptionPane.showMessageDialog(null, "operazione annulata");
+        editabile(false);
+        this.buttonAnnulla1.setEnabled(false);
+        this.buttonSalva1.setEnabled(false);
+        this.inizializzazione("");
+        validation(false);
+        if (this.tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
+        }
+
+    }//GEN-LAST:event_buttonAnnulla1ActionPerformed
+
+    private void buttonSalva1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalva1ActionPerformed
         menu.setButtonEnabled(true);
 
         if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI)) {
@@ -827,6 +873,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
                 }
                 refresh();
                 editabile(false);
+                validation(false);
                 this.buttonAnnulla1.setEnabled(false);
                 this.buttonSalva1.setEnabled(false);
 
@@ -840,19 +887,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
             }
         }
-    }//GEN-LAST:event_buttonSalva1MouseClicked
-
-    private void buttonAnnulla1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonAnnulla1MouseClicked
-        menu.setButtonEnabled(true);
-        JOptionPane.showMessageDialog(null, "operazione annulata");
-        editabile(false);
-        this.buttonAnnulla1.setEnabled(false);
-        this.buttonSalva1.setEnabled(false);
-        this.inizializzazione("");
-        if (this.tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
-        }
-
-    }//GEN-LAST:event_buttonAnnulla1MouseClicked
+    }//GEN-LAST:event_buttonSalva1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla buttonAnnulla1;
@@ -981,6 +1016,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         this.fax.setText(s);
         this.piva.setText(s);
         this.cap.setText(s);
+        this.note.setText(s);
     }
 
     /**
@@ -1101,20 +1137,34 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
      * @param flag
      */
     public void editabile(boolean flag) {
-        this.nm.setEditable(flag);
-        this.cog.setEditable(flag);
-        this.provincia.setEditable(flag);
-        this.tell.setEditable(flag);
-        this.mail.setEditable(flag);
+        this.nm.setEnabled(flag);
+        nm.setBackground(Color.WHITE);
+        this.cog.setEnabled(flag);
+        cog.setBackground(Color.WHITE);
+        this.provincia.setEnabled(flag);
+        provincia.setBackground(Color.WHITE);
+        this.tell.setEnabled(flag);
+        tell.setBackground(Color.WHITE);
+        this.mail.setEnabled(flag);
+        mail.setBackground(Color.WHITE);
         this.ruolo.setEnabled(flag);
-        this.codFisc.setEditable(flag);
-        this.user.setEditable(flag);
-        this.pwd.setEditable(flag);
-        this.ragSoc.setEditable(flag);
-        this.fax.setEditable(flag);
-        this.piva.setEditable(flag);
-        this.citta.setEditable(flag);
-        this.cap.setEditable(flag);
+        ruolo.setBackground(Color.WHITE);
+        this.codFisc.setEnabled(flag);
+        codFisc.setBackground(Color.WHITE);
+        this.pwd.setEnabled(flag);
+        pwd.setBackground(Color.WHITE);
+        this.ragSoc.setEnabled(flag);
+        ragSoc.setBackground(Color.WHITE);
+        this.fax.setEnabled(flag);
+        fax.setBackground(Color.WHITE);
+        this.piva.setEnabled(flag);
+        piva.setBackground(Color.WHITE);
+        this.citta.setEnabled(flag);
+        citta.setBackground(Color.WHITE);
+        this.cap.setEnabled(flag);
+        cap.setBackground(Color.WHITE);
+        this.note.setEnabled(flag);
+        note.setBackground(Color.WHITE);
 
     }
 
@@ -1194,72 +1244,17 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
      */
     public void validation(Boolean f) {
         if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
-            responsabile.setValidatorEnabled(f);
-            ((NotEmptyValidator) responsabile.getNome().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) responsabile.getCognome().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) responsabile.getCodiceFiscale().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) responsabile.getTxtProvincia().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) responsabile.getTxtPassword().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) responsabile.getTxtCitta().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) responsabile.getTxtEmail().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) responsabile.getTxtUsername().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) responsabile.getTxtTelefono().getInputVerifier()).setEnabled(f);
-        }
-        if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
-             fornitore.setValidatorEnabled(f);
-            ((NotEmptyValidator) fornitore.getNome().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) fornitore.getCognome().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) fornitore.getCodiceFiscale().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) fornitore.getPIva().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) fornitore.getTxtPassword().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) fornitore.getTxtCitta().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) fornitore.getTxtEmail().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) fornitore.getFax().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) fornitore.getTxtProvincia().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) fornitore.getRagioneSociale().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) fornitore.getTxtUsername().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) fornitore.getTxtTelefono().getInputVerifier()).setEnabled(f);
+             responsabile.setValidatorEnabled(f);
         }
         if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
              cliente.setValidatorEnabled(f);
-            ((NotEmptyValidator) cliente.getNome().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) cliente.getCognome().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) cliente.getCodiceFiscale().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) cliente.getPIva().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) cliente.getTxtPassword().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) cliente.getTxtCitta().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) cliente.getTxtEmail().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) cliente.getFax().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) cliente.getTxtProvincia().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) cliente.getRagioneSociale().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) cliente.getTxtUsername().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) cliente.getTxtTelefono().getInputVerifier()).setEnabled(f);
+            
         }
         if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
-            ((NotEmptyValidator) fornitore.getNome().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) fornitore.getCognome().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) fornitore.getCodiceFiscale().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) fornitore.getPIva().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) fornitore.getTxtPassword().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) fornitore.getTxtCitta().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) fornitore.getTxtEmail().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) fornitore.getFax().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) fornitore.getTxtProvincia().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) fornitore.getRagioneSociale().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) fornitore.getTxtUsername().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) fornitore.getTxtTelefono().getInputVerifier()).setEnabled(f);
+            fornitore.setValidatorEnabled(f);
         }
         if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
-             fornitore.setValidatorEnabled(f);
-            ((NotEmptyValidator) dipendente.getNome().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) dipendente.getCognome().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) dipendente.getCodiceFiscale().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) dipendente.getTxtProvincia().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) dipendente.getTxtPassword().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) dipendente.getTxtCitta().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) dipendente.getTxtEmail().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) dipendente.getTxtUsername().getInputVerifier()).setEnabled(f);
-            ((NotEmptyValidator) dipendente.getTxtTelefono().getInputVerifier()).setEnabled(f);
+             dipendente.setValidatorEnabled(f);
         }
     }
 }

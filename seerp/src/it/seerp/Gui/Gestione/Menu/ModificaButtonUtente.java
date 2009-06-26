@@ -45,6 +45,7 @@ public class ModificaButtonUtente extends JButton implements CommandInterface {
         areaUt.editabile(true);
         areaUt.getSalva().setEnabled(true);
         areaUt.getAnnulla().setEnabled(true);
+        areaUt.validation(true);
 
     }
 }

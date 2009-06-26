@@ -45,8 +45,11 @@ public class AggiungiButtonUtenti extends JButton implements CommandInterface {
         areaUt.setTipoOP(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI);
         areaUt.inizializzazione("");
         areaUt.editabile(true);
+        areaUt.validation(true);
         areaUt.getSalva().setEnabled(true);
-        areaUt.getAnnulla().setEnabled(true);}
+        areaUt.getAnnulla().setEnabled(true);
+
+    }
 
    
 }

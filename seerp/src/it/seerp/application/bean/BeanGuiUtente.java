@@ -34,6 +34,19 @@ public class BeanGuiUtente {
 
     public void setValidatorEnabled(boolean validator) {
         this.validator = validator;
+            ((NotEmptyValidator) txtProvincia.getInputVerifier()).setEnabled(validator);
+            ((NotEmptyValidator) txtPassword.getInputVerifier()).setEnabled(validator);
+            ((NotEmptyValidator) txtCitta.getInputVerifier()).setEnabled(validator);
+            ((NotEmptyValidator) txtEmail.getInputVerifier()).setEnabled(validator);
+            ((NotEmptyValidator) txtUsername.getInputVerifier()).setEnabled(validator);
+            ((NotEmptyValidator) txtTelefono.getInputVerifier()).setEnabled(validator);
+
+            ((NotEmptyValidator) txtProvincia.getInputVerifier()).reset(txtProvincia);
+            ((NotEmptyValidator) txtPassword.getInputVerifier()).reset(txtPassword);
+            ((NotEmptyValidator) txtCitta.getInputVerifier()).reset(txtCitta);
+            ((NotEmptyValidator) txtEmail.getInputVerifier()).reset(txtEmail);
+            ((NotEmptyValidator) txtUsername.getInputVerifier()).reset(txtUsername);
+            ((NotEmptyValidator) txtTelefono.getInputVerifier()).reset(txtTelefono);
     }
 
     /**
@@ -80,6 +93,11 @@ public class BeanGuiUtente {
      * @return
      */
     public JTextField getCap() {
+        if (validator == true) {
+            if (!cap.getInputVerifier().shouldYieldFocus(cap)) {
+                throw new ValidatorException("Errore nella grafica!");
+            }
+        }
         return cap;
     }
 
@@ -89,6 +107,7 @@ public class BeanGuiUtente {
      */
     public void setCap(JTextField cap) {
         this.cap = cap;
+        cap.setInputVerifier(new NotEmptyValidator(grafica, cap, "Il campo non può essere vuoto.", RegexpDef.valueOf(RegexpDef.VAL.CAP)));
     }
 
     /**
