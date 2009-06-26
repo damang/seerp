@@ -1,13 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * NewJPanel.java
- *
- * Created on 15-giu-2009, 16.59.23
- */
 package it.seerp.Gui.Gestione.InfoAzienda;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
@@ -23,7 +13,7 @@ import it.seerp.application.applicazione.AppAzienda;
 
 /**
  *
- * @author Andrea
+ * @author Andrea-Luisa
  */
 public class InfoAzienda extends ObservableJPanel implements ActionListener {
 
@@ -46,7 +36,7 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
 
     /**
      *
-     * @param flag
+     * @ flag che permette di modificare i campi presenti sul form.
      */
     public void editabile(boolean flag) {
     
@@ -79,7 +69,7 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
 
     /**
      *
-     * @return
+     * @ restituisce il riferimento al pulsate Salva
      */
     public ButtonSalva getSalva() {
         return this.buttonSalva1;
@@ -88,7 +78,7 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
 
     /**
      *
-     * @return
+     * @restituisce il riferimento al pulsate Annulla
      */
     public ButtonAnnulla getAnnulla() {
         return this.buttonAnnulla1;

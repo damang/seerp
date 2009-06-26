@@ -1,13 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * AreaPersonalePanel.java
- *
- * Created on 17-giu-2009, 17.27.17
- */
 package it.seerp.Gui.Gestione.AreaPersonale;
 
 import it.seerp.Gui.configurazioni.Gui.ConfigurazioneUtente;
@@ -16,24 +6,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import it.seerp.application.applicazione.AppGestioneAreaPersonale;
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
-import it.seerp.application.applicazione.AppGestioneUtente;
 import it.seerp.application.bean.BeanGuiExtraAzienda;
 import it.seerp.application.bean.BeanGuiPersonale;
-import it.seerp.application.bean.BeanGuiUtente;
-import it.seerp.storage.jaas.AuthPrincipal;
 import it.seerp.storage.jaas.SujGest;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.security.auth.Subject;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 /**
  *
- * @author Andrea
+ * @author Andrea-Luisa
  */
 public class AreaPersonalePanel extends ObservableJPanel implements ActionListener {
 
@@ -41,7 +21,9 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
     private BeanGuiPersonale utente;
     private BeanGuiExtraAzienda extra;
 
-    /** Creates new form AreaPersonalePanel */
+    /** Creates new form AreaPersonalePanel
+     * @ sub il paramentro sub permette di identificare l'utente loggato al sistema, e ne modifica l'interfaccia a seconda del utente loggato.
+     */
     public AreaPersonalePanel(Subject sub) {
         ut = sub;
         initComponents();
@@ -622,6 +604,10 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
     private void tellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tellActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tellActionPerformed
+    /**
+     *
+     * @ s sringa che permette l'inalizzazione, permette di inizzializare tutti i campi sul form.
+     */
     public void inizializzazione(String s) {
 
         this.cog.setText(s);
@@ -640,6 +626,9 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         this.cap.setText(s);
     }
 
+    /**
+     *
+     */
     public void legameBeanPersonale() {
         utente.setNome(nm);
         utente.setCognome(cog);
@@ -655,6 +644,9 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         utente.setRuolo(ruolo);
     }
 
+    /**
+     *
+     */
     public void legameBeanExtraAzienda() {
 
         extra.setTxtProvincia(provincia);
@@ -681,6 +673,10 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         cmd.execute();
     }
 
+    /**
+     *
+     * @ flag che permette di modificare i campi presenti sul form.
+     */
     public void editabile(boolean flag) {
         this.nm.setEditable(flag);
         this.cog.setEditable(flag);

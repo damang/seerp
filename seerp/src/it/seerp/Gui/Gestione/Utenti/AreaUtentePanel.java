@@ -1,9 +1,4 @@
 
-/*
- * AreaPersonalePanel.java
- *
- * Created on 28-mag-2009, 17.59.24
- */
 package it.seerp.Gui.Gestione.Utenti;
 
 import it.seerp.Gui.configurazioni.Gui.ConfigurazioneUtente.TIPO_UTENTE_CONST;
@@ -21,7 +16,6 @@ import java.util.logging.Level;
 import javax.swing.JOptionPane;
 import it.seerp.Gui.Gestione.Menu.*;
 import it.seerp.Gui.configurazioni.Gui.ConfigurazioneOperazioni;
-import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.tabelle.*;
 import it.seerp.application.applicazione.AppGestioneExtraAzienda;
 import it.seerp.application.applicazione.AppGestionePersonale;
@@ -32,12 +26,11 @@ import it.seerp.application.bean.BeanGuiDipendente;
 
 import it.seerp.application.bean.BeanGuiResponsabile;
 import it.seerp.storage.Exception.DatiDuplicatiEx;
-import java.util.Iterator;
 import java.util.logging.Logger;
 
 /**
  *
- * @author Andrea
+ * @author Andrea-Luisa
  */
 public class AreaUtentePanel extends ObservableJPanel implements ActionListener {
 
@@ -79,21 +72,33 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
     }
 
+    /**
+     *
+     * @return
+     */
     public TIPO_UTENTE_CONST getTipoUtente() {
         return tipoU;
     }
 
+    /**
+     *
+     * @param tipoUtente
+     */
     public void setTipoUtente(TIPO_UTENTE_CONST tipoUtente) {
         this.tipoU = tipoUtente;
     }
 
+    /**
+     *
+     * @return
+     */
     public MenuUtente getMenu() {
         return menu;
     }
 
     /**
      *
-     * @param TipoOP
+     * @param tipo
      */
     public void setTipoOP(ConfigurazioneOperazioni.TIPO_OPE_CONST tipo) {
         this.tipoOp = tipo;
@@ -997,6 +1002,9 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
     }
 
+    /**
+     *
+     */
     public void legameBeanDipendente() {
         dipendente.setNome(nm);
         dipendente.setCognome(cog);
@@ -1035,6 +1043,9 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         fornitore.setTxtNote(note);
     }
 
+    /**
+     *
+     */
     public void legameBeanCliente() {
         cliente.setTxtProvincia(provincia);
         cliente.setTxtCitta(citta);
@@ -1053,18 +1064,34 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
     }
 
+    /**
+     *
+     * @return
+     */
     public BeanGuiCliente getCliente() {
         return cliente;
     }
 
+    /**
+     *
+     * @return
+     */
     public BeanGuiDipendente getDipendente() {
         return dipendente;
     }
 
+    /**
+     *
+     * @return
+     */
     public BeanGuiFornitore getFornitore() {
         return fornitore;
     }
 
+    /**
+     *
+     * @return
+     */
     public BeanGuiResponsabile getResponsabile() {
         return responsabile;
     }
@@ -1091,6 +1118,9 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
     }
 
+    /**
+     *
+     */
     public void refresh() {
         try {
             this.settaTableModel();
@@ -1158,6 +1188,10 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
     }
 
+    /**
+     *
+     * @param f
+     */
     public void validation(Boolean f) {
         if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
             responsabile.setValidatorEnabled(f);

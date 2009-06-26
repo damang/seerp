@@ -1,8 +1,4 @@
-/*
- * Economia.java
- *
- * Created on 29-mag-2009, 3.42.04
- */
+
 package it.seerp.Gui.Gestione.Menu;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;

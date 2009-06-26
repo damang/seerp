@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package it.seerp.Gui.bottoni.gestioni;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
@@ -13,7 +10,7 @@ import javax.swing.JTabbedPane;
 
 /**
  *
- * @author Andrea
+ * @author Andrea-Luisa
  */
 public class ButtonContratti extends ObserverButton implements CommandInterface {
 

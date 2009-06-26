@@ -1,19 +1,14 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package it.seerp.Gui.Gestione.Menu;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
-import it.seerp.Gui.Gestione.Contratti.GestioneContratti;
-import it.seerp.Gui.Gestione.Servizi.GestioneServizi;
 import it.seerp.Gui.Gestione.InfoAzienda.InfoAzienda;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 /**
  *
- * @author Andrea
+ * @author Andrea-Luisa
  */
 public class ModificaButtonInfoAzienda extends JButton implements CommandInterface {
 

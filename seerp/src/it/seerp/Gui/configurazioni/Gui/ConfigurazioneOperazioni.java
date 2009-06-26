@@ -21,8 +21,14 @@ public class ConfigurazioneOperazioni {
          */
         MODIFICA,
 
+        /**
+         *
+         */
         ELIMINA,
 
+        /**
+         *
+         */
         VISUALIZZA
 
 

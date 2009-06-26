@@ -1,13 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * MenuUtente.java
- *
- * Created on 10-giu-2009, 13.04.47
- */
 
 package it.seerp.Gui.Gestione.Menu;
 
@@ -19,7 +9,7 @@ import javax.swing.JButton;
 
 /**
  *
- * @author Andrea
+ * @author Andrea-Luisa
  */
 public class MenuUtente extends javax.swing.JPanel implements ActionListener {
 

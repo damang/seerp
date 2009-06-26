@@ -1,14 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * ButtonAnnulla.java
- *
- * Created on 10-giu-2009, 22.55.45
- */
-
 package it.seerp.Gui.Gestione.BottoniGenerici;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
@@ -16,7 +5,7 @@ import javax.swing.JButton;
 
 /**
  *
- * @author Andrea
+ * @author Andrea-Luisa
  */
 public class ButtonAnnulla extends JButton implements CommandInterface {
 

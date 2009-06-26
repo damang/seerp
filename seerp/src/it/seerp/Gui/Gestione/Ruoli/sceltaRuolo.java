@@ -1,21 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * NewJDialog.java
- *
- * Created on 20-giu-2009, 18.41.07
- */
 
 package it.seerp.Gui.Gestione.Ruoli;
 
 import it.seerp.Gui.configurazioni.Screen;
-import java.lang.reflect.InvocationTargetException;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
 
 
 

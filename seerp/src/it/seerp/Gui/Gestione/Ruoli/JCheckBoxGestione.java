@@ -1,19 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package it.seerp.Gui.Gestione.Ruoli;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.application.bean.BeanGuiPermesso;
 import it.seerp.application.bean.BeanGuiRuolo;
-import java.awt.event.ItemListener;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 /**
  *

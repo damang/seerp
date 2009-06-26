@@ -1,9 +1,4 @@
 
-/*
- * GestioneContratti.java
- *
- * Created on 9-giu-2009, 12.45.47
- */
 package it.seerp.Gui.Gestione.Contratti;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
@@ -24,7 +19,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Andrea
+ * @author Andrea-Luisa
  */
 public class GestioneContratti extends ObservableJPanel implements ActionListener {
 
@@ -59,7 +54,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
 
     /**
      *
-     * @param flag
+     * @ flag che permette di modificare i campi presenti sul form.
      */
     public void editabile(Boolean flag) {
 
@@ -82,7 +77,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
      */
     public void legameBean() {
         contratto.setData(data);
-      contratto.setDurata(durata);
+        contratto.setDurata(durata);
         //JcomboBox contratto.setStato(stato);
 
         extraAz.setPIva(piva);
@@ -97,7 +92,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
 
     /**
      *
-     * @param s
+     * @ s sringa che permette l'inalizzazione, permette di inizzializare tutti i campi sul form.
      */
     public void inizializza(String s) {
         this.data.setText(s);
@@ -113,7 +108,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
 
     /**
      *
-     * @return
+     * @ restituisce il riferimento al pulsate Salva
      */
     public ButtonSalva getSalva() {
         return this.buttonSalva1;
@@ -121,7 +116,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
 
     /**
      *
-     * @return
+     * @ restituisce il riferimento al pulsate Annulla
      */
     public ButtonAnnulla getAnnulla() {
         return this.buttonAnnulla1;

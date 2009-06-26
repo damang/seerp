@@ -1,9 +1,4 @@
 
-/*
- * FrameServizi.java
- *
- * Created on 16-giu-2009, 16.01.44
- */
 package it.seerp.Gui.Gestione.Servizi;
 
 import it.seerp.application.bean.BeanGuiServizioAssociato;
@@ -11,7 +6,7 @@ import it.seerp.application.bean.BeanGuiServizio;
 
 /**
  *
- * @author Luisa
+ * @author Luisa-Andrea
  */
 public class FrameServizi extends javax.swing.JFrame {
 
@@ -388,6 +383,9 @@ public class FrameServizi extends javax.swing.JFrame {
     private void buttonSalva1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalva1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonSalva1ActionPerformed
+    /**
+     *
+     */
     public void legameBean() {
         servizio.setQuantita(qnt);
         servizio.setPrezzoUnitario(prz1);
@@ -399,6 +397,10 @@ public class FrameServizi extends javax.swing.JFrame {
         servizio.setServizio(ser);
     }
 
+    /**
+     *
+     * @param flag
+     */
     public void editabile(boolean flag) {
 
 
@@ -411,6 +413,10 @@ public class FrameServizi extends javax.swing.JFrame {
 
     }
 
+    /**
+     *
+     * @param s
+     */
     public void inizializza(String s) {
 
         qnt.setText(s);

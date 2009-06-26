@@ -5,13 +5,12 @@ import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.AreaPersonale.AreaPersonalePanel;
 import it.seerp.Gui.Home.Index;
 import it.seerp.Gui.observerButton.ObserverButton;
-import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 /**
  *
- * @author Andrea
+ * @author Andrea-Luisa
  */
 public class AreaPersonaleButton extends ObserverButton implements CommandInterface {
 

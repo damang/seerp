@@ -1,13 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * AreaPersonalePanel.java
- *
- * Created on 28-mag-2009, 19.29.04
- */
 
 package it.seerp.Gui.Gestione.Menu;
 
