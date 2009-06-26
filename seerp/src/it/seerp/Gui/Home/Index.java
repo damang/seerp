@@ -467,6 +467,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
         menuAgenda.setVisible(false);
 
         logout1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/Log-Out-48x48.png"))); // NOI18N
+        logout1.setToolTipText("Logout");
         logout1.setName("logout1"); // NOI18N
 
         fileMenu.setText("File");
