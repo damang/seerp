@@ -14,7 +14,7 @@ public class BeanGuiPermesso {
     private String cat;
 
     /**
-     *
+     * costruttore per la classe bean gui pagamento
      * @param c
      * @param path
      * @param cat
@@ -26,15 +26,15 @@ public class BeanGuiPermesso {
     }
 
     /**
-     *
-     * @return
+     * metodo che restituisce il campo id del bean gui permesso
+     * @return il campo id
      */
     public int getIdPermesso() {
         return idPermesso;
     }
 
     /**
-     *
+     * metodo che setta il campo id del bean gui permesso
      * @param pidPermesso
      */
     public void setIdPermesso(int pidPermesso) {
@@ -42,7 +42,7 @@ public class BeanGuiPermesso {
     }
 
     /**
-     *
+     * metodo che setta il campo act del bean gui permesso
      * @param ppath
      */
     public void setAct(JCheckBox ppath) {
@@ -50,23 +50,23 @@ public class BeanGuiPermesso {
     }
 
     /**
-     *
-     * @return
+     * metodo che restituisce il campo act del bean gui permesso
+     * @return il campo act
      */
     public JCheckBox getAct() {
         return act;
     }
 
     /**
-     *
-     * @return
+     * metodo che restituisce il campo cat del bean gui permesso
+     * @return il campo cat
      */
     public String getCat() {
         return cat;
     }
 
     /**
-     *
+     * metodo che setta il campo cat del bean gui permesso
      * @param c
      */
     public void setCat(String c) {
