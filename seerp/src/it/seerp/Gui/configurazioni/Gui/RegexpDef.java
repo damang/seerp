@@ -15,6 +15,7 @@ public class RegexpDef {
         CODFIS,
         PROV,
         CAP,
+        IVA,
         PIVA,
         DATA,
         ORA,
@@ -48,6 +49,8 @@ public class RegexpDef {
             return "(\\d{0,9})[.](\\d{2})";
         else if (c.equals(VAL.NUMPOS))
             return "\\d{0,9}";
+        else if(c.equals(VAL.IVA))
+            return"\\d{1,2}[%:]";
         else return"";
 
     }
