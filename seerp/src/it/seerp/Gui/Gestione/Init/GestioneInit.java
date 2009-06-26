@@ -1,33 +1,16 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * GestioneInit.java
- *
- * Created on 24-giu-2009, 14.49.54
- */
 
 package it.seerp.Gui.Gestione.Init;
 
-import it.seerp.Gui.configurazioni.Gui.ConfigurazioneOperazioni;
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
-import it.seerp.application.Exception.DatiDuplicati;
-import it.seerp.application.Exception.DatiErrati;
-import it.seerp.application.applicazione.AppAzienda;
-import it.seerp.application.applicazione.AppInit;
 import it.seerp.application.bean.BeanGuiAmministratore;
 import it.seerp.application.bean.BeanGuiAzienda;
 import java.awt.event.ActionEvent;
-import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import org.jdesktop.swingx.JXFrame;
 
 /**
  *
- * @author Luisa
+ * @author Luisa-Andrea
  */
 public class GestioneInit extends javax.swing.JPanel {
 
@@ -46,7 +29,8 @@ public class GestioneInit extends javax.swing.JPanel {
     }
         /**
      *
-     * @param flag
+         *
+         * @ flag che permette di modificare i campi presenti sul form.
      */
     public void editabile(boolean flag) {
     nm.setEditable(flag);
@@ -75,7 +59,8 @@ public class GestioneInit extends javax.swing.JPanel {
 
     /**
      *
-     * @param s
+     * 
+     * @ s sringa che permette l'inalizzazione, inizializza tutti i campi sul form.
      */
     public void inizializza(String s) {
         nm.setText(s);
@@ -1080,13 +1065,21 @@ public class GestioneInit extends javax.swing.JPanel {
     private javax.swing.JPanel username;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param e
+     */
     public void actionPerformed(ActionEvent e) {
         CommandInterface cmd = (CommandInterface) e.getSource();
         cmd.execute();
 
     }
 
-     public static void main(String args[]) {
+    /**
+     *
+     * @param args
+     */
+    public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
