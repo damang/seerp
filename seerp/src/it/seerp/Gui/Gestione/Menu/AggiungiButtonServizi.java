@@ -23,8 +23,8 @@ public class AggiungiButtonServizi extends JButton implements CommandInterface {
     }
 
     /**
-     *
-     * @param l
+     * Costruttore della classe
+     * @param l listner preso in imput da associare al bottone
      */
     public AggiungiButtonServizi(ActionListener l) {
         super();

@@ -32,8 +32,8 @@ public class EiminaButtonServizi extends JButton implements CommandInterface{
     }
 
     /**
-     *
-     * @param l
+     * Costruttore della classe
+     * @param l listner preso in imput da associare al bottone
      */
     public EiminaButtonServizi(ActionListener l) {
         super();
