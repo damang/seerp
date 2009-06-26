@@ -1,23 +1,15 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package it.seerp.Gui.bottoni.gestioni;
 
 import it.seerp.Gui.Gestione.agenda.EventInstance;
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.Menu.MenuAgenda;
-import it.seerp.Gui.Gestione.Menu.MenuRuoli;
 import it.seerp.Gui.observerButton.ObserverButton;
 import it.seerp.storage.ejb.Evento;
-import it.seerp.storage.Operazioni.OpEvento;
-import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JTabbedPane;
 import it.seerp.Gui.Gestione.agenda.CalendarDataRepository;
 import it.seerp.Gui.Gestione.agenda.CalendarPanel;

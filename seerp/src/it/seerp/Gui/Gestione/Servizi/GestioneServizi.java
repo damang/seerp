@@ -1,13 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/*
- * GestioneContratti.java
- *
- * Created on 9-giu-2009, 12.45.47
- */
 package it.seerp.Gui.Gestione.Servizi;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
@@ -31,7 +22,7 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author Andrea
+ * @author Andrea-Luisa
  */
 public class GestioneServizi extends ObservableJPanel implements ActionListener {
 
@@ -41,6 +32,10 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
     String tipoOP;
     MenuServizi menu;
 
+    /**
+     *
+     * @return
+     */
     public MenuServizi getMenu() {
         return menu;
     }
@@ -57,13 +52,15 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
 
     /**
      *
-     * @param TipoOP
+     * @param tipo
      */
     public void setTipoOP(ConfigurazioneOperazioni.TIPO_OPE_CONST tipo) {
         this.tipoOp = tipo;
     }
 
-    /** Creates new form GestioneContratti */
+    /** Creates new form GestioneContratti
+     * @throws SQLException
+     */
     public GestioneServizi() throws SQLException {
         initComponents();
 
@@ -886,6 +883,10 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
     private javax.swing.JTextField tipo;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTipo() {
         return tipo;
     }

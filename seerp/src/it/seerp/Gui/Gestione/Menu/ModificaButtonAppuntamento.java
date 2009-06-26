@@ -1,24 +1,17 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package it.seerp.Gui.Gestione.Menu;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
-import it.seerp.Gui.Gestione.Contratti.GestioneContratti;
 import it.seerp.Gui.Gestione.agenda.CalendarPanel;
 import it.seerp.application.conversioni.Conversione;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author Andrea
+ * @author Andrea-Luisa
  */
 public class ModificaButtonAppuntamento extends JButton  implements CommandInterface {
 CalendarPanel area;

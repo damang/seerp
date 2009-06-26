@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package it.seerp.Gui.bottoni.gestioni;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
@@ -9,13 +6,12 @@ import it.seerp.Gui.Gestione.Servizi.GestioneServizi;
 import it.seerp.Gui.observerButton.ObserverButton;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 /**
  *
- * @author Andrea
+ * @author Andrea-Luisa
  */
 public class ButtonServizi extends ObserverButton implements CommandInterface {
 

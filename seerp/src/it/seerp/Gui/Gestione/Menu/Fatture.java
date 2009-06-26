@@ -1,13 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * Fatture.java
- *
- * Created on 10-giu-2009, 22.50.19
- */
 
 package it.seerp.Gui.Gestione.Menu;
 

@@ -4,7 +4,7 @@ package it.seerp.Gui.configurazioni.pattern.observer;
 /**
  * Interfaccia che deve implementare l'oggetto che si vuole osservare
  * ( OBSERVER PATTERN )
- * @author Angelo
+ * @author Luisa-Andrea
  */
 public interface Observable {
 

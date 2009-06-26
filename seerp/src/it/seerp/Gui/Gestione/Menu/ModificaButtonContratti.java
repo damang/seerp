@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package it.seerp.Gui.Gestione.Menu;
 
@@ -13,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Andrea
+ * @author Andrea-Luisa
  */
 public class ModificaButtonContratti extends JButton  implements CommandInterface {
 GestioneContratti areaContr=null;

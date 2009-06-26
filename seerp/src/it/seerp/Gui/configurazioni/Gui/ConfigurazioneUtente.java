@@ -1,12 +1,6 @@
 
 package it.seerp.Gui.configurazioni.Gui;
 
-import it.seerp.application.bean.BeanGuiCliente;
-import it.seerp.application.bean.BeanGuiDipendente;
-import it.seerp.application.bean.BeanGuiFornitore;
-import it.seerp.application.bean.BeanGuiResponsabile;
-import it.seerp.application.bean.BeanGuiUtente;
-
 /**
  *
  * @author Luisa

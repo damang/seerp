@@ -64,6 +64,10 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
       
     }
 
+    /**
+     *
+     * @return
+     */
     public Subject getSubject() {
         return ut_sub;
     }

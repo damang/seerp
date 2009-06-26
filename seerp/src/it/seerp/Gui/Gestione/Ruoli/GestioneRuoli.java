@@ -1,13 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/*
- * AreaPersonalePanel.java
- *
- * Created on 28-mag-2009, 17.59.24
- */
 package it.seerp.Gui.Gestione.Ruoli;
 
 import it.seerp.Gui.Gestione.Menu.MenuRuoli;
@@ -21,18 +12,14 @@ import it.seerp.application.tabelle.RuoloTm;
 import it.seerp.application.applicazione.AppRuoli;
 import it.seerp.application.bean.BeanGuiPermesso;
 import it.seerp.application.bean.BeanGuiRuolo;
-import it.seerp.application.validation.NotEmptyValidator;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
@@ -40,7 +27,7 @@ import javax.swing.table.TableModel;
 
 /**
  *
- * @author Andrea
+ * @author Andrea-Luisa
  */
 public class GestioneRuoli extends ObservableJPanel implements ActionListener, ItemListener {
 

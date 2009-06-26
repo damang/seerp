@@ -1,14 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * ButtonElimina.java
- *
- * Created on 10-giu-2009, 23.00.56
- */
-
 package it.seerp.Gui.Gestione.BottoniGenerici;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
