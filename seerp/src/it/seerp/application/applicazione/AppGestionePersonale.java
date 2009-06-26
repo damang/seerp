@@ -30,7 +30,7 @@ import javax.swing.JOptionPane;
 public class AppGestionePersonale extends AppGestioneUtente {
 
     /**
-     *Costruttore vuoto per la classe AppGestionePersonale
+     * Costruttore vuoto per la classe AppGestionePersonale
      */
     public AppGestionePersonale() {
         super();
@@ -39,6 +39,8 @@ public class AppGestionePersonale extends AppGestioneUtente {
     /**
      * Metodo che peremette di inserire un nuovo Dipendente
      * @param user il dipendente da inserire
+     * @throws SQLException
+     * @throws DatiDuplicatiEx
      */
     public void inserisciDipendente(BeanGuiDipendente user) throws SQLException, DatiDuplicatiEx {
         // super.inserisci(user);
@@ -55,6 +57,8 @@ public class AppGestionePersonale extends AppGestioneUtente {
     /**
      * Metodo che permette di inserire un nuovo Responsabile
      * @param user
+     * @throws SQLException
+     * @throws DatiDuplicatiEx
      */
     public void inserisciResponsabile(BeanGuiResponsabile user) throws SQLException, DatiDuplicatiEx {
         //super.inserisci(user);
@@ -70,8 +74,10 @@ public class AppGestionePersonale extends AppGestioneUtente {
 
     /**
      * Metodo che permette di modificare i dati di un Dipendente
+     * @param id
      * @param user rappresenta il Dipendente da modificare
      * @return il Dipendente modificato
+     * @throws SQLException
      */
     public BeanGuiDipendente modificaDipendente(int id, BeanGuiDipendente user) throws SQLException {
         //super.modifica(user);
@@ -92,6 +98,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * Metodo che permette di modificare i dati di un Amministratore
      * @param user rappresenta l'Amministratore da modificare
      * @return l'Amministratore modificato
+     * @throws SQLException
      */
     public BeanGuiAmministratore modificaAmministratore(BeanGuiAmministratore user) throws SQLException {
         //  super.modifica(user);
@@ -108,8 +115,10 @@ public class AppGestionePersonale extends AppGestioneUtente {
 
     /**
      * Metodo che permette di modificare i dati di un Responsabile
+     * @param id
      * @param user il Responsabile da modificare
      * @return il Responsabile modificato
+     * @throws SQLException
      */
     public BeanGuiResponsabile modificaResponsabile(int id, BeanGuiResponsabile user) throws SQLException {
         // super.modifica(user);
@@ -141,13 +150,23 @@ public class AppGestionePersonale extends AppGestioneUtente {
         return list;
     }
 
+    /**
+     * Visualizza la tabella del Personale in base al Ruolo
+     * @param r Ruolo per permettere la visualizzazione
+     * @return ArrayList di Personale con quel Ruolo
+     * @throws java.sql.SQLException
+     */
     public ArrayList<Personale> visualizzaTabellaPersonaleRuolo(Ruolo r) throws SQLException {
         OpPersonale op = new OpPersonale();
         ArrayList<Personale> l = op.elencaPersonalePerRuolo(r);
         return l;
-
     }
 
+    /**
+     * Visualizza la tabella del Personale
+     * @return ArrayList di Personale
+     * @throws java.sql.SQLException
+     */
     public ArrayList<Personale> visualizzaTabellaPersonale() throws SQLException {
         OpPersonale op = new OpPersonale();
         ArrayList<Personale> l = op.elencaPersonale();
@@ -172,6 +191,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
 
     /**
      * Metodo che permette la cancellazione di un cliente
+     * @param id
      * @param beanGui
      * Bean Gui del cliente da eliminare
      * @throws it.seerp.application.Exception.CancellazioneFallita
@@ -191,6 +211,12 @@ public class AppGestionePersonale extends AppGestioneUtente {
         }
     }
 
+    /**
+     * Metodo che permette l'eliminazione di un Responsabile
+     * @param id ID del Responsabile
+     * @param beanGui Bean Gui del Responsabile
+     * @throws it.seerp.application.Exception.CancellazioneFallita
+     */
     public void eliminaResponsabile(int id, BeanGuiResponsabile beanGui) throws CancellazioneFallita {
         try {
             OpResponsabile ope = new OpResponsabile();
@@ -207,6 +233,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
 
     /**
      * Metodo che permette la cancellazione di un fornitore
+     * @param id
      * @param beanGui
      * Bean Gui del fornitore da eliminare
      * @throws it.seerp.application.Exception.CancellazioneFallita

@@ -5,6 +5,7 @@ import it.seerp.application.Exception.DatiErrati;
 import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.bean.BeanGuiAzienda;
 import it.seerp.application.conversioni.Conversione;
+import it.seerp.application.interfacce.GestioneAzienda;
 import it.seerp.storage.Operazioni.OpAzienda;
 import it.seerp.storage.ejb.Azienda;
 import java.sql.SQLException;
@@ -14,17 +15,9 @@ import javax.swing.JOptionPane;
  * Classe del livello application riguardante la Gestione dell'Azienda
  * @author Tommaso Cattolico
  */
-public class AppAzienda {
+public class AppAzienda implements GestioneAzienda<BeanGuiAzienda> {
 
-    /**
-     * Metodo che permette la modifica di un'azienda
-     * @param beanGui
-     * Bean Gui dell'azienda da modificare
-     * @return
-     * Bean Gui dell'azienda modificata
-     * @throws it.seerp.application.Exception.DatiErrati
-     * nel caso in cui si inseriscano dati errati
-     */
+    @Override
     public BeanGuiAzienda modifica(BeanGuiAzienda beanGui) throws DatiErrati {
         try {
             OpAzienda ope = new OpAzienda();
@@ -42,13 +35,7 @@ public class AppAzienda {
         return beanGui;
     }
 
-    /**
-     * Metodo che permette la visualizzazione di una singola azienda
-     * @param gui Bean Gui dell'azienda
-     * @return Bean Gui dell'azienda
-     * @throws DatiErrati
-     * nel caso in cui vi siano dati errati
-     */
+    @Override
     public BeanGuiAzienda visualizzaAzienda(BeanGuiAzienda gui) throws DatiErrati {
         try {
             OpAzienda ope = new OpAzienda();
@@ -65,6 +52,7 @@ public class AppAzienda {
         return gui;
     }
 
+    @Override
     public void inserimento(BeanGuiAzienda BeanGuiAzienda) throws SQLException, DatiErrati, DatiDuplicati {
         try {
             OpAzienda op = new OpAzienda();

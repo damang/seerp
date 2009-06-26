@@ -21,11 +21,6 @@ import javax.swing.JOptionPane;
  */
 public class AppGestioneAreaPersonale implements GestioneAreaPersonale<BeanGuiUtente> {
 
-    /**
-     * Metodo che permette di visualizzare tutti i dati relativi ad un utente
-     * @param beanGui
-     * @return il Bean Grafico contenente i dati dell'utente
-     */
     @Override
     public BeanGuiUtente visualizzaDati(int id, BeanGuiUtente beanGui) {
         Utente user;
@@ -36,7 +31,6 @@ public class AppGestioneAreaPersonale implements GestioneAreaPersonale<BeanGuiUt
             } else {
                 user = ope.visualizzaDatiExtraAzienda(beanGui.getTxtUsername().getText());
             }
-        //   beanGui = it.seerp.application.conversioni.Conversione.conversioneAreaPersonalePer(user, beanGui);
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
@@ -47,13 +41,6 @@ public class AppGestioneAreaPersonale implements GestioneAreaPersonale<BeanGuiUt
         return beanGui;
     }
 
-    /**
-     * Metodo che permette di modificare la password di un utente
-     * @param beanGui
-     * @return il Bean grafico modificato
-     * @throws it.seerp.application.Exception.DatiErrati
-     * nel caso in cui i dati inseriti sono errati
-     */
     @Override
     public BeanGuiUtente modificaPassword(BeanGuiUtente beanGui) throws DatiErrati {
         try {
@@ -71,6 +58,11 @@ public class AppGestioneAreaPersonale implements GestioneAreaPersonale<BeanGuiUt
         return beanGui;
     }
 
+    /**
+     * Metodo che visualizza i dati del personale
+     * @param id ID del personale
+     * @param beanGui Bean Gui del personale
+     */
     public void visualizzaDatiPersonale(String id, BeanGuiPersonale beanGui) {
         Personale user;
         try {
@@ -88,6 +80,11 @@ public class AppGestioneAreaPersonale implements GestioneAreaPersonale<BeanGuiUt
         }
     }
 
+    /**
+     * Metodo che visualizza i dati di un Extra Azienda
+     * @param id ID dell'Extra Azienda
+     * @param beanGui Bean Gui dell'Extra Azienda
+     */
     public void visualizzaDatiExtraAzienda(String id, BeanGuiExtraAzienda beanGui) {
         ExtraAzienda user;
         try {

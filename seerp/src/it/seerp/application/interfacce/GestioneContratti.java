@@ -13,48 +13,52 @@ import java.util.ArrayList;
 public interface GestioneContratti<E, U> {
 
     /**
-     *
-     * @return
+     * Metodo che passa la lista di bean utilizzando l'operazioni del lato storage
+     * @return lista dei bean
      */
     public ArrayList<U> visualizzaTabella();
 
     /**
-     *
+     * Metodo che permette la visualizzazione della lista dei contratti
      * @param listGui
-     * @return
+     * @return ArrayList dei contratti presenti nel sistema
      */
     public ArrayList<E> elenca(ArrayList<E> listGui);
 
     /**
-     *
+     * Metodo che permette la visualizzazione di un singolo contratto
      * @param id
-     * @param beanGuiContratto
-     * @return
-     * @throws it.seerp.application.Exception.DatiErrati
+     * @param gui
+     * @return Bean Gui del contratto che è stato selezionato
+     * @throws DatiErrati
      */
     public E visualizzaContratto(int id, E beanGuiContratto) throws DatiErrati;
 
     /**
-     *
+     * Metodo che permette la ricerca per dipendente
      * @param listGui
-     * @return
+     * @return ArrayList contentente tutti i Bean Gui dei contratti appartenenti al dipendente immesso
      * @throws it.seerp.application.Exception.DatiErrati
+     * nel caso in cui si inseriscano dati errati
      */
     public ArrayList<E> ricercaPerDipendente(ArrayList<E> listGui) throws DatiErrati;
 
     /**
-     *
+     * Metodo che permette l'inserimento di un contratto
      * @param beanGuiContratto
      * @throws it.seerp.application.Exception.DatiErrati
+     * nel caso in cui si inseriscano dati errati
      * @throws it.seerp.application.Exception.DatiDuplicati
+     * nel caso in cui il contratto da inserire esista già
      */
     public void inserisci(E beanGuiContratto) throws DatiErrati, DatiDuplicati;
 
     /**
-     *
+     * Metodo che permette la modifica di un contratto
      * @param beanGuiContratto
-     * @return
+     * @return il Bean Gui del contratto modificato
      * @throws it.seerp.application.Exception.DatiErrati
+     * nel caso in cui si immettano dati errati
      */
     public E modifica(E beanGuiContratto) throws DatiErrati;
 }

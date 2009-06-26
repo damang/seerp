@@ -18,11 +18,7 @@ import javax.swing.JOptionPane;
  */
 public class AppContratti implements GestioneContratti<BeanGuiContratto, Contratto> {
 
-    /**
-     * Metodo che permette la visualizzazione della lista dei contratti
-     * @param listGui
-     * @return ArrayList dei contratti presenti nel sistema
-     */
+    @Override
     public ArrayList<BeanGuiContratto> elenca(ArrayList<BeanGuiContratto> listGui) {
         try {
             OpContratto ope = new OpContratto();
@@ -42,13 +38,7 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto, Contrat
         return listGui;
     }
 
-    /**
-     * Metodo che permette la visualizzazione di un singolo contratto
-     * @param id 
-     * @param gui
-     * @return Bean Gui del contratto che è stato selezionato
-     * @throws DatiErrati
-     */
+    @Override
     public BeanGuiContratto visualizzaContratto(int id, BeanGuiContratto gui) throws DatiErrati {
         try {
             OpContratto ope = new OpContratto();
@@ -64,13 +54,7 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto, Contrat
         return gui;
     }
 
-    /**
-     * Metodo che permette la ricerca per dipendente
-     * @param listGui
-     * @return ArrayList contentente tutti i Bean Gui dei contratti appartenenti al dipendente immesso
-     * @throws it.seerp.application.Exception.DatiErrati
-     * nel caso in cui si inseriscano dati errati
-     */
+    @Override
     public ArrayList<BeanGuiContratto> ricercaPerDipendente(ArrayList<BeanGuiContratto> listGui) throws DatiErrati {
         try {
             OpContratto ope = new OpContratto();
@@ -90,14 +74,7 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto, Contrat
         return listGui;
     }
 
-    /**
-     * Metodo che permette l'inserimento di un contratto
-     * @param beanGuiContratto
-     * @throws it.seerp.application.Exception.DatiErrati
-     * nel caso in cui si inseriscano dati errati
-     * @throws it.seerp.application.Exception.DatiDuplicati
-     * nel caso in cui il contratto da inserire esista già
-     */
+    @Override
     public void inserisci(BeanGuiContratto beanGuiContratto) throws DatiErrati, DatiDuplicati {
         try {
             Contratto contratto = Conversione.conversioneContratto(beanGuiContratto);
@@ -112,13 +89,7 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto, Contrat
         }
     }
 
-    /**
-     * Metodo che permette la modifica di un contratto
-     * @param beanGuiContratto
-     * @return il Bean Gui del contratto modificato
-     * @throws it.seerp.application.Exception.DatiErrati
-     * nel caso in cui si immettano dati errati
-     */
+    @Override
     public BeanGuiContratto modifica(BeanGuiContratto beanGuiContratto) throws DatiErrati {
         try {
             Contratto contratto = Conversione.conversioneContratto(beanGuiContratto);
@@ -135,10 +106,7 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto, Contrat
         return beanGuiContratto;
     }
 
-    /**
-     * Metodo che passa la lista di bean utilizzando l'operazioni del lato storage
-     * @return lista dei bean
-     */
+    @Override
     public ArrayList<Contratto> visualizzaTabella() {
         ArrayList<Contratto> list = new ArrayList<Contratto>();
         try {
