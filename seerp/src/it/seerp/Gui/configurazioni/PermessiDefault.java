@@ -41,7 +41,10 @@ public class PermessiDefault {
         /**
          *
          */
-        GestioneServizi
+        GestioneServizi,
+        
+        GestioneResponsabili
+
     }
 
     /**
@@ -62,6 +65,8 @@ public class PermessiDefault {
             return "gestione_contratti";
         } else if (con.equals(Categoria_Permesso.GestioneServizi)) {
             return "gestione_servizi";
+        } else if (con.equals(Categoria_Permesso.GestioneResponsabili)) {
+            return "gestione_responsabili";
         }
         return null;
     }
