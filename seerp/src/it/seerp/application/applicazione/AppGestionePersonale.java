@@ -45,6 +45,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
         try {
             OpDipendente a = new OpDipendente();
             Dipendente dip = Conversione.conversioneDipendente(user);
+            dip.setTipo("personale");
             a.inserisci(dip);
         } catch (ValidatorException e) {
             JOptionPane.showMessageDialog(null, "Dati duplicati");
@@ -60,6 +61,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
         try {
             OpResponsabile a = new OpResponsabile();
             Responsabile dip = Conversione.conversioneResponsabile(user);
+            dip.setTipo("personale");
             a.inserisci(dip);
         } catch (ValidatorException ex) {
             JOptionPane.showMessageDialog(null, "campi errati");
