@@ -3,7 +3,6 @@ package it.seerp.application.applicazione;
 import it.seerp.application.Exception.CancellazioneFallita;
 import it.seerp.application.Exception.DatiDuplicati;
 import it.seerp.application.Exception.DatiErrati;
-import it.seerp.application.Exception.RicercaFallita;
 import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.bean.BeanGuiEvento;
 import it.seerp.application.interfacce.GestioneAgenda;
@@ -23,15 +22,8 @@ import javax.swing.JOptionPane;
  */
 public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
 
-    /**
-     * Metodo che permette la visualizzazione della lista degli eventi
-     * @param listGui
-     * @return  Array List contenente la lista degli eventi
-     * @throws it.seerp.application.Exception.DatiErrati
-     * nel caso in cui vi siano dati errati
-     */
+    @Override
     public ArrayList<BeanGuiEvento> elenca(ArrayList<BeanGuiEvento> listGui,String usr) {
-        ArrayList<Evento> list;
         try {
             OpEvento ope = new OpEvento();
             ope.visualizzaElenco(usr);
@@ -45,6 +37,7 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
         return listGui;
     }
 
+    @Override
     public ArrayList<String> getEventiNotificare(int id) throws SQLException {
         SimpleDateFormat formatter_data = new SimpleDateFormat("dd/MM/yyyy");
         SimpleDateFormat formatter_ora = new SimpleDateFormat("HH:mm:ss");
@@ -59,18 +52,9 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
             s.add(formatter_data.format(ev.getData().getTime()) + " at "+ formatter_ora.format(ev.getOra().getTime()) + " - " + ev.getNome());
         }
         return s;
-
-
-
     }
 
-    /**
-     * Metodo che permette la visualizzazione dei dettagli di un singolo evento
-     * @param id
-     * @param gui 
-     * @return Bean Gui dell'evento
-     * @throws DatiErrati
-     */
+    @Override
     public BeanGuiEvento visualizzaDettagli(int id, BeanGuiEvento gui) throws DatiErrati {
         try {
             OpEvento ope = new OpEvento();
@@ -86,10 +70,7 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
         return gui;
     }
 
-    /**
-     * Metodo che permette la gestione delle notifiche
-     * @param beanGui
-     */
+    @Override
     public void notificaEventi(BeanGuiEvento beanGui) {
         try {
             OpEvento ope = new OpEvento();
@@ -105,14 +86,7 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
         }
     }
 
-    /**
-     * Metodo che permette l'inserimento di un nuovo evento
-     * @param beanGui
-     * @throws it.seerp.application.Exception.DatiErrati
-     * in caso di inserimento di dati errati
-     * @throws it.seerp.application.Exception.DatiDuplicati
-     * nel caso in cui esista l'evento che si tenta di inserire
-     */
+    @Override
     public void inserimento(BeanGuiEvento beanGui) throws DatiErrati, DatiDuplicati {
         try {
             OpEvento ope = new OpEvento();
@@ -127,14 +101,7 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
         }
     }
 
-    /**
-     * Metodo che permette la modifica di un evento
-     * @param beanGui
-     * @return
-     * Bean Gui dell'evento modificato
-     * @throws it.seerp.application.Exception.DatiErrati
-     * nel caso in cui si inseriscano dati errati
-     */
+    @Override
     public BeanGuiEvento modifica(BeanGuiEvento beanGui) throws DatiErrati {
         try {
             OpEvento ope = new OpEvento();
@@ -150,15 +117,7 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
         return beanGui;
     }
 
-    /**
-     * Metodo che permette la ricerca di un evento
-     * @param listGui
-     * @para list
-     * lista di tutti gli eventi
-     * @return la lista degli eventi che corrispondono ai criteri di ricerca
-     * @throws it.seerp.application.Exception.DatiErrati
-     * nel caso in cui si inseriscano dati errati
-     */
+    @Override
     public ArrayList<BeanGuiEvento> ricercaEvento(ArrayList<BeanGuiEvento> listGui) throws DatiErrati {
         try {
             OpEvento ope = new OpEvento();
@@ -179,36 +138,7 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
         return listGui;
     }
 
-    /**
-     * Metodo che permette la ricerca per nome di un evento
-     * @param beanGui
-     * @throws it.seerp.application.Exception.RicercaFallita
-     * nel caso in cui la ricerca non produca risultati
-
-    public ArrayList<BeanGuiEvento> ricercaPerNome(JTextField nome, ArrayList<BeanGuiEvento> listGui) throws DatiErrati, RicercaFallita {
-    try {
-    OpEvento ope = new OpEvento();
-    ArrayList<Evento> list = ope.ricercaEvento(nome.getText());
-    for (Evento eve : list) {
-    BeanGuiEvento eveGui = new BeanGuiEvento();
-    eveGui = Conversione.conversioneEvento(eve, eveGui);
-    listGui.add(eveGui);
-    }
-
-    } catch (SQLException se) {
-    se.printStackTrace();
-    JOptionPane.showMessageDialog(null, "Errore nel database!");
-    }
-    return listGui;
-    }
-
-    /**
-     * Metodo che permette la ricerca per giorno di un evento
-     * @throws it.seerp.application.Exception.DatiErrati
-     * nel caso in cui si inseriscano dati errati
-     * @throws it.seerp.application.Exception.CancellazioneFallita
-     * nel caso in cui il sistema fallisca nell'eliminazione dell'evento
-     */
+    @Override
     public void cancellaEvento(BeanGuiEvento beanGui) throws CancellazioneFallita {
         try {
             OpEvento ope = new OpEvento();
@@ -222,7 +152,12 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
     }
-     public void cancellaEvento(Evento bean) throws CancellazioneFallita {
+    /**
+     * Metodo che permette la cancellazione dell'evento
+     * @param bean Bean dell'evento da cancellare
+     * @throws it.seerp.application.Exception.CancellazioneFallita
+     */
+    public void cancellaEvento(Evento bean) throws CancellazioneFallita {
         try {
             OpEvento ope = new OpEvento();
             ope.cancella(bean);
@@ -234,15 +169,15 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
     }
+
+    @Override
      public void cancellaEvento(int id) throws CancellazioneFallita {
          Evento e= new Evento();
          e.setIdEvento(id);
          cancellaEvento(e);
      }
-    /**
-     * Metodo che passa la lista di bean utilizzando l'operazioni del lato storage
-     * @return lista dei bean
-     */
+
+    @Override
     public ArrayList<Evento> visualizzaTabella(String user) {
         ArrayList<Evento> list = new ArrayList<Evento>();
         try {
@@ -253,11 +188,6 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
             JOptionPane.showMessageDialog(null, "Errore nel database!");
         }
         return list;
-    }
-
-    @Override
-    public ArrayList<BeanGuiEvento> elenca(ArrayList<BeanGuiEvento> listGui) {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override

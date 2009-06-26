@@ -1,6 +1,8 @@
 package it.seerp.application.interfacce;
 
+import it.seerp.application.Exception.DatiDuplicati;
 import it.seerp.application.Exception.DatiErrati;
+import java.sql.SQLException;
 
 /**
  * Interfaccia applicazione per la Gestione Azienda
@@ -10,10 +12,13 @@ import it.seerp.application.Exception.DatiErrati;
 public interface GestioneAzienda<E> {
 
     /**
-     *
+     * Metodo che permette la modifica di un'azienda
      * @param beanGui
+     * Bean Gui dell'azienda da modificare
      * @return
+     * Bean Gui dell'azienda modificata
      * @throws it.seerp.application.Exception.DatiErrati
+     * nel caso in cui si inseriscano dati errati
      */
     public E modifica(E beanGui) throws DatiErrati;
 
@@ -25,4 +30,14 @@ public interface GestioneAzienda<E> {
      * nel caso in cui vi siano dati errati
      */
     public E visualizzaAzienda(E gui) throws DatiErrati;
+
+    /**
+     * Metodo che permette l'inserimento di un'Azienda
+     * @param BeanGuiAzienda
+     * Bean Guid ell'azienda da inserire
+     * @throws java.sql.SQLException
+     * @throws it.seerp.application.Exception.DatiErrati
+     * @throws it.seerp.application.Exception.DatiDuplicati
+     */
+    public void inserimento(E BeanGuiAzienda) throws SQLException, DatiErrati, DatiDuplicati;
 }

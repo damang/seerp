@@ -11,12 +11,11 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Ila
+ * Lato application della gestione Init
+ * @author Ila - Tommaso Cattolico
  */
 public class AppInit implements GestioneInit<BeanGuiAmministratore> {
   
-
     @Override
     public boolean check() {
         boolean check = false;

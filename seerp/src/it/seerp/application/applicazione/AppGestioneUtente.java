@@ -14,17 +14,13 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
- * classe per permette di effettuare le operazioni della Gestione
+ * Classe per permette di effettuare le operazioni della Gestione
  * degli Utenti
  * @author matteo
  */
 public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> {
 
-    /**
-     * Metodo che permette di visualizzare la lista degli utenti
-     * @param listGui
-     * @return la lista di tutti gli utenti
-     */
+    @Override
     public ArrayList<BeanGuiUtente> elenca(ArrayList<BeanGuiUtente> listGui) {
         try {
             OpeUtente ope = new OpeUtente();
@@ -44,16 +40,7 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
         return listGui;
     }
 
-    /**
-     * Metodo che permette di ricercare un utente del sistema
-     * @param list
-     * la lista di tutti gli utenti
-     * @return l'utente se è trovato
-     * @throws it.seerp.application.Exception.DatiErrati
-     * nel momento in cui i dati inseriti sono errati
-     * @throws it.seerp.application.Exception.RicercaFallita
-     * nel momento in cui nn viene trovato l'elemento e la ricerca fallisce
-     */
+    @Override
     public ArrayList<BeanGuiUtente> ricerca(ArrayList<BeanGuiUtente> list) throws DatiErrati, RicercaFallita {
         try {
             OpeUtente ope = new OpeUtente();
@@ -73,11 +60,7 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
         return list;
     }
 
-    /**
-     * Metodo che permette di eliminare un utente
-     * @param user
-     * l'utente che si vuole eliminare
-     */
+    @Override
     public void elimina(int id,BeanGuiUtente user) {
         try {
             OpeUtente ope = new OpeUtente();
@@ -92,11 +75,7 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
         }
     }
 
-    /**
-     * Metodo che permette di nascondere un utente al sistema senza eliminarlo in maniera permanente
-     * @param user
-     * l'utente che si vuole eliminare logicamente
-     */
+    @Override
     public void eliminazioneLogica(BeanGuiUtente user) {
         try {
             OpeUtente ope = new OpeUtente();
@@ -111,40 +90,18 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
         }
     }
 
-    /**
-     * Metodo che permette di inserire un utente
-     * @param user
-     * l'utente che si vuole inserire
-     * @return
-     * l'utente inserito
-     * @throws it.seerp.application.Exception.DatiErrati
-     * nel caso in cui i dati inseriti sono errati
-     * @throws it.seerp.application.Exception.DatiDuplicati
-     * nel caso in cui i dati inseriti sono duplicati
-     */
     @Override
     public void inserisci(BeanGuiUtente user) throws DatiErrati, DatiDuplicati, SQLException {
         try {
             OpeUtente a = new OpeUtente();
             Utente utente = Conversione.conversioneUtente(user);
             a.inserimento(utente);
-
         } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
-
     }
 
-    /**
-     * Metodo che permette di modificare i dati di un utente
-     * @param user
-     * l'utente del quale si vogliono modificare i dati
-     * @return
-     * l'utente modificato
-     * @throws it.seerp.application.Exception.DatiErrati
-     * nel caso in cui i dati inseriti sono errati
-     */
     @Override
     public BeanGuiUtente modifica(int id,BeanGuiUtente user) throws DatiErrati, SQLException{
         try {
@@ -159,15 +116,7 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
         return user;
     }
 
-    /**
-     * Metodo che permette di visualizzare i dati di un utente
-     * @param user
-     * l'username dell'utente
-     * @param beanGui
-     * @return tutti i dati di un utente
-     * @throws it.seerp.application.Exception.DatiErrati
-     * nel caso in cui i dati inseriti sono errati
-     */
+    @Override
     public BeanGuiUtente visualizzaDati(int user, BeanGuiUtente beanGui) throws DatiErrati {
         try {
             OpeUtente ope = new OpeUtente();
@@ -183,12 +132,7 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
         return beanGui;
     }
 
-
-
-    /**
-     * Metodo che passa la lista di bean utilizzando l'operazioni del lato storage
-     * @return lista dei bean
-     */
+    @Override
     public ArrayList<Utente> visualizzaTabella() {
         ArrayList<Utente> list = new ArrayList<Utente>();
         try {

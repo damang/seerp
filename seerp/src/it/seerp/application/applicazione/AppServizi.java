@@ -20,11 +20,7 @@ import javax.swing.JOptionPane;
  */
 public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio,BeanGuiFornitore> {
 
-    /**
-     * Metodo che permette di visualizzare l'elenco dei servizi
-     * @param listGui
-     * @return ArrayList contenente i servizi
-     */
+    @Override
     public ArrayList<BeanGuiServizio> elenca(ArrayList<BeanGuiServizio> listGui) {
         try {
             OpServizio ope = new OpServizio();
@@ -44,16 +40,7 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio,Bea
         return listGui;
     }
 
-    /**
-     * Metodo che permette la ricerca di un servizio
-     * @param listGui
-     * Array List di bean gui da riempire coi dati che corrispondono ai criteri di ricerca
-     * @return ArrayList con i servizi che corrispondono al nome inserito
-     * @throws it.seerp.application.Exception.DatiErrati
-     * nel caso in cui si immettano dati errati
-     * @throws it.seerp.application.Exception.RicercaFallita
-     * nel caso in cui la ricerca non produce risultati
-     */
+    @Override
     public ArrayList<BeanGuiServizio> ricerca(ArrayList<BeanGuiServizio> listGui) throws DatiErrati {
         try {
             OpServizio ope = new OpServizio();
@@ -73,13 +60,7 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio,Bea
         return listGui;
     }
 
-    /**
-     * Metodo che permette l'inserimento di un nuovo servizio
-     * @param beanGui
-     * @throws it.seerp.application.Exception.DatiErrati
-     * nel caso in cui si immettano dati errati
-     * @throws DatiDuplicati
-     */
+    @Override
     public void inserisci(BeanGuiServizio beanGui) throws DatiErrati, DatiDuplicati, SQLException {
         try {
             OpServizio ope = new OpServizio();
@@ -91,13 +72,6 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio,Bea
         }
     }
 
-/**
-     * Metodo che permette la visualizzazione di un servizio
-     * @param nome
-     * nome del servizio
-     * @param beanGui
-     * @return Bean Gui del servizio da visualizzare
-     */
     @Override
     public BeanGuiServizio visualizza(int id, BeanGuiServizio beanGui, BeanGuiFornitore forni) {
         try {
@@ -122,13 +96,6 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio,Bea
         return beanGui;
     }
 
-    /**
-     * Metodo che permette la modifica di un servizio
-     * @param beanGui
-     * @return Bean Gui del servizio modificato
-     * @throws it.seerp.application.Exception.DatiErrati
-     * nel caso in cui si immettano dati errati durante la modifica
-     */
     @Override
     public BeanGuiServizio modifica(int id,BeanGuiServizio beanGui) throws DatiErrati, SQLException {
         try {
@@ -144,10 +111,7 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio,Bea
         return beanGui;
     }
 
-    /**
-     * Metodo che passa la lista di bean utilizzando l'operazioni del lato storage
-     * @return lista dei bean
-     */
+    @Override
     public ArrayList<Servizio> visualizzaTabella() {
         ArrayList<Servizio> list = new ArrayList<Servizio>();
         try {

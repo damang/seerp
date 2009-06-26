@@ -28,6 +28,7 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
     /**
      * Metodo che permette di inserire un nuovo Contatto
      * @param cont il Contatto che si vuole inserire
+     * @throws SQLException
      */
     public void inserisciContatto(BeanGuiContatto cont) throws SQLException {
         super.inserisci(cont);
@@ -44,18 +45,20 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
     /**
      * Metodo che permette di inserire un nuovo Cliente
      * @param clien il Cliente che si vuole inserire
+     * @throws SQLException
+     * @throws DatiDuplicatiEx
      */
-    public void inserisciCliente(BeanGuiCliente clien) throws SQLException,DatiDuplicatiEx {
+    public void inserisciCliente(BeanGuiCliente clien) throws SQLException, DatiDuplicatiEx {
         //  super.inserisci(clien);
-          try{
+        try {
             OpCliente a = new OpCliente();
             Cliente cl = Conversione.conversioneCliente(clien);
             cl.setTipo("extraazienda");
             a.inserisci(cl);
-          }
-          catch(ValidatorException ex){
-          JOptionPane.showMessageDialog(null, "campi errati");}
- 
+        } catch (ValidatorException ex) {
+            JOptionPane.showMessageDialog(null, "campi errati");
+        }
+
     }
 
     /**
@@ -99,23 +102,28 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
     /**
      * Metodo che permette di inserire un nuovo Fornitore
      * @param forn il Fornitore che si vuole inserire
+     * @throws SQLException
+     * @throws ValidatorException
+     * @throws DatiDuplicatiEx
      */
-    public void inserisciFornitore(BeanGuiFornitore forn) throws SQLException,ValidatorException,DatiDuplicatiEx {
+    public void inserisciFornitore(BeanGuiFornitore forn) throws SQLException, ValidatorException, DatiDuplicatiEx {
         //  super.inserisci(forn);
-      try{
+        try {
             OpFornitore a = new OpFornitore();
             Fornitore fo = Conversione.conversioneFornitore(forn);
             fo.setTipo("extraazienda");
             a.inserisci(fo);
-            }
-          catch(ValidatorException ex){
-          JOptionPane.showMessageDialog(null, "campi errati");}
+        } catch (ValidatorException ex) {
+            JOptionPane.showMessageDialog(null, "campi errati");
+        }
     }
 
     /**
      * Metodo che permette di modificare i dati di un Contatto
+     * @param id
      * @param cont il Contatto che si deve modificare
      * @return il Contatto modificato
+     * @throws SQLException
      */
     public BeanGuiContatto modificaContatto(int id, BeanGuiContatto cont) throws SQLException {
 //        super.modifica(cont);
@@ -133,8 +141,10 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
 
     /**
      * Metodo che permette di modificare i dati di un Cliente
+     * @param id
      * @param clien il cliente che si deve modificare
      * @return il cliente modificato
+     * @throws SQLException
      */
     public BeanGuiCliente modificaCliente(int id, BeanGuiCliente clien) throws SQLException {
         //   super.modifica(clien);
@@ -142,11 +152,9 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
             OpExtraAzienda a = new OpExtraAzienda();
             Cliente cl = Conversione.conversioneCliente(clien);
             cl.setIdUtente(id);
-
             a.modifica(cl);
             this.visualizzaDatiCliente(id, clien);
             clien.setValidatorEnabled(false);
-
         // clien = Conversione.conversioneCliente(cl, clien);
         } catch (ValidatorException e) {
             e.printStackTrace();
@@ -157,8 +165,10 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
 
     /**
      * Metodo che permette di modificare i dati di un Fornitore
+     * @param id
      * @param forn il Fornitore che si vuole modificare
      * @return il Fornitore modificato
+     * @throws SQLException
      */
     public BeanGuiFornitore modificaFornitore(int id, BeanGuiFornitore forn) throws SQLException {
         try {
@@ -169,10 +179,8 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
             forn.setValidatorEnabled(false);
             this.visualizzaDatiFornitore(id, forn);
         } catch (SQLException se) {
-
             JOptionPane.showMessageDialog(null, "Errore nel database!");
         } catch (ValidatorException e) {
-
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
         return forn;
@@ -188,7 +196,6 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
             OpCliente ope = new OpCliente();
             list = ope.elencaCliente();
         } catch (SQLException se) {
-
             JOptionPane.showMessageDialog(null, "Errore nel database!");
         }
         return list;
@@ -204,24 +211,24 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
             OpFornitore ope = new OpFornitore();
             list = ope.elencaFornitore();
         } catch (SQLException se) {
-
             JOptionPane.showMessageDialog(null, "Errore nel database!");
         }
         return list;
     }
 
+    /**
+     * Metodo che permette la cancellazione di un utente Extra Azienda
+     * @param id ID dell'utente
+     * @param e Bean Gui dell'utente
+     */
     public void eliminaExtraAziena(int id, BeanGuiExtraAzienda e) {
-
         try {
             ExtraAzienda extra = new ExtraAzienda();
-
             OpExtraAzienda ope = new OpExtraAzienda();
             extra = Conversione.conversioneExtraAzienda(e);
             extra.setIdUtente(id);
             ope.elimina(extra);
-
         } catch (SQLException se) {
-
             JOptionPane.showMessageDialog(null, "Errore nel database!");
         }
     }
