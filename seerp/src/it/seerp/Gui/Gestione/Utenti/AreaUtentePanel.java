@@ -6,6 +6,7 @@
  */
 package it.seerp.Gui.Gestione.Utenti;
 
+import it.seerp.Gui.configurazioni.Gui.ConfigurazioneUtente.TIPO_UTENTE_CONST;
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.configurazioni.Gui.ConfigurazioneUtente;
 import it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla;
@@ -14,6 +15,7 @@ import it.seerp.Gui.observablePanel.ObservableJPanel;
 import it.seerp.application.bean.BeanGuiFornitore;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import it.seerp.application.validation.NotEmptyValidator;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import javax.swing.JOptionPane;
@@ -43,7 +45,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
     BeanGuiCliente cliente;
     BeanGuiResponsabile responsabile;
     BeanGuiDipendente dipendente;
-    ConfigurazioneUtente.TIPO_UTENTE_CONST tipoUtente;
+    ConfigurazioneUtente.TIPO_UTENTE_CONST tipoU;
     Generica tModel;
     MenuUtente menu;
     ConfigurazioneOperazioni.TIPO_OPE_CONST tipoOp;
@@ -51,6 +53,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
     /** Creates new form AreaPersonalePanel */
     public AreaUtentePanel() {
         initComponents();
+
     }
 
     /**
@@ -59,7 +62,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
      * @throws java.sql.SQLException
      */
     public AreaUtentePanel(ConfigurazioneUtente.TIPO_UTENTE_CONST tipoUtente) throws SQLException {
-        this.tipoUtente = tipoUtente;
+        this.tipoU = tipoUtente;
         this.settaTableModel();
         initComponents();
         settaPanel();
@@ -72,8 +75,16 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         legameBeanFornitore();
         legameBeanCliente();
         editabile(false);
-       
 
+
+    }
+
+    public TIPO_UTENTE_CONST getTipoUtente() {
+        return tipoU;
+    }
+
+    public void setTipoUtente(TIPO_UTENTE_CONST tipoUtente) {
+        this.tipoU = tipoUtente;
     }
 
     public MenuUtente getMenu() {
@@ -684,20 +695,20 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
             Integer id = (Integer) jXTable1.getValueAt(i, 0);
 
-            if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
-                cliente.setValidatorEnabled(false);
+            if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
+
                 AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
                 operazione.visualizzaDatiCliente(id, cliente);
-            } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
-                dipendente.setValidatorEnabled(false);
+            } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
+
                 AppGestionePersonale operazione = new AppGestionePersonale();
                 operazione.visualizzaDatiDipendente(id, dipendente);
-            } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
-                fornitore.setValidatorEnabled(false);
+            } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
+
                 AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
                 operazione.visualizzaDatiFornitore(id, fornitore);
-            } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
-                responsabile.setValidatorEnabled(false);
+            } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
+
                 AppGestionePersonale operazione = new AppGestionePersonale();
                 operazione.visualizzaDatiResponsabile(id, responsabile);
             }
@@ -718,12 +729,12 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             try {
 
 
-                if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
+                if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
                     cliente.setValidatorEnabled(false);
                     AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
                     operazione.inserisciCliente(cliente);
 
-                } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
+                } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
 
                     AppGestionePersonale operazione = new AppGestionePersonale();
                     operazione.inserisciDipendente(dipendente);
@@ -731,13 +742,13 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
 
 
-                } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
+                } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
 
                     AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
                     operazione.inserisciFornitore(fornitore);
 
 
-                } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
+                } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
 
                     AppGestionePersonale operazione = new AppGestionePersonale();
                     operazione.inserisciResponsabile(responsabile);
@@ -752,13 +763,12 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             } catch (DatiDuplicatiEx ex) {
                 JOptionPane.showMessageDialog(null, "dati duplicati");
                 this.inizializzazione(" ");
-                editabile(true);
+                editabile(false);
                 this.buttonAnnulla1.setEnabled(true);
                 this.buttonSalva1.setEnabled(true);
 
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "errore nel database");
-                ex.printStackTrace();
                 this.inizializzazione(" ");
                 editabile(true);
                 this.buttonAnnulla1.setEnabled(true);
@@ -776,7 +786,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
                 }
 
                 Integer id = (Integer) jXTable1.getValueAt(i, 0);
-                if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
+                if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
 
 
 
@@ -784,14 +794,14 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
                     //cliente.setValidatorEnabled(true);
                     operazione.modificaCliente(id, cliente);
 
-                } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
+                } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
 
                     AppGestionePersonale operazione = new AppGestionePersonale();
                     //dipendente.setValidatorEnabled(true);
                     operazione.modificaDipendente(id, dipendente);
 
 
-                } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
+                } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
 
 
                     AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
@@ -800,7 +810,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
 
 
-                } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
+                } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
 
 
 
@@ -823,7 +833,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
                 this.buttonAnnulla1.setEnabled(true);
                 this.buttonSalva1.setEnabled(true);
 
-            } 
+            }
         }
     }//GEN-LAST:event_buttonSalva1MouseClicked
 
@@ -834,6 +844,8 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         this.buttonAnnulla1.setEnabled(false);
         this.buttonSalva1.setEnabled(false);
         this.inizializzazione("");
+        if (this.tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
+        }
 
     }//GEN-LAST:event_buttonAnnulla1MouseClicked
 
@@ -893,25 +905,25 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
         Integer id = (Integer) jXTable1.getValueAt(i, 0);
 
-        if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
+        if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
 
             AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
             operazione.eliminaExtraAziena(id, cliente);
 
-        } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
+        } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
 
             AppGestionePersonale operazione = new AppGestionePersonale();
             operazione.eliminaDipendente(id, dipendente);
 
 
-        } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
+        } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
 
 
             AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
             operazione.eliminaExtraAziena(id, fornitore);
 
 
-        } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
+        } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
 
             AppGestionePersonale operazione = new AppGestionePersonale();
             operazione.eliminaResponsabile(id, responsabile);
@@ -1041,6 +1053,22 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
     }
 
+    public BeanGuiCliente getCliente() {
+        return cliente;
+    }
+
+    public BeanGuiDipendente getDipendente() {
+        return dipendente;
+    }
+
+    public BeanGuiFornitore getFornitore() {
+        return fornitore;
+    }
+
+    public BeanGuiResponsabile getResponsabile() {
+        return responsabile;
+    }
+
     /**
      *
      * @param flag
@@ -1076,10 +1104,10 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
     private void settaPanel() throws SQLException {
 
-        if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
+        if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
 
             this.jPanel13.setVisible(false);
-        } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
+        } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
             AppRuoli app = new AppRuoli();
 
             ruolo.removeAllItems();
@@ -1091,11 +1119,11 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             this.jPanel18.setVisible(false);
             this.jPanel19.setVisible(false);
             this.jPanel17.setVisible(false);
-        } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
+        } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
 
             this.jPanel13.setVisible(false);
 
-        } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
+        } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
             AppRuoli app = new AppRuoli();
 
             ruolo.removeAllItems();
@@ -1113,20 +1141,92 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
     private void settaTableModel() throws SQLException {
 
-        if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
+        if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
             tModel = new ClienteTm();
 
-        } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
+        } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
             tModel = new DipendenteTm();
 
-        } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
+        } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
             tModel = new FornitoreTm();
 
 
-        } else if (tipoUtente.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
+        } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
             tModel = new ResponsabileTm();
 
         }
 
     }
+
+    public void validation(Boolean f) {
+        if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
+            responsabile.setValidatorEnabled(f);
+            ((NotEmptyValidator) responsabile.getNome().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) responsabile.getCognome().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) responsabile.getCodiceFiscale().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) responsabile.getTxtProvincia().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) responsabile.getTxtPassword().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) responsabile.getTxtCitta().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) responsabile.getTxtEmail().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) responsabile.getTxtUsername().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) responsabile.getTxtTelefono().getInputVerifier()).setEnabled(f);
+        }
+        if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
+             fornitore.setValidatorEnabled(f);
+            ((NotEmptyValidator) fornitore.getNome().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) fornitore.getCognome().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) fornitore.getCodiceFiscale().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) fornitore.getPIva().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) fornitore.getTxtPassword().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) fornitore.getTxtCitta().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) fornitore.getTxtEmail().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) fornitore.getFax().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) fornitore.getTxtProvincia().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) fornitore.getRagioneSociale().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) fornitore.getTxtUsername().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) fornitore.getTxtTelefono().getInputVerifier()).setEnabled(f);
+        }
+        if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
+             cliente.setValidatorEnabled(f);
+            ((NotEmptyValidator) cliente.getNome().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) cliente.getCognome().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) cliente.getCodiceFiscale().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) cliente.getPIva().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) cliente.getTxtPassword().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) cliente.getTxtCitta().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) cliente.getTxtEmail().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) cliente.getFax().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) cliente.getTxtProvincia().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) cliente.getRagioneSociale().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) cliente.getTxtUsername().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) cliente.getTxtTelefono().getInputVerifier()).setEnabled(f);
+        }
+        if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
+            ((NotEmptyValidator) fornitore.getNome().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) fornitore.getCognome().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) fornitore.getCodiceFiscale().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) fornitore.getPIva().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) fornitore.getTxtPassword().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) fornitore.getTxtCitta().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) fornitore.getTxtEmail().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) fornitore.getFax().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) fornitore.getTxtProvincia().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) fornitore.getRagioneSociale().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) fornitore.getTxtUsername().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) fornitore.getTxtTelefono().getInputVerifier()).setEnabled(f);
+        }
+        if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
+             fornitore.setValidatorEnabled(f);
+            ((NotEmptyValidator) dipendente.getNome().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) dipendente.getCognome().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) dipendente.getCodiceFiscale().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) dipendente.getTxtProvincia().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) dipendente.getTxtPassword().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) dipendente.getTxtCitta().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) dipendente.getTxtEmail().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) dipendente.getTxtUsername().getInputVerifier()).setEnabled(f);
+            ((NotEmptyValidator) dipendente.getTxtTelefono().getInputVerifier()).setEnabled(f);
+        }
+    }
 }
+
