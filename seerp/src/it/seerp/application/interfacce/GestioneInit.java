@@ -2,6 +2,7 @@ package it.seerp.application.interfacce;
 
 import it.seerp.application.Exception.DatiDuplicati;
 import it.seerp.application.Exception.DatiErrati;
+import it.seerp.application.Exception.ValidatorException;
 import java.sql.SQLException;
 
 /**
@@ -18,11 +19,11 @@ public interface GestioneInit<G> {
      * @throws it.seerp.application.Exception.DatiErrati
      * @throws it.seerp.application.Exception.DatiDuplicati
      */
-    public void inserimento(G beanGuiAmministratore) throws SQLException, DatiErrati, DatiDuplicati;
+    public void inserimento(G beanGuiAmministratore) throws SQLException, DatiErrati, DatiDuplicati,ValidatorException;
 
     /**
      * Metodo che controlla se esiste già un Amministratore nel sistema
      * @return true o false a seconda del controllo
      */
-    public boolean check();
+    public boolean check() throws SQLException;
 }
