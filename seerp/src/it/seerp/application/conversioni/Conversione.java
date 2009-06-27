@@ -217,7 +217,7 @@ public class Conversione {
         Servizio servizio = new Servizio();
 
         servizio.setDescrizione(pGui.getDescrizione().getText());
-        servizio.setDisponibilita(Boolean.parseBoolean(pGui.getDisponibilita().getText()));
+        servizio.setDisponibilita(pGui.getDisponibilita().isSelected());
         servizio.setQuantita(Integer.parseInt(pGui.getQuantita().getText()));
         servizio.setTipo(pGui.getTipo().getText());
         servizio.setPrezzo(Double.parseDouble(pGui.getPrezzo().getText()));
@@ -238,7 +238,7 @@ public class Conversione {
 
         gui.getTipo().setText(s.getTipo());
         gui.getDescrizione().setText(s.getDescrizione());
-        gui.getDisponibilita().setText(s.getDisponibilita().toString());
+        gui.getDisponibilita().setSelected(s.getDisponibilita());
         gui.getQuantita().setText(s.getQuantita().toString());
         gui.getPrezzo().setText(s.getPrezzo().toString());
         gui.getIva().setText(s.getIva().toString());

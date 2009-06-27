@@ -3,6 +3,7 @@ package it.seerp.Gui.Gestione.Servizi;
 
 import it.seerp.application.bean.BeanGuiServizioAssociato;
 import it.seerp.application.bean.BeanGuiServizio;
+import javax.swing.JCheckBox;
 
 /**
  *
@@ -389,7 +390,7 @@ public class FrameServizi extends javax.swing.JFrame {
     public void legameBean() {
         servizio.setQuantita(qnt);
         servizio.setPrezzoUnitario(prz1);
-        ser.setDisponibilita(disponibilita);
+        ser.setDisponibilita(new JCheckBox());
         ser.setIva(iva);
         ser.setQuantita(qnt);
         ser.setPrezzo(prz);
@@ -421,7 +422,7 @@ public class FrameServizi extends javax.swing.JFrame {
 
         qnt.setText(s);
         prz.setText(s);
-        disponibilita.setText(s);
+       // disponibilita.setText(s);
         tipo.setText(s);
         iva.setText(s);
         descrizione.setText(s);
