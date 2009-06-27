@@ -29,7 +29,7 @@ public class OpAzienda {
      * @throws java.sql.SQLException
      * @throws it.seerp.storage.Exception.DatiErratiEx
      */
-    public void inserimento(Azienda az) throws SQLException, DatiErratiEx {
+    public void inserimento(Azienda az) throws SQLException {
         PreparedStatement stmt = null;
         connessione = (Connection) ConnectionPool.getConnection();
         String query = "INSERT INTO azienda(citta,email,fax,indirizzo,nazione,PIVA,regioneSociale,telefono)" +
@@ -60,7 +60,7 @@ public class OpAzienda {
      * @throws java.sql.SQLException
      * @throws it.seerp.storage.Exception.DatiErratiEx
      */
-    public Azienda modifica(Azienda az) throws SQLException, DatiErratiEx {
+    public Azienda modifica(Azienda az) throws SQLException {
         connessione = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
         String query = "UPDATE azienda SET citta=?,email=?,fax=?,indirizzo=?,nazione=?,PIVA=?,regioneSociale=?,telefono=?" +

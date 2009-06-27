@@ -15,12 +15,14 @@ import it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla;
 import it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva;
 import it.seerp.Gui.configurazioni.Gui.ConfigurazioneOperazioni;
 import it.seerp.Gui.configurazioni.Screen;
+import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.applicazione.AppAgenda;
 import it.seerp.application.bean.BeanGuiEvento;
 import it.seerp.application.conversioni.Conversione;
 import it.seerp.storage.ejb.Evento;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -335,17 +337,18 @@ public class datiEvento extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonAnnulla1ActionPerformed
 
     private void buttonOperazioneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOperazioneActionPerformed
-       if(tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.VISUALIZZA)) {
+        try {
+        if(tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.VISUALIZZA)) {
            //this.setVisible(false);
            modifica();
        }
-           
        else if(tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI)) {
-           AppAgenda ap= new AppAgenda();
-           ap.inserimento(be);
-           pannel.reset();
-           pannel.getMenu().setButtonEnabled(true);
-           this.setVisible(false);
+           
+                AppAgenda ap = new AppAgenda();
+                ap.inserimento(be);
+                pannel.reset();
+                pannel.getMenu().setButtonEnabled(true);
+                this.setVisible(false);
        }
        else if(tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.MODIFICA)){
            AppAgenda ap= new AppAgenda();
@@ -354,21 +357,30 @@ public class datiEvento extends javax.swing.JDialog {
            pannel.getMenu().setButtonEnabled(true);
            this.setVisible(false);
        }
+         } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Errore dal database: " + ex.getErrorCode());
+            } catch (ValidatorException ex) {
+                 JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
     }//GEN-LAST:event_buttonOperazioneActionPerformed
 
     /**
     * @param args the command line arguments
     */
     public void visualizza(Evento e) {
-       //final datiEvento f = new datiEvento(new JFrame(), true);
-        resetAll();
-        //txt_ora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("H:mm:ss"))));
-        buttonOperazione.setText("Modifica");
-        tipoOp=ConfigurazioneOperazioni.TIPO_OPE_CONST.VISUALIZZA;
-        Conversione.conversioneEvento(e, be);
-        //f.getButtonOperazione().setText("Ok");
-        setEditable(false);
-        setVisible(true);
+        try {
+            //final datiEvento f = new datiEvento(new JFrame(), true);
+            resetAll();
+            //txt_ora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("H:mm:ss"))));
+            buttonOperazione.setText("Modifica");
+            tipoOp = ConfigurazioneOperazioni.TIPO_OPE_CONST.VISUALIZZA;
+            Conversione.conversioneEvento(e, be);
+            //f.getButtonOperazione().setText("Ok");
+            setEditable(false);
+            setVisible(true);
+        } catch (ValidatorException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
 
     }
     public void inserisci()
@@ -391,14 +403,18 @@ public class datiEvento extends javax.swing.JDialog {
         setVisible(true);
     }
     public void modifica(Evento e) {
-        resetAll();
-        //txt_ora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("H:mm:ss"))));
-        Conversione.conversioneEvento(e, be);
-        setEditable(true);
-        buttonOperazione.setText("Salva");
-        tipoOp=ConfigurazioneOperazioni.TIPO_OPE_CONST.MODIFICA;
-        pannel.getMenu().setButtonEnabled(false);
-        setVisible(true);
+        try {
+            resetAll();
+            //txt_ora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("H:mm:ss"))));
+            Conversione.conversioneEvento(e, be);
+            setEditable(true);
+            buttonOperazione.setText("Salva");
+            tipoOp = ConfigurazioneOperazioni.TIPO_OPE_CONST.MODIFICA;
+            pannel.getMenu().setButtonEnabled(false);
+            setVisible(true);
+        } catch (ValidatorException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
     }
 
     public ButtonAnnulla getButtonAnnulla() {

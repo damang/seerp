@@ -71,7 +71,7 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
     }
 
     @Override
-    public void inserimento(BeanGuiEvento beanGui) throws DatiErrati, SQLException, ValidatorException {
+    public void inserimento(BeanGuiEvento beanGui) throws SQLException, ValidatorException {
       
             OpEvento ope = new OpEvento();
             Evento eve = Conversione.conversioneEvento(beanGui);
