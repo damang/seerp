@@ -78,7 +78,7 @@ public class AppRuoli implements GestioneRuoli<BeanGuiRuolo, Ruolo> {
     }
 
     @Override
-    public ArrayList<Ruolo> visualizzaTabella()throws SQLException,ValidatorException  {
+    public ArrayList<Ruolo> visualizzaTabella()throws SQLException  {
         ArrayList<Ruolo> list;
         //ArrayList<BeanGuiRuolo> listGui= new ArrayList<BeanGuiRuolo>();
    

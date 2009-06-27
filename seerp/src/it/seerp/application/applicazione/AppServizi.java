@@ -83,15 +83,12 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio> {
     }
 
     @Override
-    public ArrayList<Servizio> visualizzaTabella() {
+    public ArrayList<Servizio> visualizzaTabella()throws SQLException{
         ArrayList<Servizio> list = new ArrayList<Servizio>();
-        try {
+       
             OpServizio ope = new OpServizio();
             list = ope.visualizzaElenco();
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
-        }
+       
         return list;
     }
 }
