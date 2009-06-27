@@ -31,7 +31,7 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
      * @param cont il Contatto che si vuole inserire
      * @throws SQLException
      */
-    public void inserisciContatto(BeanGuiContatto cont) throws SQLException, DatiDuplicati, ValidatorException{
+    public void inserisciContatto(BeanGuiContatto cont) throws SQLException, ValidatorException{
         super.inserisci(cont);
             OpContatto a = new OpContatto();
             Contatto co = Conversione.conversioneContatto(cont);
@@ -45,7 +45,7 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
      * @throws SQLException
      * @throws DatiDuplicatiEx
      */
-    public void inserisciCliente(BeanGuiCliente clien) throws SQLException, DatiDuplicatiEx, ValidatorException {
+    public void inserisciCliente(BeanGuiCliente clien) throws SQLException, ValidatorException {
         //  super.inserisci(clien);
        
             OpCliente a = new OpCliente();
@@ -89,7 +89,7 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
      * @throws ValidatorException
      * @throws DatiDuplicatiEx
      */
-    public void inserisciFornitore(BeanGuiFornitore forn) throws SQLException, ValidatorException, DatiDuplicatiEx {
+    public void inserisciFornitore(BeanGuiFornitore forn) throws SQLException, ValidatorException {
         //  super.inserisci(forn);
        
             OpFornitore a = new OpFornitore();
