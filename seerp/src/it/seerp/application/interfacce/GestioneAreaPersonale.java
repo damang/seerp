@@ -2,6 +2,8 @@ package it.seerp.application.interfacce;
 
 import it.seerp.application.bean.BeanGuiUtente;
 import it.seerp.application.Exception.DatiErrati;
+import it.seerp.application.Exception.ValidatorException;
+import java.sql.SQLException;
 
 /**
  * Interfaccia applicazione per la Gestione Area Personale
@@ -15,7 +17,7 @@ public interface GestioneAreaPersonale<U extends BeanGuiUtente> {
      * @param beanGui
      * @return il Bean Grafico contenente i dati dell'utente
      */
-    public U visualizzaDati(int id, U utente);
+    public U visualizzaDati(int id, U utente)  throws SQLException, ValidatorException;
 
     /**
      * Metodo che permette di modificare la password di un utente
@@ -24,5 +26,5 @@ public interface GestioneAreaPersonale<U extends BeanGuiUtente> {
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui i dati inseriti sono errati
      */
-    public U modificaPassword(U utente) throws DatiErrati;
+    public U modificaPassword(U utente) throws SQLException, ValidatorException;
 }
