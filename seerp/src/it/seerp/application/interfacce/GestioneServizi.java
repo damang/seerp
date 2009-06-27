@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @param <U>
  * @author Luisa - Tommaso Cattolico
  */
-public interface GestioneServizi<E, U, G> {
+public interface GestioneServizi<E, U> {
 
     /**
      * Metodo che passa la lista di bean utilizzando l'operazioni del lato storage
@@ -54,7 +54,7 @@ public interface GestioneServizi<E, U, G> {
      * @param beanGui
      * @return Bean Gui del servizio da visualizzare
      */
-    public E visualizza(int nome, E beanGui, G beanGuiFornitore);
+    public E visualizza(int nome, E beanGui);
 
     /**
      * Metodo che permette la modifica di un servizio
