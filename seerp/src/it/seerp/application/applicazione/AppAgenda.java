@@ -14,6 +14,8 @@ import it.seerp.storage.Operazioni.OpEvento;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,18 +24,14 @@ import javax.swing.JOptionPane;
  */
 public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
 
+ 
     @Override
-    public ArrayList<BeanGuiEvento> elenca(ArrayList<BeanGuiEvento> listGui,String usr) {
-        try {
-            OpEvento ope = new OpEvento();
+    public ArrayList<BeanGuiEvento> elenca(ArrayList<BeanGuiEvento> listGui,String usr) throws SQLException {
+        
+            OpEvento ope;
+            ope = new OpEvento();
             ope.visualizzaElenco(usr);
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (ValidatorException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
+        
         return listGui;
     }
 
@@ -55,50 +53,30 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
     }
 
     @Override
-    public BeanGuiEvento visualizzaDettagli(int id, BeanGuiEvento gui) throws DatiErrati {
-        try {
+    public BeanGuiEvento visualizzaDettagli(int id, BeanGuiEvento gui) throws DatiErrati,SQLException,ValidatorException {
             OpEvento ope = new OpEvento();
             Evento eve = ope.visualizza(id);
             gui = Conversione.conversioneEvento(eve, gui);
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (ValidatorException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
-        return gui;
+            return gui;
     }
 
     @Override
-    public void notificaEventi(BeanGuiEvento beanGui) {
-        try {
+    public void notificaEventi(BeanGuiEvento beanGui) throws SQLException, ValidatorException {
+        
             OpEvento ope = new OpEvento();
             Evento eve = Conversione.conversioneEvento(beanGui);
             ope.notificaEvento(eve);
             JOptionPane.showMessageDialog(null, "Notifica creata con successo");
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (ValidatorException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
+        
     }
 
     @Override
-    public void inserimento(BeanGuiEvento beanGui) throws DatiErrati, DatiDuplicati {
-        try {
+    public void inserimento(BeanGuiEvento beanGui) throws DatiErrati, SQLException, ValidatorException {
+      
             OpEvento ope = new OpEvento();
             Evento eve = Conversione.conversioneEvento(beanGui);
             ope.inserimento(eve);
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (ValidatorException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
+       
     }
 
     @Override

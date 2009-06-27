@@ -35,7 +35,7 @@ public class ClienteTm extends Generica<Cliente> {
         refresh();
     }
 
-    public void refresh() {
+    public void refresh() throws SQLException {
     AppGestioneExtraAzienda op = new AppGestioneExtraAzienda();
         Iterator<Cliente> it = op.visualizzaTabellaCliente().iterator();
        while (it.hasNext()) {

@@ -8,7 +8,7 @@ package it.seerp.storage.Exception;
  * viene lanciata quando si vuole effettuare una operazione su un utente non
  * esistente nel database
  */
-public class UtenteNonEsistenteEx extends RuntimeException{
+public class UtenteNonEsistenteEx extends Exception{
     /**
      *
      */

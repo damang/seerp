@@ -4,7 +4,7 @@ package it.seerp.application.Exception;
  * Classe d'eccezione che viene lanciata in caso di dati errati
  * @author Luisa - Tommaso Cattolico
  */
-public class DatiErrati extends RuntimeException {
+public class DatiErrati extends Exception {
 
     /**
      * Metodo che passa il messaggio d'errore al livello superiore

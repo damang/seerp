@@ -171,7 +171,7 @@ public class Conversione {
      * @param gui il Bean Grafico che deve essere modificato
      * @return Il Bean Gui Evento convertito
      */
-    public static BeanGuiEvento conversioneEvento(Evento e, BeanGuiEvento gui) {
+    public static BeanGuiEvento conversioneEvento(Evento e, BeanGuiEvento gui) throws ValidatorException {
         gui.getData().setDate(e.getData().getTime());
         gui.getIdEvento().setText("" + e.getIdEvento());
         gui.getLuogo().setText(e.getLuogo());
@@ -185,7 +185,7 @@ public class Conversione {
         return gui;
     }
 
-    public static Utente conversionePersonale(BeanGuiUtente bUtente) {
+    public static Utente conversionePersonale(BeanGuiUtente bUtente) throws ValidatorException {
         Utente utente = new  Utente();
 
         utente.setUsername(bUtente.getTxtUsername().getText());
@@ -233,7 +233,7 @@ public class Conversione {
      * @param gui il Bean Grafico che deve essere modificato
      * @return Il Bean Gui Servizio convertito
      */
-    public static BeanGuiServizio conversioneServizio(Servizio s, BeanGuiServizio gui) {
+    public static BeanGuiServizio conversioneServizio(Servizio s, BeanGuiServizio gui) throws ValidatorException {
 
         gui.getTipo().setText(s.getTipo());
         gui.getDescrizione().setText(s.getDescrizione());
@@ -311,7 +311,7 @@ public class Conversione {
         return utente;
     }
 
-    public static BeanGuiUtente conversioneUtente(Utente user, BeanGuiUtente utente) {
+    public static BeanGuiUtente conversioneUtente(Utente user, BeanGuiUtente utente) throws ValidatorException {
 
         //   utente.getIdUtenteTxt().setText(user.getIdUtente().toString());
 
@@ -336,7 +336,7 @@ public class Conversione {
      * @param utente il Bean Grafico che deve essere modificato
      * @return il Bean Gui convertito
      */
-    public static BeanGuiUtente conversioneAreaPersonalePer(Personale user, BeanGuiPersonale utente) {
+    public static BeanGuiUtente conversioneAreaPersonalePer(Personale user, BeanGuiPersonale utente) throws ValidatorException {
 
         utente.getTxtUsername().setText(user.getUsername());
         utente.getTxtUsername2().setText(user.getUsername());
@@ -347,7 +347,7 @@ public class Conversione {
         return utente;
     }
 
-    public static BeanGuiUtente conversioneAreaPersonaleExtra(ExtraAzienda user, BeanGuiExtraAzienda utente) {
+    public static BeanGuiUtente conversioneAreaPersonaleExtra(ExtraAzienda user, BeanGuiExtraAzienda utente) throws ValidatorException {
 
         utente.getTxtUsername().setText(user.getUsername());
         utente.getTxtUsername2().setText(user.getUsername());
@@ -394,7 +394,7 @@ public class Conversione {
      * @param bp il Bean Grafico che deve essere modificato
      * @return il Bean Gui convertito
      */
-    public static BeanGuiPersonale conversionePersonale(Personale p, BeanGuiPersonale bp) {
+    public static BeanGuiPersonale conversionePersonale(Personale p, BeanGuiPersonale bp) throws ValidatorException {
 
         Conversione.conversioneUtente(p, bp);
         bp.getCognome().setText(p.getCognome());
@@ -512,7 +512,7 @@ public class Conversione {
      * @param br il Bean Grafico che deve essere modificato
      * @return il Bean Gui convertito
      */
-    public static BeanGuiResponsabile conversioneResponsabile(Responsabile e, BeanGuiResponsabile br) {
+    public static BeanGuiResponsabile conversioneResponsabile(Responsabile e, BeanGuiResponsabile br) throws ValidatorException {
         conversionePersonale(e, br);
 
         return br;
@@ -568,7 +568,7 @@ public class Conversione {
      * @param bd il Bean Grafico che deve essere modificato
      * @return il Bean Gui convertito
      */
-    public static BeanGuiDipendente conversioneDipendente(Dipendente e, BeanGuiDipendente bd) {
+    public static BeanGuiDipendente conversioneDipendente(Dipendente e, BeanGuiDipendente bd) throws ValidatorException {
 
         conversionePersonale(e, bd);
         return bd;
@@ -856,7 +856,7 @@ public class Conversione {
      * @param fo il Bean Grafico che deve essere modificato
      * @return il Bean Gui convertito
      */
-    public static BeanGuiFornitore conversioneFornitore(Fornitore e, BeanGuiFornitore fo) {
+    public static BeanGuiFornitore conversioneFornitore(Fornitore e, BeanGuiFornitore fo) throws ValidatorException {
 
         conversioneExtraAzienda(e, fo);
         //  fo.getRuolo().setText("Fornitore");

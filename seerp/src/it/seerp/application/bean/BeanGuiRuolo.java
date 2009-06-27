@@ -78,7 +78,7 @@ public class BeanGuiRuolo {
      * @return il campo nome
      * @throws ValidatorException lanciata se è presente un errore nella grafica
      */
-    public JTextField getNome() {
+    public JTextField getNome() throws ValidatorException {
         if(validator==true)
         if (!nome.getInputVerifier().shouldYieldFocus(nome)) {
             throw new ValidatorException("Errore nella grafica!");

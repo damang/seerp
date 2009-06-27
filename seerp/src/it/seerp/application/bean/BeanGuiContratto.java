@@ -83,7 +83,7 @@ public class BeanGuiContratto {
      * metodo che restituisce il campo contenente la data di stipula di un Contratto
      * @return la il campo data di stipula
      */
-    public JTextField getData() {
+    public JTextField getData() throws ValidatorException {
         if (validator == true) {
             if (!data.getInputVerifier().shouldYieldFocus(data)) {
                 throw new ValidatorException("Errore nella grafica!");

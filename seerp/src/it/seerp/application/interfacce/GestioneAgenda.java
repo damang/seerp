@@ -3,6 +3,7 @@ package it.seerp.application.interfacce;
 import it.seerp.application.Exception.CancellazioneFallita;
 import it.seerp.application.Exception.DatiDuplicati;
 import it.seerp.application.Exception.DatiErrati;
+import it.seerp.application.Exception.ValidatorException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -22,7 +23,7 @@ public interface GestioneAgenda<E, U> {
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui vi siano dati errati
      */
-    public ArrayList<E> elenca(ArrayList<E> listGui, String usr);
+    public ArrayList<E> elenca(ArrayList<E> listGui, String usr) throws SQLException;
 
     /**
      * Metodo che permette la visualizzazione degli eventi da notificare
@@ -45,13 +46,13 @@ public interface GestioneAgenda<E, U> {
      * @return Bean Gui dell'evento
      * @throws DatiErrati
      */
-    public E visualizzaDettagli(int id, E gui) throws DatiErrati;
+    public E visualizzaDettagli(int id, E gui) throws DatiErrati, SQLException, ValidatorException;
 
     /**
      * Metodo che permette la gestione delle notifiche
      * @param beanGui
      */
-    public void notificaEventi(E beanGuiEventi);
+    public void notificaEventi(E beanGuiEventi) throws SQLException,ValidatorException;
 
     /**
      * Metodo che permette l'inserimento di un nuovo evento
@@ -61,7 +62,7 @@ public interface GestioneAgenda<E, U> {
      * @throws it.seerp.application.Exception.DatiDuplicati
      * nel caso in cui esista l'evento che si tenta di inserire
      */
-    public void inserimento(E beanGuiEventi) throws DatiErrati, DatiDuplicati;
+    public void inserimento(E beanGuiEventi) throws DatiErrati, SQLException,ValidatorException;
 
     /**
      * Metodo che permette la modifica di un evento

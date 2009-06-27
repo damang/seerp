@@ -9,7 +9,7 @@ package it.seerp.storage.Exception;
  * Username già presente nel database, viene richiamata durante la fase di
  * inserimento di un nuovo utente
  */
-public class UsernameNonValidoEx extends java.lang.Exception{
+public class UsernameNonValidoEx extends Exception{
 
     /**
      *

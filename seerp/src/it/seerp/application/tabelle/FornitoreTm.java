@@ -36,7 +36,7 @@ public class FornitoreTm extends Generica<Fornitore> {
         refresh();
     }
 
-    public void refresh() {
+    public void refresh() throws SQLException {
         AppGestioneExtraAzienda op = new AppGestioneExtraAzienda();
         Iterator<Fornitore> it = op.visualizzaTabellaFornitore().iterator();
         while (it.hasNext()) {
