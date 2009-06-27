@@ -196,5 +196,4 @@ public class BeanGuiBanca {
     public void setProvincia(JTextField provincia) {
         this.provincia = provincia;
     }
-
 }

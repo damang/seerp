@@ -32,6 +32,7 @@ public class BeanGuiServizioAssociatoFattura {
     public void setListDDT(ArrayList<BeanGuiDDT> listDDT) {
         this.listDDT = listDDT;
     }
+
     /**
      * metodo che restituisce l'identificativo del contratto dal campo associato
      * @return identificativo del contratto

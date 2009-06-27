@@ -4,8 +4,6 @@ import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.validation.NotEmptyValidator;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
-import javax.swing.JDialog;
-import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import org.jdesktop.swingx.JXDatePicker;
@@ -27,7 +25,7 @@ public class BeanGuiEvento {
     private Object grafica;
     private NotEmptyValidator val;
     private int idAgenda;
-    private boolean validator=false;
+    private boolean validator = false;
 
     public boolean isValidator() {
         return validator;
@@ -36,7 +34,6 @@ public class BeanGuiEvento {
     public void setValidator(boolean validator) {
         this.validator = validator;
     }
-    
 
     /**
      * Costruttore a cui viene passato un componente grafico necessario alla
@@ -46,8 +43,8 @@ public class BeanGuiEvento {
     public BeanGuiEvento(Object c) {
         grafica = c;
     }
-     public BeanGuiEvento() {
 
+    public BeanGuiEvento() {
     }
 
     /**
@@ -88,9 +85,10 @@ public class BeanGuiEvento {
      * @throws ValidatorException
      */
     public JXDatePicker getData() throws ValidatorException {
-        if (validator==true)
-        if (!data.getInputVerifier().shouldYieldFocus(data)) {
-            throw new ValidatorException("Errore nella grafica!");
+        if (validator == true) {
+            if (!data.getInputVerifier().shouldYieldFocus(data)) {
+                throw new ValidatorException("Il campo non può essere vuoto.");
+            }
         }
         return data;
     }
@@ -101,8 +99,8 @@ public class BeanGuiEvento {
      */
     public void setData(JXDatePicker pdata) {
         this.data = pdata;
-      //  data.setInputVerifier(new NotEmptyValidator(new JTextField(data.getDate().toString()), "Il capo non può essere vuoto."));
-          data.setInputVerifier(new NotEmptyValidator(grafica,data, "Il capo non può essere vuoto."," "));
+        //  data.setInputVerifier(new NotEmptyValidator(new JTextField(data.getDate().toString()), "Il capo non può essere vuoto."));
+        data.setInputVerifier(new NotEmptyValidator(grafica, data, "Il campo non può essere vuoto.", " "));
     }
 
     /**
@@ -111,9 +109,10 @@ public class BeanGuiEvento {
      * @throws ValidatorException
      */
     public JTextField getIdEvento() throws ValidatorException {
-        if(validator==true)
-        if (!idEvento.getInputVerifier().shouldYieldFocus(idEvento)) {
-            throw new ValidatorException("Errore nella grafica!");
+        if (validator == true) {
+            if (!idEvento.getInputVerifier().shouldYieldFocus(idEvento)) {
+                throw new ValidatorException("Il campo non può essere vuoto.");
+            }
         }
         return idEvento;
     }
@@ -124,7 +123,7 @@ public class BeanGuiEvento {
      */
     public void setIdEvento(JTextField pidEvento) {
         this.idEvento = pidEvento;
-        idEvento.setInputVerifier(new NotEmptyValidator(grafica, idEvento, "Il campo non può essere vuoto."," "));
+        idEvento.setInputVerifier(new NotEmptyValidator(grafica, idEvento, "Il campo non può essere vuoto.", " "));
     }
 
     /**
@@ -133,9 +132,10 @@ public class BeanGuiEvento {
      * @throws ValidatorException
      */
     public JTextField getLuogo() throws ValidatorException {
-        if(validator==true)
-        if (!luogo.getInputVerifier().shouldYieldFocus(luogo)) {
-            throw new ValidatorException("Errore nella grafica!");
+        if (validator == true) {
+            if (!luogo.getInputVerifier().shouldYieldFocus(luogo)) {
+                throw new ValidatorException("Il campo non può essere vuoto.");
+            }
         }
         return luogo;
     }
@@ -146,7 +146,7 @@ public class BeanGuiEvento {
      */
     public void setLuogo(JTextField pluogo) {
         this.luogo = pluogo;
-        luogo.setInputVerifier(new NotEmptyValidator(grafica, luogo, "Il campo non può essere vuoto."," "));
+        luogo.setInputVerifier(new NotEmptyValidator(grafica, luogo, "Il campo non può essere vuoto.", " "));
     }
 
     /**
@@ -155,9 +155,10 @@ public class BeanGuiEvento {
      * @throws ValidatorException
      */
     public JTextField getNome() throws ValidatorException {
-        if(validator==true)
-        if (!nome.getInputVerifier().shouldYieldFocus(nome)) {
-            throw new ValidatorException("Errore nella grafica!");
+        if (validator == true) {
+            if (!nome.getInputVerifier().shouldYieldFocus(nome)) {
+                throw new ValidatorException("Il campo non può essere vuoto.");
+            }
         }
         return nome;
     }
@@ -168,7 +169,7 @@ public class BeanGuiEvento {
      */
     public void setNome(JTextField pnome) {
         this.nome = pnome;
-        nome.setInputVerifier(new NotEmptyValidator(grafica, nome, "Il campo non può essere vuoto."," "));
+        nome.setInputVerifier(new NotEmptyValidator(grafica, nome, "Il campo non può essere vuoto.", " "));
     }
 
     /**
@@ -193,9 +194,10 @@ public class BeanGuiEvento {
      * @throws ValidatorException
      */
     public JTextField getOra() throws ValidatorException {
-        if(validator==true)
-        if (!ora.getInputVerifier().shouldYieldFocus(ora)) {
-            throw new ValidatorException("Errore nella grafica!");
+        if (validator == true) {
+            if (!ora.getInputVerifier().shouldYieldFocus(ora)) {
+                throw new ValidatorException("Il campo non può essere vuoto.");
+            }
         }
         return ora;
     }
@@ -206,7 +208,7 @@ public class BeanGuiEvento {
      */
     public void setOra(JTextField pora) {
         this.ora = pora;
-        ora.setInputVerifier(new NotEmptyValidator(grafica ,ora, "Il campo non può essere vuoto."," "));
+        ora.setInputVerifier(new NotEmptyValidator(grafica, ora, "Il campo non può essere vuoto.", " "));
     }
 
     /**
@@ -215,9 +217,10 @@ public class BeanGuiEvento {
      * @throws ValidatorException
      */
     public JComboBox getTema() throws ValidatorException {
-        if(validator==true)
-        if (!tema.getInputVerifier().shouldYieldFocus(tema)) {
-            throw new ValidatorException("Errore nella grafica!");
+        if (validator == true) {
+            if (!tema.getInputVerifier().shouldYieldFocus(tema)) {
+                throw new ValidatorException("Il campo non può essere vuoto.");
+            }
         }
         return tema;
     }
@@ -229,6 +232,6 @@ public class BeanGuiEvento {
     public void setTema(JComboBox ptema) {
         this.tema = ptema;
         //tema.setInputVerifier(new NotEmptyValidator(new JTextField((String) tema.getSelectedItem()), "Il campo non può essere vuoto."));
-        tema.setInputVerifier(new NotEmptyValidator(grafica, tema, "Il campo non può essere vuoto."," "));
+        tema.setInputVerifier(new NotEmptyValidator(grafica, tema, "Il campo non può essere vuoto.", " "));
     }
 }

@@ -22,11 +22,10 @@ public class BeanGuiAzienda {
     Object grafica;
 
     /**
-     *  Costruttore vuoto
+     * Costruttore vuoto
      */
     public BeanGuiAzienda(Object c) {
-        grafica=c;
-     
+        grafica = c;
     }
 
     /**
@@ -90,7 +89,7 @@ public class BeanGuiAzienda {
      * @param pIVA
      */
     public void setPIVA(JTextField pIVA) {
-        
+
         this.pIVA = pIVA;
     }
 
@@ -117,7 +116,6 @@ public class BeanGuiAzienda {
     public void setAmministratore(BeanGuiAmministratore amministratore) {
         this.amministratore = amministratore;
     }
-
 
     /**
      *
@@ -206,8 +204,6 @@ public class BeanGuiAzienda {
     public JTextField getTelefono() {
         return telefono;
     }
-
-
 }
 
 

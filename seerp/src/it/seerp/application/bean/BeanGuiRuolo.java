@@ -5,13 +5,10 @@ import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.tabelle.PersonaleTm;
 import it.seerp.application.tabelle.RuoloTm;
 import it.seerp.application.validation.NotEmptyValidator;
-import it.seerp.application.validation.StartWithValidator;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -30,7 +27,7 @@ public class BeanGuiRuolo {
     private HashMap<String, JCheckBox> perm_all;
     private JXTable tabRuo,  tabPers;
     private Object grafica;
-     protected boolean validator=false;
+    protected boolean validator = false;
 
     /**
      * metodo che ritorna il campo validator del bean gui ruolo
@@ -46,8 +43,8 @@ public class BeanGuiRuolo {
      */
     public void setValidator(boolean validator) {
         this.validator = validator;
-        ((NotEmptyValidator)nome.getInputVerifier()).setEnabled(validator);
-        ((NotEmptyValidator)nome.getInputVerifier()).reset(nome);
+        ((NotEmptyValidator) nome.getInputVerifier()).setEnabled(validator);
+        ((NotEmptyValidator) nome.getInputVerifier()).reset(nome);
     }
 
     /**
@@ -70,7 +67,6 @@ public class BeanGuiRuolo {
      * costruttore vuoto per il bean gui ruolo
      */
     public BeanGuiRuolo() {
-
     }
 
     /**
@@ -79,9 +75,10 @@ public class BeanGuiRuolo {
      * @throws ValidatorException lanciata se è presente un errore nella grafica
      */
     public JTextField getNome() throws ValidatorException {
-        if(validator==true)
-        if (!nome.getInputVerifier().shouldYieldFocus(nome)) {
-            throw new ValidatorException("Errore nella grafica!");
+        if (validator == true) {
+            if (!nome.getInputVerifier().shouldYieldFocus(nome)) {
+                throw new ValidatorException("Il nome inserito non è valido!");
+            }
         }
         return nome;
     }
@@ -91,7 +88,7 @@ public class BeanGuiRuolo {
      */
     public void resetAll() {
         try {
-            validator=false;
+            validator = false;
 
             nome.setText("");
             Iterator<ArrayList<BeanGuiPermesso>> l = listPermessi.values().iterator();
@@ -122,7 +119,7 @@ public class BeanGuiRuolo {
      */
     public void setNome(JTextField pnome) {
         this.nome = pnome;
-        nome.setInputVerifier(new NotEmptyValidator(grafica,nome, "Il nome inserito non è valido!",RegexpDef.valueOf(RegexpDef.VAL.NOME_RUOLO)));
+        nome.setInputVerifier(new NotEmptyValidator(grafica, nome, "Il nome inserito non è valido!", RegexpDef.valueOf(RegexpDef.VAL.NOME_RUOLO)));
     }
 
     /**
