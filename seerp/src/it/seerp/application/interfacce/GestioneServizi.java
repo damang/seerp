@@ -18,7 +18,7 @@ public interface GestioneServizi<E, U> {
      * Metodo che passa la lista di bean utilizzando l'operazioni del lato storage
      * @return lista dei bean
      */
-    public ArrayList<U> visualizzaTabella();
+    public ArrayList<U> visualizzaTabella()throws SQLException;
 
     /**
      * Metodo che permette di visualizzare l'elenco dei servizi
