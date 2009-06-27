@@ -1,4 +1,3 @@
-
 package it.seerp.Gui.Gestione.Ruoli;
 
 import it.seerp.Gui.Gestione.Menu.MenuRuoli;
@@ -8,6 +7,7 @@ import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
 import it.seerp.application.Exception.DatiDuplicati;
 import it.seerp.application.Exception.DatiErrati;
+import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.tabelle.RuoloTm;
 import it.seerp.application.applicazione.AppRuoli;
 import it.seerp.application.bean.BeanGuiPermesso;
@@ -20,6 +20,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
@@ -55,19 +57,26 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
         if (jXTable1.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(null, "Non hai selezionato nessun ruolo");
         } else {
-            AppRuoli a = new AppRuoli();
-            String r=(String) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0);
-            if (r.equalsIgnoreCase("amministratore") || r.equalsIgnoreCase("responsabile") || r.equalsIgnoreCase("dipendente")) {
-                JOptionPane.showMessageDialog(null, "Non puoi eliminare un ruolo base","Errore",JOptionPane.ERROR_MESSAGE);
-            }
-            else {
-                a.elimina(r);
-                be.resetAll();
-                try {
-                    be.resetTableUt();
-                } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Errore con il database");
+            try {
+                AppRuoli a = new AppRuoli();
+                String r = (String) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0);
+                if (r.equalsIgnoreCase("amministratore") || r.equalsIgnoreCase("responsabile") || r.equalsIgnoreCase("dipendente")) {
+                    JOptionPane.showMessageDialog(null, "Non puoi eliminare un ruolo base", "Errore", JOptionPane.ERROR_MESSAGE);
+                } else {
+
+                    a.elimina(r);
+                    be.resetAll();
+                    try {
+                        be.resetTableUt();
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Errore con il database");
+                    }
+
                 }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Errore dal database: " + ex.getErrorCode());
+            } catch (ValidatorException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
             }
         }
     }
@@ -670,12 +679,18 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
 
     private void jXTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jXTable1MouseClicked
         //JOptionPane.showMessageDialog(null, ));
-        Runnable r= new Runnable() {
+        Runnable r = new Runnable() {
 
             @Override
             public void run() {
-                 AppRuoli r = new AppRuoli();
-                r.visualizzaDati((String) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0), be);
+                try {
+                    AppRuoli r = new AppRuoli();
+                    r.visualizzaDati((String) jXTable1.getValueAt(jXTable1.getSelectedRow(), 0), be);
+                } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Errore dal database: " + ex.getErrorCode());
+            } catch (ValidatorException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
             }
         };
         r.run();
@@ -697,7 +712,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
         if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI)) {
             be.setValidator(false);
             be.resetAll();
-           
+
 
         } else {
             be.setValidator(false);
@@ -707,7 +722,7 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
         menu.setButtonEnabled(true);
         buttonSalva1.setVisible(false);
         buttonAnnulla1.setVisible(false);
-       // JOptionPane.showMessageDialog(null, "Operazione Annullata!!");
+    // JOptionPane.showMessageDialog(null, "Operazione Annullata!!");
     }//GEN-LAST:event_buttonAnnulla1ActionPerformed
 
     private void buttonSalva1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalva1ActionPerformed
@@ -734,12 +749,9 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
                     JOptionPane.showMessageDialog(null, "Errore nel database!");
                     break;
             }
-        } catch (DatiErrati ex) {
-            JOptionPane.showMessageDialog(null, "Dati errati");
-        } catch (DatiDuplicati ex) {
-            JOptionPane.showMessageDialog(null, "Dati duplicati");
+        } catch (ValidatorException ex) {
+                  JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-
     }//GEN-LAST:event_buttonSalva1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -916,8 +928,8 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
 
         try {
             be.getNome().setEnabled(b);
-           // if (!b)
-                //((NotEmptyValidator)be.getNome().getInputVerifier()).reset(be.getNome());
+            // if (!b)
+            //((NotEmptyValidator)be.getNome().getInputVerifier()).reset(be.getNome());
 
             Iterator<ArrayList<BeanGuiPermesso>> c = be.getListPermessi().values().iterator();
             Iterator<BeanGuiPermesso> itint;

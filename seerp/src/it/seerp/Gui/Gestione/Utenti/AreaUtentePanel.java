@@ -26,6 +26,7 @@ import it.seerp.application.bean.BeanGuiDipendente;
 
 import it.seerp.application.bean.BeanGuiResponsabile;
 import it.seerp.storage.Exception.DatiDuplicatiEx;
+import it.seerp.storage.jaas.SujGest;
 import java.awt.Color;
 import java.util.Iterator;
 import java.util.logging.Logger;
@@ -1179,7 +1180,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
     }
 
     private void settaPanel() throws SQLException {
-
+        try {
         if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
 
             this.jPanel13.setVisible(false);
@@ -1212,6 +1213,9 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
             this.jPanel19.setVisible(false);
             this.jPanel17.setVisible(false);
         }
+          } catch (ValidatorException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
 
     }
 

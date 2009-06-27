@@ -8,6 +8,7 @@ import it.seerp.Gui.configurazioni.Gui.ConfigurazioneOperazioni;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
 import it.seerp.application.Exception.DatiDuplicati;
 import it.seerp.application.Exception.DatiErrati;
+import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.applicazione.AppServizi;
 import it.seerp.application.bean.BeanGuiFornitore;
 import it.seerp.application.bean.BeanGuiServizio;
@@ -15,6 +16,8 @@ import it.seerp.application.tabelle.ServiziTm;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jdesktop.swingx.*;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -530,23 +533,28 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
 
 
         if (evt.getClickCount() == 2) {
-            int i = jXTable1.getSelectedRow();
-            if (i < 0) {
-                return;
+            try {
+                int i = jXTable1.getSelectedRow();
+                if (i < 0) {
+                    return;
+                }
+                Integer id = (Integer) jXTable1.getValueAt(i, 0);
+                AppServizi operazione = new AppServizi();
+                editabile(false);
+                validation(false);
+                servi = operazione.visualizza(id, servi);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Errore dal database: " + ex.getErrorCode());
+            } catch (ValidatorException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
             }
-            Integer id = (Integer) jXTable1.getValueAt(i, 0);
-
-
-            AppServizi operazione = new AppServizi();
-            editabile(false);
-            validation(false);
-            servi = operazione.visualizza(id, servi);
 
 
 
     }//GEN-LAST:event_jXTable1MouseClicked
     }
         private void buttonSalva1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalva1ActionPerformed
+            try {
             menu.setButtonEnabled(true);
             this.validation(false);
             if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.MODIFICA)) {
@@ -557,39 +565,22 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
                 }
                 Integer id = (Integer) jXTable1.getValueAt(i, 0);
                 AppServizi operazione = new AppServizi();
-                try {
+                
                     operazione.modifica(id, servi);
                     this.tableModel = new ServiziTm();
 
                     this.jXTable1.setModel(tableModel);
                     this.jXFindBar1.setSearchable(jXTable1.getSearchable());
                     this.jXTable1.updateUI();
-                } catch (DatiErrati ex) {
-                    JOptionPane.showMessageDialog(null, "dati errati");
-                    this.inizializza("");
-                    editabile(true);
-                    this.buttonAnnulla1.setEnabled(true);
-                    this.buttonSalva1.setEnabled(true);
-                } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "errore nel database");
-                    this.inizializza("");
-                    editabile(true);
-                    this.buttonAnnulla1.setEnabled(true);
-                    this.buttonSalva1.setEnabled(true);
-
-                }
-
-
-
+                
                 this.validation(false);
                 editabile(false);
                 buttonAnnulla1.setEnabled(false);
                 buttonSalva1.setEnabled(false);
             }
 
-
-            if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI)) {
-                try {
+            else if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI)) {
+                
                     AppServizi operazione = new AppServizi();
                     operazione.inserisci(servi);
                     this.tableModel = new ServiziTm();
@@ -597,31 +588,14 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
                     this.jXFindBar1.setSearchable(jXTable1.getSearchable());
                     this.jXTable1.updateUI();
 
-                } catch (DatiErrati ex) {
-                    JOptionPane.showMessageDialog(null, "dati errati");
-                    this.inizializza("");
-                    editabile(true);
-                    this.buttonAnnulla1.setEnabled(true);
-                    this.buttonSalva1.setEnabled(true);
-                } catch (DatiDuplicati ex) {
-                    JOptionPane.showMessageDialog(null, "dati duplicati");
-                    this.inizializza("");
-                    editabile(true);
-                    this.buttonAnnulla1.setEnabled(true);
-                    this.buttonSalva1.setEnabled(true);
-                } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "errore nel database");
-                    this.inizializza("");
-                    editabile(true);
-                    this.buttonAnnulla1.setEnabled(true);
-                    this.buttonSalva1.setEnabled(true);
-
-                }
-
-
-                editabile(false);
+                               editabile(false);
                 buttonAnnulla1.setEnabled(false);
                 buttonSalva1.setEnabled(false);
+            }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Errore dal database: " + ex.getErrorCode());
+            } catch (ValidatorException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
             }
         }//GEN-LAST:event_buttonSalva1ActionPerformed
 
