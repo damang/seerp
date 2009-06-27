@@ -153,19 +153,11 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
 
         setBackground(new java.awt.Color(0, 204, 0));
         setMinimumSize(new java.awt.Dimension(500, 250));
-        setLayout(new java.awt.GridBagLayout());
 
         jXLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jXLabel2.setText("Gestione Ruoli");
         jXLabel2.setFont(new java.awt.Font("Tahoma", 1, 24));
         jXLabel2.setName("jXLabel2"); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        add(jXLabel2, gridBagConstraints);
 
         jTabbedPane1.setMinimumSize(new java.awt.Dimension(700, 450));
         jTabbedPane1.setName("jTabbedPane1"); // NOI18N
@@ -595,14 +587,6 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
 
         jTabbedPane1.addTab("Permessi", jPanel2);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        add(jTabbedPane1, gridBagConstraints);
-
         jXPanel1.setMinimumSize(new java.awt.Dimension(350, 300));
         jXPanel1.setName("jXPanel1"); // NOI18N
         jXPanel1.setPreferredSize(new java.awt.Dimension(350, 300));
@@ -643,26 +627,12 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         jXPanel1.add(jXFindBar3, gridBagConstraints);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(22, 0, 0, 31);
-        add(jXPanel1, gridBagConstraints);
-
         buttonSalva1.setName("buttonSalva1"); // NOI18N
         buttonSalva1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSalva1ActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.insets = new java.awt.Insets(0, 250, 0, 0);
-        add(buttonSalva1, gridBagConstraints);
-        buttonSalva1.setVisible(false);
 
         buttonAnnulla1.setName("buttonAnnulla1"); // NOI18N
         buttonAnnulla1.addActionListener(new java.awt.event.ActionListener() {
@@ -670,10 +640,42 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
                 buttonAnnulla1ActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
-        add(buttonAnnulla1, gridBagConstraints);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jXPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jXLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 639, Short.MAX_VALUE)
+                        .addComponent(buttonSalva1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonAnnulla1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonAnnulla1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonSalva1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jXLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, 0, 0, Short.MAX_VALUE)
+                    .addComponent(jXPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        buttonSalva1.setVisible(false);
         buttonAnnulla1.setVisible(false);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -889,40 +891,40 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
     }
 
     /**
-     *
-     * @return
+     * Metodo che restituisce il bean gui ruoli
+     * @return restituisce il ruolo
      */
     public BeanGuiRuolo getBeanGuiRuolo() {
         return be;
     }
 
     /**
-     *
-     * @param menu
+     * Associa il menù al pannelo GestioneRuoli
+     * @param menu, viene passata un istanza del meù
      */
     public void setMenu(MenuRuoli menu) {
         this.menu = menu;
     }
 
     /**
-     *
-     * @return
+     * Metodo che restituisce il menù
+     * @return restituisce il menù
      */
     public MenuRuoli getMenu() {
         return this.menu;
     }
 
     /**
-     *
-     * @param tipo
+     * Metodop che setta la grafica a senconda del tipo di utente loggato
+     * @param tipo tipo di utente passato
      */
     public void setTipoOP(ConfigurazioneOperazioni.TIPO_OPE_CONST tipo) {
         this.tipoOp = tipo;
     }
 
     /**
-     * 
-     * @param b
+     * Metodo che permette di editare i campi del form
+     * @param b il valore che permette di editare i campi
      */
     public void setEditable(boolean b) {
 
@@ -954,16 +956,16 @@ public class GestioneRuoli extends ObservableJPanel implements ActionListener, I
     }
 
     /**
-     *
-     * @return
+     * Metodo che restituisce il pulsante salva
+     * @return restituisce il pulsante salva
      */
     public JButton getSalva() {
         return buttonSalva1;
     }
 
     /**
-     *
-     * @return
+     * Metodo che restituisce il pulsante annulla
+     * @return restituisce il pulsante annulla
      */
     public JButton getAnnulla() {
         return buttonAnnulla1;
