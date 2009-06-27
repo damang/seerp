@@ -42,14 +42,14 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * @throws SQLException
      * @throws DatiDuplicatiEx
      */
-    public void inserisciDipendente(BeanGuiDipendente user) throws SQLException,ValidatorException {
+    public void inserisciDipendente(BeanGuiDipendente user) throws SQLException, ValidatorException {
         // super.inserisci(user);
-    
-            OpDipendente a = new OpDipendente();
-            Dipendente dip = Conversione.conversioneDipendente(user);
-            dip.setTipo("personale");
-            a.inserisci(dip);
-      
+
+        OpDipendente a = new OpDipendente();
+        Dipendente dip = Conversione.conversioneDipendente(user);
+        dip.setTipo("personale");
+        a.inserisci(dip);
+
     }
 
     /**
@@ -58,14 +58,14 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * @throws SQLException
      * @throws DatiDuplicatiEx
      */
-    public void inserisciResponsabile(BeanGuiResponsabile user) throws SQLException,ValidatorException {
+    public void inserisciResponsabile(BeanGuiResponsabile user) throws SQLException, ValidatorException {
         //super.inserisci(user);
-    
-            OpResponsabile a = new OpResponsabile();
-            Responsabile dip = Conversione.conversioneResponsabile(user);
-            dip.setTipo("personale");
-            a.inserisci(dip);
-      
+
+        OpResponsabile a = new OpResponsabile();
+        Responsabile dip = Conversione.conversioneResponsabile(user);
+        dip.setTipo("personale");
+        a.inserisci(dip);
+
     }
 
     /**
@@ -75,16 +75,16 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * @return il Dipendente modificato
      * @throws SQLException
      */
-    public BeanGuiDipendente modificaDipendente(int id, BeanGuiDipendente user) throws SQLException,ValidatorException {
+    public BeanGuiDipendente modificaDipendente(int id, BeanGuiDipendente user) throws SQLException, ValidatorException {
         //super.modifica(user);
-      
-            OpPersonale a = new OpPersonale();
-            Dipendente dip = Conversione.conversioneDipendente(user);
-            dip.setIdUtente(id);
-            a.modifica(dip);
-            user.setValidatorEnabled(false);
-            this.visualizzaDatiDipendente(id, user);
-       
+
+        OpPersonale a = new OpPersonale();
+        Dipendente dip = Conversione.conversioneDipendente(user);
+        dip.setIdUtente(id);
+        a.modifica(dip);
+        user.setValidatorEnabled(false);
+        this.visualizzaDatiDipendente(id, user);
+
         return user;
     }
 
@@ -94,14 +94,14 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * @return l'Amministratore modificato
      * @throws SQLException
      */
-    public BeanGuiAmministratore modificaAmministratore(BeanGuiAmministratore user) throws SQLException,ValidatorException {
+    public BeanGuiAmministratore modificaAmministratore(BeanGuiAmministratore user) throws SQLException, ValidatorException {
         //  super.modifica(user);
-       
-            OpAmministratore a = new OpAmministratore();
-            Amministratore amm = Conversione.conversioneAmministratore(user);
-            amm = (Amministratore) a.modifica(amm);
-            user = Conversione.conversioneAmministratore(amm, user);
-       
+
+        OpAmministratore a = new OpAmministratore();
+        Amministratore amm = Conversione.conversioneAmministratore(user);
+        amm = (Amministratore) a.modifica(amm);
+        user = Conversione.conversioneAmministratore(amm, user);
+
         return user;
     }
 
@@ -112,16 +112,16 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * @return il Responsabile modificato
      * @throws SQLException
      */
-    public BeanGuiResponsabile modificaResponsabile(int id, BeanGuiResponsabile user) throws SQLException,ValidatorException {
+    public BeanGuiResponsabile modificaResponsabile(int id, BeanGuiResponsabile user) throws SQLException, ValidatorException {
         // super.modifica(user);
-        
-            OpPersonale a = new OpPersonale();
-            Responsabile res = Conversione.conversioneResponsabile(user);
-            res.setIdUtente(id);
-            user.setValidatorEnabled(false);
-            a.modifica(res);
-            this.visualizzaDatiResponsabile(id, user);
-        
+
+        OpPersonale a = new OpPersonale();
+        Responsabile res = Conversione.conversioneResponsabile(user);
+        res.setIdUtente(id);
+        user.setValidatorEnabled(false);
+        a.modifica(res);
+        this.visualizzaDatiResponsabile(id, user);
+
         return user;
     }
 
@@ -131,10 +131,10 @@ public class AppGestionePersonale extends AppGestioneUtente {
      */
     public ArrayList<Dipendente> visualizzaTabellaDipendenti() throws SQLException {
         ArrayList<Dipendente> list = null;
-       
-            OpDipendente ope = new OpDipendente();
-            list = ope.elencaDipendente();
-      
+
+        OpDipendente ope = new OpDipendente();
+        list = ope.elencaDipendente();
+
         return list;
     }
 
@@ -166,12 +166,12 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * Metodo che passa la lista di bean utilizzando l'operazioni del lato storage
      * @return lista dei bean
      */
-    public ArrayList<Responsabile> visualizzaTabellaResponsabili()  throws SQLException {
+    public ArrayList<Responsabile> visualizzaTabellaResponsabili() throws SQLException {
         ArrayList<Responsabile> list = new ArrayList<Responsabile>();
-  
-            OpResponsabile ope = new OpResponsabile();
-            list = ope.elencaResponsabile();
-       
+
+        OpResponsabile ope = new OpResponsabile();
+        list = ope.elencaResponsabile();
+
         return list;
     }
 
@@ -183,13 +183,13 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * @throws it.seerp.application.Exception.CancellazioneFallita
      * nel caso in cui il sistema fallisca nell'eliminazione
      */
-    public void eliminaDipendente(int id, BeanGuiDipendente beanGui) throws SQLException,ValidatorException {
-       
-            OpDipendente ope = new OpDipendente();
-            Dipendente dip = Conversione.conversioneDipendente(beanGui);
-            dip.setIdUtente(id);
-            ope.elimina(dip);
-       
+    public void eliminaDipendente(int id, BeanGuiDipendente beanGui) throws SQLException, ValidatorException {
+
+        OpDipendente ope = new OpDipendente();
+        Dipendente dip = Conversione.conversioneDipendente(beanGui);
+        dip.setIdUtente(id);
+        ope.elimina(dip);
+
     }
 
     /**
@@ -198,13 +198,13 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * @param beanGui Bean Gui del Responsabile
      * @throws it.seerp.application.Exception.CancellazioneFallita
      */
-    public void eliminaResponsabile(int id, BeanGuiResponsabile beanGui) throws SQLException,ValidatorException {
-        
-            OpResponsabile ope = new OpResponsabile();
-            Responsabile resp = Conversione.conversioneResponsabile(beanGui);
-            resp.setIdUtente(id);
-            ope.elimina(resp);
-       
+    public void eliminaResponsabile(int id, BeanGuiResponsabile beanGui) throws SQLException, ValidatorException {
+
+        OpResponsabile ope = new OpResponsabile();
+        Responsabile resp = Conversione.conversioneResponsabile(beanGui);
+        resp.setIdUtente(id);
+        ope.elimina(resp);
+
     }
 
     /**
@@ -215,12 +215,12 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * @throws it.seerp.application.Exception.CancellazioneFallita
      * nel caso in cui il sistema fallisca nell'eliminazione
      */
-    public void eliminaFornitore(int id, BeanGuiFornitore beanGui) throws SQLException,ValidatorException {
-       
-            OpFornitore ope = new OpFornitore();
-            Fornitore forn = Conversione.conversioneFornitore(beanGui);
-            ope.elimina(forn);
-       
+    public void eliminaFornitore(int id, BeanGuiFornitore beanGui) throws SQLException, ValidatorException {
+
+        OpFornitore ope = new OpFornitore();
+        Fornitore forn = Conversione.conversioneFornitore(beanGui);
+        ope.elimina(forn);
+
     }
 
     /**
@@ -228,12 +228,18 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * @param user codice dell'utente
      * @param beanGui bean grafico dove inserire i dati visualizzati
      */
-    public void visualizzaDatiResponsabile(int user, BeanGuiResponsabile beanGui) throws SQLException,ValidatorException {
-       
-            OpResponsabile ope = new OpResponsabile();
-            Responsabile utente = ope.visualizzaResponsabile(user);
-            beanGui = it.seerp.application.conversioni.Conversione.conversioneResponsabile(utente, beanGui);
-       
+    public void visualizzaDatiResponsabile(int user, BeanGuiResponsabile beanGui) throws SQLException, ValidatorException {
+
+        OpResponsabile ope = new OpResponsabile();
+        Responsabile utente = ope.visualizzaResponsabile(user);
+        beanGui = it.seerp.application.conversioni.Conversione.conversioneResponsabile(utente, beanGui);
+        AppRuoli op = new AppRuoli();
+        for (String s : op.getNomeRuolo("responsabile")) {
+            if (!s.equals(utente.getRuolo().getNome())) {
+                beanGui.getRuolo().addItem(s);
+            }
+        }
+
     }
 
     /**
@@ -241,11 +247,17 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * @param user codice dell'utente
      * @param beanGui bean grafico dove inserire i dati visualizzati
      */
-    public void visualizzaDatiDipendente(int user, BeanGuiDipendente beanGui) throws SQLException,ValidatorException {
-        
-            OpDipendente ope = new OpDipendente();
-            Dipendente utente = ope.visualizzaDati(user);
-            beanGui = it.seerp.application.conversioni.Conversione.conversioneDipendente(utente, beanGui);
-        
+    public void visualizzaDatiDipendente(int user, BeanGuiDipendente beanGui) throws SQLException, ValidatorException {
+
+        OpDipendente ope = new OpDipendente();
+        Dipendente utente = ope.visualizzaDati(user);
+        beanGui = it.seerp.application.conversioni.Conversione.conversioneDipendente(utente, beanGui);
+         AppRuoli op = new AppRuoli();
+         for (String s : op.getNomeRuolo("dipendente")) {
+            if (!s.equals(utente.getRuolo().getNome())) {
+                beanGui.getRuolo().addItem(s);
+            }
+        }
+
     }
 }
