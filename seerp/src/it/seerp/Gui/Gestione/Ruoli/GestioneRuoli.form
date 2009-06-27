@@ -368,9 +368,6 @@
                       <Connection code="PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneResponsabili)" type="code"/>
                     </Property>
                   </Properties>
-                  <AccessibilityProperties>
-                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Gestione Responsabili"/>
-                  </AccessibilityProperties>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
                   <SubComponents>
