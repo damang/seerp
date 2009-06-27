@@ -744,7 +744,8 @@ public class GestioneInit extends javax.swing.JPanel {
       AppInit operazione= new AppInit();
         try {
             operazione.inserimento(amm);
-            JOptionPane.showMessageDialog(null, "Operazione effettuata con successo!! Il software verrà chiuso. Riaprilo per iniziare ad usarlo");
+            JOptionPane.showMessageDialog(null, "Operazione effettuata con successo!! Il software verrà chiuso. Riavviare per iniziare ad usarlo!");
+            System.exit(0);
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "errore nel database");
