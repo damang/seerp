@@ -37,7 +37,7 @@ public class GestioneInit extends javax.swing.JPanel {
         this.az = new BeanGuiAzienda(this);
         legameBeans();
         JFrame f = new JFrame();
-        f.getContentPane().add(new GestioneInit());
+        f.getContentPane().add(this);
         f.setSize(800, 600);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setVisible(true);

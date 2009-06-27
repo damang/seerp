@@ -741,7 +741,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-     //   try {
+        try {
             Policy.setPolicy(new AuthPolicy());
             System.setProperty("java.security.auth.login.config", "file_config\\jaasutil.config");
             try {
@@ -755,11 +755,11 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
             } catch (UnsupportedLookAndFeelException ex) {
                 ex.printStackTrace();
             }
-       /*     AppInit app = new AppInit();
+           AppInit app = new AppInit();
             if (!app.check()) {
                 GestioneInit info = new GestioneInit();
             }
-            else {*/
+            else {
                 final JaasUtil ja = new JaasUtil();
                 ja.addLoginListener(new LoginAdapter() {
 
@@ -776,7 +776,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
             });
             JXLoginPane p = new JXLoginPane(ja);
             JXLoginPane.showLoginFrame(p).setVisible(true);
-           //  }
+          }
             /*    final Subject _subject = new Subject();
             _subject.getPrincipals().add(new AuthPrincipal("majinb", "username"));
             _subject.getPrincipals().add(new AuthPrincipal("amministratore", "ruolo"));
@@ -787,10 +787,10 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
             new Index(_subject);
             }
             });*/
-  /*      } catch (SQLException ex) {
+       } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Errore di accesso al database");
             System.exit(0);
-        }*/
+        }
         /*    final Subject _subject = new Subject();
         _subject.getPrincipals().add(new AuthPrincipal("majinb", "username"));
         _subject.getPrincipals().add(new AuthPrincipal("amministratore", "ruolo"));

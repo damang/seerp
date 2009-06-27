@@ -22,7 +22,6 @@ public class AppInit implements GestioneInit<BeanGuiAmministratore> {
         boolean check = false;
             OpInit op = new OpInit();
             check = op.check();
-        
         return check;
     }
 

@@ -88,7 +88,7 @@ public class OpInit implements OpeEntity<Amministratore, Azienda> {
         PreparedStatement stmtp = null;
         ResultSet rs = null;
 
-        String query = "SELECT * FROM amministratore WHERE idAmministratore > 1";
+        String query = "SELECT * FROM amministratore WHERE idAmministratore >= 1";
         stmtp = (PreparedStatement) connessione.prepareStatement(query);
         rs = stmtp.executeQuery(query);
         if (rs.next()) {
