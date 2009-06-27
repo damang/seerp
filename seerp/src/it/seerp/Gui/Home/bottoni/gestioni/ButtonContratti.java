@@ -1,11 +1,10 @@
 
-package it.seerp.Gui.bottoni.gestioni;
+package it.seerp.Gui.Home.bottoni.gestioni;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
-import it.seerp.Gui.Gestione.Servizi.GestioneServizi;
+import it.seerp.Gui.Gestione.Contratti.GestioneContratti;
 import it.seerp.Gui.observerButton.ObserverButton;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
@@ -13,26 +12,26 @@ import javax.swing.JTabbedPane;
  *
  * @author Andrea-Luisa
  */
-public class ButtonServizi extends ObserverButton implements CommandInterface {
+public class ButtonContratti extends ObserverButton implements CommandInterface {
 
     /**
      *
      */
     protected JTabbedPane tabbedPane;
     private JPanel menu;
-    GestioneServizi panel;
+    GestioneContratti panel;
 
     /**
      *
      * @param pan
+     * @param act 
      * @param menu
-     * @param act
      */
-    public ButtonServizi(JTabbedPane pan, JPanel menu, ActionListener act) throws SQLException {
+    public ButtonContratti(JTabbedPane pan, JPanel menu, ActionListener act) {
         this.tabbedPane = pan;
         this.menu = menu;
 
-        this.panel = new GestioneServizi();
+        this.panel = new GestioneContratti();
         this.addActionListener(act);
         panel.register(this);
     }
@@ -40,13 +39,11 @@ public class ButtonServizi extends ObserverButton implements CommandInterface {
     /**
      *
      */
-    public ButtonServizi() {
+    public ButtonContratti() {
         super();
     }
 
     public void execute() {
-
-        
 
         if (!isPresente) {
 
@@ -55,15 +52,14 @@ public class ButtonServizi extends ObserverButton implements CommandInterface {
 
 
             panel.repaint();
-            this.tabbedPane.addTab("Servizi", panel);
+            this.tabbedPane.addTab("Contratti", panel);
 
             ButtonTabComponent button = new ButtonTabComponent(this.tabbedPane, this.panel, this.menu);
-            this.tabbedPane.setTabComponentAt((this.tabbedPane.getTabCount() - 1), button);
+            this.tabbedPane.setTabComponentAt(this.tabbedPane.getTabCount() - 1, button);
             this.tabbedPane.setSelectedComponent(panel);
+            this.setEnabled(false);
             panel.setVisible(true);
-        //    menu.setVisible(true);
-           this.setEnabled(false);
-
+           // menu.setVisible(true);
             panel.repaint();
 
 

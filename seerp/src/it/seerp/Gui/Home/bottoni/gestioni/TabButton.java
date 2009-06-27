@@ -1,4 +1,4 @@
-package it.seerp.Gui.bottoni.gestioni;
+package it.seerp.Gui.Home.bottoni.gestioni;
 
 import it.seerp.Gui.observablePanel.ObservableJPanel;
 import java.awt.*;
