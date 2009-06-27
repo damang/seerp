@@ -5,9 +5,13 @@ import it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla;
 import it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva;
 import it.seerp.Gui.Gestione.Menu.MenuInfoAzienda;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
+import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.bean.BeanGuiAzienda;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import it.seerp.application.applicazione.AppAzienda;
 import java.awt.Color;
@@ -26,13 +30,16 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
      * @param menu viene passato il menù da passa 
      */
     public void setMenu(MenuInfoAzienda menu) {
-        this.menu = menu;
-        azienda = new BeanGuiAzienda(this);
-        legameBean();
-        AppAzienda operazione = new AppAzienda();
-        operazione.visualizzaAzienda(azienda);
-
-        editabile(false);
+        try {
+            this.menu = menu;
+            azienda = new BeanGuiAzienda(this);
+            legameBean();
+            AppAzienda operazione = new AppAzienda();
+            operazione.visualizzaAzienda(azienda);
+            editabile(false);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Errore dal database: "+ex.getErrorCode());
+        }
     }
 
     /**
@@ -356,14 +363,20 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonSalva1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSalva1MouseClicked
-        menu.getModifica().setEnabled(true);
-        editabile(true);
-        AppAzienda operazione = new AppAzienda();
-        operazione.modifica(azienda);
-        operazione.visualizzaAzienda(azienda);
-        editabile(false);
-        this.buttonAnnulla1.setEnabled(false);
-        this.buttonSalva1.setEnabled(false);
+        try {
+            menu.getModifica().setEnabled(true);
+            editabile(true);
+            AppAzienda operazione = new AppAzienda();
+            operazione.modifica(azienda);
+            operazione.visualizzaAzienda(azienda);
+            editabile(false);
+            this.buttonAnnulla1.setEnabled(false);
+            this.buttonSalva1.setEnabled(false);
+        } catch (ValidatorException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Errore nel database: "+ ex.getErrorCode());
+        }
     }//GEN-LAST:event_buttonSalva1MouseClicked
 
     private void buttonAnnulla1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonAnnulla1MouseClicked
