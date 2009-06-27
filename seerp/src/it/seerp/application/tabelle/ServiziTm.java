@@ -38,9 +38,6 @@ public class ServiziTm extends Generica<Servizio> {
         Iterator<Servizio> it = op.visualizzaTabella().iterator();
 
         while (it.hasNext()) {
-            {
-                System.out.println("luisa");
-            }
             this.addNewData(it.next());
         }
     }
