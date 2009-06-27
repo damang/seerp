@@ -5,6 +5,7 @@
 
 package it.seerp.application.tabelle;
 
+import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.applicazione.AppRuoli;
 import it.seerp.storage.ejb.Ruolo;
 import java.sql.SQLException;
@@ -23,7 +24,7 @@ public class RuoloTm extends Generica<Ruolo> {
   *
   * @throws java.sql.SQLException
   */
- public RuoloTm() throws SQLException {
+ public RuoloTm() throws SQLException{
         Object[] list = new Object[]{ "nome" };
 
         super.setColumnIdentifiers(list);
@@ -31,7 +32,7 @@ public class RuoloTm extends Generica<Ruolo> {
          refresh();
 
     }
-public void refresh(){
+public void refresh() throws SQLException{
  AppRuoli  op = new AppRuoli();
         Iterator <Ruolo> it = op.visualizzaTabella().iterator();
         this.getDataCollection().removeAllElements();
@@ -43,7 +44,7 @@ public void refresh(){
      * @param table
      * @throws SQLException
      */
-    public RuoloTm(JTable table) throws SQLException {
+    public RuoloTm(JTable table) throws SQLException,ValidatorException {
         this();
         this.table=table;
     }

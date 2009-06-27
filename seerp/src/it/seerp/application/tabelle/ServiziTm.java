@@ -33,7 +33,7 @@ public class ServiziTm extends Generica<Servizio> {
 
     }
 
-    public void refresh() {
+    public void refresh() throws SQLException{
         AppServizi op = new AppServizi();
         Iterator<Servizio> it = op.visualizzaTabella().iterator();
 
