@@ -23,7 +23,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jXLabel2" pref="222" max="32767" attributes="0"/>
+              <Component id="jXLabel2" pref="232" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="612" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
@@ -98,15 +98,18 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="panel28" alignment="0" min="-2" max="-2" attributes="1"/>
-                              <Component id="jPanel29" alignment="0" min="-2" max="-2" attributes="1"/>
-                          </Group>
                           <Component id="buttonSalva1" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="panel28" alignment="0" max="32767" attributes="1"/>
+                                  <Component id="jPanel29" alignment="0" max="32767" attributes="1"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="modifica" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="384" max="32767" attributes="0"/>
+                      <EmptySpace pref="373" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -125,18 +128,18 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Component id="pwd" min="-2" pref="133" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="3"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="pwd" pref="133" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="pwd" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="1"/>
+                          <Component id="pwd" pref="20" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -144,6 +147,9 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="pwd">
                   <Properties>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="pwd" noResource="true"/>
                   </Properties>
                 </Component>
@@ -164,15 +170,15 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="user" min="-2" pref="133" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="1"/>
+                          <Component id="user" pref="143" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="user" min="-2" max="-2" attributes="0"/>
+                          <Component id="user" min="-2" pref="20" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -181,6 +187,9 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="user">
                   <Properties>
+                    <Property name="disabledTextColor" type="java.awt.Color" noResource="true" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="user" noResource="true"/>
                   </Properties>
                 </Component>
@@ -269,7 +278,7 @@
                           </Group>
                           <Component id="jPanel15" alignment="0" min="-2" max="-2" attributes="3"/>
                       </Group>
-                      <EmptySpace pref="139" max="32767" attributes="0"/>
+                      <EmptySpace pref="149" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -337,6 +346,9 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="tell">
                   <Properties>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="tell" noResource="true"/>
                   </Properties>
                   <Events>
@@ -377,6 +389,9 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="citta">
                   <Properties>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="citta" noResource="true"/>
                   </Properties>
                 </Component>
@@ -413,6 +428,9 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="provincia">
                   <Properties>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="provincia" noResource="true"/>
                   </Properties>
                 </Component>
@@ -449,6 +467,9 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="cog">
                   <Properties>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="cog" noResource="true"/>
                   </Properties>
                 </Component>
@@ -486,7 +507,13 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="user1">
                   <Properties>
+                    <Property name="disabledTextColor" type="java.awt.Color" noResource="true" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="user1" noResource="true"/>
+                    <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -522,6 +549,9 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="ragSoc">
                   <Properties>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="ragSoc" noResource="true"/>
                   </Properties>
                 </Component>
@@ -558,6 +588,9 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="codFisc">
                   <Properties>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="codFisc" noResource="true"/>
                   </Properties>
                 </Component>
@@ -635,6 +668,9 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="mail2">
                   <Properties>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="mail2" noResource="true"/>
                   </Properties>
                 </Component>
@@ -672,6 +708,9 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="piva">
                   <Properties>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="piva" noResource="true"/>
                   </Properties>
                 </Component>
@@ -710,6 +749,9 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="nm">
                   <Properties>
+                    <Property name="disabledTextColor" type="java.awt.Color" noResource="true" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="nm" noResource="true"/>
                   </Properties>
                 </Component>
@@ -746,6 +788,9 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="fax">
                   <Properties>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="fax" noResource="true"/>
                   </Properties>
                 </Component>
@@ -783,6 +828,9 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="cap">
                   <Properties>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="cap" noResource="true"/>
                   </Properties>
                 </Component>
