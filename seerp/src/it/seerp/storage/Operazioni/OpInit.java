@@ -34,8 +34,8 @@ public class OpInit implements OpeEntity<Amministratore, Azienda> {
         PreparedStatement stmtag = null;
         try {
             connessione.setAutoCommit(false);
-            String sqlu = "INSERT INTO utente(username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita) " +
-                    "VALUES(?,?,?,?,?,?,?,?,'personale',true)";
+            String sqlu = "INSERT INTO utente(username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita,indirizzo) " +
+                    "VALUES(?,?,?,?,?,?,?,?,'personale',true,?)";
             String sqlp = "INSERT INTO personale(idPersonale,nome,cognome,codicefiscale,ruolo)" +
                     "VALUES(LAST_INSERT_ID(),?,?,?,'amministratore')";
             String sqlr = "INSERT INTO amministratore (idAmministratore)" +
@@ -52,6 +52,7 @@ public class OpInit implements OpeEntity<Amministratore, Azienda> {
             stmt.setString(6, user.getTelefono());
             stmt.setString(7, user.getCap());
             stmt.setString(8, user.getNote());
+            stmt.setString(9, user.getIndirizzo());
             // stmt.setString(9, user.getTipo());
             //stmt.setString(10, user.getVisible().toString());
             stmtp = (PreparedStatement) connessione.prepareStatement(sqlp);
