@@ -612,6 +612,7 @@
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="this.menuUtente1.setVisible(false);"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.Menu.MenuUtente(getSubject())"/>
           </AuxValues>
         </Component>
         <Component class="it.seerp.Gui.Gestione.Menu.MenuRuoli" name="menuRuoli1">
@@ -637,6 +638,7 @@
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="menuServizi1.setVisible(false);"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.Menu.MenuServizi(getSubject())"/>
           </AuxValues>
         </Component>
         <Component class="it.seerp.Gui.Gestione.Menu.MenuInfoAzienda" name="menuInfoAzienda1">

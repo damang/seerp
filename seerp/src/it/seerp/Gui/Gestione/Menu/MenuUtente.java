@@ -3,8 +3,13 @@ package it.seerp.Gui.Gestione.Menu;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.Utenti.AreaUtentePanel;
+import it.seerp.Gui.configurazioni.Gui.ConfigurazioneUtente;
+import it.seerp.Gui.configurazioni.PermessiDefault;
+import it.seerp.storage.ejb.Permesso;
+import it.seerp.storage.jaas.JaasUtil;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.security.auth.Subject;
 import javax.swing.JButton;
 
 /**
@@ -14,6 +19,7 @@ import javax.swing.JButton;
 public class MenuUtente extends javax.swing.JPanel implements ActionListener {
 
     AreaUtentePanel pannello=null;
+    private Subject ut_sub;
     /**
      *
      */
@@ -24,11 +30,9 @@ public class MenuUtente extends javax.swing.JPanel implements ActionListener {
     /** Creates new form MenuUtente
      * @param pannello
      */
-    public MenuUtente(AreaUtentePanel pannello) {
-
-       // initComponents();
-       // this.pannello = pannello;
-        
+    public MenuUtente(Subject s) {
+        ut_sub=s;
+        initComponents();
     }
     /**
      *
@@ -37,11 +41,33 @@ public class MenuUtente extends javax.swing.JPanel implements ActionListener {
     public void setPannello(AreaUtentePanel pannello){
         this.pannello = pannello;
         pannello.setMenu(this);
+        setEnabledByPerm();
         this.aggiungiButton1.setAreaUt(pannello);
         this.modificaButtonUtente1.setAreaUt(pannello);
         this.eliminaButton1.setAreaUt(pannello);
     }
-
+     private void setEnabledByPerm() {
+         if (pannello.getTipoUtente().equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
+            this.aggiungiButton1.setEnabled(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneResponsabili),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.AGGIUNGI))));
+            this.modificaButtonUtente1.setEnabled(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneResponsabili),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.MODIFICA))));
+            this.eliminaButton1.setEnabled(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneResponsabili),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELIMINA))));
+        }
+        else if (pannello.getTipoUtente().equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
+            this.aggiungiButton1.setEnabled(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.AGGIUNGI))));
+            this.modificaButtonUtente1.setEnabled(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.MODIFICA))));
+            this.eliminaButton1.setEnabled(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELIMINA))));
+        }
+        else if (pannello.getTipoUtente().equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
+            this.aggiungiButton1.setEnabled(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.AGGIUNGI))));
+            this.modificaButtonUtente1.setEnabled(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.MODIFICA))));
+            this.eliminaButton1.setEnabled(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELIMINA))));
+        }
+        else if (pannello.getTipoUtente().equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
+            this.aggiungiButton1.setEnabled(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.AGGIUNGI))));
+            this.modificaButtonUtente1.setEnabled(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.MODIFICA))));
+            this.eliminaButton1.setEnabled(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELIMINA))));
+        }
+   }
     /**
      *
      * @return
@@ -116,9 +142,13 @@ public class MenuUtente extends javax.swing.JPanel implements ActionListener {
   }
 
   public void setButtonEnabled (boolean b) {
+      if (b)
+          setEnabledByPerm();
+      else {
         this.modificaButtonUtente1.setEnabled(b);
         this.aggiungiButton1.setEnabled(b);
         this.eliminaButton1.setEnabled(b);
+      }
     }
     /**
      *
