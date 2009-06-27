@@ -21,7 +21,7 @@ public interface OpeEntity<E, G> {
      * @throws java.sql.SQLException
      * nel caso in cui ci siano problemi legati all'iserimento nel database
      */
-    public void inserimento(E bean) throws DatiDuplicatiEx, DatiErratiEx, SQLException;
+    public void inserimento(E bean) throws DatiDuplicatiEx,SQLException;
 
     /**
      * @param bean
@@ -29,7 +29,7 @@ public interface OpeEntity<E, G> {
      * @throws java.sql.SQLException
      * nel caso in cui ci siano problemi legati alla modifica nel database
      */
-    public E modifica(E bean) throws SQLException,DatiErratiEx;
+    public E modifica(E bean) throws SQLException;
 
     /**
      * metodo che ricerca nel database l'enity con quel parametro in input
