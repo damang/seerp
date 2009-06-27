@@ -185,6 +185,20 @@ public class Conversione {
         return gui;
     }
 
+    public static Utente conversionePersonale(BeanGuiUtente bUtente) {
+        Utente utente = new  Utente();
+
+        utente.setUsername(bUtente.getTxtUsername().getText());
+        utente.setPassword(bUtente.getTxtPassword().getText());
+        utente.setCitta(bUtente.getTxtCitta().getText());
+        utente.setProvincia(bUtente.getTxtProvincia().getText());
+        utente.setCap(bUtente.getCap().getText());
+        utente.setTelefono(bUtente.getTxtTelefono().getText());
+        utente.setEmail(bUtente.getTxtEmail().getText());
+        
+         return utente;
+    }
+
     /**
      * Metodo che converte un Bean Gui Servizio in un normale Bean Servizio
      * @param pGui
@@ -310,7 +324,7 @@ public class Conversione {
         utente.getCap().setText(user.getCap());
         utente.getTxtProvincia().setText(user.getProvincia());
         utente.getTxtTelefono().setText(user.getTelefono());
-//        utente.getTxtNote().setText(user.getNote());
+//       utente.getTxtNote().setText(user.getNote());
 //        utente.getVisible().setText(user.getVisible().toString());
         //    utente.getTipo().setText(user.getTipo());
         return utente;
@@ -490,17 +504,7 @@ public class Conversione {
 
     }
 
-    public static void conversioneServiziFor(Fornitore e, BeanGuiFornitore extra) {
-
-        extra.getRagioneSociale().setText(e.getRagioneSociale());
-        extra.getPIva().setText(e.getPIva());
-        extra.getTxtCitta().setText(e.getCitta());
-        extra.getTxtEmail().setText(e.getEmail());
-        extra.getTxtProvincia().setText(e.getProvincia());
-        extra.getTxtTelefono().setText(e.getTelefono());
-
-
-    }
+    
 
     /**
      * Metodo che converte un Bean Responsabile in un Bean Gui Responsabile
@@ -970,7 +974,7 @@ public class Conversione {
     public static Azienda conversioneAzienda(BeanGuiAzienda azienda) throws ValidatorException {
         Azienda azienda1 = new Azienda();
 //        azienda1.setCitta(azienda.getCitta().getText());
-//        azienda1.setEmail(azienda.getEmail().getText());
+       azienda1.setEmail(azienda.getEmail().getText());
         //      azienda1.setFax(azienda.getFax().getText());
         azienda1.setIndirizzo(azienda.getInidirizzo().getText());
         azienda1.setNazione(azienda.getNazione().getText());
@@ -1003,7 +1007,8 @@ public class Conversione {
     public static BeanGuiAzienda conversioneAzienda(Azienda a, BeanGuiAzienda bga) {
 
 //        bga.getCitta().setText(a.getCitta());
-//
+
+
         bga.getEmail().setText(a.getEmail());
         //  bga.getFax().setText(a.getFax());
 
