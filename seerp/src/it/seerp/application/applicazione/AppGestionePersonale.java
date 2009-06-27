@@ -42,16 +42,14 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * @throws SQLException
      * @throws DatiDuplicatiEx
      */
-    public void inserisciDipendente(BeanGuiDipendente user) throws SQLException, DatiDuplicatiEx {
+    public void inserisciDipendente(BeanGuiDipendente user) throws SQLException,ValidatorException {
         // super.inserisci(user);
-        try {
+    
             OpDipendente a = new OpDipendente();
             Dipendente dip = Conversione.conversioneDipendente(user);
             dip.setTipo("personale");
             a.inserisci(dip);
-        } catch (ValidatorException e) {
-            JOptionPane.showMessageDialog(null, "Dati errati");
-        }
+      
     }
 
     /**
@@ -60,16 +58,14 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * @throws SQLException
      * @throws DatiDuplicatiEx
      */
-    public void inserisciResponsabile(BeanGuiResponsabile user) throws SQLException, DatiDuplicatiEx {
+    public void inserisciResponsabile(BeanGuiResponsabile user) throws SQLException,ValidatorException {
         //super.inserisci(user);
-        try {
+    
             OpResponsabile a = new OpResponsabile();
             Responsabile dip = Conversione.conversioneResponsabile(user);
             dip.setTipo("personale");
             a.inserisci(dip);
-        } catch (ValidatorException ex) {
-            JOptionPane.showMessageDialog(null, "campi errati");
-        }
+      
     }
 
     /**
@@ -79,18 +75,16 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * @return il Dipendente modificato
      * @throws SQLException
      */
-    public BeanGuiDipendente modificaDipendente(int id, BeanGuiDipendente user) throws SQLException {
+    public BeanGuiDipendente modificaDipendente(int id, BeanGuiDipendente user) throws SQLException,ValidatorException {
         //super.modifica(user);
-        try {
+      
             OpPersonale a = new OpPersonale();
             Dipendente dip = Conversione.conversioneDipendente(user);
             dip.setIdUtente(id);
             a.modifica(dip);
             user.setValidatorEnabled(false);
             this.visualizzaDatiDipendente(id, user);
-        } catch (ValidatorException e) {
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
+       
         return user;
     }
 
@@ -100,16 +94,14 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * @return l'Amministratore modificato
      * @throws SQLException
      */
-    public BeanGuiAmministratore modificaAmministratore(BeanGuiAmministratore user) throws SQLException {
+    public BeanGuiAmministratore modificaAmministratore(BeanGuiAmministratore user) throws SQLException,ValidatorException {
         //  super.modifica(user);
-        try {
+       
             OpAmministratore a = new OpAmministratore();
             Amministratore amm = Conversione.conversioneAmministratore(user);
             amm = (Amministratore) a.modifica(amm);
             user = Conversione.conversioneAmministratore(amm, user);
-        } catch (ValidatorException e) {
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
+       
         return user;
     }
 
@@ -120,18 +112,16 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * @return il Responsabile modificato
      * @throws SQLException
      */
-    public BeanGuiResponsabile modificaResponsabile(int id, BeanGuiResponsabile user) throws SQLException {
+    public BeanGuiResponsabile modificaResponsabile(int id, BeanGuiResponsabile user) throws SQLException,ValidatorException {
         // super.modifica(user);
-        try {
+        
             OpPersonale a = new OpPersonale();
             Responsabile res = Conversione.conversioneResponsabile(user);
             res.setIdUtente(id);
             user.setValidatorEnabled(false);
             a.modifica(res);
             this.visualizzaDatiResponsabile(id, user);
-        } catch (ValidatorException e) {
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
+        
         return user;
     }
 
@@ -139,14 +129,12 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * Metodo che passa la lista di bean utilizzando l'operazioni del lato storage
      * @return lista dei bean
      */
-    public ArrayList<Dipendente> visualizzaTabellaDipendenti() {
+    public ArrayList<Dipendente> visualizzaTabellaDipendenti() throws SQLException {
         ArrayList<Dipendente> list = null;
-        try {
+       
             OpDipendente ope = new OpDipendente();
             list = ope.elencaDipendente();
-        } catch (SQLException se) {
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
-        }
+      
         return list;
     }
 
@@ -178,14 +166,12 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * Metodo che passa la lista di bean utilizzando l'operazioni del lato storage
      * @return lista dei bean
      */
-    public ArrayList<Responsabile> visualizzaTabellaResponsabili() {
+    public ArrayList<Responsabile> visualizzaTabellaResponsabili()  throws SQLException {
         ArrayList<Responsabile> list = new ArrayList<Responsabile>();
-        try {
+  
             OpResponsabile ope = new OpResponsabile();
             list = ope.elencaResponsabile();
-        } catch (SQLException se) {
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
-        }
+       
         return list;
     }
 
@@ -197,18 +183,13 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * @throws it.seerp.application.Exception.CancellazioneFallita
      * nel caso in cui il sistema fallisca nell'eliminazione
      */
-    public void eliminaDipendente(int id, BeanGuiDipendente beanGui) throws CancellazioneFallita {
-        try {
+    public void eliminaDipendente(int id, BeanGuiDipendente beanGui) throws SQLException,ValidatorException {
+       
             OpDipendente ope = new OpDipendente();
             Dipendente dip = Conversione.conversioneDipendente(beanGui);
             dip.setIdUtente(id);
             ope.elimina(dip);
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (ValidatorException e) {
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
+       
     }
 
     /**
@@ -217,18 +198,13 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * @param beanGui Bean Gui del Responsabile
      * @throws it.seerp.application.Exception.CancellazioneFallita
      */
-    public void eliminaResponsabile(int id, BeanGuiResponsabile beanGui) throws CancellazioneFallita {
-        try {
+    public void eliminaResponsabile(int id, BeanGuiResponsabile beanGui) throws SQLException,ValidatorException {
+        
             OpResponsabile ope = new OpResponsabile();
             Responsabile resp = Conversione.conversioneResponsabile(beanGui);
             resp.setIdUtente(id);
             ope.elimina(resp);
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (ValidatorException e) {
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
+       
     }
 
     /**
@@ -239,16 +215,12 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * @throws it.seerp.application.Exception.CancellazioneFallita
      * nel caso in cui il sistema fallisca nell'eliminazione
      */
-    public void eliminaFornitore(int id, BeanGuiFornitore beanGui) throws CancellazioneFallita {
-        try {
+    public void eliminaFornitore(int id, BeanGuiFornitore beanGui) throws SQLException,ValidatorException {
+       
             OpFornitore ope = new OpFornitore();
             Fornitore forn = Conversione.conversioneFornitore(beanGui);
             ope.elimina(forn);
-        } catch (SQLException se) {
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (ValidatorException e) {
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
+       
     }
 
     /**
@@ -256,16 +228,12 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * @param user codice dell'utente
      * @param beanGui bean grafico dove inserire i dati visualizzati
      */
-    public void visualizzaDatiResponsabile(int user, BeanGuiResponsabile beanGui) {
-        try {
+    public void visualizzaDatiResponsabile(int user, BeanGuiResponsabile beanGui) throws SQLException,ValidatorException {
+       
             OpResponsabile ope = new OpResponsabile();
             Responsabile utente = ope.visualizzaResponsabile(user);
             beanGui = it.seerp.application.conversioni.Conversione.conversioneResponsabile(utente, beanGui);
-        } catch (SQLException se) {
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (ValidatorException e) {
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
+       
     }
 
     /**
@@ -273,17 +241,11 @@ public class AppGestionePersonale extends AppGestioneUtente {
      * @param user codice dell'utente
      * @param beanGui bean grafico dove inserire i dati visualizzati
      */
-    public void visualizzaDatiDipendente(int user, BeanGuiDipendente beanGui) {
-        try {
+    public void visualizzaDatiDipendente(int user, BeanGuiDipendente beanGui) throws SQLException,ValidatorException {
+        
             OpDipendente ope = new OpDipendente();
             Dipendente utente = ope.visualizzaDati(user);
             beanGui = it.seerp.application.conversioni.Conversione.conversioneDipendente(utente, beanGui);
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (ValidatorException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
+        
     }
 }
