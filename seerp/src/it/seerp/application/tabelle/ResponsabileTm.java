@@ -39,7 +39,7 @@ public class ResponsabileTm extends Generica <Responsabile>{
 
 
     }
- public void refresh(){
+ public void refresh() throws SQLException{
         AppGestionePersonale op = new AppGestionePersonale();
         Iterator<Responsabile> it = op.visualizzaTabellaResponsabili().iterator();
         while (it.hasNext()) {
