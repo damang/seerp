@@ -113,7 +113,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         jPanel20 = new javax.swing.JPanel();
         cap = new javax.swing.JTextField();
         jPanel21 = new javax.swing.JPanel();
-        ragSoc1 = new javax.swing.JTextField();
+        inidirizzo = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(0, 0, 102));
 
@@ -519,21 +519,21 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         jPanel21.setBorder(javax.swing.BorderFactory.createTitledBorder("Indirizzo"));
         jPanel21.setName("jPanel21"); // NOI18N
 
-        ragSoc1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        ragSoc1.setName("ragSoc1"); // NOI18N
+        inidirizzo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        inidirizzo.setName("inidirizzo"); // NOI18N
 
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
         jPanel21Layout.setHorizontalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
-                .addComponent(ragSoc1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(inidirizzo, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel21Layout.createSequentialGroup()
-                .addComponent(ragSoc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(inidirizzo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -681,7 +681,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         this.mail2.setText(s);
         this.user.setText(s);
         this.pwd.setText(s);
-
+        this.inidirizzo.setText(s);
         this.codFisc.setText(s);
         this.ragSoc.setText(s);
         this.fax.setText(s);
@@ -698,6 +698,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         utente.setCognome(cog);
         utente.setCodiceFiscale(codFisc);
         utente.setCap(cap);
+        utente.setIndirizzo(inidirizzo);
         utente.setTxtPassword(pwd);
         utente.setTxtUsername(user1);
         utente.setTxtUsernameSec(user);
@@ -717,6 +718,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         extra.setTxtCitta(citta);
         extra.setTxtEmail(mail2);
         extra.setCap(cap);
+        extra.setIndirizzo(inidirizzo);
         extra.setPIva(piva);
         extra.setRagioneSociale(ragSoc);
         extra.setTxtUsernameSec(user1);
@@ -744,6 +746,8 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
     public void editabile(boolean flag) {
         this.nm.setEnabled(flag);
         nm.setBackground(Color.WHITE);
+        this.inidirizzo.setEnabled(flag);
+        inidirizzo.setBackground(Color.WHITE);
         this.cog.setEnabled(flag);
         cog.setBackground(Color.WHITE);
         this.user1.setEnabled(flag);
@@ -780,6 +784,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
     private javax.swing.JTextField codFisc;
     private javax.swing.JTextField cog;
     private javax.swing.JTextField fax;
+    private javax.swing.JTextField inidirizzo;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
@@ -807,7 +812,6 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
     private javax.swing.JTextField provincia;
     private javax.swing.JTextField pwd;
     private javax.swing.JTextField ragSoc;
-    private javax.swing.JTextField ragSoc1;
     private javax.swing.JComboBox ruolo;
     private javax.swing.JTextField tell;
     private javax.swing.JTextField user;
