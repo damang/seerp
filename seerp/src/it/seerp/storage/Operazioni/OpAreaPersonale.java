@@ -103,7 +103,7 @@ public class OpAreaPersonale extends OpeUtente {
      * @throws java.sql.SQLException
      * @throws DatiErratiEx se si modifica con una password errata
      */
-    public Utente modificaPassword(Utente u) throws SQLException, DatiErratiEx {
+    public Utente modificaPassword(Utente u) throws SQLException {
       conn = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
 
