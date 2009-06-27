@@ -50,7 +50,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
             dip.setTipo("personale");
             a.inserisci(dip);
         } catch (ValidatorException e) {
-            JOptionPane.showMessageDialog(null, "Dati duplicati");
+            JOptionPane.showMessageDialog(null, "Dati errati");
         }
     }
 
