@@ -67,77 +67,67 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="nome" max="32767" attributes="1"/>
-                                  <Component id="provincia" alignment="0" max="32767" attributes="3"/>
-                                  <Component id="email" alignment="0" min="-2" max="-2" attributes="3"/>
-                              </Group>
-                              <Component id="username" min="-2" max="-2" attributes="3"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="Cognome" min="-2" max="-2" attributes="3"/>
-                                  <Component id="citta" min="-2" max="-2" attributes="3"/>
-                                  <Component id="telefono" min="-2" max="-2" attributes="3"/>
-                              </Group>
-                              <Component id="password" min="-2" max="-2" attributes="3"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cap" alignment="0" min="-2" max="-2" attributes="3"/>
-                              <Component id="tipo" alignment="0" min="-2" max="-2" attributes="3"/>
-                              <Component id="cf" min="-2" max="-2" attributes="3"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="idAzienda" alignment="0" min="-2" max="-2" attributes="3"/>
-                                      <Component id="cittaAzienda" min="-2" max="-2" attributes="3"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="nazioneAz" max="32767" attributes="3"/>
-                                      <Component id="faxAz" alignment="0" min="-2" max="-2" attributes="3"/>
+                                      <Component id="nazioneAz" alignment="0" max="32767" attributes="3"/>
+                                      <Component id="faxAz" alignment="0" max="32767" attributes="3"/>
+                                      <Component id="note8" alignment="0" min="0" pref="163" max="32767" attributes="3"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="cittaAzienda" alignment="0" min="-2" max="-2" attributes="3"/>
+                                      <Component id="IndirizzoAz" max="32767" attributes="3"/>
+                                      <Component id="pivaAz" alignment="0" max="32767" attributes="3"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="note9" max="32767" attributes="3"/>
+                                      <Component id="EmailAzienda" alignment="0" min="-2" max="-2" attributes="3"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="note8" min="-2" max="-2" attributes="3"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="pivaAz" max="32767" attributes="3"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="IndirizzoAz" max="32767" attributes="3"/>
+                                  <Component id="jXLabel3" pref="564" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
-                              <Component id="note9" max="32767" attributes="3"/>
-                              <Component id="EmailAzienda" alignment="0" min="-2" max="-2" attributes="3"/>
                           </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jXLabel3" pref="523" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                           <Component id="buttonSalva1" min="-2" pref="111" max="-2" attributes="1"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="buttonAnnulla1" min="-2" max="-2" attributes="1"/>
-                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="nome" max="32767" attributes="1"/>
+                                      <Component id="provincia" alignment="0" max="32767" attributes="3"/>
+                                      <Component id="email" alignment="0" min="-2" max="-2" attributes="3"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="Cognome" min="-2" max="-2" attributes="3"/>
+                                      <Component id="citta" min="-2" max="-2" attributes="3"/>
+                                      <Component id="username" alignment="0" min="-2" max="-2" attributes="3"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="IndirizzoAz1" alignment="0" max="32767" attributes="3"/>
+                                      <Component id="cap" alignment="0" min="-2" max="-2" attributes="3"/>
+                                      <Component id="cf" min="-2" max="-2" attributes="3"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                                  <Component id="password" min="-2" max="-2" attributes="3"/>
+                                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                                  <Component id="telefono" min="-2" max="-2" attributes="3"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -145,71 +135,74 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="nome" alignment="0" min="-2" max="-2" attributes="1"/>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="cf" alignment="0" max="32767" attributes="1"/>
-                                  <Component id="Cognome" alignment="0" max="32767" attributes="1"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="provincia" alignment="0" min="-2" max="-2" attributes="1"/>
-                              <Component id="citta" alignment="0" min="-2" max="-2" attributes="1"/>
-                              <Component id="cap" alignment="0" min="-2" max="-2" attributes="1"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="tipo" alignment="0" min="-2" max="-2" attributes="1"/>
-                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="telefono" max="32767" attributes="1"/>
-                                  <Component id="email" alignment="0" min="-2" max="-2" attributes="1"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="password" max="32767" attributes="1"/>
-                              <Component id="username" alignment="0" max="32767" attributes="1"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jXLabel3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="buttonAnnulla1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="buttonSalva1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="EmailAzienda" max="32767" attributes="1"/>
-                              <Component id="faxAz" alignment="0" max="32767" attributes="1"/>
-                              <Component id="idAzienda" alignment="1" max="32767" attributes="1"/>
-                          </Group>
-                          <EmptySpace min="2" pref="2" max="2" attributes="0"/>
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="nazioneAz" alignment="0" max="32767" attributes="1"/>
-                                  <Component id="cittaAzienda" alignment="0" min="-2" max="-2" attributes="1"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="nome" min="-2" max="-2" attributes="1"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="provincia" min="-2" max="-2" attributes="1"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="email" min="-2" max="-2" attributes="1"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="3" pref="3" max="3" attributes="0"/>
-                                  <Component id="note9" min="-2" max="-2" attributes="1"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="cf" alignment="0" max="32767" attributes="1"/>
+                                      <Component id="Cognome" alignment="0" min="-2" max="-2" attributes="1"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="citta" alignment="0" min="-2" max="-2" attributes="1"/>
+                                      <Component id="cap" alignment="0" min="-2" max="-2" attributes="1"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="IndirizzoAz1" max="32767" attributes="1"/>
+                                      <Component id="username" alignment="0" max="32767" attributes="1"/>
+                                  </Group>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="IndirizzoAz" max="32767" attributes="1"/>
-                              <Component id="pivaAz" alignment="0" max="32767" attributes="1"/>
-                              <Component id="note8" alignment="0" max="32767" attributes="1"/>
+                              <Component id="telefono" max="32767" attributes="1"/>
+                              <Component id="password" alignment="0" max="32767" attributes="1"/>
                           </Group>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jPanel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="jXLabel3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="EmailAzienda" alignment="0" min="-2" max="-2" attributes="1"/>
+                      <Component id="cittaAzienda" min="-2" max="-2" attributes="1"/>
+                      <Component id="note8" min="-2" max="-2" attributes="1"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="3" pref="3" max="3" attributes="0"/>
+                          <Component id="note9" min="-2" max="-2" attributes="1"/>
+                          <EmptySpace pref="20" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="buttonAnnulla1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="buttonSalva1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="nazioneAz" min="-2" max="-2" attributes="1"/>
+                              <Component id="IndirizzoAz" max="32767" attributes="1"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="faxAz" max="32767" attributes="1"/>
+                              <Component id="pivaAz" alignment="0" max="32767" attributes="1"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -235,7 +228,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="nm" min="-2" pref="140" max="-2" attributes="0"/>
+                      <Component id="txt_nome" min="-2" pref="140" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="1"/>
                   </Group>
               </Group>
@@ -243,20 +236,23 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="nm" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_nome" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="nm">
+            <Component class="javax.swing.JTextField" name="txt_nome">
               <Properties>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
-                <Property name="name" type="java.lang.String" value="nm" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="txt_nome" noResource="true"/>
+                <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="txt_cogn"/>
+                </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nmActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_nomeActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -276,7 +272,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="1"/>
-                      <Component id="cog" min="-2" pref="131" max="-2" attributes="0"/>
+                      <Component id="txt_cogn" min="-2" pref="131" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -284,20 +280,23 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="cog" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_cogn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="cog">
+            <Component class="javax.swing.JTextField" name="txt_cogn">
               <Properties>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
-                <Property name="name" type="java.lang.String" value="cog" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="txt_cogn" noResource="true"/>
+                <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="txt_codfisc"/>
+                </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cogActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_cognActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -317,7 +316,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="1"/>
-                      <Component id="nm2" min="-2" pref="131" max="-2" attributes="0"/>
+                      <Component id="txt_cit" min="-2" pref="131" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -325,20 +324,20 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="nm2" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_cit" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="nm2">
+            <Component class="javax.swing.JTextField" name="txt_cit">
               <Properties>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
-                <Property name="name" type="java.lang.String" value="nm2" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="txt_cit" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nm2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_citActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -364,7 +363,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="nm3" min="-2" pref="140" max="-2" attributes="0"/>
+                      <Component id="txt_prov" min="-2" pref="140" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="1"/>
                   </Group>
               </Group>
@@ -372,20 +371,20 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="nm3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_prov" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="11" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="nm3">
+            <Component class="javax.swing.JTextField" name="txt_prov">
               <Properties>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
-                <Property name="name" type="java.lang.String" value="nm3" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="txt_prov" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nm3ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_provActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -405,7 +404,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="nm4" min="-2" pref="127" max="-2" attributes="0"/>
+                      <Component id="txt_cap" min="-2" pref="127" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="1"/>
                   </Group>
               </Group>
@@ -413,20 +412,20 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="nm4" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_cap" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="nm4">
+            <Component class="javax.swing.JTextField" name="txt_cap">
               <Properties>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
-                <Property name="name" type="java.lang.String" value="nm4" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="txt_cap" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nm4ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_capActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -446,7 +445,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="1"/>
-                      <Component id="nm5" min="-2" pref="127" max="-2" attributes="0"/>
+                      <Component id="txt_codfisc" min="-2" pref="127" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -454,20 +453,20 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="nm5" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_codfisc" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="nm5">
+            <Component class="javax.swing.JTextField" name="txt_codfisc">
               <Properties>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
-                <Property name="name" type="java.lang.String" value="nm5" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="txt_codfisc" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nm5ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_codfiscActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -487,7 +486,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="1"/>
-                      <Component id="nm8" min="-2" pref="140" max="-2" attributes="0"/>
+                      <Component id="txt_email" min="-2" pref="140" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -495,20 +494,20 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="nm8" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_email" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="nm8">
+            <Component class="javax.swing.JTextField" name="txt_email">
               <Properties>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
-                <Property name="name" type="java.lang.String" value="nm8" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="txt_email" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nm8ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_emailActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -528,7 +527,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="1"/>
-                      <Component id="nm9" min="-2" pref="131" max="-2" attributes="0"/>
+                      <Component id="txt_pwd" min="-2" pref="131" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -536,20 +535,20 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="nm9" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_pwd" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="nm9">
+            <Component class="javax.swing.JTextField" name="txt_pwd">
               <Properties>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
-                <Property name="name" type="java.lang.String" value="nm9" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="txt_pwd" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nm9ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_pwdActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -569,7 +568,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="1"/>
-                      <Component id="nm10" min="-2" pref="138" max="-2" attributes="0"/>
+                      <Component id="txt_tel" min="-2" pref="138" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -577,20 +576,20 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="nm10" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_tel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="nm10">
+            <Component class="javax.swing.JTextField" name="txt_tel">
               <Properties>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
-                <Property name="name" type="java.lang.String" value="nm10" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="txt_tel" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nm10ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_telActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -610,7 +609,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="1"/>
-                      <Component id="nm11" min="-2" pref="131" max="-2" attributes="0"/>
+                      <Component id="txt_user" min="-2" pref="131" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -618,20 +617,20 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="nm11" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_user" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="nm11">
+            <Component class="javax.swing.JTextField" name="txt_user">
               <Properties>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
-                <Property name="name" type="java.lang.String" value="nm11" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="txt_user" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nm11ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_userActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -676,56 +675,15 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="jTextArea1">
+                <Component class="javax.swing.JTextArea" name="txt_note">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
-                    <Property name="name" type="java.lang.String" value="jTextArea1" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="txt_note" noResource="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="idAzienda">
-          <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="idAzienda"/>
-              </Border>
-            </Property>
-            <Property name="name" type="java.lang.String" value="idAzienda" noResource="true"/>
-          </Properties>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="1"/>
-                      <Component id="nm13" min="-2" pref="138" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="nm13" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JTextField" name="nm13">
-              <Properties>
-                <Property name="focusCycleRoot" type="boolean" value="true"/>
-                <Property name="name" type="java.lang.String" value="nm13" noResource="true"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nm13ActionPerformed"/>
-              </Events>
-            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="cittaAzienda">
@@ -743,7 +701,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="1"/>
-                      <Component id="nm14" min="-2" pref="138" max="-2" attributes="0"/>
+                      <Component id="txt_cit_az" min="-2" pref="138" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -751,20 +709,20 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="nm14" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_cit_az" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="nm14">
+            <Component class="javax.swing.JTextField" name="txt_cit_az">
               <Properties>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
-                <Property name="name" type="java.lang.String" value="nm14" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="txt_cit_az" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nm14ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_cit_azActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -784,7 +742,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="1"/>
-                      <Component id="nm15" min="-2" pref="144" max="-2" attributes="0"/>
+                      <Component id="txt_mail_az" min="-2" pref="144" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -792,20 +750,20 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="nm15" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_mail_az" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="nm15">
+            <Component class="javax.swing.JTextField" name="txt_mail_az">
               <Properties>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
-                <Property name="name" type="java.lang.String" value="nm15" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="txt_mail_az" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nm15ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_mail_azActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -825,28 +783,28 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="1"/>
-                      <Component id="nm16" min="-2" pref="131" max="-2" attributes="0"/>
+                      <Component id="txt_fax_az" min="-2" pref="131" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="nm16" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="txt_fax_az" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="11" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="nm16">
+            <Component class="javax.swing.JTextField" name="txt_fax_az">
               <Properties>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
-                <Property name="name" type="java.lang.String" value="nm16" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="txt_fax_az" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nm16ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_fax_azActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -865,29 +823,29 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="1"/>
-                      <Component id="nm17" min="-2" pref="144" max="-2" attributes="0"/>
+                      <EmptySpace pref="22" max="32767" attributes="1"/>
+                      <Component id="txt_ind_az" min="-2" pref="144" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="nm17" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="txt_ind_az" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="nm17">
+            <Component class="javax.swing.JTextField" name="txt_ind_az">
               <Properties>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
-                <Property name="name" type="java.lang.String" value="nm17" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="txt_ind_az" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nm17ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_ind_azActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -906,8 +864,8 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="3"/>
-                      <Component id="nm19" min="-2" pref="131" max="-2" attributes="0"/>
+                      <EmptySpace pref="35" max="32767" attributes="3"/>
+                      <Component id="txt_piva_az" min="-2" pref="131" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -915,20 +873,20 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="nm19" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_piva_az" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="nm19">
+            <Component class="javax.swing.JTextField" name="txt_piva_az">
               <Properties>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
-                <Property name="name" type="java.lang.String" value="nm19" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="txt_piva_az" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nm19ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_piva_azActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -948,7 +906,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="1"/>
-                      <Component id="nm20" min="-2" pref="138" max="-2" attributes="0"/>
+                      <Component id="txt_ragsoc_az" min="-2" pref="138" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -956,20 +914,20 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="nm20" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_ragsoc_az" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="nm20">
+            <Component class="javax.swing.JTextField" name="txt_ragsoc_az">
               <Properties>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
-                <Property name="name" type="java.lang.String" value="nm20" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="txt_ragsoc_az" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nm20ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_ragsoc_azActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -988,8 +946,8 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="1"/>
-                      <Component id="nm21" min="-2" pref="150" max="-2" attributes="0"/>
+                      <EmptySpace pref="22" max="32767" attributes="1"/>
+                      <Component id="txt_tel_az" min="-2" pref="150" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -997,20 +955,20 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="nm21" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_tel_az" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="nm21">
+            <Component class="javax.swing.JTextField" name="txt_tel_az">
               <Properties>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
-                <Property name="name" type="java.lang.String" value="nm21" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="txt_tel_az" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nm21ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_tel_azActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -1030,7 +988,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="1"/>
-                      <Component id="nm18" min="-2" pref="131" max="-2" attributes="0"/>
+                      <Component id="txt_naz_az" min="-2" pref="131" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1038,20 +996,20 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="nm18" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_naz_az" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="nm18">
+            <Component class="javax.swing.JTextField" name="txt_naz_az">
               <Properties>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
-                <Property name="name" type="java.lang.String" value="nm18" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="txt_naz_az" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nm18ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_naz_azActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -1072,47 +1030,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAnnulla1ActionPerformed"/>
           </Events>
         </Component>
-        <Container class="javax.swing.JPanel" name="tipo">
-          <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Tipo"/>
-              </Border>
-            </Property>
-            <Property name="name" type="java.lang.String" value="tipo" noResource="true"/>
-          </Properties>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="nm6" min="-2" pref="128" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="nm6" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JTextField" name="nm6">
-              <Properties>
-                <Property name="focusCycleRoot" type="boolean" value="true"/>
-                <Property name="name" type="java.lang.String" value="nm6" noResource="true"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nm6ActionPerformed"/>
-              </Events>
-            </Component>
-          </SubComponents>
-        </Container>
         <Component class="org.jdesktop.swingx.JXLabel" name="jXLabel3">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -1128,6 +1045,47 @@
             <Property name="name" type="java.lang.String" value="jXLabel3" noResource="true"/>
           </Properties>
         </Component>
+        <Container class="javax.swing.JPanel" name="IndirizzoAz1">
+          <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder title="Indirizzo"/>
+              </Border>
+            </Property>
+            <Property name="name" type="java.lang.String" value="IndirizzoAz1" noResource="true"/>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="1"/>
+                      <Component id="txt_ind" min="-2" pref="144" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="txt_ind" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JTextField" name="txt_ind">
+              <Properties>
+                <Property name="focusCycleRoot" type="boolean" value="true"/>
+                <Property name="name" type="java.lang.String" value="txt_ind" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_indActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
       </SubComponents>
     </Container>
     <Component class="org.jdesktop.swingx.JXLabel" name="jXLabel2">

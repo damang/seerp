@@ -641,10 +641,10 @@ public class Conversione {
         utente.getAzienda().setNazione(r.getAzienda().getNazione().getText());
         utente.getAzienda().setRagioneSociale(r.getAzienda().getRagioneSociale().getText());
         utente.getAzienda().setTelefono(r.getAzienda().getTelefono().getText());
-        
-        //      System.out.println("utente"+ r.getAzienda().getPIVA().toString());
+        utente.getAzienda().setCitta(r.getAzienda().getCitta().getText());
+        utente.getAzienda().setEmail(r.getAzienda().getEmail().getText());
+        utente.getAzienda().setFax(r.getAzienda().getFax().getText());
 
-//        utente.setRuolo(new Ruolo(r.getRuolo().getText()));
 //        utente.setAzienda(conversioneAzienda(r.getAzienda()));
         return utente;
     }
