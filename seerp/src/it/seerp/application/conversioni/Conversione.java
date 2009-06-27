@@ -307,7 +307,7 @@ public class Conversione {
         utente.setTelefono(bUtente.getTxtTelefono().getText());
         utente.setEmail(bUtente.getTxtEmail().getText());
         utente.setNote(bUtente.getTxtNote().getText());
-          utente.setIndirizzo(bUtente.getIndirizzo().getText());
+        utente.setIndirizzo(bUtente.getIndirizzo().getText());
         //      utente.setTipo(bUtente.getTipo().getText());
         //    utente.setVisible(Boolean.parseBoolean(bUtente.getTxtNotifica().getText()));
 
@@ -388,7 +388,7 @@ public class Conversione {
         utente.setCognome(bp.getCognome().getText());
         utente.setNome(bp.getNome().getText());
         utente.setCodiceFiscale(bp.getCodiceFiscale().getText());
-          utente.setIndirizzo(bp.getIndirizzo().getText());
+        utente.setIndirizzo(bp.getIndirizzo().getText());
 //        utente.setRuolo(new Ruolo(bp.getRuolo().getText()));
         return utente;
     }
@@ -499,6 +499,7 @@ public class Conversione {
         utente.setCitta(r.getTxtCitta().getText());
         utente.setProvincia(r.getTxtProvincia().getText());
         utente.setTelefono(r.getTxtTelefono().getText());
+        utente.setCap(r.getCap().getText());
         utente.setEmail(r.getTxtEmail().getText());
         utente.setNote(r.getTxtNote().getText());
         // utente.setVisible(Boolean.parseBoolean(r.getTxtNotifica().getText()));

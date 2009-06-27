@@ -14,6 +14,7 @@ import it.seerp.storage.ejb.Responsabile;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /** Classe riguardante la gestione Personale
  *
@@ -191,7 +192,7 @@ public class OpResponsabile extends OpeUtente {
             stmtv = (PreparedStatement) co.prepareStatement(sqla);
 
 
-
+         
             stmt.execute();
             stmtP.execute();
             stmtR.execute();
