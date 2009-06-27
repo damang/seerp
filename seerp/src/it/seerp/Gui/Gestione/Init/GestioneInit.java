@@ -53,6 +53,7 @@ public class GestioneInit extends javax.swing.JPanel {
         txt_tel.setEnabled(flag);
         txt_user.setEnabled(flag);
         txt_note.setEnabled(flag);
+        txt_ind.setEnabled(flag);
 
         txt_ragsoc_az.setEnabled(flag);
         txt_cit_az.setEnabled(flag);
@@ -83,6 +84,7 @@ public class GestioneInit extends javax.swing.JPanel {
         txt_tel.setText(s);
         txt_user.setText(s);
         txt_note.setText(s);
+        txt_note.setText(s);
 
         txt_ragsoc_az.setText(s);
         txt_cit_az.setText(s);
@@ -112,6 +114,7 @@ public class GestioneInit extends javax.swing.JPanel {
         amm.setTxtUsername(txt_user);
         amm.setTxtPassword(txt_pwd);
         amm.setTxtNote(txt_note);
+        amm.setIndirizzo(txt_ind);
         az.setCitta(txt_cit_az);
         az.setEmail(txt_mail_az);
         az.setFax(txt_fax_az);
@@ -974,7 +977,8 @@ public class GestioneInit extends javax.swing.JPanel {
             System.exit(0);
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Errore dal database"+ ex.getMessage() + " " + ex.getErrorCode());
+            //JOptionPane.showMessageDialog(null, "Errore dal database"+ ex.getMessage() + " " + ex.getErrorCode());
+            JOptionPane.showMessageDialog(null, "Errore dal database");
         } catch (ValidatorException ex) {
                  JOptionPane.showMessageDialog(null, ex.getMessage());
         }

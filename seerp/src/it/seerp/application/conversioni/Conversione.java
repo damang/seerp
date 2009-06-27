@@ -635,6 +635,7 @@ public class Conversione {
         utente.setCognome(r.getCognome().getText());
         utente.setNome(r.getNome().getText());
         utente.setCodiceFiscale(r.getCodiceFiscale().getText());
+        utente.setIndirizzo(r.getIndirizzo().getText());
 
         utente.getAzienda().setPIVA(r.getAzienda().getPIVA().getText());
         utente.getAzienda().setIndirizzo(r.getAzienda().getInidirizzo().getText());
