@@ -4,6 +4,7 @@ import it.seerp.Gui.configurazioni.Gui.RegexpDef;
 import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.validation.NotEmptyValidator;
 import java.util.ArrayList;
+import javax.swing.JCheckBox;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -14,7 +15,7 @@ import javax.swing.JTextField;
 public class BeanGuiServizio {
 
     private JTextField descrizione;
-    private JTextField disponibilita;
+    private JCheckBox disponibilita;
     private JTextField quantita;
     private JTextField tipo;
     private JTextField prezzo;
@@ -126,7 +127,7 @@ public class BeanGuiServizio {
      * metodo che restituisce il campo disponibilita del bean gui servizio
      * @return il campo disponibile
      */
-    public JTextField getDisponibilita() {
+    public JCheckBox getDisponibilita() {
         return disponibilita;
     }
 
@@ -134,7 +135,7 @@ public class BeanGuiServizio {
      * metodo che setta il campo disponibilita del bean gui servizio
      * @param disponibilita
      */
-    public void setDisponibilita(JTextField disponibilita) {
+    public void setDisponibilita(JCheckBox disponibilita) {
         this.disponibilita = disponibilita;
     }
 

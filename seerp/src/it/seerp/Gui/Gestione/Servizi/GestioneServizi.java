@@ -105,7 +105,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
 
         qnt.setText(s);
         prz.setText(s);
-        disponibilita.setText(s);
+        disponibilita.setSelected(false);
         tipo.setText(s);
         iva.setText(s);
         descrizione.setText(s);
@@ -161,7 +161,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         jPanel7 = new javax.swing.JPanel();
         prz = new javax.swing.JTextField();
         jPanel8 = new javax.swing.JPanel();
-        disponibilita = new javax.swing.JTextField();
+        disponibilita = new javax.swing.JCheckBox();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -266,23 +266,22 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("Disponibilità"));
         jPanel8.setName("jPanel8"); // NOI18N
 
-        disponibilita.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         disponibilita.setName("disponibilita"); // NOI18N
-        disponibilita.setSelectedTextColor(new java.awt.Color(255, 0, 51));
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(disponibilita, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE))
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(disponibilita)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addComponent(disponibilita, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(disponibilita)
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Note"));
@@ -617,7 +616,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
     private it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla buttonAnnulla1;
     private it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva buttonSalva1;
     private javax.swing.JTextField descrizione;
-    private javax.swing.JTextField disponibilita;
+    private javax.swing.JCheckBox disponibilita;
     private javax.swing.JTextField iva;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
