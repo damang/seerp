@@ -1,5 +1,5 @@
 
-package it.seerp.Gui.bottoni.gestioni;
+package it.seerp.Gui.Home.bottoni.gestioni;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.AreaPersonale.AreaPersonalePanel;

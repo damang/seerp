@@ -1,28 +1,29 @@
 
-package it.seerp.Gui.bottoni.gestioni;
+package it.seerp.Gui.Home.bottoni.gestioni;
+
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
-import it.seerp.Gui.Gestione.InfoAzienda.InfoAzienda;
-import it.seerp.Gui.Gestione.Menu.MenuInfoAzienda;
+import it.seerp.Gui.Gestione.Ruoli.GestioneRuoli;
+import it.seerp.Gui.Gestione.Menu.MenuRuoli;
 import it.seerp.Gui.observerButton.ObserverButton;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 
+
 /**
  *
- * @author Andrea-Luisa
+ * @author peppe
  */
-public class ButtonInfoAzienda  extends ObserverButton implements CommandInterface{
+public class ButtonRuoli extends ObserverButton implements CommandInterface{
 
     /**
      *
      */
     protected JTabbedPane tabbedPane;
-    private MenuInfoAzienda menu;
-    InfoAzienda panel;
-    String s = "Info Azienda";
-
+    private MenuRuoli menu;
+    GestioneRuoli panel;
+    String s = "Gestione Ruoli";
 
     /**
      *
@@ -31,12 +32,12 @@ public class ButtonInfoAzienda  extends ObserverButton implements CommandInterfa
      * @param act
      * @throws SQLException
      */
-    public ButtonInfoAzienda(JTabbedPane pan, MenuInfoAzienda menu, ActionListener act) throws SQLException {
+    public ButtonRuoli(JTabbedPane pan, MenuRuoli menu, ActionListener act) throws SQLException {
         this.tabbedPane = pan;
         this.menu = menu;
         //this.panel = new AreaUtentePanel(TIPO_UTENTE_CONST.CLIENTE);
 
-    //panel.register(this);
+     //  panel.register(this);
         this.addActionListener(act);
 
 
@@ -45,7 +46,7 @@ public class ButtonInfoAzienda  extends ObserverButton implements CommandInterfa
     /**
      *
      */
-    public ButtonInfoAzienda() {
+    public ButtonRuoli() {
         super();
     }
 
@@ -53,7 +54,7 @@ public class ButtonInfoAzienda  extends ObserverButton implements CommandInterfa
 
         if (!isPresente) {
             try {
-                this.setAreaInfo();
+                this.setAreaRuolo();
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "problemi di comunicazione col DBMS");
             }
@@ -61,7 +62,7 @@ public class ButtonInfoAzienda  extends ObserverButton implements CommandInterfa
 
             isPresente = true;
             this.tabbedPane.addTab(s, panel);
-            System.out.println(this.tabbedPane.getTabCount() - 1);
+        //    System.out.println(this.tabbedPane.getTabCount() - 1);
             ButtonTabComponent button = new ButtonTabComponent(this.tabbedPane, this.panel, this.menu);
             this.tabbedPane.setTabComponentAt(this.tabbedPane.getTabCount() - 1, button);
             panel.setVisible(true);
@@ -76,9 +77,9 @@ public class ButtonInfoAzienda  extends ObserverButton implements CommandInterfa
         }
     }
 
-    private void setAreaInfo() throws SQLException {
+    private void setAreaRuolo() throws SQLException {
 
-              this.panel = new InfoAzienda();
+              this.panel = new GestioneRuoli();
               panel.register(this);
 
 

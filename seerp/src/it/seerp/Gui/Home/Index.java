@@ -99,22 +99,22 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
         jXTaskPane1 = new org.jdesktop.swingx.JXTaskPane();
         jPanel1 = new javax.swing.JPanel();
         try{
-            areaUtenteButton1 = new it.seerp.Gui.bottoni.gestioni.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this);
-            areaUtenteButton2 = new it.seerp.Gui.bottoni.gestioni.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this);
-            areaUtenteButton3 = new it.seerp.Gui.bottoni.gestioni.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this);
-            areaUtenteButton4 = new it.seerp.Gui.bottoni.gestioni.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this);
+            areaUtenteButton1 = new it.seerp.Gui.Home.bottoni.gestioni.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this);
+            areaUtenteButton2 = new it.seerp.Gui.Home.bottoni.gestioni.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this);
+            areaUtenteButton3 = new it.seerp.Gui.Home.bottoni.gestioni.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this);
+            areaUtenteButton4 = new it.seerp.Gui.Home.bottoni.gestioni.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this);
             jXTaskPane2 = new org.jdesktop.swingx.JXTaskPane();
             jXPanel2 = new org.jdesktop.swingx.JXPanel();
             jButton1 = new javax.swing.JButton();
             jButton2 = new javax.swing.JButton();
-            buttonContratti1 = new it.seerp.Gui.bottoni.gestioni.ButtonContratti(this.jTabbedPanePrincipale,this.menuContratti1,this);
-            buttonServizi1 = new it.seerp.Gui.bottoni.gestioni.ButtonServizi(this.jTabbedPanePrincipale,this.menuServizi1,this);
+            buttonContratti1 = new it.seerp.Gui.Home.bottoni.gestioni.ButtonContratti(this.jTabbedPanePrincipale,this.menuContratti1,this);
+            buttonServizi1 = new it.seerp.Gui.Home.bottoni.gestioni.ButtonServizi(this.jTabbedPanePrincipale,this.menuServizi1,this);
             jXTaskPane3 = new org.jdesktop.swingx.JXTaskPane();
             jXPanel3 = new org.jdesktop.swingx.JXPanel();
-            buttonRuoli1 = new it.seerp.Gui.bottoni.gestioni.ButtonRuoli(this.jTabbedPanePrincipale,this.menuRuoli1,this);
-            buttonInfoAzienda1 = new it.seerp.Gui.bottoni.gestioni.ButtonInfoAzienda(this.jTabbedPanePrincipale,this.menuInfoAzienda1,this);
-            buttonAgenda1 = new it.seerp.Gui.bottoni.gestioni.ButtonAgenda(this.jTabbedPanePrincipale,this.menuAgenda,this);
-            areaPersonaleButton5 = new it.seerp.Gui.bottoni.gestioni.AreaPersonaleButton(this.jTabbedPanePrincipale,this.menuAreaPersonale2,this);
+            buttonRuoli1 = new it.seerp.Gui.Home.bottoni.gestioni.ButtonRuoli(this.jTabbedPanePrincipale,this.menuRuoli1,this);
+            buttonInfoAzienda1 = new it.seerp.Gui.Home.bottoni.gestioni.ButtonInfoAzienda(this.jTabbedPanePrincipale,this.menuInfoAzienda1,this);
+            buttonAgenda1 = new it.seerp.Gui.Home.bottoni.gestioni.ButtonAgenda(this.jTabbedPanePrincipale,this.menuAgenda,this);
+            areaPersonaleButton5 = new it.seerp.Gui.Home.bottoni.gestioni.AreaPersonaleButton(this.jTabbedPanePrincipale,this.menuAreaPersonale2,this);
             jXMonthView1 = new org.jdesktop.swingx.JXMonthView();
             jXTitledPanel1 = new org.jdesktop.swingx.JXTitledPanel();
             menuUtente1 = new it.seerp.Gui.Gestione.Menu.MenuUtente(getSubject());
@@ -124,7 +124,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
             menuInfoAzienda1 = new it.seerp.Gui.Gestione.Menu.MenuInfoAzienda();
             menuAreaPersonale2 = new it.seerp.Gui.Gestione.Menu.MenuAreaPersonale();
             menuAgenda = new it.seerp.Gui.Gestione.Menu.MenuAgenda();
-            logout1 = new it.seerp.Gui.bottoni.gestioni.Logout();
+            logout1 = new it.seerp.Gui.Home.bottoni.gestioni.Logout();
             menuBar = new javax.swing.JMenuBar();
             fileMenu = new javax.swing.JMenu();
             openMenuItem = new javax.swing.JMenuItem();
@@ -813,16 +813,16 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
-    private it.seerp.Gui.bottoni.gestioni.AreaPersonaleButton areaPersonaleButton5;
-    private it.seerp.Gui.bottoni.gestioni.AreaUtenteButton areaUtenteButton1;
-    private it.seerp.Gui.bottoni.gestioni.AreaUtenteButton areaUtenteButton2;
-    private it.seerp.Gui.bottoni.gestioni.AreaUtenteButton areaUtenteButton3;
-    private it.seerp.Gui.bottoni.gestioni.AreaUtenteButton areaUtenteButton4;
-    private it.seerp.Gui.bottoni.gestioni.ButtonAgenda buttonAgenda1;
-    private it.seerp.Gui.bottoni.gestioni.ButtonContratti buttonContratti1;
-    private it.seerp.Gui.bottoni.gestioni.ButtonInfoAzienda buttonInfoAzienda1;
-    private it.seerp.Gui.bottoni.gestioni.ButtonRuoli buttonRuoli1;
-    private it.seerp.Gui.bottoni.gestioni.ButtonServizi buttonServizi1;
+    private it.seerp.Gui.Home.bottoni.gestioni.AreaPersonaleButton areaPersonaleButton5;
+    private it.seerp.Gui.Home.bottoni.gestioni.AreaUtenteButton areaUtenteButton1;
+    private it.seerp.Gui.Home.bottoni.gestioni.AreaUtenteButton areaUtenteButton2;
+    private it.seerp.Gui.Home.bottoni.gestioni.AreaUtenteButton areaUtenteButton3;
+    private it.seerp.Gui.Home.bottoni.gestioni.AreaUtenteButton areaUtenteButton4;
+    private it.seerp.Gui.Home.bottoni.gestioni.ButtonAgenda buttonAgenda1;
+    private it.seerp.Gui.Home.bottoni.gestioni.ButtonContratti buttonContratti1;
+    private it.seerp.Gui.Home.bottoni.gestioni.ButtonInfoAzienda buttonInfoAzienda1;
+    private it.seerp.Gui.Home.bottoni.gestioni.ButtonRuoli buttonRuoli1;
+    private it.seerp.Gui.Home.bottoni.gestioni.ButtonServizi buttonServizi1;
     private javax.swing.JMenuItem contentsMenuItem;
     private javax.swing.JMenuItem copyMenuItem;
     private javax.swing.JMenuItem cutMenuItem;
@@ -845,7 +845,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
     private org.jdesktop.swingx.JXTaskPane jXTaskPane3;
     private org.jdesktop.swingx.JXTaskPaneContainer jXTaskPaneContainer1;
     private org.jdesktop.swingx.JXTitledPanel jXTitledPanel1;
-    private it.seerp.Gui.bottoni.gestioni.Logout logout1;
+    private it.seerp.Gui.Home.bottoni.gestioni.Logout logout1;
     private it.seerp.Gui.Gestione.Menu.MenuAgenda menuAgenda;
     private it.seerp.Gui.Gestione.Menu.MenuAreaPersonale menuAreaPersonale2;
     private javax.swing.JMenuBar menuBar;
