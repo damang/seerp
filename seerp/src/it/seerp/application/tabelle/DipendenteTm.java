@@ -40,7 +40,7 @@ public class DipendenteTm extends Generica <Dipendente>{
         refresh();
     }
 
-   public void refresh(){
+   public void refresh() throws SQLException{
       AppGestionePersonale op = new AppGestionePersonale();
         Iterator<Dipendente> it = op.visualizzaTabellaDipendenti().iterator();
         while (it.hasNext()) {
