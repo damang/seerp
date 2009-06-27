@@ -22,7 +22,7 @@ public class ServiziTm extends Generica<Servizio> {
     public ServiziTm() throws SQLException {
         Object[] list = new Object[]{
             "ID",
-            "Disponibilità",
+            "Descrizione",
             "Prezzo",
             "Quantita",};
 
@@ -58,7 +58,7 @@ public class ServiziTm extends Generica<Servizio> {
     protected Vector creaArrayObjectData(Servizio o) {
         Vector c = new Vector();
         c.add(o.getIdServizio());
-        c.add(o.getDisponibilita());
+        c.add(o.getDescrizione());
         c.add(o.getPrezzo());
         c.add(o.getQuantita());
 
