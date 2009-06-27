@@ -91,7 +91,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
     }
 
     /**
-     * Questo metodo inizzializza i campi sul form
+     * Questo metodo permette di inizzializzare i campi sul form
      * @ s sringa che permette l'inalizzazione, permette di inizzializare tutti i campi sul form.
      */
     public void inizializza(String s) {
@@ -107,7 +107,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
     }
 
     /**
-     *
+     * Il metodo restituisce il pulsante Salva
      * @ restituisce il riferimento al pulsate Salva
      */
     public ButtonSalva getSalva() {
@@ -115,7 +115,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
     }
 
     /**
-     *
+     * Il metodo restituisce il pulsante Annulla
      * @ restituisce il riferimento al pulsate Annulla
      */
     public ButtonAnnulla getAnnulla() {
