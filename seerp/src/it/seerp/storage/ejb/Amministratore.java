@@ -14,7 +14,7 @@ public class Amministratore extends Personale {
      *
      */
     public Amministratore() {
-        
+        azienda=new Azienda();
     }
 
     /**
