@@ -10,7 +10,6 @@ import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.bean.BeanGuiFornitore;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import it.seerp.application.validation.NotEmptyValidator;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import javax.swing.JOptionPane;
@@ -28,7 +27,6 @@ import it.seerp.application.bean.BeanGuiResponsabile;
 import it.seerp.storage.Exception.DatiDuplicatiEx;
 import it.seerp.storage.jaas.SujGest;
 import java.awt.Color;
-import java.util.Iterator;
 import java.util.logging.Logger;
 
 /**
@@ -53,7 +51,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
     }
 
     /**
-     *
+     * Metodo che permette ti passare il tipo i utenti
      * @param tipoUtente
      * @throws java.sql.SQLException
      */
@@ -76,15 +74,15 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
     }
 
     /**
-     *
-     * @return
+     * Metodo che permette di restituire il tipo utente
+     * @return il tipo di utente
      */
     public TIPO_UTENTE_CONST getTipoUtente() {
         return tipoU;
     }
 
     /**
-     *
+     * Metodo che setta il tipo utente
      * @param tipoUtente
      */
     public void setTipoUtente(TIPO_UTENTE_CONST tipoUtente) {
@@ -92,15 +90,15 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
     }
 
     /**
-     *
-     * @return
+     * Metodo che associa il menù al form Area utente
+     * @return il tipo di utente
      */
-    public MenuUtente getMenu() {
+    public MenuUtente getMenu(){
         return menu;
     }
 
     /**
-     *
+     *  Metodo che setta il tipo utente
      * @param tipo
      */
     public void setTipoOP(ConfigurazioneOperazioni.TIPO_OPE_CONST tipo) {
@@ -108,7 +106,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
     }
 
     /**
-     *
+     * Metodo che associa il menù al form Area utente
      * @param menu
      */
     public void setMenu(MenuUtente menu) {
@@ -977,24 +975,24 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
     }
 
     /**
-     *
-     * @return
+     * Metodo che restituice il bottone Salva
+     * @return il bottone salva
      */
     public ButtonSalva getSalva() {
         return this.buttonSalva1;
     }
 
     /**
-     *
-     * @return
+     * Metodo che restituisce il pulsante Annulla
+     * @return il pulsate annulla
      */
     public ButtonAnnulla getAnnulla() {
         return this.buttonAnnulla1;
     }
 
     /**
-     *
-     * @param s
+     * Metodo che permette di inizzializzare i campi sul form
+     * @param s sringa che permette l'inalizzazione, permette di inizzializare tutti i campi sul form.
      */
     public void inizializzazione(String s) {
         this.nm.setText(s);
@@ -1096,40 +1094,40 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
     }
 
     /**
-     *
-     * @return
+     * Metodo setta il bean gui del cliente
+     * @return il bean gui del cliente
      */
     public BeanGuiCliente getCliente() {
         return cliente;
     }
 
     /**
-     *
-     * @return
+     * Metodo che setta il bean gui Dipendente
+     * @return bean gui del Dipendente
      */
     public BeanGuiDipendente getDipendente() {
         return dipendente;
     }
 
     /**
-     *
-     * @return
+     * Metodo che setta il bean gui fornitore
+     * @return bean gui del Fornitore
      */
     public BeanGuiFornitore getFornitore() {
         return fornitore;
     }
 
     /**
-     *
-     * @return
+     * Metodo che setta il bean gui Responsabile
+     * @return bean gui del Responsabile
      */
     public BeanGuiResponsabile getResponsabile() {
         return responsabile;
     }
 
     /**
-     *
-     * @param flag
+     * il metodo che permette di rendere editabile o menoo i campi presenti nella grafica
+     * @ flag che permette di modificare i campi presenti sul form.
      */
     public void editabile(boolean flag) {
         this.nm.setEnabled(flag);
@@ -1239,8 +1237,8 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
     }
 
     /**
-     *
-     * @param f
+     * Metodo che permette di validare i premessi agli utente loggati
+     * @param f permessi degli utenti
      */
     public void validation(Boolean f) {
         if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
