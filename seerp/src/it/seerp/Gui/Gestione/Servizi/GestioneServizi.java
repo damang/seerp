@@ -35,8 +35,8 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
     MenuServizi menu;
 
     /**
-     *
-     * @return
+     * Metodo che associa il menù relativo al form
+     * @return restituoisce un istanza di menù
      */
     public MenuServizi getMenu() {
         return menu;
@@ -45,16 +45,16 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
     ;
 
     /**
-     *
-     * @param menu
+     * Metodo che setta il menù
+     * @param menu restituisce il menù
      */
     public void setMenu(MenuServizi menu) {
         this.menu = menu;
     }
 
     /**
-     *
-     * @param tipo
+     *questo metodo setta il form a secodna del tipo di utente passato
+     * @param tipo viene passato il tipo di utente
      */
     public void setTipoOP(ConfigurazioneOperazioni.TIPO_OPE_CONST tipo) {
         this.tipoOp = tipo;
@@ -74,8 +74,8 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
     }
 
     /**
-     *
-     * @param flag
+     * il metodo che permette di rendere editabile o menoo i campi presenti nella grafica
+     * @ flag che permette di modificare i campi presenti sul form.
      */
     public void editabile(boolean flag) {
 
@@ -98,8 +98,8 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
     }
 
     /**
-     *
-     * @param s
+     * Il metodo permette di inizzalizzare i campi persenti sul form.
+     * @ s sringa che permette l'inalizzazione, permette di inizzializare tutti i campi sul form.
      */
     public void inizializza(String s) {
 
@@ -128,7 +128,7 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
     }
 
     /**
-     *
+     * questo metodo 
      * @return
      */
     public ButtonSalva getSalva() {
@@ -477,12 +477,13 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jXPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jXLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 222, Short.MAX_VALUE)
                 .addComponent(buttonAnnulla1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonSalva1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -500,8 +501,8 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
                         .addComponent(jXLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jXPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE))
+                    .addComponent(jTabbedPane1, 0, 0, Short.MAX_VALUE)
+                    .addComponent(jXPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -641,8 +642,8 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
     // End of variables declaration//GEN-END:variables
 
     /**
-     *
-     * @return
+     * Metodo che restituisce il tipo di utente
+     * @return il tipo di utente
      */
     public JTextField getTipo() {
         return tipo;

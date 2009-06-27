@@ -398,8 +398,8 @@ public class FrameServizi extends javax.swing.JFrame {
     }
 
     /**
-     *
-     * @param flag
+     * il metodo che permette di rendere editabile o menoo i campi presenti nella grafica
+     * @ flag che permette di modificare i campi presenti sul form.
      */
     public void editabile(boolean flag) {
 
@@ -414,8 +414,8 @@ public class FrameServizi extends javax.swing.JFrame {
     }
 
     /**
-     *
-     * @param s
+     * Il metodo permette di inizzalizzare i campi persenti sul form.
+     * @ s sringa che permette l'inalizzazione, permette di inizzializare tutti i campi sul form.
      */
     public void inizializza(String s) {
 
