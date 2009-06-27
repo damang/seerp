@@ -5,7 +5,11 @@ import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.agenda.CalendarPanel;
 import it.seerp.application.applicazione.AppAgenda;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -41,9 +45,13 @@ public class EiminaButtonAppuntamento extends JButton implements CommandInterfac
     }
 
     public void execute() {
-       AppAgenda a= new AppAgenda();
-       a.cancellaEvento(area.getSelectedEvent().getEventoId());
-       area.reset();
+        try {
+            AppAgenda a = new AppAgenda();
+            a.cancellaEvento(area.getSelectedEvent().getEventoId());
+            area.reset();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Impossibile eseguire! Errore dal database: " +ex.getMessage());
+        }
     }
 
 

@@ -4,7 +4,10 @@ package it.seerp.Gui.Gestione.Menu;
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.Ruoli.GestioneRuoli;
 import it.seerp.Gui.configurazioni.Gui.ConfigurazioneOperazioni;
+import it.seerp.application.Exception.ValidatorException;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 
 /**
@@ -40,11 +43,15 @@ public class ModificaButtonRuoli extends JButton implements CommandInterface {
     }
 
     public void execute() {
-          area.getMenu().setButtonEnabled(false);
-          area.setTipoOP(ConfigurazioneOperazioni.TIPO_OPE_CONST.MODIFICA);
-          area.getSalva().setVisible(true);
-          area.getAnnulla().setVisible(true);
-          area.setEditable(true);
-          area.getBeanGuiRuolo().getNome().setEnabled(false);
+        try {
+            area.getMenu().setButtonEnabled(false);
+            area.setTipoOP(ConfigurazioneOperazioni.TIPO_OPE_CONST.MODIFICA);
+            area.getSalva().setVisible(true);
+            area.getAnnulla().setVisible(true);
+            area.setEditable(true);
+            area.getBeanGuiRuolo().getNome().setEnabled(false);
+        } catch (ValidatorException ex) {
+            ex.printStackTrace();
+        }
     }
 }
