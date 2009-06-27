@@ -47,7 +47,7 @@ public class OpFornitore extends OpExtraAzienda {
 
         String sql = "SELECT idUtente,username,password,citta,ruolo,prov," +
                 "telefono,cap,email,ruolo,note,visibilita,cognome,nome,ragioneSociale,piva," +
-                "fax FROM utente,extraazienda where  idUtente=idExtraAzienda  and visibilita=true and ruolo='Fornitore'";
+                "fax, indirizzo FROM utente,extraazienda where  idUtente=idExtraAzienda  and visibilita=true and ruolo='Fornitore'";
         stmt = (PreparedStatement) conness.prepareStatement(sql);
 
         // Execute the query
@@ -62,7 +62,7 @@ public class OpFornitore extends OpExtraAzienda {
                     rs.getBoolean(12), rs.getString(13), rs.getString(14),
                     rs.getString(15), rs.getString(16), rs.getString(17));
             // Integer idUtente, String username, String password, String città, String ruol, String provincia, String telefono, String cap, String email, String ruolo, String note, Boolean v, String cognome, String nome, String ragioneSociale, String pIva, String fax) {
-
+            fornitore.setIndirizzo(rs.getString(18));
             list.add(fornitore);
         }
 
@@ -160,7 +160,7 @@ public class OpFornitore extends OpExtraAzienda {
 
         try {
             conness.setAutoCommit(false);
-            String sqlu = "INSERT INTO utente(username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita) VALUES(?,?,?,?,?,?,?,?,?,true)";
+            String sqlu = "INSERT INTO utente(username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita) VALUES(?,?,?,?,?,?,?,?,?,true,?)";
             String sqle = "INSERT INTO extraazienda(idExtraAzienda,nome,cognome,fax,piva,ragioneSociale,Ruolo,codiceFiscale) VALUES(LAST_INSERT_ID(),?,?,?,?,?,'fornitore',?)";
             String sqla = "INSERT INTO agenda (idAgenda) VALUES(LAST_INSERT_ID()) ";
 
@@ -174,6 +174,7 @@ public class OpFornitore extends OpExtraAzienda {
             stmt.setString(7, user.getCap());
             stmt.setString(8, user.getNote());
             stmt.setString(9, user.getTipo());
+            stmt.setString(10, user.getIndirizzo());
             // stmt.setString(10, user.getVisible().toString());
             stmte = (PreparedStatement) conness.prepareStatement(sqle);
             stmte.setString(1, user.getNome());
@@ -296,7 +297,7 @@ public class OpFornitore extends OpExtraAzienda {
 
         String sql = "SELECT idUtente,username,password,citta,prov," +
                 "telefono,cap,email,Ruolo,note,visibilita,cognome,nome,ragioneSociale," +
-                "piva,fax,codiceFiscale FROM utente,extraazienda WHERE idUtente=idExtraAzienda and idExtraAzienda=?";
+                "piva,fax,codiceFiscale, indirizzo FROM utente,extraazienda WHERE idUtente=idExtraAzienda and idExtraAzienda=?";
         // String sql = "SELECT * FROM extraazienda where idExtraAzienda= ? ";
 
         stmt = (PreparedStatement) conness.prepareStatement(sql);
@@ -325,7 +326,7 @@ public class OpFornitore extends OpExtraAzienda {
             fornitore.setPIva(rs.getString(15));
             fornitore.setFax(rs.getString(16));
             fornitore.setCodiceFiscale(rs.getString(17));
-
+            fornitore.setIndirizzo(rs.getString(18));
         }
         rs.close();
         stmt.close();

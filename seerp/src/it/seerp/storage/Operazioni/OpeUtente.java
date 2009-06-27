@@ -50,6 +50,7 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
             ut.setTelefono(rs.getString("telefono"));
             ut.setTipo(rs.getString("tipo"));
             ut.setVisible(rs.getBoolean("visibilita"));
+            ut.setIndirizzo(rs.getString("indirizzo"));
         } else {
             throw new SQLException("L'utente non è presente nel database");
         }
@@ -79,6 +80,7 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
         // Define the resource list
         while (rs.next()) {
             Utente utente = new Utente(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getBoolean(11));
+            utente.setIndirizzo(rs.getString(12));
             list.add(utente);
         }
         rs.close();
@@ -102,7 +104,7 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
 
 
         String sqlu = "UPDATE utente SET username=?,password=?,email=?,citta=?,prov=?," +
-                "telefono=?,cap=?,note=? WHERE idUtente=?";
+                "telefono=?,cap=?,note=?, indirizzo=? WHERE idUtente=?";
 
 
         stmt = (PreparedStatement) conn.prepareStatement(sqlu);
@@ -115,7 +117,9 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
         stmt.setString(7, user.getCap());
         stmt.setString(8, user.getNote());
         //   stmt.setString(9, user.getTipo());
-        stmt.setInt(9, user.getIdUtente());
+        stmt.setString(9, user.getIndirizzo());
+        stmt.setInt(10, user.getIdUtente());
+
         //  stmt.setString(10, user.getVisible().toString());
 
         stmt.execute();
@@ -160,6 +164,7 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
             utente = new Utente(rs.getInt(1), rs.getString(2), rs.getString(3),
                     rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),
                     rs.getString(8), rs.getString(9), rs.getString(10), rs.getBoolean(11));
+            utente.setIndirizzo(rs.getString(12));
 
         }
 
