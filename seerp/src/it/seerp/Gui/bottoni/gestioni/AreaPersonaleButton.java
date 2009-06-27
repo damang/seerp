@@ -22,10 +22,10 @@ public class AreaPersonaleButton extends ObserverButton implements CommandInterf
     AreaPersonalePanel panel;
 
     /**
-     *
-     * @param pan 
-     * @param menu
-     * @param act
+     * Metodo che associa un panello e un menu alla home page
+     * @param pan  è il pannello sulla home
+     * @param menu è il menù da associare
+     * @param act parametro indice
      */
     public AreaPersonaleButton(JTabbedPane pan, JPanel menu, Index act) {
         this.tabbedPane = pan;
@@ -42,6 +42,7 @@ public class AreaPersonaleButton extends ObserverButton implements CommandInterf
         super();
     }
 
+    @Override
     public void execute() {
 
         if (!isPresente) {
