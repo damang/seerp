@@ -18,18 +18,18 @@ import javax.swing.JOptionPane;
  * Classe del livello application riguardante la Gestione dei Servizi
  * @author Tommaso Cattolico
  */
-public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio,BeanGuiFornitore> {
+public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio> {
 
     @Override
     public ArrayList<BeanGuiServizio> elenca(ArrayList<BeanGuiServizio> listGui) {
         try {
             OpServizio ope = new OpServizio();
             ArrayList<Servizio> list = ope.visualizzaElenco();
-           /* for (Servizio serv : list) {
-                BeanGuiServizio servGui = new BeanGuiServizio();
-                servGui = Conversione.conversioneServizio(serv, servGui);
-                listGui.add(servGui);
-            }*/
+        /* for (Servizio serv : list) {
+        BeanGuiServizio servGui = new BeanGuiServizio();
+        servGui = Conversione.conversioneServizio(serv, servGui);
+        listGui.add(servGui);
+        }*/
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
@@ -45,11 +45,11 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio,Bea
         try {
             OpServizio ope = new OpServizio();
             ArrayList<Servizio> list = ope.ricerca();
-         /*   for (Servizio serv : list) {
-                BeanGuiServizio servGui = new BeanGuiServizio();
-                servGui = Conversione.conversioneServizio(serv, servGui);
-                listGui.add(servGui);
-            }*/
+        /*   for (Servizio serv : list) {
+        BeanGuiServizio servGui = new BeanGuiServizio();
+        servGui = Conversione.conversioneServizio(serv, servGui);
+        listGui.add(servGui);
+        }*/
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
@@ -73,37 +73,32 @@ public class AppServizi implements GestioneServizi<BeanGuiServizio, Servizio,Bea
     }
 
     @Override
-    public BeanGuiServizio visualizza(int id, BeanGuiServizio beanGui, BeanGuiFornitore forni) {
+    public BeanGuiServizio visualizza(int id, BeanGuiServizio beanGui) {
         try {
             OpServizio ope = new OpServizio();
             Servizio serv = ope.visualizza(id);
             serv.setIdServizio(id);
-            
-            Fornitore forn=ope.visualizzaFornitore(serv.getIdServizio());
-          
-           // beanGui =
+            Conversione.conversioneServizio(serv, beanGui);
 
-           Conversione.conversioneServizio(serv, beanGui);
-           Conversione.conversioneServiziFor(forn,forni);
-            
+
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
         } catch (ValidatorException e) {
             e.printStackTrace();
-              JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
+            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
         }
         return beanGui;
     }
 
     @Override
-    public BeanGuiServizio modifica(int id,BeanGuiServizio beanGui) throws DatiErrati, SQLException {
+    public BeanGuiServizio modifica(int id, BeanGuiServizio beanGui) throws DatiErrati, SQLException {
         try {
             OpServizio ope = new OpServizio();
             Servizio serv = Conversione.conversioneServizio(beanGui);
             serv.setIdServizio(id);
             serv = ope.modifica(serv);
-          // this.visualizza(nome, beanGui)
+        // this.visualizza(nome, beanGui)
         } catch (ValidatorException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");

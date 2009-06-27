@@ -45,7 +45,8 @@ public class AppGestioneAreaPersonale implements GestioneAreaPersonale<BeanGuiUt
     public BeanGuiUtente modificaPassword(BeanGuiUtente beanGui) throws DatiErrati {
         try {
             OpAreaPersonale ope = new OpAreaPersonale();
-            Utente user = Conversione.conversioneUtente(beanGui);
+
+            Utente user = Conversione.conversionePersonale(beanGui);
             ope.modificaPassword(user);
         //beanGui = Conversione.conversioneUtente(user, beanGui);
         } catch (SQLException se) {
