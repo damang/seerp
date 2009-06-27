@@ -2,6 +2,7 @@ package it.seerp.Gui.Gestione.AreaPersonale;
 
 import it.seerp.Gui.configurazioni.Gui.ConfigurazioneUtente;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
+import it.seerp.application.Exception.ValidatorException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import it.seerp.application.applicazione.AppGestioneAreaPersonale;
@@ -10,7 +11,11 @@ import it.seerp.application.bean.BeanGuiExtraAzienda;
 import it.seerp.application.bean.BeanGuiPersonale;
 import it.seerp.storage.jaas.SujGest;
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.security.auth.Subject;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -26,6 +31,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
      * @ sub il paramentro sub permette di identificare l'utente loggato al sistema, e ne modifica l'interfaccia a seconda del utente loggato.
      */
     public AreaPersonalePanel(Subject sub) {
+        try {
         ut = sub;
         initComponents();
         utente = new BeanGuiPersonale(this);
@@ -39,13 +45,13 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         AppGestioneAreaPersonale a = new AppGestioneAreaPersonale();
 
         if (SujGest.getTipoUtente(sub).equals(ConfigurazioneUtente.valueOf(ConfigurazioneUtente.TIPO_UTENTE_CONST.PERSONALE))) {
-            legameBeanPersonale();
-            this.jPanel13.setVisible(false);
-            this.jPanel17.setVisible(false);
-            this.jPanel19.setVisible(false);
+            
+                legameBeanPersonale();
+                this.jPanel13.setVisible(false);
+                this.jPanel17.setVisible(false);
+                this.jPanel19.setVisible(false);
+                a.visualizzaDatiPersonale(SujGest.getUsername(ut), utente);
 
-
-            a.visualizzaDatiPersonale(SujGest.getUsername(ut), utente);
         }
         if (SujGest.getTipoUtente(sub).equals(ConfigurazioneUtente.valueOf(ConfigurazioneUtente.TIPO_UTENTE_CONST.EXTRAAZIENDA))) {
             legameBeanExtraAzienda();
@@ -53,7 +59,11 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
 
             a.visualizzaDatiExtraAzienda(SujGest.getUsername(ut), extra);
         }
-
+        } catch (SQLException ex) {
+               JOptionPane.showMessageDialog(null, "Errore dal database: "+ex.getErrorCode());
+            } catch (ValidatorException ex) {
+                 JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
 
     }
 
@@ -164,6 +174,11 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
                 buttonSalva1MouseClicked(evt);
             }
         });
+        buttonSalva1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSalva1ActionPerformed(evt);
+            }
+        });
 
         modifica.setText("Modifica");
         modifica.setName("modifica"); // NOI18N
@@ -206,7 +221,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
                         .addGap(11, 11, 11)))
                 .addGap(18, 18, 18)
                 .addComponent(modifica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(373, Short.MAX_VALUE))
+                .addContainerGap(376, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Password", jXPanel2);
@@ -259,7 +274,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addComponent(citta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Provincia"));
@@ -280,7 +295,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addComponent(provincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Cognome"));
@@ -301,7 +316,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addComponent(cog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         panel29.setBorder(javax.swing.BorderFactory.createTitledBorder("Username"));
@@ -324,7 +339,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
             panel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel29Layout.createSequentialGroup()
                 .addComponent(user1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder("Ragione Sociale"));
@@ -345,7 +360,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addComponent(ragSoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder("Codice Fiscale"));
@@ -366,7 +381,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addComponent(codFisc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder("Ruolo"));
@@ -400,13 +415,13 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
                 .addComponent(mail2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(2, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addComponent(mail2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder("P.IVA"));
@@ -428,7 +443,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addComponent(piva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome"));
@@ -451,7 +466,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel18Layout.createSequentialGroup()
                 .addComponent(nm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder("FAX"));
@@ -472,7 +487,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel19Layout.createSequentialGroup()
                 .addComponent(fax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jPanel20.setBorder(javax.swing.BorderFactory.createTitledBorder("Cap"));
@@ -494,7 +509,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel20Layout.createSequentialGroup()
                 .addComponent(cap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jXPanel1Layout = new javax.swing.GroupLayout(jXPanel1);
@@ -536,7 +551,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addContainerGap(163, Short.MAX_VALUE))
         );
         jXPanel1Layout.setVerticalGroup(
             jXPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -575,7 +590,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
                 .addComponent(jXLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
                 .addGap(612, 612, 612))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 844, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -590,12 +605,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonSalva1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSalva1MouseClicked
-        this.pwd.setEnabled(false);
-        AppGestioneAreaPersonale operazione = new AppGestioneAreaPersonale();
-        operazione.modificaPassword(utente);
-
-        modifica.setEnabled(true);
-        buttonSalva1.setEnabled(false);
+        
 
     }//GEN-LAST:event_buttonSalva1MouseClicked
 
@@ -611,6 +621,20 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
     private void tellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tellActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tellActionPerformed
+
+    private void buttonSalva1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalva1ActionPerformed
+        try {
+            this.pwd.setEnabled(false);
+            AppGestioneAreaPersonale operazione = new AppGestioneAreaPersonale();
+            operazione.modificaPassword(utente);
+            modifica.setEnabled(true);
+            buttonSalva1.setEnabled(false);
+        } catch (SQLException ex) {
+               JOptionPane.showMessageDialog(null, "Errore dal database: "+ex.getErrorCode());
+            } catch (ValidatorException ex) {
+                 JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
+    }//GEN-LAST:event_buttonSalva1ActionPerformed
     /**
      * Il metodo permette di inizzalizzare i campi persenti sul form.
      * @ s sringa che permette l'inalizzazione, permette di inizzializare tutti i campi sul form.
