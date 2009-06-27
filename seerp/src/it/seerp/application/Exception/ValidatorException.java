@@ -4,7 +4,7 @@ package it.seerp.application.Exception;
  * Classe d'eccezione che viene lanciata per i validator
  * @author Tommaso Cattolico
  */
-public class ValidatorException extends RuntimeException {
+public class ValidatorException extends Exception {
 
     /**
      * Metodo che passa il messaggio d'errore al livello superiore

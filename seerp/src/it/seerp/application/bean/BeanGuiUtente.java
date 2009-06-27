@@ -92,7 +92,7 @@ public class BeanGuiUtente {
      *
      * @return
      */
-    public JTextField getCap() {
+    public JTextField getCap() throws ValidatorException {
         if (validator == true) {
             if (!cap.getInputVerifier().shouldYieldFocus(cap)) {
                 throw new ValidatorException("Errore nella grafica!");

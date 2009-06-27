@@ -2,6 +2,7 @@
 
 package it.seerp.storage.db;
 
+import it.seerp.storage.Exception.DatiErratiEx;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -27,7 +28,7 @@ public interface OpeEntity<E, G> {
      * @throws java.sql.SQLException
      * nel caso in cui ci siano problemi legati alla modifica nel database
      */
-    public E modifica(E bean) throws SQLException;
+    public E modifica(E bean) throws SQLException,DatiErratiEx;
 
     /**
      * metodo che ricerca nel database l'enity con quel parametro in input

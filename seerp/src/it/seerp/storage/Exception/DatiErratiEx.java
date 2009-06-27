@@ -8,7 +8,7 @@ package it.seerp.storage.Exception;
  * lanciata quando si inseriscono dati errati in un inserimento o modifica
  * utente,servizio,evento,contratti fornitore
  */
-public class DatiErratiEx extends java.lang.RuntimeException {
+public class DatiErratiEx extends Exception {
     /**
      *
      * @param msg

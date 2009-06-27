@@ -7,7 +7,7 @@ package it.seerp.storage.Exception;
  *
  * viene lanciata quando l'utente è già esistente nel database
  */
-public class UtenteGiaEsistenteEx extends java.lang.RuntimeException{
+public class UtenteGiaEsistenteEx extends Exception{
 
     /**
      *

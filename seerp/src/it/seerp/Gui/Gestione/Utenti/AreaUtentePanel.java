@@ -6,6 +6,7 @@ import it.seerp.Gui.configurazioni.Gui.ConfigurazioneUtente;
 import it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla;
 import it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
+import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.bean.BeanGuiFornitore;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -718,32 +719,39 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
     private void jXTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jXTable1MouseClicked
         if (evt.getClickCount() == 2) {
-            int i = jXTable1.getSelectedRow();
-            if (i < 0) {
-                return;
+            try {
+                int i = jXTable1.getSelectedRow();
+                if (i < 0) {
+                    return;
+                }
+
+                Integer id = (Integer) jXTable1.getValueAt(i, 0);
+
+                if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
+
+                    AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
+                    operazione.visualizzaDatiCliente(id, cliente);
+                } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
+
+                    AppGestionePersonale operazione = new AppGestionePersonale();
+                    operazione.visualizzaDatiDipendente(id, dipendente);
+                } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
+
+                    AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
+                    operazione.visualizzaDatiFornitore(id, fornitore);
+                } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
+
+                    AppGestionePersonale operazione = new AppGestionePersonale();
+                    operazione.visualizzaDatiResponsabile(id, responsabile);
+                }
+
+                editabile(false);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Errore nel database!!");
+            } catch (ValidatorException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
             }
 
-            Integer id = (Integer) jXTable1.getValueAt(i, 0);
-
-            if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
-
-                AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
-                operazione.visualizzaDatiCliente(id, cliente);
-            } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
-
-                AppGestionePersonale operazione = new AppGestionePersonale();
-                operazione.visualizzaDatiDipendente(id, dipendente);
-            } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
-
-                AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
-                operazione.visualizzaDatiFornitore(id, fornitore);
-            } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
-
-                AppGestionePersonale operazione = new AppGestionePersonale();
-                operazione.visualizzaDatiResponsabile(id, responsabile);
-            }
-
-            editabile(false);
         }
     }//GEN-LAST:event_jXTable1MouseClicked
 
@@ -772,15 +780,12 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
     }//GEN-LAST:event_buttonAnnulla1ActionPerformed
 
     private void buttonSalva1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalva1ActionPerformed
-        menu.setButtonEnabled(true);
-
-        if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI)) {
-
-            try {
-
+        try {
+            menu.setButtonEnabled(true);
+            if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.INSERISCI)) {
 
                 if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
-                    cliente.setValidatorEnabled(false);
+
                     AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
                     operazione.inserisciCliente(cliente);
 
@@ -788,9 +793,6 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
                     AppGestionePersonale operazione = new AppGestionePersonale();
                     operazione.inserisciDipendente(dipendente);
-
-
-
 
                 } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
 
@@ -803,33 +805,14 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
                     AppGestionePersonale operazione = new AppGestionePersonale();
                     operazione.inserisciResponsabile(responsabile);
 
-
                 }
                 refresh();
                 editabile(false);
                 this.buttonAnnulla1.setEnabled(false);
                 this.buttonSalva1.setEnabled(false);
-
-            } catch (DatiDuplicatiEx ex) {
-                JOptionPane.showMessageDialog(null, "dati duplicati");
-                this.inizializzazione(" ");
-                editabile(false);
-                this.buttonAnnulla1.setEnabled(true);
-                this.buttonSalva1.setEnabled(true);
-
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "errore nel database");
-                this.inizializzazione(" ");
-                editabile(true);
-                this.buttonAnnulla1.setEnabled(true);
-                this.buttonSalva1.setEnabled(true);
-
             }
-        }
 
-        if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.MODIFICA)) {
-            try {
-
+            if (tipoOp.equals(ConfigurazioneOperazioni.TIPO_OPE_CONST.MODIFICA)) {
                 int i = jXTable1.getSelectedRow();
                 if (i < 0) {
                     return;
@@ -876,15 +859,23 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
                 this.buttonAnnulla1.setEnabled(false);
                 this.buttonSalva1.setEnabled(false);
 
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "errore nel database");
-                this.inizializzazione("");
-                editabile(true);
-                ex.printStackTrace();
-                this.buttonAnnulla1.setEnabled(true);
-                this.buttonSalva1.setEnabled(true);
 
             }
+        } catch (ValidatorException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        } catch (DatiDuplicatiEx ex) {
+            JOptionPane.showMessageDialog(null, "Hai inserito dati duplicati");
+        //this.inizializzazione("");
+        //editabile(false);
+        //this.buttonAnnulla1.setEnabled(true);
+        //this.buttonSalva1.setEnabled(true);
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Errore nel database: " + ex.getErrorCode());
+        //this.inizializzazione("");
+        //editabile(true);
+        //this.buttonAnnulla1.setEnabled(true);
+        //this.buttonSalva1.setEnabled(true);
         }
     }//GEN-LAST:event_buttonSalva1ActionPerformed
 
@@ -937,41 +928,45 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
      *
      */
     public void elmina() {
-        int i = jXTable1.getSelectedRow();
-        if (i < 0) {
-            return;
+        try {
+            int i = jXTable1.getSelectedRow();
+            if (i < 0) {
+                return;
+            }
+
+            Integer id = (Integer) jXTable1.getValueAt(i, 0);
+
+            if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
+
+                AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
+                operazione.eliminaExtraAziena(id, cliente);
+
+            } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
+
+                AppGestionePersonale operazione = new AppGestionePersonale();
+                operazione.eliminaDipendente(id, dipendente);
+
+
+            } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
+
+                AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
+                operazione.eliminaExtraAziena(id, fornitore);
+            } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
+
+                AppGestionePersonale operazione = new AppGestionePersonale();
+                operazione.eliminaResponsabile(id, responsabile);
+            }
+            refresh();
+            editabile(false);
+            inizializzazione("");
+            this.buttonAnnulla1.setEnabled(false);
+            this.buttonSalva1.setEnabled(false);
+        } catch (ValidatorException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Errore nel database: " + ex.getErrorCode());
         }
-
-        Integer id = (Integer) jXTable1.getValueAt(i, 0);
-
-        if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
-
-            AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
-            operazione.eliminaExtraAziena(id, cliente);
-
-        } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
-
-            AppGestionePersonale operazione = new AppGestionePersonale();
-            operazione.eliminaDipendente(id, dipendente);
-
-
-        } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
-
-
-            AppGestioneExtraAzienda operazione = new AppGestioneExtraAzienda();
-            operazione.eliminaExtraAziena(id, fornitore);
-
-
-        } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
-
-            AppGestionePersonale operazione = new AppGestionePersonale();
-            operazione.eliminaResponsabile(id, responsabile);
-        }
-        refresh();
-        editabile(false);
-        inizializzazione("");
-        this.buttonAnnulla1.setEnabled(false);
-        this.buttonSalva1.setEnabled(false);
 
     }
 

@@ -94,6 +94,7 @@ public class OpeUtente implements OpeEntity<Utente, Integer> {
      * @throws SQLException
      * @throws DatiErratiEx
      */
+    @Override
     public Utente modifica(Utente user) throws SQLException, DatiErratiEx {
         conn = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
