@@ -152,8 +152,14 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="nm">
               <Properties>
+                <Property name="disabledTextColor" type="java.awt.Color" noResource="true" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
                 <Property name="name" type="java.lang.String" value="nm" noResource="true"/>
+                <Property name="selectedTextColor" type="java.awt.Color" noResource="true" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nmActionPerformed"/>
@@ -193,8 +199,14 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="tell">
               <Properties>
+                <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
                 <Property name="name" type="java.lang.String" value="tell" noResource="true"/>
+                <Property name="selectedTextColor" type="java.awt.Color" noResource="true" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
@@ -231,8 +243,14 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="naz">
               <Properties>
+                <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
                 <Property name="name" type="java.lang.String" value="naz" noResource="true"/>
+                <Property name="selectedTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
@@ -269,8 +287,14 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="mail">
               <Properties>
+                <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
                 <Property name="name" type="java.lang.String" value="mail" noResource="true"/>
+                <Property name="selectedTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
@@ -306,8 +330,14 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="piva">
               <Properties>
+                <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
                 <Property name="name" type="java.lang.String" value="piva" noResource="true"/>
+                <Property name="selectedTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
@@ -343,8 +373,14 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="via">
               <Properties>
+                <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
                 <Property name="name" type="java.lang.String" value="via" noResource="true"/>
+                <Property name="selectedTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>

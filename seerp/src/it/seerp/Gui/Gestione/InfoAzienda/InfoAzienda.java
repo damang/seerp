@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import it.seerp.application.applicazione.AppAzienda;
+import java.awt.Color;
 
 /**
  *
@@ -28,9 +29,9 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
         this.menu = menu;
         azienda = new BeanGuiAzienda(this);
         legameBean();
-        AppAzienda operazione= new   AppAzienda();
+        AppAzienda operazione = new AppAzienda();
         operazione.visualizzaAzienda(azienda);
-   
+
         editabile(false);
     }
 
@@ -39,13 +40,19 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
      * @ flag che permette di modificare i campi presenti sul form.
      */
     public void editabile(boolean flag) {
-    
-        mail.setEditable(flag);
-        piva.setEditable(flag);
-        tell.setEditable(flag);
-        via.setEditable(flag);
-        nm.setEditable(flag);
-        naz.setEditable(flag);
+
+        mail.setEnabled(flag);
+        nm.setBackground(Color.WHITE);
+        piva.setEnabled(flag);
+        piva.setBackground(Color.WHITE);
+        tell.setEnabled(flag);
+        tell.setBackground(Color.WHITE);
+        via.setEnabled(flag);
+        via.setBackground(Color.WHITE);
+        nm.setEnabled(flag);
+        mail.setBackground(Color.WHITE);
+        naz.setEnabled(flag);
+        naz.setBackground(Color.WHITE);
 
     }
 
@@ -59,7 +66,7 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
         azienda.setRagioneSociale(nm);
         azienda.setNazione(naz);
         azienda.setTelefono(tell);
-      
+
     }
 
     /** Creates new form NewJPanel */
@@ -122,8 +129,10 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Ragione Sociale"));
         jPanel5.setName("jPanel5"); // NOI18N
 
+        nm.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         nm.setFocusCycleRoot(true);
         nm.setName("nm"); // NOI18N
+        nm.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         nm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nmActionPerformed(evt);
@@ -149,8 +158,10 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Tell"));
         jPanel10.setName("citta"); // NOI18N
 
+        tell.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         tell.setFocusCycleRoot(true);
         tell.setName("tell"); // NOI18N
+        tell.setSelectedTextColor(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -171,8 +182,10 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Nazione"));
         jPanel11.setName("jPanel11"); // NOI18N
 
+        naz.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         naz.setFocusCycleRoot(true);
         naz.setName("naz"); // NOI18N
+        naz.setSelectedTextColor(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -193,8 +206,10 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
         jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder("E-Mail"));
         jPanel12.setName("jPanel12"); // NOI18N
 
+        mail.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         mail.setFocusCycleRoot(true);
         mail.setName("mail"); // NOI18N
+        mail.setSelectedTextColor(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -215,8 +230,10 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
         jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder("P.IVA"));
         jPanel13.setName("jPanel13"); // NOI18N
 
+        piva.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         piva.setFocusCycleRoot(true);
         piva.setName("piva"); // NOI18N
+        piva.setSelectedTextColor(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -236,8 +253,10 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
         jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder("Indirizzo"));
         jPanel14.setName("jPanel14"); // NOI18N
 
+        via.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         via.setFocusCycleRoot(true);
         via.setName("via"); // NOI18N
+        via.setSelectedTextColor(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -339,8 +358,8 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
     private void buttonSalva1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSalva1MouseClicked
         menu.getModifica().setEnabled(true);
         editabile(true);
-         AppAzienda operazione= new   AppAzienda();
-         operazione.modifica(azienda);
+        AppAzienda operazione = new AppAzienda();
+        operazione.modifica(azienda);
         operazione.visualizzaAzienda(azienda);
         editabile(false);
         this.buttonAnnulla1.setEnabled(false);
