@@ -777,18 +777,16 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
             JXLoginPane p = new JXLoginPane(ja);
             JXLoginPane.showLoginFrame(p).setVisible(true);
           }
-            /*    final Subject _subject = new Subject();
-            _subject.getPrincipals().add(new AuthPrincipal("majinb", "username"));
-            _subject.getPrincipals().add(new AuthPrincipal("amministratore", "ruolo"));
-            _subject.getPrincipals().add(new AuthPrincipal("1", "id"));
-            _subject.getPrincipals().add(new AuthPrincipal("personale", "tipo"));
-            java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-            new Index(_subject);
-            }
-            });*/
+           
        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Errore di accesso al database");
+            switch (ex.getErrorCode()) {
+                case 0: JOptionPane.showMessageDialog(null, "Database non presente!!","Errore",JOptionPane.ERROR_MESSAGE);
+                        break;
+                case 1044: JOptionPane.showMessageDialog(null, "Impossibile accedere al database! "+ex.getMessage(),"Errore",JOptionPane.ERROR_MESSAGE);
+                        break;
+                default: JOptionPane.showMessageDialog(null, "Errore di accesso al database: "+ ex.getErrorCode());
+                         break;
+            }
             System.exit(0);
         }
         /*    final Subject _subject = new Subject();
