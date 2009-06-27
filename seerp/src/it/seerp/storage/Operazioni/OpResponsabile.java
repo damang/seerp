@@ -45,7 +45,7 @@ public class OpResponsabile extends OpeUtente {
 
         String sql = "SELECT idUtente,username,password,citta,prov," +
                 "telefono,cap,email,note,tipo,cognome,nome,codiceFiscale," +
-                "ruolo,visibilita FROM responsabile,utente,personale WHERE idPersonale=idUtente and visibilita=true " +
+                "ruolo,visibilita FROM responsabile,utente,personale,indirizzo WHERE idPersonale=idUtente and visibilita=true " +
                 "and idPersonale=idResponsabile";
         stmt = (PreparedStatement) co.prepareStatement(sql);
         // Execute the query
@@ -69,6 +69,7 @@ public class OpResponsabile extends OpeUtente {
             res.setCodiceFiscale(rs.getString(13));
             res.setRuolo(new Ruolo(rs.getString(13)));
             res.setVisible(rs.getBoolean(14));
+            res.setIndirizzo(rs.getString(15));
             list.add(res);
         }
         rs.close();
@@ -166,7 +167,7 @@ public class OpResponsabile extends OpeUtente {
 
         try {
             co.setAutoCommit(false);
-            String sqlu = "INSERT INTO utente(username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita) VALUES(?,?,?,?,?,?,?,?,?,true)";
+            String sqlu = "INSERT INTO utente(username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita,indirizzo) VALUES(?,?,?,?,?,?,?,?,?,true,?)";
             String sqlp = "INSERT INTO personale(idPersonale,nome,cognome,codicefiscale,ruolo) VALUES(LAST_INSERT_ID(),?,?,?,?)";
             String sqlr = "INSERT INTO responsabile (idResponsabile)VALUES(LAST_INSERT_ID())";
             String sqla = "INSERT INTO agenda (idAgenda) VALUES(LAST_INSERT_ID()) ";
@@ -180,6 +181,7 @@ public class OpResponsabile extends OpeUtente {
             stmt.setString(7, user.getCap());
             stmt.setString(8, user.getNote());
             stmt.setString(9, user.getTipo());
+            stmt.setString(10,user.getIndirizzo());
             // stmt.setString(10, user.getVisible().toString());
             stmtP = (PreparedStatement) co.prepareStatement(sqlp);
             stmtP.setString(1, user.getNome());
@@ -297,7 +299,7 @@ public class OpResponsabile extends OpeUtente {
 
         String sql = "SELECT idUtente,username,password,citta,prov," +
                 "telefono,cap,email,note,tipo,cognome,nome,codiceFiscale," +
-                "ruolo,visibilita FROM utente,personale WHERE idUtente=idPersonale and idPersonale= ? ";
+                "ruolo,visibilita,indirizzo FROM utente,personale WHERE idUtente=idPersonale and idPersonale= ? ";
 
         stmt = (PreparedStatement) co.prepareStatement(sql);
         stmt.setInt(1, id);
@@ -326,6 +328,7 @@ public class OpResponsabile extends OpeUtente {
             res.setCodiceFiscale(rs.getString(13));
             res.setRuolo(new Ruolo(rs.getString(14)));
             res.setVisible(rs.getBoolean(15));
+            res.setIndirizzo(rs.getString(16));
 
         }
         rs.close();

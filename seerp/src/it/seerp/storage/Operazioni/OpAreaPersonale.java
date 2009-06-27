@@ -38,7 +38,7 @@ public class OpAreaPersonale extends OpeUtente {
       conn = (Connection) ConnectionPool.getConnection();
         ResultSet rs=null;
         Personale per=new  Personale();/* = (Personale) super.visualizza(usr);*/
-        String sql="SELECT username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita, nome, cognome, codicefiscale,ruolo FROM utente, personale WHERE idUtente=idPersonale and username=?";
+        String sql="SELECT username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita, nome, cognome, codicefiscale,ruolo,indirizzo FROM utente, personale WHERE idUtente=idPersonale and username=?";
         PreparedStatement stmt = (PreparedStatement) conn.prepareStatement(sql);
         stmt.setString(1, usr);
      
@@ -58,6 +58,7 @@ public class OpAreaPersonale extends OpeUtente {
             per.setCognome(rs.getString(12));
             per.setCodiceFiscale(rs.getString(13));
             per.setRuolo(new Ruolo(rs.getString(14)));
+            per.setIndirizzo(rs.getString(15));
              }
         return per;
     }
@@ -68,7 +69,7 @@ public class OpAreaPersonale extends OpeUtente {
           ResultSet rs=null;
         ExtraAzienda extra = (ExtraAzienda) super.visualizza(usr);
         String sql="SELECT username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita" +
-                   "nome, cognome,fax,piva,ragioneSociale,ruolo,codicefiscale," +
+                   "nome, cognome,fax,piva,ragioneSociale,ruolo,codicefiscale,indirizzo" +
                    "FROM utente join extraazienda on idUtente=idExtraAzienda" +
                    "WHERE username=?";
         PreparedStatement stmt = (PreparedStatement) conn.prepareStatement(sql);
@@ -85,13 +86,14 @@ public class OpAreaPersonale extends OpeUtente {
            extra.setNote(rs.getString(8));
            extra.setTipo(rs.getString(9));
            extra.setVisible(rs.getBoolean(10));
-           extra.setNome(rs.getString(1));
-           extra.setCognome(rs.getString(2));
-           extra.setFax(rs.getString(3));
-           extra.setPIva(rs.getString(4));
-           extra.setRagioneSociale(rs.getString(5));
-           extra.setRuolo(rs.getString(6));
-           extra.setCodiceFiscale(rs.getString(7));
+           extra.setNome(rs.getString(11));
+           extra.setCognome(rs.getString(12));
+           extra.setFax(rs.getString(13));
+           extra.setPIva(rs.getString(14));
+           extra.setRagioneSociale(rs.getString(15));
+           extra.setRuolo(rs.getString(16));
+           extra.setCodiceFiscale(rs.getString(17));
+           extra.setIndirizzo(rs.getString(18));
         }
         return extra;
     }

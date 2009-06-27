@@ -102,6 +102,7 @@ public class OpPersonale extends OpeUtente {
             p.setTelefono(rs.getString("telefono"));
             p.setTipo(rs.getString("tipo"));
             p.setVisible(rs.getBoolean("visibilita"));
+            p.setIndirizzo(rs.getString("indirizzo"));
             list.add(p);
         }
         rs.close();

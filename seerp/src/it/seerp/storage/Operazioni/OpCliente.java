@@ -40,7 +40,7 @@ public class OpCliente extends OpExtraAzienda {
 
         String sql = "SELECT idUtente,username,password,citta,prov," +
                 "telefono,cap,email,Ruolo,note,visibilita,cognome,nome,ragioneSociale," +
-                "piva,fax FROM utente,extraazienda WHERE idUtente=idExtraAzienda and Ruolo='Cliente' and visibilita= true";
+                "piva,fax,indirizzo FROM utente,extraazienda WHERE idUtente=idExtraAzienda and Ruolo='Cliente' and visibilita= true";
         stmt = (PreparedStatement) connessione.prepareStatement(sql);
         // Execute the query
         rs = stmt.executeQuery(sql);
@@ -64,6 +64,7 @@ public class OpCliente extends OpExtraAzienda {
             cliente.setRagioneSociale(rs.getString(14));
             cliente.setPIva(rs.getString(15));
             cliente.setFax(rs.getString(16));
+            cliente.setIndirizzo(rs.getString(17));
             //Integer idUtente, String username, String password, String città, String ruol 5, String provincia, String telefono, String cap, String email, String ruolo 10, String note, Boolean v, String cognome, String nome, String ragioneSociale 15, String pIva, String fax) {
 
             list.add(cliente);
@@ -157,8 +158,8 @@ public class OpCliente extends OpExtraAzienda {
         PreparedStatement stmte = null;
         try {
             connessione.setAutoCommit(false);
-            String sqlu = "INSERT INTO utente(username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita) VALUES(?,?,?,?,?,?,?,?,?,true)";
-            super.inserimento(user);
+            String sqlu = "INSERT INTO utente(username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita,indirizzo) VALUES(?,?,?,?,?,?,?,?,?,true,?)";
+            //super.inserimento(user);
 
             String sqle = "INSERT INTO extraazienda(idExtraAzienda,nome,cognome,fax,piva,ragioneSociale,Ruolo,codiceFiscale)" +
                     "VALUES(LAST_INSERT_ID(),?,?,?,?,?,'cliente',?)";
@@ -174,6 +175,7 @@ public class OpCliente extends OpExtraAzienda {
             stmt.setString(7, user.getCap());
             stmt.setString(8, user.getNote());
             stmt.setString(9, user.getTipo());
+            stmt.setString(10, user.getIndirizzo());
             // stmt.setString(10, user.getVisible().toString());
             stmte = (PreparedStatement) connessione.prepareStatement(sqle);
             stmte.setString(1, user.getNome());
@@ -198,7 +200,7 @@ public class OpCliente extends OpExtraAzienda {
 
                   default:
                     connessione.rollback();
-                    throw new SQLException("Transizione fallita");
+                    throw new SQLException(e);
           }
         }
 
@@ -290,7 +292,7 @@ public class OpCliente extends OpExtraAzienda {
 
         String sql = "SELECT idUtente,username,password,citta,prov," +
                 "telefono,cap,email,Ruolo,note,visibilita,cognome,nome,ragioneSociale," +
-                "piva,fax,codiceFiscale FROM utente,extraazienda WHERE idUtente=idExtraAzienda and idExtraAzienda=?";
+                "piva,fax,codiceFiscale,indirizzo FROM utente,extraazienda WHERE idUtente=idExtraAzienda and idExtraAzienda=?";
 
 
         stmt = (PreparedStatement) connessione.prepareStatement(sql);
@@ -320,7 +322,7 @@ public class OpCliente extends OpExtraAzienda {
             cliente.setPIva(rs.getString(15));
             cliente.setFax(rs.getString(16));
             cliente.setCodiceFiscale(rs.getString(17));
-
+             cliente.setIndirizzo(rs.getString(18));
 
         }
         rs.close();
