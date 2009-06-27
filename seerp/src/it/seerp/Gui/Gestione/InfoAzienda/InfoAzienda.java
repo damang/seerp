@@ -27,7 +27,8 @@ public class InfoAzienda extends ObservableJPanel implements ActionListener {
 
     /**
      * Permette di associare il menu all'area Azienda.
-     * @param menu viene passato il menù da passa 
+     * @param menu viene passato il menù da passare al campo
+     *
      */
     public void setMenu(MenuInfoAzienda menu) {
         try {
