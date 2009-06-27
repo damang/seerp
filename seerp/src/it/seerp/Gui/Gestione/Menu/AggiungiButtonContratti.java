@@ -32,7 +32,7 @@ public class AggiungiButtonContratti extends JButton implements CommandInterface
     }
 
     /**
-     *
+     * Costruttore della classe
      * @param areaContr
      */
     public void setAreaContratti(GestioneContratti areaContr) {

@@ -22,8 +22,8 @@ public class MenuContratti extends javax.swing.JPanel implements ActionListener 
     }
 
     /**
-     *
-     * @param contratti
+     ** questo metodo associa il pannello Gestione Contratti al menù gestone contratti
+     * @param contratti vine passato come parametro il pannello da associare al menù agenda
      */
     public void setPannello(GestioneContratti contratti) {
         this.contratti = contratti;

@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 
 /**
  *
- * @author Andrea
+ * @author Andrea-Luisa
  */
 public class MenuAgenda extends javax.swing.JPanel implements ActionListener {
 
@@ -20,8 +20,9 @@ public class MenuAgenda extends javax.swing.JPanel implements ActionListener {
     }
 
     /**
-     *
-     * @param pannello
+     * questo metodo associa il pannello agenda al menu agenda
+     * @param pannello, viene passato il pannello da associare al menù agenda
+     * 
      */
     public void setPannello( CalendarPanel pannello) {
 

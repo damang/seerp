@@ -12,7 +12,7 @@ import javax.security.auth.Subject;
 
 /**
  *
- * @author Andrea
+ * @author Andrea-Luisa
  */
 public class MenuRuoli extends javax.swing.JPanel implements ActionListener {
 
@@ -30,8 +30,8 @@ public class MenuRuoli extends javax.swing.JPanel implements ActionListener {
     }
 
     /**
-     *
-     * @param pannello
+     * qusto metodo permette di associare il pannello GestioneRuoli da associare al menù MenuRuoli
+     * @param pannello, vine passato come parametro il pannello da associare al menù MenuRuoli
      */
     public void setPannello(GestioneRuoli pannello) {
 

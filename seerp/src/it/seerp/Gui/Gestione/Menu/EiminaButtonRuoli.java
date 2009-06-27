@@ -14,7 +14,7 @@ public class EiminaButtonRuoli extends JButton implements CommandInterface{
      GestioneRuoli area;
 
      /**
-      *
+      * Costruttore della classe
       * @param areaServ
       */
      public void setArea(GestioneRuoli areaServ) {

@@ -38,7 +38,7 @@ public class AggiungiButtonRuoli extends JButton implements CommandInterface {
     }
 
     /**
-     *
+     * Costruttore della classe
      * @param areaContr
      */
     public void setArea(GestioneRuoli areaContr) {
