@@ -9,11 +9,14 @@ package it.seerp.Gui.Gestione.Init;
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.application.Exception.DatiDuplicati;
 import it.seerp.application.Exception.DatiErrati;
+import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.applicazione.AppInit;
 import it.seerp.application.bean.BeanGuiAmministratore;
 import it.seerp.application.bean.BeanGuiAzienda;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -33,8 +36,11 @@ public class GestioneInit extends javax.swing.JPanel {
         this.amm = new BeanGuiAmministratore(this);
         this.az = new BeanGuiAzienda(this);
         legameBeans();
-       
-     
+        JFrame f = new JFrame();
+        f.getContentPane().add(new GestioneInit());
+        f.setSize(800, 600);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setVisible(true);
     }
 
     /**
@@ -738,13 +744,18 @@ public class GestioneInit extends javax.swing.JPanel {
       AppInit operazione= new AppInit();
         try {
             operazione.inserimento(amm);
+            JOptionPane.showMessageDialog(null, "Operazione effettuata con successo!! Il software verrà chiuso. Riaprilo per iniziare ad usarlo");
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "errore nel database");
         } catch (DatiErrati ex) {
              JOptionPane.showMessageDialog(null, "dati errati");
         } catch (DatiDuplicati ex) {
-             JOptionPane.showMessageDialog(null, "dati duplicati");
+            JOptionPane.showMessageDialog(null, "dati duplicati");
+        } catch (ValidatorException ex) {
+                 JOptionPane.showMessageDialog(null, ex.getMessage());
         }
+
     }//GEN-LAST:event_buttonSalva1ActionPerformed
 
     private void buttonAnnulla1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAnnulla1ActionPerformed
@@ -813,17 +824,5 @@ public class GestioneInit extends javax.swing.JPanel {
         CommandInterface cmd = (CommandInterface) e.getSource();
         cmd.execute();
 
-    }
-
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            public void run() {
-                JFrame f = new JFrame();
-                f.getContentPane().add(new GestioneInit());
-                f.setSize(800, 600);
-                f.setVisible(true);
-            }
-        });
     }
 }

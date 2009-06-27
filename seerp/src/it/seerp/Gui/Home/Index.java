@@ -12,6 +12,7 @@ import it.seerp.Gui.Gestione.Utenti.AreaUtentePanel;
 import it.seerp.Gui.Gestione.Contratti.GestioneContratti;
 import it.seerp.Gui.Gestione.Servizi.GestioneServizi;
 import it.seerp.Gui.Gestione.InfoAzienda.InfoAzienda;
+import it.seerp.Gui.Gestione.Init.GestioneInit;
 import it.seerp.Gui.Gestione.agenda.CalendarPanel;
 import it.seerp.Gui.Gestione.agenda.notificaEventi;
 import it.seerp.Gui.configurazioni.PermessiDefault;
@@ -25,6 +26,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
 import java.security.Policy;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.security.auth.Subject;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -43,9 +46,9 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
     /** Creates new form Index
      * @param sub
      */
-    public Index(Subject sub) {
-        ut_sub = sub;
-        tipDay = new notificaEventi(SujGest.getIdUtente(ut_sub));
+    public Index(JaasUtil ja) {
+        ut_jaas = ja;
+        tipDay = new notificaEventi(SujGest.getIdUtente(ut_jaas.getSubject()));
 
         initComponents();
 
@@ -63,12 +66,12 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
     }
 
     private void settaPermessi() {
-        areaUtenteButton1.setEnabled(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneResponsabili),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELENCA))));
-        areaUtenteButton2.setEnabled(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELENCA))));
-        areaUtenteButton3.setEnabled(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELENCA))));
-        areaUtenteButton4.setEnabled(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELENCA))));
-        buttonServizi1.setEnabled(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELENCA))));
-        buttonRuoli1.setEnabled(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELENCA))));
+        areaUtenteButton1.setEnabled(JaasUtil.checkPermission(ut_jaas.getSubject(), new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneResponsabili),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELENCA))));
+        areaUtenteButton2.setEnabled(JaasUtil.checkPermission(ut_jaas.getSubject(), new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELENCA))));
+        areaUtenteButton3.setEnabled(JaasUtil.checkPermission(ut_jaas.getSubject(), new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELENCA))));
+        areaUtenteButton4.setEnabled(JaasUtil.checkPermission(ut_jaas.getSubject(), new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELENCA))));
+        buttonServizi1.setEnabled(JaasUtil.checkPermission(ut_jaas.getSubject(), new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELENCA))));
+        buttonRuoli1.setEnabled(JaasUtil.checkPermission(ut_jaas.getSubject(), new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELENCA))));
     }
 
     /**
@@ -76,7 +79,10 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
      * @return
      */
     public Subject getSubject() {
-        return ut_sub;
+        return ut_jaas.getSubject();
+    }
+    public JaasUtil getUtilLogin() {
+        return ut_jaas;
     }
 
     /** This method is called from within the constructor to
@@ -735,42 +741,56 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        Policy.setPolicy(new AuthPolicy());
-        System.setProperty("java.security.auth.login.config", "file_config\\jaasutil.config");
         try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        } catch (InstantiationException ex) {
-            ex.printStackTrace();
-        } catch (IllegalAccessException ex) {
-            ex.printStackTrace();
-        } catch (UnsupportedLookAndFeelException ex) {
-            ex.printStackTrace();
-        }
-          AppInit app=new AppInit();
-         if(!app.check()){
-            
-           InfoAzienda info= new InfoAzienda();
-            info.setVisible(true);}
-
-
-        final JaasUtil ja = new JaasUtil();
-        ja.addLoginListener(new LoginAdapter() {
-
-            @Override
-            public void loginSucceeded(LoginEvent source) {
-                super.loginSucceeded(source);
-                java.awt.EventQueue.invokeLater(new Runnable() {
-
-                    public void run() {
-                        new Index(ja.getSubject()).setVisible(true);
-                    }
-                });
+            Policy.setPolicy(new AuthPolicy());
+            System.setProperty("java.security.auth.login.config", "file_config\\jaasutil.config");
+            try {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            } catch (InstantiationException ex) {
+                ex.printStackTrace();
+            } catch (IllegalAccessException ex) {
+                ex.printStackTrace();
+            } catch (UnsupportedLookAndFeelException ex) {
+                ex.printStackTrace();
             }
-        });
-        JXLoginPane p = new JXLoginPane(ja);
-        JXLoginPane.showLoginFrame(p).setVisible(true);
+            AppInit app = new AppInit();
+            if (!app.check()) {
+                GestioneInit info = new GestioneInit();
+            }
+            else {
+                final JaasUtil ja = new JaasUtil();
+                ja.addLoginListener(new LoginAdapter() {
+
+                @Override
+                public void loginSucceeded(LoginEvent source) {
+                    super.loginSucceeded(source);
+                    java.awt.EventQueue.invokeLater(new Runnable() {
+
+                        public void run() {
+                            new Index(ja).setVisible(true);
+                        }
+                    });
+                }
+            });
+            JXLoginPane p = new JXLoginPane(ja);
+            JXLoginPane.showLoginFrame(p).setVisible(true);
+             }
+            /*    final Subject _subject = new Subject();
+            _subject.getPrincipals().add(new AuthPrincipal("majinb", "username"));
+            _subject.getPrincipals().add(new AuthPrincipal("amministratore", "ruolo"));
+            _subject.getPrincipals().add(new AuthPrincipal("1", "id"));
+            _subject.getPrincipals().add(new AuthPrincipal("personale", "tipo"));
+            java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+            new Index(_subject);
+            }
+            });*/
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Errore di accesso al database");
+            System.exit(0);
+        }
         /*    final Subject _subject = new Subject();
         _subject.getPrincipals().add(new AuthPrincipal("majinb", "username"));
         _subject.getPrincipals().add(new AuthPrincipal("amministratore", "ruolo"));
@@ -836,7 +856,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
     private javax.swing.JMenuItem saveAsMenuItem;
     private javax.swing.JMenuItem saveMenuItem;
     // End of variables declaration//GEN-END:variables
-    private Subject ut_sub;
+    private JaasUtil ut_jaas;
     private org.jdesktop.swingx.JXTipOfTheDay tipDay;
 
     public void actionPerformed(ActionEvent e) {
