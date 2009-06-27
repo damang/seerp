@@ -18,49 +18,32 @@ import javax.swing.JOptionPane;
 public class AppAzienda implements GestioneAzienda<BeanGuiAzienda> {
 
     @Override
-    public BeanGuiAzienda modifica(BeanGuiAzienda beanGui) throws DatiErrati {
-        try {
+    public BeanGuiAzienda modifica(BeanGuiAzienda beanGui) throws ValidatorException, SQLException {
             OpAzienda ope = new OpAzienda();
             Azienda azi = Conversione.conversioneAzienda(beanGui);
             azi.setIdAzienda(1);
-           ope.modifica(azi);
+            ope.modifica(azi);
            //beanGui = Conversione.conversioneAzienda(azi, beanGui);
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (ValidatorException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
         return beanGui;
     }
 
     @Override
-    public BeanGuiAzienda visualizzaAzienda(BeanGuiAzienda gui) throws DatiErrati {
-        try {
+    public BeanGuiAzienda visualizzaAzienda(BeanGuiAzienda gui) throws SQLException {
+       
             OpAzienda ope = new OpAzienda();
             Azienda azi = ope.visualizza();
            
             Conversione.conversioneAzienda(azi, gui);
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (ValidatorException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
+       
         return gui;
     }
 
     @Override
-    public void inserimento(BeanGuiAzienda BeanGuiAzienda) throws SQLException, DatiErrati, DatiDuplicati {
-        try {
+    public void inserimento(BeanGuiAzienda BeanGuiAzienda) throws SQLException, ValidatorException {
+        
             OpAzienda op = new OpAzienda();
             Azienda a = Conversione.conversioneAzienda(BeanGuiAzienda);
             op.inserimento(a);
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
-        }
+        
     }
 }
