@@ -917,7 +917,7 @@ public class Conversione {
      * @return il Bean convertito
      * @throws Exception
      */
-    public static Ruolo conversioneRuolo(BeanGuiRuolo b) {
+    public static Ruolo conversioneRuolo(BeanGuiRuolo b) throws ValidatorException {
         Ruolo r = new Ruolo(b.getNome().getText());
         r.setPermSyncro(false);
         Iterator it = b.getListPermessi().entrySet().iterator();
