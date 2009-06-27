@@ -174,7 +174,7 @@ public class BeanGuiServizio {
      */
     public void setIva(JTextField piva) {
         this.iva = piva;
-        iva.setInputVerifier(new NotEmptyValidator(grafica, iva, "Il campo IVA deve essere di 11 caratteri.", RegexpDef.valueOf(RegexpDef.VAL.PIVA))); //espressione
+        iva.setInputVerifier(new NotEmptyValidator(grafica, iva, "Il campo IVA deve essere di 2 caratteri.", RegexpDef.valueOf(RegexpDef.VAL.IVA))); //espressione
     }
 
     /**
@@ -200,7 +200,7 @@ public class BeanGuiServizio {
      */
     public JTextField getPrezzo() throws ValidatorException {
         if (validator == true) {
-            if (!prezzo.getInputVerifier().shouldYieldFocus(prezzo) && validator == true) {
+            if (!prezzo.getInputVerifier().shouldYieldFocus(prezzo)) {
                 throw new ValidatorException("Errore nella grafica!");
             }
         }
