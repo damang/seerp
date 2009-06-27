@@ -75,22 +75,15 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto, Contrat
     }
 
     @Override
-    public void inserisci(BeanGuiContratto beanGuiContratto) throws DatiErrati, DatiDuplicati {
-        try {
-            Contratto contratto = Conversione.conversioneContratto(beanGuiContratto);
-            OpContratto a = new OpContratto();
-            a.inserimento(contratto);
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (ValidatorException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
+    public void inserisci(BeanGuiContratto beanGuiContratto) throws SQLException, ValidatorException {
+        Contratto contratto = Conversione.conversioneContratto(beanGuiContratto);
+        OpContratto a = new OpContratto();
+        a.inserimento(contratto);
     }
 
     @Override
-    public BeanGuiContratto modifica(BeanGuiContratto beanGuiContratto) throws DatiErrati {
+    public BeanGuiContratto modifica(
+            BeanGuiContratto beanGuiContratto) throws DatiErrati {
         try {
             Contratto contratto = Conversione.conversioneContratto(beanGuiContratto);
             OpContratto a = new OpContratto();
@@ -111,7 +104,8 @@ public class AppContratti implements GestioneContratti<BeanGuiContratto, Contrat
         ArrayList<Contratto> list = new ArrayList<Contratto>();
         try {
             OpContratto ope = new OpContratto();
-            list = ope.visualizzaElenco();
+            list =
+                    ope.visualizzaElenco();
         } catch (SQLException se) {
             se.printStackTrace();
             JOptionPane.showMessageDialog(null, "Errore nel database!");
