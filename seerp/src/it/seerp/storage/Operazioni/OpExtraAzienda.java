@@ -199,7 +199,7 @@ public class OpExtraAzienda extends OpeUtente {
      * @throws DatiErratiEx
      * @throws DatiDuplicatiEx
      */
-    public ExtraAzienda modifica(ExtraAzienda user) throws SQLException, DatiErratiEx, DatiDuplicatiEx {
+    public ExtraAzienda modifica(ExtraAzienda user) throws SQLException, DatiDuplicatiEx {
 
         PreparedStatement stmte = null;
         connection = (Connection) ConnectionPool.getConnection();

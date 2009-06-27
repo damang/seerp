@@ -21,8 +21,8 @@ import javax.swing.JOptionPane;
 public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> {
 
     @Override
-    public ArrayList<BeanGuiUtente> elenca(ArrayList<BeanGuiUtente> listGui) {
-        try {
+    public ArrayList<BeanGuiUtente> elenca(ArrayList<BeanGuiUtente> listGui) throws SQLException, ValidatorException {
+    
             OpeUtente ope = new OpeUtente();
             ArrayList<Utente> list = ope.visualizzaElenco();
             int i = 0;
@@ -30,19 +30,12 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
                 listGui.add(Conversione.conversioneUtente(user, listGui.get(i)));
                 i++;
             }
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (ValidatorException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
         return listGui;
     }
 
     @Override
-    public ArrayList<BeanGuiUtente> ricerca(ArrayList<BeanGuiUtente> list) throws DatiErrati, RicercaFallita {
-        try {
+    public ArrayList<BeanGuiUtente> ricerca(ArrayList<BeanGuiUtente> list) throws SQLException, ValidatorException {
+       
             OpeUtente ope = new OpeUtente();
             ArrayList<Utente> listGui = ope.visualizzaElenco();
             int i = 0;
@@ -50,98 +43,65 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
                 list.add(Conversione.conversioneUtente(user, list.get(i)));
                 i++;
             }
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (ValidatorException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
+       
         return list;
     }
 
     @Override
-    public void elimina(int id,BeanGuiUtente user) {
-        try {
+    public void elimina(int id,BeanGuiUtente user)throws SQLException, ValidatorException {
+       
             OpeUtente ope = new OpeUtente();
             Utente ut = Conversione.conversioneUtente(user);
             ope.elimina(ut);
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (ValidatorException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
+        
     }
 
     @Override
-    public void eliminazioneLogica(BeanGuiUtente user) {
-        try {
+    public void eliminazioneLogica(BeanGuiUtente user)throws SQLException, ValidatorException {
+        
             OpeUtente ope = new OpeUtente();
             Utente ut = Conversione.conversioneUtente(user);
             ope.eliminaLogica(ut);
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (ValidatorException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
+        
     }
 
     @Override
-    public void inserisci(BeanGuiUtente user) throws DatiErrati, DatiDuplicati, SQLException {
-        try {
+    public void inserisci(BeanGuiUtente user) throws SQLException, ValidatorException {
+       
             OpeUtente a = new OpeUtente();
             Utente utente = Conversione.conversioneUtente(user);
             a.inserimento(utente);
-        } catch (ValidatorException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
+       
     }
 
     @Override
-    public BeanGuiUtente modifica(int id,BeanGuiUtente user) throws DatiErrati, SQLException{
-        try {
+    public BeanGuiUtente modifica(int id,BeanGuiUtente user)throws SQLException, ValidatorException{
+        
             OpeUtente ope = new OpeUtente();
             Utente utente = Conversione.conversioneUtente(user);
             utente = ope.modifica(utente);
             user = Conversione.conversioneUtente(utente, user);
-        } catch (ValidatorException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
+        
         return user;
     }
 
     @Override
-    public BeanGuiUtente visualizzaDati(int user, BeanGuiUtente beanGui) throws DatiErrati {
-        try {
+    public BeanGuiUtente visualizzaDati(int user, BeanGuiUtente beanGui)throws SQLException, ValidatorException {
+        
             OpeUtente ope = new OpeUtente();
             Utente utente = ope.visualizza(user);
             beanGui = it.seerp.application.conversioni.Conversione.conversioneUtente(utente, beanGui);
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (ValidatorException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
+        
         return beanGui;
     }
 
     @Override
-    public ArrayList<Utente> visualizzaTabella() {
+    public ArrayList<Utente> visualizzaTabella() throws SQLException {
         ArrayList<Utente> list = new ArrayList<Utente>();
-        try {
+       
             OpeUtente ope = new OpeUtente();
             list = ope.visualizzaElenco();
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
-        }
+        
         return list;
     }
 }
