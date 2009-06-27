@@ -21,8 +21,8 @@ public class MenuInfoAzienda extends javax.swing.JPanel implements ActionListene
     }
 
     /**
-     *
-     * @param infoAzienda
+     * questo metodo associa il pannello GestioneAzienda al menù infoAzienda
+     * @param infoAzienda vine passato come parametro il pannello da associare al menù InfoAzienda
      */
     public void setPannello(InfoAzienda infoAzienda) {
         this.pannello = infoAzienda;

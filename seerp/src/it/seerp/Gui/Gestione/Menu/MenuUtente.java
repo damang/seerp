@@ -35,8 +35,8 @@ public class MenuUtente extends javax.swing.JPanel implements ActionListener {
         initComponents();
     }
     /**
-     *
-     * @param pannello
+     * Questo metoso permette di associare il pannello AreaUtente al menù MenuUtente
+     * @param pannello, vine passato come parametro il pannello da associare al menù MenuUtente
      */
     public void setPannello(AreaUtentePanel pannello){
         this.pannello = pannello;

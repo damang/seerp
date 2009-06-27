@@ -33,7 +33,7 @@ public class AggiungiButtonServizi extends JButton implements CommandInterface {
     }
 
     /**
-     *
+     * Costruttore della classe
      * @param areaSer
      */
     public void setServizi(GestioneServizi areaSer) {

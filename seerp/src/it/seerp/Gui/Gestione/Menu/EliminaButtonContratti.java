@@ -16,7 +16,7 @@ public class EliminaButtonContratti extends JButton  implements CommandInterface
    GestioneContratti areaContr;
 
    /**
-    *
+    * Costruttore della classe
     * @param areaContr
     */
    public void setAreaContr(GestioneContratti areaContr) {

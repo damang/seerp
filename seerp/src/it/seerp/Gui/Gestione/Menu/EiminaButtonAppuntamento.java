@@ -19,7 +19,7 @@ public class EiminaButtonAppuntamento extends JButton implements CommandInterfac
     CalendarPanel area;
 
      /**
-      *
+      * Costruttore della classe
       * @param areaServ
       */
    public void setAreaAgenda(CalendarPanel areaContr) {

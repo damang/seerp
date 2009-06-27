@@ -13,7 +13,7 @@ import javax.swing.JButton;
 
 /**
  *
- * @author Andrea
+ * @author Andrea-Luisa
  */
 public class MenuServizi extends javax.swing.JPanel implements ActionListener {
 
@@ -30,8 +30,8 @@ public class MenuServizi extends javax.swing.JPanel implements ActionListener {
     }
 
     /**
-     *
-     * @param pannello
+     * questo metodo permette di associare il pannello GestioneServizi al MenuServizi
+     * @param pannello, vine passato come parametro il pannello da associare al MenuServizi
      */
     public void setPannello(GestioneServizi pannello) {
 

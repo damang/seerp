@@ -15,7 +15,7 @@ public class EiminaButtonServizi extends JButton implements CommandInterface{
      GestioneServizi areaServ;
 
      /**
-      *
+      * Costruttore della classe
       * @param areaServ
       */
      public void setAreaServ(GestioneServizi areaServ) {

@@ -32,13 +32,14 @@ public class AggiungiButtonAppuntamento extends JButton implements CommandInterf
     }
 
     /**
-     *
+     * Costruttore della classe
      * @param areaContr
      */
     public void setAreaAgenda(CalendarPanel areaContr) {
         this.area = areaContr;
     }
 
+    @Override
     public void execute() {
        area.getDialogDati().inserisci();
     }

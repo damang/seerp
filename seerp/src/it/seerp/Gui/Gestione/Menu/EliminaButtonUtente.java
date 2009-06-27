@@ -16,7 +16,7 @@ public class EliminaButtonUtente extends JButton implements CommandInterface {
     AreaUtentePanel areaUt;
 
     /**
-     *
+     * Costruttore della classe
      * @param areaUt
      */
     public void setAreaUt(AreaUtentePanel areaUt) {
