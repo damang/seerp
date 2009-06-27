@@ -1,5 +1,5 @@
 
-package it.seerp.Gui.Gestione.Menu;
+package it.seerp.Gui.Gestione.Ruoli;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.Ruoli.GestioneRuoli;
@@ -52,9 +52,9 @@ public class MenuRuoli extends javax.swing.JPanel implements ActionListener {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        aggiungiButtonRuoli1 = new it.seerp.Gui.Gestione.Menu.AggiungiButtonRuoli(this);
-        eliminaButtonRuoli1 = new it.seerp.Gui.Gestione.Menu.EiminaButtonRuoli(this);
-        modificaButtonRuoli1 = new it.seerp.Gui.Gestione.Menu.ModificaButtonRuoli(this);
+        aggiungiButtonRuoli1 = new it.seerp.Gui.Gestione.Ruoli.AggiungiButtonRuoli(this);
+        eliminaButtonRuoli1 = new it.seerp.Gui.Gestione.Ruoli.EiminaButtonRuoli(this);
+        modificaButtonRuoli1 = new it.seerp.Gui.Gestione.Ruoli.ModificaButtonRuoli(this);
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ruoli", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_BOTTOM));
 
@@ -96,9 +96,9 @@ public class MenuRuoli extends javax.swing.JPanel implements ActionListener {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private it.seerp.Gui.Gestione.Menu.AggiungiButtonRuoli aggiungiButtonRuoli1;
-    private it.seerp.Gui.Gestione.Menu.EiminaButtonRuoli eliminaButtonRuoli1;
-    private it.seerp.Gui.Gestione.Menu.ModificaButtonRuoli modificaButtonRuoli1;
+    private it.seerp.Gui.Gestione.Ruoli.AggiungiButtonRuoli aggiungiButtonRuoli1;
+    private it.seerp.Gui.Gestione.Ruoli.EiminaButtonRuoli eliminaButtonRuoli1;
+    private it.seerp.Gui.Gestione.Ruoli.ModificaButtonRuoli modificaButtonRuoli1;
     // End of variables declaration//GEN-END:variables
 
     public void actionPerformed(ActionEvent e) {

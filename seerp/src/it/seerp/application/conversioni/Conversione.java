@@ -1,6 +1,6 @@
 package it.seerp.application.conversioni;
 
-import it.seerp.Gui.Gestione.agenda.EventInstance;
+import it.seerp.application.configurazioni.EventInstance;
 import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.applicazione.AppRuoli;
 import it.seerp.application.bean.BeanGuiAmministratore;
@@ -23,7 +23,7 @@ import it.seerp.application.bean.BeanGuiServizioAssociato;
 import it.seerp.application.bean.BeanGuiUtente;
 import it.seerp.application.tabelle.PersonaleTm;
 import it.seerp.storage.Operazioni.OpEvento;
-import it.seerp.storage.jaas.PermessoCollection;
+import it.seerp.storage.ejb.jaas.PermessoCollection;
 import it.seerp.storage.ejb.Agenda;
 import it.seerp.storage.ejb.Amministratore;
 import it.seerp.storage.ejb.Appuntamento;

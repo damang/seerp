@@ -3,7 +3,7 @@ package it.seerp.Gui.Gestione.InfoAzienda;
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla;
 import it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva;
-import it.seerp.Gui.Gestione.Menu.MenuInfoAzienda;
+import it.seerp.Gui.Gestione.InfoAzienda.MenuInfoAzienda;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
 import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.bean.BeanGuiAzienda;

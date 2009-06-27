@@ -618,13 +618,13 @@
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.Menu.MenuUtente(getSubject())"/>
           </AuxValues>
         </Component>
-        <Component class="it.seerp.Gui.Gestione.Menu.MenuRuoli" name="menuRuoli1">
+        <Component class="it.seerp.Gui.Gestione.Ruoli.MenuRuoli" name="menuRuoli1">
           <Properties>
             <Property name="name" type="java.lang.String" value="menuRuoli1" noResource="true"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="menuRuoli1.setVisible(false);"/>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.Menu.MenuRuoli(getSubject())"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.Ruoli.MenuRuoli(getSubject())"/>
           </AuxValues>
         </Component>
         <Component class="it.seerp.Gui.Gestione.Menu.MenuContratti" name="menuContratti1">
@@ -635,16 +635,16 @@
             <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="this.menuContratti1.setVisible(false);"/>
           </AuxValues>
         </Component>
-        <Component class="it.seerp.Gui.Gestione.Menu.MenuServizi" name="menuServizi1">
+        <Component class="it.seerp.Gui.Gestione.Servizi.MenuServizi" name="menuServizi1">
           <Properties>
             <Property name="name" type="java.lang.String" value="menuServizi1" noResource="true"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="menuServizi1.setVisible(false);"/>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.Menu.MenuServizi(getSubject())"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.Servizi.MenuServizi(getSubject())"/>
           </AuxValues>
         </Component>
-        <Component class="it.seerp.Gui.Gestione.Menu.MenuInfoAzienda" name="menuInfoAzienda1">
+        <Component class="it.seerp.Gui.Gestione.InfoAzienda.MenuInfoAzienda" name="menuInfoAzienda1">
           <Properties>
             <Property name="name" type="java.lang.String" value="menuInfoAzienda1" noResource="true"/>
           </Properties>

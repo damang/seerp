@@ -2,7 +2,7 @@
 package it.seerp.Gui.Home.bottoni.gestioni;
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.InfoAzienda.InfoAzienda;
-import it.seerp.Gui.Gestione.Menu.MenuInfoAzienda;
+import it.seerp.Gui.Gestione.InfoAzienda.MenuInfoAzienda;
 import it.seerp.Gui.observerButton.ObserverButton;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;

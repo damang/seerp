@@ -1,8 +1,7 @@
 
-package it.seerp.Gui.Gestione.Menu;
+package it.seerp.Gui.Gestione.InfoAzienda;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
-import it.seerp.Gui.Gestione.InfoAzienda.InfoAzienda;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -47,7 +46,7 @@ public class MenuInfoAzienda extends javax.swing.JPanel implements ActionListene
     private void initComponents() {
 
         jXTaskPane1 = new org.jdesktop.swingx.JXTaskPane();
-        modificaButtonInfoAzienda1 = new it.seerp.Gui.Gestione.Menu.ModificaButtonInfoAzienda(this);
+        modificaButtonInfoAzienda1 = new it.seerp.Gui.Gestione.InfoAzienda.ModificaButtonInfoAzienda(this);
 
         jXTaskPane1.setName("jXTaskPane1"); // NOI18N
 
@@ -77,7 +76,7 @@ public class MenuInfoAzienda extends javax.swing.JPanel implements ActionListene
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.jdesktop.swingx.JXTaskPane jXTaskPane1;
-    private it.seerp.Gui.Gestione.Menu.ModificaButtonInfoAzienda modificaButtonInfoAzienda1;
+    private it.seerp.Gui.Gestione.InfoAzienda.ModificaButtonInfoAzienda modificaButtonInfoAzienda1;
     // End of variables declaration//GEN-END:variables
 
     public void actionPerformed(ActionEvent e) {

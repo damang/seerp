@@ -3,7 +3,7 @@ package it.seerp.Gui.Gestione.Servizi;
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla;
 import it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva;
-import it.seerp.Gui.Gestione.Menu.MenuServizi;
+import it.seerp.Gui.Gestione.Servizi.MenuServizi;
 import it.seerp.Gui.configurazioni.Gui.ConfigurazioneOperazioni;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
 import it.seerp.application.Exception.DatiDuplicati;

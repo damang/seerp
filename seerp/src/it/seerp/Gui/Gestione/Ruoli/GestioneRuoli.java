@@ -1,6 +1,6 @@
 package it.seerp.Gui.Gestione.Ruoli;
 
-import it.seerp.Gui.Gestione.Menu.MenuRuoli;
+import it.seerp.Gui.Gestione.Ruoli.MenuRuoli;
 import it.seerp.Gui.configurazioni.Gui.ConfigurazioneOperazioni;
 import it.seerp.Gui.configurazioni.PermessiDefault;
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;

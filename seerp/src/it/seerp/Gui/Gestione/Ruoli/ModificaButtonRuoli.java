@@ -1,5 +1,5 @@
 
-package it.seerp.Gui.Gestione.Menu;
+package it.seerp.Gui.Gestione.Ruoli;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.Ruoli.GestioneRuoli;

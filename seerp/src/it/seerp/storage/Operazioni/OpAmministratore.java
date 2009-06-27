@@ -1,5 +1,6 @@
 package it.seerp.storage.Operazioni;
 
+import it.seerp.storage.ejb.opPersonaleRuolo.OpPersonale;
 import java.sql.SQLException;
 
 /**

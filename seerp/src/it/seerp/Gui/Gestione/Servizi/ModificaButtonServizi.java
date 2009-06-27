@@ -1,4 +1,4 @@
-package it.seerp.Gui.Gestione.Menu;
+package it.seerp.Gui.Gestione.Servizi;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 

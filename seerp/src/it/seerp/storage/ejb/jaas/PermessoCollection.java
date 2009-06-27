@@ -9,8 +9,9 @@
  * $Log$
  */
 
-package it.seerp.storage.jaas;
+package it.seerp.storage.ejb.jaas;
 
+import it.seerp.storage.jaas.*;
 import it.seerp.storage.ejb.Permesso;
 import java.security.Permission;
 import java.security.PermissionCollection;
