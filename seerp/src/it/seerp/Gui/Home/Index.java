@@ -198,6 +198,11 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
         areaUtenteButton1.setContentAreaFilled(false);
         areaUtenteButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         areaUtenteButton1.setName("areaUtenteButton1"); // NOI18N
+        areaUtenteButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                areaUtenteButton1ActionPerformed(evt);
+            }
+        });
 
         areaUtenteButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/user.png"))); // NOI18N
         areaUtenteButton2.setText("Dipendenti");

@@ -45,8 +45,7 @@ public class OpResponsabile extends OpeUtente {
 
         String sql = "SELECT idUtente,username,password,citta,prov," +
                 "telefono,cap,email,note,tipo,cognome,nome,codiceFiscale," +
-                "ruolo,visibilita FROM responsabile,utente,personale,indirizzo WHERE idPersonale=idUtente and visibilita=true " +
-                "and idPersonale=idResponsabile";
+                "ruolo,visibilita,indirizzo FROM responsabile,utente,personale WHERE idPersonale=idUtente and visibilita=true and idPersonale=idResponsabile";
         stmt = (PreparedStatement) co.prepareStatement(sql);
         // Execute the query
         rs = stmt.executeQuery(sql);
@@ -69,7 +68,7 @@ public class OpResponsabile extends OpeUtente {
             res.setCodiceFiscale(rs.getString(13));
             res.setRuolo(new Ruolo(rs.getString(13)));
             res.setVisible(rs.getBoolean(14));
-            res.setIndirizzo(rs.getString(15));
+            res.setIndirizzo(rs.getString("indirizzo"));
             list.add(res);
         }
         rs.close();

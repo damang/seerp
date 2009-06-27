@@ -53,9 +53,7 @@ public class AreaUtenteButton extends ObserverButton implements CommandInterface
         if (!isPresente) {
             try {
                 this.setAreaUtente();
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "problemi di comunicazione col DBMS");
-            }
+            
 
             isPresente = true;
             this.tabbedPane.addTab(s, panel);
@@ -67,7 +65,9 @@ public class AreaUtenteButton extends ObserverButton implements CommandInterface
             panel.repaint();
             this.tabbedPane.setSelectedComponent(panel);
             this.setEnabled(false);
-
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "problemi di comunicazione col DBMS ");
+            }
 
         }
     }
