@@ -16,6 +16,7 @@ import it.seerp.Gui.Gestione.agenda.CalendarPanel;
 import it.seerp.Gui.Gestione.agenda.notificaEventi;
 import it.seerp.Gui.configurazioni.PermessiDefault;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
+import it.seerp.application.applicazione.AppInit;
 import it.seerp.storage.ejb.Permesso;
 import it.seerp.storage.jaas.AuthPolicy;
 import it.seerp.storage.jaas.JaasUtil;
@@ -26,6 +27,7 @@ import java.awt.event.ItemListener;
 import java.security.Policy;
 import javax.security.auth.Subject;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import org.jdesktop.swingx.JXLoginPane;
@@ -51,6 +53,8 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
         // setSize(ge.getMaximumWindowBounds().width,ge.getMaximumWindowBounds().height);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.pack();
+      
+       
         settaPermessi();
         setVisible(true);
         //tipDay.
@@ -744,6 +748,13 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
         } catch (UnsupportedLookAndFeelException ex) {
             ex.printStackTrace();
         }
+          AppInit app=new AppInit();
+         if(!app.check()){
+            
+           InfoAzienda info= new InfoAzienda();
+            info.setVisible(true);}
+
+
         final JaasUtil ja = new JaasUtil();
         ja.addLoginListener(new LoginAdapter() {
 
