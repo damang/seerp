@@ -2,6 +2,7 @@
 
 package it.seerp.storage.db;
 
+import it.seerp.storage.Exception.DatiDuplicatiEx;
 import it.seerp.storage.Exception.DatiErratiEx;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public interface OpeEntity<E, G> {
      * @throws java.sql.SQLException
      * nel caso in cui ci siano problemi legati all'iserimento nel database
      */
-    public void inserimento(E bean) throws SQLException;
+    public void inserimento(E bean) throws DatiDuplicatiEx, DatiErratiEx, SQLException;
 
     /**
      * @param bean
