@@ -319,7 +319,7 @@ public class BeanGuiUtente {
      */
     public void setTxtTelefono(JTextField ptxtTelefono) {
         this.txtTelefono = ptxtTelefono;
-        txtTelefono.setInputVerifier(new NotEmptyValidator(grafica, txtTelefono, "Il campo deve essere di almeno 8 caratteri", RegexpDef.valueOf(RegexpDef.VAL.TELEFONO)));
+        txtTelefono.setInputVerifier(new NotEmptyValidator(grafica, txtTelefono, "Il campo deve essere di almeno 7 caratteri", RegexpDef.valueOf(RegexpDef.VAL.TELEFONO)));
     }
 
     /**
