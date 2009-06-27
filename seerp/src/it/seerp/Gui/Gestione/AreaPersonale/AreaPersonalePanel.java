@@ -9,6 +9,7 @@ import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.application.bean.BeanGuiExtraAzienda;
 import it.seerp.application.bean.BeanGuiPersonale;
 import it.seerp.storage.jaas.SujGest;
+import java.awt.Color;
 import javax.security.auth.Subject;
 
 /**
@@ -28,31 +29,31 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         ut = sub;
         initComponents();
         utente = new BeanGuiPersonale(this);
-        
+
         extra = new BeanGuiExtraAzienda(this);
-        
+
         modifica.setEnabled(true);
         buttonSalva1.setEnabled(false);
         this.pwd.setEditable(false);
         editabile(false);
         AppGestioneAreaPersonale a = new AppGestioneAreaPersonale();
-     
-            if (SujGest.getTipoUtente(sub).equals(ConfigurazioneUtente.valueOf(ConfigurazioneUtente.TIPO_UTENTE_CONST.PERSONALE))) {
-                legameBeanPersonale();
-                this.jPanel13.setVisible(false);
-                this.jPanel17.setVisible(false);
-                this.jPanel19.setVisible(false);
-                
-          
-              a.visualizzaDatiPersonale(SujGest.getUsername(ut), utente);
-            }
-            if (SujGest.getTipoUtente(sub).equals(ConfigurazioneUtente.valueOf(ConfigurazioneUtente.TIPO_UTENTE_CONST.EXTRAAZIENDA))) {
-                legameBeanExtraAzienda();
-                this.jPanel15.setVisible(false);
-            
-              a.visualizzaDatiExtraAzienda(SujGest.getUsername(ut),extra );
-            }
-      
+
+        if (SujGest.getTipoUtente(sub).equals(ConfigurazioneUtente.valueOf(ConfigurazioneUtente.TIPO_UTENTE_CONST.PERSONALE))) {
+            legameBeanPersonale();
+            this.jPanel13.setVisible(false);
+            this.jPanel17.setVisible(false);
+            this.jPanel19.setVisible(false);
+
+
+            a.visualizzaDatiPersonale(SujGest.getUsername(ut), utente);
+        }
+        if (SujGest.getTipoUtente(sub).equals(ConfigurazioneUtente.valueOf(ConfigurazioneUtente.TIPO_UTENTE_CONST.EXTRAAZIENDA))) {
+            legameBeanExtraAzienda();
+            this.jPanel15.setVisible(false);
+
+            a.visualizzaDatiExtraAzienda(SujGest.getUsername(ut), extra);
+        }
+
 
     }
 
@@ -116,27 +117,29 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         jPanel29.setBorder(javax.swing.BorderFactory.createTitledBorder("Password"));
         jPanel29.setName("jPanel29"); // NOI18N
 
+        pwd.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         pwd.setName("pwd"); // NOI18N
 
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
         jPanel29.setLayout(jPanel29Layout);
         jPanel29Layout.setHorizontalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel29Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pwd, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pwd, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel29Layout.setVerticalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel29Layout.createSequentialGroup()
-                .addComponent(pwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pwd, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         panel28.setBorder(javax.swing.BorderFactory.createTitledBorder("Username"));
         panel28.setName("panel28"); // NOI18N
 
+        user.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         user.setName("user"); // NOI18N
 
         javax.swing.GroupLayout panel28Layout = new javax.swing.GroupLayout(panel28);
@@ -145,13 +148,13 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
             panel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel28Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(user, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                .addContainerGap())
         );
         panel28Layout.setVerticalGroup(
             panel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel28Layout.createSequentialGroup()
-                .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -195,13 +198,15 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
             .addGroup(jXPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jXPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jXPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(panel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(buttonSalva1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonSalva1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jXPanel2Layout.createSequentialGroup()
+                        .addGroup(jXPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(panel28, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel29, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(11, 11, 11)))
                 .addGap(18, 18, 18)
                 .addComponent(modifica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(384, Short.MAX_VALUE))
+                .addContainerGap(373, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Password", jXPanel2);
@@ -211,6 +216,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Telefono"));
         jPanel7.setName("jPanel7"); // NOI18N
 
+        tell.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         tell.setName("tell"); // NOI18N
         tell.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,6 +243,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("Città"));
         jPanel8.setName("jPanel8"); // NOI18N
 
+        citta.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         citta.setName("citta"); // NOI18N
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -258,6 +265,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Provincia"));
         jPanel9.setName("jPanel9"); // NOI18N
 
+        provincia.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         provincia.setName("provincia"); // NOI18N
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -278,6 +286,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Cognome"));
         jPanel6.setName("jPanel6"); // NOI18N
 
+        cog.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         cog.setName("cog"); // NOI18N
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -298,7 +307,9 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         panel29.setBorder(javax.swing.BorderFactory.createTitledBorder("Username"));
         panel29.setName("panel29"); // NOI18N
 
+        user1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         user1.setName("user1"); // NOI18N
+        user1.setSelectionColor(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout panel29Layout = new javax.swing.GroupLayout(panel29);
         panel29.setLayout(panel29Layout);
@@ -319,6 +330,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder("Ragione Sociale"));
         jPanel13.setName("jPanel13"); // NOI18N
 
+        ragSoc.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         ragSoc.setName("ragSoc"); // NOI18N
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
@@ -339,6 +351,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder("Codice Fiscale"));
         jPanel14.setName("jPanel14"); // NOI18N
 
+        codFisc.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         codFisc.setName("codFisc"); // NOI18N
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
@@ -378,6 +391,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder("E-mail"));
         jPanel16.setName("jPanel16"); // NOI18N
 
+        mail2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         mail2.setName("mail2"); // NOI18N
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
@@ -398,6 +412,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder("P.IVA"));
         jPanel17.setName("jPanel17"); // NOI18N
 
+        piva.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         piva.setName("piva"); // NOI18N
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
@@ -420,6 +435,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         jPanel18.setOpaque(false);
         jPanel18.setName("jPanel18"); // NOI18N
 
+        nm.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         nm.setName("nm"); // NOI18N
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
@@ -441,6 +457,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder("FAX"));
         jPanel19.setName("jPanel19"); // NOI18N
 
+        fax.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         fax.setName("fax"); // NOI18N
 
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
@@ -461,6 +478,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         jPanel20.setBorder(javax.swing.BorderFactory.createTitledBorder("Cap"));
         jPanel20.setName("jPanel20"); // NOI18N
 
+        cap.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         cap.setName("cap"); // NOI18N
 
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
@@ -518,7 +536,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
         jXPanel1Layout.setVerticalGroup(
             jXPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -554,7 +572,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jXLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                .addComponent(jXLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
                 .addGap(612, 612, 612))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jTabbedPane1)
@@ -572,10 +590,10 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonSalva1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSalva1MouseClicked
-        this.pwd.setEditable(false);
+        this.pwd.setEnabled(false);
         AppGestioneAreaPersonale operazione = new AppGestioneAreaPersonale();
         operazione.modificaPassword(utente);
-        
+
         modifica.setEnabled(true);
         buttonSalva1.setEnabled(false);
 
@@ -585,7 +603,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
     }//GEN-LAST:event_modificaMouseClicked
 
     private void modificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificaActionPerformed
-        this.pwd.setEditable(true);
+        this.pwd.setEnabled(true);
         modifica.setEnabled(false);
         buttonSalva1.setEnabled(true);
     }//GEN-LAST:event_modificaActionPerformed
@@ -606,7 +624,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         this.mail2.setText(s);
         this.user.setText(s);
         this.pwd.setText(s);
-   
+
         this.codFisc.setText(s);
         this.ragSoc.setText(s);
         this.fax.setText(s);
@@ -667,22 +685,36 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
      * @ flag che permette di modificare i campi presenti sul form.
      */
     public void editabile(boolean flag) {
-        this.nm.setEditable(flag);
-        this.cog.setEditable(flag);
-        this.user1.setEditable(flag);
-        this.provincia.setEditable(flag);
-        this.tell.setEditable(flag);
-        this.mail2.setEditable(flag);
+        this.nm.setEnabled(flag);
+        nm.setBackground(Color.WHITE);
+        this.cog.setEnabled(flag);
+        cog.setBackground(Color.WHITE);
+        this.user1.setEnabled(flag);
+        user1.setBackground(Color.WHITE);
+        this.provincia.setEnabled(flag);
+        provincia.setBackground(Color.WHITE);
+        this.tell.setEnabled(flag);
+        tell.setBackground(Color.WHITE);
+        this.mail2.setEnabled(flag);
+        mail2.setBackground(Color.WHITE);
         this.ruolo.setEnabled(flag);
-        this.codFisc.setEditable(flag);
-        this.user.setEditable(flag);
-        this.pwd.setEditable(flag);
-        this.ragSoc.setEditable(flag);
-        this.fax.setEditable(flag);
-        this.piva.setEditable(flag);
-        this.citta.setEditable(flag);
-        this.cap.setEditable(flag);
-
+        ruolo.setBackground(Color.WHITE);
+        this.codFisc.setEnabled(flag);
+        codFisc.setBackground(Color.WHITE);
+        this.user.setEnabled(flag);
+        user.setBackground(Color.WHITE);
+        this.pwd.setEnabled(flag);
+        pwd.setBackground(Color.WHITE);
+        this.ragSoc.setEnabled(flag);
+        ragSoc.setBackground(Color.WHITE);
+        this.fax.setEnabled(flag);
+        fax.setBackground(Color.WHITE);
+        this.piva.setEnabled(flag);
+        piva.setBackground(Color.WHITE);
+        this.citta.setEnabled(flag);
+        citta.setBackground(Color.WHITE);
+        this.cap.setEnabled(flag);
+        cap.setBackground(Color.WHITE);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva buttonSalva1;
