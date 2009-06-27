@@ -26,13 +26,14 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <Component id="jXPanel1" max="32767" attributes="1"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jTabbedPane1" min="-2" pref="536" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jXLabel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="224" max="32767" attributes="0"/>
+              <EmptySpace pref="222" max="32767" attributes="0"/>
               <Component id="buttonAnnulla1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="buttonSalva1" min="-2" max="-2" attributes="0"/>
@@ -55,8 +56,8 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jXPanel1" max="32767" attributes="1"/>
-                  <Component id="jTabbedPane1" alignment="0" pref="373" max="32767" attributes="3"/>
+                  <Component id="jTabbedPane1" min="0" pref="0" max="32767" attributes="3"/>
+                  <Component id="jXPanel1" alignment="0" max="32767" attributes="1"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
