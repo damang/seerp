@@ -2,6 +2,7 @@ package it.seerp.application.conversioni;
 
 import it.seerp.Gui.Gestione.agenda.EventInstance;
 import it.seerp.application.Exception.ValidatorException;
+import it.seerp.application.applicazione.AppRuoli;
 import it.seerp.application.bean.BeanGuiAmministratore;
 import it.seerp.application.bean.BeanGuiAppuntamento;
 import it.seerp.application.bean.BeanGuiAzienda;
@@ -403,7 +404,7 @@ public class Conversione {
 
         bp.getRuolo().removeAllItems();
         bp.getRuolo().addItem(p.getRuolo().getNome());
-
+      
         return bp;
     }
 
