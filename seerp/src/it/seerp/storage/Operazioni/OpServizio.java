@@ -33,7 +33,7 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
      * @throws java.sql.SQLException
      * @throws DatiErratiEx eccezione lanciata se si inseriscono dati errati
      */
-    public void inserimento(Servizio serv) throws SQLException, DatiErratiEx {
+    public void inserimento(Servizio serv) throws SQLException {
         conn = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
 
@@ -73,7 +73,7 @@ public class OpServizio implements OpeEntity<Servizio, Integer> {
      * @throws java.sql.SQLException
      * @throws DatiErratiEx
      */
-    public Servizio modifica(Servizio servizio) throws SQLException, DatiErratiEx {
+    public Servizio modifica(Servizio servizio) throws SQLException {
         conn = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
         String query = "UPDATE servizio" +

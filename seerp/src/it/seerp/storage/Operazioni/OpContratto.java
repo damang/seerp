@@ -36,7 +36,7 @@ public class OpContratto implements OpeEntity<Contratto, Integer> {
      * @throws java.sql.SQLException
      * @throws DatiErratiEx se si inseriscono dati errati
      */
-    public void inserimento(Contratto contratto) throws SQLException, DatiErratiEx {
+    public void inserimento(Contratto contratto) throws SQLException {
         connessione = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
 
