@@ -179,7 +179,7 @@ public class OpPersonale extends OpeUtente {
      * @throws DatiErratiEx
      * @throws DatiDuplicatiEx
      */
-    public Personale modifica(Personale user) throws SQLException, DatiErratiEx, DatiDuplicatiEx {
+    public Personale modifica(Personale user) throws SQLException {
        
         connessione = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmtP = null;
