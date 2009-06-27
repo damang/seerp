@@ -1,5 +1,7 @@
 package it.seerp.Gui.Gestione.agenda;
 
+import it.seerp.application.configurazioni.EventInstance;
+
 
 /**
  * This interface should be implements for any class that wants to receive

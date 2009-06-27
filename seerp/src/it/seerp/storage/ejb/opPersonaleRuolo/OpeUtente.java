@@ -1,4 +1,4 @@
-package it.seerp.storage.Operazioni;
+package it.seerp.storage.ejb.opPersonaleRuolo;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;

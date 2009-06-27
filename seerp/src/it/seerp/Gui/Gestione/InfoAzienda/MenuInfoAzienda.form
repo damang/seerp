@@ -48,7 +48,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="it.seerp.Gui.Gestione.Menu.ModificaButtonInfoAzienda" name="modificaButtonInfoAzienda1">
+    <Component class="it.seerp.Gui.Gestione.InfoAzienda.ModificaButtonInfoAzienda" name="modificaButtonInfoAzienda1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/it/seerp/Gui/icone/ico32x32/commercial-building-32x32.png"/>
@@ -57,7 +57,7 @@
         <Property name="name" type="java.lang.String" value="modificaButtonInfoAzienda1" noResource="true"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.Menu.ModificaButtonInfoAzienda(this)"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.InfoAzienda.ModificaButtonInfoAzienda(this)"/>
       </AuxValues>
     </Component>
   </SubComponents>

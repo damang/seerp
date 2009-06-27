@@ -1,7 +1,8 @@
 
-package it.seerp.Gui.Home.bottoni.gestioni;
+package it.seerp.Gui.Home;
 
-import it.seerp.Gui.Gestione.agenda.EventInstance;
+import it.seerp.Gui.Home.bottoni.gestioni.*;
+import it.seerp.application.configurazioni.EventInstance;
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.Menu.MenuAgenda;
 import it.seerp.Gui.observerButton.ObserverButton;

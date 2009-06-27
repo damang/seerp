@@ -5,6 +5,7 @@
 
 package it.seerp.Gui.Gestione.agenda;
 
+import it.seerp.application.configurazioni.EventInstance;
 import java.awt.Color;
 
 /**

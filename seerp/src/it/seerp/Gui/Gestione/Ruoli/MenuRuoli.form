@@ -49,7 +49,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="it.seerp.Gui.Gestione.Menu.AggiungiButtonRuoli" name="aggiungiButtonRuoli1">
+    <Component class="it.seerp.Gui.Gestione.Ruoli.AggiungiButtonRuoli" name="aggiungiButtonRuoli1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/it/seerp/Gui/icone/ico32x32/add.png"/>
@@ -58,10 +58,10 @@
         <Property name="name" type="java.lang.String" value="aggiungiButtonRuoli1" noResource="true"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.Menu.AggiungiButtonRuoli(this)"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.Ruoli.AggiungiButtonRuoli(this)"/>
       </AuxValues>
     </Component>
-    <Component class="it.seerp.Gui.Gestione.Menu.EiminaButtonRuoli" name="eliminaButtonRuoli1">
+    <Component class="it.seerp.Gui.Gestione.Ruoli.EiminaButtonRuoli" name="eliminaButtonRuoli1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/it/seerp/Gui/icone/ico32x32/remove.png"/>
@@ -70,10 +70,10 @@
         <Property name="name" type="java.lang.String" value="eliminaButtonRuoli1" noResource="true"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.Menu.EiminaButtonRuoli(this)"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.Ruoli.EiminaButtonRuoli(this)"/>
       </AuxValues>
     </Component>
-    <Component class="it.seerp.Gui.Gestione.Menu.ModificaButtonRuoli" name="modificaButtonRuoli1">
+    <Component class="it.seerp.Gui.Gestione.Ruoli.ModificaButtonRuoli" name="modificaButtonRuoli1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/it/seerp/Gui/icone/ico32x32/application_edit.png"/>
@@ -82,7 +82,7 @@
         <Property name="name" type="java.lang.String" value="modificaButtonRuoli1" noResource="true"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.Menu.ModificaButtonRuoli(this)"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.Ruoli.ModificaButtonRuoli(this)"/>
       </AuxValues>
     </Component>
   </SubComponents>

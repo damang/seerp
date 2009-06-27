@@ -1,8 +1,8 @@
 package it.seerp.storage.ejb;
 
-import it.seerp.storage.Operazioni.OpPersonale;
-import it.seerp.storage.jaas.PermessoCollection;
-import it.seerp.storage.jaas.PermissionRoleDBAdapter;
+import it.seerp.storage.ejb.opPersonaleRuolo.OpPersonale;
+import it.seerp.storage.ejb.jaas.PermessoCollection;
+import it.seerp.storage.ejb.jaas.PermissionRoleDBAdapter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 

@@ -19,7 +19,7 @@ import it.seerp.Gui.configurazioni.PermessiDefault;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
 import it.seerp.application.applicazione.AppInit;
 import it.seerp.storage.ejb.Permesso;
-import it.seerp.storage.jaas.AuthPolicy;
+import it.seerp.storage.ejb.opPersonaleRuolo.AuthPolicy;
 import it.seerp.storage.jaas.JaasUtil;
 import it.seerp.storage.jaas.SujGest;
 import java.awt.event.ActionEvent;
@@ -113,15 +113,15 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
             jXPanel3 = new org.jdesktop.swingx.JXPanel();
             buttonRuoli1 = new it.seerp.Gui.Home.bottoni.gestioni.ButtonRuoli(this.jTabbedPanePrincipale,this.menuRuoli1,this);
             buttonInfoAzienda1 = new it.seerp.Gui.Home.bottoni.gestioni.ButtonInfoAzienda(this.jTabbedPanePrincipale,this.menuInfoAzienda1,this);
-            buttonAgenda1 = new it.seerp.Gui.Home.bottoni.gestioni.ButtonAgenda(this.jTabbedPanePrincipale,this.menuAgenda,this);
-            areaPersonaleButton5 = new it.seerp.Gui.Home.bottoni.gestioni.AreaPersonaleButton(this.jTabbedPanePrincipale,this.menuAreaPersonale2,this);
+            buttonAgenda1 = new it.seerp.Gui.Home.ButtonAgenda(this.jTabbedPanePrincipale,this.menuAgenda,this);
+            areaPersonaleButton5 = new it.seerp.Gui.Home.AreaPersonaleButton(this.jTabbedPanePrincipale,this.menuAreaPersonale2,this);
             jXMonthView1 = new org.jdesktop.swingx.JXMonthView();
             jXTitledPanel1 = new org.jdesktop.swingx.JXTitledPanel();
             menuUtente1 = new it.seerp.Gui.Gestione.Menu.MenuUtente(getSubject());
-            menuRuoli1 = new it.seerp.Gui.Gestione.Menu.MenuRuoli(getSubject());
+            menuRuoli1 = new it.seerp.Gui.Gestione.Ruoli.MenuRuoli(getSubject());
             menuContratti1 = new it.seerp.Gui.Gestione.Menu.MenuContratti();
-            menuServizi1 = new it.seerp.Gui.Gestione.Menu.MenuServizi(getSubject());
-            menuInfoAzienda1 = new it.seerp.Gui.Gestione.Menu.MenuInfoAzienda();
+            menuServizi1 = new it.seerp.Gui.Gestione.Servizi.MenuServizi(getSubject());
+            menuInfoAzienda1 = new it.seerp.Gui.Gestione.InfoAzienda.MenuInfoAzienda();
             menuAreaPersonale2 = new it.seerp.Gui.Gestione.Menu.MenuAreaPersonale();
             menuAgenda = new it.seerp.Gui.Gestione.Menu.MenuAgenda();
             logout1 = new it.seerp.Gui.Home.bottoni.gestioni.Logout();
@@ -813,12 +813,12 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
-    private it.seerp.Gui.Home.bottoni.gestioni.AreaPersonaleButton areaPersonaleButton5;
+    private it.seerp.Gui.Home.AreaPersonaleButton areaPersonaleButton5;
     private it.seerp.Gui.Home.bottoni.gestioni.AreaUtenteButton areaUtenteButton1;
     private it.seerp.Gui.Home.bottoni.gestioni.AreaUtenteButton areaUtenteButton2;
     private it.seerp.Gui.Home.bottoni.gestioni.AreaUtenteButton areaUtenteButton3;
     private it.seerp.Gui.Home.bottoni.gestioni.AreaUtenteButton areaUtenteButton4;
-    private it.seerp.Gui.Home.bottoni.gestioni.ButtonAgenda buttonAgenda1;
+    private it.seerp.Gui.Home.ButtonAgenda buttonAgenda1;
     private it.seerp.Gui.Home.bottoni.gestioni.ButtonContratti buttonContratti1;
     private it.seerp.Gui.Home.bottoni.gestioni.ButtonInfoAzienda buttonInfoAzienda1;
     private it.seerp.Gui.Home.bottoni.gestioni.ButtonRuoli buttonRuoli1;
@@ -850,9 +850,9 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
     private it.seerp.Gui.Gestione.Menu.MenuAreaPersonale menuAreaPersonale2;
     private javax.swing.JMenuBar menuBar;
     private it.seerp.Gui.Gestione.Menu.MenuContratti menuContratti1;
-    private it.seerp.Gui.Gestione.Menu.MenuInfoAzienda menuInfoAzienda1;
-    private it.seerp.Gui.Gestione.Menu.MenuRuoli menuRuoli1;
-    private it.seerp.Gui.Gestione.Menu.MenuServizi menuServizi1;
+    private it.seerp.Gui.Gestione.InfoAzienda.MenuInfoAzienda menuInfoAzienda1;
+    private it.seerp.Gui.Gestione.Ruoli.MenuRuoli menuRuoli1;
+    private it.seerp.Gui.Gestione.Servizi.MenuServizi menuServizi1;
     private it.seerp.Gui.Gestione.Menu.MenuUtente menuUtente1;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem pasteMenuItem;

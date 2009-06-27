@@ -7,7 +7,7 @@ import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.bean.BeanGuiUtente;
 import it.seerp.application.conversioni.Conversione;
 import it.seerp.application.interfacce.GestioneUtenti;
-import it.seerp.storage.Operazioni.OpeUtente;
+import it.seerp.storage.ejb.opPersonaleRuolo.OpeUtente;
 import it.seerp.storage.ejb.Utente;
 import java.sql.SQLException;
 import java.util.ArrayList;

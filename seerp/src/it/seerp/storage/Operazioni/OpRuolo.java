@@ -5,7 +5,7 @@ import it.seerp.storage.db.ConnectionPool;
 import it.seerp.storage.db.OpeEntity;
 
 import it.seerp.storage.ejb.Ruolo;
-import it.seerp.storage.jaas.PermessoCollection;
+import it.seerp.storage.ejb.jaas.PermessoCollection;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Connection;
 import java.sql.ResultSet;

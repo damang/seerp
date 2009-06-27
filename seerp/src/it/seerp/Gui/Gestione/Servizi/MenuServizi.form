@@ -46,7 +46,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="it.seerp.Gui.Gestione.Menu.AggiungiButtonServizi" name="aggiungiButtonServizi1">
+    <Component class="it.seerp.Gui.Gestione.Servizi.AggiungiButtonServizi" name="aggiungiButtonServizi1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/it/seerp/Gui/icone/ico32x32/shopping_cart_down.png"/>
@@ -58,10 +58,10 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="aggiungiButtonServizi1ActionPerformed"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.Menu.AggiungiButtonServizi(this)"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.Servizi.AggiungiButtonServizi(this)"/>
       </AuxValues>
     </Component>
-    <Component class="it.seerp.Gui.Gestione.Menu.ModificaButtonServizi" name="modificaButtonServizi1">
+    <Component class="it.seerp.Gui.Gestione.Servizi.ModificaButtonServizi" name="modificaButtonServizi1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/it/seerp/Gui/icone/ico32x32/window_edit.png"/>
@@ -70,7 +70,7 @@
         <Property name="name" type="java.lang.String" value="modificaButtonServizi1" noResource="true"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.Menu.ModificaButtonServizi(this)"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.Servizi.ModificaButtonServizi(this)"/>
       </AuxValues>
     </Component>
   </SubComponents>

@@ -1,6 +1,6 @@
 package it.seerp.application.bean;
 
-import it.seerp.Gui.configurazioni.Gui.RegexpDef;
+import it.seerp.application.configurazioni.RegexpDef;
 import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.validation.NotEmptyValidator;
 import javax.swing.JTextArea;

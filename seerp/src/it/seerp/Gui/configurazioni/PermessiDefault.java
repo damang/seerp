@@ -2,8 +2,8 @@ package it.seerp.Gui.configurazioni;
 
 import it.seerp.application.bean.BeanGuiPermesso;
 import it.seerp.storage.ejb.Permesso;
-import it.seerp.storage.jaas.PermessoCollection;
-import it.seerp.storage.jaas.PermissionRoleDBAdapter;
+import it.seerp.storage.ejb.jaas.PermessoCollection;
+import it.seerp.storage.ejb.jaas.PermissionRoleDBAdapter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;

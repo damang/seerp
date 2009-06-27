@@ -1,5 +1,5 @@
 
-package it.seerp.Gui.configurazioni.Gui;
+package it.seerp.application.configurazioni;
 
 /**
  *

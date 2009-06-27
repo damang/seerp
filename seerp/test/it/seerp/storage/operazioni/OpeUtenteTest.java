@@ -5,7 +5,7 @@
 
 package it.seerp.storage.operazioni;
 
-import it.seerp.storage.Operazioni.OpeUtente;
+import it.seerp.storage.ejb.opPersonaleRuolo.OpeUtente;
 import it.seerp.storage.ejb.Utente;
 import java.util.ArrayList;
 import junit.framework.TestCase;

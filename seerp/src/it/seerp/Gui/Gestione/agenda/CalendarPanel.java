@@ -1,5 +1,6 @@
 package it.seerp.Gui.Gestione.agenda;
 
+import it.seerp.application.configurazioni.EventInstance;
 import it.seerp.Gui.Gestione.Menu.MenuAgenda;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
 import java.awt.AlphaComposite;

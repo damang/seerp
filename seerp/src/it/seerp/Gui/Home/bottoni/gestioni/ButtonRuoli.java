@@ -3,7 +3,7 @@ package it.seerp.Gui.Home.bottoni.gestioni;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.Ruoli.GestioneRuoli;
-import it.seerp.Gui.Gestione.Menu.MenuRuoli;
+import it.seerp.Gui.Gestione.Ruoli.MenuRuoli;
 import it.seerp.Gui.observerButton.ObserverButton;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;

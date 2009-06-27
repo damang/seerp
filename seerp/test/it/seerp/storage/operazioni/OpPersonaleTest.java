@@ -2,7 +2,7 @@
 
 package it.seerp.storage.operazioni;
 
-import it.seerp.storage.Operazioni.OpPersonale;
+import it.seerp.storage.ejb.opPersonaleRuolo.OpPersonale;
 import it.seerp.storage.ejb.Personale;
 import it.seerp.storage.ejb.Ruolo;
 import java.util.ArrayList;

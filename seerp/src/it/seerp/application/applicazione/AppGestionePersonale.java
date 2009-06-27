@@ -11,7 +11,7 @@ import it.seerp.storage.Exception.DatiDuplicatiEx;
 import it.seerp.storage.Operazioni.OpAmministratore;
 import it.seerp.storage.Operazioni.OpDipendente;
 import it.seerp.storage.Operazioni.OpFornitore;
-import it.seerp.storage.Operazioni.OpPersonale;
+import it.seerp.storage.ejb.opPersonaleRuolo.OpPersonale;
 import it.seerp.storage.Operazioni.OpResponsabile;
 import it.seerp.storage.ejb.Amministratore;
 import it.seerp.storage.ejb.Dipendente;

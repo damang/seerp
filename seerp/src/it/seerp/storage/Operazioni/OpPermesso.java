@@ -7,7 +7,7 @@ package it.seerp.storage.Operazioni;
 import it.seerp.storage.db.ConnectionPool;
 import it.seerp.storage.db.OpeEntity;
 import it.seerp.storage.ejb.Permesso;
-import it.seerp.storage.jaas.PermessoCollection;
+import it.seerp.storage.ejb.jaas.PermessoCollection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;

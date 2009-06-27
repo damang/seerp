@@ -1,4 +1,4 @@
-package it.seerp.Gui.Gestione.agenda;
+package it.seerp.application.configurazioni;
 
 import java.awt.Color;
 

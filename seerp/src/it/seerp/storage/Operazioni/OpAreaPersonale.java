@@ -1,7 +1,8 @@
 package it.seerp.storage.Operazioni;
 
+import it.seerp.storage.ejb.opPersonaleRuolo.OpeUtente;
 import it.seerp.storage.Exception.DatiErratiEx;
-import it.seerp.storage.Operazioni.OpPersonale;
+import it.seerp.storage.ejb.opPersonaleRuolo.OpPersonale;
 import it.seerp.storage.db.ConnectionPool;
 import it.seerp.storage.ejb.Personale;
 import it.seerp.storage.ejb.Utente;

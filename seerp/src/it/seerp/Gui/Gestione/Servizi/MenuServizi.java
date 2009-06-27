@@ -1,5 +1,5 @@
 
-package it.seerp.Gui.Gestione.Menu;
+package it.seerp.Gui.Gestione.Servizi;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.Servizi.GestioneServizi;
@@ -54,8 +54,8 @@ public class MenuServizi extends javax.swing.JPanel implements ActionListener {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        aggiungiButtonServizi1 = new it.seerp.Gui.Gestione.Menu.AggiungiButtonServizi(this);
-        modificaButtonServizi1 = new it.seerp.Gui.Gestione.Menu.ModificaButtonServizi(this);
+        aggiungiButtonServizi1 = new it.seerp.Gui.Gestione.Servizi.AggiungiButtonServizi(this);
+        modificaButtonServizi1 = new it.seerp.Gui.Gestione.Servizi.ModificaButtonServizi(this);
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Servizi", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_BOTTOM));
 
@@ -99,8 +99,8 @@ public class MenuServizi extends javax.swing.JPanel implements ActionListener {
     }//GEN-LAST:event_aggiungiButtonServizi1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private it.seerp.Gui.Gestione.Menu.AggiungiButtonServizi aggiungiButtonServizi1;
-    private it.seerp.Gui.Gestione.Menu.ModificaButtonServizi modificaButtonServizi1;
+    private it.seerp.Gui.Gestione.Servizi.AggiungiButtonServizi aggiungiButtonServizi1;
+    private it.seerp.Gui.Gestione.Servizi.ModificaButtonServizi modificaButtonServizi1;
     // End of variables declaration//GEN-END:variables
 
 

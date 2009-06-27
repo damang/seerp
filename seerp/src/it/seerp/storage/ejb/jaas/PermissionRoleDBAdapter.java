@@ -11,8 +11,9 @@
  * $Header$
  * $Log$
  */
-package it.seerp.storage.jaas;
+package it.seerp.storage.ejb.jaas;
 
+import it.seerp.storage.jaas.*;
 import it.seerp.storage.ejb.Permesso;
 import it.seerp.storage.db.ConnectionPool;
 import java.security.*;
