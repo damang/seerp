@@ -72,7 +72,7 @@ public interface GestioneAgenda<E, U> {
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si inseriscano dati errati
      */
-    public E modifica(E beanGuiEventi) throws DatiErrati;
+    public E modifica(E beanGuiEventi) throws SQLException,ValidatorException ;
 
     /**
      * Metodo che permette la ricerca di un evento
@@ -83,7 +83,7 @@ public interface GestioneAgenda<E, U> {
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si inseriscano dati errati
      */
-    public ArrayList<E> ricercaEvento(ArrayList<E> list) throws DatiErrati;
+    public ArrayList<E> ricercaEvento(ArrayList<E> list) throws SQLException, ValidatorException;
 
     /**
      * Metodo che permette la ricerca per giorno di un evento
@@ -93,19 +93,19 @@ public interface GestioneAgenda<E, U> {
      * @throws it.seerp.application.Exception.CancellazioneFallita
      * nel caso in cui il sistema fallisca nell'eliminazione dell'evento
      */
-    public void cancellaEvento(E beanGuiEventi) throws CancellazioneFallita;
+    public void cancellaEvento(E beanGuiEventi) throws CancellazioneFallita,SQLException, ValidatorException;
 
     /**
      * Metodo che permette la cancellazione dell'evento
      * @param id ID dell'evento
      * @throws it.seerp.application.Exception.CancellazioneFallita
      */
-    public void cancellaEvento(int id) throws CancellazioneFallita;
+    public void cancellaEvento(int id) throws CancellazioneFallita,SQLException;
 
     /**
      * Metodo che passa la lista di bean utilizzando l'operazioni del lato storage
      * @param user Stringa col nome dell'utente
      * @return lista dei bean
      */
-    public ArrayList<U> visualizzaTabella(String user);
+    public ArrayList<U> visualizzaTabella(String user) throws SQLException;
 }
