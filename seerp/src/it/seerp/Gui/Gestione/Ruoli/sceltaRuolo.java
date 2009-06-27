@@ -14,7 +14,10 @@ import javax.swing.JFrame;
 public class sceltaRuolo extends javax.swing.JDialog {
     private String ruolo=null;
   
-    /** Creates new form NewJDialog */
+    /** Creates new form NewJDialog
+     * @param parent
+     * @param modal
+     */
     public sceltaRuolo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -124,7 +127,11 @@ public class sceltaRuolo extends javax.swing.JDialog {
         this.setVisible(false);
     }//GEN-LAST:event_buttonAnnulla1ActionPerformed
    
-public static String getRuolo() {
+    /**
+     * Metodo che restituisce il ruolo
+     * @return restituisce il ruolo
+     */
+    public static String getRuolo() {
         final sceltaRuolo dia = new sceltaRuolo(new JFrame(), true);
         dia.setVisible(true);
 	return dia.getR();
