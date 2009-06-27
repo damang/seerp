@@ -65,7 +65,7 @@ public class BeanGuiUtente {
 
     public void setIndirizzo(JTextField indirizzo) {
         this.indirizzo = indirizzo;
-        indirizzo.setInputVerifier(new NotEmptyValidator(grafica, indirizzo, "Il campo non può essere vuoto.", RegexpDef.valueOf(RegexpDef.VAL.VUOTO)));
+        this.indirizzo.setInputVerifier(new NotEmptyValidator(grafica, indirizzo, "Il campo non può essere vuoto.", RegexpDef.valueOf(RegexpDef.VAL.VUOTO)));
     }
     
     /**
