@@ -8,6 +8,7 @@ import it.seerp.storage.ejb.Amministratore;
 import it.seerp.storage.ejb.Azienda;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -30,7 +31,7 @@ public class OpInit implements OpeEntity<Amministratore, Azienda> {
         PreparedStatement stmtp = null;
         PreparedStatement stmtd = null;
         PreparedStatement stmta = null;
-
+        PreparedStatement stmtag = null;
         try {
             connessione.setAutoCommit(false);
             String sqlu = "INSERT INTO utente(username,password,email,citta,prov,telefono,CAP,note,tipo,visibilita) " +
@@ -41,6 +42,7 @@ public class OpInit implements OpeEntity<Amministratore, Azienda> {
                     "VALUES(LAST_INSERT_ID())";
             String sqla = "INSERT INTO azienda(idAzienda,email,nazione,piva,regioneSociale,telefono)" +
                     "VALUES(LAST_INSERT_ID(),?,?,?,?,?)";
+            String sqlag= "INSERT INTO agenda VALUES(LAST_INSERT_ID())";
             stmt = (PreparedStatement) connessione.prepareStatement(sqlu);
             stmt.setString(1, user.getUsername());
             stmt.setString(2, user.getPassword());
@@ -68,10 +70,13 @@ public class OpInit implements OpeEntity<Amministratore, Azienda> {
             stmta.setString(3, user.getAzienda().getPIVA());
             stmta.setString(4, user.getAzienda().getRagioneSociale());
             stmta.setString(5, user.getAzienda().getTelefono());
+            stmtag=(PreparedStatement) connessione.prepareStatement(sqlag);
+
             stmt.execute();
             stmtp.execute();
             stmtd.execute();
             stmta.execute();
+            stmtag.execute();
             connessione.commit();
 
         } catch (SQLException se) {
@@ -79,6 +84,9 @@ public class OpInit implements OpeEntity<Amministratore, Azienda> {
             connessione.rollback();
 
             throw new SQLException("Transizione fallita");
+        }
+        finally {
+            connessione.setAutoCommit(true);
         }
 
     }
