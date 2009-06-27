@@ -60,7 +60,7 @@ public interface GestioneRuoli<E, U> {
      * Metodo che permette di visualizzare i bean dei Ruoli
      * @return ArrayList di Ruoli
      */
-    public ArrayList<U> visualizzaTabella()throws SQLException,ValidatorException ;
+    public ArrayList<U> visualizzaTabella()throws SQLException;
 
     /**
      *
