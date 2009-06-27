@@ -66,7 +66,7 @@ public class OpAzienda {
         String query = "UPDATE azienda SET citta=?,email=?,fax=?,indirizzo=?,nazione=?,PIVA=?,regioneSociale=?,telefono=?" +
                 "where idAzienda=?";
         stmt = (PreparedStatement) connessione.prepareStatement(query);
-
+      
         stmt.setString(1, az.getCitta());
         stmt.setString(2, az.getEmail());
         stmt.setString(3, az.getFax());
@@ -97,10 +97,11 @@ public class OpAzienda {
         ResultSet rs = null;
         Azienda az = null;
 
-        String sql = "SELECT * FROM azienda";
+        String sql = "SELECT idAzienda,citta,email,fax,indirizzo,nazione,piva,regioneSociale,telefono FROM azienda";
         stmt = (PreparedStatement) connessione.prepareStatement(sql);
 
         rs = stmt.executeQuery();
+        System.out.println( rs);
 
         // Define the resource list
         while (rs.next()) {
@@ -108,6 +109,7 @@ public class OpAzienda {
             az = new Azienda();
             az.setIdAzienda(rs.getInt(1));
             az.setCitta(rs.getString(2));
+
             az.setEmail(rs.getString(3));
             az.setFax(rs.getString(4));
             az.setIndirizzo(rs.getString(5));
@@ -115,9 +117,10 @@ public class OpAzienda {
             az.setPIVA(rs.getString(7));
             az.setRagioneSociale(rs.getString(8));
             az.setTelefono(rs.getString(9));
+           
         }
 
-        stmt.close();
+       stmt.close();
         rs.close();
         ConnectionPool.releaseConnection(connessione);
 
