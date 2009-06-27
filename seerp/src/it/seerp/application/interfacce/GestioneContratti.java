@@ -18,14 +18,14 @@ public interface GestioneContratti<E, U> {
      * Metodo che passa la lista di bean utilizzando l'operazioni del lato storage
      * @return lista dei bean
      */
-    public ArrayList<U> visualizzaTabella();
+    public ArrayList<U> visualizzaTabella() throws SQLException;
 
     /**
      * Metodo che permette la visualizzazione della lista dei contratti
      * @param listGui
      * @return ArrayList dei contratti presenti nel sistema
      */
-    public ArrayList<E> elenca(ArrayList<E> listGui);
+    public ArrayList<E> elenca(ArrayList<E> listGui) throws SQLException, ValidatorException;
 
     /**
      * Metodo che permette la visualizzazione di un singolo contratto
@@ -34,7 +34,7 @@ public interface GestioneContratti<E, U> {
      * @return Bean Gui del contratto che è stato selezionato
      * @throws DatiErrati
      */
-    public E visualizzaContratto(int id, E beanGuiContratto) throws DatiErrati;
+    public E visualizzaContratto(int id, E beanGuiContratto) throws SQLException, ValidatorException;
 
     /**
      * Metodo che permette la ricerca per dipendente
@@ -43,7 +43,7 @@ public interface GestioneContratti<E, U> {
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si inseriscano dati errati
      */
-    public ArrayList<E> ricercaPerDipendente(ArrayList<E> listGui) throws DatiErrati;
+    public ArrayList<E> ricercaPerDipendente(ArrayList<E> listGui) throws SQLException, ValidatorException;
 
     /**
      * Metodo che permette l'inserimento di un contratto
@@ -62,5 +62,5 @@ public interface GestioneContratti<E, U> {
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si immettano dati errati
      */
-    public E modifica(E beanGuiContratto) throws DatiErrati;
+    public E modifica(E beanGuiContratto) throws SQLException, ValidatorException;
 }
