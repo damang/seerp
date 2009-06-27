@@ -2,6 +2,8 @@ package it.seerp.application.interfacce;
 
 import it.seerp.application.Exception.DatiDuplicati;
 import it.seerp.application.Exception.DatiErrati;
+import it.seerp.application.Exception.ValidatorException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -51,7 +53,7 @@ public interface GestioneContratti<E, U> {
      * @throws it.seerp.application.Exception.DatiDuplicati
      * nel caso in cui il contratto da inserire esista già
      */
-    public void inserisci(E beanGuiContratto) throws DatiErrati, DatiDuplicati;
+    public void inserisci(E beanGuiContratto) throws SQLException, ValidatorException;
 
     /**
      * Metodo che permette la modifica di un contratto
