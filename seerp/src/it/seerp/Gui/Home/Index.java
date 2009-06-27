@@ -107,10 +107,10 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
             areaPersonaleButton5 = new it.seerp.Gui.bottoni.gestioni.AreaPersonaleButton(this.jTabbedPanePrincipale,this.menuAreaPersonale2,this);
             jXMonthView1 = new org.jdesktop.swingx.JXMonthView();
             jXTitledPanel1 = new org.jdesktop.swingx.JXTitledPanel();
-            menuUtente1 = new it.seerp.Gui.Gestione.Menu.MenuUtente();
+            menuUtente1 = new it.seerp.Gui.Gestione.Menu.MenuUtente(getSubject());
             menuRuoli1 = new it.seerp.Gui.Gestione.Menu.MenuRuoli(getSubject());
             menuContratti1 = new it.seerp.Gui.Gestione.Menu.MenuContratti();
-            menuServizi1 = new it.seerp.Gui.Gestione.Menu.MenuServizi();
+            menuServizi1 = new it.seerp.Gui.Gestione.Menu.MenuServizi(getSubject());
             menuInfoAzienda1 = new it.seerp.Gui.Gestione.Menu.MenuInfoAzienda();
             menuAreaPersonale2 = new it.seerp.Gui.Gestione.Menu.MenuAreaPersonale();
             menuAgenda = new it.seerp.Gui.Gestione.Menu.MenuAgenda();

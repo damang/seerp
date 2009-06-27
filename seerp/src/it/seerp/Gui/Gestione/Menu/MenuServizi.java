@@ -3,8 +3,12 @@ package it.seerp.Gui.Gestione.Menu;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.Servizi.GestioneServizi;
+import it.seerp.Gui.configurazioni.PermessiDefault;
+import it.seerp.storage.ejb.Permesso;
+import it.seerp.storage.jaas.JaasUtil;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.security.auth.Subject;
 import javax.swing.JButton;
 
 /**
@@ -14,9 +18,14 @@ import javax.swing.JButton;
 public class MenuServizi extends javax.swing.JPanel implements ActionListener {
 
     GestioneServizi pannello = null;
+    private Subject ut_sub;
 
     /** Creates new form Preventivi */
     public MenuServizi() {
+        initComponents();
+    }
+    public MenuServizi(Subject s) {
+        ut_sub=s;
         initComponents();
     }
 
@@ -28,6 +37,9 @@ public class MenuServizi extends javax.swing.JPanel implements ActionListener {
 
         this.pannello = pannello;
         pannello.setMenu(this);
+
+        setEnabledByPerm();
+
         this.modificaButtonServizi1.setAreaServizi(pannello);
         this.aggiungiButtonServizi1.setServizi(pannello);
   
@@ -109,12 +121,20 @@ public class MenuServizi extends javax.swing.JPanel implements ActionListener {
         return aggiungiButtonServizi1;
     }
           public void setButtonEnabled (boolean b) {
-        this.modificaButtonServizi1.setEnabled(b);
-        this.aggiungiButtonServizi1.setEnabled(b);
-
+        if(b)
+            setEnabledByPerm();
+        else {
+                this.modificaButtonServizi1.setEnabled(b);
+                this.aggiungiButtonServizi1.setEnabled(b);
+        }
     }
     public void actionPerformed(ActionEvent e) {
         CommandInterface cmd = (CommandInterface) e.getSource();
         cmd.execute();
+    }
+
+    private void setEnabledByPerm() {
+        this.aggiungiButtonServizi1.setEnabled(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.AGGIUNGI))));
+        this.modificaButtonServizi1.setEnabled(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.MODIFICA))));
     }
 }

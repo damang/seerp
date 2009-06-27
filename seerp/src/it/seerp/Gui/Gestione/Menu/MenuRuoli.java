@@ -23,7 +23,10 @@ public class MenuRuoli extends javax.swing.JPanel implements ActionListener {
     public  MenuRuoli(Subject ut_sub) {
         this.ut_sub=ut_sub;
         initComponents();
-        settaVisibilita();
+        setEnabledByPerm();
+    }
+    public MenuRuoli(){
+        initComponents();
     }
 
     /**
@@ -103,12 +106,16 @@ public class MenuRuoli extends javax.swing.JPanel implements ActionListener {
         cmd.execute();
     }
     public void setButtonEnabled (boolean b) {
+        if (b)
+            setEnabledByPerm();
+        else {
         this.modificaButtonRuoli1.setEnabled(b);
         this.aggiungiButtonRuoli1.setEnabled(b);
         this.eliminaButtonRuoli1.setEnabled(b);
+        }
     }
 
-    private void settaVisibilita() {
+    private void setEnabledByPerm() {
         this.modificaButtonRuoli1.setEnabled(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.MODIFICA))));
         this.aggiungiButtonRuoli1.setEnabled(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.AGGIUNGI))));
         this.eliminaButtonRuoli1.setEnabled(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELIMINA))));
