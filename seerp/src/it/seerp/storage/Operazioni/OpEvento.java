@@ -38,7 +38,7 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
      * @throws DatiErratiEx eccezione lanciata se si inseriscono dati errati
      * @throws DatiDuplicatiEx eccezione lanciata se esiste già un evento con lo stesso nome
      */
-    public void inserimento(Evento e) throws DatiDuplicatiEx, DatiErratiEx, SQLException {
+    public void inserimento(Evento e) throws SQLException {
      connessione = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
         String query = "INSERT INTO evento(data,ora,agenda,luogo,nome,tema,note,notifica) VALUES (?,?,?,?,?,?,?,?)";
@@ -65,7 +65,7 @@ public class OpEvento implements OpeEntity<Evento, Integer> {
      * @throws DatiErratiEx
      * @throws SQLException
      */
-    public Evento modifica(Evento e) throws DatiDuplicatiEx, DatiErratiEx, SQLException {
+    public Evento modifica(Evento e) throws SQLException {
      connessione = (Connection) ConnectionPool.getConnection();
         PreparedStatement stmt = null;
         String query = "UPDATE evento SET data=?, ora=?, luogo=?, nome=?, tema=?, note=?, notifica=? where idEvento=?";

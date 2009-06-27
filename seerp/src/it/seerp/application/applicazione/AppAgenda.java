@@ -80,24 +80,18 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
     }
 
     @Override
-    public BeanGuiEvento modifica(BeanGuiEvento beanGui) throws DatiErrati {
-        try {
+    public BeanGuiEvento modifica(BeanGuiEvento beanGui) throws SQLException,ValidatorException {
+       
             OpEvento ope = new OpEvento();
             Evento eve = Conversione.conversioneEvento(beanGui);
             eve = ope.modifica(eve);
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (ValidatorException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
+        
         return beanGui;
     }
 
     @Override
-    public ArrayList<BeanGuiEvento> ricercaEvento(ArrayList<BeanGuiEvento> listGui) throws DatiErrati {
-        try {
+    public ArrayList<BeanGuiEvento> ricercaEvento(ArrayList<BeanGuiEvento> listGui) throws SQLException, ValidatorException {
+       
             OpEvento ope = new OpEvento();
             ArrayList<Evento> list = ope.ricercaEvento();
             for (Evento eve : list) {
@@ -105,51 +99,29 @@ public class AppAgenda implements GestioneAgenda<BeanGuiEvento, Evento> {
                 eveGui = Conversione.conversioneEvento(eve, eveGui);
                 listGui.add(eveGui);
             }
-
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (ValidatorException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
         return listGui;
     }
 
     @Override
-    public void cancellaEvento(BeanGuiEvento beanGui) throws CancellazioneFallita {
-        try {
+    public void cancellaEvento(BeanGuiEvento beanGui) throws SQLException, ValidatorException {
+       
             OpEvento ope = new OpEvento();
             Evento eve = Conversione.conversioneEvento(beanGui);
             ope.cancella(eve);
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (ValidatorException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
+       
     }
     /**
      * Metodo che permette la cancellazione dell'evento
      * @param bean Bean dell'evento da cancellare
      * @throws it.seerp.application.Exception.CancellazioneFallita
      */
-    public void cancellaEvento(Evento bean) throws CancellazioneFallita {
-        try {
+    public void cancellaEvento(Evento bean) throws SQLException {
             OpEvento ope = new OpEvento();
             ope.cancella(bean);
-        } catch (SQLException se) {
-            se.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Errore nel database!");
-        } catch (ValidatorException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Controllare i campi inseriti!");
-        }
-    }
+   }
 
     @Override
-     public void cancellaEvento(int id) throws CancellazioneFallita {
+     public void cancellaEvento(int id) throws SQLException{
          Evento e= new Evento();
          e.setIdEvento(id);
          cancellaEvento(e);
