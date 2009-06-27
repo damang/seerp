@@ -201,7 +201,7 @@ public class OpResponsabile extends OpeUtente {
 
             switch (se.getErrorCode()) {
                 case 1062:
-                    throw new SQLException("Username già assegnato ad un altro utente");
+                    throw new  DatiDuplicatiEx("Username già assegnato ad un altro utente");
 
                 case 1364:
                     throw new SQLException("la password è obligatoria!");
