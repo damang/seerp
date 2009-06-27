@@ -26,7 +26,7 @@ public class AppInit implements GestioneInit<BeanGuiAmministratore> {
     }
 
     @Override
-    public void inserimento(BeanGuiAmministratore beanGuiAmministratore) throws SQLException, DatiErrati, DatiDuplicati, ValidatorException {
+    public void inserimento(BeanGuiAmministratore beanGuiAmministratore) throws SQLException, ValidatorException {
 
             OpInit op = new OpInit();
             Amministratore a = Conversione.conversioneAmministratore(beanGuiAmministratore);

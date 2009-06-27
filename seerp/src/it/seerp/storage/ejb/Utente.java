@@ -15,6 +15,7 @@ public class Utente {
     private String email;
     private String note;
     private String tipo;
+    private String indirizzo;
     private Boolean visible;
     /**
      *
@@ -54,6 +55,14 @@ public class Utente {
         this.note = note;
         this.tipo = ruolo;
         this.visible = v;
+    }
+
+    public String getIndirizzo() {
+        return indirizzo;
+    }
+
+    public void setIndirizzo(String indirizzo) {
+        this.indirizzo = indirizzo;
     }
 
     /**
