@@ -34,19 +34,19 @@ public class BeanGuiUtente {
 
     public void setValidatorEnabled(boolean validator) {
         this.validator = validator;
-            ((NotEmptyValidator) txtProvincia.getInputVerifier()).setEnabled(validator);
-            ((NotEmptyValidator) txtPassword.getInputVerifier()).setEnabled(validator);
-            ((NotEmptyValidator) txtCitta.getInputVerifier()).setEnabled(validator);
-            ((NotEmptyValidator) txtEmail.getInputVerifier()).setEnabled(validator);
-            ((NotEmptyValidator) txtUsername.getInputVerifier()).setEnabled(validator);
-            ((NotEmptyValidator) txtTelefono.getInputVerifier()).setEnabled(validator);
+        ((NotEmptyValidator) txtProvincia.getInputVerifier()).setEnabled(validator);
+        ((NotEmptyValidator) txtPassword.getInputVerifier()).setEnabled(validator);
+        ((NotEmptyValidator) txtCitta.getInputVerifier()).setEnabled(validator);
+        ((NotEmptyValidator) txtEmail.getInputVerifier()).setEnabled(validator);
+        ((NotEmptyValidator) txtUsername.getInputVerifier()).setEnabled(validator);
+        ((NotEmptyValidator) txtTelefono.getInputVerifier()).setEnabled(validator);
 
-            ((NotEmptyValidator) txtProvincia.getInputVerifier()).reset(txtProvincia);
-            ((NotEmptyValidator) txtPassword.getInputVerifier()).reset(txtPassword);
-            ((NotEmptyValidator) txtCitta.getInputVerifier()).reset(txtCitta);
-            ((NotEmptyValidator) txtEmail.getInputVerifier()).reset(txtEmail);
-            ((NotEmptyValidator) txtUsername.getInputVerifier()).reset(txtUsername);
-            ((NotEmptyValidator) txtTelefono.getInputVerifier()).reset(txtTelefono);
+        ((NotEmptyValidator) txtProvincia.getInputVerifier()).reset(txtProvincia);
+        ((NotEmptyValidator) txtPassword.getInputVerifier()).reset(txtPassword);
+        ((NotEmptyValidator) txtCitta.getInputVerifier()).reset(txtCitta);
+        ((NotEmptyValidator) txtEmail.getInputVerifier()).reset(txtEmail);
+        ((NotEmptyValidator) txtUsername.getInputVerifier()).reset(txtUsername);
+        ((NotEmptyValidator) txtTelefono.getInputVerifier()).reset(txtTelefono);
     }
 
     /**
@@ -72,7 +72,7 @@ public class BeanGuiUtente {
     public JTextField getTipo() throws ValidatorException {
         if (validator == true) {
             if (!tipo.getInputVerifier().shouldYieldFocus(tipo)) {
-                throw new ValidatorException("Errore nella grafica!");
+                throw new ValidatorException("Il campo non può essere vuoto.");
             }
         }
 
@@ -95,7 +95,7 @@ public class BeanGuiUtente {
     public JTextField getCap() throws ValidatorException {
         if (validator == true) {
             if (!cap.getInputVerifier().shouldYieldFocus(cap)) {
-                throw new ValidatorException("Errore nella grafica!");
+                throw new ValidatorException("Inserire un valore numerico di 5 cifre.");
             }
         }
         return cap;
@@ -107,7 +107,7 @@ public class BeanGuiUtente {
      */
     public void setCap(JTextField cap) {
         this.cap = cap;
-        cap.setInputVerifier(new NotEmptyValidator(grafica, cap, "Il campo non può essere vuoto.", RegexpDef.valueOf(RegexpDef.VAL.CAP)));
+        cap.setInputVerifier(new NotEmptyValidator(grafica, cap, "Inserire un valore numerico di 5 cifre.", RegexpDef.valueOf(RegexpDef.VAL.CAP)));
     }
 
     /**
@@ -184,7 +184,7 @@ public class BeanGuiUtente {
     public JTextField getIdUtenteTxt() throws ValidatorException {
         if (validator == true) {
             if (!idUtenteTxt.getInputVerifier().shouldYieldFocus(idUtenteTxt)) {
-                throw new ValidatorException("Errore nella grafica!");
+                throw new ValidatorException("Il campo non può essere vuoto.");
             }
         }
         return idUtenteTxt;
@@ -198,7 +198,7 @@ public class BeanGuiUtente {
     public JTextField getTxtCitta() throws ValidatorException {
         if (validator == true) {
             if (!txtCitta.getInputVerifier().shouldYieldFocus(txtCitta)) {
-                throw new ValidatorException("Errore nella grafica!");
+                throw new ValidatorException("Il campo non può essere vuoto.");
             }
         }
         return txtCitta;
@@ -212,7 +212,7 @@ public class BeanGuiUtente {
     public JTextField getTxtEmail() throws ValidatorException {
         if (validator == true) {
             if (!txtEmail.getInputVerifier().shouldYieldFocus(txtEmail)) {
-                throw new ValidatorException("Errore nella grafica!");
+                throw new ValidatorException("Email inserita non valida.");
             }
         }
 
@@ -227,7 +227,7 @@ public class BeanGuiUtente {
     public JTextField getTxtPassword() throws ValidatorException {
         if (validator == true) {
             if (!txtPassword.getInputVerifier().shouldYieldFocus(txtPassword)) {
-                throw new ValidatorException("Errore nella grafica!");
+                throw new ValidatorException("Il campo non può essere vuoto.");
             }
         }
 
@@ -242,7 +242,7 @@ public class BeanGuiUtente {
     public JTextField getTxtProvincia() throws ValidatorException {
         if (validator == true) {
             if (!txtProvincia.getInputVerifier().shouldYieldFocus(txtProvincia)) {
-                throw new ValidatorException("Errore nella grafica!");
+                throw new ValidatorException("La provincia deve essere di 2 caratteri.");
             }
         }
         return txtProvincia;
@@ -256,7 +256,7 @@ public class BeanGuiUtente {
     public JTextField getTxtTelefono() throws ValidatorException {
         if (validator == true) {
             if (!txtTelefono.getInputVerifier().shouldYieldFocus(txtTelefono)) {
-                throw new ValidatorException("Errore nella grafica!");
+                throw new ValidatorException("Il campo deve essere di almeno 8 caratteri");
             }
         }
         return txtTelefono;
@@ -270,7 +270,7 @@ public class BeanGuiUtente {
     public JTextField getTxtUsername() throws ValidatorException {
         if (validator == true) {
             if (!txtUsername.getInputVerifier().shouldYieldFocus(txtUsername)) {
-                throw new ValidatorException("Errore nella grafica!");
+                throw new ValidatorException("Il campo non può essere vuoto.");
             }
         }
 

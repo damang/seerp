@@ -86,7 +86,7 @@ public class BeanGuiContratto {
     public JTextField getData() throws ValidatorException {
         if (validator == true) {
             if (!data.getInputVerifier().shouldYieldFocus(data)) {
-                throw new ValidatorException("Errore nella grafica!");
+                throw new ValidatorException("Il formato data deve essere GG/MM/AAAA.");
             }
         }
         return data;
@@ -126,7 +126,7 @@ public class BeanGuiContratto {
     public JTextField getDurata() throws ValidatorException {
         if (validator == true) {
             if (!durata.getInputVerifier().shouldYieldFocus(durata)) {
-                throw new ValidatorException("Errore nella grafica!");
+                throw new ValidatorException("Il campo non può essere vuoto.");
             }
         }
         return durata;
@@ -213,7 +213,7 @@ public class BeanGuiContratto {
     public JTextField getTipo() throws ValidatorException {
         if (validator == true) {
             if (!tipo.getInputVerifier().shouldYieldFocus(tipo)) {
-                throw new ValidatorException("Errore nella grafica!");
+                throw new ValidatorException("Il campo non può essere vuoto.");
             }
         }
         return tipo;

@@ -2,7 +2,6 @@ package it.seerp.application.bean;
 
 import it.seerp.Gui.configurazioni.Gui.RegexpDef;
 import it.seerp.application.Exception.ValidatorException;
-
 import it.seerp.application.validation.NotEmptyValidator;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
@@ -51,7 +50,7 @@ public class BeanGuiPersonale extends BeanGuiUtente {
     public JTextField getCodiceFiscale() throws ValidatorException {
         if (validator == true) {
             if (!codiceFiscale.getInputVerifier().shouldYieldFocus(codiceFiscale)) {
-                throw new ValidatorException("Errore nella grafica!");
+                throw new ValidatorException("Il CF deve essere di 16 caratteri");
             }
         }
         return codiceFiscale;
@@ -65,7 +64,7 @@ public class BeanGuiPersonale extends BeanGuiUtente {
     public JTextField getCognome() throws ValidatorException {
         if (validator == true) {
             if (!cognome.getInputVerifier().shouldYieldFocus(cognome)) {
-                throw new ValidatorException("Errore nella grafica!");
+                throw new ValidatorException("Il campo non può essere vuoto.");
             }
         }
         return cognome;
@@ -79,7 +78,7 @@ public class BeanGuiPersonale extends BeanGuiUtente {
     public JTextField getNome() throws ValidatorException {
         if (validator == true) {
             if (!nome.getInputVerifier().shouldYieldFocus(nome)) {
-                throw new ValidatorException("Errore nella grafica!");
+                throw new ValidatorException("Il campo non può essere vuoto.");
             }
         }
         return nome;
@@ -116,13 +115,12 @@ public class BeanGuiPersonale extends BeanGuiUtente {
     public void setValidatorEnabled(boolean validator) {
         super.setValidatorEnabled(validator);
         ((NotEmptyValidator) nome.getInputVerifier()).setEnabled(validator);
-            ((NotEmptyValidator) cognome.getInputVerifier()).setEnabled(validator);
-            ((NotEmptyValidator) codiceFiscale.getInputVerifier()).setEnabled(validator);
+        ((NotEmptyValidator) cognome.getInputVerifier()).setEnabled(validator);
+        ((NotEmptyValidator) codiceFiscale.getInputVerifier()).setEnabled(validator);
 
-            ((NotEmptyValidator) nome.getInputVerifier()).reset(nome);
-            ((NotEmptyValidator) cognome.getInputVerifier()).reset(cognome);
-            ((NotEmptyValidator) codiceFiscale.getInputVerifier()).reset(codiceFiscale);
-     
+        ((NotEmptyValidator) nome.getInputVerifier()).reset(nome);
+        ((NotEmptyValidator) cognome.getInputVerifier()).reset(cognome);
+        ((NotEmptyValidator) codiceFiscale.getInputVerifier()).reset(codiceFiscale);
+
     }
-
 }

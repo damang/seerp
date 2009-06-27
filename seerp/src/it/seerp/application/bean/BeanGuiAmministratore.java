@@ -9,28 +9,25 @@ public class BeanGuiAmministratore extends BeanGuiPersonale {
     private BeanGuiAzienda azienda;
 
     /**
-     * costruttore vuoto per il Bean Gui Amministratore
+     * Costruttore vuoto per il Bean Gui Amministratore
      */
-
     public BeanGuiAmministratore(Object c) {
         super(c);
     }
 
     /**
-     * 
-     * @return
+     * Metodo che ritorna l'Azienda
+     * @return Bean Gui dell'Azienda
      */
     public BeanGuiAzienda getAzienda() {
-        
         return azienda;
     }
 
     /**
-     *
-     * @param azienda
+     * Metodo che setta l'Azienda
+     * @param azienda Bean Gui dell'Azienda
      */
     public void setAzienda(BeanGuiAzienda azienda) {
-       
         this.azienda = azienda;
     }
 }

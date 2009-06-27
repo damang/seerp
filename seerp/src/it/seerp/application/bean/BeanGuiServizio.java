@@ -107,7 +107,7 @@ public class BeanGuiServizio {
     public JTextField getDescrizione() throws ValidatorException {
         if (validator == true) {
             if (!descrizione.getInputVerifier().shouldYieldFocus(descrizione)) {
-                throw new ValidatorException("Errore nella grafica!");
+                throw new ValidatorException("Il campo non può essere vuoto.");
             }
         }
         return descrizione;
@@ -162,7 +162,7 @@ public class BeanGuiServizio {
     public JTextField getIva() throws ValidatorException {
         if (validator == true) {
             if (iva.getInputVerifier().shouldYieldFocus(iva)) {
-                throw new ValidatorException("Errore nella grafica!");
+                throw new ValidatorException("Il campo IVA deve essere di 11 caratteri.");
             }
         }
         return iva;
@@ -201,7 +201,7 @@ public class BeanGuiServizio {
     public JTextField getPrezzo() throws ValidatorException {
         if (validator == true) {
             if (!prezzo.getInputVerifier().shouldYieldFocus(prezzo)) {
-                throw new ValidatorException("Errore nella grafica!");
+                throw new ValidatorException("Prezzo inserito non valido.");
             }
         }
         return prezzo;
@@ -224,7 +224,7 @@ public class BeanGuiServizio {
     public JTextField getQuantita() throws ValidatorException {
         if (validator == true) {
             if (!quantita.getInputVerifier().shouldYieldFocus(quantita)) {
-                throw new ValidatorException("Errore nella grafica!");
+                throw new ValidatorException("Inserire una quantità positiva.");
             }
         }
         return quantita;
@@ -247,7 +247,7 @@ public class BeanGuiServizio {
     public JTextField getTipo() throws ValidatorException {
         if (validator == true) {
             if (!tipo.getInputVerifier().shouldYieldFocus(tipo) && validator == true) {
-                throw new ValidatorException("Errore nella grafica!");
+                throw new ValidatorException("Il campo non può essere vuoto.");
             }
         }
         return tipo;

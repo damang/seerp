@@ -14,5 +14,4 @@ public class BeanGuiResponsabile extends BeanGuiPersonale {
     public BeanGuiResponsabile(JPanel c) {
         super(c);
     }
-
 }
