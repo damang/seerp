@@ -44,13 +44,13 @@ public class RegexpDef {
         else if (c.equals(VAL.TELEFONO))
             return "(((\\d{0,4})([-:]|[/:]))\\d{7})";
         else if (c.equals(VAL.VUOTO))
-            return"(.[a-z]*)*";
+            return"\\S+";
         else if (c.equals(VAL.PREZZO))
             return "(\\d{0,9})[.](\\d{2})";
         else if (c.equals(VAL.NUMPOS))
             return "\\d{0,9}";
         else if(c.equals(VAL.IVA))
-            return"\\d{1,2}[%:]";
+            return"\\d{1,2}";
         else return"";
 
     }
