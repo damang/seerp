@@ -2,6 +2,7 @@ package it.seerp.application.interfacce;
 
 import it.seerp.application.Exception.DatiDuplicati;
 import it.seerp.application.Exception.DatiErrati;
+import it.seerp.application.Exception.ValidatorException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -24,7 +25,7 @@ public interface GestioneServizi<E, U> {
      * @param listGui
      * @return ArrayList contenente i servizi
      */
-    public ArrayList<E> elenca(ArrayList<E> listGui);
+    public ArrayList<E> elenca(ArrayList<E> listGui)throws SQLException,ValidatorException ;
 
     /**
      * Metodo che permette la ricerca di un servizio
@@ -36,7 +37,7 @@ public interface GestioneServizi<E, U> {
      * @throws it.seerp.application.Exception.RicercaFallita
      * nel caso in cui la ricerca non produce risultati
      */
-    public ArrayList<E> ricerca(ArrayList<E> list) throws DatiErrati;
+    public ArrayList<E> ricerca(ArrayList<E> list)throws SQLException;
 
     /**
      * Metodo che permette l'inserimento di un nuovo servizio
@@ -45,7 +46,7 @@ public interface GestioneServizi<E, U> {
      * nel caso in cui si immettano dati errati
      * @throws DatiDuplicati
      */
-    public void inserisci(E BeansGuiServizio) throws DatiErrati, DatiDuplicati, SQLException;
+    public void inserisci(E BeansGuiServizio) throws  SQLException,ValidatorException;
 
     /**
      * Metodo che permette la visualizzazione di un servizio
@@ -54,7 +55,7 @@ public interface GestioneServizi<E, U> {
      * @param beanGui
      * @return Bean Gui del servizio da visualizzare
      */
-    public E visualizza(int nome, E beanGui);
+    public E visualizza(int nome, E beanGui)throws ValidatorException,SQLException;
 
     /**
      * Metodo che permette la modifica di un servizio
@@ -63,5 +64,5 @@ public interface GestioneServizi<E, U> {
      * @throws it.seerp.application.Exception.DatiErrati
      * nel caso in cui si immettano dati errati durante la modifica
      */
-    public E modifica(int id, E BeansGuiServizio) throws DatiErrati, SQLException;
+    public E modifica(int id, E BeansGuiServizio) throws SQLException,ValidatorException;
 }
