@@ -297,13 +297,13 @@
                 </Container>
               </SubComponents>
             </Container>
-            <Component class="it.seerp.Gui.Gestione.BottoniGenerici.InserimentoServizi" name="inserimentoServizi1">
+            <Component class="it.seerp.Gui.Gestione.Servizi.InserimentoServizi" name="inserimentoServizi1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="inserimentoServizi1"/>
                 <Property name="name" type="java.lang.String" value="inserimentoServizi1" noResource="true"/>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.BottoniGenerici.InserimentoServizi(this)"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.Servizi.InserimentoServizi(this)"/>
               </AuxValues>
             </Component>
           </SubComponents>
