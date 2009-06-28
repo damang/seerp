@@ -1,9 +1,9 @@
 package it.seerp.application.applicazione;
 
 import it.seerp.application.Exception.ValidatorException;
-import it.seerp.application.bean.BeanGuiServizio;
-import it.seerp.application.conversioni.Conversione;
-import it.seerp.application.interfacce.GestioneServizi;
+import it.seerp.application.applicazione.bean.BeanGuiServizio;
+import it.seerp.application.applicazione.conversioni.Conversione;
+import it.seerp.application.applicazione.interfacce.GestioneServizi;
 import it.seerp.storage.Operazioni.OpServizio;
 import it.seerp.storage.ejb.Servizio;
 import java.sql.SQLException;

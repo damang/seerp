@@ -12,7 +12,7 @@
 package it.seerp.storage.ejb.jaas;
 
 import it.seerp.storage.jaas.*;
-import it.seerp.storage.ejb.Permesso;
+import it.seerp.storage.jaas.ejb.Permesso;
 import java.security.Permission;
 import java.security.PermissionCollection;
 import java.util.Enumeration;

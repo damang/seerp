@@ -49,7 +49,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="it.seerp.Gui.Gestione.Menu.AggiungiButtonUtenti" name="aggiungiButton1">
+    <Component class="it.seerp.Gui.Gestione.Utenti.AggiungiButtonUtenti" name="aggiungiButton1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/it/seerp/Gui/icone/ico32x32/user_add.png"/>
@@ -58,10 +58,10 @@
         <Property name="name" type="java.lang.String" value="aggiungiButton1" noResource="true"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.Menu.AggiungiButtonUtenti(this)"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.Utenti.AggiungiButtonUtenti(this)"/>
       </AuxValues>
     </Component>
-    <Component class="it.seerp.Gui.Gestione.Menu.EliminaButtonUtente" name="eliminaButton1">
+    <Component class="it.seerp.Gui.Gestione.Utenti.EliminaButtonUtente" name="eliminaButton1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/it/seerp/Gui/icone/ico32x32/user_remove.png"/>
@@ -70,10 +70,10 @@
         <Property name="name" type="java.lang.String" value="eliminaButton1" noResource="true"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.Menu.EliminaButtonUtente(this)"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.Utenti.EliminaButtonUtente(this)"/>
       </AuxValues>
     </Component>
-    <Component class="it.seerp.Gui.Gestione.Menu.ModificaButtonUtente" name="modificaButtonUtente1">
+    <Component class="it.seerp.Gui.Gestione.Utenti.ModificaButtonUtente" name="modificaButtonUtente1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/it/seerp/Gui/icone/ico32x32/application_edit.png"/>
@@ -82,7 +82,7 @@
         <Property name="name" type="java.lang.String" value="modificaButtonUtente1" noResource="true"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.Menu.ModificaButtonUtente(this)"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.Utenti.ModificaButtonUtente(this)"/>
       </AuxValues>
     </Component>
   </SubComponents>

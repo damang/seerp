@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <Properties>
+    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+        <TitledBorder justification="2" position="6" title="Appuntamenti"/>
+      </Border>
+    </Property>
+  </Properties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="aggiungiButtonAppuntamento1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="modificaButtonAppuntamento1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="eiminaButtonAppuntamento1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="eiminaButtonAppuntamento1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="modificaButtonAppuntamento1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="aggiungiButtonAppuntamento1" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="it.seerp.Gui.Gestione.agenda.AggiungiButtonAppuntamento" name="aggiungiButtonAppuntamento1">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/it/seerp/Gui/icone/ico32x32/add.png"/>
+        </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Aggiungi"/>
+        <Property name="name" type="java.lang.String" value="aggiungiButtonAppuntamento1" noResource="true"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.agenda.AggiungiButtonAppuntamento(this)"/>
+      </AuxValues>
+    </Component>
+    <Component class="it.seerp.Gui.Gestione.agenda.EiminaButtonAppuntamento" name="eiminaButtonAppuntamento1">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/it/seerp/Gui/icone/ico32x32/remove.png"/>
+        </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Elimina"/>
+        <Property name="name" type="java.lang.String" value="eiminaButtonAppuntamento1" noResource="true"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.agenda.EiminaButtonAppuntamento(this)"/>
+      </AuxValues>
+    </Component>
+    <Component class="it.seerp.Gui.Gestione.agenda.ModificaButtonAppuntamento" name="modificaButtonAppuntamento1">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/it/seerp/Gui/icone/ico32x32/application_edit.png"/>
+        </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Modifica"/>
+        <Property name="name" type="java.lang.String" value="modificaButtonAppuntamento1" noResource="true"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.agenda.ModificaButtonAppuntamento(this)"/>
+      </AuxValues>
+    </Component>
+  </SubComponents>
+</Form>

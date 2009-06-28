@@ -1,8 +1,8 @@
 package it.seerp.Gui.Gestione.Ruoli;
 
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
-import it.seerp.application.bean.BeanGuiPermesso;
-import it.seerp.application.bean.BeanGuiRuolo;
+import it.seerp.application.applicazione.bean.BeanGuiPermesso;
+import it.seerp.application.applicazione.bean.BeanGuiRuolo;
 import java.util.ArrayList;
 
 /**

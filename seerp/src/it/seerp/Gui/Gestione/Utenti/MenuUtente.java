@@ -5,8 +5,8 @@ import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.Utenti.AreaUtentePanel;
 import it.seerp.Gui.configurazioni.Gui.ConfigurazioneUtente;
 import it.seerp.Gui.configurazioni.PermessiDefault;
-import it.seerp.storage.ejb.Permesso;
-import it.seerp.storage.jaas.JaasUtil;
+import it.seerp.storage.jaas.ejb.Permesso;
+import it.seerp.application.jaas.JaasUtil;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.security.auth.Subject;
@@ -85,9 +85,9 @@ public class MenuUtente extends javax.swing.JPanel implements ActionListener {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        aggiungiButton1 = new it.seerp.Gui.Gestione.Menu.AggiungiButtonUtenti(this);
-        eliminaButton1 = new it.seerp.Gui.Gestione.Menu.EliminaButtonUtente(this);
-        modificaButtonUtente1 = new it.seerp.Gui.Gestione.Menu.ModificaButtonUtente(this);
+        aggiungiButton1 = new it.seerp.Gui.Gestione.Utenti.AggiungiButtonUtenti(this);
+        eliminaButton1 = new it.seerp.Gui.Gestione.Utenti.EliminaButtonUtente(this);
+        modificaButtonUtente1 = new it.seerp.Gui.Gestione.Utenti.ModificaButtonUtente(this);
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gestione", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_BOTTOM));
 
@@ -163,9 +163,9 @@ public class MenuUtente extends javax.swing.JPanel implements ActionListener {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private it.seerp.Gui.Gestione.Menu.AggiungiButtonUtenti aggiungiButton1;
-    private it.seerp.Gui.Gestione.Menu.EliminaButtonUtente eliminaButton1;
-    private it.seerp.Gui.Gestione.Menu.ModificaButtonUtente modificaButtonUtente1;
+    private it.seerp.Gui.Gestione.Utenti.AggiungiButtonUtenti aggiungiButton1;
+    private it.seerp.Gui.Gestione.Utenti.EliminaButtonUtente eliminaButton1;
+    private it.seerp.Gui.Gestione.Utenti.ModificaButtonUtente modificaButtonUtente1;
     // End of variables declaration//GEN-END:variables
 
 }

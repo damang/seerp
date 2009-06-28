@@ -1,5 +1,10 @@
 package it.seerp.Gui.Gestione.Utenti;
 
+import it.seerp.application.bean.tabelle.Generica;
+import it.seerp.application.bean.tabelle.ClienteTm;
+import it.seerp.application.bean.tabelle.ResponsabileTm;
+import it.seerp.application.bean.tabelle.FornitoreTm;
+import it.seerp.application.bean.tabelle.DipendenteTm;
 import it.seerp.Gui.configurazioni.Gui.ConfigurazioneUtente.TIPO_UTENTE_CONST;
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.configurazioni.Gui.ConfigurazioneUtente;
@@ -7,7 +12,7 @@ import it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla;
 import it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
 import it.seerp.application.Exception.ValidatorException;
-import it.seerp.application.bean.BeanGuiFornitore;
+import it.seerp.application.applicazione.bean.BeanGuiFornitore;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -16,18 +21,17 @@ import javax.security.auth.Subject;
 import javax.swing.JOptionPane;
 import it.seerp.Gui.configurazioni.Gui.ConfigurazioneOperazioni;
 import it.seerp.Gui.configurazioni.PermessiDefault;
-import it.seerp.application.tabelle.*;
 import it.seerp.application.applicazione.AppGestioneExtraAzienda;
 import it.seerp.application.applicazione.AppGestionePersonale;
 
 import it.seerp.application.applicazione.AppRuoli;
-import it.seerp.application.bean.BeanGuiCliente;
-import it.seerp.application.bean.BeanGuiDipendente;
+import it.seerp.application.applicazione.bean.BeanGuiCliente;
+import it.seerp.application.applicazione.bean.BeanGuiDipendente;
 
-import it.seerp.application.bean.BeanGuiResponsabile;
+import it.seerp.application.applicazione.bean.BeanGuiResponsabile;
 import it.seerp.storage.Exception.DatiDuplicatiEx;
-import it.seerp.storage.ejb.Permesso;
-import it.seerp.storage.jaas.JaasUtil;
+import it.seerp.storage.jaas.ejb.Permesso;
+import it.seerp.application.jaas.JaasUtil;
 import java.awt.Color;
 import java.util.logging.Logger;
 

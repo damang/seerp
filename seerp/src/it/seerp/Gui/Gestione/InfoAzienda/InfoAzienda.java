@@ -6,7 +6,7 @@ import it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva;
 import it.seerp.Gui.Gestione.InfoAzienda.MenuInfoAzienda;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
 import it.seerp.application.Exception.ValidatorException;
-import it.seerp.application.bean.BeanGuiAzienda;
+import it.seerp.application.applicazione.bean.BeanGuiAzienda;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;

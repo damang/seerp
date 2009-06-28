@@ -4,9 +4,9 @@ import it.seerp.application.Exception.DatiDuplicati;
 import it.seerp.application.Exception.DatiErrati;
 import it.seerp.application.Exception.RicercaFallita;
 import it.seerp.application.Exception.ValidatorException;
-import it.seerp.application.bean.BeanGuiUtente;
-import it.seerp.application.conversioni.Conversione;
-import it.seerp.application.interfacce.GestioneUtenti;
+import it.seerp.application.applicazione.bean.BeanGuiUtente;
+import it.seerp.application.applicazione.conversioni.Conversione;
+import it.seerp.application.applicazione.interfacce.GestioneUtenti;
 import it.seerp.storage.ejb.opPersonaleRuolo.OpeUtente;
 import it.seerp.storage.ejb.Utente;
 import java.sql.SQLException;
@@ -90,7 +90,7 @@ public class AppGestioneUtente implements GestioneUtenti<Utente, BeanGuiUtente> 
         
             OpeUtente ope = new OpeUtente();
             Utente utente = ope.visualizza(user);
-            beanGui = it.seerp.application.conversioni.Conversione.conversioneUtente(utente, beanGui);
+            beanGui = it.seerp.application.applicazione.conversioni.Conversione.conversioneUtente(utente, beanGui);
         
         return beanGui;
     }

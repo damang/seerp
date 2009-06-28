@@ -1,8 +1,8 @@
 
 package it.seerp.Gui.Gestione.Servizi;
 
-import it.seerp.application.bean.BeanGuiServizioAssociato;
-import it.seerp.application.bean.BeanGuiServizio;
+import it.seerp.application.applicazione.bean.BeanGuiServizioAssociato;
+import it.seerp.application.applicazione.bean.BeanGuiServizio;
 import javax.swing.JCheckBox;
 
 /**

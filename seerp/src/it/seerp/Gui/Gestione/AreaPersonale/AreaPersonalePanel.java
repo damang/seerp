@@ -7,9 +7,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import it.seerp.application.applicazione.AppGestioneAreaPersonale;
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
-import it.seerp.application.bean.BeanGuiExtraAzienda;
-import it.seerp.application.bean.BeanGuiPersonale;
-import it.seerp.storage.jaas.SujGest;
+import it.seerp.application.applicazione.bean.BeanGuiExtraAzienda;
+import it.seerp.application.applicazione.bean.BeanGuiPersonale;
+import it.seerp.application.jaas.SujGest;
 import java.awt.Color;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -657,7 +657,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
 
     private void buttonSalva1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalva1ActionPerformed
         try {
-            this.pwd.setEnabled(false);
+            this.pwd.setEnabled(true);
             AppGestioneAreaPersonale operazione = new AppGestioneAreaPersonale();
             operazione.modificaPassword(utente);
             modifica.setEnabled(true);
