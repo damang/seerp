@@ -4,7 +4,7 @@ package it.seerp.Gui.Gestione.Contratti;
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.Gestione.BottoniGenerici.ButtonAnnulla;
 import it.seerp.Gui.Gestione.BottoniGenerici.ButtonSalva;
-import it.seerp.Gui.Gestione.Menu.MenuContratti;
+import it.seerp.Gui.Gestione.Contratti.MenuContratti;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
 import it.seerp.application.tabelle.ContrattoTm;
 import it.seerp.application.bean.BeanGuiContratto;
@@ -142,7 +142,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
         jPanel10 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        inserimentoServizi1 = new it.seerp.Gui.Gestione.BottoniGenerici.InserimentoServizi(this);
+        inserimentoServizi1 = new it.seerp.Gui.Gestione.Servizi.InserimentoServizi(this);
         jPanel2 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         azienda = new javax.swing.JTextField();
@@ -667,7 +667,7 @@ public class GestioneContratti extends ObservableJPanel implements ActionListene
     private javax.swing.JTextField cittafor;
     private javax.swing.JTextField data;
     private javax.swing.JTextField durata;
-    private it.seerp.Gui.Gestione.BottoniGenerici.InserimentoServizi inserimentoServizi1;
+    private it.seerp.Gui.Gestione.Servizi.InserimentoServizi inserimentoServizi1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
