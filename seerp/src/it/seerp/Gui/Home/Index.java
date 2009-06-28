@@ -117,9 +117,9 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
             areaPersonaleButton5 = new it.seerp.Gui.Home.AreaPersonaleButton(this.jTabbedPanePrincipale,this.menuAreaPersonale2,this);
             jXMonthView1 = new org.jdesktop.swingx.JXMonthView();
             jXTitledPanel1 = new org.jdesktop.swingx.JXTitledPanel();
-            menuUtente1 = new it.seerp.Gui.Gestione.Menu.MenuUtente(getSubject());
+            menuUtente1 = new it.seerp.Gui.Gestione.Utenti.MenuUtente(getSubject());
             menuRuoli1 = new it.seerp.Gui.Gestione.Ruoli.MenuRuoli(getSubject());
-            menuContratti1 = new it.seerp.Gui.Gestione.Menu.MenuContratti();
+            menuContratti1 = new it.seerp.Gui.Gestione.Contratti.MenuContratti();
             menuServizi1 = new it.seerp.Gui.Gestione.Servizi.MenuServizi(getSubject());
             menuInfoAzienda1 = new it.seerp.Gui.Gestione.InfoAzienda.MenuInfoAzienda();
             menuAreaPersonale2 = new it.seerp.Gui.Gestione.Menu.MenuAreaPersonale();
@@ -849,11 +849,11 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
     private it.seerp.Gui.Gestione.Menu.MenuAgenda menuAgenda;
     private it.seerp.Gui.Gestione.Menu.MenuAreaPersonale menuAreaPersonale2;
     private javax.swing.JMenuBar menuBar;
-    private it.seerp.Gui.Gestione.Menu.MenuContratti menuContratti1;
+    private it.seerp.Gui.Gestione.Contratti.MenuContratti menuContratti1;
     private it.seerp.Gui.Gestione.InfoAzienda.MenuInfoAzienda menuInfoAzienda1;
     private it.seerp.Gui.Gestione.Ruoli.MenuRuoli menuRuoli1;
     private it.seerp.Gui.Gestione.Servizi.MenuServizi menuServizi1;
-    private it.seerp.Gui.Gestione.Menu.MenuUtente menuUtente1;
+    private it.seerp.Gui.Gestione.Utenti.MenuUtente menuUtente1;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem pasteMenuItem;
     private javax.swing.JMenuItem saveAsMenuItem;

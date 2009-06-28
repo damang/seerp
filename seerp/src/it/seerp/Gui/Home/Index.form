@@ -609,13 +609,13 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="it.seerp.Gui.Gestione.Menu.MenuUtente" name="menuUtente1">
+        <Component class="it.seerp.Gui.Gestione.Utenti.MenuUtente" name="menuUtente1">
           <Properties>
             <Property name="name" type="java.lang.String" value="menuUtente1" noResource="true"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="this.menuUtente1.setVisible(false);"/>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.Menu.MenuUtente(getSubject())"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.Utenti.MenuUtente(getSubject())"/>
           </AuxValues>
         </Component>
         <Component class="it.seerp.Gui.Gestione.Ruoli.MenuRuoli" name="menuRuoli1">
@@ -627,7 +627,7 @@
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Gestione.Ruoli.MenuRuoli(getSubject())"/>
           </AuxValues>
         </Component>
-        <Component class="it.seerp.Gui.Gestione.Menu.MenuContratti" name="menuContratti1">
+        <Component class="it.seerp.Gui.Gestione.Contratti.MenuContratti" name="menuContratti1">
           <Properties>
             <Property name="name" type="java.lang.String" value="menuContratti1" noResource="true"/>
           </Properties>

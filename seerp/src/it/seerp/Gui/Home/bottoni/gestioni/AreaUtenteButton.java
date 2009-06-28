@@ -4,7 +4,7 @@ package it.seerp.Gui.Home.bottoni.gestioni;
 import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.configurazioni.Gui.ConfigurazioneUtente.TIPO_UTENTE_CONST;
 import it.seerp.Gui.Gestione.Utenti.AreaUtentePanel;
-import it.seerp.Gui.Gestione.Menu.MenuUtente;
+import it.seerp.Gui.Gestione.Utenti.MenuUtente;
 import it.seerp.Gui.observerButton.ObserverButton;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
