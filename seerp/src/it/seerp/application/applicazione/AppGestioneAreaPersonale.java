@@ -2,11 +2,11 @@ package it.seerp.application.applicazione;
 
 import it.seerp.application.Exception.DatiErrati;
 import it.seerp.application.Exception.ValidatorException;
-import it.seerp.application.bean.BeanGuiExtraAzienda;
-import it.seerp.application.bean.BeanGuiPersonale;
-import it.seerp.application.bean.BeanGuiUtente;
-import it.seerp.application.conversioni.Conversione;
-import it.seerp.application.interfacce.GestioneAreaPersonale;
+import it.seerp.application.applicazione.bean.BeanGuiExtraAzienda;
+import it.seerp.application.applicazione.bean.BeanGuiPersonale;
+import it.seerp.application.applicazione.bean.BeanGuiUtente;
+import it.seerp.application.applicazione.conversioni.Conversione;
+import it.seerp.application.applicazione.interfacce.GestioneAreaPersonale;
 import it.seerp.storage.ejb.Utente;
 import it.seerp.storage.Operazioni.OpAreaPersonale;
 import it.seerp.storage.ejb.ExtraAzienda;

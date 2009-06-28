@@ -19,7 +19,7 @@ package it.seerp.storage.ejb.opPersonaleRuolo;
 
 //import java.io.FilePermission;
 import it.seerp.storage.jaas.*;
-import it.seerp.storage.ejb.Permesso;
+import it.seerp.storage.jaas.ejb.Permesso;
 import java.security.*;
 import java.security.PermissionCollection;
 //import java.security.Policy;

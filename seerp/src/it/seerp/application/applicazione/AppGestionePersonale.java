@@ -2,11 +2,11 @@ package it.seerp.application.applicazione;
 
 import it.seerp.application.Exception.CancellazioneFallita;
 import it.seerp.application.Exception.ValidatorException;
-import it.seerp.application.bean.BeanGuiAmministratore;
-import it.seerp.application.bean.BeanGuiDipendente;
-import it.seerp.application.bean.BeanGuiFornitore;
-import it.seerp.application.bean.BeanGuiResponsabile;
-import it.seerp.application.conversioni.Conversione;
+import it.seerp.application.applicazione.bean.BeanGuiAmministratore;
+import it.seerp.application.applicazione.bean.BeanGuiDipendente;
+import it.seerp.application.applicazione.bean.BeanGuiFornitore;
+import it.seerp.application.applicazione.bean.BeanGuiResponsabile;
+import it.seerp.application.applicazione.conversioni.Conversione;
 import it.seerp.storage.Exception.DatiDuplicatiEx;
 import it.seerp.storage.Operazioni.OpAmministratore;
 import it.seerp.storage.Operazioni.OpDipendente;
@@ -232,7 +232,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
 
         OpResponsabile ope = new OpResponsabile();
         Responsabile utente = ope.visualizzaResponsabile(user);
-        beanGui = it.seerp.application.conversioni.Conversione.conversioneResponsabile(utente, beanGui);
+        beanGui = it.seerp.application.applicazione.conversioni.Conversione.conversioneResponsabile(utente, beanGui);
         AppRuoli op = new AppRuoli();
         for (String s : op.getNomeRuolo("responsabile")) {
             if (!s.equals(utente.getRuolo().getNome())) {
@@ -251,7 +251,7 @@ public class AppGestionePersonale extends AppGestioneUtente {
 
         OpDipendente ope = new OpDipendente();
         Dipendente utente = ope.visualizzaDati(user);
-        beanGui = it.seerp.application.conversioni.Conversione.conversioneDipendente(utente, beanGui);
+        beanGui = it.seerp.application.applicazione.conversioni.Conversione.conversioneDipendente(utente, beanGui);
          AppRuoli op = new AppRuoli();
          for (String s : op.getNomeRuolo("dipendente")) {
             if (!s.equals(utente.getRuolo().getNome())) {

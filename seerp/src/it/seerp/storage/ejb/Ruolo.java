@@ -1,5 +1,6 @@
 package it.seerp.storage.ejb;
 
+import it.seerp.storage.jaas.ejb.Permesso;
 import it.seerp.storage.ejb.opPersonaleRuolo.OpPersonale;
 import it.seerp.storage.ejb.jaas.PermessoCollection;
 import it.seerp.storage.ejb.jaas.PermissionRoleDBAdapter;

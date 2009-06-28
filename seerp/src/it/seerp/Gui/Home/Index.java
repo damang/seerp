@@ -18,10 +18,10 @@ import it.seerp.Gui.Gestione.agenda.notificaEventi;
 import it.seerp.Gui.configurazioni.PermessiDefault;
 import it.seerp.Gui.observablePanel.ObservableJPanel;
 import it.seerp.application.applicazione.AppInit;
-import it.seerp.storage.ejb.Permesso;
+import it.seerp.storage.jaas.ejb.Permesso;
 import it.seerp.storage.ejb.opPersonaleRuolo.AuthPolicy;
-import it.seerp.storage.jaas.JaasUtil;
-import it.seerp.storage.jaas.SujGest;
+import it.seerp.application.jaas.JaasUtil;
+import it.seerp.application.jaas.SujGest;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
@@ -122,10 +122,10 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
         jXTaskPane1 = new org.jdesktop.swingx.JXTaskPane();
         jPanel1 = new javax.swing.JPanel();
         try{
-            areaUtenteButton1 = new it.seerp.Gui.Home.bottoni.gestioni.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this);
-            areaUtenteButton2 = new it.seerp.Gui.Home.bottoni.gestioni.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this);
-            areaUtenteButton3 = new it.seerp.Gui.Home.bottoni.gestioni.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this);
-            areaUtenteButton4 = new it.seerp.Gui.Home.bottoni.gestioni.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this);
+            areaUtenteButton1 = new it.seerp.Gui.Home.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this);
+            areaUtenteButton2 = new it.seerp.Gui.Home.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this);
+            areaUtenteButton3 = new it.seerp.Gui.Home.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this);
+            areaUtenteButton4 = new it.seerp.Gui.Home.AreaUtenteButton(this.jTabbedPanePrincipale,this.menuUtente1,this);
             jXTaskPane2 = new org.jdesktop.swingx.JXTaskPane();
             jXPanel2 = new org.jdesktop.swingx.JXPanel();
             jButton1 = new javax.swing.JButton();
@@ -146,7 +146,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
             menuServizi1 = new it.seerp.Gui.Gestione.Servizi.MenuServizi(getSubject());
             menuInfoAzienda1 = new it.seerp.Gui.Gestione.InfoAzienda.MenuInfoAzienda();
             menuAreaPersonale2 = new it.seerp.Gui.Gestione.Menu.MenuAreaPersonale();
-            menuAgenda = new it.seerp.Gui.Gestione.Menu.MenuAgenda();
+            menuAgenda = new it.seerp.Gui.Gestione.agenda.MenuAgenda();
             logout1 = new it.seerp.Gui.Home.bottoni.gestioni.Logout();
 
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -776,10 +776,10 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private it.seerp.Gui.Home.AreaPersonaleButton areaPersonaleButton5;
-    private it.seerp.Gui.Home.bottoni.gestioni.AreaUtenteButton areaUtenteButton1;
-    private it.seerp.Gui.Home.bottoni.gestioni.AreaUtenteButton areaUtenteButton2;
-    private it.seerp.Gui.Home.bottoni.gestioni.AreaUtenteButton areaUtenteButton3;
-    private it.seerp.Gui.Home.bottoni.gestioni.AreaUtenteButton areaUtenteButton4;
+    private it.seerp.Gui.Home.AreaUtenteButton areaUtenteButton1;
+    private it.seerp.Gui.Home.AreaUtenteButton areaUtenteButton2;
+    private it.seerp.Gui.Home.AreaUtenteButton areaUtenteButton3;
+    private it.seerp.Gui.Home.AreaUtenteButton areaUtenteButton4;
     private it.seerp.Gui.Home.ButtonAgenda buttonAgenda1;
     private it.seerp.Gui.Home.bottoni.gestioni.ButtonContratti buttonContratti1;
     private it.seerp.Gui.Home.bottoni.gestioni.ButtonInfoAzienda buttonInfoAzienda1;
@@ -800,7 +800,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
     private org.jdesktop.swingx.JXTaskPaneContainer jXTaskPaneContainer1;
     private org.jdesktop.swingx.JXTitledPanel jXTitledPanel1;
     private it.seerp.Gui.Home.bottoni.gestioni.Logout logout1;
-    private it.seerp.Gui.Gestione.Menu.MenuAgenda menuAgenda;
+    private it.seerp.Gui.Gestione.agenda.MenuAgenda menuAgenda;
     private it.seerp.Gui.Gestione.Menu.MenuAreaPersonale menuAreaPersonale2;
     private it.seerp.Gui.Gestione.Contratti.MenuContratti menuContratti1;
     private it.seerp.Gui.Gestione.InfoAzienda.MenuInfoAzienda menuInfoAzienda1;

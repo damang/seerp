@@ -2,11 +2,11 @@ package it.seerp.application.applicazione;
 
 import it.seerp.application.Exception.DatiDuplicati;
 import it.seerp.application.Exception.ValidatorException;
-import it.seerp.application.bean.BeanGuiCliente;
-import it.seerp.application.bean.BeanGuiContatto;
-import it.seerp.application.bean.BeanGuiExtraAzienda;
-import it.seerp.application.bean.BeanGuiFornitore;
-import it.seerp.application.conversioni.Conversione;
+import it.seerp.application.applicazione.bean.BeanGuiCliente;
+import it.seerp.application.applicazione.bean.BeanGuiContatto;
+import it.seerp.application.applicazione.bean.BeanGuiExtraAzienda;
+import it.seerp.application.applicazione.bean.BeanGuiFornitore;
+import it.seerp.application.applicazione.conversioni.Conversione;
 import it.seerp.storage.Exception.DatiDuplicatiEx;
 import it.seerp.storage.Operazioni.OpCliente;
 import it.seerp.storage.Operazioni.OpContatto;
@@ -65,7 +65,7 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
       
             OpCliente ope = new OpCliente();
             Cliente utente = ope.visualizzaDati(user);
-            beanGui = it.seerp.application.conversioni.Conversione.conversioneCliente(utente, beanGui);
+            beanGui = it.seerp.application.applicazione.conversioni.Conversione.conversioneCliente(utente, beanGui);
         
     }
 
@@ -78,7 +78,7 @@ public class AppGestioneExtraAzienda extends AppGestioneUtente {
        
             OpFornitore ope = new OpFornitore();
             Fornitore utente = ope.visualizzaDati(user);
-            beanGui = it.seerp.application.conversioni.Conversione.conversioneFornitore(utente, beanGui);
+            beanGui = it.seerp.application.applicazione.conversioni.Conversione.conversioneFornitore(utente, beanGui);
        
     }
 

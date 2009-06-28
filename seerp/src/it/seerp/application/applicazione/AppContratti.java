@@ -1,9 +1,9 @@
 package it.seerp.application.applicazione;
 
 import it.seerp.application.Exception.ValidatorException;
-import it.seerp.application.bean.BeanGuiContratto;
-import it.seerp.application.conversioni.Conversione;
-import it.seerp.application.interfacce.GestioneContratti;
+import it.seerp.application.applicazione.bean.BeanGuiContratto;
+import it.seerp.application.applicazione.conversioni.Conversione;
+import it.seerp.application.applicazione.interfacce.GestioneContratti;
 import it.seerp.storage.Operazioni.OpContratto;
 import it.seerp.storage.ejb.Contratto;
 import java.sql.SQLException;
