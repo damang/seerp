@@ -40,7 +40,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
 
         modifica.setEnabled(true);
         buttonSalva1.setEnabled(false);
-        this.pwd.setEditable(false);
+        //this.pwd.setEditable(false);
         editabile(false);
         AppGestioneAreaPersonale a = new AppGestioneAreaPersonale();
 
@@ -649,6 +649,7 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
         this.pwd.setEnabled(true);
         modifica.setEnabled(false);
         buttonSalva1.setEnabled(true);
+        //editabile(true);
     }//GEN-LAST:event_modificaActionPerformed
 
     private void tellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tellActionPerformed
@@ -657,7 +658,8 @@ public class AreaPersonalePanel extends ObservableJPanel implements ActionListen
 
     private void buttonSalva1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalva1ActionPerformed
         try {
-            this.pwd.setEnabled(true);
+            this.pwd.setEnabled(false);
+            //editabile(false);
             AppGestioneAreaPersonale operazione = new AppGestioneAreaPersonale();
             operazione.modificaPassword(utente);
             modifica.setEnabled(true);
