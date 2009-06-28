@@ -189,7 +189,6 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Quantità"));
         jPanel4.setName("jPanel4"); // NOI18N
 
-        qnt.setText("1000");
         qnt.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         qnt.setName("Quantita"); // NOI18N
         qnt.setSelectedTextColor(new java.awt.Color(255, 0, 51));
@@ -213,7 +212,6 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo"));
         jPanel5.setName("jPanel5"); // NOI18N
 
-        tipo.setText("Tipo");
         tipo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         tipo.setName("Tipo"); // NOI18N
         tipo.setSelectedTextColor(new java.awt.Color(255, 0, 51));
@@ -242,7 +240,6 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Prezzo"));
         jPanel7.setName("jPanel7"); // NOI18N
 
-        prz.setText("000.00");
         prz.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         prz.setName("Prezzo"); // NOI18N
         prz.setSelectedTextColor(new java.awt.Color(255, 0, 51));
@@ -336,7 +333,6 @@ public class GestioneServizi extends ObservableJPanel implements ActionListener 
         jPanel20.setBorder(javax.swing.BorderFactory.createTitledBorder("IVA"));
         jPanel20.setName("jPanel20"); // NOI18N
 
-        iva.setText("10%");
         iva.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         iva.setName("Iva"); // NOI18N
         iva.setSelectedTextColor(new java.awt.Color(255, 0, 51));

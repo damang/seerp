@@ -268,7 +268,7 @@ public class OpDipendente extends OpPersonale {
     conne.commit();
     } catch (SQLException e) {
     conne.rollback();
-    System.out.println("modifica fallita");
+   // System.out.println("modifica fallita");
     }
     }
     return user;

@@ -101,7 +101,7 @@ public class OpAzienda {
         stmt = (PreparedStatement) connessione.prepareStatement(sql);
 
         rs = stmt.executeQuery();
-        System.out.println( rs);
+     //   System.out.println( rs);
 
         // Define the resource list
         while (rs.next()) {
