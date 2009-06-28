@@ -1054,19 +1054,4 @@ public class GestioneInit extends javax.swing.JPanel {
         cmd.execute();
 
     }
-
-    /**
-     *
-     * @param args
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            public void run() {
-                GestioneInit f = new GestioneInit();
-               
-            }
-        });
-    }
-
 }
