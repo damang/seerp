@@ -119,7 +119,7 @@ public class OpResponsabile extends OpeUtente {
         } catch (SQLException se) {
             se.printStackTrace();
             co.rollback();
-            System.out.println("eliminazione fallita");
+         //   System.out.println("eliminazione fallita");
         }
 
         stmt.close();
@@ -270,7 +270,7 @@ public class OpResponsabile extends OpeUtente {
         con.commit();
         } catch (SQLException e) {
         con.rollback();
-        System.out.println("modifica fallita");
+    //    System.out.println("modifica fallita");
         }
 
         }

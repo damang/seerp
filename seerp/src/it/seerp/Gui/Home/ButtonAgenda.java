@@ -130,7 +130,7 @@ public class ButtonAgenda extends ObserverButton implements CommandInterface {
 
             isPresente = true;
             this.tabbedPane.addTab(s, panel);
-            System.out.println(this.tabbedPane.getTabCount() - 1);
+          //  System.out.println(this.tabbedPane.getTabCount() - 1);
             ButtonTabComponent button = new ButtonTabComponent(this.tabbedPane, this.panel, this.menu);
             this.tabbedPane.setTabComponentAt(this.tabbedPane.getTabCount() - 1, button);
             panel.setVisible(true);

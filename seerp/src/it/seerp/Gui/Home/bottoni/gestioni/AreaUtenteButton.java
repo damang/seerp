@@ -5,9 +5,11 @@ import it.seerp.Gui.configurazioni.pattern.command.CommandInterface;
 import it.seerp.Gui.configurazioni.Gui.ConfigurazioneUtente.TIPO_UTENTE_CONST;
 import it.seerp.Gui.Gestione.Utenti.AreaUtentePanel;
 import it.seerp.Gui.Gestione.Utenti.MenuUtente;
+import it.seerp.Gui.Home.Index;
 import it.seerp.Gui.observerButton.ObserverButton;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import javax.security.auth.Subject;
 import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 
@@ -24,6 +26,7 @@ public class AreaUtenteButton extends ObserverButton implements CommandInterface
     private MenuUtente menu;
     AreaUtentePanel panel;
     String s = "";
+    private Subject ut_sub;
 
     /**
      *
@@ -32,10 +35,10 @@ public class AreaUtenteButton extends ObserverButton implements CommandInterface
      * @param act
      * @throws SQLException
      */
-    public AreaUtenteButton(JTabbedPane pan, MenuUtente menu, ActionListener act) throws SQLException {
+    public AreaUtenteButton(JTabbedPane pan, MenuUtente menu, Index act) throws SQLException {
         this.tabbedPane = pan;
         this.menu = menu;
-
+        ut_sub=act.getSubject();
         this.addActionListener(act);
 
 
@@ -58,7 +61,7 @@ public class AreaUtenteButton extends ObserverButton implements CommandInterface
             isPresente = true;
             this.tabbedPane.addTab(s, panel);
 
-            System.out.println(this.tabbedPane.getTabCount() - 1);
+       //     System.out.println(this.tabbedPane.getTabCount() - 1);
             ButtonTabComponent button = new ButtonTabComponent(this.tabbedPane, this.panel, this.menu);
             this.tabbedPane.setTabComponentAt(this.tabbedPane.getTabCount() - 1, button);
             panel.setVisible(true);
@@ -77,25 +80,25 @@ public class AreaUtenteButton extends ObserverButton implements CommandInterface
         String tipoUtente = (this.getText());
 
         if (tipoUtente.compareToIgnoreCase("Clienti") == 0) {
-            this.panel = new AreaUtentePanel(TIPO_UTENTE_CONST.CLIENTE);
+            this.panel = new AreaUtentePanel(TIPO_UTENTE_CONST.CLIENTE,ut_sub);
             s = "Area Clienti";
             panel.register(this);
 
         } else if (tipoUtente.compareToIgnoreCase("Dipendenti") == 0) {
-            this.panel = new AreaUtentePanel(TIPO_UTENTE_CONST.DIPENDENTE);
+            this.panel = new AreaUtentePanel(TIPO_UTENTE_CONST.DIPENDENTE,ut_sub);
 
             s = "Area Dipendenti";
             panel.register(this);
 
         } else if (tipoUtente.compareToIgnoreCase("Fornitori") == 0) {
-            this.panel = new AreaUtentePanel(TIPO_UTENTE_CONST.FORNITORE);
+            this.panel = new AreaUtentePanel(TIPO_UTENTE_CONST.FORNITORE,ut_sub);
 
             s = "Area Fornitori";
             panel.register(this);
 
 
         } else if (tipoUtente.compareToIgnoreCase("Responsabili") == 0) {
-            this.panel = new AreaUtentePanel(TIPO_UTENTE_CONST.RESPONSABILE);
+            this.panel = new AreaUtentePanel(TIPO_UTENTE_CONST.RESPONSABILE,ut_sub);
 
             s = "Area Responsabili";
             panel.register(this);

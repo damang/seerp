@@ -46,32 +46,54 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
     /** Creates new form Index
      * @param sub
      */
-    public Index(JaasUtil ja) {
+  /*  private Index(JaasUtil ja) {
         ut_jaas = ja;
         tipDay = new notificaEventi(SujGest.getIdUtente(ut_jaas.getSubject()));
-
         initComponents();
-
-        //  GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        // setSize(ge.getMaximumWindowBounds().width,ge.getMaximumWindowBounds().height);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.pack();
-      
-       
         settaPermessi();
         setVisible(true);
-        //tipDay.
-
         tipDay.showDialog(this);
+    }*/
+
+    public Index() {
+                login();
+    }
+
+    private void login() {
+        final JaasUtil ja = new JaasUtil();
+                final JFrame io= this;
+                ja.addLoginListener(new LoginAdapter() {
+                    @Override
+                    public void loginSucceeded(LoginEvent source) {
+                        super.loginSucceeded(source);
+                    //    java.awt.EventQueue.invokeLater(new Runnable() {
+
+                      //      public void run() {
+                                ut_jaas = ja;
+                                tipDay = new notificaEventi(SujGest.getIdUtente(ut_jaas.getSubject()));
+                                initComponents();
+                                io.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                                io.pack();
+                                settaPermessi();
+                                io.setVisible(true);
+                                tipDay.showDialog(io);
+                           // }
+                    //    });
+                    }
+                });
+                JXLoginPane p = new JXLoginPane(ja);
+                JXLoginPane.showLoginFrame(p).setVisible(true);
     }
 
     private void settaPermessi() {
-        areaUtenteButton1.setEnabled(JaasUtil.checkPermission(ut_jaas.getSubject(), new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneResponsabili),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELENCA))));
-        areaUtenteButton2.setEnabled(JaasUtil.checkPermission(ut_jaas.getSubject(), new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELENCA))));
-        areaUtenteButton3.setEnabled(JaasUtil.checkPermission(ut_jaas.getSubject(), new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELENCA))));
-        areaUtenteButton4.setEnabled(JaasUtil.checkPermission(ut_jaas.getSubject(), new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELENCA))));
-        buttonServizi1.setEnabled(JaasUtil.checkPermission(ut_jaas.getSubject(), new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELENCA))));
-        buttonRuoli1.setEnabled(JaasUtil.checkPermission(ut_jaas.getSubject(), new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELENCA))));
+        areaUtenteButton1.setEnabled(JaasUtil.checkPermission(ut_jaas.getSubject(), new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneResponsabili), PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELENCA))));
+        areaUtenteButton2.setEnabled(JaasUtil.checkPermission(ut_jaas.getSubject(), new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti), PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELENCA))));
+        areaUtenteButton3.setEnabled(JaasUtil.checkPermission(ut_jaas.getSubject(), new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori), PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELENCA))));
+        areaUtenteButton4.setEnabled(JaasUtil.checkPermission(ut_jaas.getSubject(), new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti), PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELENCA))));
+        buttonServizi1.setEnabled(JaasUtil.checkPermission(ut_jaas.getSubject(), new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneServizi), PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELENCA))));
+        buttonRuoli1.setEnabled(JaasUtil.checkPermission(ut_jaas.getSubject(), new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneRuoli), PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.ELENCA))));
     }
 
     /**
@@ -81,6 +103,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
     public Subject getSubject() {
         return ut_jaas.getSubject();
     }
+
     public JaasUtil getUtilLogin() {
         return ut_jaas;
     }
@@ -125,22 +148,13 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
             menuAreaPersonale2 = new it.seerp.Gui.Gestione.Menu.MenuAreaPersonale();
             menuAgenda = new it.seerp.Gui.Gestione.Menu.MenuAgenda();
             logout1 = new it.seerp.Gui.Home.bottoni.gestioni.Logout();
-            menuBar = new javax.swing.JMenuBar();
-            fileMenu = new javax.swing.JMenu();
-            openMenuItem = new javax.swing.JMenuItem();
-            saveMenuItem = new javax.swing.JMenuItem();
-            saveAsMenuItem = new javax.swing.JMenuItem();
-            exitMenuItem = new javax.swing.JMenuItem();
-            editMenu = new javax.swing.JMenu();
-            cutMenuItem = new javax.swing.JMenuItem();
-            copyMenuItem = new javax.swing.JMenuItem();
-            pasteMenuItem = new javax.swing.JMenuItem();
-            deleteMenuItem = new javax.swing.JMenuItem();
-            helpMenu = new javax.swing.JMenu();
-            contentsMenuItem = new javax.swing.JMenuItem();
-            aboutMenuItem = new javax.swing.JMenuItem();
 
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+            addWindowListener(new java.awt.event.WindowAdapter() {
+                public void windowClosing(java.awt.event.WindowEvent evt) {
+                    formWindowClosing(evt);
+                }
+            });
 
             jTabbedPanePrincipale.setName("jTabbedPanePrincipale"); // NOI18N
             jTabbedPanePrincipale.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -370,7 +384,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
         buttonInfoAzienda1.setName("buttonInfoAzienda1"); // NOI18N
 
         buttonAgenda1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/addressbook-32x32.png"))); // NOI18N
-        buttonAgenda1.setText("buttonAgenda1");
+        buttonAgenda1.setText("Agenda");
         buttonAgenda1.setContentAreaFilled(false);
         buttonAgenda1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         buttonAgenda1.setName("buttonAgenda1"); // NOI18N
@@ -470,7 +484,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
                     .addComponent(menuAreaPersonale2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(menuInfoAzienda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(menuAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         this.menuUtente1.setVisible(false);
@@ -489,55 +503,6 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
                 logout1ActionPerformed(evt);
             }
         });
-
-        fileMenu.setText("File");
-
-        openMenuItem.setText("Open");
-        fileMenu.add(openMenuItem);
-
-        saveMenuItem.setText("Save");
-        fileMenu.add(saveMenuItem);
-
-        saveAsMenuItem.setText("Save As ...");
-        fileMenu.add(saveAsMenuItem);
-
-        exitMenuItem.setText("Exit");
-        exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitMenuItemActionPerformed(evt);
-            }
-        });
-        fileMenu.add(exitMenuItem);
-
-        menuBar.add(fileMenu);
-
-        editMenu.setText("Edit");
-
-        cutMenuItem.setText("Cut");
-        editMenu.add(cutMenuItem);
-
-        copyMenuItem.setText("Copy");
-        editMenu.add(copyMenuItem);
-
-        pasteMenuItem.setText("Paste");
-        editMenu.add(pasteMenuItem);
-
-        deleteMenuItem.setText("Delete");
-        editMenu.add(deleteMenuItem);
-
-        menuBar.add(editMenu);
-
-        helpMenu.setText("Help");
-
-        contentsMenuItem.setText("Contents");
-        helpMenu.add(contentsMenuItem);
-
-        aboutMenuItem.setText("About");
-        helpMenu.add(aboutMenuItem);
-
-        menuBar.add(helpMenu);
-
-        setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -563,17 +528,13 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
                         .addComponent(logout1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jXTitledPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.DEFAULT_SIZE, 855, Short.MAX_VALUE)
+                .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.DEFAULT_SIZE, 865, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, 1014, Short.MAX_VALUE)
+            .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, 1035, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_exitMenuItemActionPerformed
 
     private void areaPersonaleButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areaPersonaleButtomActionPerformed
         // TODO add your handling code here:
@@ -739,8 +700,15 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
     }//GEN-LAST:event_jXMonthView1ActionPerformed
 
     private void logout1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout1ActionPerformed
-        System.exit(0);
+        ut_jaas.logout();
+        Index i=this;
+        this.dispose();
+        i=new Index();
     }//GEN-LAST:event_logout1ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+         ut_jaas.logout();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -760,51 +728,46 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
             } catch (UnsupportedLookAndFeelException ex) {
                 ex.printStackTrace();
             }
-           AppInit app = new AppInit();
+            AppInit app = new AppInit();
             if (!app.check()) {
                 GestioneInit info = new GestioneInit();
-            }
-            else {
-                final JaasUtil ja = new JaasUtil();
-                ja.addLoginListener(new LoginAdapter() {
+            } else {
+               java.awt.EventQueue.invokeLater(new Runnable() {
 
-                @Override
-                public void loginSucceeded(LoginEvent source) {
-                    super.loginSucceeded(source);
-                    java.awt.EventQueue.invokeLater(new Runnable() {
+                            public void run() {
+                                new Index();
+                            }
+                        });
+                    }
 
-                        public void run() {
-                            new Index(ja).setVisible(true);
-                        }
-                    });
-                }
-            });
-            JXLoginPane p = new JXLoginPane(ja);
-            JXLoginPane.showLoginFrame(p).setVisible(true);
-          }
-           
-       } catch (SQLException ex) {
+
+
+
+        } catch (SQLException ex) {
             switch (ex.getErrorCode()) {
-                case 0: JOptionPane.showMessageDialog(null, "Database non presente!!","Errore",JOptionPane.ERROR_MESSAGE);
-                        break;
-                case 1044: JOptionPane.showMessageDialog(null, "Impossibile accedere al database! "+ex.getMessage(),"Errore",JOptionPane.ERROR_MESSAGE);
-                        break;
-                default: JOptionPane.showMessageDialog(null, "Errore di accesso al database: "+ ex.getErrorCode());
-                         break;
+                case 0:
+                    JOptionPane.showMessageDialog(null, "Database non presente!!", "Errore", JOptionPane.ERROR_MESSAGE);
+                    break;
+                case 1044:
+                    JOptionPane.showMessageDialog(null, "Impossibile accedere al database! " + ex.getMessage(), "Errore", JOptionPane.ERROR_MESSAGE);
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Errore di accesso al database: " + ex.getErrorCode());
+                    break;
             }
             System.exit(0);
         }
-        /*    final Subject _subject = new Subject();
-        _subject.getPrincipals().add(new AuthPrincipal("majinb", "username"));
-        _subject.getPrincipals().add(new AuthPrincipal("amministratore", "ruolo"));
-        _subject.getPrincipals().add(new AuthPrincipal("1", "id"));
-        _subject.getPrincipals().add(new AuthPrincipal("personale", "tipo"));
-        java.awt.EventQueue.invokeLater(new Runnable() {
+    /*    final Subject _subject = new Subject();
+    _subject.getPrincipals().add(new AuthPrincipal("majinb", "username"));
+    _subject.getPrincipals().add(new AuthPrincipal("amministratore", "ruolo"));
+    _subject.getPrincipals().add(new AuthPrincipal("1", "id"));
+    _subject.getPrincipals().add(new AuthPrincipal("personale", "tipo"));
+    java.awt.EventQueue.invokeLater(new Runnable() {
 
-            public void run() {
-                new Index(_subject);
-            }
-        });*/
+    public void run() {
+    new Index(_subject);
+    }
+    });*/
 
 
 
@@ -812,7 +775,6 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem aboutMenuItem;
     private it.seerp.Gui.Home.AreaPersonaleButton areaPersonaleButton5;
     private it.seerp.Gui.Home.bottoni.gestioni.AreaUtenteButton areaUtenteButton1;
     private it.seerp.Gui.Home.bottoni.gestioni.AreaUtenteButton areaUtenteButton2;
@@ -823,14 +785,6 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
     private it.seerp.Gui.Home.bottoni.gestioni.ButtonInfoAzienda buttonInfoAzienda1;
     private it.seerp.Gui.Home.bottoni.gestioni.ButtonRuoli buttonRuoli1;
     private it.seerp.Gui.Home.bottoni.gestioni.ButtonServizi buttonServizi1;
-    private javax.swing.JMenuItem contentsMenuItem;
-    private javax.swing.JMenuItem copyMenuItem;
-    private javax.swing.JMenuItem cutMenuItem;
-    private javax.swing.JMenuItem deleteMenuItem;
-    private javax.swing.JMenu editMenu;
-    private javax.swing.JMenuItem exitMenuItem;
-    private javax.swing.JMenu fileMenu;
-    private javax.swing.JMenu helpMenu;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
@@ -848,16 +802,11 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
     private it.seerp.Gui.Home.bottoni.gestioni.Logout logout1;
     private it.seerp.Gui.Gestione.Menu.MenuAgenda menuAgenda;
     private it.seerp.Gui.Gestione.Menu.MenuAreaPersonale menuAreaPersonale2;
-    private javax.swing.JMenuBar menuBar;
     private it.seerp.Gui.Gestione.Contratti.MenuContratti menuContratti1;
     private it.seerp.Gui.Gestione.InfoAzienda.MenuInfoAzienda menuInfoAzienda1;
     private it.seerp.Gui.Gestione.Ruoli.MenuRuoli menuRuoli1;
     private it.seerp.Gui.Gestione.Servizi.MenuServizi menuServizi1;
     private it.seerp.Gui.Gestione.Utenti.MenuUtente menuUtente1;
-    private javax.swing.JMenuItem openMenuItem;
-    private javax.swing.JMenuItem pasteMenuItem;
-    private javax.swing.JMenuItem saveAsMenuItem;
-    private javax.swing.JMenuItem saveMenuItem;
     // End of variables declaration//GEN-END:variables
     private JaasUtil ut_jaas;
     private org.jdesktop.swingx.JXTipOfTheDay tipDay;

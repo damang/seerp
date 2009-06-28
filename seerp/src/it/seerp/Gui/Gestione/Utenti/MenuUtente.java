@@ -157,6 +157,11 @@ public class MenuUtente extends javax.swing.JPanel implements ActionListener {
     public JButton getAggiungi(){
       return aggiungiButton1;
   }
+
+    public Subject getUserSubject() {
+        return ut_sub;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private it.seerp.Gui.Gestione.Menu.AggiungiButtonUtenti aggiungiButton1;
     private it.seerp.Gui.Gestione.Menu.EliminaButtonUtente eliminaButton1;

@@ -110,8 +110,8 @@ public class OpExtraAzienda extends OpeUtente {
             stmt1.setInt(1, user.getIdUtente());
 
             // Execute the query
-            System.out.println(stmt.execute());
-            System.out.println(stmt1.execute());
+       //     System.out.println(stmt.execute());
+         //   System.out.println(stmt1.execute());
 
             connection.commit();
         } catch (SQLException se) {
