@@ -63,7 +63,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
      * @throws java.sql.SQLException
      */
     public AreaUtentePanel(ConfigurazioneUtente.TIPO_UTENTE_CONST tipoUtente, Subject sub) throws SQLException {
-        this.ut_sub=sub;
+        this.ut_sub = sub;
         this.tipoU = tipoUtente;
         this.settaTableModel();
         initComponents();
@@ -84,19 +84,16 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
     private void setEnabledByPerm() {
         if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
-            this.find_bar.setVisible(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneResponsabili),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.RICERCA))));
-           
+            this.find_bar.setVisible(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneResponsabili), PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.RICERCA))));
+
+        } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
+            this.find_bar.setVisible(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti), PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.RICERCA))));
+
+        } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
+            this.find_bar.setVisible(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori), PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.RICERCA))));
+        } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
+            this.find_bar.setVisible(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti), PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.RICERCA))));
         }
-        else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
-            this.find_bar.setVisible(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneClienti),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.RICERCA))));
-            
-        }
-        else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
-            this.find_bar.setVisible(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneFornitori),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.RICERCA))));
-           }
-        else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
-            this.find_bar.setVisible(JaasUtil.checkPermission(ut_sub, new Permesso(PermessiDefault.valueOf(PermessiDefault.Categoria_Permesso.GestioneDipendenti),PermessiDefault.valueOf(PermessiDefault.Operazione_Permesso.RICERCA))));
-           }
     }
 
     /**
@@ -119,7 +116,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
      * Metodo che associa il menù al form Area utente
      * @return il tipo di utente
      */
-    public MenuUtente getMenu(){
+    public MenuUtente getMenu() {
         return menu;
     }
 
@@ -1062,7 +1059,7 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
         this.mail.setText(s);
         this.user.setText(s);
         this.pwd.setText(s);
-       this.indirizzo.setText(s);
+        this.indirizzo.setText(s);
         this.codFisc.setText(s);
         this.ragSoc.setText(s);
         this.fax.setText(s);
@@ -1244,41 +1241,41 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
     private void settaPanel() throws SQLException {
         try {
-        if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
+            if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
 
-            this.jPanel13.setVisible(false);
-        } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
-            AppRuoli app = new AppRuoli();
+                this.jPanel13.setVisible(false);
+            } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
+                AppRuoli app = new AppRuoli();
 
-            ruolo.removeAllItems();
-            for (String s : app.getNomeRuolo("dipendente")) {
+                ruolo.removeAllItems();
+                for (String s : app.getNomeRuolo("dipendente")) {
 
-                ruolo.addItem(s);
+                    ruolo.addItem(s);
+                }
+                this.jPanel14.setVisible(false);
+
+                this.jPanel19.setVisible(false);
+                this.jPanel17.setVisible(false);
+            } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
+
+                this.jPanel13.setVisible(false);
+
+            } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
+                AppRuoli app = new AppRuoli();
+
+                ruolo.removeAllItems();
+                for (String s : app.getNomeRuolo("responsabile")) {
+
+                    ruolo.addItem(s);
+                }
+                this.jPanel14.setVisible(false);
+
+                this.jPanel19.setVisible(false);
+                this.jPanel17.setVisible(false);
             }
-            this.jPanel14.setVisible(false);
-          
-            this.jPanel19.setVisible(false);
-            this.jPanel17.setVisible(false);
-        } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
-
-            this.jPanel13.setVisible(false);
-
-        } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
-            AppRuoli app = new AppRuoli();
-
-            ruolo.removeAllItems();
-            for (String s : app.getNomeRuolo("responsabile")) {
-
-                ruolo.addItem(s);
-            }
-            this.jPanel14.setVisible(false);
-          
-            this.jPanel19.setVisible(false);
-            this.jPanel17.setVisible(false);
+        } catch (ValidatorException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-          } catch (ValidatorException ex) {
-                JOptionPane.showMessageDialog(null, ex.getMessage());
-            }
 
     }
 
@@ -1286,17 +1283,18 @@ public class AreaUtentePanel extends ObservableJPanel implements ActionListener 
 
         if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.CLIENTE)) {
             tModel = new ClienteTm();
-
+            this.setBackground(Color.green);
         } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.DIPENDENTE)) {
             tModel = new DipendenteTm();
 
+            this.setBackground(Color.YELLOW);
         } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.FORNITORE)) {
             tModel = new FornitoreTm();
-
+            this.setBackground(Color.ORANGE);
 
         } else if (tipoU.equals(ConfigurazioneUtente.TIPO_UTENTE_CONST.RESPONSABILE)) {
             tModel = new ResponsabileTm();
-
+            this.setBackground(Color.GRAY);
         }
 
     }

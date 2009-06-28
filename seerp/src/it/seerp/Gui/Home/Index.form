@@ -336,6 +336,7 @@
                     <Property name="name" type="java.lang.String" value="buttonContratti1" noResource="true"/>
                   </Properties>
                   <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="this.buttonContratti1.setEnabled(true);"/>
                     <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Home.bottoni.gestioni.ButtonContratti(this.jTabbedPanePrincipale,this.menuContratti1,this)"/>
                   </AuxValues>
                 </Component>
