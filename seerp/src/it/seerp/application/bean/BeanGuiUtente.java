@@ -42,7 +42,7 @@ public class BeanGuiUtente {
         ((NotEmptyValidator) txtUsername.getInputVerifier()).setEnabled(validator);
         ((NotEmptyValidator) txtTelefono.getInputVerifier()).setEnabled(validator);
         ((NotEmptyValidator) cap.getInputVerifier()).setEnabled(validator);
-//        ((NotEmptyValidator) indirizzo.getInputVerifier()).setEnabled(validator);
+        ((NotEmptyValidator) indirizzo.getInputVerifier()).setEnabled(validator);
 
         ((NotEmptyValidator) txtProvincia.getInputVerifier()).reset(txtProvincia);
         ((NotEmptyValidator) txtPassword.getInputVerifier()).reset(txtPassword);
@@ -51,21 +51,21 @@ public class BeanGuiUtente {
         ((NotEmptyValidator) txtUsername.getInputVerifier()).reset(txtUsername);
         ((NotEmptyValidator) txtTelefono.getInputVerifier()).reset(txtTelefono);
         ((NotEmptyValidator) cap.getInputVerifier()).reset(cap);
-      //  ((NotEmptyValidator) indirizzo.getInputVerifier()).reset(indirizzo);
+        ((NotEmptyValidator) indirizzo.getInputVerifier()).reset(indirizzo);
     }
 
     public JTextField getIndirizzo() throws ValidatorException {
-    //    if (validator == true) {
-//            if (!indirizzo.getInputVerifier().shouldYieldFocus(tipo)) {
-  //              throw new ValidatorException("Il campo non può essere vuoto.");
-      //      }
-        //}
+        if (validator == true) {
+            if (!indirizzo.getInputVerifier().shouldYieldFocus(indirizzo)) {
+                throw new ValidatorException("Il campo non può essere vuoto.");
+            }
+        }
         return indirizzo;
     }
 
     public void setIndirizzo(JTextField indirizzo) {
         this.indirizzo = indirizzo;
-       // this.indirizzo.setInputVerifier(new NotEmptyValidator(grafica, indirizzo, "Il campo non può essere vuoto.", RegexpDef.valueOf(RegexpDef.VAL.VUOTO)));
+        this.indirizzo.setInputVerifier(new NotEmptyValidator(grafica, this.indirizzo, "Il campo non può essere vuoto.", RegexpDef.valueOf(RegexpDef.VAL.VUOTO)));
     }
     
     /**
