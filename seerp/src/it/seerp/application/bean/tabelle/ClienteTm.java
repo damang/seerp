@@ -26,11 +26,11 @@ public class ClienteTm extends Generica<Cliente> {
         Object[] list = new Object[]{
             "Id",
             "Ragione sociale",
-            "Nome",
-            "Cognome",};
+            "Username",
+           };
 
         super.setColumnIdentifiers(list);
-        super.setColumnCount(4);
+        super.setColumnCount(3);
 
         refresh();
     }
@@ -60,8 +60,8 @@ public class ClienteTm extends Generica<Cliente> {
         Vector c = new Vector();
         c.add(o.getIdUtente());
         c.add(o.getRagioneSociale());
-        c.add(o.getNome());
-        c.add(o.getCognome());
+        c.add(o.getUsername());
+       
 
 
         return c;

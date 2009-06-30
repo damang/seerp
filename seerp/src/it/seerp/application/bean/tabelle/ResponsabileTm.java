@@ -27,14 +27,13 @@ public class ResponsabileTm extends Generica <Responsabile>{
  public ResponsabileTm() throws SQLException, SQLException {
         Object[] list = new Object[]{
             "Id",
-            "Nome",
-            "Cognome",
-            "Data di nasciata",
+            "Username",
+            "Ruolo"
 
         };
 
         super.setColumnIdentifiers(list);
-        super.setColumnCount(4);
+        super.setColumnCount(3);
           refresh();
 
 
@@ -56,9 +55,9 @@ public class ResponsabileTm extends Generica <Responsabile>{
     protected Vector creaArrayObjectData(Responsabile o) {
         Vector c = new Vector();
         c.add(o.getIdUtente());
-        c.add(o.getNome());
-        c.add(o.getCognome());
-        c.add(o.getEmail());
+        c.add(o.getUsername());
+        c.add(o.getRuolo().getNome());
+   
 
 
         return c;

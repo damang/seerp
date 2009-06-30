@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Connection;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -323,7 +324,7 @@ public class OpCliente extends OpExtraAzienda {
             cliente.setFax(rs.getString(16));
             cliente.setCodiceFiscale(rs.getString(17));
              cliente.setIndirizzo(rs.getString(18));
-
+           
         }
         rs.close();
         stmt.close();

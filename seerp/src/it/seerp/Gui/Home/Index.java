@@ -315,6 +315,11 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
         buttonContratti1.setContentAreaFilled(false);
         buttonContratti1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         buttonContratti1.setName("buttonContratti1"); // NOI18N
+        buttonContratti1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonContratti1ActionPerformed(evt);
+            }
+        });
 
         buttonServizi1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/it/seerp/Gui/icone/ico32x32/shopping_cart.png"))); // NOI18N
         buttonServizi1.setText("Servizi");
@@ -348,7 +353,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
                 .addComponent(buttonServizi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        this.buttonContratti1.setEnabled(true);
+        this.buttonContratti1.setEnabled(false);
 
         jXTaskPane2.getContentPane().add(jXPanel2);
 
@@ -530,7 +535,7 @@ public class Index extends javax.swing.JFrame implements ActionListener, ItemLis
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPanePrincipale, javax.swing.GroupLayout.DEFAULT_SIZE, 865, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, 1035, Short.MAX_VALUE)
+            .addComponent(jXTaskPaneContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, 1038, Short.MAX_VALUE)
         );
 
         pack();

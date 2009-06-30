@@ -54,7 +54,7 @@
               <Component id="jTabbedPanePrincipale" pref="865" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
-          <Component id="jXTaskPaneContainer1" alignment="0" pref="1035" max="32767" attributes="0"/>
+          <Component id="jXTaskPaneContainer1" alignment="0" pref="1038" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -335,8 +335,11 @@
                     <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="name" type="java.lang.String" value="buttonContratti1" noResource="true"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonContratti1ActionPerformed"/>
+                  </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="this.buttonContratti1.setEnabled(true);"/>
+                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="this.buttonContratti1.setEnabled(false);"/>
                     <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new it.seerp.Gui.Home.bottoni.gestioni.ButtonContratti(this.jTabbedPanePrincipale,this.menuContratti1,this)"/>
                   </AuxValues>
                 </Component>

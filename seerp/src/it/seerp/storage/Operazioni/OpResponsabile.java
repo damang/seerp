@@ -68,8 +68,8 @@ public class OpResponsabile extends OpeUtente {
             res.setCognome(rs.getString(11));
             res.setNome(rs.getString(12));
             res.setCodiceFiscale(rs.getString(13));
-            res.setRuolo(new Ruolo(rs.getString(13)));
-            res.setVisible(rs.getBoolean(14));
+            res.setRuolo(new Ruolo(rs.getString(14)));
+            res.setVisible(rs.getBoolean(15));
             res.setIndirizzo(rs.getString("indirizzo"));
             list.add(res);
         }

@@ -1,8 +1,5 @@
 package it.seerp.application.applicazione;
 
-import it.seerp.application.Exception.DatiDuplicati;
-import it.seerp.application.Exception.DatiErrati;
-import it.seerp.application.Exception.RicercaFallita;
 import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.applicazione.bean.BeanGuiUtente;
 import it.seerp.application.applicazione.conversioni.Conversione;
@@ -11,7 +8,6 @@ import it.seerp.storage.ejb.opPersonaleRuolo.OpeUtente;
 import it.seerp.storage.ejb.Utente;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 /**
  * Classe per permette di effettuare le operazioni della Gestione

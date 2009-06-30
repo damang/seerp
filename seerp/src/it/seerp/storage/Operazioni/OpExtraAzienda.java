@@ -16,6 +16,7 @@ import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  * classe per la gestione  ExtraAzienda
@@ -91,7 +92,6 @@ public class OpExtraAzienda extends OpeUtente {
     public void elimina(ExtraAzienda user) throws SQLException {
 
 
-
         connection = (Connection) ConnectionPool.getConnection();
 
         PreparedStatement stmt = null;
@@ -106,12 +106,14 @@ public class OpExtraAzienda extends OpeUtente {
             stmt = (PreparedStatement) connection.prepareStatement(sql);
             stmt1 = (PreparedStatement) connection.prepareStatement(sql1);
 
+
+
             stmt.setString(1, user.getUsername());
             stmt1.setInt(1, user.getIdUtente());
 
             // Execute the query
-       //     System.out.println(stmt.execute());
-         //   System.out.println(stmt1.execute());
+           System.out.println(stmt.execute());
+           System.out.println(stmt1.execute());
 
             connection.commit();
         } catch (SQLException se) {
@@ -119,7 +121,7 @@ public class OpExtraAzienda extends OpeUtente {
             se.printStackTrace();
             throw new SQLException("Transizione fallita");
         }
-        stmt.close();
+         stmt.close();
         stmt1.close();
 
         ConnectionPool.releaseConnection(connection);
