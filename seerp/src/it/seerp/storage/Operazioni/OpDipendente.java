@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Connection;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -63,9 +64,9 @@ public class OpDipendente extends OpPersonale {
             dip.setCognome(rs.getString(11));
             dip.setNome(rs.getString(12));
             dip.setCodiceFiscale(rs.getString(13));
-            dip.setRuolo(new Ruolo(rs.getString(13)));
-            dip.setVisible(rs.getBoolean(14));
-             dip.setIndirizzo(rs.getString(15));
+            dip.setRuolo(new Ruolo(rs.getString(14)));
+            dip.setVisible(rs.getBoolean(15));
+             dip.setIndirizzo(rs.getString(16));
             list.add(dip);
         }
         rs.close();
@@ -187,6 +188,7 @@ public class OpDipendente extends OpPersonale {
             stmtp.setString(4, user.getRuolo().getNome());
             stmtd = (PreparedStatement) conne.prepareStatement(sqlr);
             stmtv = (PreparedStatement) conne.prepareStatement(sqla);
+            JOptionPane.showMessageDialog(null, user.getNote());
             stmt.execute();
             stmtp.execute();
             stmtd.execute();
@@ -287,7 +289,7 @@ public class OpDipendente extends OpPersonale {
         ResultSet rs = null;
         conne = (Connection) ConnectionPool.getConnection();
 
-        String sql = "SELECT idUtente,username,password,citta,prov,telefono,Cap,email,note,tipo,cognome,nome,codiceFiscale,ruolo,visibilita" +
+        String sql = "SELECT idUtente,username,password,citta,prov,telefono,Cap,email,note,tipo,cognome,nome,codiceFiscale,ruolo,visibilita,indirizzo" +
                 " FROM utente,personale where idUtente=idPersonale and idPersonale=? ";
         // Create a statement
         stmt = (PreparedStatement) conne.prepareStatement(sql);
@@ -313,6 +315,7 @@ public class OpDipendente extends OpPersonale {
             dip.setCodiceFiscale(rs.getString(13));
             dip.setRuolo(new Ruolo(rs.getString(14)));
             dip.setVisible(rs.getBoolean(15));
+            dip.setIndirizzo(rs.getString(16));
         }
         rs.close();
         stmt.close();

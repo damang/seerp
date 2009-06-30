@@ -328,7 +328,7 @@ public class Conversione {
         utente.getTxtProvincia().setText(user.getProvincia());
         utente.getTxtTelefono().setText(user.getTelefono());
         utente.getIndirizzo().setText(user.getIndirizzo());
-//       utente.getTxtNote().setText(user.getNote());
+        utente.getTxtNote().setText(user.getNote());
 //        utente.getVisible().setText(user.getVisible().toString());
         //    utente.getTipo().setText(user.getTipo());
         return utente;
@@ -402,6 +402,7 @@ public class Conversione {
     public static BeanGuiPersonale conversionePersonale(Personale p, BeanGuiPersonale bp) throws ValidatorException {
 
         Conversione.conversioneUtente(p, bp);
+        bp.getNome().setText(p.getNote());
         bp.getCognome().setText(p.getCognome());
         bp.getNome().setText(p.getNome());
         bp.getCodiceFiscale().setText(p.getCodiceFiscale());
@@ -443,7 +444,7 @@ public class Conversione {
         utente.setCap(e.getCap().getText());
         utente.setTelefono(e.getTxtTelefono().getText());
         utente.setEmail(e.getTxtEmail().getText());
-        utente.setNote(e.getTxtNote().getText());
+        //utente.setNote(e.getTxtNote().getText());
         //  utente.setTipo(e.getTipo().getText());
         //utente.setVisible(Boolean.parseBoolean(e.getTxtNotifica().getText()));
         utente.setCognome(e.getCognome().getText());
@@ -469,6 +470,7 @@ public class Conversione {
 
         conversioneUtente(e, extra);
         //   extra.getIdUtenteTxt().setText(e.getIdUtente().toString());
+        extra.getTxtNote().setText(e.getNote());
         extra.getCognome().setText(e.getCognome());
         extra.getNome().setText(e.getNome());
         extra.getRagioneSociale().setText(e.getRagioneSociale());

@@ -28,14 +28,13 @@ public class DipendenteTm extends Generica <Dipendente>{
  public DipendenteTm() throws SQLException {
         Object[] list = new Object[]{
             "Id",
-            "Nome",
-            "Cognome",
-            "Mail",
+            "Username",
+            "Ruolo"
 
         };
 
         super.setColumnIdentifiers(list);
-        super.setColumnCount(4);
+        super.setColumnCount(3);
 
         refresh();
     }
@@ -57,9 +56,8 @@ public class DipendenteTm extends Generica <Dipendente>{
     protected Vector creaArrayObjectData(Dipendente o) {
         Vector c = new Vector();
         c.add(o.getIdUtente());
-        c.add(o.getNome());
-        c.add(o.getCognome());
-        c.add(o.getEmail());
+        c.add(o.getUsername());
+        c.add(o.getRuolo().getNome());
 
 
         return c;

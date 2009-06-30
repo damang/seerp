@@ -26,12 +26,12 @@ public class FornitoreTm extends Generica<Fornitore> {
     public FornitoreTm() throws SQLException {
         Object[] list = new Object[]{
             "Id",
-            "P.iva",
             "Ragione sociale",
-            "Provincia",};
+            "Username"
+        };
 
         super.setColumnIdentifiers(list);
-        super.setColumnCount(4);
+        super.setColumnCount(3);
 
         refresh();
     }
@@ -66,9 +66,8 @@ public class FornitoreTm extends Generica<Fornitore> {
     protected Vector creaArrayObjectData(Fornitore o) {
         Vector c = new Vector();
         c.add(o.getIdUtente());
-        c.add(o.getPIva());
         c.add(o.getRagioneSociale());
-        c.add(o.getProvincia());
+        c.add(o.getUsername());
 
 
         return c;

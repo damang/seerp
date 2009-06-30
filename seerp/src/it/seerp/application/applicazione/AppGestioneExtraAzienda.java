@@ -1,6 +1,5 @@
 package it.seerp.application.applicazione;
 
-import it.seerp.application.Exception.DatiDuplicati;
 import it.seerp.application.Exception.ValidatorException;
 import it.seerp.application.applicazione.bean.BeanGuiCliente;
 import it.seerp.application.applicazione.bean.BeanGuiContatto;
@@ -18,7 +17,6 @@ import it.seerp.storage.ejb.ExtraAzienda;
 import it.seerp.storage.ejb.Fornitore;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 /**
  * Classe che permette la gestione delle operazione relative agli ExtraAzienda

@@ -1,4 +1,3 @@
-
 package it.seerp.Gui.Home;
 
 import it.seerp.Gui.Home.bottoni.gestioni.*;
@@ -8,6 +7,7 @@ import it.seerp.Gui.Gestione.Utenti.AreaUtentePanel;
 import it.seerp.Gui.Gestione.Utenti.MenuUtente;
 import it.seerp.Gui.Home.Index;
 import it.seerp.Gui.observerButton.ObserverButton;
+import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import javax.security.auth.Subject;
@@ -39,7 +39,7 @@ public class AreaUtenteButton extends ObserverButton implements CommandInterface
     public AreaUtenteButton(JTabbedPane pan, MenuUtente menu, Index act) throws SQLException {
         this.tabbedPane = pan;
         this.menu = menu;
-        ut_sub=act.getSubject();
+        ut_sub = act.getSubject();
         this.addActionListener(act);
 
 
@@ -57,18 +57,18 @@ public class AreaUtenteButton extends ObserverButton implements CommandInterface
         if (!isPresente) {
             try {
                 this.setAreaUtente();
-            
 
-            isPresente = true;
-            this.tabbedPane.addTab(s, panel);
 
-       //     System.out.println(this.tabbedPane.getTabCount() - 1);
-            ButtonTabComponent button = new ButtonTabComponent(this.tabbedPane, this.panel, this.menu);
-            this.tabbedPane.setTabComponentAt(this.tabbedPane.getTabCount() - 1, button);
-            panel.setVisible(true);
-            panel.repaint();
-            this.tabbedPane.setSelectedComponent(panel);
-            this.setEnabled(false);
+                isPresente = true;
+                this.tabbedPane.addTab(s, panel);
+
+                //     System.out.println(this.tabbedPane.getTabCount() - 1);
+                ButtonTabComponent button = new ButtonTabComponent(this.tabbedPane, this.panel, this.menu);
+                this.tabbedPane.setTabComponentAt(this.tabbedPane.getTabCount() - 1, button);
+                panel.setVisible(true);
+                panel.repaint();
+                this.tabbedPane.setSelectedComponent(panel);
+                this.setEnabled(false);
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "problemi di comunicazione col DBMS ");
             }
@@ -81,28 +81,32 @@ public class AreaUtenteButton extends ObserverButton implements CommandInterface
         String tipoUtente = (this.getText());
 
         if (tipoUtente.compareToIgnoreCase("Clienti") == 0) {
-            this.panel = new AreaUtentePanel(TIPO_UTENTE_CONST.CLIENTE,ut_sub);
+            this.panel = new AreaUtentePanel(TIPO_UTENTE_CONST.CLIENTE, ut_sub);
             s = "Area Clienti";
             panel.register(this);
+            panel.setBackground(Color.GREEN);
 
         } else if (tipoUtente.compareToIgnoreCase("Dipendenti") == 0) {
-            this.panel = new AreaUtentePanel(TIPO_UTENTE_CONST.DIPENDENTE,ut_sub);
+            this.panel = new AreaUtentePanel(TIPO_UTENTE_CONST.DIPENDENTE, ut_sub);
 
             s = "Area Dipendenti";
             panel.register(this);
+            
 
         } else if (tipoUtente.compareToIgnoreCase("Fornitori") == 0) {
-            this.panel = new AreaUtentePanel(TIPO_UTENTE_CONST.FORNITORE,ut_sub);
+            this.panel = new AreaUtentePanel(TIPO_UTENTE_CONST.FORNITORE, ut_sub);
 
             s = "Area Fornitori";
             panel.register(this);
+            panel.setBackground(Color.ORANGE);
 
 
         } else if (tipoUtente.compareToIgnoreCase("Responsabili") == 0) {
-            this.panel = new AreaUtentePanel(TIPO_UTENTE_CONST.RESPONSABILE,ut_sub);
+            this.panel = new AreaUtentePanel(TIPO_UTENTE_CONST.RESPONSABILE, ut_sub);
 
             s = "Area Responsabili";
             panel.register(this);
+             panel.setBackground(Color.GRAY);
         } else {
             JOptionPane.showMessageDialog(null, "Panello nn settato");
         }
