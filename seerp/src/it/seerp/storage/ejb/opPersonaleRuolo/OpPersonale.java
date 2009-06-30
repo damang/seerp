@@ -97,7 +97,7 @@ public class OpPersonale extends OpeUtente {
             p.setCodiceFiscale(rs.getString("codicefiscale"));
             p.setCognome(rs.getString("cognome"));
             p.setEmail(rs.getString("email"));
-            p.setNome(rs.getString("note"));
+            p.setNome(rs.getString("nome"));
             p.setProvincia(rs.getString("prov"));
             p.setRuolo(new Ruolo(rs.getString("ruolo")));
             p.setTelefono(rs.getString("telefono"));
