@@ -1,0 +1,1 @@
+Il gestionale per la piccola e media impresa
